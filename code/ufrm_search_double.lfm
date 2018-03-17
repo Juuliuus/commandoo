@@ -1,0 +1,84 @@
+object frm_Search_double: Tfrm_Search_double
+  Left = 1988
+  Height = 380
+  Top = 664
+  Width = 365
+  BorderIcons = []
+  BorderStyle = bsNone
+  Caption = 'frm_Search_double'
+  ClientHeight = 380
+  ClientWidth = 365
+  Constraints.MaxHeight = 380
+  Constraints.MaxWidth = 365
+  Constraints.MinHeight = 380
+  Constraints.MinWidth = 365
+  Font.Height = -13
+  KeyPreview = True
+  OnCreate = FormCreate
+  OnHide = FormHide
+  OnKeyDown = FormKeyDown
+  LCLVersion = '1.6.0.4'
+  object rgSeList: TRadioGroup
+    Left = 9
+    Height = 183
+    Top = 32
+    Width = 349
+    Anchors = [akTop, akLeft, akRight]
+    AutoFill = False
+    Caption = 'NT'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    OnSelectionChanged = rgSeListSelectionChanged
+    TabOrder = 0
+  end
+  object lblSeType: TLabel
+    Left = 9
+    Height = 23
+    Top = 5
+    Width = 351
+    Alignment = taRightJustify
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    Caption = 'Real'
+    Font.Height = -18
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblFreeTextReal: TLabel
+    Left = 54
+    Height = 18
+    Top = 270
+    Width = 9
+    Caption = '...'
+    Font.Height = -13
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblValueInt: TLabel
+    Left = 54
+    Height = 18
+    Top = 219
+    Width = 17
+    Caption = 'NT'
+    ParentColor = False
+  end
+  object spnRealValue: TFloatSpinEdit
+    Left = 49
+    Height = 28
+    Top = 240
+    Width = 185
+    Anchors = [akTop, akRight]
+    AutoSelect = False
+    AutoSize = False
+    Increment = 1
+    MaxValue = 0
+    MinValue = 0
+    TabOrder = 1
+    Value = 0
+    Visible = False
+  end
+end

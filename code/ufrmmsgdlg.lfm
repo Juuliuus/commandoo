@@ -1,0 +1,139 @@
+object frmMsgDlg: TfrmMsgDlg
+  Left = 2126
+  Height = 370
+  Top = 692
+  Width = 820
+  ActiveControl = memMsg
+  Caption = 'frmMsgDlg'
+  ClientHeight = 370
+  ClientWidth = 820
+  Constraints.MinHeight = 370
+  Constraints.MinWidth = 820
+  Font.Height = -13
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '1.6.0.4'
+  object memMsg: TMemo
+    Left = 25
+    Height = 273
+    Top = 41
+    Width = 756
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Font.Height = -16
+    ParentFont = False
+    ReadOnly = True
+    ScrollBars = ssAutoVertical
+    TabOrder = 0
+    TabStop = False
+  end
+  object lblType: TLabel
+    Left = 26
+    Height = 38
+    Top = 3
+    Width = 91
+    Caption = 'not set'
+    Font.Height = -28
+    Font.Style = [fsBold, fsItalic]
+    ParentColor = False
+    ParentFont = False
+  end
+  object btnOk: TBitBtn
+    Left = 629
+    Height = 46
+    Top = 318
+    Width = 147
+    Anchors = [akRight, akBottom]
+    Default = True
+    DefaultCaption = True
+    Kind = bkOK
+    ModalResult = 1
+    TabOrder = 3
+  end
+  object btnNo: TBitBtn
+    Left = 464
+    Height = 46
+    Top = 318
+    Width = 147
+    Anchors = [akRight, akBottom]
+    Cancel = True
+    Caption = '&X  No'
+    Enabled = False
+    Kind = bkNo
+    OnClick = btnNoClick
+    TabOrder = 4
+    Visible = False
+  end
+  object btnYes: TBitBtn
+    Left = 640
+    Height = 32
+    Top = 326
+    Width = 128
+    Anchors = [akRight, akBottom]
+    Caption = '&A  Yes'
+    Enabled = False
+    Kind = bkYes
+    OnClick = btnYesClick
+    TabOrder = 5
+    Visible = False
+  end
+  object btnClip: TButton
+    Left = 602
+    Height = 34
+    Top = 3
+    Width = 179
+    Anchors = [akTop, akRight]
+    Caption = '&C  Copy to Clipboard'
+    OnClick = btnClipClick
+    TabOrder = 1
+  end
+  object pnlNoShow: TPanel
+    Left = 26
+    Height = 44
+    Top = 320
+    Width = 378
+    Anchors = [akLeft, akBottom]
+    ClientHeight = 44
+    ClientWidth = 378
+    Color = 13259833
+    Font.Color = clCream
+    Font.Height = -13
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 2
+    Visible = False
+    object pnlGTK: TPanel
+      Left = 8
+      Height = 30
+      Top = 6
+      Width = 360
+      ClientHeight = 30
+      ClientWidth = 360
+      Color = clForm
+      Font.Height = -13
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 0
+      object cbDoNotShow: TCheckBox
+        Left = 8
+        Height = 26
+        Top = 0
+        Width = 337
+        Anchors = [akLeft, akBottom]
+        Caption = '&Z  Do not show this message again   '
+        Color = clDefault
+        ParentColor = False
+        TabOrder = 0
+      end
+    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 700
+    OnTimer = Timer1Timer
+    left = 192
+    top = 14
+  end
+end

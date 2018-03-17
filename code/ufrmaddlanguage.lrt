@@ -1,0 +1,20 @@
+TFRMADDLANGUAGE.CAPTION=Add Language File ( .po file)
+TFRMADDLANGUAGE.LABEL1.CAPTION=&A  File Name
+TFRMADDLANGUAGE.EDTFILENAME.HINT=Select the .po language file you want
++to install. It can be anywhere on the system
++and it will be copied to the language
++folder
++
++<end>
+TFRMADDLANGUAGE.EDTLANG.HINT=This will be used for the Languages 
++dropdown entry. Type whatever you
++would like to show up there.
++
++<end>
+TFRMADDLANGUAGE.EDTLANG.TEXTHINT=New-Neu-Neuvo-Neuf-Nuovo-Nou
+TFRMADDLANGUAGE.LBLLANGABBREV.HINT=This label will show the associated 
++language symbol.
++
++<end>
+TFRMADDLANGUAGE.LBLLANGABBREV.CAPTION=...
+TFRMADDLANGUAGE.LBLLANGABBREV1.CAPTION=&B  Language dropdown box entry

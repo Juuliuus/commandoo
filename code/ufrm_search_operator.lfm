@@ -1,0 +1,57 @@
+object frm_Search_Operator: Tfrm_Search_Operator
+  Left = 2155
+  Height = 380
+  Top = 646
+  Width = 365
+  BorderIcons = []
+  BorderStyle = bsNone
+  Caption = 'frm_Search_Operator'
+  ClientHeight = 380
+  ClientWidth = 365
+  Constraints.MaxHeight = 380
+  Constraints.MaxWidth = 365
+  Constraints.MinHeight = 380
+  Constraints.MinWidth = 365
+  Font.Height = -13
+  KeyPreview = True
+  OnKeyDown = FormKeyDown
+  LCLVersion = '1.6.0.4'
+  object rgSeOpOperator: TRadioGroup
+    Left = 30
+    Height = 134
+    Hint = 'Select the kind of operator you want for the'#10'currently selected item.'#10#10'<end>'
+    Top = 56
+    Width = 313
+    Anchors = [akTop, akLeft, akRight]
+    AutoFill = False
+    Caption = 'Operator Kind'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 115
+    ClientWidth = 311
+    Items.Strings = (
+      'OR'
+      'AND'
+      'XOR'
+    )
+    OnSelectionChanged = rgSeOpOperatorSelectionChanged
+    TabOrder = 0
+  end
+  object lblSeOpType: TLabel
+    Left = 9
+    Height = 23
+    Top = 5
+    Width = 351
+    Alignment = taRightJustify
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    Caption = 'Operator'
+    Font.Height = -18
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+end

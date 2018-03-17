@@ -1,0 +1,130 @@
+object frm_Search_List: Tfrm_Search_List
+  Left = 2067
+  Height = 380
+  Top = 653
+  Width = 365
+  BorderIcons = []
+  BorderStyle = bsNone
+  Caption = 'frm_Search_List'
+  ClientHeight = 380
+  ClientWidth = 365
+  Constraints.MaxHeight = 380
+  Constraints.MaxWidth = 365
+  Constraints.MinHeight = 380
+  Constraints.MinWidth = 365
+  Font.Height = -13
+  KeyPreview = True
+  OnCreate = FormCreate
+  OnHide = FormHide
+  OnKeyDown = FormKeyDown
+  LCLVersion = '1.6.0.4'
+  object lblFreeText: TLabel
+    Left = 13
+    Height = 18
+    Top = 249
+    Width = 9
+    Caption = '...'
+    Font.Height = -13
+    ParentColor = False
+    ParentFont = False
+  end
+  object rgSeList: TRadioGroup
+    Left = 9
+    Height = 162
+    Hint = 'Select the "match" type you want for the '#10'List Search.'#10#10'It is "match", not "equal", because it will try'#10'to find out whether the exact List Item is in'#10'(or not in) the Command''s assigned List '#10'Items.'#10#10'The selections you make here determine'#10'the enabling of the fields below. "match" '#10'means it must be in the List, so you are'#10'limited to only items which currently exist '#10'in the Master List.'#10#10'Otherwise you can specify search text.'#10#10'Be aware that if select "match" and you '#10'previously typed in something under '#10'another condition it will be replaced with'#10'the first item in the current Master List.'#10#10'Also be aware, this search can later '#10'become invalid if you delete that item'#10'from the Master List. You will be told when'#10'this has happened.'#10#10'<end>'
+    Top = 32
+    Width = 349
+    Anchors = [akTop, akLeft, akRight]
+    AutoFill = False
+    Caption = 'NT'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    OnSelectionChanged = rgSeListSelectionChanged
+    TabOrder = 0
+  end
+  object lblSeType: TLabel
+    Left = 9
+    Height = 23
+    Top = 5
+    Width = 351
+    Alignment = taRightJustify
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    Caption = 'List'
+    Font.Height = -18
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblListChoice: TLabel
+    Left = 112
+    Height = 18
+    Top = 277
+    Width = 66
+    Anchors = [akTop, akRight]
+    Caption = 'Select One:'
+    Font.Height = -13
+    ParentColor = False
+    ParentFont = False
+    Visible = False
+  end
+  object cbMatchCase: TCheckBox
+    Left = 224
+    Height = 26
+    Top = 249
+    Width = 122
+    Anchors = [akTop, akRight]
+    Caption = 'Match Case'
+    OnChange = cbMatchCaseChange
+    TabOrder = 2
+  end
+  object lbList: TListBox
+    Left = 180
+    Height = 102
+    Hint = 'The current Master List of the field you are '#10'editing.'#10#10'If you edit the Master List this will be reflected'#10'the next time you create or edit a Search.'#10#10'Items in old saved Searches may become'#10'invalid if you remove or change the entry in '#10'the Master List.'#10#10'<end>'
+    Top = 277
+    Width = 176
+    Items.Strings = (
+      'sanitycheck'
+    )
+    ItemHeight = 22
+    OnClick = lbListClick
+    ParentColor = True
+    PopupMenu = popList
+    ScrollWidth = 174
+    TabOrder = 3
+  end
+  object memSearchValue: TMemo
+    Left = 9
+    Height = 53
+    Hint = 'The text being searched for.'#10#10'This is disabled when you select "match" '#10'Match Type above. In those cases you must'#10'select from the Master List.'#10#10'<end>'
+    Top = 194
+    Width = 347
+    OnChange = memSearchValueChange
+    ScrollBars = ssAutoBoth
+    TabOrder = 1
+    WantReturns = False
+  end
+  object lblKeywords: TLabel
+    Left = 110
+    Height = 18
+    Top = 333
+    Width = 66
+    Anchors = [akTop, akRight]
+    Caption = 'Current %s'
+    Font.Height = -13
+    ParentColor = False
+    ParentFont = False
+  end
+  object popList: TPopupMenu
+    left = 56
+    top = 13
+    object mniCopy: TMenuItem
+      Caption = 'Copy Item'
+      OnClick = mniCopyClick
+    end
+  end
+end

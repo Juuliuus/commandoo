@@ -1,0 +1,95 @@
+object frmListManagerConsolidate: TfrmListManagerConsolidate
+  Left = 2000
+  Height = 180
+  Top = 654
+  Width = 480
+  ActiveControl = cbChoose
+  Caption = 'Consolidate %s'
+  ClientHeight = 180
+  ClientWidth = 480
+  Constraints.MaxHeight = 180
+  Constraints.MinHeight = 180
+  Constraints.MinWidth = 480
+  Font.Height = -13
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '1.6.0.4'
+  inline FrameHint1: TFrameHint
+    Left = 159
+    Top = -3
+    ParentColor = True
+    inherited cbHints: TCheckBox
+      Left = 40
+      Height = 26
+      Width = 268
+    end
+  end
+  object bntOK: TBitBtn
+    Left = 347
+    Height = 49
+    Top = 78
+    Width = 111
+    Anchors = [akTop, akRight]
+    Default = True
+    DefaultCaption = True
+    Kind = bkOK
+    OnClick = bntOKClick
+    TabOrder = 2
+  end
+  object btnCancel: TBitBtn
+    Left = 350
+    Height = 30
+    Top = 129
+    Width = 93
+    Anchors = [akTop, akRight]
+    Cancel = True
+    DefaultCaption = True
+    GlyphShowMode = gsmNever
+    Kind = bkCancel
+    OnClick = btnCancelClick
+    TabOrder = 3
+  end
+  object lblInfo: TLabel
+    Left = 25
+    Height = 18
+    Top = 17
+    Width = 38
+    Caption = 'lblInfo'
+    ParentColor = False
+  end
+  object lblItem: TLabel
+    Left = 40
+    Height = 18
+    Hint = 'This is the List Item you want to consolidate'#10'(combine into) another List Item.'#10#10'You choose the List Item to consolidate too'#10'below from the combobox.'#10#10'When you press OK the old Item disappears'#10'and all instances of it are changed to the newly'#10'chosen Item.'#10#10'<end.>'
+    Top = 45
+    Width = 42
+    Caption = 'lblItem'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 25
+    Height = 18
+    Top = 98
+    Width = 122
+    Caption = 'with (choose below):'
+    ParentColor = False
+  end
+  object cbChoose: TComboBox
+    Left = 40
+    Height = 29
+    Hint = 'This is the List Item you want to consolidate'#10'TO.'#10#10'The List Item shown above will beconsolidated'#10'to this List Item.'#10#10'When you press OK the old Item disappears'#10'and all instances of it are changed to the newly'#10'chosen Item.'#10#10'<end.>'
+    Top = 134
+    Width = 286
+    Anchors = [akTop, akLeft, akRight]
+    AutoSelect = False
+    AutoSize = False
+    ItemHeight = 0
+    Style = csDropDownList
+    TabOrder = 1
+  end
+end

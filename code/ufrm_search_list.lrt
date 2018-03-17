@@ -1,0 +1,53 @@
+TFRM_SEARCH_LIST.CAPTION=frm_Search_List
+TFRM_SEARCH_LIST.LBLFREETEXT.CAPTION=...
+TFRM_SEARCH_LIST.RGSELIST.HINT=Select the "match" type you want for the 
++List Search.
++
++It is "match", not "equal", because it will try
++to find out whether the exact List Item is in
++(or not in) the Command's assigned List 
++Items.
++
++The selections you make here determine
++the enabling of the fields below. "match" 
++means it must be in the List, so you are
++limited to only items which currently exist 
++in the Master List.
++
++Otherwise you can specify search text.
++
++Be aware that if select "match" and you 
++previously typed in something under 
++another condition it will be replaced with
++the first item in the current Master List.
++
++Also be aware, this search can later 
++become invalid if you delete that item
++from the Master List. You will be told when
++this has happened.
++
++<end>
+TFRM_SEARCH_LIST.RGSELIST.CAPTION=NT
+TFRM_SEARCH_LIST.LBLSETYPE.CAPTION=List
+TFRM_SEARCH_LIST.LBLLISTCHOICE.CAPTION=Select One:
+TFRM_SEARCH_LIST.CBMATCHCASE.CAPTION=Match Case
+TFRM_SEARCH_LIST.LBLIST.HINT=The current Master List of the field you are 
++editing.
++
++If you edit the Master List this will be reflected
++the next time you create or edit a Search.
++
++Items in old saved Searches may become
++invalid if you remove or change the entry in 
++the Master List.
++
++<end>
+TFRM_SEARCH_LIST.MEMSEARCHVALUE.HINT=The text being searched for.
++
++This is disabled when you select "match" 
++Match Type above. In those cases you must
++select from the Master List.
++
++<end>
+TFRM_SEARCH_LIST.LBLKEYWORDS.CAPTION=Current %s
+TFRM_SEARCH_LIST.MNICOPY.CAPTION=Copy Item

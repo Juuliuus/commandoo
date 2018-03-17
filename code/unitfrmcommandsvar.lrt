@@ -1,0 +1,44 @@
+TFRMCOMMANDSVAR.CAPTION=Input Variables
+TFRMCOMMANDSVAR.BTNCANCEL.CAPTION=Cancel
+TFRMCOMMANDSVAR.EDTCMDLINE.HINT=The Command Line that will be run with
++variables to be filled in.
++
++<end>
+TFRMCOMMANDSVAR.MEMINFO.HINT=This displays a hint for you so you know 
++what you should be typingt: text, an integer,
++a decmal, or a filename.
++
++<end>
+TFRMCOMMANDSVAR.EDTINPUT.HINT=What is typed here replaces the highlighted
++variable above.
++
++You can use <ENTER> after typing to move 
++to the next variable (if there is one). You can 
++also use <ENTER> after the last variable
++to apply the variables and continue with
++the running of the command line.
++
++If the variable is for a filename two buttons
++will appear allowing you to choose either in
++file mode or folder mode. 
++
++You can use these buttons or type in the 
++file name in that case.
++
++<end>
+TFRMCOMMANDSVAR.BTNAPPLY.HINT=This applies any text you have typed to the
++current variable.
++
++It is far easier to simply press <ENTER> after
++typing everything in. 
++
++Once all variables have been applied a final
++<ENTER> or clicking this button will
++proceed with the running of the 
++command line.
++
++<end>
+TFRMCOMMANDSVAR.BTNAPPLY.CAPTION=&A  Apply
+TFRMCOMMANDSVAR.BTNFILENAME.CAPTION=&N  Insert File Name
+TFRMCOMMANDSVAR.BTNDONE.CAPTION=NT
+TFRMCOMMANDSVAR.BTNFOLDERNAME.CAPTION=&F  Insert Folder Name

@@ -1,0 +1,101 @@
+object frmSingleInput: TfrmSingleInput
+  Left = 1973
+  Height = 140
+  Top = 607
+  Width = 685
+  Caption = 'Input'
+  ClientHeight = 140
+  ClientWidth = 685
+  Constraints.MaxHeight = 140
+  Constraints.MinHeight = 140
+  Constraints.MinWidth = 685
+  Font.Height = -13
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poMainFormCenter
+  LCLVersion = '1.6.0.4'
+  object deDir: TDirectoryEdit
+    Left = 24
+    Height = 28
+    Top = 33
+    Width = 637
+    ShowHidden = False
+    ButtonWidth = 23
+    NumGlyphs = 1
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    MaxLength = 0
+    TabOrder = 0
+    Visible = False
+    OnKeyDown = edtInputKeyDown
+  end
+  object feFile: TFileNameEdit
+    Left = 24
+    Height = 28
+    Top = 5
+    Width = 637
+    FilterIndex = 0
+    HideDirectories = False
+    ButtonWidth = 23
+    NumGlyphs = 1
+    Anchors = [akTop, akLeft, akRight]
+    AutoSelect = False
+    AutoSize = False
+    MaxLength = 0
+    TabOrder = 1
+    Visible = False
+    OnKeyDown = edtInputKeyDown
+  end
+  object edtInput: TEdit
+    Left = 24
+    Height = 28
+    Top = 62
+    Width = 637
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    OnKeyDown = edtInputKeyDown
+    TabOrder = 2
+    Visible = False
+  end
+  object lblHint: TLabel
+    Left = 466
+    Height = 18
+    Top = 64
+    Width = 186
+    Alignment = taRightJustify
+    Anchors = [akTop, akRight]
+    Caption = '↑↑ Type       and / or     Browse  ↑'
+    ParentColor = False
+    Visible = False
+  end
+  object btnOk: TBitBtn
+    Left = 580
+    Height = 40
+    Top = 94
+    Width = 81
+    Anchors = [akTop, akRight]
+    DefaultCaption = True
+    Kind = bkOK
+    OnClick = btnOkClick
+    TabOrder = 4
+  end
+  object btnCancel: TBitBtn
+    Left = 457
+    Height = 33
+    Top = 97
+    Width = 113
+    Anchors = [akTop, akRight]
+    Cancel = True
+    DefaultCaption = True
+    GlyphShowMode = gsmNever
+    Kind = bkCancel
+    OnClick = btnCancelClick
+    TabOrder = 3
+  end
+end

@@ -1,0 +1,7 @@
+TFRM_SEARCH_OPERATOR.CAPTION=frm_Search_Operator
+TFRM_SEARCH_OPERATOR.RGSEOPOPERATOR.HINT=Select the kind of operator you want for the
++currently selected item.
++
++<end>
+TFRM_SEARCH_OPERATOR.RGSEOPOPERATOR.CAPTION=Operator Kind
+TFRM_SEARCH_OPERATOR.LBLSEOPTYPE.CAPTION=Operator

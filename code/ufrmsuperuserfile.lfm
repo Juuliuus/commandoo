@@ -1,0 +1,155 @@
+object frmSuperUserFile: TfrmSuperUserFile
+  Left = 2052
+  Height = 350
+  Top = 658
+  Width = 490
+  Caption = 'SuperUser Authentication'
+  ClientHeight = 350
+  ClientWidth = 490
+  Constraints.MaxHeight = 350
+  Constraints.MinHeight = 350
+  Constraints.MinWidth = 490
+  Font.Height = -13
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '1.6.0.4'
+  inline FrameHint1: TFrameHint
+    Left = 169
+    Top = -3
+    ParentColor = True
+    TabOrder = 9
+    inherited cbHints: TCheckBox
+      Left = 40
+      Height = 26
+      Width = 268
+    end
+  end
+  object bntOK: TBitBtn
+    Left = 376
+    Height = 38
+    Top = 56
+    Width = 75
+    Anchors = [akTop, akRight]
+    Default = True
+    DefaultCaption = True
+    Kind = bkOK
+    OnClick = bntOKClick
+    TabOrder = 6
+  end
+  object btnCancel: TBitBtn
+    Left = 368
+    Height = 35
+    Top = 99
+    Width = 90
+    Anchors = [akTop, akRight]
+    Cancel = True
+    DefaultCaption = True
+    GlyphShowMode = gsmNever
+    Kind = bkCancel
+    OnClick = btnCancelClick
+    TabOrder = 7
+  end
+  object edtsufile: TEdit
+    Left = 16
+    Height = 27
+    Hint = 'The proposed ROOT file to change to.'#10#10'<end>'
+    Top = 204
+    Width = 296
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    ReadOnly = True
+    TabOrder = 1
+  end
+  object edtsuparam1: TEdit
+    Left = 16
+    Height = 27
+    Top = 240
+    Width = 296
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    OnDblClick = edtsuparam1DblClick
+    ReadOnly = True
+    TabOrder = 2
+  end
+  object lblCurr: TLabel
+    Left = 16
+    Height = 18
+    Top = 19
+    Width = 65
+    Caption = 'Currently:  '
+    ParentColor = False
+  end
+  object lbFiles: TListBox
+    Left = 16
+    Height = 138
+    Hint = 'This is a list of current (2017) ROOT '#10'authentication files available for gnu/Linux '#10'people.'#10#10'Choose the one you want. You may, or may'#10'not, have all of them on your system. It will'#10'tell you if it cannot find the file.'#10#10'In some cases (maybe in future) it could be'#10'you want to use something new, then use the'#10'button below and right.'#10#10'<end>'
+    Top = 56
+    Width = 296
+    Anchors = [akTop, akLeft, akRight]
+    ItemHeight = 0
+    OnClick = lbFilesClick
+    ScrollWidth = 294
+    TabOrder = 0
+    TopIndex = -1
+  end
+  object lblCurrFile: TLabel
+    Left = 35
+    Height = 18
+    Hint = 'This is the ROOT file you are currently using.'#10#10'<end>'
+    Top = 38
+    Width = 9
+    Caption = '...'
+    ParentColor = False
+  end
+  object btnsufile: TButton
+    Left = 320
+    Height = 33
+    Hint = 'If, in future, or for special needs, the file'#10'you need is not in the list use this button to '#10'find and use it.'#10#10'You will first be asked to find the file.'#10#10'If you choose one you will then be asked to'#10'type any parameter / flag it needs.'#10#10'<end>'
+    Top = 220
+    Width = 115
+    Anchors = [akTop, akRight]
+    Caption = '&Z  Other File'
+    OnClick = btnsufileClick
+    TabOrder = 4
+  end
+  object btnsuinfo: TButton
+    Left = 16
+    Height = 37
+    Hint = 'A quick introduction to the intricacieas of'#10'xxxsu and xxxsudo.'#10#10'<end>'
+    Top = 306
+    Width = 296
+    Caption = '&A  Show Information'
+    OnClick = btnsuinfoClick
+    TabOrder = 5
+  end
+  object btnTurnOff: TButton
+    Left = 332
+    Height = 34
+    Hint = 'If the file you need can not be found, or'#10'you simply don''t want to run command lines'#10'as ROOT then you can turn off the ROOT '#10'ability with this button.'#10#10'<end>'
+    Top = 144
+    Width = 151
+    Anchors = [akTop, akRight]
+    Caption = '&X  Turn off ROOT'
+    OnClick = btnTurnOffClick
+    TabOrder = 8
+  end
+  object edtsuparam2: TEdit
+    Left = 16
+    Height = 27
+    Top = 269
+    Width = 296
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    OnDblClick = edtsuparam2DblClick
+    ReadOnly = True
+    TabOrder = 3
+  end
+end

@@ -1,0 +1,55 @@
+TFRMCMDLINEEDIT.CAPTION=Edit Command Line
+TFRMCMDLINEEDIT.MEMOUTPUT.HINT=The output of the command's default help 
++or of the refresh and default help buttons 
++above.
++
++Experimental right now, it is intended to 
++display help for the command so you can
++see what flags / parameters you want to add
++to the Command Line.
++
++<end>
+TFRMCMDLINEEDIT.BTNREFRESH.HINT=Sometimes when editing a command line
++you may need to reference other commands.
++
++You can type in a command line below and
++run it by pressing this button or pressing 
++return in the edit.
++
++The output will be added below.
++
++<end>
+TFRMCMDLINEEDIT.BTNREFRESH.CAPTION=&X  Run Command Line below:
+TFRMCMDLINEEDIT.EDTOUTPUTREFRESH.HINT=Type in a command line you want to run
++while you are editing. Then press return or 
++click the button above.
++
++<end>
+TFRMCMDLINEEDIT.EDTOUTPUTREFRESH.TEXTHINT=commands with Help flags only
+TFRMCMDLINEEDIT.BTNDEFAULTHELP.HINT=The help for the command is always displayed
++when you first open this form.
++
++But maybe later you do some other commands
++and then need to reference the command
++help quickly, then use this button.
++
++<end>
+TFRMCMDLINEEDIT.BTNDEFAULTHELP.CAPTION=&Y  Default Help
+TFRMCMDLINEEDIT.CBWRAPTEXT.HINT=Checked and the output above uses 
++wordwrap. Not, and not.
++
++<end>
+TFRMCMDLINEEDIT.CBWRAPTEXT.CAPTION=&Z  Wrap Output text
+TFRMCMDLINEEDIT.LBLVARHINT.CAPTION=Add a variable at cursor / selection for: 
+TFRMCMDLINEEDIT.BTNVARSTRING.CAPTION=&S  AlphaNum
+TFRMCMDLINEEDIT.BTNVARINTEGER.CAPTION=&I  Integer
+TFRMCMDLINEEDIT.BTNVARDECIMAL.CAPTION=&N  Decimal
+TFRMCMDLINEEDIT.BTNVARFILENAME.CAPTION=&F  File Name
+TFRMCMDLINEEDIT.MEMCMDLINE.HINT=The Command Line you are editing.
++
++You can place the cursor at a position, or
++select text, and then use one of the 
++variable buttons below to use run time
++variables on this command line.
++
++<end>

@@ -1,0 +1,194 @@
+object frmSearch: TfrmSearch
+  Left = 2008
+  Height = 570
+  Top = 501
+  Width = 950
+  ActiveControl = edtSearchFileName
+  Caption = 'Search KeyWords'
+  ClientHeight = 570
+  ClientWidth = 950
+  Constraints.MaxHeight = 570
+  Constraints.MaxWidth = 950
+  Constraints.MinHeight = 570
+  Constraints.MinWidth = 950
+  Font.Height = -13
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '1.6.0.4'
+  object Bevel1: TBevel
+    Left = 0
+    Height = 7
+    Top = 528
+    Width = 947
+  end
+  object bntOK: TBitBtn
+    Left = 704
+    Height = 30
+    Top = 28
+    Width = 79
+    Anchors = [akTop, akRight]
+    Default = True
+    DefaultCaption = True
+    Kind = bkOK
+    OnClick = bntOKClick
+    TabOrder = 3
+  end
+  object btnCancel: TBitBtn
+    Left = 800
+    Height = 30
+    Top = 28
+    Width = 139
+    Anchors = [akTop, akRight]
+    Caption = '&X  Cancel'
+    GlyphShowMode = gsmNever
+    Kind = bkCancel
+    OnClick = btnCancelClick
+    TabOrder = 4
+  end
+  object edtSearchFileName: TEdit
+    Left = 104
+    Height = 29
+    Hint = 'The "name" of a Search helps you identify it'#10'and will be used as the filename if you save'#10'it.'#10#10'If you use more than one Database Profile'#10'it is a good idea perhaps to give meaningful'#10'names so that you know what it is for and for'#10'which database. This will help when loading'#10'saved Searches.'#10#10'<end>'
+    Top = 61
+    Width = 385
+    AutoSize = False
+    AutoSelect = False
+    TabOrder = 1
+  end
+  object lblDesignProf: TLabel
+    Left = 24
+    Height = 18
+    Hint = 'This shows the database profile where the'#10'Search is / was designed.'#10#10'Different Database Profiles can use, for'#10'example, different Key Words. So while a '#10'Search may be valid for one DB Profile it'#10'may not be valid in another.'#10#10'This helps you determine that and you will'#10'also be notified in these cases.'#10#10'If a Search is not valid in this database it'#10'can not be run but it can be edited.'#10#10'<end>'
+    Top = 36
+    Width = 46
+    Caption = 'DNT A...'
+    ParentColor = False
+  end
+  object lblSearchFileName: TLabel
+    Left = 48
+    Height = 18
+    Top = 66
+    Width = 52
+    Anchors = [akTop, akRight]
+    Caption = '&N  Name'
+    FocusControl = edtSearchFileName
+    ParentColor = False
+  end
+  object lblProgramerTip: TLabel
+    Left = 575
+    Height = 18
+    Top = 113
+    Width = 160
+    Caption = 'DNT --ufrm_search_  form--'
+    ParentColor = False
+    Visible = False
+  end
+  object lblProgramerTip1: TLabel
+    Left = 8
+    Height = 18
+    Top = 112
+    Width = 128
+    Caption = 'DNT --ufrmBoolExpr--'
+    ParentColor = False
+    Visible = False
+  end
+  object cbField: TComboBox
+    Left = 576
+    Height = 27
+    Hint = 'Select the field for this search expression.'#10#10'Sometimes this is disabled for technical '#10'reasons. For example, List searches may'#10'prevent it from being changed.'#10#10'<end>'
+    Top = 85
+    Width = 224
+    AutoSelect = False
+    AutoSize = False
+    DropDownCount = 20
+    ItemHeight = 0
+    OnSelect = cbFieldSelect
+    Style = csDropDownList
+    TabOrder = 2
+    Visible = False
+  end
+  object lblProgramerTip2: TLabel
+    Left = 575
+    Height = 18
+    Top = 493
+    Width = 150
+    Caption = 'DNT --LOW_BOUNDARY--'
+    ParentColor = False
+    Visible = False
+  end
+  object lblFieldCaption: TLabel
+    Left = 527
+    Height = 18
+    Top = 90
+    Width = 44
+    Anchors = [akTop, akRight]
+    Caption = '&F  Field:'
+    FocusControl = cbField
+    ParentColor = False
+    Visible = False
+  end
+  inline FrameHint1: TFrameHint
+    Left = 629
+    Top = 1
+    ParentColor = True
+    TabOrder = 6
+    inherited cbHints: TCheckBox
+      Left = 40
+      Height = 26
+      Top = 2
+      Width = 268
+    end
+  end
+  object lblWhichBoolExpr: TLabel
+    Left = 539
+    Height = 18
+    Hint = 'This shows the Database Profile you are '#10'currently in.'#10#10'<end>'
+    Top = 64
+    Width = 46
+    Caption = 'DNT B...'
+    ParentColor = False
+    Visible = False
+  end
+  object edtCurrProf: TEdit
+    Left = 22
+    Height = 23
+    Top = 6
+    Width = 337
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    BorderStyle = bsNone
+    ParentColor = True
+    ReadOnly = True
+    TabStop = False
+    TabOrder = 0
+  end
+  object shpDiv: TShape
+    Left = 3
+    Height = 6
+    Top = 288
+    Width = 549
+    Brush.Color = clBlue
+    Brush.Style = bsDiagCross
+  end
+  object btnUseSimpleSearch: TButton
+    Left = 352
+    Height = 30
+    Hint = 'Open a simple search instead which '#10'looks for specified text in all Command'#10'and Command Line text fields '#10'(choosable).'#10#10'<end>'
+    Top = 539
+    Width = 325
+    Caption = 'Use Simple Search instead'
+    Font.Height = -13
+    Font.Style = [fsBold]
+    OnClick = btnUseSimpleSearchClick
+    ParentFont = False
+    TabOrder = 5
+  end
+end

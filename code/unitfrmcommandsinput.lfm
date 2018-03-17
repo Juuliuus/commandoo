@@ -1,0 +1,87 @@
+object frmCommandsInput: TfrmCommandsInput
+  Left = 2065
+  Height = 290
+  Top = 631
+  Width = 550
+  ActiveControl = memInput
+  Caption = 'Input for Process'
+  ClientHeight = 290
+  ClientWidth = 550
+  Constraints.MinHeight = 290
+  Constraints.MinWidth = 550
+  Font.Height = -13
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '1.6.0.4'
+  inline FrameHint1: TFrameHint
+    Left = 228
+    Top = -3
+    ParentColor = True
+    TabOrder = 4
+    inherited cbHints: TCheckBox
+      Left = 40
+      Height = 26
+      Width = 268
+    end
+  end
+  object btnCancel: TBitBtn
+    Left = 431
+    Height = 54
+    Top = 188
+    Width = 104
+    Anchors = [akTop, akRight]
+    Cancel = True
+    Caption = 'Cancel'
+    GlyphShowMode = gsmNever
+    Kind = bkCancel
+    OnClick = btnCancelClick
+    TabOrder = 3
+  end
+  object memInput: TMemo
+    Left = 10
+    Height = 200
+    Hint = 'This is the INPUT window which means'#10'the Command Line you are running has'#10'the "Wants Input" checked.'#10#10'Whatever text you paste here will be fed into'#10'the process immediately before it is allowed '#10'to run.'#10#10'Very useful in some cases for some Commands,'#10'if the command accepts AND reacts to stdin '#10'(standard input).'#10#10'Try it with grep command for example.'#10#10'<end>'
+    Top = 64
+    Width = 409
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Font.Height = -15
+    ParentFont = False
+    ScrollBars = ssAutoBoth
+    TabOrder = 0
+    WantTabs = True
+    WordWrap = False
+  end
+  object btnDone: TButton
+    Left = 431
+    Height = 42
+    Top = 147
+    Width = 104
+    Anchors = [akTop, akRight]
+    Caption = 'NT'
+    OnClick = btnDoneClick
+    TabOrder = 2
+  end
+  object lblProcessInputMsg: TLabel
+    Left = 10
+    Height = 18
+    Top = 36
+    Width = 238
+    Caption = 'Process wants input, type or paste here:'
+    ParentColor = False
+  end
+  object cbWordwrap: TCheckBox
+    Left = 11
+    Height = 26
+    Hint = 'Checked and the output above uses '#10'wordwrap. Not, and not.'#10#10'<end>'
+    Top = 262
+    Width = 132
+    Anchors = [akLeft, akBottom]
+    Caption = '&Z  Wordwrap'
+    OnChange = cbWordwrapChange
+    TabOrder = 1
+  end
+end

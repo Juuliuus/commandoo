@@ -1,0 +1,70 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+
+
+This release version (1.0.1) is from March 2018.
+
+My gnuGPG key is 0x74E59DD3 2013-12-09
+as JuliuS Inet (internet signing).
+
+
+sha256 checksums:
+- - ------------------
+5613961b804afb29c78e12f56c673dc6c83818d0b357e941ff94afd08bab95b2  commandoo_folder.tar.gz
+85eb108cd7c0c4bf3c090530237ec6ae5572930d22a47d6c7b1b51b17bb1cd5b  commandoo_1.0.1_64GTK.tar.gz
+1e2f0b5f3b4a930b21079ad3d8b6c88e298cd5919ce85ec32d29f4427cd7651e  commandoo_1.0.1_64QT.tar.gz
+b9a9eb4ea5edd8c087c529fcf70e6476c848024fcb8e882bccf124ecbbfd869a  po_translations_1.0.1.tar.gz
+
+
+
+Tested / developed with Debian 8 Stable (Jessie) and later Debian 9 (Stretch). And tested with 64 bit Kubuntu 14.04. Also tested in 64 bit Debian 9 (stretch). 32 bit versions can be compiled on request.
+
+Source code at:  https://github.com/Juuliuus/commandoo/
+
+Alternative download:  https://www.timepirate.org/downloads.html
+
+
+The file:  commandoo_folder.tar.gz
+
+...has a readme.txt file with detailed install information.
+
+It is the homebase folder for the commandoo executable, and has a starter 
+DataBase (170+ commands) and example searches. You can add as many 
+databases as you like.
+  
+Download the variety of commandoo archive file you want, unarchive the executable, and place it in that uncompressed folder. You can also place your commandoo executable in any home folder you like but you will then not have the starter database initially and would have to point to them using the database management window. Ensure the commandoo file is marked as executable, and, if you have the QT version, that the library libqt4pas5 is already on your system (if not get it from standard repostitories).
+
+The file po_translations_1.0.1.tar.gz:
+
+These contain the up to date translations for version 1.0.1, and only needed by people upgrading or installing customized fashion. The commandoo_folder.tar.gz file has the latest versions of everything and that should be used for new installs.
+
+====
+
+BE AWARE that the QT versions will -NOT- run if this library is not 
+installed on your system:
+
+libqt4pas5
+
+
+This library is found in all the standard repositories, use package manager 
+or apt-get.
+
+====
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEESx3/ftprDob4Xk7NHbV3r3TlndMFAlqs+PIACgkQHbV3r3Tl
+ndNuhA/+NHa0+rVoC3i82F76WqIbyJhCB7HppNmL6LjlBJqSIiJQCQjONpGyTceq
+L/aYkG7/mgXm11x4hq+n6mp2F6OQOafySTSefquLm4lh/c4LI0THR9+LjbJ5Q4YS
+24jKn/4IcIhR2CvbESfiwUJIKuju5P58VZ9e7XMPo/MSOb2sQ72OLgq8G6rGIfUe
+dNm7HgaJiieVolDHwkQ5H2e75uOpsocEMkuE5FBvGFqrQIIKXjwSBAPbTaIbgjc6
+4G36y09eotoDYp53u/WoZpaqL/E0qNkGo4EM6nNnZ/wNn5h9N6MpnwqgXxW3H9vC
+kC5E1wLoxIgGHR6S/nKOE521KKpQv+pSBemMhhHd19//s0mgP8fvwcJP2MLk5YtF
+rLYHWOaY+R5XoW0zQA87Qv3IN+33eOb0rJyoxydDJwD9fjJTyQJ30OzEUcWEyXAD
+UB1CyNY57ptV+c1bbEw4F2/RiokKShoWdJJkR+VTD1gUgSXKPcleS6/Vv1PZHgOF
+gufH7CzCu4ffy3cjWYqikWKuVI0uCLabYz0BsqlUAh8ZCR65cmYnG3z5DCdy6cO9
+yYOlJ9CR6itely2O+AIY8GrM6NSTPG/tfd/A3PWJQYZWruYlPJ2JtKKpHXBdIvUU
+mB51RQfFRHfvlhY6xF0cUigkeqT8+coXhd/HfvU2kZ0mTkwTNl4=
+=yAPW
+-----END PGP SIGNATURE-----

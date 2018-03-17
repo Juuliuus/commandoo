@@ -1,0 +1,52 @@
+object frmFind: TfrmFind
+  Left = 1978
+  Height = 188
+  Top = 866
+  Width = 227
+  ActiveControl = edtFind
+  BorderStyle = bsNone
+  Caption = 'frmFind'
+  ClientHeight = 188
+  ClientWidth = 227
+  Color = clBlack
+  Font.Color = clCream
+  Font.Height = -19
+  KeyPreview = True
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  OnKeyDown = FormKeyDown
+  LCLVersion = '1.6.0.4'
+  object edtFind: TEdit
+    Left = 1
+    Height = 34
+    Top = 0
+    Width = 225
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    Font.Color = clCream
+    Font.Height = -16
+    OnChange = edtFindChange
+    OnKeyDown = edtFindKeyDown
+    ParentColor = True
+    ParentFont = False
+    TabOrder = 0
+  end
+  object lbFindResult: TListBox
+    Left = 1
+    Height = 156
+    Top = 32
+    Width = 225
+    Anchors = [akTop, akLeft, akRight]
+    Font.Color = clCream
+    Font.Height = -16
+    ItemHeight = 0
+    OnDblClick = lbFindResultDblClick
+    OnKeyDown = lbFindResultKeyDown
+    ParentColor = True
+    ParentFont = False
+    ScrollWidth = 223
+    TabOrder = 1
+    TopIndex = -1
+  end
+end

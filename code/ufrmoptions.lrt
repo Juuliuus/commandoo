@@ -1,0 +1,160 @@
+TFRMOPTIONS.CAPTION=DDNT AO
+TFRMOPTIONS.BTNRESETDLGS.HINT=Many of the messages in this program
++give the option to not show it again.
++
++This will reset all those messages
++you've chosen not to show. This
++means, of course, that you will have
++to go through all those again and 
++re-check them if you don't want to see 
++them anymore.
++
++<end>
+TFRMOPTIONS.BTNRESETDLGS.CAPTION=&A  Reset "Show no more" Dialogs
+TFRMOPTIONS.BTNTERMINAL.HINT=You can specify your favorite terminal 
++program here.
++
++You can either type the name if it is in the 
++system path or you can browse for it.
++
++<end>
+TFRMOPTIONS.BTNTERMINAL.CAPTION=&W  Change Terminal Program
+TFRMOPTIONS.BTNDONE.CAPTION=&OK
+TFRMOPTIONS.CBLANGUAGE.HINT=Select between installed language files.
++
++<end>
+TFRMOPTIONS.LBLLANGUAGE.CAPTION=&P  Language
+TFRMOPTIONS.BTNADDLANG.CAPTION=&Q  NT
+TFRMOPTIONS.LBLMAXOUTPUT.CAPTION=&R  Maximum input/output allowed
+TFRMOPTIONS.CBMAXOUTPUT.HINT=This is a safety measure for processes 
++that could produce too much output.
++
++The program will wait until the process is 
++finished -OR- stop after this many 
++characters are recieved.
++
++This is obviously useful if you by accident
++output an infinite amount of information by 
++calling, say, cat /dev/zero.
++
++So, be careful that this is not too high, or
++you will be waiting some time for the 
++process to finish maybe.
++
++<end>
+TFRMOPTIONS.LBLTHREATLEVEL.CAPTION=Warn on Threat Level of:
+TFRMOPTIONS.CBUNSPECIFIED.CAPTION=&B  Unspecified
+TFRMOPTIONS.CBHARMLESS.CAPTION=&C  NT
+TFRMOPTIONS.CBCAREFUL.CAPTION=&D  NT
+TFRMOPTIONS.CBCAUTION.CAPTION=&E  NT
+TFRMOPTIONS.CBDANGER.CAPTION=&F  NT
+TFRMOPTIONS.BTNTERMINALRESET.HINT=Reset the terminal program you want to use
++to the system default.
++
++<end>
+TFRMOPTIONS.BTNTERMINALRESET.CAPTION=&X  ♻
+TFRMOPTIONS.LBLTERMINALCAP.CAPTION=Terminal Program:
+TFRMOPTIONS.CBSQLDB.CAPTION=&U  Default sql DB allowed
+TFRMOPTIONS.CBTEXTDB.CAPTION=&V  Default text DB allowed
+TFRMOPTIONS.LBLROOTFILECAP.CAPTION=ROOT authentication file:
+TFRMOPTIONS.BTNROOTFILE.HINT=You have the ability to use any ROOT 
++Authentication file you want (as long as it 
++is on your system, of course).
++
++Use this button to change it if needed
++
++<end>
+TFRMOPTIONS.BTNROOTFILE.CAPTION=&G  Change ROOT File
+TFRMOPTIONS.LBLDISPLAYMAX.CAPTION=&S  Maximum Display Output
+TFRMOPTIONS.SPEDISPLAYMAX.HINT=This lets you set how much "history" in the
++Display Output is kept. The program will
++periodically clear history to keep the display
++output around this valiue.
++
++No worries if this is lower than the max/min
++process output above. Process output will
++always be shown in its entirety, or up to
++the maximum you set above.
++
++<end>
+TFRMOPTIONS.BTNSQLLIB.HINT=If the program can't find your sqlite library
++location you can specify it here.
++
++If you can't find it first make sure sqlite is
++installed on your system. Then use the 
++locate command in a terminal with:
++
++locate libsqlite3.so.0
++
++To reset your program to the default 
++location use the reset button next to this
++button.
++
++<end>
+TFRMOPTIONS.BTNSQLLIB.CAPTION=&Y  Change sqlite Library
+TFRMOPTIONS.BTNSQLLIBRESET.HINT=Reset the program so it uses the default
++location of the sqlite library file.
++
++<end>
+TFRMOPTIONS.BTNSQLLIBRESET.CAPTION=&Z  ♻
+TFRMOPTIONS.LBLSQLLIBCAP.CAPTION=sqlite Library location (blank is default):
+TFRMOPTIONS.CBMANREFRESHFAVORITES.HINT=Check this to force manually refreshed
++favorites list.
++
++By default favorites refresh automatically
++on saving. But perhaps you want to work
++with the current list and save your cursor
++locations. In this case check this box but 
++then you will have to manually refresh 
++favorites when you want using the 
++provided button.
++
++<end>
+TFRMOPTIONS.CBMANREFRESHFAVORITES.CAPTION=&K  Manually Refresh Favoirtes
+TFRMOPTIONS.CBALLOWMULTIPLEOPENS.HINT=It is strongly recommended that you have
++only one copy of commandoo open at a 
++time.
++
++This is because multiple copies could easily
++interfere with each other if you are not 
++careful and understand what you are doing.
++
++However, I'm not your Mother. If you want to
++be able to use multiple copies do so at your 
++own risk and be aware of which copy is 
++using which database.
++
++Unchecked and commandoo will not allow
++another copy to be opened.
++
++Checked it will allow it and give you a 
++optionally disabled confirmation message.
++
++<end>
+TFRMOPTIONS.CBALLOWMULTIPLEOPENS.CAPTION=&M  Allow Multiple copies of commandoo
+TFRMOPTIONS.LBLCHANGEFONT.CAPTION=&T  Adjust Font Size
+TFRMOPTIONS.SPECHANGEFONT.HINT=Due to the complexity of computers using
++custom pixels per inch (ppi, dpi) the program 
++uses a default setting that looks nice.
++
++You may, however, want fonts a bit bigger
++or smaller. Use this to adjust fonts up or 
++down by a maximum of 2 steps.
++
++<end>
+TFRMOPTIONS.CBALLOWESCOUTPUT.HINT=Checking this allows <esc> characters in
++command output.
++
++This is problematic. When escape chars 
++(for example, from "curl" command or using
++/devNul) can cause cursor location in the
++output area to become unstable. This can be 
++fixed by clearing the output area.
++
++But there is the question of whether it could
++cause other problems. So just be aware of 
++this.
++
++<end>
+TFRMOPTIONS.CBALLOWESCOUTPUT.CAPTION=&L  Allow <esc> chars in Output
+TFRMOPTIONS.BTNADDLANGOK.CAPTION=ok

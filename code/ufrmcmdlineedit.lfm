@@ -1,0 +1,178 @@
+object frmCmdLineEdit: TfrmCmdLineEdit
+  Left = 2016
+  Height = 565
+  Top = 444
+  Width = 580
+  ActiveControl = memCmdLine
+  Caption = 'Edit Command Line'
+  ClientHeight = 565
+  ClientWidth = 580
+  Constraints.MinHeight = 565
+  Constraints.MinWidth = 580
+  Font.Height = -13
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '1.6.0.4'
+  inline FrameHint1: TFrameHint
+    Left = 259
+    Top = -3
+    ParentColor = True
+    inherited cbHints: TCheckBox
+      Left = 40
+      Height = 26
+      Width = 268
+    end
+  end
+  object bntOK: TBitBtn
+    Left = 479
+    Height = 42
+    Top = 151
+    Width = 89
+    Anchors = [akTop, akRight]
+    Default = True
+    DefaultCaption = True
+    Kind = bkOK
+    OnClick = bntOKClick
+    TabOrder = 11
+  end
+  object btnCancel: TBitBtn
+    Left = 479
+    Height = 30
+    Top = 196
+    Width = 89
+    Anchors = [akTop, akRight]
+    Cancel = True
+    DefaultCaption = True
+    GlyphShowMode = gsmNever
+    Kind = bkCancel
+    OnClick = btnCancelClick
+    TabOrder = 12
+  end
+  object memOutput: TMemo
+    Left = 2
+    Height = 247
+    Hint = 'The output of the command''s default help '#10'or of the refresh and default help buttons '#10'above.'#10#10'Experimental right now, it is intended to '#10'display help for the command so you can'#10'see what flags / parameters you want to add'#10'to the Command Line.'#10#10'<end>'
+    Top = 289
+    Width = 576
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = clBlack
+    Font.Color = clCream
+    Font.Height = -15
+    Font.Name = 'Courier 10 Pitch'
+    ParentFont = False
+    ScrollBars = ssAutoVertical
+    TabOrder = 9
+    WordWrap = False
+  end
+  object btnRefresh: TButton
+    Left = 16
+    Height = 25
+    Hint = 'Sometimes when editing a command line'#10'you may need to reference other commands.'#10#10'You can type in a command line below and'#10'run it by pressing this button or pressing '#10'return in the edit.'#10#10'The output will be added below.'#10#10'<end>'
+    Top = 203
+    Width = 288
+    Caption = '&X  Run Command Line below:'
+    OnClick = btnRefreshClick
+    TabOrder = 6
+  end
+  object edtOutputRefresh: TEdit
+    Left = 16
+    Height = 29
+    Hint = 'Type in a command line you want to run'#10'while you are editing. Then press return or '#10'click the button above.'#10#10'<end>'
+    Top = 229
+    Width = 552
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    OnKeyDown = edtOutputRefreshKeyDown
+    TabOrder = 7
+    TextHint = 'commands with Help flags only'
+  end
+  object btnDefaultHelp: TButton
+    Left = 16
+    Height = 25
+    Hint = 'The help for the command is always displayed'#10'when you first open this form.'#10#10'But maybe later you do some other commands'#10'and then need to reference the command'#10'help quickly, then use this button.'#10#10'<end>'
+    Top = 259
+    Width = 552
+    Anchors = [akTop, akLeft, akRight]
+    Caption = '&Y  Default Help'
+    Enabled = False
+    OnClick = btnDefaultHelpClick
+    TabOrder = 8
+  end
+  object cbWrapText: TCheckBox
+    Left = 4
+    Height = 26
+    Hint = 'Checked and the output above uses '#10'wordwrap. Not, and not.'#10#10'<end>'
+    Top = 538
+    Width = 194
+    Anchors = [akLeft, akBottom]
+    Caption = '&Z  Wrap Output text'
+    OnChange = cbWrapTextChange
+    TabOrder = 10
+  end
+  object lblVarHint: TLabel
+    Left = 16
+    Height = 18
+    Top = 94
+    Width = 230
+    Caption = 'Add a variable at cursor / selection for: '
+    ParentColor = False
+  end
+  object btnVarString: TButton
+    Tag = 1
+    Left = 23
+    Height = 25
+    Top = 112
+    Width = 120
+    Caption = '&S  AlphaNum'
+    OnClick = btnVarStringClick
+    TabOrder = 2
+  end
+  object btnVarInteger: TButton
+    Tag = 2
+    Left = 147
+    Height = 25
+    Top = 112
+    Width = 120
+    Caption = '&I  Integer'
+    OnClick = btnVarStringClick
+    TabOrder = 3
+  end
+  object btnVarDecimal: TButton
+    Tag = 3
+    Left = 272
+    Height = 25
+    Top = 112
+    Width = 120
+    Caption = '&N  Decimal'
+    OnClick = btnVarStringClick
+    TabOrder = 4
+  end
+  object btnVarFilename: TButton
+    Tag = 4
+    Left = 400
+    Height = 25
+    Top = 112
+    Width = 120
+    Caption = '&F  File Name'
+    OnClick = btnVarStringClick
+    TabOrder = 5
+  end
+  object memCmdLine: TMemo
+    Left = 3
+    Height = 67
+    Hint = 'The Command Line you are editing.'#10#10'You can place the cursor at a position, or'#10'select text, and then use one of the '#10'variable buttons below to use run time'#10'variables on this command line.'#10#10'<end>'
+    Top = 25
+    Width = 565
+    Anchors = [akTop, akLeft, akRight]
+    OnKeyDown = memCmdLineKeyDown
+    ScrollBars = ssAutoVertical
+    TabOrder = 1
+    WantReturns = False
+  end
+end

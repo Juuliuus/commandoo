@@ -1,0 +1,75 @@
+object frm_Search_Bool: Tfrm_Search_Bool
+  Left = 2037
+  Height = 380
+  Top = 705
+  Width = 365
+  BorderIcons = []
+  BorderStyle = bsNone
+  Caption = 'frm_Search_Bool'
+  ClientHeight = 380
+  ClientWidth = 365
+  Constraints.MaxHeight = 380
+  Constraints.MaxWidth = 365
+  Constraints.MinHeight = 380
+  Constraints.MinWidth = 365
+  Font.Height = -13
+  KeyPreview = True
+  OnCreate = FormCreate
+  OnHide = FormHide
+  OnKeyDown = FormKeyDown
+  LCLVersion = '1.6.0.4'
+  object rgSeList: TRadioGroup
+    Left = 9
+    Height = 100
+    Top = 32
+    Width = 349
+    Anchors = [akTop, akLeft, akRight]
+    AutoFill = False
+    Caption = 'NT'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    Font.Height = -13
+    OnSelectionChanged = rgSeListSelectionChanged
+    ParentFont = False
+    TabOrder = 0
+  end
+  object lblSeType: TLabel
+    Left = 9
+    Height = 23
+    Top = 5
+    Width = 351
+    Alignment = taRightJustify
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    Caption = 'Boolean'
+    Font.Height = -18
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object rgBool: TRadioGroup
+    Left = 8
+    Height = 80
+    Top = 156
+    Width = 349
+    Anchors = [akTop, akLeft, akRight]
+    AutoFill = False
+    Caption = 'NT'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 61
+    ClientWidth = 347
+    Items.Strings = (
+      'True'
+      'False'
+    )
+    OnSelectionChanged = rgBoolSelectionChanged
+    TabOrder = 1
+  end
+end

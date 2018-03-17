@@ -1,0 +1,24 @@
+TFRMCOMMANDSINPUT.CAPTION=Input for Process
+TFRMCOMMANDSINPUT.BTNCANCEL.CAPTION=Cancel
+TFRMCOMMANDSINPUT.MEMINPUT.HINT=This is the INPUT window which means
++the Command Line you are running has
++the "Wants Input" checked.
++
++Whatever text you paste here will be fed into
++the process immediately before it is allowed 
++to run.
++
++Very useful in some cases for some Commands,
++if the command accepts AND reacts to stdin 
++(standard input).
++
++Try it with grep command for example.
++
++<end>
+TFRMCOMMANDSINPUT.BTNDONE.CAPTION=NT
+TFRMCOMMANDSINPUT.LBLPROCESSINPUTMSG.CAPTION=Process wants input, type or paste here:
+TFRMCOMMANDSINPUT.CBWORDWRAP.HINT=Checked and the output above uses 
++wordwrap. Not, and not.
++
++<end>
+TFRMCOMMANDSINPUT.CBWORDWRAP.CAPTION=&Z  Wordwrap

@@ -1,0 +1,4052 @@
+[WARNING]
+README1==================================
+README2=
+README3=This is an automatically generated and maintained INI file.
+README4=--- Edit this file by hand AT YOUR OWN RISK! ---
+README5=
+README6==================================
+
+[help//CmdLineObj]
+0=0
+1=1
+2=2
+
+[help//CmdLineObj//0]
+Notes=
+IsFavorite=0
+DetachProcess=0
+SuperUserMode=0
+ThreatLevel=1
+Entry=help alias
+WantsInput=0
+UseShell=0
+
+[help//CmdLineObj//1]
+Notes=
+IsFavorite=0
+DetachProcess=0
+SuperUserMode=0
+ThreatLevel=1
+Entry=help echo
+WantsInput=0
+UseShell=0
+
+[help//CmdLineObj//2]
+Notes=
+IsFavorite=0
+DetachProcess=0
+SuperUserMode=0
+ThreatLevel=1
+Entry=help cd
+WantsInput=0
+UseShell=0
+
+[ps//CmdLineObj]
+0=0
+1=1
+2=2
+
+[ps//CmdLineObj//0]
+Notes=Show all processes.
+IsFavorite=0
+DetachProcess=0
+SuperUserMode=0
+ThreatLevel=1
+Entry=ps -A
+WantsInput=0
+UseShell=0
+
+[ps//CmdLineObj//1]
+Notes=ps's complete help.
+IsFavorite=0
+DetachProcess=0
+SuperUserMode=0
+ThreatLevel=1
+Entry=ps --help all
+WantsInput=0
+UseShell=0
+
+[ps//CmdLineObj//2]
+Notes=At runtime fill the string variable with the text you want to search for.
+IsFavorite=0
+DetachProcess=0
+SuperUserMode=0
+ThreatLevel=1
+Entry=ps -A | grep <<S>>
+WantsInput=0
+UseShell=0
+
+[_DB_VersionCount]
+LastVersionUpgrade=4
+
+[df//CmdLineObj]
+0=0
+
+[df//CmdLineObj//0]
+Notes=List the currently mounted drives.
+IsFavorite=1
+DetachProcess=0
+SuperUserMode=0
+ThreatLevel=1
+Entry=df -aTh
+FriendlyName=Mounted Drive List
+WantsInput=0
+UseShell=0
+
+[_DB_ProfileGUID]
+GUID={07025217-8DDA-4CD4-BBEB-95481A2760CD}
+
+[konsole//CmdLineObj]
+0=0
+1=1
+
+[konsole//CmdLineObj//0]
+SuperUserMode=0
+Notes=opens a konsole if you have that program. Note it is a "child proc", that is, it is kept open. In fact, konsole is interesting in that it becomes completely detached from commandoo.
+IsFavorite=0
+DetachProcess=1
+ThreatLevel=1
+Entry=konsole
+FriendlyName=
+WantsInput=0
+UseShell=0
+
+[konsole//CmdLineObj//1]
+SuperUserMode=0
+Notes=konsole allows you to write custom terminals which you then give a name. This will open a konsole that has a profile named "Red". Change the it if you have another profile. Note this is a "child proc", that is, it is kept open.
+IsFavorite=1
+DetachProcess=1
+ThreatLevel=1
+Entry=konsole --profile Red
+FriendlyName=Konsole RED
+WantsInput=0
+UseShell=0
+
+[gimp//CmdLineObj]
+0=0
+1=1
+
+[gimp//CmdLineObj//0]
+SuperUserMode=0
+Notes=opens gimp fresh.
+IsFavorite=1
+DetachProcess=1
+ThreatLevel=1
+Entry=gimp
+FriendlyName=
+WantsInput=0
+UseShell=0
+
+[gimp//CmdLineObj//1]
+SuperUserMode=0
+Notes=opens gimp with the file specified at runtime.
+IsFavorite=1
+DetachProcess=1
+ThreatLevel=1
+Entry=gimp <<F>>
+FriendlyName=gimp with FILE
+WantsInput=0
+UseShell=0
+
+[unalias//CmdLineObj]
+0=0
+
+[unalias//CmdLineObj//0]
+SuperUserMode=0
+Notes=Example only. This removes, in a terminal, the alias "x", it will no longer substitute for another word.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+Entry=unalias x
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[alias//CmdLineObj]
+0=0
+1=1
+
+[alias//CmdLineObj//0]
+SuperUserMode=0
+Notes=Lists aliases
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=alias -p
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[alias//CmdLineObj//1]
+SuperUserMode=0
+Notes=Example only. When used then "x" in a terminal will execute "date".
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=1
+Entry=alias x=date
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[apropos//CmdLineObj]
+0=0
+
+[apropos//CmdLineObj//0]
+SuperUserMode=0
+Notes=Shows info for BUILTIN's.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=apropos builtin
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[blkid//CmdLineObj]
+0=0
+
+[blkid//CmdLineObj//0]
+SuperUserMode=1
+Notes=Print out information about attached drives including UUID
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=<ROOT> /sbin/blkid
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[fsck//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+
+[fsck//CmdLineObj//0]
+SuperUserMode=1
+Notes=Unmount drive before use!!! All these are for ext4 systems! Change if the drive is another system!!!Variable one is the drive letter, variable two is the drive partition. After filling in it will be something like/dev/sdc1Will check filesystem on /dev/sda1 partition. It will also automatically fix all problems that can be fixed without human intervention. It will do nothing, if the partition is deemed clean (no dirty bit set).
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=4
+TerminalOnly=1
+Entry=<ROOT> /sbin/fsck.ext4 -p /dev/sd<<S>><<I>>
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[fsck//CmdLineObj//1]
+SuperUserMode=1
+Notes=Unmount drive before use!!! If not ext4 drive change to appropriate!!same as before, but fsck will ignore the fact that the filesystem is clean and check+fix it nevertheless.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=4
+TerminalOnly=1
+Entry=<ROOT> /sbin/fsck.ext4 -p -f /dev/sd<<S>><<I>>
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[fsck//CmdLineObj//2]
+SuperUserMode=1
+Notes=Unmount drive before use!!! If not ext4 drive change to appropriate!!same as before, but with a progress bar.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=4
+TerminalOnly=1
+Entry=<ROOT> /sbin/fsck.ext4 -p -f -C0 /dev/sd<<S>><<I>>
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[fsck//CmdLineObj//3]
+SuperUserMode=1
+Notes=Unmount drive before use!!! If not ext4 drive change to appropriate!!Same as before but will attempt to find bad blocks on the device and make those blocks unusable by new files and directories.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=4
+TerminalOnly=1
+Entry=<ROOT> /sbin/fsck.ext4 -f -c -C0 -v /dev/sd<<S>><<I>>
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[fsck//CmdLineObj//4]
+SuperUserMode=1
+Notes=Unmount drive before use!!! If not ext4 drive change to appropriate!!a more thorough version of the bad blocks check.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=4
+TerminalOnly=1
+Entry=<ROOT> /sbin/fsck.ext4 -f -cc -C0 /dev/sd<<S>><<I>>
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[dmidecode//CmdLineObj]
+0=0
+
+[dmidecode//CmdLineObj//0]
+SuperUserMode=1
+Notes=Example using TYPE 1 (=system)
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=<ROOT> /usr/sbin/dmidecode -t 1
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpasswd//CmdLineObj]
+0=0
+1=1
+
+[gpasswd//CmdLineObj//0]
+SuperUserMode=1
+Notes=Add user to sudo'ers.Gotcha: if the user is you, then you must be using kdesu and not (yet) kdesudo (because you are not yet a sudo'er).
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=1
+Entry=<ROOT> gpasswd -a USERNAME sudo
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpasswd//CmdLineObj//1]
+SuperUserMode=1
+Notes=Remove user from sudo'ers
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=1
+Entry=<ROOT> gpasswd  -d USERNAME sudo
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[printenv//CmdLineObj]
+0=0
+
+[printenv//CmdLineObj//0]
+SuperUserMode=0
+Notes=The "environment" behind commandoo, but not really relevant as we are not in a separate shell.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=printenv
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[tar//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+5=5
+
+[tar//CmdLineObj//0]
+SuperUserMode=0
+Notes=Basic archiving of a folder. Put the files you want to test in a folder in your home directory called CompressTest.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=tar -cvf ~/CompTest.tar ~/CompressTest/
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[tar//CmdLineObj//1]
+SuperUserMode=0
+Notes=Same as above but also compresses the tar file with gzip.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=tar -cvzf ~/CompTest.tar.gz ~/CompressTest/
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[tar//CmdLineObj//2]
+SuperUserMode=0
+Notes=Same as above but this time to a bzip2 format.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=tar -cvjf ~/CompTest.tar.bz2 ~/CompressTest/
+FriendlyName=tar ARCHIVE and COMPRESS
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[tar//CmdLineObj//3]
+SuperUserMode=0
+Notes=Unarchive the tar into the specified folder. If you don't use -C it will overwrite the original folder. -C folder  (CompressTest2) must exist. And finally the full path from the archive will be written into the specified folder. Look at the results and you'll see what I mean.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=tar -xvf ~/CompTest.tar -C ~/CompressTest2/
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[tar//CmdLineObj//4]
+SuperUserMode=0
+Notes=Save as above but for gzip'd tar's. it Uncompresses and then extracts, notice it is the same command but just specifying the .bz2 file. The same can be done for the .gz file.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=tar -xvf ~/CompTest.tar.bz2 -C ~/CompressTest2/
+FriendlyName=tar UNCOMPRESS and EXTRACT
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[tar//CmdLineObj//5]
+SuperUserMode=0
+Notes=List contents of a tar, tar.bz2 or tar.gz file.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=tar -tvf ~/CompTest.tar.bz2
+FriendlyName=tar SHOW FILES
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gunzip//CmdLineObj]
+0=0
+
+[gunzip//CmdLineObj//0]
+SuperUserMode=0
+Notes=A simple unzip example, see gzip. CL's for gunzip will be very similar to the gzip examples, look at the help.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=gunzip /mypath/myfile.gz
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[bzip2//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+
+[bzip2//CmdLineObj//0]
+SuperUserMode=0
+Notes=You must have the file in your home directory for this to work, as written the original file will be removed.You can compress multiple files of course, just keep listing them or use wildcards.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=bzip2 ~/mycompresstest.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[bzip2//CmdLineObj//1]
+SuperUserMode=0
+Notes=Decompress the file we just compressed. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=bzip2 -d ~/mycompresstest.txt.bz2
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[bzip2//CmdLineObj//2]
+SuperUserMode=0
+Notes=same as first CL above but keeps the original file in place. Some distros may not have the -k option, see the next CL for how to do the same.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=bzip2 -k ~/mycompresstest.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[bzip2//CmdLineObj//3]
+SuperUserMode=0
+Notes=keeps the original file in place using stdout redirection. Note "Use Shell" is checked, commandoo doesn't handle ">"'s and such.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=bzip2 -c ~/mycompresstest.txt > ~/mycompresstest.txt.gz
+FriendlyName=
+WantsInput=0
+UseShell=1
+TerminalAlert=0
+
+[gzip//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+5=5
+6=6
+
+[gzip//CmdLineObj//0]
+SuperUserMode=0
+Notes=You must have the file in your home directory for this to work, as written the original file will be removed.You can compress multiple files of course, just keep listing them or use wildcards.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=gzip ~/mycompresstest.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gzip//CmdLineObj//1]
+SuperUserMode=0
+Notes=Decompress the file we just compressed. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=gzip -d ~/mycompresstest.txt.gz
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gzip//CmdLineObj//2]
+SuperUserMode=0
+Notes=same as first CL above but keeps the original file in place. Some distros may not have the -k option, see the next CL for how to do the same.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=gzip -k ~/mycompresstest.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gzip//CmdLineObj//3]
+SuperUserMode=0
+Notes=keeps the original file in place using stdout redirection. Note "Use Shell" is checked, commandoo doesn't handle ">"'s and such.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=gzip -c ~/mycompresstest.txt > ~/mycompresstest.txt.gz
+FriendlyName=
+WantsInput=0
+UseShell=1
+TerminalAlert=0
+
+[gzip//CmdLineObj//4]
+SuperUserMode=0
+Notes=Recusively compress the files in the specified folder. Note this compresses them individually.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=gzip -r ~/CompressTest/
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gzip//CmdLineObj//5]
+SuperUserMode=0
+Notes=Recusively uncompress the files in the specified folder we just compressed. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=gzip -dr ~/CompressTest/
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gzip//CmdLineObj//6]
+SuperUserMode=0
+Notes=Show compression ratio
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=gzip -lv ~/CompTest.tar.gz
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cal//CmdLineObj]
+0=0
+1=1
+
+[cal//CmdLineObj//0]
+SuperUserMode=0
+Notes=Displays the current month. Used in a terminal the "_" will translate to color.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cal
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cal//CmdLineObj//1]
+SuperUserMode=0
+Notes=Displays month of November, 2020.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cal 11 2020
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[chown//CmdLineObj]
+0=0
+1=1
+
+[chown//CmdLineObj//0]
+SuperUserMode=1
+Notes=myfile will now belong to Julio.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=3
+TerminalOnly=0
+Entry=<ROOT> chown Julio /home/bob/myfile
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[chown//CmdLineObj//1]
+SuperUserMode=1
+Notes=TheFile will now belong to Sharon =AND= anyone in group "admin".
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=3
+TerminalOnly=0
+Entry=<ROOT> chown Sharon:admin /home/eric/TheFile
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[chgrp//CmdLineObj]
+0=0
+
+[chgrp//CmdLineObj//0]
+SuperUserMode=1
+Notes=myfile will now belong to Julio.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=3
+TerminalOnly=0
+Entry=<ROOT> chown Julio /home/bob/myfile
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cmp//CmdLineObj]
+0=0
+
+[cmp//CmdLineObj//0]
+SuperUserMode=0
+Notes=compare showing maximum information.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cmp --verbose file1 file2
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[comm//CmdLineObj]
+0=0
+
+[comm//CmdLineObj//0]
+SuperUserMode=0
+Notes=Reminder: this command is only useful on SORTED files.(example of "Alert on Use" to give you important information before you allow the command to run)
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=comm file1 file2
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[cut//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+
+[cut//CmdLineObj//0]
+SuperUserMode=0
+Notes=will select and print only column 2 of the lines in the file. NOTE: by default it expects the columns to be separated by a <TAB> character.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cut -f 2 ~/columntest.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cut//CmdLineObj//1]
+SuperUserMode=0
+Notes=Notice "wants input" is checked. At run time you can then input the text you want "cut", just be sure to use <TAB> to separate the columns. This will cut both col. 2 and 3.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cut -f 2-3
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[cut//CmdLineObj//2]
+SuperUserMode=0
+Notes=will select and print column 3 and all following columns.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cut -f 3- ~/columntest.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cut//CmdLineObj//3]
+SuperUserMode=0
+Notes=Using a delimiter other than <TAB>, specify it with the -d flag.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cut -f 1-5 -d ':' /etc/passwd
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cut//CmdLineObj//4]
+SuperUserMode=0
+Notes=This will ask for input, type in column list separated by comma (,).
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cut -f 2-3 -d ","
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[date//CmdLineObj]
+0=0
+
+[date//CmdLineObj//0]
+SuperUserMode=0
+Notes=Today's date
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=date
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[dig//CmdLineObj]
+0=0
+
+[dig//CmdLineObj//0]
+SuperUserMode=0
+Notes=Displays information about my website.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=dig timepirate.org
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[diff//CmdLineObj]
+0=0
+
+[diff//CmdLineObj//0]
+SuperUserMode=0
+Notes=See the help for this command and practice with it before trusting it.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=3
+TerminalOnly=0
+Entry=diff3 MYFILE OLDFILE YOURFILE
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[dir//CmdLineObj]
+0=0
+1=1
+
+[dir//CmdLineObj//0]
+SuperUserMode=0
+Notes=lists your home folder contents.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=dir
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[dir//CmdLineObj//1]
+SuperUserMode=0
+Notes=List contents of /etc/ folder
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=dir /etc
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[echo//CmdLineObj]
+0=0
+
+[echo//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=echo 'This is echoed'
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[fgrep//CmdLineObj]
+0=0
+1=1
+
+[fgrep//CmdLineObj//0]
+SuperUserMode=0
+Notes=fgrep is deprecated. When you print the help 'grep' is given back. This fgrep line is the same as: grep -F -f user_list.txt /etc/group
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=fgrep -f ~/user_list.txt /etc/group
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[fgrep//CmdLineObj//1]
+SuperUserMode=0
+Notes=The preferred grep usage for the 'fgrep' command above. This requires a user_list.txt file that has a user name on separate lines, This will then print back groups that user belongs to.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=grep -F -f user_list.txt /etc/group
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[egrep//CmdLineObj]
+0=0
+1=1
+
+[egrep//CmdLineObj//0]
+SuperUserMode=0
+Notes=egrep is deprecated. When you print the help 'grep' is given back. This egrep line is the same as: grep -E (ing|tion) /etc/fstab
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=egrep (=|tion) /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[egrep//CmdLineObj//1]
+SuperUserMode=0
+Notes=This CL is the recommended way to do the 'egrep' command above. It will print out every line in the file that has either an "=" or "tion" in it.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=grep -E (=|tion) /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[export//CmdLineObj]
+0=0
+1=1
+2=2
+
+[export//CmdLineObj//0]
+SuperUserMode=0
+Notes=Set a variable in the environment (see printenv) to use for the current session in scripts or whatever.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+Entry=export MyVar='This is my variable'
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[export//CmdLineObj//1]
+SuperUserMode=0
+Notes=What most people need export for, widening the search path for programs. Remember this is temporary only, if you want it permanent you must edit the appropriate file.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=1
+Entry=export PATH=$PATH:/home/Bob/SearchThis
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[export//CmdLineObj//2]
+SuperUserMode=0
+Notes=Similar to printenv this switch shows current environment declarations.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=export -p
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[file//CmdLineObj]
+0=0
+1=1
+
+[file//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=file /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[file//CmdLineObj//1]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=file /bin/tar
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[xargs//CmdLineObj]
+0=0
+1=1
+2=2
+
+[xargs//CmdLineObj//0]
+SuperUserMode=0
+Notes=The -n2 says print at most two columns at a time.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=echo 1 2 3 4 5 | xargs -n2
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[xargs//CmdLineObj//1]
+SuperUserMode=0
+Notes=Will work with "Wants Input". Type a short line when prompted and this will break it up with a word on each line.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=xargs -n1
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[xargs//CmdLineObj//2]
+SuperUserMode=0
+Notes=A typical use of xargs with find. This will print the total size of all *.jpg files in the Pictures folder.  Such searches can be quite large, give it time to finish.Note the -print0 and the matching -0. This is how these commands get around whitespace (spaces) in filenames.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=find ~/Pictures -iname "*.jpg" -print0 | xargs -0 du -ch | tail -1
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[fold//CmdLineObj]
+0=0
+1=1
+2=2
+
+[fold//CmdLineObj//0]
+SuperUserMode=0
+Notes=When prompted paste this text into the input window.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=fold --width=20
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[fold//CmdLineObj//1]
+SuperUserMode=0
+Notes=How fold works.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=fold --width=30 /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[fold//CmdLineObj//2]
+SuperUserMode=0
+Notes=How fmt works.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=fmt --width=30 /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[fmt//CmdLineObj]
+0=0
+1=1
+2=2
+
+[fmt//CmdLineObj//0]
+SuperUserMode=0
+Notes=This will prompt for text when run. Input this text when prompted and it will be formatted to 20 columns.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=fmt --width=20
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[fmt//CmdLineObj//1]
+SuperUserMode=0
+Notes=How fmt works, see the next CL. Send files to fmt to get formatted paragraphs. This doesn't change the file unless you tell it to.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=fmt --width=20 /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[fmt//CmdLineObj//2]
+SuperUserMode=0
+Notes=How fold works. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=fold --width=20 /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[fuser//CmdLineObj]
+0=0
+
+[fuser//CmdLineObj//0]
+SuperUserMode=0
+Notes=Show processes for current user for the current folder. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=fuser -v .
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[groups//CmdLineObj]
+0=0
+
+[groups//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=groups MyUserName
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[groupadd//CmdLineObj]
+0=0
+
+[groupadd//CmdLineObj//0]
+SuperUserMode=1
+Notes=It is as simple as specifying the group you want to create. Also study the help.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=1
+Entry=<ROOT> /usr/sbin/groupadd GROUP_NAMES_MUST_BE_32_CHARACTERS_OR_LESS
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[iconv//CmdLineObj]
+0=0
+
+[iconv//CmdLineObj//0]
+SuperUserMode=0
+Notes=A random example, one should research before use. The input.txt file is converted from the ISO to UTF8 and output to output.txt
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=3
+TerminalOnly=1
+Entry=iconv -f ISO-8859-1 -t UTF-8 < input.txt > output.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[history//CmdLineObj]
+0=0
+
+[history//CmdLineObj//0]
+SuperUserMode=0
+Notes=Used alone it prints a numbered history of terminal commands. Use the bang! ("!") followed by space and the line number to re-run a command.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=1
+Entry=history
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[head//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+
+[head//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=head /etc/group
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[head//CmdLineObj//1]
+SuperUserMode=0
+Notes=Display only first 5 lines.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=head -5 /etc/group
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[head//CmdLineObj//2]
+SuperUserMode=0
+Notes=Display first 15 characters. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=head -c 15 /etc/group
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[head//CmdLineObj//3]
+SuperUserMode=0
+Notes=Display first 15 characters of listed files with maximum verbose information.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=head -c 15 -v /etc/group /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[import//CmdLineObj]
+0=0
+
+[import//CmdLineObj//0]
+SuperUserMode=0
+Notes=Better used from terminal perhaps but you can use it here. The screen cursor will change and you can click and drag a portion of the screen. When you let up the mouse button what you selected will be saved to your downloads folder as a .jpg file.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/import ~/Downloads/screenshot.jpg
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[ip//CmdLineObj]
+0=0
+
+[ip//CmdLineObj//0]
+SuperUserMode=0
+Notes=Display all network interface devices. Do not run this command with other parameters or flags, study / research this command first.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/ip a
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[ifconfig//CmdLineObj]
+0=0
+
+[ifconfig//CmdLineObj//0]
+SuperUserMode=1
+Notes=Used alone it simply displays the current network devices with some information. Do not put other flags / params on this without studying about the command.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=<ROOT> /sbin/ifconfig
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[id//CmdLineObj]
+0=0
+
+[id//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/id MyUserName
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[join//CmdLineObj]
+0=0
+
+[join//CmdLineObj//0]
+SuperUserMode=0
+Notes=The files must exist and be of a certain format for this to work. If you want to test it paste the two sections below into appropriate files in your /home/MyUserName/ foler:1 India 2 US 3 Ireland 4 UK 5 Canada 1 NewDelhi 2 Washington 3 Dublin 4 London 5 Toronto 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/join ~/1.txt ~/2.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[ln//CmdLineObj]
+0=0
+
+[ln//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=/bin/ln -s ~/MyFile ~/Desktop/MyFileShortcut
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[find//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+
+[find//CmdLineObj//0]
+SuperUserMode=0
+Notes=List all files in Videos that are bigger than 1 gigabyte.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=find ~/Videos -size +1024M
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[find//CmdLineObj//1]
+SuperUserMode=0
+Notes=Find files between 1 and 2 gigabytes.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=find ~/Videos -size +1024M -size -2048M -print0
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[find//CmdLineObj//2]
+SuperUserMode=0
+Notes=An harmless use to see which device folders are currently in use.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=find /dev/bus
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[find//CmdLineObj//3]
+SuperUserMode=0
+Notes=Find is often used with xargs. This prints the total space used by all *.jpg files in Pictures folder.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=find ~/Pictures -iname "*.jpg" -print0 | xargs -0 du -ch | tail -1
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[csplit//CmdLineObj]
+0=0
+1=1
+2=2
+
+[csplit//CmdLineObj//0]
+SuperUserMode=0
+Notes=This splits TextFile.txt into three files: x01 will have 1st 12 lines, x02 lines 13-61, x03 will have lines 62 to end.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=csplit TextFile.txt 13 62
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[csplit//CmdLineObj//1]
+SuperUserMode=0
+Notes=This splits TextFile.txt into at most 8 (repeat 7 times) pieces each split file having at least 2 lines.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=csplit TextFile.txt 2 {7}
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[csplit//CmdLineObj//2]
+SuperUserMode=0
+Notes=This splits TextFile.txt at each line occurrence that has "Bob" in it. {*} means do it all the way to the end of the file (max is 99 splits).
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=csplit TextFile.txt /Bob/ {*}
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[ls//CmdLineObj]
+0=0
+1=1
+
+[ls//CmdLineObj//0]
+SuperUserMode=0
+Notes=-al : One of the more useful switches, look at help for more information. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/ls -al ~/
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[ls//CmdLineObj//1]
+SuperUserMode=0
+Notes=Scan the Downloads folder. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/ls -al ~/Downloads
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[lsblk//CmdLineObj]
+0=0
+
+[lsblk//CmdLineObj//0]
+SuperUserMode=0
+Notes=-m shows the owner
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/lsblk -m
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[look//CmdLineObj]
+0=0
+
+[look//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/look 'spel'
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[logname//CmdLineObj]
+0=0
+
+[logname//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/logname
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[locate//CmdLineObj]
+0=0
+1=1
+
+[locate//CmdLineObj//0]
+SuperUserMode=0
+Notes=Flags: the file must exist and it is case insensitive search.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/locate -ei 'fstab'
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[locate//CmdLineObj//1]
+SuperUserMode=0
+Notes=The varialbe will ask you what text you are looking for when run.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/locate -ei <<S>>
+FriendlyName=Locate files
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[lsof//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+
+[lsof//CmdLineObj//0]
+SuperUserMode=0
+Notes=Put your username in and this will list top 50 files you currently have open.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/lsof -u MyUserName | head -50
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[lsof//CmdLineObj//1]
+SuperUserMode=0
+Notes=lists all network / internet connections.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/lsof -i
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[lsof//CmdLineObj//2]
+SuperUserMode=0
+Notes=list all processes with open files that have "comm" in the name.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/lsof -c 'comm'
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[lsof//CmdLineObj//3]
+SuperUserMode=0
+Notes=List all processes using port 80.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/lsof -i :80
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[mkdir//CmdLineObj]
+0=0
+1=1
+
+[mkdir//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/mkdir ~/TestFolder
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[mkdir//CmdLineObj//1]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/mkdir '~/FolderName with spaces'
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[man//CmdLineObj]
+0=0
+
+[man//CmdLineObj//0]
+SuperUserMode=0
+Notes=This will invoke the manual pages for the grep command, run in terminal only.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+Entry=/usr/bin/man grep
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[mv//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+
+[mv//CmdLineObj//0]
+SuperUserMode=0
+Notes=Moves the files. -n (--no-clobber) will not overwrite files if they already exist, so a nice safe option.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/mv -n ~/MyFolder/* ~/MyNewFolder
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[mv//CmdLineObj//1]
+SuperUserMode=0
+Notes=Moves the files. -f (--force) overwrites without asking. So not safe if you are unsure about the move.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=/bin/mv -f ~/MyFolder/* ~/MyNewFolder
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[mv//CmdLineObj//2]
+SuperUserMode=0
+Notes=Renames the file without asking.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=/bin/mv -f ~/Myfile.txt ~/Myfile.bak
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[mv//CmdLineObj//3]
+SuperUserMode=0
+Notes=Move the file to the folder with --no-clobber (-n). -v, verbose, show maximim information.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/mv -nv ~/Myfile.txt ~/MyFolder
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[nice//CmdLineObj]
+0=0
+
+[nice//CmdLineObj//0]
+SuperUserMode=0
+Notes=List files in home folder with a reduced priority.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/nice -n5 ls -al ~/
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[netstat//CmdLineObj]
+0=0
+
+[netstat//CmdLineObj//0]
+SuperUserMode=0
+Notes=This can be quite a long list as it displays -a (all) ports. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/netstat -na
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[nl//CmdLineObj]
+0=0
+
+[nl//CmdLineObj//0]
+SuperUserMode=0
+Notes=This will prompt for input. Type:onetwothreeor whatever...
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/nl
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[xdg-open//CmdLineObj]
+0=0
+1=1
+2=2
+
+[xdg-open//CmdLineObj//0]
+SuperUserMode=0
+Notes=This will open my website in your default browser.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/xdg-open https://timepirate.org
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[xdg-open//CmdLineObj//1]
+SuperUserMode=0
+Notes=Opens fstab in your default text editor.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/xdg-open /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[xdg-open//CmdLineObj//2]
+SuperUserMode=0
+Notes=Will ask for the file or url at runtime. Careful, because don't open files or url's that come from an unknown source. I would suggest this NEVER be run as root.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=/usr/bin/xdg-open <<F>>
+FriendlyName=Open a FILE or URL
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[ping//CmdLineObj]
+0=0
+
+[ping//CmdLineObj//0]
+SuperUserMode=0
+Notes=Ping free software association .org  1 time and stop.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/ping -c 1 fsse.org
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[paste//CmdLineObj]
+0=0
+1=1
+
+[paste//CmdLineObj//0]
+SuperUserMode=0
+Notes=create the files on your system with one word on each line. This will merge the lines with <TAB> separators.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/paste file1 file2
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[paste//CmdLineObj//1]
+SuperUserMode=0
+Notes=This will merge the lines with the delimiter (-d) of  - 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/paste -d "-" file1 file2
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[passwd//CmdLineObj]
+0=0
+
+[passwd//CmdLineObj//0]
+SuperUserMode=0
+Notes=Show the status of the password for the named user.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/passwd --status USERNAME
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[pwd//CmdLineObj]
+0=0
+
+[pwd//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/pwd
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[rev//CmdLineObj]
+0=0
+1=1
+
+[rev//CmdLineObj//0]
+SuperUserMode=0
+Notes=This will ask for input on running, type what you want. Fun!
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/rev
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[rev//CmdLineObj//1]
+SuperUserMode=0
+Notes=Fun!
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/rev /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[rsync//CmdLineObj]
+0=0
+
+[rsync//CmdLineObj//0]
+SuperUserMode=0
+Notes=A well-formed rsync example for you. Notice the --dry-run, this will only show what WOULD happen, it actually does nothing.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/rsync --dry-run -vshtplgiEr --stats ~/Downloads /PathToSomeEmptyFolder
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[sdiff//CmdLineObj]
+0=0
+
+[sdiff//CmdLineObj//0]
+SuperUserMode=0
+Notes=Compare differences in text files of your choosing.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/sdiff ~/My1.txt ~/My2.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[sed//CmdLineObj]
+0=0
+1=1
+2=2
+
+[sed//CmdLineObj//0]
+SuperUserMode=0
+Notes=The go-to command for most people is the s which stands for substitute. I'm only going to give a couple of very simple examples. It will be your job to learn and write more useful ones.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=echo day | /bin/sed 's/day/night/'
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[sed//CmdLineObj//1]
+SuperUserMode=0
+Notes=An example of a "got ya".
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=echo Sunday | /bin/sed 's/day/night/'
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[sed//CmdLineObj//2]
+SuperUserMode=0
+Notes=This will ask for input on running. Copy and paste this text as input into it. Note that this ==> Input, is NOT changed (case sensitivity).
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/sed 's/input/INPUTCAPITALIZED/g'
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[seq//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+
+[seq//CmdLineObj//0]
+SuperUserMode=0
+Notes=output 1 to 23
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/seq 23
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[seq//CmdLineObj//1]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/seq 13 23
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[seq//CmdLineObj//2]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/seq -s ',' 292 303
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[seq//CmdLineObj//3]
+SuperUserMode=0
+Notes=step by 2
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/seq 6 2 20
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[seq//CmdLineObj//4]
+SuperUserMode=0
+Notes=exponential
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/seq -f %e 100 120
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[split//CmdLineObj]
+0=0
+
+[split//CmdLineObj//0]
+SuperUserMode=0
+Notes=Break the video into 10 megabyte chunks. The output files are called xaa, xab, xac.... (if many output files then they start with z).To re-assemble them make sure they are fed to "cat" in the same (sorted) order and output to a file. Voila.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=1
+Entry=/usr/bin/split --bytes=10M ~/VacationVideo.avi
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[stat//CmdLineObj]
+0=0
+1=1
+
+[stat//CmdLineObj//0]
+SuperUserMode=0
+Notes=file system (folder)
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/stat -f /etc
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[stat//CmdLineObj//1]
+SuperUserMode=0
+Notes=file status
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/stat /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[ss//CmdLineObj]
+0=0
+
+[ss//CmdLineObj//0]
+SuperUserMode=0
+Notes=Show listening ports with extended info and memory usage.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/bin/ss -lem
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[tail//CmdLineObj]
+0=0
+
+[tail//CmdLineObj//0]
+SuperUserMode=0
+Notes=Last 3 lines of the file
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/tail -3 /etc/group
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[tee//CmdLineObj]
+0=0
+1=1
+
+[tee//CmdLineObj//0]
+SuperUserMode=0
+Notes=Display the count of txt files and saves it to the FileCount.txt file. This overwrites the file, so careful.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=ls -1 ~/Documents/*.txt | wc -l | tee ~/FileCount.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[tee//CmdLineObj//1]
+SuperUserMode=0
+Notes=This will prompt for some input from you and then output it to the display and APPEND (-a) it to the specified file. A poor man's "touch".  :)Unfortunately it doesn't seem to respect line returns.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=/usr/bin/tee -a ~/MyWonderfulThoughts.txt
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[tr//CmdLineObj]
+0=0
+
+[tr//CmdLineObj//0]
+SuperUserMode=0
+Notes=Simplest example changing a word from lowercase to upper. tr is used in one of the "linux trix" examples. This command should be studied and practiced first.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=echo "welcome" | tr [:lower:] [:upper:]
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[traceroute//CmdLineObj]
+0=0
+
+[traceroute//CmdLineObj//0]
+SuperUserMode=0
+Notes=trace the route your system takes to get to the free software foundation website. Be aware that if there is a lot of traffic or a problem with the site this command can take some time, ok? Maybe better to run in a terminal.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/traceroute fsfe.org
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[touch//CmdLineObj]
+0=0
+
+[touch//CmdLineObj//0]
+SuperUserMode=0
+Notes=This will create the file with a size of 0 bytes. You can then open it add text.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/touch ~/MyEmptyTextfile.txt
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[times//CmdLineObj]
+0=0
+
+[times//CmdLineObj//0]
+SuperUserMode=0
+Notes=You can run it here but it is only useful in a shell / terminal.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=times
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[uniq//CmdLineObj]
+0=0
+1=1
+2=2
+
+[uniq//CmdLineObj//0]
+SuperUserMode=0
+Notes=This will ask for input on running, type in some lines (sorted!) with duplicates Like this below:batbatcatcatcatdog
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/uniq
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[uniq//CmdLineObj//1]
+SuperUserMode=0
+Notes=-c gives a count of the lines:batbatcatcatcatdog
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/uniq -c
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[uniq//CmdLineObj//2]
+SuperUserMode=0
+Notes=NOTE: file must be sorted first.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/uniq -c ~/MySortedFile
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[users//CmdLineObj]
+0=0
+
+[users//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/users
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[uptime//CmdLineObj]
+0=0
+1=1
+
+[uptime//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/uptime
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[uptime//CmdLineObj//1]
+SuperUserMode=0
+Notes="pretty" format
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/uptime -p
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[whereis//CmdLineObj]
+0=0
+1=1
+
+[whereis//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/whereis rsync
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[whereis//CmdLineObj//1]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/whereis uuencode
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[vmstat//CmdLineObj]
+0=0
+1=1
+2=2
+
+[vmstat//CmdLineObj//0]
+SuperUserMode=0
+Notes=You will, of course, need to hire an interpreter.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/vmstat
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[vmstat//CmdLineObj//1]
+SuperUserMode=0
+Notes=Informative message about forks.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/vmstat -f
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[vmstat//CmdLineObj//2]
+SuperUserMode=0
+Notes=Disks.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/vmstat -D
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[whoami//CmdLineObj]
+0=0
+
+[whoami//CmdLineObj//0]
+SuperUserMode=0
+Notes=Kind of disappointing. I expected more.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/whoami
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[who//CmdLineObj]
+0=0
+1=1
+
+[who//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/who
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[who//CmdLineObj//1]
+SuperUserMode=0
+Notes=Run Level.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/who -r
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[awk//CmdLineObj]
+0=0
+
+[awk//CmdLineObj//0]
+SuperUserMode=0
+Notes=Use the three lines below for input to this CL. one two three four fivea b c d e1 2 3 4 5The awk command will print out the fifth word of each line.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=awk '{print $5}'
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[aspell//CmdLineObj]
+0=0
+
+[aspell//CmdLineObj//0]
+SuperUserMode=0
+Notes=In a terminal use this Command Line to spell check the file you made as described in the notes under the command.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+Entry=aspell check FilePathAndName
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[chmod//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+5=5
+
+[chmod//CmdLineObj//0]
+SuperUserMode=1
+Notes=AnExec.sh will be set to executable. BUT...for everybody in the world. This is the simplest and perhaps most commaon usage but not very security concious.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=3
+TerminalOnly=0
+Entry=<ROOT> chmod  +x /home/me/AnExec.sh
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[chmod//CmdLineObj//1]
+SuperUserMode=1
+Notes=AnExec.sh will be set to unexecutable, nodbody can run it. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=<ROOT> chmod  -x /home/me/AnExec.sh
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[chmod//CmdLineObj//2]
+SuperUserMode=1
+Notes=AnExec.sh will be set to executable but only for "u" (user=you), nodbody else can run it. This is the usage with security in mind. The next CL allows variable input at run time so is your "go to" command for marking files executable.NOTE: be sure the file really =IS= an executable file before you set it to be executable.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=<ROOT> chmod  u+x /home/me/AnExec.sh
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[chmod//CmdLineObj//3]
+SuperUserMode=1
+Notes=Change a file to be executable. At run time you can choose the file.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=<ROOT> chmod  u+x <<F>>
+FriendlyName=Mark file as EXECUTABLE
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[chmod//CmdLineObj//4]
+SuperUserMode=1
+Notes=Security concious usage. u=user, g=group, o=world/othersr=read, w=write, x=executeSo: the owner can rwx, the group can only rx, and the world can only r.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=<ROOT> chmod u=rwx,g=rx,o=r /home/me/AnExec.sh
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[chmod//CmdLineObj//5]
+SuperUserMode=1
+Notes=You can also use a number system, to see the rules look on internet. This version is exactly the same as the CL above. Most common usage is "755".
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=<ROOT> chmod 754 /home/me/AnExec.sh
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cat//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+
+[cat//CmdLineObj//0]
+SuperUserMode=0
+Notes=Show contents of /etc/fstab with line numbers.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cat -n /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cat//CmdLineObj//1]
+SuperUserMode=0
+Notes=Simple output of a file, the variable allows you to choose the file at run time. You do not need to put quotes, it will be done automatically.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cat <<F>>
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cat//CmdLineObj//2]
+SuperUserMode=0
+Notes=Example of using pipes: first variable will be a filename, second the text or regular expression to search for with grep. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cat <<F>> | grep <<S>>
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cat//CmdLineObj//3]
+SuperUserMode=0
+Notes=In order to use "redirection symbols" (the >> in the middle, the others are variable markers) a Command Line must be run through a shell ("Use Shell"). Commandoo does not handle bash special characters.Careful with this one, it APPENDS to the destination file!
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=cat <<F>> >> <<F>>
+FriendlyName=
+WantsInput=0
+UseShell=1
+TerminalAlert=0
+
+[cat//CmdLineObj//4]
+SuperUserMode=0
+Notes=An alternative way to copy a file. Caution: it OVERWRITES the destination file! If the destination file doesn't exist (at least on Debian) it will be created.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=cat ~/MyOriginal.txt > ~/MyCopy.txt
+FriendlyName=
+WantsInput=0
+UseShell=1
+TerminalAlert=0
+
+[diff3//CmdLineObj]
+0=0
+
+[diff3//CmdLineObj//0]
+SuperUserMode=0
+Notes=output differences in three files. Run in Terminal only.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+Entry=/usr/bin/diff3 file1 file2 file3
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[dd//CmdLineObj]
+0=0
+
+[dd//CmdLineObj//0]
+SuperUserMode=1
+Notes=Useful CL that will take an .iso file and write it to a pen drive (eg, linux iso's to bootable thumb drive). However...Be sure you understand how to use it! Used improperly you can wipe drives!! You've been warned.The variable after "if" will be the iso file, the variable after "of" will be the drive specifier (just the letter, not 1, 2, etc.).
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=3
+TerminalOnly=1
+Entry=<ROOT> dd if=<<F>> of=/dev/sd<<S>> bs=4M; sync
+FriendlyName=
+WantsInput=0
+UseShell=1
+TerminalAlert=0
+
+[dc//CmdLineObj]
+0=0
+1=1
+
+[dc//CmdLineObj//0]
+SuperUserMode=0
+Notes=Run without flags is in interactive so run in Terminal only, use "q" to exit.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+Entry=dc
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[dc//CmdLineObj//1]
+SuperUserMode=0
+Notes=RPN format for 23 * 3,  p = print result. Not terribly useful as everyday calculator.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=echo '23 3 * p' | dc
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cp//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+
+[cp//CmdLineObj//0]
+SuperUserMode=0
+Notes=No clobber leaves existing files untouched, so "safe" to do. Depedning on what you are doing you may need to run it as SuperUser.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cp --no-clobber SourceFolderFile DestinationFolderFile
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cp//CmdLineObj//1]
+SuperUserMode=0
+Notes=force: overwrites existing files WITHOUT asking!
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=4
+TerminalOnly=1
+Entry=cp --force SourceFolderFile DestinationFolderFile
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cp//CmdLineObj//2]
+SuperUserMode=0
+Notes=Copy folder and sub-folders.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=1
+Entry=cp --recursive SourceFolder DestinationFolder
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cp//CmdLineObj//3]
+SuperUserMode=0
+Notes=Don't run interactively from commandoo, it will hang.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=4
+TerminalOnly=1
+Entry=cp -i or --interactive From To
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[command//CmdLineObj]
+0=0
+
+[command//CmdLineObj//0]
+SuperUserMode=0
+Notes=You can run it but it won't work.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=command cat /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cksum//CmdLineObj]
+0=0
+1=1
+2=2
+
+[cksum//CmdLineObj//0]
+SuperUserMode=0
+Notes=cksum will produce a number for any content, this one is set up to use input ("Wants Input") so you can send in any text you want and get a checksum.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cksum
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[cksum//CmdLineObj//1]
+SuperUserMode=0
+Notes=Checksum and byte count of fstab file.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/cksum /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[cksum//CmdLineObj//2]
+SuperUserMode=0
+Notes=This gives the cksum and byte count of the file given, the variable lets you choose the file at runtime.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=cksum <<F>>
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[dpkg//CmdLineObj]
+0=0
+1=1
+2=2
+
+[dpkg//CmdLineObj//0]
+SuperUserMode=0
+Notes=view installed packages
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=dpkg --get-selections
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[dpkg//CmdLineObj//1]
+SuperUserMode=0
+Notes=shows info about the specificed command / program. The next CL is the same but with a variable input so you can specify or search for the file you want to know about.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=dpkg --search aplay
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[dpkg//CmdLineObj//2]
+SuperUserMode=0
+Notes=Will ask for the file you want to check at runtime.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=dpkg --search <<F>>
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[dmesg//CmdLineObj]
+0=0
+1=1
+
+[dmesg//CmdLineObj//0]
+SuperUserMode=0
+Notes=system startup and ongoing information. Limited to last 10 lines.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=dmesg | tail
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[dmesg//CmdLineObj//1]
+SuperUserMode=0
+Notes=Used with grep you can narrow output down, here to "err"or and int"err"upt and ov"err"ide
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=dmesg | grep err
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[free//CmdLineObj]
+0=0
+1=1
+2=2
+
+[free//CmdLineObj//0]
+SuperUserMode=0
+Notes=Default display
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=free
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[free//CmdLineObj//1]
+SuperUserMode=0
+Notes=Human readable.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=free -h
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[free//CmdLineObj//2]
+SuperUserMode=0
+Notes=repeat showing ever 5 seconds, don't run in this mode through commandoo.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+Entry=free -s 5
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=1
+
+[exec//CmdLineObj]
+0=0
+
+[exec//CmdLineObj//0]
+SuperUserMode=0
+Notes=You can run this but it won't work.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=exec pwd
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[sort//CmdLineObj]
+0=0
+1=1
+2=2
+
+[sort//CmdLineObj//0]
+SuperUserMode=0
+Notes=This will ask for input on running. Type in:xypbfor example.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/sort
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[sort//CmdLineObj//1]
+SuperUserMode=0
+Notes=This does the same except in reverse order.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/sort -r
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[sort//CmdLineObj//2]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/sort /etc/group
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[umount//CmdLineObj]
+0=0
+
+[umount//CmdLineObj//0]
+SuperUserMode=1
+Notes=This will un-mount the testmount you made if you used the example in 'mount'. Note this is checked for SuperUser.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=0
+Entry=<ROOT> umount ~/testmount
+FriendlyName=UnMount
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[type//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+
+[type//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=type -a grep
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[type//CmdLineObj//1]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=type grep
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[type//CmdLineObj//2]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=type alias
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[type//CmdLineObj//3]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=type rsync
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[type//CmdLineObj//4]
+SuperUserMode=0
+Notes=-a attempts to find all references to the command.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=type -a pwd
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[which//CmdLineObj]
+0=0
+1=1
+2=2
+
+[which//CmdLineObj//0]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/which rsync
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[which//CmdLineObj//1]
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/which grep
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[which//CmdLineObj//2]
+SuperUserMode=0
+Notes=This is an example of a file that DOES EXIST but is reported to not exist (this will occur in Debian, other distros could find it). This is because in Debian normal users don't have the folder location in the $PATH.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/which usermod
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[pgrep//CmdLineObj]
+0=0
+
+[pgrep//CmdLineObj//0]
+SuperUserMode=0
+Notes=At runtime give the process id (found using 'ps') and this will list all child processes of that process.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+Entry=/usr/bin/pgrep -l -P <<I>>
+FriendlyName=Process: CHILDREN
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[hostname//CmdLineObj]
+0=0
+
+[hostname//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=ip address of host
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=/bin/hostname -i
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[uname//CmdLineObj]
+0=0
+1=1
+
+[uname//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=List the information about your system and linux version.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=uname -a
+FriendlyName=Linux Version
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[uname//CmdLineObj//1]
+rowid=-1
+SuperUserMode=0
+Notes=List the information about your Kernel release version.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=1
+Entry=uname -r
+FriendlyName=Kernel Version
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[w//CmdLineObj]
+0=0
+
+[w//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=/usr/bin/w
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[last//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+
+[last//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=Alone it lists logins
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=/usr/bin/last
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[last//CmdLineObj//1]
+rowid=-1
+SuperUserMode=0
+Notes=Lists reboots.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=1
+Entry=/usr/bin/last reboot
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[last//CmdLineObj//2]
+rowid=-1
+SuperUserMode=0
+Notes=The -f lets you specify other logs. You may, or may not, have this log on your system.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=2
+Entry=/usr/bin/last -f /nas/server/webserver/.log/wtmp
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[last//CmdLineObj//3]
+rowid=-1
+SuperUserMode=0
+Notes=Shutdowns
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=3
+Entry=/usr/bin/last -x shutdown
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+5=5
+6=6
+7=7
+8=8
+9=9
+10=10
+11=11
+12=12
+13=13
+14=14
+15=15
+16=16
+
+[gpg//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=Put your pgp/gpg signature on a a text file. Fist variable is the Key ID, the second the file.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=0
+Entry=gpg -u <<S>>--clearsign <<F>>
+FriendlyName=gpg CLEARSIGN
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//1]
+rowid=-1
+SuperUserMode=0
+Notes=Sign a file by making a detached file that accompanies the original file.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=1
+Entry=gpg --detach-sign <<F>>
+FriendlyName=gpg SIGN DETACHED FILE
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//2]
+rowid=-1
+SuperUserMode=0
+Notes=Sign a file.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=2
+Entry=gpg --sign <<F>>
+FriendlyName=gpg SIGN FILE
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//3]
+rowid=-1
+SuperUserMode=0
+Notes=Encrypt a file. Variables: your ID, receipeint's ID, file name. HARMLESS yes, but CAREFUL: when encrypted ONLY the recipeint can decrypt it. If you want a copy on your system make sure you have an unencrypted copy.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=1
+CmdFK=-1
+SO=3
+Entry=gpg -e -u <<S>> -r <<S>> <<F>>
+FriendlyName=gpg ENCRYPT
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//4]
+rowid=-1
+SuperUserMode=0
+Notes=Decrypt a file.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=4
+Entry=gpg -d <<F>>
+FriendlyName=gpg DECRYPT
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//5]
+rowid=-1
+SuperUserMode=0
+Notes=generate a new key pair
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=5
+Entry=gpg --gen-key
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//6]
+rowid=-1
+SuperUserMode=0
+Notes=export keys. Danger because your private key should be known ONLY to you!! Store private keys very securely. Public Key can be given to anyone.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=4
+TerminalOnly=1
+CmdFK=-1
+SO=6
+Entry=gpg --export
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//7]
+rowid=-1
+SuperUserMode=0
+Notes=import/merge keys. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=7
+Entry=gpg --import <<F>>
+FriendlyName=gpg IMPORT
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//8]
+rowid=-1
+SuperUserMode=0
+Notes=show keys currently registered on your computer.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=8
+Entry=gpg --list-keys
+FriendlyName=gpg LIST KEYS
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//9]
+rowid=-1
+SuperUserMode=0
+Notes=show key fingerprints
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=9
+Entry=gpg --fingerprint
+FriendlyName=gpg FINGERPRINTS
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//10]
+rowid=-1
+SuperUserMode=0
+Notes=sign a key
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=10
+Entry=gpg --sign-key
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//11]
+rowid=-1
+SuperUserMode=0
+Notes=Generate a revocation certificate. Quite important to do this immediately after creating a key pair. If the key becomes compromised you will use this certificate to "revoke" it from the servers so anyone you've sent messages knows it is no longer safe.KEEP THESE revoke certificates safe and private!!
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=11
+Entry=gpg --gen-revoke
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//12]
+rowid=-1
+SuperUserMode=0
+Notes=export keys to a key server
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=2
+TerminalOnly=1
+CmdFK=-1
+SO=12
+Entry=gpg --send-keys <<S>>
+FriendlyName=gpg KEYS TO SERVER
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//13]
+rowid=-1
+SuperUserMode=0
+Notes=Recieve keys from server
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=13
+Entry=gpg --recv-keys <<S>>
+FriendlyName=gpg KEYS FROM SERVER
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//14]
+rowid=-1
+SuperUserMode=0
+Notes=search for keys on a key server
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=14
+Entry=gpg --search-keys <<S>>
+FriendlyName=gpg KEYS ON SERVER SEARCH
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//15]
+rowid=-1
+SuperUserMode=0
+Notes=update all keys from a keyserver
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=15
+Entry=gpg --refresh-keys
+FriendlyName=gpg KEYS REFRESH FROM SERVER
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[gpg//CmdLineObj//16]
+rowid=-1
+SuperUserMode=0
+Notes=create ascii armored output, that is, not binary but human "readable".
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=16
+Entry=gpg --armor
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[du//CmdLineObj]
+0=0
+
+[du//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=Show space used in /etc
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=du -hc --max-depth=1 /etc
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[whatis//CmdLineObj]
+0=0
+1=1
+
+[whatis//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=Just type the name of the linux command you are interested in. If nothing comes back it's not installed or in the path.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=/usr/bin/whatis uname
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[whatis//CmdLineObj//1]
+rowid=-1
+SuperUserMode=0
+Notes=This will ask at runtime what command you are looking for.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=1
+Entry=/usr/bin/whatis <<S>>
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[numfmt//CmdLineObj]
+0=0
+1=1
+
+[numfmt//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=2048 in iec format
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=/usr/bin/numfmt  --to=iec 2048
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[numfmt//CmdLineObj//1]
+rowid=-1
+SuperUserMode=0
+Notes=2048 in si format
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=1
+Entry=/usr/bin/numfmt  --to=si 2048
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[curl//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+5=5
+
+[curl//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=simple fetch and display of the index HTML page from my website TimePirate.org.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=0
+Entry=curl http://timepirate.org
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[curl//CmdLineObj//1]
+rowid=-1
+SuperUserMode=0
+Notes=This gets gnu org's manual table of contents and write to a file called gnuManual.html in your home folder.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=1
+CmdFK=-1
+SO=1
+Entry=curl -o ~/gnuManual.html http://www.gnu.org/software/gettext/manual/gettext.html
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[curl//CmdLineObj//2]
+rowid=-1
+SuperUserMode=0
+Notes=Look up, using DICT protocol, the meaning of the word "abstruse".
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=2
+Entry=curl  dict://dict.org/d:abstruse
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[curl//CmdLineObj//3]
+rowid=-1
+SuperUserMode=0
+Notes=The variable version of the looking up a word. This CL will ask at Runtime for the word you want.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=3
+Entry=curl  dict://dict.org/d:<<S>>
+FriendlyName=Look up word definition
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[curl//CmdLineObj//4]
+rowid=-1
+SuperUserMode=0
+Notes=Get list of dictionaries we can use. Then use the dictionary in the next CL below this one. We will look up "marriage" in the Devil's Dictionary by Ambrose Bierce, code for the dictionary in the list, as you see, is "devil"
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=4
+Entry=curl dict://dict.org/show:db
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[curl//CmdLineObj//5]
+rowid=-1
+SuperUserMode=0
+Notes=As promised the definition of "marriage" by Ambrose Bierce looking in "devil" (The Devil's Dictionary).
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=5
+Entry=curl dict://dict.org/d:marriage:devil
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[mkpasswd//CmdLineObj]
+0=0
+1=1
+
+[mkpasswd//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=used alone it gives back 13 random characters. If you want longer passwords run it twice and combine them.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=/usr/bin/mkpasswd
+FriendlyName=Password Generator
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[mkpasswd//CmdLineObj//1]
+rowid=-1
+SuperUserMode=0
+Notes=Same thing but uses the string as a seed...I think.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=1
+Entry=/usr/bin/mkpasswd MyLongSecretPassword
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[grep//CmdLineObj]
+0=0
+1=1
+2=2
+3=3
+4=4
+5=5
+6=6
+7=7
+
+[grep//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=The -E indicates the search pattern is an extended regular expression. So this will print any line from the file having "=" or "tion" in it.Without the -E it would search for the literal string "(=|tion)" which it won't find, see how the next CL works...
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=grep -E (=|tion) /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[grep//CmdLineObj//1]
+rowid=-1
+SuperUserMode=0
+Notes=As you see without the -E switch the search term is not found. See the next CL to find "tion" again...
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=1
+Entry=grep (=|tion) /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[grep//CmdLineObj//2]
+rowid=-1
+SuperUserMode=0
+Notes=Now we find lines with "tion" in them. So you need to choose whether you will use the -E switch or not.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=2
+Entry=grep tion /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[grep//CmdLineObj//3]
+rowid=-1
+SuperUserMode=0
+Notes=And, to be complete, this find the lines with "=" in them. 
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=3
+Entry=grep = /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[grep//CmdLineObj//4]
+rowid=-1
+SuperUserMode=0
+Notes=Get useful memory info.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=4
+Entry=/bin/grep -E 'Mem|Cache|Swap' /proc/meminfo
+FriendlyName=Memory Information
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[grep//CmdLineObj//5]
+rowid=-1
+SuperUserMode=0
+Notes=With the variables you will be, at runtime, asked first for the search pattern and then the filename.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=5
+Entry=grep -E <<S>> <<F>>
+FriendlyName=grep in FILE
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[grep//CmdLineObj//6]
+rowid=-1
+SuperUserMode=0
+Notes=This is an example of grep where you can use "Wants Input" to give the give the text to search. It will find any lines in the text you give that contain the word 'and', notice it is not in -E mode, we are searching for simple text not an extrended regular expression.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=6
+Entry=grep and
+FriendlyName=grep INPUT
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[grep//CmdLineObj//7]
+rowid=-1
+SuperUserMode=0
+Notes=This is an example of grep where you can use "Wants Input" to give the give the text to search. It will find any lines in the text you give that contain the word you specify in the "string" variable at runtime.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=7
+Entry=grep -E <<S>>
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[mount//CmdLineObj]
+0=0
+
+[mount//CmdLineObj//0]
+rowid=-1
+SuperUserMode=1
+Notes=This will mount a RAM drive on your system with a size of 100 megabytes at the testmount folder in your home folder. NOTE: testmount must exist and it must be empty. See 'umount' to unmout it. Please note this is checked for SuperUser.
+IsFavorite=1
+DetachProcess=0
+ThreatLevel=3
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=<ROOT> mount -t tmpfs -o size=100M ext4 ~/testmount
+FriendlyName=mount RAM Drive
+WantsInput=0
+UseShell=0
+TerminalAlert=0
+
+[wc//CmdLineObj]
+0=0
+1=1
+
+[wc//CmdLineObj//0]
+rowid=-1
+SuperUserMode=0
+Notes=This will ask for input, type something in.
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=0
+Entry=/usr/bin/wc
+FriendlyName=
+WantsInput=1
+UseShell=0
+TerminalAlert=0
+
+[wc//CmdLineObj//1]
+rowid=-1
+SuperUserMode=0
+Notes=
+IsFavorite=0
+DetachProcess=0
+ThreatLevel=1
+TerminalOnly=0
+CmdFK=-1
+SO=1
+Entry=/usr/bin/wc /etc/fstab
+FriendlyName=
+WantsInput=0
+UseShell=0
+TerminalAlert=0

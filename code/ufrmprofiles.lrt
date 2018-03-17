@@ -1,0 +1,71 @@
+TFRMPROFILES.CAPTION=Manage Database Profiles
+TFRMPROFILES.LBLIST.HINT=List of Program managed and custom 
++Database Profiles. 
++
++The first two ("DB") are managed by the 
++Program and are always displayed, you
++can not delete or edit them. They are
++Profiles for the pre-collected database in
++text and sql format.
++
++You may add custom profiles at any time
++and those will be listed here.
++
++Profiles can have the same name as long
++as they use a different DB type.
++
++<end>
+TFRMPROFILES.GBMANAGELIST.CAPTION=Manage Profile List
+TFRMPROFILES.BTNCONVERT.HINT=Convert a text DB to a sql DB and
++vice versa.
++
++Destination file(s) must not already exist.
++
++<end>
+TFRMPROFILES.BTNMERGETO.HINT=Merge the items in the selected profile
++to another profile (can be from text/sql 
++to another text/sql).
++
++In the case of duplicate commands notes,
++command lines, etc. will be merged into 
++the destination.
++
++In this case the destination must already
++exist.
++
++<end>
+TFRMPROFILES.LBLPATHDISPLAY.HINT=The Path/Folder of the currently selected
++Profile.
++
++This may, for the default DB's, show that
++they are "switched off in Options". This means 
++that while they are visible in Profile 
++Management Mode they will not be visible
++in Switch Database mode. This is changed
++in Options.
++
++<end>
+TFRMPROFILES.LBLPATHDISPLAY.CAPTION=1...
+TFRMPROFILES.LBLDEFAULTDISPLAY.HINT=Reference only. It shows the default data
++file Path/Folder for the program.
++
++<end>
+TFRMPROFILES.LBLDEFAULTDISPLAY.CAPTION=3...
+TFRMPROFILES.LBLCURRENTPROFILE.HINT=Reference only. It shows the default data
++file Path/Folder for the program.
++
++<end>
+TFRMPROFILES.LBLCURRENTPROFILE.CAPTION=2...
+TFRMPROFILES.MENUITEM1.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMPROFILES.MENUITEM2.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMPROFILES.MNIOK.CAPTION=Close
+TFRMPROFILES.ACTOK.CAPTION=&OK
+TFRMPROFILES.ACTCANCEL.CAPTION=Cancel
+TFRMPROFILES.ACTADD.CAPTION=&A  New
+TFRMPROFILES.ACTEDIT.CAPTION=&B  Edit
+TFRMPROFILES.ACTDELETE.CAPTION=&D  Delete
+TFRMPROFILES.ACTCOPY.CAPTION=&C  Copy
+TFRMPROFILES.ACTSELECT.CAPTION=&S  Select
+TFRMPROFILES.ACTCONVERT.CAPTION=&X  Convert
+TFRMPROFILES.ACTMERGETO.CAPTION=&Z  Merge To
+TFRMPROFILES.ACTCOMPARE.CAPTION=&Y  Compare

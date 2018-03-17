@@ -1,0 +1,6616 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Language: af\n"
+
+#: jinifiles.serrcouldnotcreatepath
+msgid "Could not create directory \"%s\""
+msgstr ""
+
+#: linuxtrix.cltdetachedprocess
+msgid "running as detached process"
+msgstr ""
+
+#: linuxtrix.cltmissingbash
+msgid "Cannot retrieve output from builtin \"%s\" on a system that does not support bash"
+msgstr ""
+
+#: linuxtrix.cltmsgwhich
+msgid "`which` command could not find system file `%s`"
+msgstr ""
+
+#: linuxtrix.cltnoerror
+msgid "< no error >"
+msgstr ""
+
+#: linuxtrix.cltnooutput
+msgid "< no output >"
+msgstr ""
+
+#: linuxtrix.cltprocess4thdimension
+msgid "Due to possibility of opening a 4th dimensional rift it is not allowed to run \"%s\""
+msgstr ""
+
+#: linuxtrix.cltprocessexitcode
+msgid "Process Exit Code: %d"
+msgstr ""
+
+#: linuxtrix.cltprocessexitstatus
+msgid "System Status Code: %d"
+msgstr ""
+
+#: linuxtrix.cltprocessinput
+msgctxt "linuxtrix.cltprocessinput"
+msgid "Input"
+msgstr ""
+
+#: linuxtrix.cltprocessnonestr
+msgid "< none >"
+msgstr ""
+
+#: linuxtrix.cltprocessnoparams
+msgid "No Params"
+msgstr ""
+
+#: linuxtrix.cltprocessoutput
+msgid "Output"
+msgstr ""
+
+#: linuxtrix.cltprocessrefusesinput
+msgid "< The Process would not allow input. >"
+msgstr ""
+
+#: linuxtrix.cltprocessresultcanceled
+msgid "< process canceled >"
+msgstr ""
+
+#: linuxtrix.cltprocessresulttimeout
+msgid "< timeout waiting for process output >"
+msgstr ""
+
+#: linuxtrix.cltprocessresulttoomuch
+msgid "< %s exceeded internal maximum of %d characters, use a terminal or change maximium >"
+msgstr ""
+
+#: linuxtrix.cltprocessresultundefined
+msgid "< Process failed to run properly >"
+msgstr ""
+
+#: linuxtrix.cltprocessresultunknown
+msgid "< process finished with unknown code: %d >"
+msgstr ""
+
+#: linuxtrix.cltprocessthroughshell
+msgid "==RUNNING THROUGH SHELL=="
+msgstr ""
+
+#: strconst_en.caboutbdline
+msgid "DB Version: %s"
+msgstr ""
+
+#: strconst_en.caboutformsettings
+msgid "Program Settings located in: %s"
+msgstr ""
+
+#: strconst_en.caboutgithub
+msgid ""
+"This is open source software, the source code can be found on GitHub at: \n"
+"      https://github.com/Juuliuus/commandoo\n"
+"\n"
+"Release Notes and download instructions can be seen in the README file there.\n"
+msgstr ""
+
+#: strconst_en.caboutini
+msgid "Settings files (%s, %s & %s) in:   %s"
+msgstr ""
+
+#: strconst_en.caboutinstalled
+msgid "Program installed in:   %s"
+msgstr ""
+
+#: strconst_en.caboutlanguage
+msgid "Language (.po) files in:   %s"
+msgstr ""
+
+#: strconst_en.caboutline
+msgid "commandoo   Version: %s"
+msgstr "commandoo   Version: %s"
+
+#: strconst_en.ccantcopy
+msgid "Could not copy \"%s\" to \"%s\"."
+msgstr ""
+
+#: strconst_en.ccapapology
+msgid "Merging TO sql DB's:  My Apologies!!!"
+msgstr ""
+
+#: strconst_en.ccapchangelangdoreset
+msgid "Reset \"Show No More\" Dialogs?"
+msgstr ""
+
+#: strconst_en.ccapcommandlinedisallowed
+msgid "Command Line Disallowed"
+msgstr ""
+
+#: strconst_en.ccapcurrentlyediting
+msgid "Currently Editing"
+msgstr ""
+
+#: strconst_en.ccapdetachedprocesses
+msgid "%d  Running%s"
+msgstr ""
+
+#: strconst_en.ccapdisplaycaptionandvalue
+msgid "%s:  %s"
+msgstr "%s:  %s"
+
+#: strconst_en.ccapgeneralinformation
+msgid "Information you may want to know"
+msgstr ""
+
+#: strconst_en.ccapibus
+msgid "Possible \"ibus\" problem and solution if it affects you"
+msgstr ""
+
+#: strconst_en.ccapintro
+msgid "Introduction"
+msgstr ""
+
+#: strconst_en.ccaplistmanagerduplicate
+msgid "Duplicate %s"
+msgstr ""
+
+#: strconst_en.ccaplistmanagernothingselected
+msgid "Nothing Selected"
+msgstr ""
+
+#: strconst_en.ccapmasterlistempty
+msgid "Master List is empty"
+msgstr ""
+
+#: strconst_en.ccapmulipleinstances
+msgid "  >>>>>  %d or More COPIES OPEN!! Careful!!"
+msgstr ""
+
+#: strconst_en.ccapmultipledisallowed
+msgid "Already running"
+msgstr ""
+
+#: strconst_en.ccapnothingloaded
+msgid "Nothing Loaded"
+msgstr ""
+
+#: strconst_en.ccapoverflow
+msgid "Overflow from long line"
+msgstr ""
+
+#: strconst_en.ccappathcaption
+msgid "Path to: \"%s\""
+msgstr ""
+
+#: strconst_en.ccapprogram
+msgid "COMMANDOO : GUI for Linux Commands / CLI"
+msgstr ""
+
+#: strconst_en.ccapquickrun
+msgid "Command to Run"
+msgstr ""
+
+#: strconst_en.ccaprequiredreading
+msgid "REQUIRED READING"
+msgstr ""
+
+#: strconst_en.ccaprootdisallowed
+msgid "ROOT running Disallowed"
+msgstr ""
+
+#: strconst_en.ccaprootmodeconfirmation
+msgid "Confirm <ROOT> Mode"
+msgstr ""
+
+#: strconst_en.ccapsearchdesignedindiffdatabase
+msgid "Database Stamp MisMatch"
+msgstr ""
+
+#: strconst_en.ccapshowunsavedmessage
+msgid "Search Scope"
+msgstr ""
+
+#: strconst_en.ccapsudoset
+msgid "ROOT Privileges"
+msgstr ""
+
+#: strconst_en.ccapsufileinfo
+msgid "ROOT authentication files"
+msgstr ""
+
+#: strconst_en.ccapswitchdbnotallowed
+msgid "Can not Switch or Manage Database"
+msgstr ""
+
+#: strconst_en.ccapswitchdbsave
+msgid "Unsaved Data"
+msgstr ""
+
+#: strconst_en.ccaptabcommands
+msgctxt "strconst_en.ccaptabcommands"
+msgid "Commands"
+msgstr ""
+
+#: strconst_en.ccaptabfavorites
+msgctxt "strconst_en.ccaptabfavorites"
+msgid "Favorites"
+msgstr ""
+
+#: strconst_en.ccaptabkeywords
+msgid "KeyWords"
+msgstr ""
+
+#: strconst_en.ccaptabprocesses
+msgctxt "strconst_en.ccaptabprocesses"
+msgid "Det. Processes"
+msgstr ""
+
+#: strconst_en.ccaptabsearch
+msgctxt "strconst_en.ccaptabsearch"
+msgid "Search"
+msgstr ""
+
+#: strconst_en.ccapthreatlevelwarning
+msgid "Allow Execution \"%s\"?"
+msgstr ""
+
+#: strconst_en.ccapunsaveddata
+msgid "Unsaved Data!"
+msgstr ""
+
+#: strconst_en.ccapupdated_db
+msgid "Database"
+msgstr ""
+
+#: strconst_en.ccapupdated_prog
+msgid "Program settings "
+msgstr ""
+
+#: strconst_en.ccontribute
+msgid "Contributions of any amount you want can be given to Juuliuus@me.com on PayPal. Another way to contribute, if you are bi-lingual, is to do a translation for commandoo. It's easy-ish...email me if you are interested. "
+msgstr ""
+
+#: strconst_en.cdisplayupdating
+msgid "Updating %s"
+msgstr ""
+
+#: strconst_en.cemail
+msgid "Comments etc. to email:     Commandoo@TimePirate.org"
+msgstr ""
+
+#: strconst_en.cfilenotexist
+msgid "File \"%s\" does not exist."
+msgstr ""
+
+#: strconst_en.cgnu_gpl
+msgid ""
+"Copyright (C) 2017 Julius Heinrich Ludwig Schön / Ronald Michael Spicer \n"
+"Created by Julius Schön / R. Spicer \n"
+"https://www.TimePirate.org\n"
+"https://Foto.TimePirate.org\n"
+"https://PaganToday.TimePirate.org\n"
+"\n"
+"Email: Commandoo@TimePirate.org\n"
+"\n"
+"Commandoo Program: Helper application for Linux commands / CLI \n"
+"\n"
+"This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License. \n"
+"\n"
+"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. \n"
+"\n"
+"You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>. \n"
+"\n"
+msgstr ""
+"Copyright (C) 2016 Julius Heinrich Ludwig Schön / Ronald Michael Spicer \n"
+"Created by Julius Schön / R. Spicer \n"
+"https://www.TimePirate.org\n"
+"https://Foto.TimePirate.org\n"
+"https://PaganToday.TimePirate.org\n"
+"\n"
+"Email: Commandoo@TimePirate.org\n"
+"\n"
+"Commandoo Program: Helper application for Linux commands / CLI \n"
+"\n"
+"This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License. \n"
+"\n"
+"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. \n"
+"\n"
+"You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>. \n"
+"\n"
+
+#: strconst_en.cinputcantbeblank
+msgid "Text cannot be blank"
+msgstr ""
+
+#: strconst_en.cmsgadvancedoptions
+msgid "< All changes are saved immediately on \"OK\" >"
+msgstr ""
+
+#: strconst_en.cmsgapology
+msgid ""
+"PLEASE READ: (!!!!) \n"
+"\n"
+"There is some, very very very subtle issue, when merging INTO a sql database. Depending on circumstances it can take a VERY long time. I've done what I can to make it as fast as I can but it can be terribly, terribly slow. Best circumstances are small merges of course. And where the merging items are not already present in the database. Those will be fast-ish. \n"
+"\n"
+"The worst case is where many of the incoming commands already exist in the destination. It's really really bad slooowwww. So I truly apologize for this issue which I am trying to figure out. \n"
+"\n"
+"You can, of course, merge commands one at a time from the right click popup on the commands list which then copy instantly to the destination. \n"
+"\n"
+"So do you still want to merge to a sql destination?? \n"
+msgstr ""
+
+#: strconst_en.cmsgbaddata_esc
+msgid "Output bad: %s which are not allowed in %s because of possible insecure consequences. Run this command in a Terminal (can be changed in OPTIONS)."
+msgstr ""
+
+#: strconst_en.cmsgbaddata_esc_base
+msgid "Output contains ESCAPE characters"
+msgstr ""
+
+#: strconst_en.cmsgbaddata_esc_ok
+msgid ""
+"\n"
+"\n"
+"%s. This can mess up the output display. By default the output is thrown out. This can be changed in OPTIONS. \n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgcareful
+msgid "Can change system and/or files, know how to use"
+msgstr ""
+
+#: strconst_en.cmsgcaution
+msgid "Probable system changes, research before use!"
+msgstr ""
+
+#: strconst_en.cmsgchangelangdoreset
+msgid "Do you want to reset all the \"show no more\" dialogs so you can read them in the new language?"
+msgstr ""
+
+#: strconst_en.cmsgcommandlinedisallowed
+msgid ""
+"This Command Line has been set to be DISALLOWED (Terminal Only). If you really want to run this command you need to change that setting or run it in a Terminal.\n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgcommandssaved
+msgid ""
+"Saved by user at %s...\n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgcurrentlyediting
+msgid "Currently editing a Command or Command Line. This task is not allowed while editing. Apply your editing changes, or cancel them."
+msgstr ""
+
+#: strconst_en.cmsgdanger
+msgid "Can trash your system, research before use!!!"
+msgstr ""
+
+#: strconst_en.cmsgdisallowedphrase
+msgid "A command may not have \"%s\" in the name."
+msgstr ""
+
+#: strconst_en.cmsgdisplayoutputcleared
+msgid ""
+"Display Output Cleared by user at %s...\n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgdisplayoutputtrimmed
+msgid ""
+">>> >>> Display Output trimmed to about > %d < characters %s (set in OPTIONS)...\n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgdisplaypanels
+msgid ""
+"This shows the current state of the selected \n"
+"%s settings.\n"
+"\n"
+"If you focus on the Notes area and press \n"
+"Ctrl-F a text search dialog opens. \n"
+"\n"
+"And Ctrl-Shift-F or Ctrl-L will find the next \n"
+"find occurence. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: strconst_en.cmsgdispnokeywords
+msgid "< No KeyWords >"
+msgstr ""
+
+#: strconst_en.cmsgdispnonotes
+msgid "< No Notes >"
+msgstr ""
+
+#: strconst_en.cmsgeditbuttons
+msgid ""
+"Open the \"%s\" Edit panel to edit the %s settings.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: strconst_en.cmsgeditcancel
+msgid ""
+"Cancel the changes to the \"%s\".\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: strconst_en.cmsgeditok
+msgid ""
+"Confirm any changes you have made to the \"%s\".\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: strconst_en.cmsgemptysearchresults
+msgid "< No Search Results >"
+msgstr ""
+
+#: strconst_en.cmsgemptystring
+msgid "A Command name not be blank.%s"
+msgstr ""
+
+#: strconst_en.cmsgfailedsave
+msgid "Failure during save: %s"
+msgstr ""
+
+#: strconst_en.cmsgharmless
+msgid "No changes to system or files"
+msgstr ""
+
+#: strconst_en.cmsghelpversioninfo
+msgid ""
+"Uses the \"%s\" flag saved with this Command \n"
+"to display the Command's %s. \n"
+"\n"
+"If this doesn't work then the %s flag for \n"
+"this Command will need to be edited. \n"
+"\n"
+"This also will not work if the Command has \n"
+"a bad name. \n"
+"\n"
+"<end> \n"
+msgstr ""
+
+#: strconst_en.cmsghelpversioninfohelp
+msgctxt "strconst_en.cmsghelpversioninfohelp"
+msgid "Help"
+msgstr ""
+
+#: strconst_en.cmsghelpversioninfoversion
+msgctxt "strconst_en.cmsghelpversioninfoversion"
+msgid "Version"
+msgstr ""
+
+#: strconst_en.cmsgibus
+msgid ""
+"IMPORTANT <===========\n"
+"\n"
+"commandoo has found that the program \"ibus\" is installed on your system. \n"
+"\n"
+"THIS CAN CAUSE PROGRAM MISBEHAVIOR, making commandoo unusable. The problem and solution are outlined below, but first use the copy to clipboard button above so that you can save this information and read it when commandoo is not running. \n"
+"\n"
+"==================== \n"
+"The Problem: \n"
+"Typed characters are doubled in some cases (solution below) \n"
+"==================== \n"
+"\n"
+"In August 2017 (first official release of commandoo), I tested commandoo in a fresh Debian 9 cinnamon desktop. I found that the GTK version had the problem of doubled characters. That is, you type \"dog\" and you get \"ddoogg\", etc. This may be a problem in Debian 8 as well. \n"
+"\n"
+"Later in October a fresh install of KDE desktop Debian 9 also had this problem in the QT version. \n"
+"\n"
+"This was, of course, quite annoying. \n"
+"\n"
+"The problem is due to the program \"ibus\". ibus is an input method utility. It is designed to allow asian country users to type in their native language characters/idiograms: chinese, japanese, etc. So if you are not in Asia the program is not essential. However, it IS installed BY DEFAULT in fresh english installs of Debian. \n"
+"\n"
+"After finally testing (and researching) this thoroughly I found that the problem is rooted in ibus, or at least it's implementation. I can say this with confidence because while Lazarus programs have this problem it is ALSO A PROBLEM in KDE desktop environment (at least at this time, maybe it will be fixed??). \n"
+"\n"
+"On the fresh KDE install not only was commandoo affected but KDE windows (like kdesudo) failed, one can not type into the input fields. It also affects typing in the KDE kicker when trying to find some installed program, only the first typed character was displayed. Web research showed that many people are having this problem with KDE and Debian 9 and ibus. \n"
+"\n"
+"You will see immediately if you are affected by this problem. Simply close this window and continue on into commandoo. First thing type alt-F to open the find dialog and type \"dog\" if \"dog\" is the result then you do not have this problem. If it comes out only \"d\" or as \"ddoogg\" then you do have the problem and should apply the solution. \n"
+"\n"
+"When I discovered this back in August I recommended either removing ibus (if you are not typing asian characters) or a \"Fix\" I had found on the internet that seemed to work (setting some environment variables in .bashrc). Further testing in October with KDE showed the .bashrc \"solution\" was not effective though it had worked for me in August with GTK. That turned out to be due to how GTK enironment variable is set deep in the IM (input method) configuration files. So the solution DID NOT work with QT. At the time I had intended to try QT also but then the problem of not being able to use the GUI sudo commands (see above) convinced me that the KDE debian 9 install was flawed and I didn't bother. \n"
+"\n"
+"But, finally, in October I tried it again, and still KDE/PLasma wouldn't work properly (for example, one can not open synaptic package manager, while the password dialog shows you can't type anything into it! Ouch.). \n"
+"\n"
+"So I resolved to figure out the issue, and I did. Solution follows. \n"
+"\n"
+"==================== \n"
+"Solution: \n"
+"==================== \n"
+"\n"
+"As I said, I initially, in part, recommended removing ibus from your system if you didn't need it. \n"
+"\n"
+"And, as someone pointed out on the internet, to paraphrase: While ibus is now the default input method it doesn't mean you have to use it. There are other im's out there and you can set the system to use those (they also have to do with asian characters). And removing ibus should have no deleterious effects if you don't need it. \n"
+"\n"
+"So there is still that \"solution\". If you are having the doubled character problems you can temporarily see the \"fix\" immediately. Simply type \"ibus exit\" in a terminal. Go back into commandoo and the doubled character problem will be gone. But this is temporary, only shutting ibus down for the current session. On your next login ibus will be restarted. \n"
+"\n"
+"So removal of ibus will work. But I resolved to make my system work WITH ibus installed. And so here is the new tested and recommended solution: \n"
+"\n"
+"There turns out to be a small utility called im-config with which you can disable the asian character sub-system. \n"
+"\n"
+"You need to run it as root in this format:  sudo im-config -c \n"
+"\n"
+"The -c opens it in an interactive console mode in a terminal window. \n"
+"\n"
+"It will first list what the system currently is. This is usually defaulting to ibus. \n"
+"\n"
+"It will ask if you want to continue (yes). \n"
+"\n"
+"Then a screen will appear with your options. Use arrow keys to move to NONE choice, press spacebar to select it, then tab to OK and enter. \n"
+"\n"
+"NOTE: if you run im-config again it STILL says ibus is automatic, but this is not true absolutely, just in \"theory\" I guess (I really think someone, Linus?, needs to look into this mess), because if you continue you will see that the choice is still \"none\", which is correct. \n"
+"\n"
+"After this process logout/reboot and, voila, the system works. KDE works, I was able to open synaptic package manager, commandoo worked. The KDE Plasma Kicker worked. And ibus is still installed. \n"
+"\n"
+"I would apologize for the mess of this but it is the ibus team that should. \n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgintro
+msgid ""
+"Introduction:\n"
+"============ \n"
+"\n"
+"Welcome to commandoo the Graphical User Interface (GUI) for the Linux Command Line Interface (CLI), perhaps better known as the \"Terminal\". You can read this introduction again later in the \"About\" window. Also available in the \"About\" window are some == TIPS == for use, recommended reading... \n"
+"\n"
+"It's purpose is to give you a place to store the cool and/or useful command lines you find, discover, or create. Then, months later, when you need it again, it will be here, easy to find. \n"
+"\n"
+"It's primary audience was intended for people new to Linux, but the features and usefulness of storing command lines could be of interest for veteran users too. \n"
+"\n"
+"You can copy the Command Line with a right click and paste into a Terminal to use...Or...\n"
+"\n"
+"...you can run it from within this program. Commandoo is NOT a terminal replacement, but it's been designed to be as useful as possible and running Command Line's seemed like a nice feature. \n"
+"\n"
+"Other features: \n"
+"\n"
+"** Commands and Command Lines can be marked as to how dangerous they are, and you can optionally set that a particular danger level (harmless, careful, caution, danger) needs confirmation before running. \n"
+"\n"
+"** You can mark a command line to take input from you, before running. Not all Commands pay any attention to input (stdin) but for the ones that do this is kind of a cool feature. Think grep for instance. \n"
+"\n"
+"** You can test your command lines while editing them. The only thing this program does NOT provide is a shell within which to run commands. So running commands from here like \"cd\", \"pwd\", \"alias\" and some others like these are, well, useless to run from here. But even these are included in the database for reference since the program can show the command's help text for you. \n"
+"\n"
+"** You can add any number of self defined keywords to a command and these, of course, are searchable. \n"
+"\n"
+"There is one other thing to know about the absence of a \"true\" shell: you can't change directories (cd) to run a command in that directory. For instance, if you choose to add \"git\" to your Commands you need to use it with the \"-C <path>\" flag. This is true of any command like git, you will need to use pathing and appropriate flags to run it. And the last BIG difference: any command that expects input will NOT run properly because I haven't figured out how to communicate (yet) with a running process in a shell-like manner waiting for input. These have to be run in a terminal. \n"
+"\n"
+"You can choose to use text based database files or sqlite db files. You can convert from one to the other. You can merge from one to the other. You can send individual Command Lines from your open db and send it to another db.\n"
+"\n"
+"This is completely \"open\" software, the source code is on GitHub, see the link in the \"About\" window. It is written in pascal (thank you FreePascal) with the Lazarus IDE (thank you Lazarus). \n"
+"\n"
+"Help is included in the program. Almost all windows have a checkbox in the upper right to \"show hints on mouseover\". Check that and then move the mouse over the control you have a question about. \n"
+"\n"
+"A word of CAUTION:     Be careful out there. \n"
+"\n"
+"Linux comes with very powerful commands to use, really cool ones. But they can be dangerous if misused and/or misunderstood. As they say with great power comes great responsibility. \n"
+"\n"
+"If you don't know whether a command is dangerous or not then you really need to educate yourself about that command. Hopefully this database will help you with that. I will try to be as thorough as possible in the database descriptions of a command's merits. And, in the original database coming with this program, if I have marked a command line as harmless then it IS harmless you can be certain. If a command line is marked careful or higher then you may want to spend some time learning about that command so you understand WHY it is not completely harmless. \n"
+"\n"
+"Another word of CAUTION:     Backup your database files regularly. File locations can be seen in the \"About\" window. And now License Information: \n"
+"\n"
+"%s%s\n"
+msgstr ""
+
+#: strconst_en.cmsginvalidstring
+msgid "< Invalid >"
+msgstr ""
+
+#: strconst_en.cmsglimitinfinity
+msgid ""
+"\n"
+"\n"
+"{It appears you are using /dev/[ zero|full|random|urandom ] in this command \n"
+"line. As a safety measure to prevent \"runaway\" processes input / output has \n"
+"been limited to %d characters. For the most common uses of these devices \n"
+"it should not affect your results. If you do want this command to run to finish \n"
+"using these devices change the limit in options or run the command in a terminal.} \n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsglistmanagerduplicate
+msgid "%s \"%s\" is already in the list."
+msgstr ""
+
+#: strconst_en.cmsglistmanagernothingselected
+msgid "You have not selected an item in the list."
+msgstr ""
+
+#: strconst_en.cmsgmanagedbsave
+msgid "You have unsaved edited items. You need to save your changes before entering management mode."
+msgstr ""
+
+#: strconst_en.cmsgmasterlistempty
+msgid "The Master %s List is empty. Can not search on it."
+msgstr ""
+
+#: strconst_en.cmsgmulipleinstances
+msgid ""
+"%d COPIES OPEN, Closing this window is highly recommended!! Continue using it at your own risk with the understandking that these windows know nothing about what the other(s) is doing and there could be unintended / unanticipated consequences. Exclamation Point.\n"
+"\n"
+"Do you STILL want two (or more?!) commandoo windows open?????\n"
+msgstr ""
+
+#: strconst_en.cmsgmultipledisallowed
+msgid "commandoo is already running and your OPTIONS setting disallows this."
+msgstr ""
+
+#: strconst_en.cmsgnogoodsudo
+msgid ""
+"I`ve searched for \"kdesudo\" and \"gksudo\", the safe and secure gnu/Linux methods of launching programs with ROOT privileges but didn`t find them.\n"
+"\n"
+"So, if you want to run commands with ROOT privileges you will need to set it manually in \"OPTIONS\".\n"
+msgstr ""
+
+#: strconst_en.cmsgnothingloaded
+msgid "There is nothing loaded, this Database is empty."
+msgstr ""
+
+#: strconst_en.cmsgnotspecified
+msgid "-???-"
+msgstr "-???-"
+
+#: strconst_en.cmsgnoversionflagspecified
+msgid "Command \"%s\" has no %s flag specified."
+msgstr ""
+
+#: strconst_en.cmsgoutputendindicator
+msgid ""
+"\n"
+"\n"
+"==============================================================\n"
+"< END Command run ============================================\n"
+"==============================================================\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgownrisk
+msgid ""
+"The use of of this software is at YOUR OWN RISK. While I strive for complete testing it has no implicit or explicit warranty or guarantee of being bug free. I hope you find it useful, enjoy. \n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgprocessplural
+msgid "Procs"
+msgstr ""
+
+#: strconst_en.cmsgprocesssingular
+msgid "Proc"
+msgstr ""
+
+#: strconst_en.cmsgprofilestring
+msgid "DB Profile  =>  %s%s %s"
+msgstr ""
+
+#: strconst_en.cmsgrequiredreading
+msgid ""
+"This Command Line has been set to display its notes for you to read and requires approval. \n"
+"\n"
+"Please read the notes below and then choose NO if you DO NOT WANT to continue: \n"
+"\n"
+"==== ATTENTION ===\n"
+"\n"
+"%s\n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgrootdisallowed
+msgid "You have either specifically disallowed running as ROOT or you don't have a valid Linux ROOT GUI file. You can change / check this in OPTIONS."
+msgstr ""
+
+#: strconst_en.cmsgrootmodeconfirmation
+msgid ""
+"Hi. You are running commandoo in <ROOT> mode. \n"
+"\n"
+"There is literally no good reason to do so and many good reasons not to do so. \n"
+"\n"
+"But I don't want to tell you what to do.\n"
+"\n"
+"Do you STILL want to run commandoo in <ROOT> mode even though it's somewhat dangerous??????? \n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgrootnostartup
+msgid "It not allowed to run the program the FIRST TIME as <ROOT>.   Halting."
+msgstr ""
+
+#: strconst_en.cmsgsearchdesignedindiffdatabase
+msgid "Loaded file was designed in \"%s\" Database Profile but you are currently in \"%s\" Profile. It is quite possible the search will not be valid in this database. Do you still want to load it? "
+msgstr ""
+
+#: strconst_en.cmsgsearchmaybeinvalid
+msgid "Changes have been made that can affect Searches. For this reason any current search results may be incorrect. You should probably re-run the search(es)."
+msgstr ""
+
+#: strconst_en.cmsgshowunsavedmessage
+msgid ""
+"Searches only use the SAVED database.\n"
+"\n"
+"Currently you have unsaved data, so your search may not be complete until you have saved all the edited entries.\n"
+msgstr ""
+
+#: strconst_en.cmsgsqlitelibnotfound
+msgid "sqlite system library \"%s\" not found"
+msgstr ""
+
+#: strconst_en.cmsgsudoset
+msgid ""
+"Your ROOT mode file was not set. I`ve set your ROOT mode privileges file to \"%s\". For most users this will be correct.\n"
+"\n"
+"If you want to change it do so in \"OPTIONS\".\n"
+"\n"
+"If running ROOT mode has no effect then you will NEED to change it to the proper file depending on your Linux distribution (Debian vs. 'Buntu) and the type of administrative setup (sudo vs sudo'ers vs su) it has.\n"
+msgstr ""
+
+#: strconst_en.cmsgsudosuproblem
+msgid ""
+"\n"
+"\n"
+"______________________\n"
+"It appears you are using \"sudo\" or \"su\" in your command line. This is \n"
+"not allowed as it is not secure! Either run this command line through \n"
+"a terminal, or remove the sudo (or su) and use the \"run as SuperUser\" option \n"
+"which uses the secure system program(s) to go into ROOT mode. \n"
+msgstr ""
+
+#: strconst_en.cmsgsufileinfo
+msgid ""
+"In order to run command lines with superuser privileges you need to select a valid agent. \n"
+"\n"
+"Here select it from the list, or, if necessary, search for the file. \n"
+"\n"
+"Raw \"sudo\" and \"su\" commands are ==NOT== allowed because they are not secure to use from a GUI. \n"
+"\n"
+"What you select depends on your Linux system and the authentication scheme it uses. You need to know this to pick correctly. \n"
+"\n"
+"\"sudo\" variants (gksudo and kdesudo) differ based on your desktop scheme, whether you use gnome or KDE. This also applies to the \"su\" variants (gksu and kdesu). \n"
+"\n"
+"On Debian systems the user account is separate from the ROOT account. An \"su\" variant is required and password used will be the ROOT password. \n"
+"\n"
+"However, if, on your Debian system, your user account is added to the \"sudo-ers\" group / list then the sudo variant will also work but with your user account password. \n"
+"\n"
+"For `Buntu systems (and some other derivatives) the initial user has both user and ROOT privileges, in this case the sudo variant ONLY will work. \n"
+"\n"
+"But it is possible to set a `Buntu system to have a separate ROOT. In this case the comments for the Debian system apply. \n"
+"\n"
+"A quick summary of the most usual situations: \n"
+"\n"
+"`Buntu systems: use one of the \"sudo\" variants. \n"
+"\n"
+"Debian: use \"su\" variant unless your user account has ROOT privileges in which case \"sudo\" variant. \n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgswitchdbnotallowed
+msgid "Can not Switch or Manage Database Profiles while editing."
+msgstr ""
+
+#: strconst_en.cmsgswitchdbsave
+msgid "There is currently unsaved data. Do you want me to save it before switching the Database?"
+msgstr ""
+
+#: strconst_en.cmsgthreatlevels
+msgid ""
+"This allows you to use the feature of \n"
+"\"Threat Levels\". \n"
+"\n"
+"As you know some Linux commands can \n"
+"be quite dangerous.  Others should be used \n"
+"properly. \n"
+"\n"
+"Labeling the Command (and Command Lines) \n"
+"with an appropriate warning gives a heads \n"
+"up to the you the user to make sure you \n"
+"know what you are doing and have done it \n"
+"properly. \n"
+"\n"
+"In addition, in the Options you can specify \n"
+"which levels of threat should be confirmed \n"
+"before running. \n"
+"\n"
+"%s \n"
+"\n"
+"<end> \n"
+msgstr ""
+
+#: strconst_en.cmsgthreatlevelscommand
+msgid ""
+"In the commands it is really a convenience \n"
+"since you can not run Commands, only \n"
+"Command Lines. But if you set this properly \n"
+"on the Command then when you add a \n"
+"new Command Line it will inherit that threat \n"
+"level. \n"
+msgstr ""
+
+#: strconst_en.cmsgthreatlevelscommandline
+msgid ""
+"The Command line inherits the threat level \n"
+"of the Command when it is added. Depending \n"
+"on the flags used the threat level may \n"
+"be different for this command line. You \n"
+"can change it as you like. \n"
+msgstr ""
+
+#: strconst_en.cmsgthreatlevelwarning
+msgid ""
+"Threat Level: %s \n"
+"\n"
+"Do you want to allow the command line: \n"
+"\n"
+"==> %s\n"
+"\n"
+"which is marked -- %s -- to run? \n"
+"\n"
+"\n"
+"( These confirmations can be changed in \"Options\" )\n"
+msgstr ""
+
+#: strconst_en.cmsgtips
+msgid ""
+"TIPS:\n"
+"===== \n"
+"\n"
+"Commands are entries that describe the command you are using. Commands >> CAN NOT BE RUN <<. Only Command Lines can be run, but you must add the command first. Then you add command lines to it. \n"
+"\n"
+"Before adding Command Lines you should edit your new Command and give it a threat level and so on. This is because any command lines you add will \"inherit\" those settings (excepting the notes and KeyWords) saving you some work. \n"
+"\n"
+"Note for Debian users: If an entered command you know you should have and it comes back with \"badpath\" this is probably because the command is in /sbin/ and not in your $PATH. Edit the Command (go into edit mode and double click the command name) and simply type the /sbin/ manually. /sbin/ commands are usually reserved for ROOT users and so will not be seen by the program under your normal login. \n"
+"\n"
+"commandoo supports variables in Command Lines. Highlight the CL you want and go into edit mode. Double click the command line and you will be taken to a edit window that has buttons to allow you to enter various types of variables (strings, integer, real, and file/folder names).  \n"
+"\n"
+"Look through the provided database, there are examples of variables, Command Line input, etc. \n"
+"\n"
+"One cool options is \"Alert\". If this is checked then the program makes you look at the notes for that Command Line. This can be really useful if you need to be aware of something, or having done something, BEFORE you run that command line. Try it. \n"
+"\n"
+"If you want commandoo to act as a \"launcher\" be sure to check the \"Child Proc\" checkbox in the Command Line. Otherwise, it will (usually) return immediately, having not done anything. Say you are running Gimp or Blender, well sending it out to be run like \"uname\" does precisely that. It runs it, and then stops and kills it. The Child Proc setting says \"hey, this is GUI program, keep it open\". \n"
+"\n"
+"\"Use Shell\" attempts to let the system handle it and this usually works pretty well. It is necessary for processes that use more terminal like syntax (semicolons and such). commandoo can internally handle the basic command lines, but if yours doesn't seem to work, try Use Shell and see if that does it. If not then that Command Line should only be run in a Terminal (term. only). \n"
+"\n"
+"If the Command Line is mission critical, complex, etc. you should probably only use it in a Terminal. commandoo is pretty good at performing most CL's but IT IS NOT A TERMINAL, be aware of that and use your best judgement on where commandoo can/should be used and where a Terminal should be used. \n"
+"\n"
+"\"Wants Input\" is pretty cool (I think). On Commands that accept input (like, for instance, grep) marking this option for a Command Line will ask you for input before running the Command Line. So for something like grep you can paste in some text you want to search. \n"
+"\n"
+"SuperUser (you can set details in OPTIONS): how this works varies on your distribution. If you are on Debian there is an admin user and then your personal login. If you are not part of \"sudo'ers\" then you can not run Commands as ROOT and you will need to know the admin password. For 'buntu distribs this is not the case unless you have set your system up specifically as such. See OPTIONS for SuperUser for more details. \n"
+"\n"
+"Use DB profiles, why not? The provided database is of basic Linux commands. Now you can add more and more to this database as you like, fine. But you could also make specific databases for specific needs. This is another way to make commandoo useful for you. Maybe you want a GUI launcher database for all your programs. And another that just deals with hardware commands. Etc. Make commandoo yours. \n"
+"\n"
+"Almost every window in commandoo has a checkbox at upper right to show hints on mouseover. Use it!! Lot's of information there. When you are done reading, uncheck it to stop the hints. The detailed hints for the Commands and CL's are only shown in edit mode. \n"
+"\n"
+"Heads UP: I ran into an odd problem with a couple of the more abstruse, esoteric Commands. When you add  a new Command the HELP and VERSION fields are filled in for you with the most common variants: \"--help\" and \"--version\". Upon entering a new Command I always check that these are correct for that Command, sometimes they aren't. Well, in a couple of cases running the \"--help\" threw me out of my session!! Surprise! I don't know why, it is hard to reproduce. But, for this reason, I recommend you test the help and version commands in a TERMINAL WINDOW first. \n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgunsaveddata
+msgid "Either Editing or Unsaved Data, Do you still want to close??"
+msgstr ""
+
+#: strconst_en.cmsgupdated_dbfiles
+msgid "%s automatically updated to %s, Item %d"
+msgstr ""
+
+#: strconst_en.csearchhintending
+msgid "<end>"
+msgstr ""
+
+#: strconst_en.csearchhintfavorites
+msgid ""
+"The Favorites list is, by default, automatically \n"
+"updated when you save after editing. When updated \n"
+"all previous selections are reset to point to the \n"
+"first item in all listboxes. If you don't want this \n"
+"you can change in OPTIONS to disable this. In that case \n"
+"you will need to manually refresh the Favorites list. \n"
+"\n"
+msgstr ""
+
+#: strconst_en.csearchhintgeneralcmd
+msgid ""
+"This presents search results for the various \n"
+"Favorites, KeyWords, and General Searches. \n"
+"\n"
+"The list can consist of both Commands \n"
+"(listed first if any) and Command Lines \n"
+"(listed second). If so there will be a \n"
+"\"separator\" section between them. \n"
+"\n"
+"Clicking on an item shows it's details to \n"
+"the right. If the selected item is a Command \n"
+"it's Command Lines will be listed in \n"
+"the listbox below. \n"
+"\n"
+"Keep in mind that Commands / Command \n"
+"Lines that are in an edited state (i.e., not \n"
+"saved) may NOT or will NOT be included in the \n"
+"filtering. To see an accurate list be sure \n"
+"everything is saved. \n"
+"\n"
+"For the ClipBoard: \n"
+"\n"
+"Ctrl-Shift-C copies the entire list. \n"
+"\n"
+"Ctrl-f opens the find dialog. \n"
+"\n"
+"ctrl-g goes to the Cmd \n"
+"\n"
+msgstr ""
+
+#: strconst_en.csearchhintgeneralcmdline
+msgid ""
+"This will show any Command Lines belonging \n"
+"to the item selected in the list above if \n"
+"it is a Command. \n"
+"\n"
+"Click on a Command Line to enable the \n"
+"RUN button. \n"
+"\n"
+"It will be automatically cleared in some cases \n"
+"like when you edit the Master Keywords \n"
+"or maybe in some other cases. \n"
+"\n"
+"<Enter> runs the command line. \n"
+"\n"
+"For the ClipBoard: \n"
+"\n"
+"Ctrl-c copies the selected command Line \n"
+"Ctrl-Shift-C copies the entire list \n"
+"\n"
+"Ctrl-f opens the find dialog. \n"
+"\n"
+"ctrl-g goes to the Command Line \n"
+"\n"
+msgstr ""
+
+#: strconst_en.csearchhintkeywords
+msgid ""
+"These are global KEYWORD SEARCH: \n"
+"<alt-1> Search Keywords \n"
+"<alt-2> New Search KeyWords \n"
+"<alt-3> Load Search \n"
+"\n"
+"Local to this page: \n"
+"<alt-4> save search \n"
+"<alt-5> display search \n"
+"\n"
+"<end> \n"
+msgstr ""
+
+#: strconst_en.csearchhintsearch
+msgid ""
+"These are global GENERAL SEARCH: \n"
+"<ctrl-1> Search \n"
+"<ctrl-2> New Search \n"
+"<ctrl-3> Load Search \n"
+"\n"
+"Local to this page: \n"
+"<ctrl-4> save search \n"
+"<ctrl-5> display search \n"
+"\n"
+"<end> \n"
+msgstr ""
+
+#: strconst_en.cstrcmddisplayobjects
+msgid ">>         ↑ Commands   ---   ↓ Command Lines"
+msgstr ""
+
+#: tframehint.cbhints.caption
+msgid "&H  Show hints on mouseover"
+msgstr ""
+
+#: tframehint.cbhints.hint
+msgid "Help HInts now Showing"
+msgstr ""
+
+#: tfrmabout.btntoggle.caption
+msgid "&A  Toggle About => Introduction => Tips"
+msgstr ""
+
+#: tfrmabout.caption
+msgid "Commandoo About"
+msgstr ""
+
+#: tfrmaddlanguage.caption
+msgid "Add Language File ( .po file)"
+msgstr ""
+
+#: tfrmaddlanguage.edtfilename.hint
+msgid ""
+"Select the .po language file you want\n"
+"to install. It can be anywhere on the system\n"
+"and it will be copied to the language\n"
+"folder\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmaddlanguage.edtlang.hint
+msgid ""
+"This will be used for the Languages \n"
+"dropdown entry. Type whatever you\n"
+"would like to show up there.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmaddlanguage.edtlang.texthint
+msgid "New-Neu-Neuvo-Neuf-Nuovo-Nou"
+msgstr ""
+
+#: tfrmaddlanguage.label1.caption
+msgid "&A  File Name"
+msgstr ""
+
+#: tfrmaddlanguage.lbllangabbrev.caption
+msgctxt "TFRMADDLANGUAGE.LBLLANGABBREV.CAPTION"
+msgid "..."
+msgstr "..."
+
+#: tfrmaddlanguage.lbllangabbrev.hint
+msgid ""
+"This label will show the associated \n"
+"language symbol.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmaddlanguage.lbllangabbrev1.caption
+msgid "&B  Language dropdown box entry"
+msgstr ""
+
+#: tfrmboolexpr.actcmdselectleft.caption
+msgid "← Select Left"
+msgstr ""
+
+#: tfrmboolexpr.actcmdselectright.caption
+msgid "Select Right →"
+msgstr ""
+
+#: tfrmboolexpr.actcmdsi_l_add.caption
+msgid " << +"
+msgstr " << +"
+
+#: tfrmboolexpr.actcmdsi_r_add.caption
+msgid "+ >> "
+msgstr "+ >> "
+
+#: tfrmboolexpr.actcmd_delete.caption
+msgid "✘"
+msgstr "✘"
+
+#: tfrmboolexpr.actcmd_exchange.caption
+msgid "⇄"
+msgstr "⇄"
+
+#: tfrmboolexpr.actcmd_not_toggle.caption
+msgid "± NOT"
+msgstr "± NOT"
+
+#: tfrmboolexpr.actcmd_paren_add.caption
+msgid "+ ( )'s"
+msgstr "+ ( )'s"
+
+#: tfrmboolexpr.actcmd_paren_l_move.caption
+msgid "←()"
+msgstr "←()"
+
+#: tfrmboolexpr.actcmd_paren_r_move.caption
+msgid "()→"
+msgstr "()→"
+
+#: tfrmboolexpr.btncmdcopy.caption
+msgctxt "TFRMBOOLEXPR.BTNCMDCOPY.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrmboolexpr.btncmdcopy.hint
+msgid ""
+"You can copy a search item and paste it\n"
+"either in the same expression or in the \n"
+"expression.\n"
+"\n"
+"On use the expression forms go into copy\n"
+"mode, you can either add the copy to the\n"
+"left or right of the currently selected item.\n"
+"<escape> cancels the copy.\n"
+"\n"
+"If you try to paste a search item that contains\n"
+"a field that the window does not support, it\n"
+"will tell you so.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmboolexpr.caption
+msgctxt "tfrmboolexpr.caption"
+msgid "Search KeyWords"
+msgstr ""
+
+#: tfrmboolexpr.cbcmdcompactview.caption
+msgid "Compact View"
+msgstr ""
+
+#: tfrmboolexpr.cbcmdcompactview.hint
+msgid ""
+"The display will use feld abbreviations and\n"
+"shortened versions of the search criteria\n"
+"if checked allowing more to fit in the window.\n"
+"\n"
+"Otherwise the full text is shown.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmboolexpr.cbcmduse.caption
+msgid "Use Command Search"
+msgstr ""
+
+#: tfrmboolexpr.cbcmduse.hint
+msgid ""
+"Indicates whether you want the underlying\n"
+"boolean expression to be used n the search.\n"
+"\n"
+"This can be useful if you don't want to delete\n"
+"the current expression because you may use\n"
+"it again later.\n"
+"\n"
+"In some special search cases this is disabled.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmboolexpr.lblexchangenotice.caption
+msgid " * "
+msgstr " * "
+
+#: tfrmboolexpr.mnibebar1.caption
+msgctxt "tfrmboolexpr.mnibebar1.caption"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmboolexpr.mnibebar2.caption
+msgctxt "tfrmboolexpr.mnibebar2.caption"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmboolexpr.mnibebar3.caption
+#| msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgctxt "tfrmboolexpr.mnibebar3.caption"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmboolexpr.mnicmd_delete.caption
+msgctxt "TFRMBOOLEXPR.MNICMD_DELETE.CAPTION"
+msgid "Delete"
+msgstr ""
+
+#: tfrmbusy.btnbusycancel.caption
+#| msgid "&W  NT"
+msgid "&W  NT"
+msgstr "&W  NT"
+
+#: tfrmbusy.caption
+msgctxt "tfrmbusy.caption"
+msgid "busycapNT"
+msgstr "busycapNT"
+
+#: tfrmbusy.lblbusyhint.caption
+msgid "busyNT"
+msgstr "busyNT"
+
+#: tfrmbusy.lblmsg.caption
+msgid "msgNT"
+msgstr "msgNT"
+
+#: tfrmcmdlineedit.btndefaulthelp.caption
+msgid "&Y  Default Help"
+msgstr ""
+
+#: tfrmcmdlineedit.btndefaulthelp.hint
+msgid ""
+"The help for the command is always displayed\n"
+"when you first open this form.\n"
+"\n"
+"But maybe later you do some other commands\n"
+"and then need to reference the command\n"
+"help quickly, then use this button.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcmdlineedit.btnrefresh.caption
+msgid "&X  Run Command Line below:"
+msgstr ""
+
+#: tfrmcmdlineedit.btnrefresh.hint
+msgid ""
+"Sometimes when editing a command line\n"
+"you may need to reference other commands.\n"
+"\n"
+"You can type in a command line below and\n"
+"run it by pressing this button or pressing \n"
+"return in the edit.\n"
+"\n"
+"The output will be added below.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcmdlineedit.btnvardecimal.caption
+msgid "&N  Decimal"
+msgstr ""
+
+#: tfrmcmdlineedit.btnvarfilename.caption
+msgid "&F  File Name"
+msgstr ""
+
+#: tfrmcmdlineedit.btnvarinteger.caption
+msgid "&I  Integer"
+msgstr ""
+
+#: tfrmcmdlineedit.btnvarstring.caption
+msgid "&S  AlphaNum"
+msgstr ""
+
+#: tfrmcmdlineedit.caption
+msgid "Edit Command Line"
+msgstr ""
+
+#: tfrmcmdlineedit.cbwraptext.caption
+msgid "&Z  Wrap Output text"
+msgstr ""
+
+#: tfrmcmdlineedit.cbwraptext.hint
+msgctxt "tfrmcmdlineedit.cbwraptext.hint"
+msgid ""
+"Checked and the output above uses \n"
+"wordwrap. Not, and not.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcmdlineedit.edtoutputrefresh.hint
+msgid ""
+"Type in a command line you want to run\n"
+"while you are editing. Then press return or \n"
+"click the button above.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcmdlineedit.edtoutputrefresh.texthint
+msgid "commands with Help flags only"
+msgstr ""
+
+#: tfrmcmdlineedit.lblvarhint.caption
+msgid "Add a variable at cursor / selection for: "
+msgstr ""
+
+#: tfrmcmdlineedit.memcmdline.hint
+msgid ""
+"The Command Line you are editing.\n"
+"\n"
+"You can place the cursor at a position, or\n"
+"select text, and then use one of the \n"
+"variable buttons below to use run time\n"
+"variables on this command line.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcmdlineedit.memoutput.hint
+msgid ""
+"The output of the command's default help \n"
+"or of the refresh and default help buttons \n"
+"above.\n"
+"\n"
+"Experimental right now, it is intended to \n"
+"display help for the command so you can\n"
+"see what flags / parameters you want to add\n"
+"to the Command Line.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcommandsinput.btncancel.caption
+msgctxt "TFRMCOMMANDSINPUT.BTNCANCEL.CAPTION"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmcommandsinput.btndone.caption
+msgctxt "TFRMCOMMANDSINPUT.BTNDONE.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrmcommandsinput.caption
+msgid "Input for Process"
+msgstr ""
+
+#: tfrmcommandsinput.cbwordwrap.caption
+msgid "&Z  Wordwrap"
+msgstr ""
+
+#: tfrmcommandsinput.cbwordwrap.hint
+msgctxt "TFRMCOMMANDSINPUT.CBWORDWRAP.HINT"
+msgid ""
+"Checked and the output above uses \n"
+"wordwrap. Not, and not.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcommandsinput.lblprocessinputmsg.caption
+msgid "Process wants input, type or paste here:"
+msgstr ""
+
+#: tfrmcommandsinput.meminput.hint
+msgid ""
+"This is the INPUT window which means\n"
+"the Command Line you are running has\n"
+"the \"Wants Input\" checked.\n"
+"\n"
+"Whatever text you paste here will be fed into\n"
+"the process immediately before it is allowed \n"
+"to run.\n"
+"\n"
+"Very useful in some cases for some Commands,\n"
+"if the command accepts AND reacts to stdin \n"
+"(standard input).\n"
+"\n"
+"Try it with grep command for example.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcommandsvar.btnapply.caption
+msgid "&A  Apply"
+msgstr ""
+
+#: tfrmcommandsvar.btnapply.hint
+msgid ""
+"This applies any text you have typed to the\n"
+"current variable.\n"
+"\n"
+"It is far easier to simply press <ENTER> after\n"
+"typing everything in. \n"
+"\n"
+"Once all variables have been applied a final\n"
+"<ENTER> or clicking this button will\n"
+"proceed with the running of the \n"
+"command line.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcommandsvar.btncancel.caption
+msgctxt "TFRMCOMMANDSVAR.BTNCANCEL.CAPTION"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmcommandsvar.btndone.caption
+msgctxt "TFRMCOMMANDSVAR.BTNDONE.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrmcommandsvar.btnfilename.caption
+msgid "&N  Insert File Name"
+msgstr ""
+
+#: tfrmcommandsvar.btnfoldername.caption
+msgid "&F  Insert Folder Name"
+msgstr ""
+
+#: tfrmcommandsvar.caption
+msgid "Input Variables"
+msgstr ""
+
+#: tfrmcommandsvar.edtcmdline.hint
+msgid ""
+"The Command Line that will be run with\n"
+"variables to be filled in.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcommandsvar.edtinput.hint
+msgid ""
+"What is typed here replaces the highlighted\n"
+"variable above.\n"
+"\n"
+"You can use <ENTER> after typing to move \n"
+"to the next variable (if there is one). You can \n"
+"also use <ENTER> after the last variable\n"
+"to apply the variables and continue with\n"
+"the running of the command line.\n"
+"\n"
+"If the variable is for a filename two buttons\n"
+"will appear allowing you to choose either in\n"
+"file mode or folder mode. \n"
+"\n"
+"You can use these buttons or type in the \n"
+"file name in that case.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmcommandsvar.meminfo.hint
+msgid ""
+"This displays a hint for you so you know \n"
+"what you should be typingt: text, an integer,\n"
+"a decmal, or a filename.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmfind.caption
+msgid "frmFind"
+msgstr ""
+
+#: tfrmfindtext.lblfindnexttext.caption
+#| msgid "fntDNT"
+msgctxt "tfrmfindtext.lblfindnexttext.caption"
+msgid "fntDNT"
+msgstr "fntDNT"
+
+#: tfrmlistmanager.actadd.caption
+msgid "&A  Add"
+msgstr ""
+
+#: tfrmlistmanager.actcancel.caption
+msgctxt "tfrmlistmanager.actcancel.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmlistmanager.actconsolidate.caption
+msgid "&X  Consolidate"
+msgstr ""
+
+#: tfrmlistmanager.actdelete.caption
+msgctxt "tfrmlistmanager.actdelete.caption"
+msgid "&D  Delete"
+msgstr ""
+
+#: tfrmlistmanager.actedit.caption
+msgctxt "tfrmlistmanager.actedit.caption"
+msgid "&B  Edit"
+msgstr ""
+
+#: tfrmlistmanager.actok.caption
+msgctxt "tfrmlistmanager.actok.caption"
+msgid "&OK"
+msgstr "&OK"
+
+#: tfrmlistmanager.actrevert.caption
+msgid "&Y  Revert List"
+msgstr ""
+
+#: tfrmlistmanager.actshowusage.caption
+msgid "&Z  Show Usage"
+msgstr ""
+
+#: tfrmlistmanager.btnadd.caption
+msgctxt "tfrmlistmanager.btnadd.caption"
+msgid "&A  NT"
+msgstr "&A  NT"
+
+#: tfrmlistmanager.btnadd.hint
+msgid ""
+"Yes. Add a new item.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmlistmanager.btnconsolidate.hint
+msgid ""
+"This will consolidate, or merge, one List item\n"
+"to another. \n"
+"\n"
+"For example, you find you have keywords\n"
+"of \"Frist\" and \"First\". You can get rid of \"Frist\"\n"
+"by consolidating it to \"First\".\n"
+"\n"
+"This updates all DB items using \"Frist\" also.\n"
+"\n"
+"Choosing consolidate may diasable other\n"
+"buttons. This is necessary to prevent DB\n"
+"update complications.\n"
+"\n"
+"You may also find that consolidate is \n"
+"disabled for similar reasons as above. \n"
+"Simply save what you are doing and then\n"
+"come back in and do your consolidations.\n"
+"\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmlistmanager.btndelete.caption
+msgctxt "tfrmlistmanager.btndelete.caption"
+msgid "&D  NT"
+msgstr "&D  NT"
+
+#: tfrmlistmanager.btndelete.hint
+msgid ""
+"Yeah. Deletes the selected Item.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmlistmanager.btnedit.caption
+msgctxt "tfrmlistmanager.btnedit.caption"
+msgid "&B  NT"
+msgstr "&B  NT"
+
+#: tfrmlistmanager.btnedit.hint
+msgid ""
+"Change the name of the currently selected\n"
+"Item.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmlistmanager.btnok.hint
+msgid ""
+"Depending on Mode:\n"
+"\n"
+"If displaying this list from a Command this\n"
+"button adds the selected Items to the \n"
+"Command's List.\n"
+"\n"
+"If in Manage Items mode this simply closes\n"
+"the form, you use the Manage buttons to\n"
+"manipulate the list.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmlistmanager.btnrevert.hint
+msgid ""
+"If you realize you are making a mistakes,\n"
+"or are unsure that you like the changes\n"
+"you have make, this will cancel all changes\n"
+"and re-load the List as it exists in the \n"
+"database.\n"
+"\n"
+"This will be disabled if nothing has been\n"
+"added, edited or deleted. \n"
+"\n"
+"It will also be unavailabe if you choose to \n"
+"Consolidate any Items until the list is \n"
+"saved.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmlistmanager.btnshowusage.hint
+msgid ""
+"Use this to help make decisions about\n"
+"deletions, consolidations, etc.\n"
+"\n"
+"It will show a list of commands that are\n"
+"using the selected item.\n"
+"\n"
+"Be aware it only searches saved commands,\n"
+"commands that are in an edited state\n"
+"may or may not show. To be sure you are\n"
+"seeing an accurate list, be sure to save\n"
+"commands before using this.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmlistmanager.caption
+msgid "Key Words"
+msgstr ""
+
+#: tfrmlistmanager.gbmanagelist.caption
+msgid "Manage Master List"
+msgstr ""
+
+#: tfrmlistmanager.lblinstructions.caption
+msgid "Add Selected items to Command"
+msgstr ""
+
+#: tfrmlistmanager.lblist.hint
+msgid ""
+"Contents of the List you are currently\n"
+"editing.\n"
+"\n"
+"From a Command you can choose mulitple\n"
+"List items to add, then use OK button.\n"
+"\n"
+"You can manage the Master List in either \n"
+"Command Edit mode or Manage List Mode.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmlistmanager.menuitem1.caption
+msgctxt "TFRMLISTMANAGER.MENUITEM1.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmlistmanager.menuitem2.caption
+msgctxt "TFRMLISTMANAGER.MENUITEM2.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmlistmanager.menuitem3.caption
+msgctxt "TFRMLISTMANAGER.MENUITEM3.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmlistmanagerconsolidate.caption
+msgctxt "TFRMLISTMANAGERCONSOLIDATE.CAPTION"
+msgid "Consolidate %s"
+msgstr ""
+
+#: tfrmlistmanagerconsolidate.cbchoose.hint
+msgid ""
+"This is the List Item you want to consolidate\n"
+"TO.\n"
+"\n"
+"The List Item shown above will beconsolidated\n"
+"to this List Item.\n"
+"\n"
+"When you press OK the old Item disappears\n"
+"and all instances of it are changed to the newly\n"
+"chosen Item.\n"
+"\n"
+"<end.>\n"
+msgstr ""
+
+#: tfrmlistmanagerconsolidate.label3.caption
+msgid "with (choose below):"
+msgstr ""
+
+#: tfrmlistmanagerconsolidate.lblinfo.caption
+msgctxt "tfrmlistmanagerconsolidate.lblinfo.caption"
+msgid "lblInfo"
+msgstr "lblInfo"
+
+#: tfrmlistmanagerconsolidate.lblitem.caption
+msgid "lblItem"
+msgstr "lblItem"
+
+#: tfrmlistmanagerconsolidate.lblitem.hint
+msgid ""
+"This is the List Item you want to consolidate\n"
+"(combine into) another List Item.\n"
+"\n"
+"You choose the List Item to consolidate too\n"
+"below from the combobox.\n"
+"\n"
+"When you press OK the old Item disappears\n"
+"and all instances of it are changed to the newly\n"
+"chosen Item.\n"
+"\n"
+"<end.>\n"
+msgstr ""
+
+#: tfrmmain.actabout.caption
+msgid "About"
+msgstr ""
+
+#: tfrmmain.actcmdlinedelete.caption
+msgid "- Line"
+msgstr ""
+
+#: tfrmmain.actcmdlinedown.caption
+msgid "Move Down"
+msgstr ""
+
+#: tfrmmain.actcmdlineundelete.caption
+msgctxt "TFRMMAIN.ACTCMDLINEUNDELETE.CAPTION"
+msgid "Undo -"
+msgstr ""
+
+#: tfrmmain.actcmdlineup.caption
+msgid "Move Up"
+msgstr ""
+
+#: tfrmmain.actcommanddelete.caption
+msgid "- Del"
+msgstr ""
+
+#: tfrmmain.actcommandundelete.caption
+msgctxt "tfrmmain.actcommandundelete.caption"
+msgid "Undo -"
+msgstr ""
+
+#: tfrmmain.actcopyclipcmd.caption
+msgid "Copy Cmd to Clipboard"
+msgstr ""
+
+#: tfrmmain.actcopyclipcmdline.caption
+msgid "Copy to ClipBoard"
+msgstr ""
+
+#: tfrmmain.actcopycmd.caption
+msgid "Duplciate Copy"
+msgstr ""
+
+#: tfrmmain.actcopycmdline.caption
+msgid "Duplicate Copy"
+msgstr ""
+
+#: tfrmmain.actexit.caption
+msgid "Exit Program"
+msgstr ""
+
+#: tfrmmain.actfindcmd.caption
+msgid "&Find"
+msgstr ""
+
+#: tfrmmain.actfindcmdline.caption
+msgid "Find Line"
+msgstr ""
+
+#: tfrmmain.actmanagekeywords.caption
+msgid "Manage KeyWords"
+msgstr ""
+
+#: tfrmmain.actnewcommandline.caption
+msgid "+ Line"
+msgstr ""
+
+#: tfrmmain.actoptions.caption
+msgid "Options"
+msgstr ""
+
+#: tfrmmain.actplus.caption
+msgctxt "TFRMMAIN.ACTPLUS.CAPTION"
+msgid "Add"
+msgstr ""
+
+#: tfrmmain.actprofiles.caption
+msgctxt "TFRMMAIN.ACTPROFILES.CAPTION"
+msgid "Manage Database Profiles"
+msgstr ""
+
+#: tfrmmain.actquickrun.caption
+msgid "Quick Run"
+msgstr "Quick Run"
+
+#: tfrmmain.actrevert.caption
+msgid "Revert"
+msgstr ""
+
+#: tfrmmain.actrun.caption
+msgid "Run"
+msgstr ""
+
+#: tfrmmain.actsave.caption
+msgctxt "TFRMMAIN.ACTSAVE.CAPTION"
+msgid "Save"
+msgstr ""
+
+#: tfrmmain.actsearchdisplaykeycmd.caption
+msgctxt "tfrmmain.actsearchdisplaykeycmd.caption"
+msgid "Display Search"
+msgstr ""
+
+#: tfrmmain.actsearchdisplaysearch.caption
+msgctxt "TFRMMAIN.ACTSEARCHDISPLAYSEARCH.CAPTION"
+msgid "Display Search"
+msgstr ""
+
+#: tfrmmain.actsearchfindcmd.caption
+msgid "Find Command"
+msgstr ""
+
+#: tfrmmain.actsearchfindcmdline.caption
+msgid "Find Cmd Line"
+msgstr ""
+
+#: tfrmmain.actsearchgotocmd.caption
+msgid "Go to Command"
+msgstr ""
+
+#: tfrmmain.actsearchgotocmdline.caption
+msgid "Go to Cmd Line"
+msgstr ""
+
+#: tfrmmain.actsearchkeycmd.caption
+msgctxt "TFRMMAIN.ACTSEARCHKEYCMD.CAPTION"
+msgid "Search"
+msgstr ""
+
+#: tfrmmain.actsearchloadkeycmd.caption
+msgctxt "TFRMMAIN.ACTSEARCHLOADKEYCMD.CAPTION"
+msgid "Load Search"
+msgstr ""
+
+#: tfrmmain.actsearchloadsearch.caption
+msgctxt "TFRMMAIN.ACTSEARCHLOADSEARCH.CAPTION"
+msgid "Load Search"
+msgstr ""
+
+#: tfrmmain.actsearchnewkeycmd.caption
+msgctxt "tfrmmain.actsearchnewkeycmd.caption"
+msgid "New Search"
+msgstr ""
+
+#: tfrmmain.actsearchnewsearch.caption
+msgctxt "TFRMMAIN.ACTSEARCHNEWSEARCH.CAPTION"
+msgid "New Search"
+msgstr ""
+
+#: tfrmmain.actsearchrun.caption
+msgid "Run Cmd Line"
+msgstr ""
+
+#: tfrmmain.actsearchsavekeycmd.caption
+msgctxt "tfrmmain.actsearchsavekeycmd.caption"
+msgid "Save Search"
+msgstr ""
+
+#: tfrmmain.actsearchsavesearch.caption
+msgctxt "TFRMMAIN.ACTSEARCHSAVESEARCH.CAPTION"
+msgid "Save Search"
+msgstr ""
+
+#: tfrmmain.actsearchsearch.caption
+msgctxt "TFRMMAIN.ACTSEARCHSEARCH.CAPTION"
+msgid "Search"
+msgstr ""
+
+#: tfrmmain.actswitchdb.caption
+msgid "Switch Database"
+msgstr ""
+
+#: tfrmmain.btnabout.hint
+msgid ""
+"Show about form which lists all the paths\n"
+"to program, database files, etc. and \n"
+"license information. It also has Tips for \n"
+"use and you can re-read the introduction.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btncancelrun.caption
+msgid "&W  Stop Run"
+msgstr ""
+
+#: tfrmmain.btnclear.caption
+msgid "Clear Display History"
+msgstr ""
+
+#: tfrmmain.btnclear.hint
+msgid ""
+"Maybe you don't like clutter. Maybe you don't\n"
+"want people to see what you've been running.\n"
+"\n"
+"Use this button to clear the OutPut memo.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btncmdedit.caption
+msgid "&A  Edit"
+msgstr ""
+
+#: tfrmmain.btncmdlinedelete.caption
+#| msgid "&T  -"
+msgid "&T  CL-"
+msgstr "&T  CL-"
+
+#: tfrmmain.btncmdlinedelete.hint
+msgid ""
+"This marks the currently selected Command\n"
+"Line for deletion.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btncmdlinedown.caption
+msgid "↓"
+msgstr "↓"
+
+#: tfrmmain.btncmdlineundelete.caption
+#| msgid "&U Un -"
+msgid "&U Undo-"
+msgstr "&U Undo-"
+
+#: tfrmmain.btncmdlineundelete.hint
+msgid ""
+"This will undelete the currently selected\n"
+"Command Line.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btncmdlineup.caption
+msgid "↑"
+msgstr "↑"
+
+#: tfrmmain.btncmdlineup.hint
+msgid ""
+"These buttons move the selected \n"
+"Command Line up or down in the list.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btncommanddelete.caption
+msgid "&D  Del"
+msgstr ""
+
+#: tfrmmain.btncommanddelete.hint
+msgid ""
+"This marks the currently selected item\n"
+"for deletion. You can also use the <delete>\n"
+"key.\n"
+"\n"
+"The Undo Delete button reverses this\n"
+"state. \n"
+"\n"
+"If when you selected delete the item was\n"
+"in an edited state the undo delete button\n"
+"will bring the command back to that state.\n"
+"\n"
+"If you use the 'Revert' button, however, the\n"
+"deletion state --AND-- any edits will be\n"
+"removed. For this reason it is generally\n"
+"safer to use the undelete button rather than\n"
+"the revert button in these cases.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btncommandundelete.caption
+msgid "&E  Undo Del"
+msgstr ""
+
+#: tfrmmain.btncommandundelete.hint
+msgid ""
+"If the currently selected command is in a\n"
+"'delete' state this will reverse that state. \n"
+"You can also use the <ctrl-delete> key.\n"
+"\n"
+"If when you selected delete the item was\n"
+"in an edited state the undo delete button\n"
+"will bring the command back to that state.\n"
+"\n"
+"If you use the 'Revert' button, however, the\n"
+"deletion state --AND-- any edits will be\n"
+"removed. For this reason it is generally\n"
+"safer to use the undelete button rather than\n"
+"the revert button in these cases.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnfindcmd.caption
+msgid "&F  Find"
+msgstr ""
+
+#: tfrmmain.btnfindcmd.hint
+msgid ""
+"This opens a small find dialog so you can\n"
+"find any matching text in the list.\n"
+"\n"
+"The find dialog can be used to select the\n"
+"List item you want, <enter> will select the\n"
+"current item, and <esc> closes the find\n"
+"window.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnfindcmdline.caption
+msgid "&V  Find"
+msgstr ""
+
+#: tfrmmain.btnfindcmdline.hint
+msgid ""
+"This brings up a small find dialog to help\n"
+"you search in a long list of Command \n"
+"Lines.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnhaltprocess.caption
+msgid "&M  Halt Process"
+msgstr ""
+
+#: tfrmmain.btnhaltprocess.hint
+msgid ""
+"This will halt the selected detached process.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnhelpcommand.caption
+msgid "&X  Help"
+msgstr ""
+
+#: tfrmmain.btnkeywordadd.caption
+msgid "+"
+msgstr "+"
+
+#: tfrmmain.btnkeywordadd.hint
+msgid ""
+"Add KeyWords for this Command.\n"
+"\n"
+"In the ensuing dialog you can also manage\n"
+"the Master Key|Word List.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnkeyworddelete.caption
+msgid "-"
+msgstr "-"
+
+#: tfrmmain.btnkeyworddelete.hint
+msgid ""
+"Remove selected KeyWord(s) for this \n"
+"Command.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnkeyworddisplay.caption
+msgctxt "tfrmmain.btnkeyworddisplay.caption"
+msgid "Display"
+msgstr ""
+
+#: tfrmmain.btnkeywordload.caption
+msgctxt "tfrmmain.btnkeywordload.caption"
+msgid "Load"
+msgstr ""
+
+#: tfrmmain.btnkeywordnewsearch.caption
+msgctxt "tfrmmain.btnkeywordnewsearch.caption"
+msgid "New"
+msgstr ""
+
+#: tfrmmain.btnkeywords.caption
+msgid "&L  Manage KeyWords"
+msgstr ""
+
+#: tfrmmain.btnkeywords.hint
+msgid ""
+"Manage the Master KeyWork List. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnkeywordsave.caption
+msgctxt "tfrmmain.btnkeywordsave.caption"
+msgid "Save"
+msgstr ""
+
+#: tfrmmain.btnlineedit.caption
+msgctxt "tfrmmain.btnlineedit.caption"
+msgid "&B  Edit"
+msgstr ""
+
+#: tfrmmain.btnlineok.caption
+msgid "O&K"
+msgstr "O&K"
+
+#: tfrmmain.btnlocationpath.caption
+msgid "&Z  Directory"
+msgstr ""
+
+#: tfrmmain.btnlocationpath.hint
+msgid ""
+"This always shows the actual path to the\n"
+"folder for this command, if it has one.\n"
+"\n"
+"Bad command names and builtins don't.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnnewcommandline.caption
+#| msgid "&S  +"
+msgid "&S  CL+"
+msgstr "&S  CL+"
+
+#: tfrmmain.btnnewcommandline.hint
+msgid ""
+"This will add a new Command Line for the\n"
+"Command above.\n"
+"\n"
+"As a small help the Command name is\n"
+"filled in for you. It is up to you to fill in the \n"
+"parameters / flags after that.\n"
+"\n"
+"When adding a new Command Line it is not\n"
+"sent into edit mode. You will need to edit it\n"
+"after adding if you want to add notes, check\n"
+"checkboxes, etc.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnplus.caption
+msgid "&C  Add"
+msgstr ""
+
+#: tfrmmain.btnplus.hint
+msgid ""
+"Add a new command.\n"
+"\n"
+"Newly added Commands are added to the \n"
+"bottom of the list so they are easy to find\n"
+"during the process of filling in your database.\n"
+"\n"
+"The next time the the database is freshly\n"
+"loaded, or if you use the 'Sort' button,\n"
+"the Commands are all sorted by name.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnprofilemanagement.caption
+msgid "&Q  Manage DB Profiles"
+msgstr ""
+
+#: tfrmmain.btnprofilemanagement.hint
+msgid ""
+"Open the Database Profile Window in \n"
+"\"Management\" mode where you can add,\n"
+"edit, delete, or copy them. \n"
+"\n"
+"The list will ALWAYS include the default\n"
+"databases, even if you have disallowed them\n"
+"in Options. This is done so that original \n"
+"databases can be copied if you want.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnquickrun.hint
+msgid ""
+"This will run whatever command you put\n"
+"in it. It is for convenience, for instance you\n"
+"may need to see the output from another\n"
+"command while editing a command line.\n"
+"\n"
+"But...BE AWARE there are no safety catches\n"
+"like threat levels and so on. \n"
+"\n"
+"USE THIS AT OWN RISK.\n"
+"\n"
+"At this time it only remembers the last\n"
+"command line you entered. In future it \n"
+"would be nice that it has a list of \n"
+"remembered commands.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnrefreshfavorites.caption
+msgid "&K  Refresh Favorites"
+msgstr ""
+
+#: tfrmmain.btnrefreshfavorites.hint
+msgid ""
+"This button only shows up if you've changed\n"
+"options to be 'Favorites manually refreshed'.\n"
+"\n"
+"Otherwise, Favorites are refreshed whenever\n"
+"changes are saved.\n"
+"\n"
+"The difference is that when Favorites are\n"
+"refreshed the indexes for selected Command\n"
+"LInes of the Commands are reset to the\n"
+"first CL and are no longer remembered.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnrevert.caption
+msgid "&G  Revert"
+msgstr ""
+
+#: tfrmmain.btnrevert.hint
+msgid ""
+"This button is enabled if the selected command\n"
+"has been edited in some way.\n"
+"\n"
+"Clicking it will revert the selected command\n"
+"back to the current values stored in the\n"
+"database. \n"
+"\n"
+"Careful! Reversion is not undoable.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnsave.caption
+msgid "&O Save"
+msgstr ""
+
+#: tfrmmain.btnsearchdisplaysearch.caption
+msgctxt "TFRMMAIN.BTNSEARCHDISPLAYSEARCH.CAPTION"
+msgid "Display"
+msgstr ""
+
+#: tfrmmain.btnsearchgotocmd.hint
+msgid ""
+"This will attempt to find the main entry\n"
+"for the selected item in the list and\n"
+"switch to it in the Commands List or \n"
+"Command Line list, depending.\n"
+"\n"
+"This will almost always work unless the \n"
+"name of the Command or Command Line\n"
+"Entry is in an edited state.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnsearchloadsearch.caption
+msgctxt "TFRMMAIN.BTNSEARCHLOADSEARCH.CAPTION"
+msgid "Load"
+msgstr ""
+
+#: tfrmmain.btnsearchnewsearch.caption
+msgctxt "TFRMMAIN.BTNSEARCHNEWSEARCH.CAPTION"
+msgid "New"
+msgstr ""
+
+#: tfrmmain.btnsearchsavesearch.caption
+msgctxt "TFRMMAIN.BTNSEARCHSAVESEARCH.CAPTION"
+msgid "Save"
+msgstr ""
+
+#: tfrmmain.btnsimplesearch.caption
+msgid "&M Simple Search"
+msgstr ""
+
+#: tfrmmain.btnsimplesearch.hint
+msgid ""
+"Performs a simple text search \n"
+"through all text fields in Commands\n"
+"and Command Lines (choosable).\n"
+"\n"
+"Advanced searches can be found \n"
+"in the \"Search\" tab. \n"
+"\n"
+"You can also choose to run an\n"
+"advanced search from the Simple\n"
+"Search Window. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnsortcommands.caption
+msgid "Sort"
+msgstr ""
+
+#: tfrmmain.btnsortcommands.hint
+msgid ""
+"New commands are added at the bottom\n"
+"of the list.\n"
+"\n"
+"Also when things are edited they get a \n"
+"prefix added.\n"
+"\n"
+"If it becomes hard to find something use\n"
+"this to sort the list.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnsortdetachedprocesses.caption
+msgid "&N  Sort Processes"
+msgstr ""
+
+#: tfrmmain.btnsortdetachedprocesses.hint
+msgid ""
+"Processes are added to the list in the order\n"
+"they are run, this can make it hard to find.\n"
+"\n"
+"Use this to sort the list to make it a bit easier.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnswitchdb.caption
+msgid "&P  Switch Database"
+msgstr ""
+
+#: tfrmmain.btnswitchdb.hint
+msgid ""
+"Open the Database Profile Window in \n"
+"\"Select\" mode. That is, here is where you\n"
+"can switch databases.\n"
+"\n"
+"The current database will not be listed.\n"
+"\n"
+"In addition, the default database profiles \n"
+"for \"DB\" may, or may not, be optioons\n"
+"depending on the settings in Options.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnterminal.caption
+msgid "Terminal"
+msgstr ""
+
+#: tfrmmain.btnterminal.hint
+msgid ""
+"Open a terminal. This will be the terminal\n"
+"program that is assocaited with your login\n"
+"(Environment variable TERM). \n"
+"\n"
+"If you want to use another terminal program\n"
+"you can change it in options.\n"
+"\n"
+"The terminal is opened as a child of this\n"
+"program and so dies when this prgram is \n"
+"closed.\n"
+"\n"
+"Ok, not exactly true. It will depend on the\n"
+"terminal program. In testing here \"xterm\" \n"
+"remains a child of this program. But \"konsole\"\n"
+"remains persistent even when the program\n"
+"is closed.\n"
+"\n"
+"Your mileage may vary.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnthreatlevelinfo.caption
+msgctxt "TFRMMAIN.BTNTHREATLEVELINFO.CAPTION"
+msgid "?"
+msgstr ""
+
+#: tfrmmain.btnthreatlevelinfo.hint
+msgid ""
+"Display information about this Threat Level.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnthreatlevelinfoline.caption
+msgctxt "tfrmmain.btnthreatlevelinfoline.caption"
+msgid "?"
+msgstr ""
+
+#: tfrmmain.btnversioncommand.caption
+msgid "&Y  Version"
+msgstr ""
+
+#: tfrmmain.caption
+msgid "commandoo"
+msgstr ""
+
+#: tfrmmain.cbalertline.caption
+msgctxt "TFRMMAIN.CBALERTLINE.CAPTION"
+msgid "NT AL"
+msgstr "NT AL"
+
+#: tfrmmain.cbalertline.hint
+msgid ""
+"Ever run a command line in a terminal and\n"
+"then have that ooops moment where you\n"
+"realize you needed to do something else\n"
+"first?\n"
+"\n"
+"Well, no more! If this checkbox is checked\n"
+"commandoo will display the NOTES for this\n"
+"command line before running it and giving\n"
+"you a chance to change your mind.\n"
+"\n"
+"TIP: If you use this checkbox then put \n"
+"your concerns, reminders in the NOTES\n"
+"field so that you can decide if you want\n"
+"to run the command line at that time or\n"
+"not.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbdetachprocess.caption
+msgctxt "TFRMMAIN.CBDETACHPROCESS.CAPTION"
+msgid "NT DP"
+msgstr "NT DP"
+
+#: tfrmmain.cbdetachprocess.hint
+msgid ""
+"Checking this indicates that the preferred\n"
+"mode for this Command is to be run as\n"
+"a DETACHED PROCESS.\n"
+"\n"
+"Detached processes run separately and\n"
+"independently from this program (that is,\n"
+"you can launch programs from here like\n"
+"gimp or firefox or whatever, with flags). \n"
+"\n"
+"Detached processes live only while this\n"
+"program lives. When this program closes\n"
+"any detahced processes it \"owns\" are\n"
+"also closed.\n"
+"\n"
+"You can manage Detached Processes on\n"
+"the \"Proc's\" tab.\n"
+"\n"
+"Commands can not be run, only Command\n"
+"Lines. But checking this is a convience. Any \n"
+"Command Lines you add will inherit this\n"
+"setting.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbdetachprocessline.caption
+msgctxt "TFRMMAIN.CBDETACHPROCESSLINE.CAPTION"
+msgid "NT DP"
+msgstr "NT DP"
+
+#: tfrmmain.cbdetachprocessline.hint
+msgid ""
+"Checking this indicates that this Command\n"
+"LIne will be run as a DETACHED PROCESS.\n"
+"\n"
+"Detached processes run separately and\n"
+"independently from this program (that is,\n"
+"you can launch programs from here like\n"
+"gimp or firefox or whatever, with flags). \n"
+"\n"
+"Detached processes live only while this\n"
+"program lives. When this program closes\n"
+"any detahced processes it \"owns\" are\n"
+"also closed.\n"
+"\n"
+"You can manage Detached Processes on\n"
+"the \"Proc's\" tab.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbdispthreatlevel.text
+msgctxt "TFRMMAIN.CBDISPTHREATLEVEL.TEXT"
+msgid "< Not Specified >"
+msgstr ""
+
+#: tfrmmain.cbisfavorite.caption
+msgctxt "TFRMMAIN.CBISFAVORITE.CAPTION"
+msgid "NT FAV"
+msgstr "NT FAV"
+
+#: tfrmmain.cbisfavorite.hint
+msgid ""
+"Checking this box marks the Command as\n"
+"a \"favorite\" and it will show up in the \n"
+"Favorites list.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbisfavoriteline.caption
+msgctxt "TFRMMAIN.CBISFAVORITELINE.CAPTION"
+msgid "NT FAV"
+msgstr "NT FAV"
+
+#: tfrmmain.cbisfavoriteline.hint
+msgid ""
+"Checking this box marks the Command Line\n"
+"as a \"favorite\" and it will show up in the \n"
+"Favorites list.\n"
+"\n"
+"It will be listed by the specified Command \n"
+"Line...\n"
+"\n"
+"...or you can give it a \"friendly name\" that \n"
+"is easier to read in the list.\n"
+"\n"
+"If you give it a friendly name the entry will\n"
+"be indented a couple of spaces and \n"
+"followed by the Command line for \n"
+"reference.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbsuperuser.caption
+msgctxt "TFRMMAIN.CBSUPERUSER.CAPTION"
+msgid "NT SU"
+msgstr "NT SU"
+
+#: tfrmmain.cbsuperuser.hint
+msgid ""
+"Checking this indicates that the preferred\n"
+"mode for this Command is to be run as\n"
+"ROOT.\n"
+"\n"
+"Commands can not be run, only Command\n"
+"Lines. But checking this is a convience. Any \n"
+"Command Lines you add will inherit this\n"
+"setting.\n"
+"\n"
+"AS ALWAYS be circumspect in the use of \n"
+"SuperUser, it isquite powerful and at\n"
+"times quite dangerous. Know what you are\n"
+"doing.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbsuperuserline.caption
+msgctxt "TFRMMAIN.CBSUPERUSERLINE.CAPTION"
+msgid "NT SU"
+msgstr "NT SU"
+
+#: tfrmmain.cbsuperuserline.hint
+msgid ""
+"Checking this indicates that this Command\n"
+"LIne will be run as ROOT. This uses the\n"
+"Linux program that your system has \n"
+"(kdesudo, gksudo, etc. to ensure it is \n"
+"secure).\n"
+"\n"
+"It uses a special prefix to indicate this,\n"
+"don't change that.\n"
+"\n"
+"AS ALWAYS be circumspect in the use of \n"
+"SuperUser, it isquite powerful and at\n"
+"times quite dangerous. Know what you are\n"
+"doing.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbterminalonly.caption
+msgctxt "TFRMMAIN.CBTERMINALONLY.CAPTION"
+msgid "NT TO"
+msgstr "NT TO"
+
+#: tfrmmain.cbterminalonly.hint
+msgid ""
+"Checking this indicates that the preferred\n"
+"mode for this Command is to be run only\n"
+"through the Terminal.\n"
+"\n"
+"This setting only has an actual affect on\n"
+"Command Lines of course because Commands\n"
+"can not be run, only Command Lines can\n"
+"be run. If checked in a Command Line then\n"
+"the Command Line will NOT run through \n"
+"commandoo.\n"
+"\n"
+"Checking this here will copy this\n"
+"setting to any new Command Lines you\n"
+"create for this Command.\n"
+"\n"
+"This is an added safety measure for \n"
+"commands that CAN NOT and/or SHOULD NOT\n"
+"be run through commandoo.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbterminalonlyline.caption
+msgctxt "TFRMMAIN.CBTERMINALONLYLINE.CAPTION"
+msgid "NT TO"
+msgstr "NT TO"
+
+#: tfrmmain.cbterminalonlyline.hint
+msgctxt "tfrmmain.cbterminalonlyline.hint"
+msgid ""
+"Some commands should not be run from \n"
+"commandoo. Some may not work through\n"
+"commandoo...\n"
+"\n"
+"...but you still want them in your database.\n"
+"\n"
+"Check this box and the command line can\n"
+"-NOT- be run through commandoo, a\n"
+"further level of safety for you.\n"
+"\n"
+"TIP: Don't forget to use this checkbox when\n"
+"necessary!\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbthreatlevel.text
+msgctxt "TFRMMAIN.CBTHREATLEVEL.TEXT"
+msgid "< Not Specified >"
+msgstr ""
+
+#: tfrmmain.cbthreatleveldisp.text
+msgctxt "TFRMMAIN.CBTHREATLEVELDISP.TEXT"
+msgid "< Not Specified >"
+msgstr ""
+
+#: tfrmmain.cbthreatlevelline.text
+msgctxt "TFRMMAIN.CBTHREATLEVELLINE.TEXT"
+msgid "< Not Specified >"
+msgstr ""
+
+#: tfrmmain.cbthreatlevellinedisp.text
+msgctxt "tfrmmain.cbthreatlevellinedisp.text"
+msgid "< Not Specified >"
+msgstr ""
+
+#: tfrmmain.cbuseshellline.caption
+msgctxt "TFRMMAIN.CBUSESHELLLINE.CAPTION"
+msgid "NT US"
+msgstr "NT US"
+
+#: tfrmmain.cbuseshellline.hint
+msgid ""
+"I've gone to great effort to make this program\n"
+"run commands, including piped commands.\n"
+"\n"
+"But there are certain cases where it just\n"
+"got too complicated to go any further.\n"
+"\n"
+"If my program can't run the Command Line\n"
+"it will tell you so. In this case you can use\n"
+"this setting to pass it to the shell and see if it\n"
+"will run it. Most of the time it will.\n"
+"\n"
+"But I can't test everything (too ginormous)\n"
+"so I can't promise it will run.\n"
+"\n"
+"Another alternative is to siimply copy the\n"
+"command line (right click menu) and \n"
+"run it in a terminal.\n"
+"\n"
+"Examples of stuff that I don't process:\n"
+"\n"
+"semicolons (;)\n"
+"redirects ( < > >> << )\n"
+"and so on.\n"
+"\n"
+"Everything I've tested here works through\n"
+"shell. Maybe it will for you too!\n"
+"\n"
+"Of course, as always, be cautious with\n"
+"commands. For example, redirects, with\n"
+"some commands, wipe out files and so on.\n"
+" \n"
+"You need to know what you're doing so\n"
+"be sure to study commands you don't \n"
+"know.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbwantsinputline.caption
+msgctxt "TFRMMAIN.CBWANTSINPUTLINE.CAPTION"
+msgid "NT WI"
+msgstr "NT WI"
+
+#: tfrmmain.cbwantsinputline.hint
+msgid ""
+"Another feature for you. If this is checked\n"
+"you will be allowed to specify some input \n"
+"before the command is run.\n"
+"\n"
+"This input is given to the command \n"
+"immediately and, if the command pays\n"
+"attention to input to its stdin at runtime,\n"
+"it will use it.\n"
+"\n"
+"Not all commands will, or can, use the \n"
+"Input. A good example of one that can is\n"
+"\"grep\". So you can use Input to pass text \n"
+"to grep to search. Kinda cool.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.cbwordwrapmain.caption
+msgid "Wordwrap Output "
+msgstr ""
+
+#: tfrmmain.cbwordwrapmain.hint
+msgid ""
+"You can choose to wrap the line content of \n"
+"the Output window to the left.\n"
+"\n"
+"Whether the output wraps or not depends\n"
+"on this item's checked state.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.edtfriendlynameline.hint
+msgid ""
+"A \"friendly name\" is a simple name you\n"
+"specify that is easy to remember and/or\n"
+"find.\n"
+"\n"
+"Command Lines can get quite long, and\n"
+"complicated. Many look similiar to each\n"
+"other. Others have long paths in front of\n"
+"the command name.\n"
+"\n"
+"This makes it extremely hard to find in the\n"
+"favorites list or in search results.\n"
+"\n"
+"But...if you take that monstrous Command\n"
+"Line and give it a friendly name of \n"
+"\"fuzzy bunny\" then it is easy to find!\n"
+"\n"
+"You're welcome.\n"
+"\n"
+"<end> \n"
+msgstr ""
+
+#: tfrmmain.edtfriendlynameline.texthint
+msgid "Alias for Favorites List"
+msgstr ""
+
+#: tfrmmain.edthelp.hint
+msgctxt "tfrmmain.edthelp.hint"
+msgid ""
+"This is a HUGE feature (so I think).\n"
+"\n"
+"You're Welcome!\n"
+"\n"
+"Despite the assurances that all Linux \n"
+"Commands will supprt -h and --help it is\n"
+"simply not the truth. \n"
+"\n"
+"I don't know how many times I've typed -h to\n"
+"find it should be --help, or typed --help to \n"
+"find it should be -h or --help-all.\n"
+"\n"
+"No more!\n"
+"\n"
+"Once it is tested and written here you\n"
+"no longer need to go through this torture.\n"
+"\n"
+"What is assigned here is used by the \"Help\"\n"
+"button above to display help for this\n"
+"Command.\n"
+"\n"
+"It defaults to --help. This may, or may not,\n"
+"be correct. You may need to mess around\n"
+"and test to find the correct flag.\n"
+"\n"
+"Yes, yes, you're welcome!!\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.edtversion.hint
+msgid ""
+"Type the Command's version flag here.\n"
+"\n"
+"When you use the \"Version\" button above\n"
+"the contents here will be used to print the\n"
+"Command's version information.\n"
+"\n"
+"It defaults to --version, which may or may\n"
+"not be right. You may need to test it and/or\n"
+"find it in help to find the correct flag.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.framehint1.cbhints.hint
+msgid ""
+"Help HInts now Showing\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.label17.caption
+msgctxt "tfrmmain.label17.caption"
+msgid "Detached Processes"
+msgstr ""
+
+#: tfrmmain.label9.caption
+msgid "Command List"
+msgstr ""
+
+#: tfrmmain.lbcmdlines.hint
+msgid ""
+"The list of Command Lines that belong to\n"
+"the Command above.\n"
+"\n"
+"Since Commands can not be run, only\n"
+"Command Lines, every Command MUST\n"
+"have at least one Command Line if you \n"
+"intend to actually run it.\n"
+"\n"
+"For instance, you add gimp as a command.\n"
+"\n"
+"You must then add a Command Line\n"
+"for it to actually run gimp.\n"
+"\n"
+"So this box will contain all the run-able \n"
+"Command Lines under this Command.\n"
+"\n"
+"ctrl-a or + adds a new Command Line.\n"
+"\n"
+"<Enter> runs the command line, while\n"
+"<Ctrl>-<Enter> edits the command line.\n"
+"\n"
+"Ctrl-Shift-Alt-C makes another copy of \n"
+"the object.\n"
+"\n"
+"For the ClipBoard:\n"
+"\n"
+"Ctrl-c copies the selected command, \n"
+"Ctrl-Shift-C copies the entire list.\n"
+"\n"
+"Ctrl-f opens the find dialog.\n"
+"\n"
+"Delete or \"-\" marks the item for deletion.\n"
+"To undo that use ctrl-Delete/\"-\"\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.lbcommands.hint
+msgid ""
+"The list of Linux Commands!\n"
+"\n"
+"The entries do not need to be Commands,\n"
+"you can use the command name field to \n"
+"make a \"command\" entry that you can \n"
+"add a variety of command lines that you\n"
+"find and want to use.\n"
+"\n"
+"ctrl-a or + adds a new command.\n"
+"\n"
+"<Enter> edits the command.\n"
+"\n"
+"Ctrl-Shift-Alt-C makes another copy of \n"
+"the object.\n"
+"\n"
+"For the ClipBoard:\n"
+"\n"
+"Ctrl-c copies the selected command, \n"
+"Ctrl-Shift-C copies the entire list.\n"
+"\n"
+"Ctrl-f opens the find dialog.\n"
+"\n"
+"Delete or \"-\" marks the item for deletion.\n"
+"To undo that use ctrl-Delete/\"-\"\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.lbdetachedprocesses.hint
+msgid ""
+"You have the ability to \"detach\" command\n"
+"line processes. This means it runs alongside\n"
+"this program separately and independently.\n"
+"\n"
+"Detached processes are listed here. Clicking\n"
+"on them shows information, and you can \n"
+"halt the process with the button.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.lbkeywords.hint
+msgid ""
+"This shows the assigned KeyWords for this\n"
+"Command.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.lblalertlinedisp.caption
+msgctxt "tfrmmain.lblalertlinedisp.caption"
+msgid "NT AL"
+msgstr "NT AL"
+
+#: tfrmmain.lblautosave.caption
+msgid "AutoSave at ~"
+msgstr ""
+
+#: tfrmmain.lblcapentryline.caption
+msgid "NT LI"
+msgstr "NT LI"
+
+#: tfrmmain.lblcapfriendlynameline.caption
+msgid "NT FN"
+msgstr "NT FN"
+
+#: tfrmmain.lblcapnotesline.caption
+msgid "NT NOT"
+msgstr "NT NOT"
+
+#: tfrmmain.lblcediting.caption
+msgid "Editing..."
+msgstr ""
+
+#: tfrmmain.lblcmdlinepointer.caption
+msgid ""
+"Command\n"
+"↓      Lines\n"
+msgstr ""
+
+#: tfrmmain.lblcmdpointer.caption
+msgid "Command  -->"
+msgstr ""
+
+#: tfrmmain.lblcommandname.hint
+msgid ""
+"The command name.\n"
+"\n"
+"Double Click to re-name the command. \n"
+"\n"
+"The same rules apply as for adding. If the\n"
+"name is in the path you don't need to type\n"
+"the path or find the file.\n"
+"\n"
+"The way the system is set up now the \n"
+"command names in the list MUST be unique.\n"
+"So you cannot use the name if it already \n"
+"exists in the list.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.lblcommandnamedisp.caption
+msgctxt "TFRMMAIN.LBLCOMMANDNAMEDISP.CAPTION"
+msgid "..."
+msgstr "..."
+
+#: tfrmmain.lbldetachedprocesses.caption
+msgid "Running Procs"
+msgstr ""
+
+#: tfrmmain.lbldetachprocessdisp.caption
+msgid "DNT DP"
+msgstr "DNT DP"
+
+#: tfrmmain.lbldetachprocesslinedisp.caption
+msgctxt "tfrmmain.lbldetachprocesslinedisp.caption"
+msgid "NT DP"
+msgstr "NT DP"
+
+#: tfrmmain.lbldispalert.caption
+msgid "DNTAL"
+msgstr "DNTAL"
+
+#: tfrmmain.lbldispdetachprocess.caption
+msgid "DNTDP"
+msgstr "DNTDP"
+
+#: tfrmmain.lbldispentry.caption
+msgid "lblDispEntry"
+msgstr "lblDispEntry"
+
+#: tfrmmain.lbldispentry.hint
+msgid ""
+"This is the Command / Command Line that \n"
+"is selected. \n"
+"\n"
+"If it is too long to see DoubleClick to display\n"
+"the entire line.\n"
+"\n"
+"This works on any line that is too long to \n"
+"be completely displayed.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.lbldispfriendlyname.caption
+msgid "lblDispFriendlyName"
+msgstr "lblDispFriendlyName"
+
+#: tfrmmain.lbldispfriendlyname.hint
+msgid ""
+"If you can't see all of the name DoubleClick\n"
+"it.\n"
+"\n"
+"This works on any line that is too long to \n"
+"be completely displayed.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.lbldispisfavorite.caption
+msgid "DNTFAV"
+msgstr "DNTFAV"
+
+#: tfrmmain.lbldispsuperuser.caption
+msgctxt "tfrmmain.lbldispsuperuser.caption"
+msgid "DNTSU"
+msgstr "DNTSU"
+
+#: tfrmmain.lbldispterminalonly.caption
+msgid "DNTTO"
+msgstr "DNTTO"
+
+#: tfrmmain.lbldispthreatlevel.caption
+msgctxt "TFRMMAIN.LBLDISPTHREATLEVEL.CAPTION"
+msgid "..."
+msgstr "..."
+
+#: tfrmmain.lbldispuseshell.caption
+msgid "DNTUS"
+msgstr "DNTUS"
+
+#: tfrmmain.lbldispwantsinput.caption
+msgid "DNTWI"
+msgstr "DNTWI"
+
+#: tfrmmain.lblfriendlynamelinedisp.caption
+msgctxt "TFRMMAIN.LBLFRIENDLYNAMELINEDISP.CAPTION"
+msgid "..."
+msgstr "..."
+
+#: tfrmmain.lblhelp.caption
+msgctxt "TFRMMAIN.LBLHELP.CAPTION"
+msgid "NTH"
+msgstr "NTH"
+
+#: tfrmmain.lblhelpdisp.caption
+msgctxt "tfrmmain.lblhelpdisp.caption"
+msgid "NTH"
+msgstr "NTH"
+
+#: tfrmmain.lblisfavoritedisp.caption
+msgid "DNT FAV"
+msgstr "DNT FAV"
+
+#: tfrmmain.lblisfavoritelinedisp.caption
+msgctxt "tfrmmain.lblisfavoritelinedisp.caption"
+msgid "NT FAV"
+msgstr "NT FAV"
+
+#: tfrmmain.lblkeywords.caption
+msgid "NT KEY"
+msgstr "NT KEY"
+
+#: tfrmmain.lblnooptions.caption
+msgid "< no options >"
+msgstr ""
+
+#: tfrmmain.lblpathactual.caption
+msgid "lblPathActual"
+msgstr "lblPathActual"
+
+#: tfrmmain.lblpathalias.caption
+msgctxt "TFRMMAIN.LBLPATHALIAS.CAPTION"
+msgid "Path:  "
+msgstr ""
+
+#: tfrmmain.lblpathalias.hint
+msgid ""
+"This displays information about the path\n"
+"to the command's folder.\n"
+"\n"
+"If the command is in the path it says only\n"
+"that it is in the path. If you want to see the\n"
+"full path in this case use the \"Path\" button\n"
+"above.\n"
+"\n"
+"If the command is a builtin (i.e, has no path)\n"
+"this says so.\n"
+"\n"
+"If neither of the above is the case then\n"
+"the full path is shown. \n"
+"\n"
+"If the path is so long you can't see it all\n"
+"just DoubleClick it to see it all.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.lblpathaliasdisp.caption
+msgctxt "tfrmmain.lblpathaliasdisp.caption"
+msgid "Path:  "
+msgstr ""
+
+#: tfrmmain.lblpathaliasdisp.hint
+msgid ""
+"If the path is too long to see just \n"
+"DoubleClick it.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.lblpestr.caption
+msgid "Search for PESTER in ufrmMain"
+msgstr "Search for PESTER in ufrmMain"
+
+#: tfrmmain.lblshowbuttons.caption
+msgid "Show:"
+msgstr ""
+
+#: tfrmmain.lblsrcmdlines.caption
+msgid "Command Lines"
+msgstr ""
+
+#: tfrmmain.lblsrcmds.caption
+msgctxt "TFRMMAIN.LBLSRCMDS.CAPTION"
+msgid "Commands"
+msgstr ""
+
+#: tfrmmain.lblsuperuserdisp.caption
+msgctxt "tfrmmain.lblsuperuserdisp.caption"
+msgid "DNT SU"
+msgstr "DNT SU"
+
+#: tfrmmain.lblsuperuserlinedisp.caption
+msgctxt "tfrmmain.lblsuperuserlinedisp.caption"
+msgid "NT SU"
+msgstr "NT SU"
+
+#: tfrmmain.lbltabfavorites.caption
+msgctxt "TFRMMAIN.LBLTABFAVORITES.CAPTION"
+msgid "Favorites"
+msgstr ""
+
+#: tfrmmain.lbltabkeywords.caption
+msgid "KeyWordsSearch"
+msgstr ""
+
+#: tfrmmain.lbltabsearch.caption
+msgid "Search Results"
+msgstr ""
+
+#: tfrmmain.lblterminalonlydisp.caption
+msgid "DNT TO"
+msgstr "DNT TO"
+
+#: tfrmmain.lblterminalonlylinedisp.caption
+msgctxt "tfrmmain.lblterminalonlylinedisp.caption"
+msgid "NT TO"
+msgstr "NT TO"
+
+#: tfrmmain.lblthreatleveldisp.caption
+msgctxt "TFRMMAIN.LBLTHREATLEVELDISP.CAPTION"
+msgid "..."
+msgstr "..."
+
+#: tfrmmain.lblthreatlevellinedisp.caption
+msgctxt "TFRMMAIN.LBLTHREATLEVELLINEDISP.CAPTION"
+msgid "..."
+msgstr "..."
+
+#: tfrmmain.lbluseshelllinedisp.caption
+msgctxt "tfrmmain.lbluseshelllinedisp.caption"
+msgid "NT US"
+msgstr "NT US"
+
+#: tfrmmain.lblversion.caption
+msgctxt "TFRMMAIN.LBLVERSION.CAPTION"
+msgid "NTV"
+msgstr "NTV"
+
+#: tfrmmain.lblversiondisp.caption
+msgctxt "tfrmmain.lblversiondisp.caption"
+msgid "NTV"
+msgstr "NTV"
+
+#: tfrmmain.lblwantsinputlinedisp.caption
+msgctxt "tfrmmain.lblwantsinputlinedisp.caption"
+msgid "NT WI"
+msgstr "NT WI"
+
+#: tfrmmain.lbsearchcmd.hint
+msgid ""
+"This presents search results for the various \n"
+"Favorites, KeyWords, and General Searches.\n"
+"\n"
+"The list can consist of both Commands \n"
+"(listed first if any) and Command Lines \n"
+"(listed second). If so there will be a \n"
+"'seperator' section between them.\n"
+"\n"
+"Clicking on an item shows it's details to \n"
+"the right. If the selected item is a Command\n"
+"it's Command Lines will be listed in\n"
+"the listbox below.\n"
+"\n"
+"Keep in mind that Commands / Command\n"
+"Lines that are in an edited state (i.e., not\n"
+"saved) will NOT be included in the filtering.\n"
+"To see an accurate list be sure everything\n"
+"is saved.\n"
+"\n"
+"For the ClipBoard:\n"
+"\n"
+"Ctrl-Shift-C copies the entire list.\n"
+"\n"
+"Ctrl-f opens the find dialog.\n"
+"\n"
+"ctrl-g goes to the Cmd\n"
+"\n"
+"These are global:\n"
+"<alt-1> Search Keywords\n"
+"<alt-2> New Search KeyWords\n"
+"<alt-3> Load Search\n"
+"\n"
+"Local:\n"
+"<alt-4> save  search KeyWords\n"
+"<alt-5> display search KeyWords\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.lbsearchcmdline.hint
+msgid ""
+"This will show any Command Lines belonging\n"
+"to the item selected in the list above if\n"
+"it is a Command.\n"
+"\n"
+"Click on a Command Line to enable the\n"
+"RUN button.\n"
+"\n"
+"It will be automatically cleared in some cases\n"
+"like when you edit the Master Keywords\n"
+"or maybe in some other cases.\n"
+"\n"
+"<Enter> runs the command line.\n"
+"\n"
+"For the ClipBoard:\n"
+"\n"
+"Ctrl-c copies the selected command, \n"
+"Ctrl-Shift-C copies the entire list.\n"
+"\n"
+"Ctrl-f opens the find dialog.\n"
+"\n"
+"ctrl-g goes to the Command Line\n"
+"\n"
+"These are global:\n"
+"<alt-1> Search Keywords\n"
+"<alt-2> New Search KeyWords\n"
+"<alt-3> Load Search\n"
+"\n"
+"Local:\n"
+"<alt-4> save  search KeyWords\n"
+"<alt-5> display search KeyWords\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.memdetachedprocesses.hint
+msgid ""
+"This shows the process information about\n"
+"the selected detached process.\n"
+"\n"
+"Ctrl-F opens a text search dialog.\n"
+"\n"
+"Ctrl-Shift-F or Ctrl-L will find the next \n"
+"occurence.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.memdispnotes.hint
+msgid ""
+"This shows the current settings for the \n"
+"selected Command or Command Line.\n"
+"\n"
+"If you focus on the Notes area and press\n"
+"Ctrl-F a text search dialog opens.\n"
+"\n"
+"And Ctrl-Shift-F or Ctrl-L will find the next \n"
+"find occurence.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.mementry.hint
+msgid ""
+"The Command Line you are editing.\n"
+"\n"
+"Press ENTER to open a helper window \n"
+"that will show help for this command line, \n"
+"for reference while you edit, and some \n"
+"helper buttons to insert \"variables\" into \n"
+"the command line.\n"
+"\n"
+"The variables are used to fill in values at\n"
+"running time. You can add a variable for \n"
+"any text, an integer, a real number, or a \n"
+"filename.\n"
+"\n"
+"Press ctrl-alt-enter to test run the \n"
+"Command Line, or click the Run/Test \n"
+"button.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.memnotes.hint
+msgid ""
+"Notes, which are searchable, for this item.\n"
+"\n"
+"If you focus on the Notes area and press\n"
+"Ctrl-F a text search dialog opens.\n"
+"\n"
+"And Ctrl-Shift-F or Ctrl-L will find the next \n"
+"find occurence.\n"
+"\n"
+"To read all the notes more conviently\n"
+"double click the notes.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.memnotesdisp.hint
+msgid ""
+"To read all the notes more conviently\n"
+"double click this area.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.memo1.hint
+msgid ""
+"Yes. Output results come here,\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.menuitem10.caption
+msgctxt "TFRMMAIN.MENUITEM10.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.menuitem11.caption
+msgctxt "TFRMMAIN.MENUITEM11.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.menuitem12.caption
+msgctxt "TFRMMAIN.MENUITEM12.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.menuitem13.caption
+msgctxt "TFRMMAIN.MENUITEM13.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.menuitem14.caption
+msgctxt "TFRMMAIN.MENUITEM14.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.menuitem2.caption
+msgctxt "TFRMMAIN.MENUITEM2.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.menuitem3.caption
+msgctxt "TFRMMAIN.MENUITEM3.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.menuitem5.caption
+msgctxt "TFRMMAIN.MENUITEM5.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.menuitem6.caption
+msgctxt "TFRMMAIN.MENUITEM6.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.menuitem7.caption
+msgctxt "TFRMMAIN.MENUITEM7.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.menuitem8.caption
+msgctxt "TFRMMAIN.MENUITEM8.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmmain.mnicmdcount.caption
+msgid "Command Count"
+msgstr ""
+
+#: tfrmmain.mnicmdsendto.caption
+msgid "Send to DB Profile..."
+msgstr ""
+
+#: tfrmmain.mnicopycllistclip.caption
+msgctxt "TFRMMAIN.MNICOPYCLLISTCLIP.CAPTION"
+msgid "Copy List to Clipboard   (ctrl-shift-c)"
+msgstr ""
+
+#: tfrmmain.mnicopycmdlistclip.caption
+msgctxt "tfrmmain.mnicopycmdlistclip.caption"
+msgid "Copy List to Clipboard   (ctrl-shift-c)"
+msgstr ""
+
+#: tfrmmain.mnisearchcmdlineitemclip.caption
+msgid "Copy CL Item to ClipBoard   (ctrl-c)"
+msgstr ""
+
+#: tfrmmain.mnisearchcmdlinelistclip.caption
+msgid "Copy List to ClipBoard   (ctrl-shift-c)"
+msgstr ""
+
+#: tfrmmain.mnisearchcmdlistclip.caption
+msgctxt "TFRMMAIN.MNISEARCHCMDLISTCLIP.CAPTION"
+msgid "Copy List to Clipboard   (ctrl-shift-c)"
+msgstr ""
+
+#: tfrmmain.mnisearchfindcmd.caption
+msgid "Find Command   (ctrl-f)"
+msgstr ""
+
+#: tfrmmain.mnisearchfindcmdline.caption
+msgid "Find Cmd Line   (ctrl-f)"
+msgstr ""
+
+#: tfrmmain.mnisearchgotocmd.caption
+msgid "Go to Command   (ctrl-g)"
+msgstr ""
+
+#: tfrmmain.mnisearchgotocmdline.caption
+msgid "Go to Cmd Line   (ctrl-g)"
+msgstr ""
+
+#: tfrmmain.mnisearchrun.caption
+msgid "Run Cmd Line   (Enter)"
+msgstr ""
+
+#: tfrmmain.mnitabkeywordssearch.caption
+msgid "Search   (alt-1)"
+msgstr ""
+
+#: tfrmmain.mnitabkeywordssearchdisplay.caption
+msgid "Display Search   (alt-5)"
+msgstr ""
+
+#: tfrmmain.mnitabkeywordssearchload.caption
+msgid "Load Search   (alt-3)"
+msgstr ""
+
+#: tfrmmain.mnitabkeywordssearchnew.caption
+msgid "New Search   (alt-2)"
+msgstr ""
+
+#: tfrmmain.mnitabkeywordssearchsave.caption
+msgid "Save Search   (alt-4)"
+msgstr ""
+
+#: tfrmmain.mnitabsearchsearch.caption
+msgid "Search   (ctrl-1)"
+msgstr ""
+
+#: tfrmmain.mnitabsearchsearchdisplay.caption
+msgid "Display Search   (ctrl-5)"
+msgstr ""
+
+#: tfrmmain.mnitabsearchsearchload.caption
+msgid "Load Search   (ctrl-3)"
+msgstr ""
+
+#: tfrmmain.mnitabsearchsearchnew.caption
+msgid "New Search   (ctrl-2)"
+msgstr ""
+
+#: tfrmmain.mnitabsearchsearchsave.caption
+msgid "Save Search   (ctrl-4)"
+msgstr ""
+
+#: tfrmmain.pmicopyclipcmd.caption
+msgid "Copy Cmd to Clipboard   (ctrl-c)"
+msgstr ""
+
+#: tfrmmain.pmicopyclipcmdline.caption
+msgid "Copy to ClipBoard   (ctrl-c)"
+msgstr ""
+
+#: tfrmmain.pmicopycmd.caption
+msgid "Duplicate Copy   (ctrl-shift-alt-c)"
+msgstr ""
+
+#: tfrmmain.pmicopycmdline.caption
+msgid "Duplicate Copy  (ctrl-shift-alt-c)"
+msgstr ""
+
+#: tfrmmain.pmifindcmd.caption
+msgid "&Find   (ctrl-f)"
+msgstr ""
+
+#: tfrmmain.pmifindcmdline.caption
+msgid "Find Line (ctrl-f)"
+msgstr ""
+
+#: tfrmmain.pmimainsave.caption
+msgid "Save (ctrl-s)"
+msgstr ""
+
+#: tfrmmain.popcmdlinedelete.caption
+msgid "- Line  (Delete or \"-\")"
+msgstr ""
+
+#: tfrmmain.popcmdlinepaste.caption
+msgid "Paste  <ctrl-v)"
+msgstr ""
+
+#: tfrmmain.popcmdlineundelete.caption
+msgctxt "TFRMMAIN.POPCMDLINEUNDELETE.CAPTION"
+msgid "Undo -   (ctrl-Delete/-)"
+msgstr ""
+
+#: tfrmmain.popcmdpaste.caption
+msgid "Paste Cmd   (menu only)"
+msgstr ""
+
+#: tfrmmain.popcmdpastecmdline.caption
+msgid "Paste CmdLine   (ctrl-v)"
+msgstr ""
+
+#: tfrmmain.popcommanddelete.caption
+msgid "- Del   (Delete or \"-\")"
+msgstr ""
+
+#: tfrmmain.popcommandundelete.caption
+msgctxt "tfrmmain.popcommandundelete.caption"
+msgid "Undo -   (ctrl-Delete/-)"
+msgstr ""
+
+#: tfrmmain.popnewcommandline.caption
+msgid "+ Line (ctrl-a or \"+\")"
+msgstr ""
+
+#: tfrmmain.popplusbrowse.caption
+msgid "Add   (ctrl-a or '+')"
+msgstr ""
+
+#: tfrmmain.poprun.caption
+msgid "Run Line   (Enter)"
+msgstr ""
+
+#: tfrmmain.sbstatuses.hint
+msgid ""
+"Shows the following information:\n"
+"\n"
+"First: \n"
+"number of currently running detached \n"
+"processes.\n"
+"\n"
+"Second: \n"
+"commandoo version\n"
+"\n"
+"Third: \n"
+"Current Database profile and type.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.sbstatuses.panels[0].text
+msgctxt "tfrmmain.sbstatuses.panels[0].text"
+msgid " "
+msgstr " "
+
+#: tfrmmain.sbstatuses.panels[1].text
+msgctxt "TFRMMAIN.SBSTATUSES.PANELS[1].TEXT"
+msgid " "
+msgstr " "
+
+#: tfrmmain.sbstatuses.panels[2].text
+msgid " Version:   "
+msgstr ""
+
+#: tfrmmain.tscommands.caption
+msgid "  Commands  "
+msgstr ""
+
+#: tfrmmain.tsdetachedprocesses.caption
+msgid "  Proc's  "
+msgstr ""
+
+#: tfrmmain.tsfavorites.caption
+msgid " Favorites "
+msgstr ""
+
+#: tfrmmain.tskeywords.caption
+msgid "  KeyWords  "
+msgstr ""
+
+#: tfrmmain.tssearch.caption
+msgid "  Search  "
+msgstr ""
+
+#: tfrmmanageprofile.btnchangename.caption
+msgid "&N  Change Name"
+msgstr ""
+
+#: tfrmmanageprofile.btnchangename.hint
+msgid ""
+"Yes. Change the name.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmanageprofile.btnchangepath.caption
+msgid "&P  Change Path"
+msgstr ""
+
+#: tfrmmanageprofile.btnchangepath.hint
+msgid ""
+"Yes. Change the Path (Folder).\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmanageprofile.btndefaultpath.caption
+#| msgid "&R   = "
+msgid "&R   = "
+msgstr "&R   = "
+
+#: tfrmmanageprofile.btndefaultpath.hint
+msgid ""
+"This resets the Path to \"Default\".\n"
+"\n"
+"Default is the program's default data location.\n"
+"\n"
+"This is usually the folder where the commandoo\n"
+"program is run from.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmanageprofile.caption
+msgid "Add Profile"
+msgstr ""
+
+#: tfrmmanageprofile.label1.caption
+msgid "Path:"
+msgstr ""
+
+#: tfrmmanageprofile.lblname.caption
+msgid "Name:  "
+msgstr ""
+
+#: tfrmmanageprofile.rgtype.caption
+msgid "DB Type"
+msgstr ""
+
+#: tfrmmanageprofile.rgtype.hint
+msgid ""
+"Choose whether the Database will be \n"
+"text based or sqlite sql DB based.\n"
+"\n"
+"Once assigned a DB type that Profile \n"
+"can not be changed from that type.\n"
+"\n"
+"However, you may use the same Profile \n"
+"Name as long as it's DB type is different.\n"
+"\n"
+"Under those circumstances this radio box\n"
+"will automatically collapse to that type and\n"
+"check it.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmsgdlg.btnclip.caption
+msgid "&C  Copy to Clipboard"
+msgstr ""
+
+#: tfrmmsgdlg.btnno.caption
+msgid "&X  No"
+msgstr ""
+
+#: tfrmmsgdlg.btnyes.caption
+msgid "&A  Yes"
+msgstr ""
+
+#: tfrmmsgdlg.caption
+msgid "frmMsgDlg"
+msgstr "frmMsgDlg"
+
+#: tfrmmsgdlg.cbdonotshow.caption
+msgid "&Z  Do not show this message again   "
+msgstr ""
+
+#: tfrmmsgdlg.lbltype.caption
+msgid "not set"
+msgstr ""
+
+#: tfrmnolanguage.caption
+msgid "Language / Sprache / Idioma / Langue"
+msgstr ""
+
+#: tfrmnolanguage.label2.caption
+msgid "If you like this program, and you want to contribute, and you are bi-lingual consider writing a translation for it. It's actually pretty easy-ish .. .email me (in \"about\" section) and I'll tell you how."
+msgstr ""
+
+#: tfrmnolanguage.lblprogdesc.caption
+msgctxt "tfrmnolanguage.lblprogdesc.caption"
+msgid "NT"
+msgstr "NT"
+
+#: tfrmoptions.btnaddlang.caption
+msgid "&Q  NT"
+msgstr "&Q  NT"
+
+#: tfrmoptions.btnaddlangok.caption
+msgid "ok"
+msgstr ""
+
+#: tfrmoptions.btndone.caption
+msgctxt "TFRMOPTIONS.BTNDONE.CAPTION"
+msgid "&OK"
+msgstr "&OK"
+
+#: tfrmoptions.btnresetdlgs.caption
+msgid "&A  Reset \"Show no more\" Dialogs"
+msgstr ""
+
+#: tfrmoptions.btnresetdlgs.hint
+msgid ""
+"Many of the messages in this program\n"
+"give the option to not show it again.\n"
+"\n"
+"This will reset all those messages\n"
+"you've chosen not to show. This\n"
+"means, of course, that you will have\n"
+"to go through all those again and \n"
+"re-check them if you don't want to see \n"
+"them anymore.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.btnrootfile.caption
+msgid "&G  Change ROOT File"
+msgstr ""
+
+#: tfrmoptions.btnrootfile.hint
+msgid ""
+"You have the ability to use any ROOT \n"
+"Authentication file you want (as long as it \n"
+"is on your system, of course).\n"
+"\n"
+"Use this button to change it if needed\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.btnsqllib.caption
+msgid "&Y  Change sqlite Library"
+msgstr ""
+
+#: tfrmoptions.btnsqllib.hint
+msgid ""
+"If the program can't find your sqlite library\n"
+"location you can specify it here.\n"
+"\n"
+"If you can't find it first make sure sqlite is\n"
+"installed on your system. Then use the \n"
+"locate command in a terminal with:\n"
+"\n"
+"locate libsqlite3.so.0\n"
+"\n"
+"To reset your program to the default \n"
+"location use the reset button next to this\n"
+"button.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.btnsqllibreset.caption
+msgid "&Z  ♻"
+msgstr "&Z  ♻"
+
+#: tfrmoptions.btnsqllibreset.hint
+msgid ""
+"Reset the program so it uses the default\n"
+"location of the sqlite library file.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.btnterminal.caption
+msgid "&W  Change Terminal Program"
+msgstr ""
+
+#: tfrmoptions.btnterminal.hint
+msgid ""
+"You can specify your favorite terminal \n"
+"program here.\n"
+"\n"
+"You can either type the name if it is in the \n"
+"system path or you can browse for it.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.btnterminalreset.caption
+msgid "&X  ♻"
+msgstr "&X  ♻"
+
+#: tfrmoptions.btnterminalreset.hint
+msgid ""
+"Reset the terminal program you want to use\n"
+"to the system default.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.caption
+msgid "DDNT AO"
+msgstr "DDNT AO"
+
+#: tfrmoptions.cballowescoutput.caption
+msgid "&L  Allow <esc> chars in Output"
+msgstr ""
+
+#: tfrmoptions.cballowescoutput.hint
+msgid ""
+"Checking this allows <esc> characters in\n"
+"command output.\n"
+"\n"
+"This is problematic. When escape chars \n"
+"(for example, from \"curl\" command or using\n"
+"/devNul) can cause cursor location in the\n"
+"output area to become unstable. This can be \n"
+"fixed by clearing the output area.\n"
+"\n"
+"But there is the question of whether it could\n"
+"cause other problems. So just be aware of \n"
+"this.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.cballowmultipleopens.caption
+msgid "&M  Allow Multiple copies of commandoo"
+msgstr ""
+
+#: tfrmoptions.cballowmultipleopens.hint
+msgid ""
+"It is strongly recommended that you have\n"
+"only one copy of commandoo open at a \n"
+"time.\n"
+"\n"
+"This is because multiple copies could easily\n"
+"interfere with each other if you are not \n"
+"careful and understand what you are doing.\n"
+"\n"
+"However, I'm not your Mother. If you want to\n"
+"be able to use multiple copies do so at your \n"
+"own risk and be aware of which copy is \n"
+"using which database.\n"
+"\n"
+"Unchecked and commandoo will not allow\n"
+"another copy to be opened.\n"
+"\n"
+"Checked it will allow it and give you a \n"
+"optionally disabled confirmation message.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.cbcareful.caption
+msgctxt "tfrmoptions.cbcareful.caption"
+msgid "&D  NT"
+msgstr "&D  NT"
+
+#: tfrmoptions.cbcaution.caption
+msgid "&E  NT"
+msgstr "&E  NT"
+
+#: tfrmoptions.cbdanger.caption
+msgid "&F  NT"
+msgstr "&F  NT"
+
+#: tfrmoptions.cbharmless.caption
+msgctxt "tfrmoptions.cbharmless.caption"
+msgid "&C  NT"
+msgstr "&C  NT"
+
+#: tfrmoptions.cblanguage.hint
+msgid ""
+"Select between installed language files.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.cbmanrefreshfavorites.caption
+msgid "&K  Manually Refresh Favoirtes"
+msgstr ""
+
+#: tfrmoptions.cbmanrefreshfavorites.hint
+msgid ""
+"Check this to force manually refreshed\n"
+"favorites list.\n"
+"\n"
+"By default favorites refresh automatically\n"
+"on saving. But perhaps you want to work\n"
+"with the current list and save your cursor\n"
+"locations. In this case check this box but \n"
+"then you will have to manually refresh \n"
+"favorites when you want using the \n"
+"provided button.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.cbmaxoutput.hint
+msgid ""
+"This is a safety measure for processes \n"
+"that could produce too much output.\n"
+"\n"
+"The program will wait until the process is \n"
+"finished -OR- stop after this many \n"
+"characters are recieved.\n"
+"\n"
+"This is obviously useful if you by accident\n"
+"output an infinite amount of information by \n"
+"calling, say, cat /dev/zero.\n"
+"\n"
+"So, be careful that this is not too high, or\n"
+"you will be waiting some time for the \n"
+"process to finish maybe.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.cbsqldb.caption
+msgid "&U  Default sql DB allowed"
+msgstr ""
+
+#: tfrmoptions.cbtextdb.caption
+msgid "&V  Default text DB allowed"
+msgstr ""
+
+#: tfrmoptions.cbunspecified.caption
+msgid "&B  Unspecified"
+msgstr ""
+
+#: tfrmoptions.lblchangefont.caption
+msgid "&T  Adjust Font Size"
+msgstr ""
+
+#: tfrmoptions.lbldisplaymax.caption
+msgid "&S  Maximum Display Output"
+msgstr ""
+
+#: tfrmoptions.lbllanguage.caption
+msgid "&P  Language"
+msgstr ""
+
+#: tfrmoptions.lblmaxoutput.caption
+msgid "&R  Maximum input/output allowed"
+msgstr ""
+
+#: tfrmoptions.lblrootfilecap.caption
+msgid "ROOT authentication file:"
+msgstr ""
+
+#: tfrmoptions.lblsqllibcap.caption
+msgid "sqlite Library location (blank is default):"
+msgstr ""
+
+#: tfrmoptions.lblterminalcap.caption
+msgid "Terminal Program:"
+msgstr ""
+
+#: tfrmoptions.lblthreatlevel.caption
+msgid "Warn on Threat Level of:"
+msgstr ""
+
+#: tfrmoptions.spechangefont.hint
+msgid ""
+"Due to the complexity of computers using\n"
+"custom pixels per inch (ppi, dpi) the program \n"
+"uses a default setting that looks nice.\n"
+"\n"
+"You may, however, want fonts a bit bigger\n"
+"or smaller. Use this to adjust fonts up or \n"
+"down by a maximum of 2 steps.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.spedisplaymax.hint
+msgid ""
+"This lets you set how much \"history\" in the\n"
+"Display Output is kept. The program will\n"
+"periodically clear history to keep the display\n"
+"output around this valiue.\n"
+"\n"
+"No worries if this is lower than the max/min\n"
+"process output above. Process output will\n"
+"always be shown in its entirety, or up to\n"
+"the maximum you set above.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.actadd.caption
+msgid "&A  New"
+msgstr ""
+
+#: tfrmprofiles.actcancel.caption
+msgctxt "TFRMPROFILES.ACTCANCEL.CAPTION"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmprofiles.actcompare.caption
+msgid "&Y  Compare"
+msgstr ""
+
+#: tfrmprofiles.actconvert.caption
+msgid "&X  Convert"
+msgstr ""
+
+#: tfrmprofiles.actcopy.caption
+msgid "&C  Copy"
+msgstr ""
+
+#: tfrmprofiles.actdelete.caption
+msgctxt "tfrmprofiles.actdelete.caption"
+msgid "&D  Delete"
+msgstr ""
+
+#: tfrmprofiles.actedit.caption
+msgctxt "TFRMPROFILES.ACTEDIT.CAPTION"
+msgid "&B  Edit"
+msgstr ""
+
+#: tfrmprofiles.actmergeto.caption
+msgid "&Z  Merge To"
+msgstr ""
+
+#: tfrmprofiles.actok.caption
+msgctxt "TFRMPROFILES.ACTOK.CAPTION"
+msgid "&OK"
+msgstr "&OK"
+
+#: tfrmprofiles.actselect.caption
+msgctxt "TFRMPROFILES.ACTSELECT.CAPTION"
+msgid "&S  Select"
+msgstr ""
+
+#: tfrmprofiles.btnconvert.hint
+msgid ""
+"Convert a text DB to a sql DB and\n"
+"vice versa.\n"
+"\n"
+"Destination file(s) must not already exist.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.btnmergeto.hint
+msgid ""
+"Merge the items in the selected profile\n"
+"to another profile (can be from text/sql \n"
+"to another text/sql).\n"
+"\n"
+"In the case of duplicate commands notes,\n"
+"command lines, etc. will be merged into \n"
+"the destination.\n"
+"\n"
+"In this case the destination must already\n"
+"exist.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.caption
+msgctxt "TFRMPROFILES.CAPTION"
+msgid "Manage Database Profiles"
+msgstr ""
+
+#: tfrmprofiles.gbmanagelist.caption
+msgid "Manage Profile List"
+msgstr ""
+
+#: tfrmprofiles.lblcurrentprofile.caption
+msgctxt "tfrmprofiles.lblcurrentprofile.caption"
+msgid "2..."
+msgstr "2..."
+
+#: tfrmprofiles.lblcurrentprofile.hint
+msgctxt "TFRMPROFILES.LBLCURRENTPROFILE.HINT"
+msgid ""
+"Reference only. It shows the default data\n"
+"file Path/Folder for the program.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.lbldefaultdisplay.caption
+msgctxt "tfrmprofiles.lbldefaultdisplay.caption"
+msgid "3..."
+msgstr "3..."
+
+#: tfrmprofiles.lbldefaultdisplay.hint
+msgctxt "tfrmprofiles.lbldefaultdisplay.hint"
+msgid ""
+"Reference only. It shows the default data\n"
+"file Path/Folder for the program.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.lblist.hint
+msgctxt "tfrmprofiles.lblist.hint"
+msgid ""
+"List of Program managed and custom \n"
+"Database Profiles. \n"
+"\n"
+"The first two (\"DB\") are managed by the \n"
+"Program and are always displayed, you\n"
+"can not delete or edit them. They are\n"
+"Profiles for the pre-collected database in\n"
+"text and sql format.\n"
+"\n"
+"You may add custom profiles at any time\n"
+"and those will be listed here.\n"
+"\n"
+"Profiles can have the same name as long\n"
+"as they use a different DB type.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.lblpathdisplay.caption
+msgctxt "tfrmprofiles.lblpathdisplay.caption"
+msgid "1..."
+msgstr "1..."
+
+#: tfrmprofiles.lblpathdisplay.hint
+msgid ""
+"The Path/Folder of the currently selected\n"
+"Profile.\n"
+"\n"
+"This may, for the default DB's, show that\n"
+"they are \"switched off in Options\". This means \n"
+"that while they are visible in Profile \n"
+"Management Mode they will not be visible\n"
+"in Switch Database mode. This is changed\n"
+"in Options.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.menuitem1.caption
+msgctxt "TFRMPROFILES.MENUITEM1.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmprofiles.menuitem2.caption
+msgctxt "TFRMPROFILES.MENUITEM2.CAPTION"
+msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+
+#: tfrmprofiles.mniok.caption
+msgid "Close"
+msgstr ""
+
+#: tfrmprofilesmerge.caption
+msgid "Select Profile to Merge TO"
+msgstr ""
+
+#: tfrmprofilesmerge.lblspinfo.caption
+msgid "Current DB and selected \"From\" DB are excluded from this list."
+msgstr ""
+
+#: tfrmprofilesmerge.lbmergelist.hint
+msgctxt "TFRMPROFILESMERGE.LBMERGELIST.HINT"
+msgid ""
+"List of Program managed and custom \n"
+"Database Profiles. \n"
+"\n"
+"The first two (\"DB\") are managed by the \n"
+"Program and are always displayed, you\n"
+"can not delete or edit them. They are\n"
+"Profiles for the pre-collected database in\n"
+"text and sql format.\n"
+"\n"
+"You may add custom profiles at any time\n"
+"and those will be listed here.\n"
+"\n"
+"Profiles can have the same name as long\n"
+"as they use a different DB type.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsearch.btncancel.caption
+msgid "&X  Cancel"
+msgstr ""
+
+#: tfrmsearch.btnusesimplesearch.caption
+msgid "Use Simple Search instead"
+msgstr ""
+
+#: tfrmsearch.btnusesimplesearch.hint
+msgid ""
+"Open a simple search instead which \n"
+"looks for specified text in all Command\n"
+"and Command Line text fields \n"
+"(choosable).\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsearch.caption
+msgctxt "TFRMSEARCH.CAPTION"
+msgid "Search KeyWords"
+msgstr ""
+
+#: tfrmsearch.cbfield.hint
+msgid ""
+"Select the field for this search expression.\n"
+"\n"
+"Sometimes this is disabled for technical \n"
+"reasons. For example, List searches may\n"
+"prevent it from being changed.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsearch.edtsearchfilename.hint
+msgid ""
+"The \"name\" of a Search helps you identify it\n"
+"and will be used as the filename if you save\n"
+"it.\n"
+"\n"
+"If you use more than one Database Profile\n"
+"it is a good idea perhaps to give meaningful\n"
+"names so that you know what it is for and for\n"
+"which database. This will help when loading\n"
+"saved Searches.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsearch.lbldesignprof.caption
+#| msgid "---"
+msgctxt "TFRMSEARCH.LBLDESIGNPROF.CAPTION"
+msgid "DNT A..."
+msgstr "DNT A..."
+
+#: tfrmsearch.lbldesignprof.hint
+msgctxt "tfrmsearch.lbldesignprof.hint"
+msgid ""
+"This shows the database profile where the\n"
+"Search is / was designed.\n"
+"\n"
+"Different Database Profiles can use, for\n"
+"example, different Key Words. So while a \n"
+"Search may be valid for one DB Profile it\n"
+"may not be valid in another.\n"
+"\n"
+"This helps you determine that and you will\n"
+"also be notified in these cases.\n"
+"\n"
+"If a Search is not valid in this database it\n"
+"can not be run but it can be edited.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsearch.lblfieldcaption.caption
+msgid "&F  Field:"
+msgstr ""
+
+#: tfrmsearch.lblprogramertip.caption
+msgid "DNT --ufrm_search_  form--"
+msgstr "DNT --ufrm_search_  form--"
+
+#: tfrmsearch.lblprogramertip1.caption
+msgid "DNT --ufrmBoolExpr--"
+msgstr "DNT --ufrmBoolExpr--"
+
+#: tfrmsearch.lblprogramertip2.caption
+msgid "DNT --LOW_BOUNDARY--"
+msgstr "DNT --LOW_BOUNDARY--"
+
+#: tfrmsearch.lblsearchfilename.caption
+msgid "&N  Name"
+msgstr ""
+
+#: tfrmsearch.lblwhichboolexpr.caption
+#| msgid "---"
+msgctxt "tfrmsearch.lblwhichboolexpr.caption"
+msgid "DNT B..."
+msgstr "DNT B..."
+
+#: tfrmsearch.lblwhichboolexpr.hint
+msgctxt "TFRMSEARCH.LBLWHICHBOOLEXPR.HINT"
+msgid ""
+"This shows the Database Profile you are \n"
+"currently in.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsimplesearch.btnadvsearchcurrent.caption
+msgid "&X  Current"
+msgstr ""
+
+#: tfrmsimplesearch.btnadvsearchload.caption
+msgid "&Z  Load"
+msgstr ""
+
+#: tfrmsimplesearch.btnadvsearchnew.caption
+msgid "&Y  New"
+msgstr ""
+
+#: tfrmsimplesearch.btnchkallcmd.caption
+msgctxt "tfrmsimplesearch.btnchkallcmd.caption"
+msgid "☑"
+msgstr ""
+
+#: tfrmsimplesearch.btnchkallcmdline.caption
+msgctxt "tfrmsimplesearch.btnchkallcmdline.caption"
+msgid "☑"
+msgstr ""
+
+#: tfrmsimplesearch.btnchknonecmd.caption
+msgctxt "tfrmsimplesearch.btnchknonecmd.caption"
+msgid "☐"
+msgstr ""
+
+#: tfrmsimplesearch.btnchknonecmdline.caption
+msgctxt "tfrmsimplesearch.btnchknonecmdline.caption"
+msgid "☐"
+msgstr ""
+
+#: tfrmsimplesearch.btnclear.caption
+msgid "DNT C"
+msgstr "DNT C"
+
+#: tfrmsimplesearch.btnclear1.caption
+msgid "DNT C1"
+msgstr "DNT C1"
+
+#: tfrmsimplesearch.btnclear2.caption
+msgid "DNT C2"
+msgstr "DNT C2"
+
+#: tfrmsimplesearch.btnssreset.caption
+msgid "&W  Reset Everything"
+msgstr ""
+
+#: tfrmsimplesearch.btnssreset.hint
+msgid ""
+"Reset all search items to blank\n"
+"text and unchecked, and all field\n"
+"items to checked.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsimplesearch.caption
+msgid "Search selected text fields"
+msgstr ""
+
+#: tfrmsimplesearch.cbmatchcase.caption
+msgid "DNT MCase"
+msgstr "DNT MCase"
+
+#: tfrmsimplesearch.cbmatchcase1.caption
+msgid "DNT MCase1"
+msgstr "DNT MCase1"
+
+#: tfrmsimplesearch.cbmatchcase2.caption
+msgid "DNT MCase2"
+msgstr "DNT MCase2"
+
+#: tfrmsimplesearch.cbre.caption
+msgid "DNT RegEx"
+msgstr "DNT RegEx"
+
+#: tfrmsimplesearch.cbre1.caption
+msgid "DNT RegEx1"
+msgstr "DNT RegEx1"
+
+#: tfrmsimplesearch.cbre2.caption
+msgid "DNT RegEx2"
+msgstr "DNT RegEx2"
+
+#: tfrmsimplesearch.cgcmd.caption
+msgid "cgCmd"
+msgstr "cgCmd"
+
+#: tfrmsimplesearch.cgcmdline.caption
+msgid "cgCmdLine"
+msgstr "cgCmdLine"
+
+#: tfrmsimplesearch.label1.caption
+msgid "Use Advanced Search instead:"
+msgstr ""
+
+#: tfrmsimplesearch.lbldesignprof.caption
+msgid "Search Fields:"
+msgstr ""
+
+#: tfrmsimplesearch.lblsetype.caption
+msgid "Search for text:"
+msgstr ""
+
+#: tfrmsimplesearch.lblsetype2.caption
+msgid "Additional Searches (all OR'd)"
+msgstr ""
+
+#: tfrmsimplesearch.memsearchvalue.hint
+msgid ""
+"The text being searched for.\n"
+"\n"
+"Use the checkboxes below to \n"
+"indicate whether the search \n"
+"should be case sensitve and/or\n"
+"the search text is a regular\n"
+"expression.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsingleinput.caption
+msgctxt "TFRMSINGLEINPUT.CAPTION"
+msgid "Input"
+msgstr ""
+
+#: tfrmsingleinput.lblhint.caption
+msgid "↑↑ Type       and / or     Browse  ↑"
+msgstr ""
+
+#: tfrmsuperuserfile.btnsufile.caption
+msgid "&Z  Other File"
+msgstr ""
+
+#: tfrmsuperuserfile.btnsufile.hint
+msgid ""
+"If, in future, or for special needs, the file\n"
+"you need is not in the list use this button to \n"
+"find and use it.\n"
+"\n"
+"You will first be asked to find the file.\n"
+"\n"
+"If you choose one you will then be asked to\n"
+"type any parameter / flag it needs.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsuperuserfile.btnsuinfo.caption
+msgid "&A  Show Information"
+msgstr ""
+
+#: tfrmsuperuserfile.btnsuinfo.hint
+msgid ""
+"A quick introduction to the intricacieas of\n"
+"xxxsu and xxxsudo.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsuperuserfile.btnturnoff.caption
+msgid "&X  Turn off ROOT"
+msgstr ""
+
+#: tfrmsuperuserfile.btnturnoff.hint
+msgid ""
+"If the file you need can not be found, or\n"
+"you simply don't want to run command lines\n"
+"as ROOT then you can turn off the ROOT \n"
+"ability with this button.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsuperuserfile.caption
+msgid "SuperUser Authentication"
+msgstr ""
+
+#: tfrmsuperuserfile.edtsufile.hint
+msgid ""
+"The proposed ROOT file to change to.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsuperuserfile.lbfiles.hint
+msgid ""
+"This is a list of current (2017) ROOT \n"
+"authentication files available for gnu/Linux \n"
+"people.\n"
+"\n"
+"Choose the one you want. You may, or may\n"
+"not, have all of them on your system. It will\n"
+"tell you if it cannot find the file.\n"
+"\n"
+"In some cases (maybe in future) it could be\n"
+"you want to use something new, then use the\n"
+"button below and right.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsuperuserfile.lblcurr.caption
+msgid "Currently:  "
+msgstr ""
+
+#: tfrmsuperuserfile.lblcurrfile.caption
+msgctxt "TFRMSUPERUSERFILE.LBLCURRFILE.CAPTION"
+msgid "..."
+msgstr "..."
+
+#: tfrmsuperuserfile.lblcurrfile.hint
+msgid ""
+"This is the ROOT file you are currently using.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrm_search_bool.caption
+msgid "frm_Search_Bool"
+msgstr "frm_Search_Bool"
+
+#: tfrm_search_bool.lblsetype.caption
+msgid "Boolean"
+msgstr ""
+
+#: tfrm_search_bool.rgbool.caption
+#| msgid "NT"
+msgctxt "tfrm_search_bool.rgbool.caption"
+msgid "NT"
+msgstr "NT"
+
+#: tfrm_search_bool.rgselist.caption
+msgctxt "tfrm_search_bool.rgselist.caption"
+msgid "NT"
+msgstr "NT"
+
+#: tfrm_search_double.caption
+msgid "frm_Search_double"
+msgstr "frm_Search_double"
+
+#: tfrm_search_double.lblfreetextreal.caption
+msgctxt "tfrm_search_double.lblfreetextreal.caption"
+msgid "..."
+msgstr "..."
+
+#: tfrm_search_double.lblsetype.caption
+msgid "Real"
+msgstr ""
+
+#: tfrm_search_double.lblvalueint.caption
+#| msgid "NT"
+msgctxt "TFRM_SEARCH_DOUBLE.LBLVALUEINT.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrm_search_double.rgselist.caption
+msgctxt "TFRM_SEARCH_DOUBLE.RGSELIST.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrm_search_enum.caption
+msgid "frm_Search_Enum"
+msgstr "frm_Search_Enum"
+
+#: tfrm_search_enum.lblsetype.caption
+msgid "Enum"
+msgstr ""
+
+#: tfrm_search_enum.rgenum.caption
+#| msgid "NT"
+msgctxt "TFRM_SEARCH_ENUM.RGENUM.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrm_search_enum.rgselist.caption
+msgctxt "TFRM_SEARCH_ENUM.RGSELIST.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrm_search_integer.caption
+msgid "frm_Search_Integer"
+msgstr "frm_Search_Integer"
+
+#: tfrm_search_integer.lblfreetextint.caption
+msgctxt "TFRM_SEARCH_INTEGER.LBLFREETEXTINT.CAPTION"
+msgid "..."
+msgstr "..."
+
+#: tfrm_search_integer.lblsetype.caption
+msgid "Int"
+msgstr ""
+
+#: tfrm_search_integer.lblvalueint.caption
+#| msgid "NT"
+msgctxt "TFRM_SEARCH_INTEGER.LBLVALUEINT.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrm_search_integer.rgselist.caption
+msgctxt "TFRM_SEARCH_INTEGER.RGSELIST.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrm_search_list.caption
+msgid "frm_Search_List"
+msgstr "frm_Search_List"
+
+#: tfrm_search_list.cbmatchcase.caption
+msgctxt "tfrm_search_list.cbmatchcase.caption"
+msgid "Match Case"
+msgstr ""
+
+#: tfrm_search_list.lblfreetext.caption
+msgctxt "TFRM_SEARCH_LIST.LBLFREETEXT.CAPTION"
+msgid "..."
+msgstr "..."
+
+#: tfrm_search_list.lblist.hint
+msgid ""
+"The current Master List of the field you are \n"
+"editing.\n"
+"\n"
+"If you edit the Master List this will be reflected\n"
+"the next time you create or edit a Search.\n"
+"\n"
+"Items in old saved Searches may become\n"
+"invalid if you remove or change the entry in \n"
+"the Master List.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrm_search_list.lblkeywords.caption
+msgid "Current %s"
+msgstr ""
+
+#: tfrm_search_list.lbllistchoice.caption
+msgid "Select One:"
+msgstr ""
+
+#: tfrm_search_list.lblsetype.caption
+msgid "List"
+msgstr ""
+
+#: tfrm_search_list.memsearchvalue.hint
+msgctxt "tfrm_search_list.memsearchvalue.hint"
+msgid ""
+"The text being searched for.\n"
+"\n"
+"This is disabled when you select \"match\" \n"
+"Match Type above. In those cases you must\n"
+"select from the Master List.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrm_search_list.mnicopy.caption
+msgid "Copy Item"
+msgstr ""
+
+#: tfrm_search_list.rgselist.caption
+msgctxt "TFRM_SEARCH_LIST.RGSELIST.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrm_search_list.rgselist.hint
+msgctxt "TFRM_SEARCH_LIST.RGSELIST.HINT"
+msgid ""
+"Select the \"match\" type you want for the \n"
+"List Search.\n"
+"\n"
+"It is \"match\", not \"equal\", because it will try\n"
+"to find out whether the exact List Item is in\n"
+"(or not in) the Command's assigned List \n"
+"Items.\n"
+"\n"
+"The selections you make here determine\n"
+"the enabling of the fields below. \"match\" \n"
+"means it must be in the List, so you are\n"
+"limited to only items which currently exist \n"
+"in the Master List.\n"
+"\n"
+"Otherwise you can specify search text.\n"
+"\n"
+"Be aware that if select \"match\" and you \n"
+"previously typed in something under \n"
+"another condition it will be replaced with\n"
+"the first item in the current Master List.\n"
+"\n"
+"Also be aware, this search can later \n"
+"become invalid if you delete that item\n"
+"from the Master List. You will be told when\n"
+"this has happened.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrm_search_operator.caption
+msgid "frm_Search_Operator"
+msgstr "frm_Search_Operator"
+
+#: tfrm_search_operator.lblseoptype.caption
+msgid "Operator"
+msgstr ""
+
+#: tfrm_search_operator.rgseopoperator.caption
+msgid "Operator Kind"
+msgstr ""
+
+#: tfrm_search_operator.rgseopoperator.hint
+msgid ""
+"Select the kind of operator you want for the\n"
+"currently selected item.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrm_search_string.caption
+msgid "frm_Search_String"
+msgstr "frm_Search_String"
+
+#: tfrm_search_string.cbmatchcase.caption
+msgctxt "TFRM_SEARCH_STRING.CBMATCHCASE.CAPTION"
+msgid "Match Case"
+msgstr ""
+
+#: tfrm_search_string.lblfreetext.caption
+msgctxt "TFRM_SEARCH_STRING.LBLFREETEXT.CAPTION"
+msgid "..."
+msgstr "..."
+
+#: tfrm_search_string.lblsetype.caption
+msgid "String"
+msgstr ""
+
+#: tfrm_search_string.memsearchvalue.hint
+msgctxt "TFRM_SEARCH_STRING.MEMSEARCHVALUE.HINT"
+msgid ""
+"The text being searched for.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrm_search_string.rgselist.caption
+msgctxt "TFRM_SEARCH_STRING.RGSELIST.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: tfrm_search_text.caption
+msgid "frm_Search_Text"
+msgstr "frm_Search_Text"
+
+#: tfrm_search_text.cbmatchcase.caption
+msgctxt "TFRM_SEARCH_TEXT.CBMATCHCASE.CAPTION"
+msgid "Match Case"
+msgstr ""
+
+#: tfrm_search_text.lblfreetext.caption
+#| msgid "DNT S_text..."
+msgctxt "TFRM_SEARCH_TEXT.LBLFREETEXT.CAPTION"
+msgid "DNT S_text..."
+msgstr "DNT S_text..."
+
+#: tfrm_search_text.lblsetype.caption
+msgid "Text"
+msgstr ""
+
+#: tfrm_search_text.rgselist.caption
+msgctxt "TFRM_SEARCH_TEXT.RGSELIST.CAPTION"
+msgid "NT"
+msgstr "NT"
+
+#: ufrmabout.cmsgaboutcurrentdb
+msgid "Current Database Profile: %s ( %s based ): "
+msgstr ""
+
+#: ufrmabout.cmsgaboutcustomdatabaseprofiles1
+msgid "%s based%s"
+msgstr ""
+
+#: ufrmabout.cmsgaboutcustomdatabaseprofiles2
+msgid "   Path: \"%s\""
+msgstr ""
+
+#: ufrmabout.cmsgaboutcustomprofileheader
+msgid "Custom Database Profile(s):"
+msgstr ""
+
+#: ufrmabout.cmsgaboutdefaultbased
+msgid "%s based : %s"
+msgstr ""
+
+#: ufrmabout.cmsgaboutdefaultprofileheader
+msgid "Default Database Profiles:"
+msgstr ""
+
+#: ufrmabout.cmsgaboutdefaultprofilename
+msgid "Profile Name: %s"
+msgstr ""
+
+#: ufrmabout.cmsgaboutinuse
+msgid "%s present"
+msgstr ""
+
+#: ufrmabout.cmsgaboutinusenot
+msgid "%s not present"
+msgstr ""
+
+#: ufrmabout.cmsgcurrentdb
+msgid "          <== ( CURRENT )"
+msgstr ""
+
+#: ufrmabout.cmstfileplural
+msgid "Files"
+msgstr ""
+
+#: ufrmabout.cmstfilesingular
+msgctxt "ufrmabout.cmstfilesingular"
+msgid "File"
+msgstr ""
+
+#: ufrmaddlanguage.caddlanghasblanks
+msgid "All fields must be filled in..."
+msgstr ""
+
+#: ufrmaddlanguage.cnoparenthese
+msgid "\"%s\" can not contain parentheses: \"(\" or \")\", those are used by the system."
+msgstr ""
+
+#: ufrmaddlanguage.cnoparentheselang
+msgid "Language Name"
+msgstr ""
+
+#: ufrmboolexpr.cfseexpressionhint
+msgid ""
+"This is one of the expressions you have created. \n"
+"\n"
+"Dbl Click it to edit it, or use one of the buttons \n"
+"above to manipulate it.\n"
+"\n"
+"<end>\n"
+"\n"
+msgstr ""
+
+#: ufrmboolexpr.cfsemainhint
+msgid ""
+"Contains the current expressions for this \n"
+"portion of the search. \n"
+"\n"
+"Select any item to enable the appropriate \n"
+"buttons and then perform the action you \n"
+"want. \n"
+"\n"
+"Dbl Click expressions or operators to edit \n"
+"them. \n"
+"\n"
+"<end>\n"
+"\n"
+msgstr ""
+
+#: ufrmboolexpr.cfsemoveparenhint
+msgid ""
+"Use these to move parentheses around. \n"
+"\n"
+"When adding parentheses only the selected \n"
+"item gets them. You can then select either \n"
+"of the parentheses and use these to move and  \n"
+"logically group as you like. \n"
+"\n"
+"The move is smart and will not allow logical \n"
+"grouping errors. \n"
+"\n"
+"<end>\n"
+"\n"
+msgstr ""
+
+#: ufrmboolexpr.cfseoperatorhint
+msgid ""
+"This is an operator or organizing item. \n"
+"\n"
+"With Operators (or, and, xor) you can Dbl Click it \n"
+"to edit it. \n"
+"\n"
+"You can always use one of the buttons above to \n"
+"manipulate it.\n"
+"\n"
+"<end>\n"
+"\n"
+msgstr ""
+
+#: ufrmboolexpr.cfseusecmdline_caption
+msgid "Use COMMAND LINE search"
+msgstr ""
+
+#: ufrmboolexpr.cfseusecmd_caption
+msgid "Use COMMAND search"
+msgstr ""
+
+#: ufrmboolexpr.cmsgbeclipboardfull
+msgid "Search item clipboard is already full, <esc> or add to an expression."
+msgstr ""
+
+#: ufrmboolexpr.cmsgbeinvalidfield
+msgid "\"%s\" is not a valid field for \"%s\"."
+msgstr ""
+
+#: ufrmboolexpr.cmsgbeinvaliditem
+msgid "cant copy, invalid"
+msgstr ""
+
+#: ufrmboolexpr.cmsgbenoitem
+msgid "No Search Item to copy!"
+msgstr ""
+
+#: ufrmbusy.ccapbusycancel
+msgid "&W Cancel"
+msgstr ""
+
+#: ufrmbusy.ccapbusycaption
+msgctxt "ufrmbusy.ccapbusycaption"
+msgid "Working..."
+msgstr ""
+
+#: ufrmbusy.ccapbusyhint
+msgctxt "ufrmbusy.ccapbusyhint"
+msgid "Program will block until finished."
+msgstr ""
+
+#: ufrmcmdlineedit.cclecapdefaulthelp
+msgid "Show Help:  %s"
+msgstr ""
+
+#: ufrmcmdlineedit.cmsgclenocommandspecified
+msgid "No command specified."
+msgstr ""
+
+#: ufrmcmdlineedit.cmsgclenoempties
+msgid "This cannot be empty"
+msgstr ""
+
+#: ufrmcmdlineedit.cmsgclenonaked
+msgid "May not run \"naked\" commands from here."
+msgstr ""
+
+#: ufrmcmdlineedit.cmsgcleonlyhelp
+msgid ""
+"\n"
+"\n"
+"For safety reason only help commands (CMD --help or CMD -h ) \n"
+"can be run from here\n"
+msgstr ""
+
+#: ufrmcmdlineedit.cmsgcleonlyoneparam
+msgid "Only one param / flag is allowed from here."
+msgstr ""
+
+#: ufrmcmdlineedit.cmsgclevariable
+msgid ""
+"Adds a variable for %s at \n"
+"the cursor or selected text. \n"
+"\n"
+"At run time you can fill in the information. \n"
+"\n"
+"NOTE : In the case of Filenames (<<F>>) quotes \n"
+"will automatically be added around the filename, \n"
+"no need to add quotes to your command line. This, \n"
+"of course, is necessary for filenames that have spaces \n"
+"in them and is taken care of for you. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmcmdlineedit.cmsgclevariablealpha
+msgid "AlphaNumeric (string) text"
+msgstr ""
+
+#: ufrmcmdlineedit.cmsgclevariabledecimal
+msgid "a decimal number"
+msgstr ""
+
+#: ufrmcmdlineedit.cmsgclevariablefilename
+msgid "a File Name"
+msgstr ""
+
+#: ufrmcmdlineedit.cmsgclevariableint
+msgid "an integer"
+msgstr ""
+
+#: ufrmfindtext.ccapfindagain
+msgctxt "ufrmfindtext.ccapfindagain"
+msgid "ctrl-shift-F or ctrl-L finds again"
+msgstr ""
+
+#: ufrmfindtext.ccaprgchoices
+msgid ""
+"&A  Top\n"
+"&B  Cursor\n"
+msgstr ""
+
+#: ufrmfindtext.cmsgfftendoftext
+msgid "Search \"%s\" reached the end. Start again from top?"
+msgstr ""
+
+#: ufrmfindtext.cmsgfftfromcursornotfound
+msgid "Find \"%s\" from cursor position \"%d\" not found. Do you want to search from top?"
+msgstr ""
+
+#: ufrmfindtext.cmsgfftnotfound
+msgid "\"%s\" not found."
+msgstr ""
+
+#: ufrmlistmanager.ccaplistmanagerconsolidateinfo
+msgctxt "ufrmlistmanager.ccaplistmanagerconsolidateinfo"
+msgid "Consolidate %s"
+msgstr ""
+
+#: ufrmlistmanager.ccaplistmanagerdone
+msgid "&O  Done"
+msgstr ""
+
+#: ufrmlistmanager.ccaplistmanagerlistitemusage
+msgid "\"%s\" is used by:"
+msgstr ""
+
+#: ufrmlistmanager.ccaplistmanagermultipleitems
+msgid "Multiple Items Selected"
+msgstr ""
+
+#: ufrmlistmanager.ccaplistmanagernothingtoconsolidate
+msgid "Nothing to Consolidate to"
+msgstr ""
+
+#: ufrmlistmanager.cmsglistmanagerclue
+msgid "Select %s for: %s"
+msgstr ""
+
+#: ufrmlistmanager.cmsglistmanagerlistwarning
+msgid ""
+"Just so you know.\n"
+"\n"
+"Changes made to this list will be propagated through the Command database when you press OK / Done. \n"
+"\n"
+"For instance if you delete a %s here any Command using that %s will  have it removed. Or when you edit one (rename it) that new name will replace the old one in all Commands using it. \n"
+"\n"
+"In other words changes to the master %s list are synchronized to the database.  Keep this in mind while making changes so you are not surprised later that things have changed. \n"
+"\n"
+msgstr ""
+
+#: ufrmlistmanager.cmsglistmanagermangementmode
+msgid "Manage Master %s"
+msgstr ""
+
+#: ufrmlistmanager.cmsglistmanagermultipleitems
+msgid "For this choice only one item should be selected."
+msgstr ""
+
+#: ufrmlistmanager.cmsglistmanagernothingtoconsolidate
+msgid "There is only one item in the list so there is nothing to consolidate to."
+msgstr ""
+
+#: ufrmlistmanagerconsolidate.cmsglmc
+msgid ""
+"When you press OK the old Item disappears \n"
+"and all instances of it are changed to the newly \n"
+"chosen Item. \n"
+msgstr ""
+
+#: ufrmlistmanagerconsolidate.cmsglmccombobox
+msgid ""
+"This is the List Item you want to consolidate \n"
+"TO. \n"
+"\n"
+"The List Item shown above will be consolidated \n"
+"to this List Item. \n"
+"\n"
+"%s \n"
+"\n"
+"<end.> \n"
+msgstr ""
+
+#: ufrmlistmanagerconsolidate.cmsglmclabel
+msgid ""
+"This is the List Item you want to consolidate \n"
+"(combine into) another List Item. \n"
+"\n"
+"You choose the List Item to consolidate to \n"
+"from the combobox below. \n"
+"\n"
+"%s \n"
+"\n"
+"<end.> \n"
+msgstr ""
+
+#: ufrmlistmanagerconsolidate.cmsglmcnoselection
+msgid "You have not chosen a %s to consolidate to."
+msgstr ""
+
+#: ufrmmain.ccapaddcommandline
+msgid "Add Command Line"
+msgstr ""
+
+#: ufrmmain.ccapaddeditcommand
+msgid "Add / Edit Command"
+msgstr ""
+
+#: ufrmmain.ccapdetprocactive
+msgid "active"
+msgstr ""
+
+#: ufrmmain.ccapdetprocactivenot
+msgid "inactive"
+msgstr ""
+
+#: ufrmmain.ccapdetprocopen
+msgid "open"
+msgstr ""
+
+#: ufrmmain.ccapdetprocopennot
+msgid "closed"
+msgstr ""
+
+#: ufrmmain.ccapdetprocrunning
+msgid "Running"
+msgstr ""
+
+#: ufrmmain.ccapdetprocrunningnot
+msgid "not Running"
+msgstr ""
+
+#: ufrmmain.ccapfileexists
+msgid "%s file exists"
+msgstr ""
+
+#: ufrmmain.ccapfinexmessage
+msgid "Error Occurred"
+msgstr ""
+
+#: ufrmmain.ccaprunningdetachedprocesses
+msgid "Running Processes!"
+msgstr ""
+
+#: ufrmmain.ccapsearchfilename
+msgid "Search File Name"
+msgstr ""
+
+#: ufrmmain.ccapsearchload
+msgctxt "ufrmmain.ccapsearchload"
+msgid "Load Search"
+msgstr ""
+
+#: ufrmmain.ccapsendtoprofile
+msgid "Select Profile to SEND TO"
+msgstr ""
+
+#: ufrmmain.cmsgcommandnameduplicate
+msgid "The Command \"%s\" is already in the command list, duplicates are not allowed."
+msgstr ""
+
+#: ufrmmain.cmsgfileexistsoverwrite
+msgid "Search File \"%s\" exists. Do you want to overwrite it?"
+msgstr ""
+
+#: ufrmmain.cmsgfinexclibboard
+msgid "( This message is also in your clipboard. )"
+msgstr ""
+
+#: ufrmmain.cmsgfinexdev
+msgid "A Developer style error has occurred, a developer must fix it."
+msgstr ""
+
+#: ufrmmain.cmsgfinexfatal
+msgid "fatal error: the program will be shut down."
+msgstr ""
+
+#: ufrmmain.cmsgfinexhand
+msgid "A code error or, possibly, poorly hand-edited data files has occurred."
+msgstr ""
+
+#: ufrmmain.cmsgfinexmessage
+msgid "Error Message: "
+msgstr ""
+
+#: ufrmmain.cmsgfinexproblem
+msgid "A problem occurred, given from:"
+msgstr ""
+
+#: ufrmmain.cmsginitisproblem
+msgid "Could not initialize InfoServer"
+msgstr ""
+
+#: ufrmmain.cmsginput_detach
+msgid "Not allowed to send input to a detached (child) process. Input turned off."
+msgstr ""
+
+#: ufrmmain.cmsginvalidlinuxfilename
+msgid "The filename is invalid! System does not allow \"//\" in a filename."
+msgstr ""
+
+#: ufrmmain.cmsgkill_badlinux
+msgid "Unexpected system problem: command \"id\" not found! Terminating."
+msgstr ""
+
+#: ufrmmain.cmsgprogramkeyword
+msgid "The Name \"%s\" at beginning of name is reserved for the program to use."
+msgstr ""
+
+#: ufrmmain.cmsgrootuseshell_pipe
+msgid "Not allowed to run UseShell or piped CL's as <ROOT>, this will run as normal user, run CL in Terminal if you want to use <ROOT>."
+msgstr ""
+
+#: ufrmmain.cmsgrunningdetachedprocesses
+msgid ""
+"You have %d Running child processes (listed below). They will be automatically halted. Do you still want to close?\n"
+"\n"
+"%s\n"
+"\n"
+msgstr ""
+
+#: ufrmmain.cmsgsearchinvalid
+msgid "Search is invalid."
+msgstr ""
+
+#: ufrmmain.cmsgsearchinvalidnoload
+msgid " It can not be loaded."
+msgstr ""
+
+#: ufrmmain.cmsgsqllibnotfound
+msgid "===> sqlite system library not found <==="
+msgstr ""
+
+#: ufrmmain.cmsgsystemprocesseserror
+msgid "Problem reading system processes. Halting: "
+msgstr ""
+
+#: ufrmmain.cmsgterminalundefined
+msgid "There is no Terminal program defined, change in \"Options\"."
+msgstr ""
+
+#: ufrmmain.cnameitem_problem
+msgid "Problem"
+msgstr ""
+
+#: ufrmmain.cnameitem_search
+msgctxt "ufrmmain.cnameitem_search"
+msgid "Search"
+msgstr ""
+
+#: ufrmmain.cnameitem_threatlevel
+msgid "Threat Level"
+msgstr ""
+
+#: ufrmmanageprofile.ccapdbtypes
+msgid ""
+"&S  sqlite DB\n"
+"&T  Text File Based\n"
+msgstr ""
+
+#: ufrmmanageprofile.cmpchoosedbtype
+msgid "You must choose a DB Type."
+msgstr ""
+
+#: ufrmmanageprofile.cmpnamelabel
+msgid "Name: "
+msgstr ""
+
+#: ufrmmsgdlg.cmsgconfirmation
+msgid "= Confirm ="
+msgstr ""
+
+#: ufrmmsgdlg.cmsgdlgattention
+msgid "<< == Attention! == >>"
+msgstr ""
+
+#: ufrmmsgdlg.cmsgdlggeneralinformation
+msgid "General Information"
+msgstr ""
+
+#: ufrmmsgdlg.cmsgdlginformation
+msgid "Information"
+msgstr ""
+
+#: ufrmmsgdlg.cmsgdlgwarning
+msgid "<< Warning >>"
+msgstr ""
+
+#: ufrmmsgdlg.cundefined
+msgid "== U N D E F I N E D =="
+msgstr ""
+
+#: ufrmoptions.caddlanghint
+msgid ""
+"Add new language packs via this button. \n"
+"Unfortunately at this time there is only \n"
+"English and Wookie (haha) and Pyrate! \n"
+"\n"
+"If you are so kind as to provide a translation \n"
+"for your native language, then that can be \n"
+"there too. \n"
+"\n"
+"To use you simply navigate to the new language .po \n"
+"file and select it. It will be added into the \n"
+"system automatically. \n"
+"\n"
+"<end> \n"
+msgstr ""
+
+#: ufrmoptions.ccapoptdefterminal
+msgid "Reset to default Terminal?"
+msgstr ""
+
+#: ufrmoptions.ccapoptresetshownos
+msgid "Reset Show No More?"
+msgstr ""
+
+#: ufrmoptions.ccapoptterminalprogram
+msgid "Terminal Program"
+msgstr ""
+
+#: ufrmoptions.clblthreatlevelhint
+msgid ""
+"Each Command Line has an associated \n"
+"\"Threat Level\". Checking the checkboxes \n"
+"below will cause a confirmation dialog to \n"
+"be displayed for that threat level. \n"
+"\n"
+"This is a safety measure which you can \n"
+"choose to use or not. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmoptions.cmsgoptdefterminal
+msgid "Are you sure you want to reset the Terminal Program to Default \"%s\"?"
+msgstr ""
+
+#: ufrmoptions.cmsgoptresetshownos
+msgid "Are you sure you want to re-enable Optional Messages / Information?"
+msgstr ""
+
+#: ufrmoptions.cmsgoptsqliteactivealready
+msgid "sqlite is active, no need to change it."
+msgstr ""
+
+#: ufrmoptions.cmsgoptsqlitelibfile
+msgid "sqlite Library file"
+msgstr ""
+
+#: ufrmoptions.ctextorsqldbhint
+msgid ""
+"You have the option to use either, or both, \n"
+"types of Database: SQL based (sqlite) or \n"
+"simple TEXT based. \n"
+"\n"
+"NOTE: if you choose to use both be aware \n"
+"they ARE SEPARATE Databases. \n"
+"\n"
+"When these are checked then the choice for \n"
+"the use of them will be present in the \n"
+"Switch Profiles Window. \n"
+"\n"
+"If you prefer one over the other, or don't \n"
+"want either, uncheck these and they will \n"
+"no longer be choices in the Switch DB \n"
+"window. \n"
+"\n"
+"Most likely on initial install you downloaded \n"
+"one or the other, or both, pre-filled in databases, \n"
+"SQL / Text. Unchecking the other \n"
+"here then cleans up your Switch window. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmprofiles.ccapcompareresults
+msgid "Compare Results"
+msgstr ""
+
+#: ufrmprofiles.ccapfileerror
+msgid "File Error"
+msgstr ""
+
+#: ufrmprofiles.ccapprocantcopy
+msgid "Can not Copy"
+msgstr ""
+
+#: ufrmprofiles.ccapproconvertconfirm
+msgid "Convert %s To %s:"
+msgstr ""
+
+#: ufrmprofiles.ccapproconvertsuccess
+msgid "DB Conversion successful. You can load it from the \"Switch Database\" button."
+msgstr ""
+
+#: ufrmprofiles.ccapprocopyconfirm
+msgid "Copy Profile"
+msgstr ""
+
+#: ufrmprofiles.ccapprodbfilenotexist
+msgid "%s does not exist"
+msgstr ""
+
+#: ufrmprofiles.ccapprodeletefinal
+msgid "Final Confirmation"
+msgstr ""
+
+#: ufrmprofiles.ccapprodeleteok
+msgid "File Deletion?"
+msgstr ""
+
+#: ufrmprofiles.ccapprodestfileexists
+msgid "%s File Exists!"
+msgstr ""
+
+#: ufrmprofiles.ccapprodestfilesexist
+msgid "%s Text Files Exist!"
+msgstr ""
+
+#: ufrmprofiles.ccapproinvalidfolder
+msgid "Invalid Folder"
+msgstr ""
+
+#: ufrmprofiles.ccapproiscurrentdb
+msgid "\"%s\" is your current database and it is in use. You may not edit or delete it."
+msgstr ""
+
+#: ufrmprofiles.ccappromanagedb
+msgctxt "ufrmprofiles.ccappromanagedb"
+msgid "Manage Database Profiles"
+msgstr ""
+
+#: ufrmprofiles.ccappromergeconfirm
+msgid "Merge?"
+msgstr ""
+
+#: ufrmprofiles.ccappronooverwrite
+msgid "Can not overwrite existing"
+msgstr ""
+
+#: ufrmprofiles.ccapproselectdb
+msgid "Select Database Profile"
+msgstr ""
+
+#: ufrmprofiles.ccapselectprofiletype
+msgid "Select Profile to %s TO"
+msgstr ""
+
+#: ufrmprofiles.ccapselectprofiletype_compare
+msgid "Compare"
+msgstr ""
+
+#: ufrmprofiles.ccapselectprofiletype_merge
+msgctxt "ufrmprofiles.ccapselectprofiletype_merge"
+msgid "Merge"
+msgstr ""
+
+#: ufrmprofiles.ccapstandardselect
+msgctxt "ufrmprofiles.ccapstandardselect"
+msgid "&A  Select"
+msgstr ""
+
+#: ufrmprofiles.ccapvariselect
+msgid "&A  Select Profile:  \"%s\""
+msgstr ""
+
+#: ufrmprofiles.cmsgcomparing
+msgid ""
+"Comparing  \"%s\" <source> to  \"%s\" <destination>:\n"
+"\n"
+msgstr ""
+
+#: ufrmprofiles.cmsgcurrentprofile
+msgid "Current Profile = \"%s\""
+msgstr ""
+
+#: ufrmprofiles.cmsgdefaultdisplay
+msgid "( Default Path = %s )"
+msgstr ""
+
+#: ufrmprofiles.cmsgfileerrorcopy
+msgid ""
+"COPY: Data file \"%s\" could not be copied to \"%s\". \n"
+"\n"
+msgstr ""
+
+#: ufrmprofiles.cmsgfileerrordelete
+msgid ""
+"DELETE: Data file \"%s\" could not be deleted. \n"
+"\n"
+msgstr ""
+
+#: ufrmprofiles.cmsgfileerrormove
+msgid ""
+"RENAME / MOVE: Data file \"%s\" could not be renamed/moved to \"%s\". \n"
+"\n"
+msgstr ""
+
+#: ufrmprofiles.cmsgmostlikely
+msgid "Either the file(s) do not exist, there is a permissions problem, or possibly unmounted drives."
+msgstr ""
+
+#: ufrmprofiles.cmsgpathdisplay
+msgid "Path: %s"
+msgstr ""
+
+#: ufrmprofiles.cmsgprocantcopy
+msgid "Data files for Profile \"%s\" already exist in \"%s\". Copy not allowed, you need to decide what to do with them. If you want to use them then add NEW and point the new Profile to that folder. If you don't want them then move or delete them."
+msgstr ""
+
+#: ufrmprofiles.cmsgproconotassigned
+msgid "Command object was not assigned."
+msgstr ""
+
+#: ufrmprofiles.cmsgprodbfilenotexist
+msgid "\"%s\"  DB has not been initialized and so is empty, %s DB file must exist."
+msgstr ""
+
+#: ufrmprofiles.cmsgprodbtextstr
+msgid "text"
+msgstr ""
+
+#: ufrmprofiles.cmsgprodeletefinal
+msgid "The Profile == AND == the Database file(s) will be deleted. Continue?."
+msgstr ""
+
+#: ufrmprofiles.cmsgprodeletefinalnodelete
+msgid "The Profile will be deleted == BUT == the Database file(s) will remain. Continue?."
+msgstr ""
+
+#: ufrmprofiles.cmsgprodeleteok
+msgid "Do you also want to delete the files? This cannot be undone, you should have backups just in case."
+msgstr ""
+
+#: ufrmprofiles.cmsgprodestfileexists
+msgid ""
+"You want to move data file \"%s\". But... \n"
+"\n"
+"...Destination File \"%s\" already exists!! \n"
+"\n"
+"Do you want to overwite that sql data file? \n"
+msgstr ""
+
+#: ufrmprofiles.cmsgprodestfilesexist
+msgid ""
+"Destination path \"%s\" already contains one or more files of Profile \"%s\". \n"
+"\n"
+"Do you want to overwite those text data files? \n"
+msgstr ""
+
+#: ufrmprofiles.cmsgprodestnotexist
+msgid "You can use copy or convert instead."
+msgstr ""
+
+#: ufrmprofiles.cmsgprodeststr
+msgid "Destination"
+msgstr ""
+
+#: ufrmprofiles.cmsgprofilesinformation
+msgid ""
+"Just so you know.\n"
+"\n"
+"Changes made to this list are immediate. DB files, if they exist, will be renamed, moved, or deleted immediately. \n"
+"\n"
+"Assume Profile Name of \"Bob\". \n"
+"\n"
+"For sql DB's it is a single file and the file name convention is \"Bob.sqlite\"  \n"
+"\n"
+"For text DB's there are %d files named like this:  \n"
+"\n"
+"%s\n"
+"\n"
+msgstr ""
+
+#: ufrmprofiles.cmsgprofnothingselected
+msgid "Either nothing is selected or the only choices are the default \"DB\" choices."
+msgstr ""
+
+#: ufrmprofiles.cmsgprofswitchedoff
+msgid " ( Switched off in Options )"
+msgstr ""
+
+#: ufrmprofiles.cmsgproinvalidfolder
+msgid "Folder \"%s\" does not exist. Probably the drive is not mounted?"
+msgstr ""
+
+#: ufrmprofiles.cmsgpromergecompareproblem
+msgid "TfrmProfiles: %s Commands had a problem."
+msgstr ""
+
+#: ufrmprofiles.cmsgpromergeconfirm
+msgid "Merge  \"%s\" to \"%s\"?"
+msgstr ""
+
+#: ufrmprofiles.cmsgpromergesuccess
+msgid "DB Merge successful. Load Merged DB from the \"Switch Database\" button."
+msgstr ""
+
+#: ufrmprofiles.cmsgpronoinitialize
+msgid "Could not initialize DB"
+msgstr ""
+
+#: ufrmprofiles.cmsgpronooverwrite
+msgid "\"%s\" DB already exists, will not overwrite it."
+msgstr ""
+
+#: ufrmprofiles.cmsgproponameinvalid
+msgid "TfrmProfiles.FillList: Program's .formsettings file has invalid Profile name \"%s\", skipping it."
+msgstr ""
+
+#: ufrmprofiles.cmsgproponotassigned
+msgid "Profile Object not assigned."
+msgstr ""
+
+#: ufrmprofiles.cmsgproreservedname
+msgid "\"%s\" is reserved and may not be used"
+msgstr ""
+
+#: ufrmprofiles.cmsgprosourcenotexist
+msgid "Open the DB at least once and, preferably, put some data into it."
+msgstr ""
+
+#: ufrmprofiles.cmsgprosourcestr
+msgid "Source"
+msgstr ""
+
+#: ufrmsearch.ccapgenericmatchcasehint
+msgid ""
+"Determines whether the item must match in letter case. \n"
+"\n"
+"For example, if this is checked then the search item must match case exactly: \n"
+"\n"
+"\"abc\" matches only \"abc\", not \"AbC\" or \"aBC\", etc. \n"
+"\n"
+"Unchecked then all of the above will be matches. \n"
+"\n"
+"This is ignored in LIST searches if the Match Type is \"match\". \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmsearch.ccapgenericsubformhint
+msgid ""
+"Select the \"match\" type you want for the Search and select the value you want below. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmsearch.ccapgenerictexthint
+msgid ""
+"The text being searched for. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmsearch.cfsecurrentprofilestamp
+msgid "Current Profile:  %s"
+msgstr ""
+
+#: ufrmsearch.cfsedesignedprofilestamp
+msgid "Search Designed in:  %s"
+msgstr ""
+
+#: ufrmsearch.cfsesearchcaption
+msgid "Search %s"
+msgstr ""
+
+#: ufrmsearch.cfsesearchcaptionfields
+msgid "Fields"
+msgstr ""
+
+#: ufrmsearch.cfsesearchcaptionlists
+msgid "Lists"
+msgstr ""
+
+#: ufrmsearch.cmsgsewhichboolexpr
+msgid "Editing ==> %s <== Expression:"
+msgstr ""
+
+#: ufrmsearch.cmsgsewhichboolexprc
+msgid "COMMAND"
+msgstr ""
+
+#: ufrmsearch.cmsgsewhichboolexprcl
+msgid "COMMAND LINE"
+msgstr ""
+
+#: ufrmsimplesearch.csscapmatchcase
+msgctxt "ufrmsimplesearch.csscapmatchcase"
+msgid "Match Case"
+msgstr ""
+
+#: ufrmsimplesearch.csscapregex
+msgid "Regular Expression"
+msgstr ""
+
+#: ufrmsimplesearch.csscapresetall
+msgid "Reset all inputs"
+msgstr ""
+
+#: ufrmsimplesearch.csshintadditional
+msgid ""
+"Additional search text. Anything typed  \n"
+"will also be searched for. \n"
+"\n"
+"You have 3 search text areas, all are \n"
+"\"OR\"d, that is, search for \"bob\" \n"
+"OR \"Alice\" OR \"Carol\". \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmsimplesearch.csshintadvsearch
+msgid ""
+"Switches to the ADVANCED SEARCH \n"
+"window, which has 3 options. \n"
+"This button opens: \n"
+"\n"
+"%s\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmsimplesearch.csshintadvsearchcurrent
+msgid ""
+"Current Search; that is, \n"
+"whatever was last searched for \n"
+"in this Database profile.\n"
+msgstr ""
+
+#: ufrmsimplesearch.csshintadvsearchload
+msgid "The \"load a saved Search\" window."
+msgstr ""
+
+#: ufrmsimplesearch.csshintadvsearchnew
+msgid ""
+"New Search; that is, \n"
+"a blank advanced search \n"
+"window.\n"
+msgstr ""
+
+#: ufrmsimplesearch.csshintcchecks
+msgid ""
+"%s all the boxes in the \n"
+"area below. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmsimplesearch.csshintcheckboxgroups
+msgid ""
+"Contains a checkbox list of all \n"
+"text (string) fields for: \n"
+"\n"
+"%s. \n"
+"\n"
+"Uncheck fields if you don't \n"
+"want to search them.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmsimplesearch.csshintmatchcase
+msgid ""
+"If checked requires search text above \n"
+"to match case exactly. \n"
+"\n"
+"If unchecked case doesn't matter and \n"
+"search text \"bob\" will match bob, \n"
+"boB, bOb, BoB, etc. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmsimplesearch.csshintregex
+msgid ""
+"If checked this indicates that the \n"
+"search text above is a \n"
+"Regular Expression. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmsimplesearch.csshintreset
+msgid ""
+"Resets the items to the left: clears \n"
+"Search Text, and unchecks the two \n"
+"checkboxes. \n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmsimplesearch.cssmsgbtnclears
+msgid "Reset"
+msgstr ""
+
+#: ufrmsimplesearch.cssmsgchecks
+msgid "Checks"
+msgstr ""
+
+#: ufrmsimplesearch.cssmsgnosearchfields
+msgid "No search fields are checked."
+msgstr ""
+
+#: ufrmsimplesearch.cssmsgnosearchvalue
+msgid "You've specified no search text."
+msgstr ""
+
+#: ufrmsimplesearch.cssmsgresetall
+msgid "Are you sure you want to reset all the inputs?"
+msgstr ""
+
+#: ufrmsimplesearch.cssmsgunchecks
+msgid "Unchecks"
+msgstr ""
+
+#: ufrmsuperuserfile.ccapchoosesufile
+msgid "Choose ROOT authentication file"
+msgstr ""
+
+#: ufrmsuperuserfile.ccapturnoffroot
+msgid "Disallow ROOT permissions?"
+msgstr ""
+
+#: ufrmsuperuserfile.ccaptypesufileparam
+msgid "Type in flag / parameter, if any"
+msgstr ""
+
+#: ufrmsuperuserfile.ccaptypesufileparam1
+msgid "First flag / parameter, if any"
+msgstr ""
+
+#: ufrmsuperuserfile.ccaptypesufileparam2
+msgid "Second flag / parameter, if any"
+msgstr ""
+
+#: ufrmsuperuserfile.cmsgbadsufile
+msgid "File \"%s\" does not exist. Can not save it."
+msgstr ""
+
+#: ufrmsuperuserfile.cmsgrawsudo
+msgid "Not allowed! \"su\" and \"sudo\" are not secure to use through a GUI."
+msgstr ""
+
+#: ufrmsuperuserfile.cmsgsufbadpath
+msgid "//xx BAD xx/"
+msgstr "//xx BAD xx/"
+
+#: ufrmsuperuserfile.cmsgturnoffroot
+msgid "If you do this you will not be able to run command lines as ROOT. Is this what you want?"
+msgstr ""
+
+#: ufrmsuperuserfile.csufhintparams
+msgid ""
+"These edits hold the param flags for the ROOT file. These \n"
+"are correct and shouldn't in general be changed. \n"
+"\n"
+"However, someday in future maybe things change, so you can \n"
+"edit them by double clicking them. You should know what \n"
+"you are doing, any changes you make are at your own risk. \n"
+"\n"
+"At the time of writing only kdesu requires params. \"-t\" forces \n"
+"it to return the called process's output, and \"-c\" tells it to \n"
+"run a command. \"-c\" MUST BE last.\n"
+"\n"
+"<end>\n"
+"\n"
+msgstr ""
+
+#: unitcommands.ccapcomparelist
+msgid "%s Comparison:"
+msgstr ""
+
+#: unitcommands.ccapcomparelistspecific
+msgid "\"%s\" %s List:"
+msgstr ""
+
+#: unitcommands.cmsgcldest
+msgid "  present in destination but not in source:"
+msgstr ""
+
+#: unitcommands.cmsgclebadcommand
+msgid "Bad command!"
+msgstr ""
+
+#: unitcommands.cmsgclebadpath
+msgid "$BAD_PATH"
+msgstr "$BAD_PATH"
+
+#: unitcommands.cmsgclebuiltininfo
+msgid ""
+"\n"
+"\n"
+"________NOTE_____________\n"
+"Linux builtins are special use for shells \n"
+"(terminals, scripting, etc.) and, generally, \n"
+"should not be run from this program as it \n"
+"makes no sense to do so. \n"
+"\n"
+"But use Command lines to store favorite Builtin \n"
+"commands and use the copy to clipboard feature \n"
+"and then paste into a terminal. \n"
+msgstr ""
+
+#: unitcommands.cmsgclenobuiltindetached
+msgid "Builtin commands may not be run as a detached process"
+msgstr ""
+
+#: unitcommands.cmsgclenosufile
+msgid "No superuser file (kdesudo, gksudo, etc.) has been found."
+msgstr ""
+
+#: unitcommands.cmsgclis
+msgid "  present:"
+msgstr ""
+
+#: unitcommands.cmsgclisnot
+msgid "  not present:"
+msgstr ""
+
+#: unitcommands.cmsgclsnone
+msgid "none"
+msgstr ""
+
+#: unitcommands.cmsgcomcommanddisallowed
+msgid "%s command disallowed because it could hang the program. Run in Terminal."
+msgstr ""
+
+#: unitcommands.cmsgcomparelistcnt
+msgid "Count = %d"
+msgstr ""
+
+#: unitcommands.cmsgcomparesummary
+msgid "========= Summary of %s: ============"
+msgstr ""
+
+#: unitcommands.cmsgdbstatistics
+msgid "%s has %d Commands and %d Command Lines"
+msgstr ""
+
+#: unitcommands.cmsgindest
+msgid ">> Present in Destination: "
+msgstr ""
+
+#: unitcommands.cmsgindestnot
+msgid ">> Not in Destination: "
+msgstr ""
+
+#: unitcommands.cmsgpathsdiffer
+msgid "Path is different: %s"
+msgstr ""
+
+#: unitcommands.cmsgucodisallowpipe_detach
+msgid "Can not run piped commands as detached processes."
+msgstr ""
+
+#: unitcommands.cmsgucodisallowshell_detach
+msgid "Can not run commands designated to go through Shell as detached processes."
+msgstr ""
+
+#: unitcommands.cmsgucoerror_converting
+msgid "Converting"
+msgstr ""
+
+#: unitcommands.cmsgucoerror_merge
+msgctxt "unitcommands.cmsgucoerror_merge"
+msgid "Merge"
+msgstr ""
+
+#: unitcommands.cmsgucoerror_mergeconvsaving
+msgid "problem saving command. %s halted."
+msgstr ""
+
+#: unitcommands.cmsgucomerge_added
+msgid "\"%s\" added to Destination"
+msgstr ""
+
+#: unitcommands.cmsgucomerge_existing
+msgid "\"%s\" merged to existing in Destination"
+msgstr ""
+
+#: unitcommands.cmsguconocmdorparams
+msgid "No command / parameters"
+msgstr ""
+
+#: unitcommands.cmsgucovariablefilename
+msgid ""
+"File and Folder names are automatically quoted for you, as is necessary for file/folder names that have spaces in them. Therefore, there is no need to put quotes around the <<F>> variable. In fact that will cause failure. So make sure the command line has simply <<F>> ==NOT== '<<F>>' \n"
+"\n"
+"Put in a file or folder (depending on what the flag wants) like: \n"
+"\n"
+"/home/Suzy/myfile.txt \n"
+"~/myfile.txt \n"
+"~/ \n"
+"/bin \n"
+"And so on and so forth.. \n"
+"\n"
+msgstr ""
+
+#: unitcommands.cmsgucovariableinteger
+msgid ""
+"Put in an integer (i.e., a number like 1, 2, 3...)\n"
+"\n"
+"The variable indicates that an integer should go here, but sometimes more is allowed. Oftentimes this can be a size, and you can simply type the size directly like: 1024000000 \n"
+"\n"
+"But in cases where it is a file size for example, suffixes are allowed. For example: 1024M is equivalent to the above size. \n"
+"\n"
+"This will ALWAYS depend on the command and the flag, so do your research but, for your reference, here are common allowed suffixes for file sizes: \n"
+"\n"
+"kB = 1024   K = 1000 ( 2K = 2000 bytes ) \n"
+"mB = 1024000   M = 1000000 ( 2mB = 2.048 Megabytes ) \n"
+"mG = 1024000000   G = 1000000000 ( 3G = 3 Gigabytes ) \n"
+"mix and match. 4096M = 4 Gigabytes \n"
+msgstr ""
+
+#: unitcommands.cmsgucovariableinvalid
+msgid "Invalid variable \"%s\"."
+msgstr ""
+
+#: unitcommands.cmsgucovariableinvalidhelp
+msgid ""
+"\n"
+"\n"
+"Invalid variable \"%s\". Valid are: \n"
+"\n"
+"<<S>> (string)\n"
+"<<I>> (integer)\n"
+"<<N>> (real number)\n"
+"<<F>> (file name)\n"
+msgstr ""
+
+#: unitcommands.cmsgucovariablenumber
+msgid "Put in a float value (i.e., 1.34, 2.8, 3.14159...) "
+msgstr ""
+
+#: unitcommands.cmsgucovariablestring
+msgid ""
+"Put in a string (i.e., AlphaNumeric)\n"
+"\n"
+"This basically means anything can go in here, what it should be depends entirely on what the command flag wants and the result you are looking for. \n"
+msgstr ""
+
+#: unitcommands.cucomerge_boolean
+msgid "FROM boolean %s was different"
+msgstr ""
+
+#: unitcommands.cucomerge_inconsistency
+msgid ""
+"%s: Merge Inconsistencies: \n"
+"%s\n"
+msgstr ""
+
+#: unitcommands.cucomerge_newobj
+msgid ""
+"%s: merged from %s\n"
+"\n"
+msgstr ""
+
+#: unitcommands.cucomerge_string
+msgid "FROM String %s was \"%s\""
+msgstr ""
+
+#: unitcommands.cucomerge_text
+msgid ""
+"%s: Text merged from %s\n"
+"\n"
+msgstr ""
+
+#: unitcommands.cucomerge_text_separator
+msgid ""
+"\n"
+"== Original Text ==\n"
+msgstr ""
+
+#: unitcommands.cucovariablefilecliptext
+msgid "||FILE_OR_FOLDER_HERE||"
+msgstr ""
+
+#: unitcommands.cucovariableintegercliptext
+msgid "||INTEGER_HERE||"
+msgstr ""
+
+#: unitcommands.cucovariablenumbercliptext
+msgid "||REAL_NUMBER_HERE||"
+msgstr ""
+
+#: unitcommands.cucovariablestringcliptext
+msgid "||TEXT_HERE||"
+msgstr ""
+
+#: unitdbconstants.ccmdcolalertcaption
+msgid "Alert on use"
+msgstr ""
+
+#: unitdbconstants.ccmdcolalertcaptionabbrev
+msgid "Alert"
+msgstr ""
+
+#: unitdbconstants.ccmdcolcommandnamecaption
+msgid "Command Name"
+msgstr ""
+
+#: unitdbconstants.ccmdcolcommandnamecaptionabbrev
+msgid "Cmd"
+msgstr ""
+
+#: unitdbconstants.ccmdcoldetachprocesscaption
+msgid "Child Proc"
+msgstr ""
+
+#: unitdbconstants.ccmdcoldetachprocesscaptionabbrev
+msgid "ChProc"
+msgstr ""
+
+#: unitdbconstants.ccmdcolentrycaption
+msgid "CmdLine"
+msgstr ""
+
+#: unitdbconstants.ccmdcolentrycaptionabbrev
+msgid "CLine"
+msgstr ""
+
+#: unitdbconstants.ccmdcolfriendlynamecaption
+msgid "Friendly Name"
+msgstr ""
+
+#: unitdbconstants.ccmdcolfriendlynamecaptionabbrev
+msgid "Fr_Name"
+msgstr ""
+
+#: unitdbconstants.ccmdcolhelpcommandcaption
+msgctxt "unitdbconstants.ccmdcolhelpcommandcaption"
+msgid "Help"
+msgstr ""
+
+#: unitdbconstants.ccmdcolhelpcommandcaptionabbrev
+msgctxt "unitdbconstants.ccmdcolhelpcommandcaptionabbrev"
+msgid "Help"
+msgstr ""
+
+#: unitdbconstants.ccmdcolinvalidcaption
+msgid "<invalid>"
+msgstr "<invalid>"
+
+#: unitdbconstants.ccmdcolinvalidcaptionabbrev
+msgid "<INVAL>"
+msgstr "<INVAL>"
+
+#: unitdbconstants.ccmdcolisfavoritecaption
+msgid "Is Favorite"
+msgstr ""
+
+#: unitdbconstants.ccmdcolisfavoritecaptionabbrev
+msgid "Fav"
+msgstr ""
+
+#: unitdbconstants.ccmdcolkeywordscaption
+msgctxt "unitdbconstants.ccmdcolkeywordscaption"
+msgid "Keywords"
+msgstr ""
+
+#: unitdbconstants.ccmdcolkeywordscaptionabbrev
+msgid "KeyWd"
+msgstr ""
+
+#: unitdbconstants.ccmdcollocationpathcaption
+msgctxt "unitdbconstants.ccmdcollocationpathcaption"
+msgid "Folder"
+msgstr ""
+
+#: unitdbconstants.ccmdcollocationpathcaptionabbrev
+msgid "Fldr"
+msgstr ""
+
+#: unitdbconstants.ccmdcolnotescaption
+msgctxt "unitdbconstants.ccmdcolnotescaption"
+msgid "Notes"
+msgstr ""
+
+#: unitdbconstants.ccmdcolnotescaptionabbrev
+msgctxt "unitdbconstants.ccmdcolnotescaptionabbrev"
+msgid "Notes"
+msgstr ""
+
+#: unitdbconstants.ccmdcolsuperusermodecaption
+msgid "As SuperUser"
+msgstr ""
+
+#: unitdbconstants.ccmdcolsuperusermodecaptionabbrev
+msgid "Super"
+msgstr ""
+
+#: unitdbconstants.ccmdcolterminalonlycaption
+msgid "Term. Only"
+msgstr ""
+
+#: unitdbconstants.ccmdcolterminalonlycaptionabbrev
+msgid "Term"
+msgstr ""
+
+#: unitdbconstants.ccmdcolthreatlevelcaption
+msgid "ThreatLevel"
+msgstr ""
+
+#: unitdbconstants.ccmdcolthreatlevelcaptionabbrev
+msgid "ThLev"
+msgstr ""
+
+#: unitdbconstants.ccmdcoluseshellcaption
+msgid "Use Shell"
+msgstr ""
+
+#: unitdbconstants.ccmdcoluseshellcaptionabbrev
+msgid "Shell"
+msgstr ""
+
+#: unitdbconstants.ccmdcolversioncommandcaption
+msgctxt "unitdbconstants.ccmdcolversioncommandcaption"
+msgid "Version"
+msgstr ""
+
+#: unitdbconstants.ccmdcolversioncommandcaptionabbrev
+msgid "Vers"
+msgstr ""
+
+#: unitdbconstants.ccmdcolwantsinputcaption
+msgid "Wants Input"
+msgstr ""
+
+#: unitdbconstants.ccmdcolwantsinputcaptionabbrev
+msgctxt "unitdbconstants.ccmdcolwantsinputcaptionabbrev"
+msgid "Input"
+msgstr ""
+
+#: unitdbconstants.ckeywordscaption_plural
+msgctxt "unitdbconstants.ckeywordscaption_plural"
+msgid "Keywords"
+msgstr ""
+
+#: unitdbconstants.ckeywordscaption_singular
+msgid "Keyword"
+msgstr ""
+
+#: unitdbconstants.cthreatlevelcareful
+msgid "Careful"
+msgstr ""
+
+#: unitdbconstants.cthreatlevelcaution
+msgid "Caution"
+msgstr ""
+
+#: unitdbconstants.cthreatleveldanger
+msgid "Danger"
+msgstr ""
+
+#: unitdbconstants.cthreatlevelharmless
+msgid "Harmless"
+msgstr ""
+
+#: unitdbconstants.cthreatlevelnotspecified
+msgid "<Not_Set!>"
+msgstr "<Not_Set!>"
+
+#: unitdbstructure.cdbsdisplay_false
+msgid "false"
+msgstr ""
+
+#: unitdbstructure.cdbsdisplay_true
+msgid "true"
+msgstr ""
+
+#: unitdbutils.cmsgdbutiloldprognewdb
+msgid "Program expects DB UpgradeCount \"%d\". The loading DB UpgradeCount is \"%d\". The Database is from a newer version of the program. Loading is disabled as a safety measure. Use a newer version of the program, or load an older database. "
+msgstr ""
+
+#: unitdbutils.cmsgdbutilwrongnumini
+msgid "path \"%s\" with profile name \"%s\" does not have correct number (%d) of text datafiles"
+msgstr ""
+
+#: unitdbutils.constdefaultpathdisplay
+msgid "Default"
+msgstr ""
+
+#: unitfrmcommandsinput.ccapufciinputempty
+msgid "Input empty"
+msgstr ""
+
+#: unitfrmcommandsinput.cmsgufciinputempty
+msgid "There is no input. Is that what you want?"
+msgstr ""
+
+#: unitfrmcommandsvar.cmsgcvchoosefile
+msgid "FILE"
+msgstr ""
+
+#: unitfrmcommandsvar.cmsgcvchoosefilefolder
+msgid ""
+"Only active for file name variables. \n"
+"\n"
+"This button opens a dialog that lets you \n"
+"choose a ==%s==  on your system. \n"
+"\n"
+"<end> \n"
+msgstr ""
+
+#: unitfrmcommandsvar.cmsgcvchoosefolder
+msgid "FOLDER"
+msgstr ""
+
+#: unitfrmcommandsvar.cmsgufcvdonevariables
+msgid "Done with Variable replacement."
+msgstr ""
+
+#: unitglob.cbtn_add
+msgctxt "unitglob.cbtn_add"
+msgid "Add"
+msgstr ""
+
+#: unitglob.cbtn_copy
+msgid "Copy"
+msgstr ""
+
+#: unitglob.cbtn_delete
+msgctxt "unitglob.cbtn_delete"
+msgid "Delete"
+msgstr ""
+
+#: unitglob.cbtn_done
+msgid "&O Done"
+msgstr ""
+
+#: unitglob.cbtn_edit
+msgid "Edit"
+msgstr ""
+
+#: unitglob.ccapgenericadd
+msgid "Add %s"
+msgstr ""
+
+#: unitglob.ccapgenericchoose
+msgid "Choose %s"
+msgstr ""
+
+#: unitglob.ccapgenericdelete
+msgid "Delete %s"
+msgstr ""
+
+#: unitglob.ccapgenericedit
+msgid "Edit %s"
+msgstr ""
+
+#: unitglob.ccapgenericfile
+msgctxt "unitglob.ccapgenericfile"
+msgid "File"
+msgstr ""
+
+#: unitglob.ccapgenericfolder
+msgctxt "unitglob.ccapgenericfolder"
+msgid "Folder"
+msgstr ""
+
+#: unitglob.ccapgenericprofile
+msgid "Profile"
+msgstr ""
+
+#: unitglob.cmsggenericdelete
+msgid "Are you sure you want to delete the selected items?"
+msgstr ""
+
+#: unitglob.cmsgnocommandselected
+msgid "No item is selected."
+msgstr ""
+
+#: unitglob.cobjlblrun
+msgid "&R  Run"
+msgstr ""
+
+#: unitglob.cobjlblruntest
+msgid "&R  Test"
+msgstr ""
+
+#: unitglob.crg_matchtype
+msgid "Match Type"
+msgstr ""
+
+#: unitglob.crg_value
+msgid "Value"
+msgstr ""
+
+#: unitglobform.cmsgcleexecuting
+msgid "running: "
+msgstr ""
+
+#: unitglobform.cmsggfcommandnotfound
+msgid "Command \"%s\" not found, it must be in an edited state and can not be found until it is saved."
+msgstr ""
+
+#: unitlanguages.ccapover18
+msgid "Mature Adult Language"
+msgstr ""
+
+#: unitlanguages.clangsymbol
+msgid "Language Symbol: \"%s\""
+msgstr ""
+
+#: unitlanguages.cmsgover18
+msgid ""
+"The language you have chosen is for mature adult use only. This means you need to be 18 years old or older (or whatever applies in your country)\n"
+"\n"
+"Are you over 18 (or whatever)?\n"
+msgstr ""
+
+#: unitlanguages.cmsgtranslation_missingpofile
+msgid "The language file \"%s\" is not installed. Maybe it was deleted??"
+msgstr ""
+
+#: unitlanguages.cnotvalidpofile
+msgid ""
+"\"%s\" is not a valid .po file for this program. \n"
+"\n"
+"A valid .po filename looks like \"programname.xx.po\" (where XX equals some letter combination like \"es\" or \"en\" or \"pyr\", etc.). Everything should be in lowercase. \n"
+msgstr ""
+
+#: unitsearch.ccapsearchloaderror
+msgctxt "unitsearch.ccapsearchloaderror"
+msgid "Error Opening Search"
+msgstr ""
+
+#: unitsearch.ccapussearchdetailproblem
+msgid "Search Item Problem(s)"
+msgstr ""
+
+#: unitsearch.cdefsearchfilename
+msgid "NewSearch"
+msgstr ""
+
+#: unitsearch.cmsgsearchloaderror
+msgctxt "unitsearch.cmsgsearchloaderror"
+msgid "Search File \"%s\" could not be opened. File invalid or missing."
+msgstr ""
+
+#: unitsearch.cuscapbaduniqueidx
+msgid "%s: UniqueID invalid"
+msgstr ""
+
+#: unitsearch.cuscapcurrexpr
+msgid "Current Expression: "
+msgstr ""
+
+#: unitsearch.cuscapnoexpr
+msgid "< empty, no search items >"
+msgstr ""
+
+#: unitsearch.cuscapoffexpr
+msgid "( turned off, not used )"
+msgstr ""
+
+#: unitsearch.cuscapsearchexpr
+msgid ""
+"Search Expressions:\n"
+"\n"
+msgstr ""
+
+#: unitsearch.cusinvalidmsgbadfield
+msgid ""
+"Field \"%s\" does not exist in the database.\n"
+"\n"
+msgstr ""
+
+#: unitsearch.cusinvalidmsgbadlistitem
+msgid ""
+"List Value \"%s\" does not exist in this Field's Master %s List, maybe you deleted it? It has been changed to a valid value for you.\n"
+"\n"
+msgstr ""
+
+#: unitsearch.cusmatchtypecontains
+msgid "Contains (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypeequals
+msgid "Equals (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypegt
+msgid "Greater than (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypegte
+msgid "Greater than or equal (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypeisempty
+msgid "Item is Empty (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypelt
+msgid "Less than (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypelte
+msgid "Less than or equal (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypematch
+msgid "Matches (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypenocontains
+msgid "Doesn't Contain (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypenoequals
+msgid "Doesn't Equal (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypenomatch
+msgid "Doesn't Match (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypenone
+msgid "ERROR (%s)"
+msgstr ""
+
+#: unitsearch.cusmatchtypere
+msgid "Regular Expression (%s)"
+msgstr ""
+
+#: unitsearch.cussearchcaption_bool
+msgid "Boolean:  %s"
+msgstr ""
+
+#: unitsearch.cussearchcaption_double
+msgid "Real:  %s"
+msgstr ""
+
+#: unitsearch.cussearchcaption_enum
+msgid "Enum:  %s"
+msgstr ""
+
+#: unitsearch.cussearchcaption_integer
+msgid "Int:  %s"
+msgstr ""
+
+#: unitsearch.cussearchcaption_list
+msgid "List:  %s"
+msgstr ""
+
+#: unitsearch.cussearchcaption_string
+msgid "String:  %s"
+msgstr ""
+
+#: unitsearch.cussearchcaption_text
+msgid "Text:  %s"
+msgstr ""
+
+#: unitsharedobj.csocapsqlnoguid
+msgid "%s: For some reason sql db has no GUID, tell the developer"
+msgstr ""
+
+#: usingleinput.csichooseafile
+msgid "Type in or choose a File Name"
+msgstr ""
+
+#: usingleinput.csichooseafolder
+msgid "Type in or choose a Folder Name"
+msgstr ""

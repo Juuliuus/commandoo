@@ -1,0 +1,26 @@
+TFRMLISTMANAGERCONSOLIDATE.CAPTION=Consolidate %s
+TFRMLISTMANAGERCONSOLIDATE.LBLINFO.CAPTION=lblInfo
+TFRMLISTMANAGERCONSOLIDATE.LBLITEM.HINT=This is the List Item you want to consolidate
++(combine into) another List Item.
++
++You choose the List Item to consolidate too
++below from the combobox.
++
++When you press OK the old Item disappears
++and all instances of it are changed to the newly
++chosen Item.
++
++<end.>
+TFRMLISTMANAGERCONSOLIDATE.LBLITEM.CAPTION=lblItem
+TFRMLISTMANAGERCONSOLIDATE.LABEL3.CAPTION=with (choose below):
+TFRMLISTMANAGERCONSOLIDATE.CBCHOOSE.HINT=This is the List Item you want to consolidate
++TO.
++
++The List Item shown above will beconsolidated
++to this List Item.
++
++When you press OK the old Item disappears
++and all instances of it are changed to the newly
++chosen Item.
++
++<end.>

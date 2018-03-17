@@ -1,0 +1,163 @@
+object frmManageProfile: TfrmManageProfile
+  Left = 1975
+  Height = 340
+  Top = 731
+  Width = 340
+  ActiveControl = rgType
+  Caption = 'Add Profile'
+  ClientHeight = 340
+  ClientWidth = 340
+  Constraints.MaxHeight = 340
+  Constraints.MinHeight = 340
+  Constraints.MinWidth = 340
+  Font.Height = -13
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '1.6.0.4'
+  inline FrameHint1: TFrameHint
+    Left = 19
+    Top = -3
+    ParentColor = True
+    TabOrder = 8
+    inherited cbHints: TCheckBox
+      Left = 40
+      Height = 26
+      Width = 268
+    end
+  end
+  object rgType: TRadioGroup
+    Left = 12
+    Height = 85
+    Hint = 'Choose whether the Database will be '#10'text based or sqlite sql DB based.'#10#10'Once assigned a DB type that Profile '#10'can not be changed from that type.'#10#10'However, you may use the same Profile '#10'Name as long as it''s DB type is different.'#10#10'Under those circumstances this radio box'#10'will automatically collapse to that type and'#10'check it.'#10#10'<end>'
+    Top = 203
+    Width = 189
+    Anchors = [akTop, akLeft, akRight]
+    AutoFill = False
+    Caption = 'DB Type'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 66
+    ClientWidth = 187
+    Items.Strings = (
+      '&S  sqlite DB'
+      '&T  Text File Based'
+    )
+    ParentColor = False
+    TabOrder = 5
+  end
+  object btnChangePath: TButton
+    Left = 12
+    Height = 25
+    Hint = 'Yes. Change the Path (Folder).'#10#10'<end>'
+    Top = 164
+    Width = 189
+    Anchors = [akTop, akLeft, akRight]
+    Caption = '&P  Change Path'
+    OnClick = btnChangePathClick
+    TabOrder = 3
+  end
+  object Label1: TLabel
+    Left = 17
+    Height = 17
+    Top = 108
+    Width = 306
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    Caption = 'Path:'
+    ParentColor = False
+  end
+  object lblName: TLabel
+    Left = 17
+    Height = 17
+    Top = 23
+    Width = 306
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    Caption = 'Name:  '
+    ParentColor = False
+  end
+  object btnChangeName: TButton
+    Left = 12
+    Height = 25
+    Hint = 'Yes. Change the name.'#10#10'<end>'
+    Top = 74
+    Width = 189
+    Anchors = [akTop, akLeft, akRight]
+    Caption = '&N  Change Name'
+    OnClick = btnChangeNameClick
+    TabOrder = 1
+    Visible = False
+  end
+  object btnCancel: TBitBtn
+    Left = 231
+    Height = 37
+    Top = 258
+    Width = 100
+    Anchors = [akTop, akRight]
+    Cancel = True
+    DefaultCaption = True
+    GlyphShowMode = gsmNever
+    Kind = bkCancel
+    OnClick = btnCancelClick
+    TabOrder = 6
+  end
+  object bntOK: TBitBtn
+    Left = 231
+    Height = 37
+    Top = 203
+    Width = 100
+    Anchors = [akTop, akRight]
+    Default = True
+    DefaultCaption = True
+    Kind = bkOK
+    OnClick = bntOKClick
+    TabOrder = 7
+  end
+  object btnDefaultPath: TButton
+    Left = 208
+    Height = 25
+    Hint = 'This resets the Path to "Default".'#10#10'Default is the program''s default data location.'#10#10'This is usually the folder where the commandoo'#10'program is run from.'#10#10'<end>'
+    Top = 164
+    Width = 66
+    Anchors = [akTop, akRight]
+    Caption = '&R   = '
+    OnClick = btnDefaultPathClick
+    TabOrder = 4
+  end
+  object edtProfileName: TEdit
+    Left = 28
+    Height = 23
+    Top = 43
+    Width = 295
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    BorderStyle = bsNone
+    OnDblClick = btnChangeNameClick
+    ParentColor = True
+    ReadOnly = True
+    TabOrder = 0
+  end
+  object edtProfilePath: TEdit
+    Left = 28
+    Height = 23
+    Top = 133
+    Width = 295
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    BorderStyle = bsNone
+    OnDblClick = btnChangePathClick
+    ParentColor = True
+    ReadOnly = True
+    TabOrder = 2
+  end
+end

@@ -1,0 +1,38 @@
+[WARNING]
+README1==================================
+README2=
+README3=This is an automatically generated and maintained INI file.
+README4=--- Edit this file by hand AT YOUR OWN RISK! ---
+README5=
+README6==================================
+
+[_DB_VersionCount]
+LastVersionUpgrade=4
+
+[_DB_ProfileGUID]
+GUID={07025217-8DDA-4CD4-BBEB-95481A2760CD}
+
+[-LoadMe_Misc_List_Keywords-]
+0=Administration
+1=Archive
+2=Builtin
+3=Compression
+4=Encryption
+5=Files
+6=File system
+7=Graphics
+8=Hardware
+9=Helper
+10=Information
+11=install
+12=Internet
+13=KDE
+14=Memory
+15=Navigation
+16=Networking
+17=Package
+18=Software
+19=Source Code
+20=System
+21=Tool
+22=Utility

@@ -1,0 +1,129 @@
+object frmCommandsVar: TfrmCommandsVar
+  Left = 1991
+  Height = 290
+  Top = 529
+  Width = 550
+  ActiveControl = edtInput
+  Caption = 'Input Variables'
+  ClientHeight = 290
+  ClientWidth = 550
+  Constraints.MinHeight = 290
+  Constraints.MinWidth = 550
+  Font.Height = -13
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '1.6.0.4'
+  inline FrameHint1: TFrameHint
+    Left = 228
+    Top = -3
+    ParentColor = True
+    TabOrder = 8
+    inherited cbHints: TCheckBox
+      Left = 40
+      Height = 26
+      Width = 268
+    end
+  end
+  object btnCancel: TBitBtn
+    Left = 431
+    Height = 54
+    Top = 190
+    Width = 104
+    Anchors = [akTop, akRight]
+    Cancel = True
+    Caption = 'Cancel'
+    GlyphShowMode = gsmNever
+    Kind = bkCancel
+    OnClick = btnCancelClick
+    TabOrder = 6
+  end
+  object edtCmdLine: TEdit
+    Left = 10
+    Height = 22
+    Hint = 'The Command Line that will be run with'#10'variables to be filled in.'#10#10'<end>'
+    Top = 49
+    Width = 525
+    Anchors = [akTop, akLeft, akRight]
+    BorderStyle = bsNone
+    Color = clForm
+    TabStop = False
+    TabOrder = 7
+  end
+  object memInfo: TMemo
+    Left = 10
+    Height = 138
+    Hint = 'This displays a hint for you so you know '#10'what you should be typingt: text, an integer,'#10'a decmal, or a filename.'#10#10'<end>'
+    Top = 147
+    Width = 409
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Font.Height = -15
+    ParentFont = False
+    ScrollBars = ssAutoVertical
+    TabOrder = 4
+  end
+  object edtInput: TEdit
+    Left = 10
+    Height = 29
+    Hint = 'What is typed here replaces the highlighted'#10'variable above.'#10#10'You can use <ENTER> after typing to move '#10'to the next variable (if there is one). You can '#10'also use <ENTER> after the last variable'#10'to apply the variables and continue with'#10'the running of the command line.'#10#10'If the variable is for a filename two buttons'#10'will appear allowing you to choose either in'#10'file mode or folder mode. '#10#10'You can use these buttons or type in the '#10'file name in that case.'#10#10'<end>'
+    Top = 75
+    Width = 400
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    AutoSelect = False
+    OnKeyDown = edtInputKeyDown
+    TabOrder = 0
+  end
+  object btnApply: TButton
+    Left = 420
+    Height = 32
+    Hint = 'This applies any text you have typed to the'#10'current variable.'#10#10'It is far easier to simply press <ENTER> after'#10'typing everything in. '#10#10'Once all variables have been applied a final'#10'<ENTER> or clicking this button will'#10'proceed with the running of the '#10'command line.'#10#10'<end>'
+    Top = 83
+    Width = 115
+    Anchors = [akTop, akRight]
+    Caption = '&A  Apply'
+    OnClick = btnApplyClick
+    TabOrder = 3
+  end
+  object btnFileName: TButton
+    Left = 10
+    Height = 30
+    Top = 106
+    Width = 193
+    Caption = '&N  Insert File Name'
+    Enabled = False
+    OnClick = btnFileNameClick
+    TabOrder = 1
+  end
+  object btnDone: TButton
+    Left = 431
+    Height = 42
+    Top = 147
+    Width = 104
+    Anchors = [akTop, akRight]
+    Caption = 'NT'
+    Enabled = False
+    OnClick = btnDoneClick
+    TabOrder = 5
+  end
+  object btnFolderName: TButton
+    Left = 214
+    Height = 30
+    Top = 106
+    Width = 193
+    Caption = '&F  Insert Folder Name'
+    Enabled = False
+    OnClick = btnFolderNameClick
+    TabOrder = 2
+  end
+  object Timer1: TTimer
+    Interval = 500
+    OnTimer = Timer1Timer
+    left = 161
+    top = 8
+  end
+end

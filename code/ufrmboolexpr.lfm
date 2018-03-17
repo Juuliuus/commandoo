@@ -1,0 +1,348 @@
+object frmBoolExpr: TfrmBoolExpr
+  Left = 2087
+  Height = 185
+  Top = 617
+  Width = 555
+  BorderIcons = []
+  BorderStyle = bsNone
+  Caption = 'Search KeyWords'
+  ClientHeight = 185
+  ClientWidth = 555
+  Constraints.MaxHeight = 185
+  Constraints.MaxWidth = 555
+  Constraints.MinHeight = 185
+  Constraints.MinWidth = 555
+  Font.Height = -13
+  KeyPreview = True
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  LCLVersion = '1.6.0.4'
+  object cbCmdUse: TCheckBox
+    Left = 8
+    Height = 26
+    Hint = 'Indicates whether you want the underlying'#10'boolean expression to be used n the search.'#10#10'This can be useful if you don''t want to delete'#10'the current expression because you may use'#10'it again later.'#10#10'In some special search cases this is disabled.'#10#10'<end>'
+    Top = 4
+    Width = 211
+    Caption = 'Use Command Search'
+    Checked = True
+    OnChange = cbCmdUseChange
+    State = cbChecked
+    TabOrder = 0
+  end
+  object pnlCmd: TPanel
+    Tag = 1
+    Left = 2
+    Height = 96
+    Top = 56
+    Width = 557
+    ClientHeight = 96
+    ClientWidth = 557
+    Color = 3158064
+    ParentColor = False
+    PopupMenu = popCmd
+    TabOrder = 1
+    object scbCmd: TScrollBox
+      Left = 5
+      Height = 93
+      Top = 2
+      Width = 544
+      HorzScrollBar.Page = 1
+      VertScrollBar.Page = 54
+      ClientHeight = 91
+      ClientWidth = 542
+      Color = clBlack
+      Font.Color = clCream
+      Font.Height = -15
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 0
+      object flowCmd: TFlowPanel
+        Left = 8
+        Height = 49
+        Top = 5
+        Width = 531
+        Anchors = [akTop, akLeft, akRight]
+        BevelOuter = bvNone
+        ControlList = <>
+        FlowStyle = fsLeftRightTopBottom
+        Font.Color = clCream
+        Font.Height = -15
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+  end
+  object btnCmd_NOT_Toggle: TButton
+    Tag = 1
+    Left = 128
+    Height = 26
+    Top = 30
+    Width = 75
+    Action = actCmd_NOT_Toggle
+    TabOrder = 3
+  end
+  object btnCmd_Delete: TButton
+    Tag = 1
+    Left = 232
+    Height = 26
+    Top = 30
+    Width = 40
+    Action = actCmd_Delete
+    Font.Color = 2697673
+    Font.Height = -19
+    ParentFont = False
+    TabOrder = 4
+  end
+  object btnCmd_Exchange: TButton
+    Tag = 1
+    Left = 296
+    Height = 26
+    Top = 30
+    Width = 40
+    Action = actCmd_Exchange
+    TabOrder = 5
+  end
+  object lblExchangeNotice: TLabel
+    Left = 342
+    Height = 26
+    Top = 32
+    Width = 20
+    Caption = ' * '
+    Color = 4370448
+    Font.Color = clBlack
+    Font.Height = -19
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+    Visible = False
+  end
+  object btnCmd_Paren_Add: TButton
+    Tag = 1
+    Left = 398
+    Height = 26
+    Top = 30
+    Width = 57
+    Action = actCmd_Paren_Add
+    TabOrder = 6
+  end
+  object btnCmd_Paren_L_Move: TButton
+    Tag = 1
+    Left = 462
+    Height = 26
+    Top = 30
+    Width = 40
+    Action = actCmd_Paren_L_Move
+    TabOrder = 7
+  end
+  object btnCmd_Paren_R_Move: TButton
+    Tag = 1
+    Left = 507
+    Height = 26
+    Top = 30
+    Width = 44
+    Action = actCmd_Paren_R_Move
+    TabOrder = 8
+  end
+  object cbCmdCompactView: TCheckBox
+    Tag = 1
+    Left = 4
+    Height = 26
+    Hint = 'The display will use feld abbreviations and'#10'shortened versions of the search criteria'#10'if checked allowing more to fit in the window.'#10#10'Otherwise the full text is shown.'#10#10'<end>'
+    Top = 162
+    Width = 145
+    Caption = 'Compact View'
+    Font.Height = -13
+    OnChange = cbCmdCompactViewChange
+    ParentFont = False
+    TabOrder = 9
+  end
+  object btnCmdCopy: TButton
+    Tag = 1
+    Left = 164
+    Height = 30
+    Hint = 'You can copy a search item and paste it'#10'either in the same expression or in the '#10'expression.'#10#10'On use the expression forms go into copy'#10'mode, you can either add the copy to the'#10'left or right of the currently selected item.'#10'<escape> cancels the copy.'#10#10'If you try to paste a search item that contains'#10'a field that the window does not support, it'#10'will tell you so.'#10#10'<end>'
+    Top = 154
+    Width = 73
+    Caption = 'NT'
+    OnClick = btnCmdCopyClick
+    TabOrder = 10
+  end
+  object btnCmdSelectLeft: TButton
+    Tag = 1
+    Left = 272
+    Height = 30
+    Top = 154
+    Width = 120
+    Action = actCmdSelectLeft
+    TabOrder = 11
+  end
+  object btnCmdSelectRight: TButton
+    Tag = 1
+    Left = 416
+    Height = 30
+    Top = 154
+    Width = 120
+    Action = actCmdSelectRight
+    TabOrder = 12
+  end
+  object pnlDoCopy: TPanel
+    Tag = 1
+    Left = 1
+    Height = 27
+    Top = 28
+    Width = 125
+    ClientHeight = 27
+    ClientWidth = 125
+    ParentColor = False
+    TabOrder = 2
+    object btnCmdAdd_SI_L: TButton
+      Tag = 1
+      Left = 4
+      Height = 26
+      Top = 1
+      Width = 55
+      Action = actCmdSI_L_Add
+      TabOrder = 0
+    end
+    object btnCmdSI_R_Add: TButton
+      Tag = 1
+      Left = 65
+      Height = 26
+      Top = 1
+      Width = 55
+      Action = actCmdSI_R_Add
+      TabOrder = 1
+    end
+  end
+  object shpPRight: TShape
+    Tag = 2
+    Left = 522
+    Height = 7
+    Top = 22
+    Width = 26
+    Brush.Color = clRed
+    Visible = False
+  end
+  object shpPLeft: TShape
+    Tag = 2
+    Left = 462
+    Height = 7
+    Top = 22
+    Width = 26
+    Brush.Color = clRed
+    Visible = False
+  end
+  object ActionList1: TActionList
+    left = 56
+    top = 144
+    object actCmdSI_L_Add: TAction
+      Category = 'Cmd'
+      Caption = ' << +'
+      OnExecute = actCmdSI_L_AddExecute
+    end
+    object actCmdSI_R_Add: TAction
+      Category = 'Cmd'
+      Caption = '+ >> '
+      OnExecute = actCmdSI_R_AddExecute
+    end
+    object actCmd_NOT_Toggle: TAction
+      Category = 'Cmd'
+      Caption = '± NOT'
+      OnExecute = actCmd_NOT_ToggleExecute
+    end
+    object actCmd_Delete: TAction
+      Category = 'Cmd'
+      Caption = '✘'
+      OnExecute = actCmd_DeleteExecute
+    end
+    object actCmd_Exchange: TAction
+      Category = 'Cmd'
+      Caption = '⇄'
+      OnExecute = actCmd_ExchangeExecute
+    end
+    object actCmd_Paren_Add: TAction
+      Category = 'Cmd'
+      Caption = '+ ( )''s'
+      OnExecute = actCmd_Paren_AddExecute
+    end
+    object actCmd_Paren_L_Move: TAction
+      Category = 'Cmd'
+      Caption = '←()'
+      OnExecute = actCmd_Paren_L_MoveExecute
+    end
+    object actCmd_Paren_R_Move: TAction
+      Category = 'Cmd'
+      Caption = '()→'
+      OnExecute = actCmd_Paren_R_MoveExecute
+    end
+    object actCmdSelectLeft: TAction
+      Category = 'Cmd'
+      Caption = '← Select Left'
+      OnExecute = actCmdSelectLeftExecute
+    end
+    object actCmdSelectRight: TAction
+      Category = 'Cmd'
+      Caption = 'Select Right →'
+      OnExecute = actCmdSelectRightExecute
+    end
+  end
+  object popCmd: TPopupMenu
+    left = 16
+    top = 144
+    object mniCmdSelectLeft: TMenuItem
+      Action = actCmdSelectLeft
+    end
+    object mniCmdSelectRight: TMenuItem
+      Action = actCmdSelectRight
+    end
+    object mniBEBar1: TMenuItem
+      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+      Enabled = False
+    end
+    object mniCmdSI_L_Add: TMenuItem
+      Action = actCmdSI_L_Add
+    end
+    object mniCmdSI_R_Add: TMenuItem
+      Action = actCmdSI_R_Add
+    end
+    object mniCmd_NOT_Toggle: TMenuItem
+      Action = actCmd_NOT_Toggle
+    end
+    object mniBEBar2: TMenuItem
+      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+      Enabled = False
+    end
+    object mniCmd_Delete: TMenuItem
+      Action = actCmd_Delete
+      Caption = 'Delete'
+    end
+    object mniCmd_Exchange: TMenuItem
+      Action = actCmd_Exchange
+    end
+    object mniBEBar3: TMenuItem
+      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+      Enabled = False
+    end
+    object mniCmd_Paren_Add: TMenuItem
+      Action = actCmd_Paren_Add
+    end
+    object mniCmd_Paren_L_Move: TMenuItem
+      Action = actCmd_Paren_L_Move
+    end
+    object mniCmd_Paren_R_Move: TMenuItem
+      Action = actCmd_Paren_R_Move
+    end
+  end
+  object Tmr: TTimer
+    Enabled = False
+    Interval = 750
+    OnTimer = TmrTimer
+    OnStartTimer = TmrStartTimer
+    OnStopTimer = TmrStopTimer
+    left = 104
+    top = 144
+  end
+end

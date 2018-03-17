@@ -1,0 +1,18 @@
+TFRMPROFILESMERGE.CAPTION=Select Profile to Merge TO
+TFRMPROFILESMERGE.LBMERGELIST.HINT=List of Program managed and custom 
++Database Profiles. 
++
++The first two ("DB") are managed by the 
++Program and are always displayed, you
++can not delete or edit them. They are
++Profiles for the pre-collected database in
++text and sql format.
++
++You may add custom profiles at any time
++and those will be listed here.
++
++Profiles can have the same name as long
++as they use a different DB type.
++
++<end>
+TFRMPROFILESMERGE.LBLSPINFO.CAPTION=Current DB and selected "From" DB are excluded from this list.

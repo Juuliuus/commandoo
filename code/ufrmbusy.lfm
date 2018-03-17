@@ -1,0 +1,85 @@
+object frmBusy: TfrmBusy
+  Left = 2065
+  Height = 100
+  Top = 783
+  Width = 625
+  HorzScrollBar.Page = 296
+  VertScrollBar.Page = 97
+  AutoScroll = True
+  Caption = 'busycapNT'
+  ClientHeight = 100
+  ClientWidth = 625
+  Color = 4281548
+  Constraints.MaxHeight = 100
+  Constraints.MinHeight = 100
+  Constraints.MinWidth = 625
+  Font.Height = -13
+  FormStyle = fsStayOnTop
+  OnCloseQuery = FormCloseQuery
+  OnShow = FormShow
+  Position = poDefaultSizeOnly
+  ShowInTaskBar = stNever
+  LCLVersion = '1.6.0.4'
+  object pnlStuff: TPanel
+    Left = 6
+    Height = 92
+    Top = 5
+    Width = 612
+    Anchors = [akTop, akLeft, akRight]
+    ClientHeight = 92
+    ClientWidth = 612
+    Color = clForm
+    ParentColor = False
+    TabOrder = 0
+    object lblBusyHint: TLabel
+      Left = 312
+      Height = 43
+      Top = 44
+      Width = 294
+      Anchors = [akTop, akRight]
+      AutoSize = False
+      Caption = 'busyNT'
+      Font.Height = -13
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Visible = False
+      WordWrap = True
+    end
+    object lblMsg: TLabel
+      Left = 0
+      Height = 24
+      Top = 7
+      Width = 605
+      Alignment = taCenter
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      Caption = 'msgNT'
+      Font.Height = -13
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object btnbusyCancel: TBitBtn
+      Left = 6
+      Height = 45
+      Top = 42
+      Width = 154
+      Caption = '&W  NT'
+      Font.Height = -13
+      GlyphShowMode = gsmNever
+      Kind = bkCancel
+      OnClick = btnbusyCancelClick
+      ParentFont = False
+      TabOrder = 0
+      Visible = False
+    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 3000
+    OnTimer = Timer1Timer
+    left = 40
+    top = 24
+  end
+end

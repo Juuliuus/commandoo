@@ -1,0 +1,972 @@
+TFRMMAIN.CAPTION=commandoo
+TFRMMAIN.SBSTATUSES.HINT=Shows the following information:
++
++First: 
++number of currently running detached 
++processes.
++
++Second: 
++commandoo version
++
++Third: 
++Current Database profile and type.
++
++<end>
+TFRMMAIN.SBSTATUSES.PANELS[0].TEXT= 
+TFRMMAIN.SBSTATUSES.PANELS[1].TEXT= 
+TFRMMAIN.SBSTATUSES.PANELS[2].TEXT= Version:   
+TFRMMAIN.FRAMEHINT1.CBHINTS.HINT=Help HInts now Showing
++
++<end>
+TFRMMAIN.BTNSAVE.CAPTION=&O Save
+TFRMMAIN.TSCOMMANDS.CAPTION=  Commands  
+TFRMMAIN.LBCMDLINES.HINT=The list of Command Lines that belong to
++the Command above.
++
++Since Commands can not be run, only
++Command Lines, every Command MUST
++have at least one Command Line if you 
++intend to actually run it.
++
++For instance, you add gimp as a command.
++
++You must then add a Command Line
++for it to actually run gimp.
++
++So this box will contain all the run-able 
++Command Lines under this Command.
++
++ctrl-a or + adds a new Command Line.
++
++<Enter> runs the command line, while
++<Ctrl>-<Enter> edits the command line.
++
++Ctrl-Shift-Alt-C makes another copy of 
++the object.
++
++For the ClipBoard:
++
++Ctrl-c copies the selected command, 
++Ctrl-Shift-C copies the entire list.
++
++Ctrl-f opens the find dialog.
++
++Delete or "-" marks the item for deletion.
++To undo that use ctrl-Delete/"-"
++
++<end>
+TFRMMAIN.BTNCMDLINEUP.HINT=These buttons move the selected 
++Command Line up or down in the list.
++
++<end>
+TFRMMAIN.BTNCMDLINEUP.CAPTION=↑
+TFRMMAIN.BTNCMDLINEDOWN.CAPTION=↓
+TFRMMAIN.BTNCMDLINEDELETE.HINT=This marks the currently selected Command
++Line for deletion.
++
++<end>
+TFRMMAIN.BTNCMDLINEDELETE.CAPTION=&T  CL-
+TFRMMAIN.BTNNEWCOMMANDLINE.HINT=This will add a new Command Line for the
++Command above.
++
++As a small help the Command name is
++filled in for you. It is up to you to fill in the 
++parameters / flags after that.
++
++When adding a new Command Line it is not
++sent into edit mode. You will need to edit it
++after adding if you want to add notes, check
++checkboxes, etc.
++
++<end>
+TFRMMAIN.BTNNEWCOMMANDLINE.CAPTION=&S  CL+
+TFRMMAIN.BTNCMDLINEUNDELETE.HINT=This will undelete the currently selected
++Command Line.
++
++<end>
+TFRMMAIN.BTNCMDLINEUNDELETE.CAPTION=&U Undo-
+TFRMMAIN.BTNFINDCMDLINE.HINT=This brings up a small find dialog to help
++you search in a long list of Command 
++Lines.
++
++<end>
+TFRMMAIN.BTNFINDCMDLINE.CAPTION=&V  Find
+TFRMMAIN.BTNLINEOK.CAPTION=O&K
+TFRMMAIN.BTNLINEEDIT.CAPTION=&B  Edit
+TFRMMAIN.CBTHREATLEVELLINEDISP.TEXT=< Not Specified >
+TFRMMAIN.LBLTHREATLEVELLINEDISP.CAPTION=...
+TFRMMAIN.LBLFRIENDLYNAMELINEDISP.CAPTION=...
+TFRMMAIN.LBLSUPERUSERLINEDISP.CAPTION=NT SU
+TFRMMAIN.LBLWANTSINPUTLINEDISP.CAPTION=NT WI
+TFRMMAIN.LBLISFAVORITELINEDISP.CAPTION=NT FAV
+TFRMMAIN.LBLDETACHPROCESSLINEDISP.CAPTION=NT DP
+TFRMMAIN.LBLUSESHELLLINEDISP.CAPTION=NT US
+TFRMMAIN.LBLALERTLINEDISP.CAPTION=NT AL
+TFRMMAIN.LBLTERMINALONLYLINEDISP.CAPTION=NT TO
+TFRMMAIN.CBSUPERUSERLINE.HINT=Checking this indicates that this Command
++LIne will be run as ROOT. This uses the
++Linux program that your system has 
++(kdesudo, gksudo, etc. to ensure it is 
++secure).
++
++It uses a special prefix to indicate this,
++don't change that.
++
++AS ALWAYS be circumspect in the use of 
++SuperUser, it isquite powerful and at
++times quite dangerous. Know what you are
++doing.
++
++<end>
+TFRMMAIN.CBSUPERUSERLINE.CAPTION=NT SU
+TFRMMAIN.CBISFAVORITELINE.HINT=Checking this box marks the Command Line
++as a "favorite" and it will show up in the 
++Favorites list.
++
++It will be listed by the specified Command 
++Line...
++
++...or you can give it a "friendly name" that 
++is easier to read in the list.
++
++If you give it a friendly name the entry will
++be indented a couple of spaces and 
++followed by the Command line for 
++reference.
++
++<end>
+TFRMMAIN.CBISFAVORITELINE.CAPTION=NT FAV
+TFRMMAIN.CBDETACHPROCESSLINE.HINT=Checking this indicates that this Command
++LIne will be run as a DETACHED PROCESS.
++
++Detached processes run separately and
++independently from this program (that is,
++you can launch programs from here like
++gimp or firefox or whatever, with flags). 
++
++Detached processes live only while this
++program lives. When this program closes
++any detahced processes it "owns" are
++also closed.
++
++You can manage Detached Processes on
++the "Proc's" tab.
++
++<end>
+TFRMMAIN.CBDETACHPROCESSLINE.CAPTION=NT DP
+TFRMMAIN.LBLCAPENTRYLINE.CAPTION=NT LI
+TFRMMAIN.CBWANTSINPUTLINE.HINT=Another feature for you. If this is checked
++you will be allowed to specify some input 
++before the command is run.
++
++This input is given to the command 
++immediately and, if the command pays
++attention to input to its stdin at runtime,
++it will use it.
++
++Not all commands will, or can, use the 
++Input. A good example of one that can is
++"grep". So you can use Input to pass text 
++to grep to search. Kinda cool.
++
++<end>
+TFRMMAIN.CBWANTSINPUTLINE.CAPTION=NT WI
+TFRMMAIN.CBUSESHELLLINE.HINT=I've gone to great effort to make this program
++run commands, including piped commands.
++
++But there are certain cases where it just
++got too complicated to go any further.
++
++If my program can't run the Command Line
++it will tell you so. In this case you can use
++this setting to pass it to the shell and see if it
++will run it. Most of the time it will.
++
++But I can't test everything (too ginormous)
++so I can't promise it will run.
++
++Another alternative is to siimply copy the
++command line (right click menu) and 
++run it in a terminal.
++
++Examples of stuff that I don't process:
++
++semicolons (;)
++redirects ( < > >> << )
++and so on.
++
++Everything I've tested here works through
++shell. Maybe it will for you too!
++
++Of course, as always, be cautious with
++commands. For example, redirects, with
++some commands, wipe out files and so on.
++ 
++You need to know what you're doing so
++be sure to study commands you don't 
++know.
++
++<end>
+TFRMMAIN.CBUSESHELLLINE.CAPTION=NT US
+TFRMMAIN.CBTHREATLEVELLINE.TEXT=< Not Specified >
+TFRMMAIN.BTNTHREATLEVELINFOLINE.CAPTION=?
+TFRMMAIN.EDTFRIENDLYNAMELINE.HINT=A "friendly name" is a simple name you
++specify that is easy to remember and/or
++find.
++
++Command Lines can get quite long, and
++complicated. Many look similiar to each
++other. Others have long paths in front of
++the command name.
++
++This makes it extremely hard to find in the
++favorites list or in search results.
++
++But...if you take that monstrous Command
++Line and give it a friendly name of 
++"fuzzy bunny" then it is easy to find!
++
++You're welcome.
++
++<end> 
+TFRMMAIN.EDTFRIENDLYNAMELINE.TEXTHINT=Alias for Favorites List
+TFRMMAIN.LBLCAPNOTESLINE.CAPTION=NT NOT
+TFRMMAIN.LBLCAPFRIENDLYNAMELINE.CAPTION=NT FN
+TFRMMAIN.CBTERMINALONLYLINE.HINT=Some commands should not be run from 
++commandoo. Some may not work through
++commandoo...
++
++...but you still want them in your database.
++
++Check this box and the command line can
++-NOT- be run through commandoo, a
++further level of safety for you.
++
++TIP: Don't forget to use this checkbox when
++necessary!
++
++<end>
+TFRMMAIN.CBTERMINALONLYLINE.CAPTION=NT TO
+TFRMMAIN.CBALERTLINE.HINT=Ever run a command line in a terminal and
++then have that ooops moment where you
++realize you needed to do something else
++first?
++
++Well, no more! If this checkbox is checked
++commandoo will display the NOTES for this
++command line before running it and giving
++you a chance to change your mind.
++
++TIP: If you use this checkbox then put 
++your concerns, reminders in the NOTES
++field so that you can decide if you want
++to run the command line at that time or
++not.
++
++<end>
+TFRMMAIN.CBALERTLINE.CAPTION=NT AL
+TFRMMAIN.MEMENTRY.HINT=The Command Line you are editing.
++
++Press ENTER to open a helper window 
++that will show help for this command line, 
++for reference while you edit, and some 
++helper buttons to insert "variables" into 
++the command line.
++
++The variables are used to fill in values at
++running time. You can add a variable for 
++any text, an integer, a real number, or a 
++filename.
++
++Press ctrl-alt-enter to test run the 
++Command Line, or click the Run/Test 
++button.
++
++<end>
+TFRMMAIN.BTNCMDEDIT.CAPTION=&A  Edit
+TFRMMAIN.LBLCMDPOINTER.CAPTION=Command  -->
+TFRMMAIN.LBLCMDLINEPOINTER.CAPTION=Command
++↓      Lines
+TFRMMAIN.CBTHREATLEVELDISP.TEXT=< Not Specified >
+TFRMMAIN.LBLCOMMANDNAMEDISP.CAPTION=...
+TFRMMAIN.LBLPATHALIASDISP.HINT=If the path is too long to see just 
++DoubleClick it.
++
++<end>
+TFRMMAIN.LBLPATHALIASDISP.CAPTION=Path:  
+TFRMMAIN.LBLTHREATLEVELDISP.CAPTION=...
+TFRMMAIN.LBLHELPDISP.CAPTION=NTH
+TFRMMAIN.MEMNOTESDISP.HINT=To read all the notes more conviently
++double click this area.
++
++<end>
+TFRMMAIN.LBLVERSIONDISP.CAPTION=NTV
+TFRMMAIN.LBLSUPERUSERDISP.CAPTION=DNT SU
+TFRMMAIN.LBLISFAVORITEDISP.CAPTION=DNT FAV
+TFRMMAIN.LBLDETACHPROCESSDISP.CAPTION=DNT DP
+TFRMMAIN.LBLTERMINALONLYDISP.CAPTION=DNT TO
+TFRMMAIN.CBTHREATLEVEL.TEXT=< Not Specified >
+TFRMMAIN.LBLCOMMANDNAME.HINT=The command name.
++
++Double Click to re-name the command. 
++
++The same rules apply as for adding. If the
++name is in the path you don't need to type
++the path or find the file.
++
++The way the system is set up now the 
++command names in the list MUST be unique.
++So you cannot use the name if it already 
++exists in the list.
++
++<end>
+TFRMMAIN.BTNTHREATLEVELINFO.HINT=Display information about this Threat Level.
++
++<end>
+TFRMMAIN.BTNTHREATLEVELINFO.CAPTION=?
+TFRMMAIN.LBLPATHALIAS.HINT=This displays information about the path
++to the command's folder.
++
++If the command is in the path it says only
++that it is in the path. If you want to see the
++full path in this case use the "Path" button
++above.
++
++If the command is a builtin (i.e, has no path)
++this says so.
++
++If neither of the above is the case then
++the full path is shown. 
++
++If the path is so long you can't see it all
++just DoubleClick it to see it all.
++
++<end>
+TFRMMAIN.LBLPATHALIAS.CAPTION=Path:  
+TFRMMAIN.CBSUPERUSER.HINT=Checking this indicates that the preferred
++mode for this Command is to be run as
++ROOT.
++
++Commands can not be run, only Command
++Lines. But checking this is a convience. Any 
++Command Lines you add will inherit this
++setting.
++
++AS ALWAYS be circumspect in the use of 
++SuperUser, it isquite powerful and at
++times quite dangerous. Know what you are
++doing.
++
++<end>
+TFRMMAIN.CBSUPERUSER.CAPTION=NT SU
+TFRMMAIN.CBDETACHPROCESS.HINT=Checking this indicates that the preferred
++mode for this Command is to be run as
++a DETACHED PROCESS.
++
++Detached processes run separately and
++independently from this program (that is,
++you can launch programs from here like
++gimp or firefox or whatever, with flags). 
++
++Detached processes live only while this
++program lives. When this program closes
++any detahced processes it "owns" are
++also closed.
++
++You can manage Detached Processes on
++the "Proc's" tab.
++
++Commands can not be run, only Command
++Lines. But checking this is a convience. Any 
++Command Lines you add will inherit this
++setting.
++
++<end>
+TFRMMAIN.CBDETACHPROCESS.CAPTION=NT DP
+TFRMMAIN.CBISFAVORITE.HINT=Checking this box marks the Command as
++a "favorite" and it will show up in the 
++Favorites list.
++
++<end>
+TFRMMAIN.CBISFAVORITE.CAPTION=NT FAV
+TFRMMAIN.MEMNOTES.HINT=Notes, which are searchable, for this item.
++
++If you focus on the Notes area and press
++Ctrl-F a text search dialog opens.
++
++And Ctrl-Shift-F or Ctrl-L will find the next 
++find occurence.
++
++To read all the notes more conviently
++double click the notes.
++
++<end>
+TFRMMAIN.LBLHELP.CAPTION=NTH
+TFRMMAIN.EDTHELP.HINT=This is a HUGE feature (so I think).
++
++You're Welcome!
++
++Despite the assurances that all Linux 
++Commands will supprt -h and --help it is
++simply not the truth. 
++
++I don't know how many times I've typed -h to
++find it should be --help, or typed --help to 
++find it should be -h or --help-all.
++
++No more!
++
++Once it is tested and written here you
++no longer need to go through this torture.
++
++What is assigned here is used by the "Help"
++button above to display help for this
++Command.
++
++It defaults to --help. This may, or may not,
++be correct. You may need to mess around
++and test to find the correct flag.
++
++Yes, yes, you're welcome!!
++
++<end>
+TFRMMAIN.LBLVERSION.CAPTION=NTV
+TFRMMAIN.EDTVERSION.HINT=Type the Command's version flag here.
++
++When you use the "Version" button above
++the contents here will be used to print the
++Command's version information.
++
++It defaults to --version, which may or may
++not be right. You may need to test it and/or
++find it in help to find the correct flag.
++
++<end>
+TFRMMAIN.LBLKEYWORDS.CAPTION=NT KEY
+TFRMMAIN.LBKEYWORDS.HINT=This shows the assigned KeyWords for this
++Command.
++
++<end>
+TFRMMAIN.BTNKEYWORDADD.HINT=Add KeyWords for this Command.
++
++In the ensuing dialog you can also manage
++the Master Key|Word List.
++
++<end>
+TFRMMAIN.BTNKEYWORDADD.CAPTION=+
+TFRMMAIN.BTNKEYWORDDELETE.HINT=Remove selected KeyWord(s) for this 
++Command.
++
++<end>
+TFRMMAIN.BTNKEYWORDDELETE.CAPTION=-
+TFRMMAIN.LBLPATHACTUAL.CAPTION=lblPathActual
+TFRMMAIN.CBTERMINALONLY.HINT=Checking this indicates that the preferred
++mode for this Command is to be run only
++through the Terminal.
++
++This setting only has an actual affect on
++Command Lines of course because Commands
++can not be run, only Command Lines can
++be run. If checked in a Command Line then
++the Command Line will NOT run through 
++commandoo.
++
++Checking this here will copy this
++setting to any new Command Lines you
++create for this Command.
++
++This is an added safety measure for 
++commands that CAN NOT and/or SHOULD NOT
++be run through commandoo.
++
++<end>
+TFRMMAIN.CBTERMINALONLY.CAPTION=NT TO
+TFRMMAIN.LBLSHOWBUTTONS.CAPTION=Show:
+TFRMMAIN.BTNHELPCOMMAND.CAPTION=&X  Help
+TFRMMAIN.BTNVERSIONCOMMAND.CAPTION=&Y  Version
+TFRMMAIN.BTNLOCATIONPATH.HINT=This always shows the actual path to the
++folder for this command, if it has one.
++
++Bad command names and builtins don't.
++
++<end>
+TFRMMAIN.BTNLOCATIONPATH.CAPTION=&Z  Directory
+TFRMMAIN.LABEL9.CAPTION=Command List
+TFRMMAIN.LBCOMMANDS.HINT=The list of Linux Commands!
++
++The entries do not need to be Commands,
++you can use the command name field to 
++make a "command" entry that you can 
++add a variety of command lines that you
++find and want to use.
++
++ctrl-a or + adds a new command.
++
++<Enter> edits the command.
++
++Ctrl-Shift-Alt-C makes another copy of 
++the object.
++
++For the ClipBoard:
++
++Ctrl-c copies the selected command, 
++Ctrl-Shift-C copies the entire list.
++
++Ctrl-f opens the find dialog.
++
++Delete or "-" marks the item for deletion.
++To undo that use ctrl-Delete/"-"
++
++<end>
+TFRMMAIN.BTNSORTCOMMANDS.HINT=New commands are added at the bottom
++of the list.
++
++Also when things are edited they get a 
++prefix added.
++
++If it becomes hard to find something use
++this to sort the list.
++
++<end>
+TFRMMAIN.BTNSORTCOMMANDS.CAPTION=Sort
+TFRMMAIN.BTNCOMMANDUNDELETE.HINT=If the currently selected command is in a
++'delete' state this will reverse that state. 
++You can also use the <ctrl-delete> key.
++
++If when you selected delete the item was
++in an edited state the undo delete button
++will bring the command back to that state.
++
++If you use the 'Revert' button, however, the
++deletion state --AND-- any edits will be
++removed. For this reason it is generally
++safer to use the undelete button rather than
++the revert button in these cases.
++
++<end>
+TFRMMAIN.BTNCOMMANDUNDELETE.CAPTION=&E  Undo Del
+TFRMMAIN.BTNCOMMANDDELETE.HINT=This marks the currently selected item
++for deletion. You can also use the <delete>
++key.
++
++The Undo Delete button reverses this
++state. 
++
++If when you selected delete the item was
++in an edited state the undo delete button
++will bring the command back to that state.
++
++If you use the 'Revert' button, however, the
++deletion state --AND-- any edits will be
++removed. For this reason it is generally
++safer to use the undelete button rather than
++the revert button in these cases.
++
++<end>
+TFRMMAIN.BTNCOMMANDDELETE.CAPTION=&D  Del
+TFRMMAIN.BTNFINDCMD.HINT=This opens a small find dialog so you can
++find any matching text in the list.
++
++The find dialog can be used to select the
++List item you want, <enter> will select the
++current item, and <esc> closes the find
++window.
++
++<end>
+TFRMMAIN.BTNFINDCMD.CAPTION=&F  Find
+TFRMMAIN.BTNPLUS.HINT=Add a new command.
++
++Newly added Commands are added to the 
++bottom of the list so they are easy to find
++during the process of filling in your database.
++
++The next time the the database is freshly
++loaded, or if you use the 'Sort' button,
++the Commands are all sorted by name.
++
++<end>
+TFRMMAIN.BTNPLUS.CAPTION=&C  Add
+TFRMMAIN.BTNREVERT.HINT=This button is enabled if the selected command
++has been edited in some way.
++
++Clicking it will revert the selected command
++back to the current values stored in the
++database. 
++
++Careful! Reversion is not undoable.
++
++<end>
+TFRMMAIN.BTNREVERT.CAPTION=&G  Revert
+TFRMMAIN.LBLCEDITING.CAPTION=Editing...
+TFRMMAIN.TSFAVORITES.CAPTION= Favorites 
+TFRMMAIN.LBLTABFAVORITES.CAPTION=Favorites
+TFRMMAIN.CBDISPTHREATLEVEL.TEXT=< Not Specified >
+TFRMMAIN.LBLDISPTHREATLEVEL.CAPTION=...
+TFRMMAIN.MEMDISPNOTES.HINT=This shows the current settings for the 
++selected Command or Command Line.
++
++If you focus on the Notes area and press
++Ctrl-F a text search dialog opens.
++
++And Ctrl-Shift-F or Ctrl-L will find the next 
++find occurence.
++
++<end>
+TFRMMAIN.LBLDISPFRIENDLYNAME.HINT=If you can't see all of the name DoubleClick
++it.
++
++This works on any line that is too long to 
++be completely displayed.
++
++<end>
+TFRMMAIN.LBLDISPFRIENDLYNAME.CAPTION=lblDispFriendlyName
+TFRMMAIN.LBLDISPENTRY.HINT=This is the Command / Command Line that 
++is selected. 
++
++If it is too long to see DoubleClick to display
++the entire line.
++
++This works on any line that is too long to 
++be completely displayed.
++
++<end>
+TFRMMAIN.LBLDISPENTRY.CAPTION=lblDispEntry
+TFRMMAIN.LBLDISPSUPERUSER.CAPTION=DNTSU
+TFRMMAIN.LBLDISPWANTSINPUT.CAPTION=DNTWI
+TFRMMAIN.LBLDISPISFAVORITE.CAPTION=DNTFAV
+TFRMMAIN.LBLDISPUSESHELL.CAPTION=DNTUS
+TFRMMAIN.LBLDISPDETACHPROCESS.CAPTION=DNTDP
+TFRMMAIN.LBLDISPALERT.CAPTION=DNTAL
+TFRMMAIN.LBLDISPTERMINALONLY.CAPTION=DNTTO
+TFRMMAIN.LBLNOOPTIONS.CAPTION=< no options >
+TFRMMAIN.BTNREFRESHFAVORITES.HINT=This button only shows up if you've changed
++options to be 'Favorites manually refreshed'.
++
++Otherwise, Favorites are refreshed whenever
++changes are saved.
++
++The difference is that when Favorites are
++refreshed the indexes for selected Command
++LInes of the Commands are reset to the
++first CL and are no longer remembered.
++
++<end>
+TFRMMAIN.BTNREFRESHFAVORITES.CAPTION=&K  Refresh Favorites
+TFRMMAIN.TSKEYWORDS.CAPTION=  KeyWords  
+TFRMMAIN.LBLTABKEYWORDS.CAPTION=KeyWordsSearch
+TFRMMAIN.BTNKEYWORDLOAD.CAPTION=Load
+TFRMMAIN.BTNKEYWORDSAVE.CAPTION=Save
+TFRMMAIN.BTNKEYWORDDISPLAY.CAPTION=Display
+TFRMMAIN.BTNKEYWORDNEWSEARCH.CAPTION=New
+TFRMMAIN.LBLSRCMDS.CAPTION=Commands
+TFRMMAIN.LBSEARCHCMD.HINT=This presents search results for the various 
++Favorites, KeyWords, and General Searches.
++
++The list can consist of both Commands 
++(listed first if any) and Command Lines 
++(listed second). If so there will be a 
++'seperator' section between them.
++
++Clicking on an item shows it's details to 
++the right. If the selected item is a Command
++it's Command Lines will be listed in
++the listbox below.
++
++Keep in mind that Commands / Command
++Lines that are in an edited state (i.e., not
++saved) will NOT be included in the filtering.
++To see an accurate list be sure everything
++is saved.
++
++For the ClipBoard:
++
++Ctrl-Shift-C copies the entire list.
++
++Ctrl-f opens the find dialog.
++
++ctrl-g goes to the Cmd
++
++These are global:
++<alt-1> Search Keywords
++<alt-2> New Search KeyWords
++<alt-3> Load Search
++
++Local:
++<alt-4> save  search KeyWords
++<alt-5> display search KeyWords
++
++<end>
+TFRMMAIN.BTNSEARCHGOTOCMD.HINT=This will attempt to find the main entry
++for the selected item in the list and
++switch to it in the Commands List or 
++Command Line list, depending.
++
++This will almost always work unless the 
++name of the Command or Command Line
++Entry is in an edited state.
++
++<end>
+TFRMMAIN.LBLSRCMDLINES.CAPTION=Command Lines
+TFRMMAIN.LBSEARCHCMDLINE.HINT=This will show any Command Lines belonging
++to the item selected in the list above if
++it is a Command.
++
++Click on a Command Line to enable the
++RUN button.
++
++It will be automatically cleared in some cases
++like when you edit the Master Keywords
++or maybe in some other cases.
++
++<Enter> runs the command line.
++
++For the ClipBoard:
++
++Ctrl-c copies the selected command, 
++Ctrl-Shift-C copies the entire list.
++
++Ctrl-f opens the find dialog.
++
++ctrl-g goes to the Command Line
++
++These are global:
++<alt-1> Search Keywords
++<alt-2> New Search KeyWords
++<alt-3> Load Search
++
++Local:
++<alt-4> save  search KeyWords
++<alt-5> display search KeyWords
++
++<end>
+TFRMMAIN.TSSEARCH.CAPTION=  Search  
+TFRMMAIN.LBLTABSEARCH.CAPTION=Search Results
+TFRMMAIN.BTNSEARCHNEWSEARCH.CAPTION=New
+TFRMMAIN.BTNSEARCHSAVESEARCH.CAPTION=Save
+TFRMMAIN.BTNSEARCHLOADSEARCH.CAPTION=Load
+TFRMMAIN.BTNSEARCHDISPLAYSEARCH.CAPTION=Display
+TFRMMAIN.TSDETACHEDPROCESSES.CAPTION=  Proc's  
+TFRMMAIN.LBDETACHEDPROCESSES.HINT=You have the ability to "detach" command
++line processes. This means it runs alongside
++this program separately and independently.
++
++Detached processes are listed here. Clicking
++on them shows information, and you can 
++halt the process with the button.
++
++<end>
+TFRMMAIN.LABEL17.CAPTION=Detached Processes
+TFRMMAIN.LBLDETACHEDPROCESSES.CAPTION=Running Procs
+TFRMMAIN.BTNHALTPROCESS.HINT=This will halt the selected detached process.
++
++<end>
+TFRMMAIN.BTNHALTPROCESS.CAPTION=&M  Halt Process
+TFRMMAIN.MEMDETACHEDPROCESSES.HINT=This shows the process information about
++the selected detached process.
++
++Ctrl-F opens a text search dialog.
++
++Ctrl-Shift-F or Ctrl-L will find the next 
++occurence.
++
++<end>
+TFRMMAIN.BTNSORTDETACHEDPROCESSES.HINT=Processes are added to the list in the order
++they are run, this can make it hard to find.
++
++Use this to sort the list to make it a bit easier.
++
++<end>
+TFRMMAIN.BTNSORTDETACHEDPROCESSES.CAPTION=&N  Sort Processes
+TFRMMAIN.BTNKEYWORDS.HINT=Manage the Master KeyWork List. 
++
++<end>
+TFRMMAIN.BTNKEYWORDS.CAPTION=&L  Manage KeyWords
+TFRMMAIN.MEMO1.HINT=Yes. Output results come here,
++
++<end>
+TFRMMAIN.BTNABOUT.HINT=Show about form which lists all the paths
++to program, database files, etc. and 
++license information. It also has Tips for 
++use and you can re-read the introduction.
++
++<end>
+TFRMMAIN.LBLPESTR.CAPTION=Search for PESTER in ufrmMain
+TFRMMAIN.BTNPROFILEMANAGEMENT.HINT=Open the Database Profile Window in 
++"Management" mode where you can add,
++edit, delete, or copy them. 
++
++The list will ALWAYS include the default
++databases, even if you have disallowed them
++in Options. This is done so that original 
++databases can be copied if you want.
++
++<end>
+TFRMMAIN.BTNPROFILEMANAGEMENT.CAPTION=&Q  Manage DB Profiles
+TFRMMAIN.BTNSWITCHDB.HINT=Open the Database Profile Window in 
++"Select" mode. That is, here is where you
++can switch databases.
++
++The current database will not be listed.
++
++In addition, the default database profiles 
++for "DB" may, or may not, be optioons
++depending on the settings in Options.
++
++<end>
+TFRMMAIN.BTNSWITCHDB.CAPTION=&P  Switch Database
+TFRMMAIN.BTNTERMINAL.HINT=Open a terminal. This will be the terminal
++program that is assocaited with your login
++(Environment variable TERM). 
++
++If you want to use another terminal program
++you can change it in options.
++
++The terminal is opened as a child of this
++program and so dies when this prgram is 
++closed.
++
++Ok, not exactly true. It will depend on the
++terminal program. In testing here "xterm" 
++remains a child of this program. But "konsole"
++remains persistent even when the program
++is closed.
++
++Your mileage may vary.
++
++<end>
+TFRMMAIN.BTNTERMINAL.CAPTION=Terminal
+TFRMMAIN.BTNCLEAR.HINT=Maybe you don't like clutter. Maybe you don't
++want people to see what you've been running.
++
++Use this button to clear the OutPut memo.
++
++<end>
+TFRMMAIN.BTNCLEAR.CAPTION=Clear Display History
+TFRMMAIN.CBWORDWRAPMAIN.HINT=You can choose to wrap the line content of 
++the Output window to the left.
++
++Whether the output wraps or not depends
++on this item's checked state.
++
++<end>
+TFRMMAIN.CBWORDWRAPMAIN.CAPTION=Wordwrap Output 
+TFRMMAIN.LBLAUTOSAVE.CAPTION=AutoSave at ~
+TFRMMAIN.BTNCANCELRUN.CAPTION=&W  Stop Run
+TFRMMAIN.BTNQUICKRUN.HINT=This will run whatever command you put
++in it. It is for convenience, for instance you
++may need to see the output from another
++command while editing a command line.
++
++But...BE AWARE there are no safety catches
++like threat levels and so on. 
++
++USE THIS AT OWN RISK.
++
++At this time it only remembers the last
++command line you entered. In future it 
++would be nice that it has a list of 
++remembered commands.
++
++<end>
+TFRMMAIN.BTNSIMPLESEARCH.HINT=Performs a simple text search 
++through all text fields in Commands
++and Command Lines (choosable).
++
++Advanced searches can be found 
++in the "Search" tab. 
++
++You can also choose to run an
++advanced search from the Simple
++Search Window. 
++
++<end>
+TFRMMAIN.BTNSIMPLESEARCH.CAPTION=&M Simple Search
+TFRMMAIN.POPPLUSBROWSE.CAPTION=Add   (ctrl-a or '+')
+TFRMMAIN.PMICOPYCMD.CAPTION=Duplicate Copy   (ctrl-shift-alt-c)
+TFRMMAIN.POPCMDPASTE.CAPTION=Paste Cmd   (menu only)
+TFRMMAIN.POPCMDPASTECMDLINE.CAPTION=Paste CmdLine   (ctrl-v)
+TFRMMAIN.MENUITEM5.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.PMIFINDCMD.CAPTION=&Find   (ctrl-f)
+TFRMMAIN.PMICOPYCLIPCMD.CAPTION=Copy Cmd to Clipboard   (ctrl-c)
+TFRMMAIN.MNICOPYCMDLISTCLIP.CAPTION=Copy List to Clipboard   (ctrl-shift-c)
+TFRMMAIN.MENUITEM7.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.MENUITEM10.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.POPCOMMANDDELETE.CAPTION=- Del   (Delete or "-")
+TFRMMAIN.POPCOMMANDUNDELETE.CAPTION=Undo -   (ctrl-Delete/-)
+TFRMMAIN.MENUITEM6.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.MNICMDSENDTO.CAPTION=Send to DB Profile...
+TFRMMAIN.MNICMDCOUNT.CAPTION=Command Count
+TFRMMAIN.ACTCOMMANDDELETE.CAPTION=- Del
+TFRMMAIN.ACTCOMMANDUNDELETE.CAPTION=Undo -
+TFRMMAIN.ACTPLUS.CAPTION=Add
+TFRMMAIN.ACTREVERT.CAPTION=Revert
+TFRMMAIN.ACTCMDLINEDELETE.CAPTION=- Line
+TFRMMAIN.ACTCMDLINEUNDELETE.CAPTION=Undo -
+TFRMMAIN.ACTCMDLINEUP.CAPTION=Move Up
+TFRMMAIN.ACTCMDLINEDOWN.CAPTION=Move Down
+TFRMMAIN.ACTRUN.CAPTION=Run
+TFRMMAIN.ACTNEWCOMMANDLINE.CAPTION=+ Line
+TFRMMAIN.ACTMANAGEKEYWORDS.CAPTION=Manage KeyWords
+TFRMMAIN.ACTCOPYCMDLINE.CAPTION=Duplicate Copy
+TFRMMAIN.ACTCOPYCLIPCMDLINE.CAPTION=Copy to ClipBoard
+TFRMMAIN.ACTCOPYCMD.CAPTION=Duplciate Copy
+TFRMMAIN.ACTCOPYCLIPCMD.CAPTION=Copy Cmd to Clipboard
+TFRMMAIN.ACTFINDCMD.CAPTION=&Find
+TFRMMAIN.ACTFINDCMDLINE.CAPTION=Find Line
+TFRMMAIN.ACTEXIT.CAPTION=Exit Program
+TFRMMAIN.ACTABOUT.CAPTION=About
+TFRMMAIN.ACTSAVE.CAPTION=Save
+TFRMMAIN.ACTOPTIONS.CAPTION=Options
+TFRMMAIN.ACTQUICKRUN.CAPTION=Quick Run
+TFRMMAIN.ACTPROFILES.CAPTION=Manage Database Profiles
+TFRMMAIN.ACTSWITCHDB.CAPTION=Switch Database
+TFRMMAIN.ACTSEARCHKEYCMD.CAPTION=Search
+TFRMMAIN.ACTSEARCHNEWKEYCMD.CAPTION=New Search
+TFRMMAIN.ACTSEARCHSAVEKEYCMD.CAPTION=Save Search
+TFRMMAIN.ACTSEARCHLOADKEYCMD.CAPTION=Load Search
+TFRMMAIN.ACTSEARCHDISPLAYKEYCMD.CAPTION=Display Search
+TFRMMAIN.ACTSEARCHSEARCH.CAPTION=Search
+TFRMMAIN.ACTSEARCHNEWSEARCH.CAPTION=New Search
+TFRMMAIN.ACTSEARCHSAVESEARCH.CAPTION=Save Search
+TFRMMAIN.ACTSEARCHLOADSEARCH.CAPTION=Load Search
+TFRMMAIN.ACTSEARCHDISPLAYSEARCH.CAPTION=Display Search
+TFRMMAIN.ACTSEARCHFINDCMD.CAPTION=Find Command
+TFRMMAIN.ACTSEARCHGOTOCMD.CAPTION=Go to Command
+TFRMMAIN.ACTSEARCHFINDCMDLINE.CAPTION=Find Cmd Line
+TFRMMAIN.ACTSEARCHGOTOCMDLINE.CAPTION=Go to Cmd Line
+TFRMMAIN.ACTSEARCHRUN.CAPTION=Run Cmd Line
+TFRMMAIN.POPNEWCOMMANDLINE.CAPTION=+ Line (ctrl-a or "+")
+TFRMMAIN.PMICOPYCMDLINE.CAPTION=Duplicate Copy  (ctrl-shift-alt-c)
+TFRMMAIN.POPCMDLINEPASTE.CAPTION=Paste  <ctrl-v)
+TFRMMAIN.MENUITEM13.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.PMIFINDCMDLINE.CAPTION=Find Line (ctrl-f)
+TFRMMAIN.MNICOPYCLLISTCLIP.CAPTION=Copy List to Clipboard   (ctrl-shift-c)
+TFRMMAIN.MENUITEM12.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.POPRUN.CAPTION=Run Line   (Enter)
+TFRMMAIN.PMICOPYCLIPCMDLINE.CAPTION=Copy to ClipBoard   (ctrl-c)
+TFRMMAIN.MENUITEM11.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.MENUITEM8.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.POPCMDLINEDELETE.CAPTION=- Line  (Delete or "-")
+TFRMMAIN.POPCMDLINEUNDELETE.CAPTION=Undo -   (ctrl-Delete/-)
+TFRMMAIN.PMIMAINSAVE.CAPTION=Save (ctrl-s)
+TFRMMAIN.MENUITEM14.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.MENUITEM2.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.MENUITEM3.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMMAIN.MNITABKEYWORDSSEARCH.CAPTION=Search   (alt-1)
+TFRMMAIN.MNITABKEYWORDSSEARCHNEW.CAPTION=New Search   (alt-2)
+TFRMMAIN.MNITABKEYWORDSSEARCHLOAD.CAPTION=Load Search   (alt-3)
+TFRMMAIN.MNITABKEYWORDSSEARCHSAVE.CAPTION=Save Search   (alt-4)
+TFRMMAIN.MNITABKEYWORDSSEARCHDISPLAY.CAPTION=Display Search   (alt-5)
+TFRMMAIN.MNITABSEARCHSEARCH.CAPTION=Search   (ctrl-1)
+TFRMMAIN.MNITABSEARCHSEARCHNEW.CAPTION=New Search   (ctrl-2)
+TFRMMAIN.MNITABSEARCHSEARCHLOAD.CAPTION=Load Search   (ctrl-3)
+TFRMMAIN.MNITABSEARCHSEARCHSAVE.CAPTION=Save Search   (ctrl-4)
+TFRMMAIN.MNITABSEARCHSEARCHDISPLAY.CAPTION=Display Search   (ctrl-5)
+TFRMMAIN.MNISEARCHFINDCMD.CAPTION=Find Command   (ctrl-f)
+TFRMMAIN.MNISEARCHGOTOCMD.CAPTION=Go to Command   (ctrl-g)
+TFRMMAIN.MNISEARCHCMDLISTCLIP.CAPTION=Copy List to Clipboard   (ctrl-shift-c)
+TFRMMAIN.MNISEARCHRUN.CAPTION=Run Cmd Line   (Enter)
+TFRMMAIN.MNISEARCHFINDCMDLINE.CAPTION=Find Cmd Line   (ctrl-f)
+TFRMMAIN.MNISEARCHGOTOCMDLINE.CAPTION=Go to Cmd Line   (ctrl-g)
+TFRMMAIN.MNISEARCHCMDLINELISTCLIP.CAPTION=Copy List to ClipBoard   (ctrl-shift-c)
+TFRMMAIN.MNISEARCHCMDLINEITEMCLIP.CAPTION=Copy CL Item to ClipBoard   (ctrl-c)

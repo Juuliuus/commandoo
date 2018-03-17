@@ -1,0 +1,15 @@
+commandoo.xcf
+lib
+code/lib
+code/*.ini
+code/*.bak
+code/*.dbg
+code/commandoo
+code/commandoo64*
+code/commandoo.settings
+code/juus*.data
+code/juus*.sqlite
+code/searches
+
+
+

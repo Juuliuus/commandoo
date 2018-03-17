@@ -1,0 +1,95 @@
+TFRMLISTMANAGER.CAPTION=Key Words
+TFRMLISTMANAGER.BTNOK.HINT=Depending on Mode:
++
++If displaying this list from a Command this
++button adds the selected Items to the 
++Command's List.
++
++If in Manage Items mode this simply closes
++the form, you use the Manage buttons to
++manipulate the list.
++
++<end>
+TFRMLISTMANAGER.LBLIST.HINT=Contents of the List you are currently
++editing.
++
++From a Command you can choose mulitple
++List items to add, then use OK button.
++
++You can manage the Master List in either 
++Command Edit mode or Manage List Mode.
++
++<end>
+TFRMLISTMANAGER.GBMANAGELIST.CAPTION=Manage Master List
+TFRMLISTMANAGER.BTNADD.HINT=Yes. Add a new item.
++
++<end>
+TFRMLISTMANAGER.BTNADD.CAPTION=&A  NT
+TFRMLISTMANAGER.BTNEDIT.HINT=Change the name of the currently selected
++Item.
++
++<end>
+TFRMLISTMANAGER.BTNEDIT.CAPTION=&B  NT
+TFRMLISTMANAGER.BTNDELETE.HINT=Yeah. Deletes the selected Item.
++
++<end>
+TFRMLISTMANAGER.BTNDELETE.CAPTION=&D  NT
+TFRMLISTMANAGER.BTNCONSOLIDATE.HINT=This will consolidate, or merge, one List item
++to another. 
++
++For example, you find you have keywords
++of "Frist" and "First". You can get rid of "Frist"
++by consolidating it to "First".
++
++This updates all DB items using "Frist" also.
++
++Choosing consolidate may diasable other
++buttons. This is necessary to prevent DB
++update complications.
++
++You may also find that consolidate is 
++disabled for similar reasons as above. 
++Simply save what you are doing and then
++come back in and do your consolidations.
++
++
++<end>
+TFRMLISTMANAGER.BTNREVERT.HINT=If you realize you are making a mistakes,
++or are unsure that you like the changes
++you have make, this will cancel all changes
++and re-load the List as it exists in the 
++database.
++
++This will be disabled if nothing has been
++added, edited or deleted. 
++
++It will also be unavailabe if you choose to 
++Consolidate any Items until the list is 
++saved.
++
++<end>
+TFRMLISTMANAGER.BTNSHOWUSAGE.HINT=Use this to help make decisions about
++deletions, consolidations, etc.
++
++It will show a list of commands that are
++using the selected item.
++
++Be aware it only searches saved commands,
++commands that are in an edited state
++may or may not show. To be sure you are
++seeing an accurate list, be sure to save
++commands before using this.
++
++<end>
+TFRMLISTMANAGER.LBLINSTRUCTIONS.CAPTION=Add Selected items to Command
+TFRMLISTMANAGER.MENUITEM1.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMLISTMANAGER.MENUITEM2.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMLISTMANAGER.MENUITEM3.CAPTION=⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+TFRMLISTMANAGER.ACTOK.CAPTION=&OK
+TFRMLISTMANAGER.ACTCANCEL.CAPTION=Cancel
+TFRMLISTMANAGER.ACTADD.CAPTION=&A  Add
+TFRMLISTMANAGER.ACTEDIT.CAPTION=&B  Edit
+TFRMLISTMANAGER.ACTDELETE.CAPTION=&D  Delete
+TFRMLISTMANAGER.ACTCONSOLIDATE.CAPTION=&X  Consolidate
+TFRMLISTMANAGER.ACTREVERT.CAPTION=&Y  Revert List
+TFRMLISTMANAGER.ACTSHOWUSAGE.CAPTION=&Z  Show Usage

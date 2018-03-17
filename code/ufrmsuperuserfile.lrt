@@ -1,0 +1,45 @@
+TFRMSUPERUSERFILE.CAPTION=SuperUser Authentication
+TFRMSUPERUSERFILE.EDTSUFILE.HINT=The proposed ROOT file to change to.
++
++<end>
+TFRMSUPERUSERFILE.LBLCURR.CAPTION=Currently:  
+TFRMSUPERUSERFILE.LBFILES.HINT=This is a list of current (2017) ROOT 
++authentication files available for gnu/Linux 
++people.
++
++Choose the one you want. You may, or may
++not, have all of them on your system. It will
++tell you if it cannot find the file.
++
++In some cases (maybe in future) it could be
++you want to use something new, then use the
++button below and right.
++
++<end>
+TFRMSUPERUSERFILE.LBLCURRFILE.HINT=This is the ROOT file you are currently using.
++
++<end>
+TFRMSUPERUSERFILE.LBLCURRFILE.CAPTION=...
+TFRMSUPERUSERFILE.BTNSUFILE.HINT=If, in future, or for special needs, the file
++you need is not in the list use this button to 
++find and use it.
++
++You will first be asked to find the file.
++
++If you choose one you will then be asked to
++type any parameter / flag it needs.
++
++<end>
+TFRMSUPERUSERFILE.BTNSUFILE.CAPTION=&Z  Other File
+TFRMSUPERUSERFILE.BTNSUINFO.HINT=A quick introduction to the intricacieas of
++xxxsu and xxxsudo.
++
++<end>
+TFRMSUPERUSERFILE.BTNSUINFO.CAPTION=&A  Show Information
+TFRMSUPERUSERFILE.BTNTURNOFF.HINT=If the file you need can not be found, or
++you simply don't want to run command lines
++as ROOT then you can turn off the ROOT 
++ability with this button.
++
++<end>
+TFRMSUPERUSERFILE.BTNTURNOFF.CAPTION=&X  Turn off ROOT

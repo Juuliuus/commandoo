@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="commandoo"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
+    </General>
+    <i18n>
+      <EnableI18N LFM="False"/>
+      <OutDir Value="languages"/>
+    </i18n>
+    <VersionInfo>
+      <UseVersionInfo Value="True"/>
+      <MajorVersionNr Value="1"/>
+      <MinorVersionNr Value="1"/>
+      <RevisionNr Value="1"/>
+      <StringTable Comments="Whee!" CompanyName="timepirate.org" LegalCopyright="2018 Julius H. L. Schön / R. M. Spicer" ProductName="commandoo" ProductVersion=""/>
+    </VersionInfo>
+    <MacroValues Count="1">
+      <Macro2 Name="LCLWidgetType" Value="qt"/>
+    </MacroValues>
+    <BuildModes Count="8">
+      <Item1 Name="DebugQT" Default="True"/>
+      <Item2 Name="HeapMEMQT">
+        <MacroValues Count="1">
+          <Macro2 Name="LCLWidgetType" Value="qt"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="commandoo"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <AllowLabel Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <Optimizations>
+              <OptimizationLevel Value="0"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <UseHeaptrc Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dheapdebug
+-dWidgQT"/>
+            <OtherDefines Count="3">
+              <Define0 Value="Release"/>
+              <Define1 Value="heapdebug"/>
+              <Define2 Value="WidgQT"/>
+            </OtherDefines>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="Comm64qt">
+        <MacroValues Count="1">
+          <Macro2 Name="LCLWidgetType" Value="qt"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="commandoo64QT"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <AllowLabel Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dRelease
+-dWidgQT"/>
+            <OtherDefines Count="3">
+              <Define0 Value="Release"/>
+              <Define1 Value="Bit32"/>
+              <Define2 Value="WidgQT"/>
+            </OtherDefines>
+          </Other>
+        </CompilerOptions>
+      </Item3>
+      <Item4 Name="Comm32qt">
+        <MacroValues Count="1">
+          <Macro2 Name="LCLWidgetType" Value="qt"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="commandoo32QT"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <AllowLabel Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dRelease
+-dBit32
+-dWidgQT"/>
+            <OtherDefines Count="3">
+              <Define0 Value="Release"/>
+              <Define1 Value="Bit32"/>
+              <Define2 Value="WidgQT"/>
+            </OtherDefines>
+          </Other>
+        </CompilerOptions>
+      </Item4>
+      <Item5 Name="DebugGTK">
+        <MacroValues Count="1">
+          <Macro1 Name="LCLWidgetType" Value="gtk2"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="commandoo"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <AllowLabel Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+          </CodeGeneration>
+          <Linking>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dWidgGTK"/>
+            <OtherDefines Count="3">
+              <Define0 Value="Release"/>
+              <Define1 Value="Bit32"/>
+              <Define2 Value="WidgQT"/>
+            </OtherDefines>
+          </Other>
+        </CompilerOptions>
+      </Item5>
+      <Item6 Name="HeapMEMGTK">
+        <MacroValues Count="1">
+          <Macro1 Name="LCLWidgetType" Value="gtk2"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="commandoo"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <AllowLabel Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <Optimizations>
+              <OptimizationLevel Value="0"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <UseHeaptrc Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dheapdebug
+-dWidgGTK"/>
+            <OtherDefines Count="3">
+              <Define0 Value="Release"/>
+              <Define1 Value="heapdebug"/>
+              <Define2 Value="WidgGTK"/>
+            </OtherDefines>
+          </Other>
+        </CompilerOptions>
+      </Item6>
+      <Item7 Name="Comm64GTK">
+        <MacroValues Count="1">
+          <Macro1 Name="LCLWidgetType" Value="gtk2"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="commandoo64GTK"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <AllowLabel Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dRelease
+-dWidgGTK"/>
+            <OtherDefines Count="3">
+              <Define0 Value="Release"/>
+              <Define1 Value="Bit32"/>
+              <Define2 Value="WidgGTK"/>
+            </OtherDefines>
+          </Other>
+        </CompilerOptions>
+      </Item7>
+      <Item8 Name="Comm32GTK">
+        <MacroValues Count="1">
+          <Macro1 Name="LCLWidgetType" Value="gtk2"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="commandoo32GTK"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <AllowLabel Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dRelease
+-dBit32
+-dWidgGTK"/>
+            <OtherDefines Count="3">
+              <Define0 Value="Release"/>
+              <Define1 Value="Bit32"/>
+              <Define2 Value="WidgGTK"/>
+            </OtherDefines>
+          </Other>
+        </CompilerOptions>
+      </Item8>
+      <SharedMatrixOptions Count="2">
+        <Item1 ID="235737224948" Modes="DebugGTK,HeapMEMGTK,Comm64GTK,Comm32GTK" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
+        <Item2 ID="442262586579" Modes="Comm32qt,Comm64qt,HeapMEMQT,DebugQT" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
+      </SharedMatrixOptions>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+        <LaunchingApplication PathPlusParams=""/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="7">
+      <Item1>
+        <PackageName Value="SynEdit"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="LazControls"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="SDFLaz"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="MemDSLaz"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="FCL"/>
+      </Item5>
+      <Item6>
+        <PackageName Value="SQLDBLaz"/>
+      </Item6>
+      <Item7>
+        <PackageName Value="LCL"/>
+      </Item7>
+    </RequiredPackages>
+    <Units Count="47">
+      <Unit0>
+        <Filename Value="commandoo.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="ufrmmain.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmMain"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="ufrmmsgdlg.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMsgDlg"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmMsgdlg"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="unitsharedobj.pp"/>
+        <IsPartOfProject Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="juusgen.pp"/>
+        <IsPartOfProject Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="strconst_prog.pp"/>
+        <IsPartOfProject Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="strconst_en.pp"/>
+        <IsPartOfProject Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="jinifiles.pp"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="JiniFiles"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="ufrmabout.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmAbout"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmAbout"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="ufrmnolanguage.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmNoLanguage"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="unitlanguages.pp"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitLanguages"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="ufrmaddlanguage.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmAddLanguage"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="hintframe.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrameHint"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="HintFrame"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="unitcommands.pp"/>
+        <IsPartOfProject Value="True"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="usingleinput.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSingleInput"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uSingleInput"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="ufrmprofiles.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmProfiles"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmProfiles"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="unitglobform.pp"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitGlobForm"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="ufrmlistmanagerconsolidate.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmListManagerConsolidate"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmListManagerConsolidate"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="ufrmbusy.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBusy"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmBusy"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="ufrmcmdlineedit.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCmdLineEdit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="linuxtrix.pp"/>
+        <IsPartOfProject Value="True"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="unitfrmcommandsinput.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCommandsInput"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="unitfrmcommandsvar.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCommandsVar"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitfrmCommandsVar"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="unitfields.pp"/>
+        <IsPartOfProject Value="True"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="ufrmfindtext.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmFindText"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="unitdbutils.pp"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitDBUtils"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="ufrmlistmanager.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmListManager"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmListManager"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="ufrmmanageprofile.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmManageProfile"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmManageProfile"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="unitdbstructure.pp"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitDBStructure"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="unitsearch.pp"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitSearch"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="ufrmsearch.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSearch"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmSearch"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="ufrmboolexpr.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBoolExpr"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmBoolExpr"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="ufrm_search_operator.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_Search_Operator"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="ufrm_search_double.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_Search_double"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="ufrmsuperuserfile.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSuperUserFile"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmSuperUserFile"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="ufrm_search_list.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_Search_List"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="ufrm_search_text.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_Search_Text"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="ufrm_search_string.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_Search_String"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="ufrm_search_bool.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_Search_Bool"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="ufrm_search_enum.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_Search_Enum"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="ufrm_search_integer.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_Search_Integer"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="ufrmfind.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmFind"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmFind"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="unitdbconstants.pp"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="unitDBConstants"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="ufrmprofilesmerge.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmProfilesMerge"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="unitglob.pp"/>
+        <IsPartOfProject Value="True"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="ufrmoptions.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOptions"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmOptions"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="ufrmsimplesearch.pp"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSimpleSearch"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufrmSimpleSearch"/>
+      </Unit46>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <Target>
+      <Filename Value="commandoo"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <AllowLabel Value="False"/>
+      </SyntaxOptions>
+    </Parsing>
+    <CodeGeneration>
+      <Checks>
+        <IOChecks Value="True"/>
+        <RangeChecks Value="True"/>
+        <OverflowChecks Value="True"/>
+        <StackChecks Value="True"/>
+      </Checks>
+      <Optimizations>
+        <OptimizationLevel Value="0"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CustomOptions Value="-dWidgQT"/>
+      <OtherDefines Count="3">
+        <Define0 Value="Release"/>
+        <Define1 Value="Bit32"/>
+        <Define2 Value="WidgQT"/>
+      </OtherDefines>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+</CONFIG>
