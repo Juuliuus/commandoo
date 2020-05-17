@@ -42,6 +42,7 @@ const
   procedure Update_DB_Version_0004( const Key : string );
   procedure Update_PROG_Version_0001( IFile : TJiniFile; const FormSettEntry : string );
   procedure Update_PROG_Version_0002( IFile : TJiniFile );
+  procedure Update_PROG_Version_0003( IFile : TJiniFile; const Sect, Key : string );
 
 //Text
   procedure UpdateUpgradeLevel( IFile : TJinifile; const aSection, aKey : string;
@@ -274,8 +275,16 @@ begin
 //The user can get wacky looking forms. I only noticed this now and so made a PROG update for it, but this is
 //likely to be true relatively often? So maybe this should later just be a general function called
 //for EVERY NEW VERSION update?
+//  >>>>YES, just in case put in the rest of the updates
   FormSettings.ClearAllFormSettings( IFile );
   //IFile.EraseSection( FormSettings.GetDataSection );
+end;
+
+procedure Update_PROG_Version_0003( IFile : TJiniFile; const Sect, Key : string );
+begin
+//use this everytime, just in case.
+  FormSettings.ClearAllFormSettings( IFile );
+  IFile.DeleteKey( Sect, Key );
 end;
 
 function GenerateDBFilePath( const aPath, aFileName, anExtension : string ) : string;

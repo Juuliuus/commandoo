@@ -126,7 +126,7 @@ resourcestring
 
 
 { TfrmSuperUserFile }
-
+//juus SUPERUSER FILE CHOOSING DIALOG ====> OUT!
 procedure TfrmSuperUserFile.FormShow(Sender : TObject);
 var
   aPath : String;

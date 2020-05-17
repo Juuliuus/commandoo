@@ -27,7 +27,7 @@ uses
   Classes, SysUtils;
 
 const
-  //ccapTabSelected = '◉ %s ◉';  ◆  ◢  ◣
+  //ccapTabSelectedy = '◉ %s ◉';  ◆  ◢  ◣
   ccapTabSelected = '◢  %s  ◣';
   ccapTabUnSelected = ' %s ';
   cRootMode = '<< ROOT MODE >> ';
@@ -41,15 +41,15 @@ resourceString
 //the screen and becomes almost unreadable. So hint text is made of short lines that require a carriage return.
 //======================================================
 
-  ccapTabCommands = 'Commands';//'Cmd''s';
-  ccapTabFavorites = 'Favorites';//'Favs';
-  ccapTabKeyWords = 'KeyWords';//'KeyW';
-  ccapTabSearch = 'Search';//'Search';
-  ccapTabProcesses = 'Det. Processes';//'Proc''s';
+  ccapTabCommands = '  Commands  ';//'Cmd''s';
+  ccapTabFavorites = '  Favorites  ';//'Favs';
+  ccapTabKeyWords = '  KeyWords  ';//'KeyW';
+  ccapTabSearch = '  Search  ';//'Search';
+  ccapTabProcesses = '==>  Detached Processes:  ';//'Proc''s';
 
   cstrCmdDisplayObjects = '>>         ↑ Commands   ---   ↓ Command Lines';
 
-
+  ccapError = 'Error';
   cCantCopy = 'Could not copy "%s" to "%s".';
   //cCantCopyNotFound = '"%s" not found!';
   cFileNotExist = 'File "%s" does not exist.';
@@ -418,7 +418,7 @@ resourceString
   ccapPathCaption = 'Path to: "%s"';
   cmsgNotSpecified = '-???-';
   cmsgInvalidString = '< Invalid >';
-  cmsgProfileString = 'DB Profile  =>  %s%s %s';
+  cmsgProfileString = 'Curr. Profile:   %s%s %s';
 
 
   cmsgProcessSingular = 'Proc';
@@ -832,6 +832,9 @@ resourceString
            + LineEnding + LineEnding
            + '<end> ';
 
+
+   ccapRevert = 'Revert to DB data';
+   cmsgRevert = 'This will revert all changes back to orginal values. Do you still want to Revert??';
    ccapUnsavedData = 'Unsaved Data!';
    cmsgUnsavedData = 'Either Editing or Unsaved Data, Do you still want to close??';
    cmsgFailedSave = 'Failure during save: %s';
@@ -876,6 +879,10 @@ resourceString
      ;
 
    cmsgEmptySearchResults = '< No Search Results >';
+
+   ccapHaltProcess = 'Halt detached process';
+   cmsgHaltProcess = 'This will halt the selected process. Careful. The process may need '
+     + 'to save data, best to find the program and close it normally. Do you still want to halt it??';
 
 
 implementation

@@ -148,6 +148,9 @@ const
   cIniFileNameCommandLines = 'CmdLine';
   cIniFileNameMisc = 'Misc';
   cDBTabCommands = 'tblCmd';
+  csqlExistenceCheckerTableName = cDBTabCommands;//must match cDBTabCommands
+  csqlExistenceCheckerFieldName = Ord( fidCommandName );
+
   cDBTabCmdLines = 'tblCmdLine';
   cDBTabKeyWords = 'tblKeyWords';
   cDBTabControl = 'tblControl';
@@ -182,7 +185,7 @@ const
 
 //column for KeyWords
 //by making the columnnames match then the List field for KeyWords can be matched up with the appropriate master list
-  cKeyWordKeyWord = cCmdColKeywords;//'KeyWords';
+  cKeyWordKeyWord = 'Keywords';
 
 //column for Control
   cSectTab_DB_VersionCount = '_DB_VersionCount';
@@ -215,8 +218,6 @@ const
 //spares
 // 201283457 226229809 722842100;
 
-  csqlExistenceCheckerFieldName = Ord( fidCommandName );
-  csqlExistenceCheckerTableName = cDBTabCommands;
 
 
 

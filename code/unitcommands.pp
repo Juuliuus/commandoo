@@ -30,7 +30,7 @@ uses
   , process
   , AsyncProcess
   , linuxtrix
-  , synregexpr //this is the Regexpression unit
+  , regexpr //this is the Regexpression unit
   , unitfields
   , unitDBStructure
   , unitDBConstants

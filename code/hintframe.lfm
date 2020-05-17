@@ -1,22 +1,25 @@
 object FrameHint: TFrameHint
   Left = 0
-  Height = 27
+  Height = 41
   Top = 0
-  Width = 320
+  Width = 427
   Anchors = [akTop, akRight]
-  ClientHeight = 27
-  ClientWidth = 320
+  ClientHeight = 41
+  ClientWidth = 427
   Color = clRed
+  DesignTimePPI = 128
+  Font.Height = -14
   ParentColor = False
+  ParentFont = False
   TabOrder = 0
   DesignLeft = 225
   DesignTop = 404
   object cbHints: TCheckBox
-    Left = 100
-    Height = 21
+    Left = 196
+    Height = 22
     Hint = 'Help HInts now Showing'
-    Top = 3
-    Width = 208
+    Top = 4
+    Width = 215
     Anchors = [akTop, akRight]
     Caption = '&H  Show hints on mouseover'
     OnChange = cbHintsChange

@@ -55,7 +55,6 @@ const
   cFormSettingsWarnDanger = 'WarnDanger';
   cFormSettingsAllowMultipleOpens = 'AllowMultipleOpens';
   cFormSettingsAllowESCOutput = 'AllowESC';
-  cFormSettingsTERM = 'TERM';
   cFormSettingsAllowSqlDB = 'AllowSqlDB';
   cFormSettingsAllowTextDB = 'AllowTextDB';
 
@@ -98,11 +97,11 @@ const
 
 
 //increment this number for any Program settings cleanup / change, ONLY needs to be done if there is a change
-  c_PROG_VersionUpgradeCount = 2;//
+  c_PROG_VersionUpgradeCount = 3;//2;//
 //=====  PROGRAM   ==============================
-  cHandwrittenVersion = '1.0.1';//all done. ?
+  cHandwrittenVersion = '2.0.0';//'1.0.1';//all done. ?
   cSectTab_PROG_VersionCount = '_PROG_VersionCount';
-  cVersionDate = ' (March 2018)';// ReleaseCandidate';
+  cVersionDate = ' (June 2020)';// ReleaseCandidate';
 
 implementation
 

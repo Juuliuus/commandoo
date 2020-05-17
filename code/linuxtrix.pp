@@ -176,6 +176,7 @@ function DeterminePathSeparatorUsed( const PathEnvirString : string ) : char;
 const
   PossibleLinuxEnvPathSeperators = ':;,-. ?';
 begin
+//juus should I be using this instead of the set thing back in the other????
   for result in PossibleLinuxEnvPathSeperators do
     if pos( result, PathEnvirString ) > 0 then
       break;

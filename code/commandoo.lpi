@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="9"/>
+    <Version Value="11"/>
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
       <Title Value="commandoo"/>
+      <Scaled Value="True"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
@@ -19,16 +20,16 @@
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="1"/>
-      <StringTable Comments="Whee!" CompanyName="timepirate.org" LegalCopyright="2018 Julius H. L. Schön / R. M. Spicer" ProductName="commandoo" ProductVersion=""/>
+      <StringTable Comments="Whee!" CompanyName="timepirate.org" LegalCopyright="2018 Julius H. L. Schön / R. M. Spicer" ProductName="commandoo"/>
     </VersionInfo>
     <MacroValues Count="1">
-      <Macro2 Name="LCLWidgetType" Value="qt"/>
+      <Macro3 Name="LCLWidgetType" Value="qt5"/>
     </MacroValues>
-    <BuildModes Count="8">
+    <BuildModes Count="6">
       <Item1 Name="DebugQT" Default="True"/>
       <Item2 Name="HeapMEMQT">
         <MacroValues Count="1">
-          <Macro2 Name="LCLWidgetType" Value="qt"/>
+          <Macro3 Name="LCLWidgetType" Value="qt5"/>
         </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
@@ -59,15 +60,11 @@
             <Debugging>
               <UseHeaptrc Value="True"/>
             </Debugging>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
           </Linking>
           <Other>
             <CustomOptions Value="-dheapdebug
--dWidgQT"/>
+-dWidgQT
+-FcUTF8"/>
             <OtherDefines Count="3">
               <Define0 Value="Release"/>
               <Define1 Value="heapdebug"/>
@@ -78,12 +75,12 @@
       </Item2>
       <Item3 Name="Comm64qt">
         <MacroValues Count="1">
-          <Macro2 Name="LCLWidgetType" Value="qt"/>
+          <Macro3 Name="LCLWidgetType" Value="qt5"/>
         </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
-            <Filename Value="commandoo64QT"/>
+            <Filename Value="commandooQT"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
@@ -104,70 +101,23 @@
               <GenerateDebugInfo Value="False"/>
             </Debugging>
             <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
           </Linking>
           <Other>
             <CustomOptions Value="-dRelease
--dWidgQT"/>
-            <OtherDefines Count="3">
+-dWidgQT
+-dDisableChecks
+-dplatAppImage"/>
+            <OtherDefines Count="5">
               <Define0 Value="Release"/>
               <Define1 Value="Bit32"/>
               <Define2 Value="WidgQT"/>
+              <Define3 Value="DisableChecks"/>
+              <Define4 Value="platAppImage"/>
             </OtherDefines>
           </Other>
         </CompilerOptions>
       </Item3>
-      <Item4 Name="Comm32qt">
-        <MacroValues Count="1">
-          <Macro2 Name="LCLWidgetType" Value="qt"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="commandoo32QT"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <Parsing>
-            <SyntaxOptions>
-              <AllowLabel Value="False"/>
-            </SyntaxOptions>
-          </Parsing>
-          <CodeGeneration>
-            <Optimizations>
-              <OptimizationLevel Value="2"/>
-            </Optimizations>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CustomOptions Value="-dRelease
--dBit32
--dWidgQT"/>
-            <OtherDefines Count="3">
-              <Define0 Value="Release"/>
-              <Define1 Value="Bit32"/>
-              <Define2 Value="WidgQT"/>
-            </OtherDefines>
-          </Other>
-        </CompilerOptions>
-      </Item4>
-      <Item5 Name="DebugGTK">
+      <Item4 Name="DebugGTK">
         <MacroValues Count="1">
           <Macro1 Name="LCLWidgetType" Value="gtk2"/>
         </MacroValues>
@@ -193,15 +143,9 @@
               <StackChecks Value="True"/>
             </Checks>
           </CodeGeneration>
-          <Linking>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
           <Other>
-            <CustomOptions Value="-dWidgGTK"/>
+            <CustomOptions Value="-dWidgGTK
+-FcUTF8"/>
             <OtherDefines Count="3">
               <Define0 Value="Release"/>
               <Define1 Value="Bit32"/>
@@ -209,8 +153,8 @@
             </OtherDefines>
           </Other>
         </CompilerOptions>
-      </Item5>
-      <Item6 Name="HeapMEMGTK">
+      </Item4>
+      <Item5 Name="HeapMEMGTK">
         <MacroValues Count="1">
           <Macro1 Name="LCLWidgetType" Value="gtk2"/>
         </MacroValues>
@@ -243,15 +187,11 @@
             <Debugging>
               <UseHeaptrc Value="True"/>
             </Debugging>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
           </Linking>
           <Other>
             <CustomOptions Value="-dheapdebug
--dWidgGTK"/>
+-dWidgGTK
+-FcUTF8"/>
             <OtherDefines Count="3">
               <Define0 Value="Release"/>
               <Define1 Value="heapdebug"/>
@@ -259,8 +199,8 @@
             </OtherDefines>
           </Other>
         </CompilerOptions>
-      </Item6>
-      <Item7 Name="Comm64GTK">
+      </Item5>
+      <Item6 Name="Comm64GTK">
         <MacroValues Count="1">
           <Macro1 Name="LCLWidgetType" Value="gtk2"/>
         </MacroValues>
@@ -288,82 +228,37 @@
               <GenerateDebugInfo Value="False"/>
             </Debugging>
             <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
           </Linking>
           <Other>
             <CustomOptions Value="-dRelease
--dWidgGTK"/>
-            <OtherDefines Count="3">
+-dDisableChecks
+-dWidgGTK
+-FcUTF8"/>
+            <OtherDefines Count="5">
               <Define0 Value="Release"/>
               <Define1 Value="Bit32"/>
-              <Define2 Value="WidgGTK"/>
+              <Define2 Value="WidgQT"/>
+              <Define3 Value="DisableChecks"/>
+              <Define4 Value="WidgGTK"/>
             </OtherDefines>
           </Other>
         </CompilerOptions>
-      </Item7>
-      <Item8 Name="Comm32GTK">
-        <MacroValues Count="1">
-          <Macro1 Name="LCLWidgetType" Value="gtk2"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="commandoo32GTK"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <Parsing>
-            <SyntaxOptions>
-              <AllowLabel Value="False"/>
-            </SyntaxOptions>
-          </Parsing>
-          <CodeGeneration>
-            <Optimizations>
-              <OptimizationLevel Value="2"/>
-            </Optimizations>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CustomOptions Value="-dRelease
--dBit32
--dWidgGTK"/>
-            <OtherDefines Count="3">
-              <Define0 Value="Release"/>
-              <Define1 Value="Bit32"/>
-              <Define2 Value="WidgGTK"/>
-            </OtherDefines>
-          </Other>
-        </CompilerOptions>
-      </Item8>
-      <SharedMatrixOptions Count="2">
-        <Item1 ID="235737224948" Modes="DebugGTK,HeapMEMGTK,Comm64GTK,Comm32GTK" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
-        <Item2 ID="442262586579" Modes="Comm32qt,Comm64qt,HeapMEMQT,DebugQT" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
+      </Item6>
+      <SharedMatrixOptions Count="4">
+        <Item1 ID="235737224948" Modes="DebugGTK,HeapMEMGTK,Comm64GTK" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
+        <Item2 ID="442262586579" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
+        <Item3 ID="836757244194" Modes="Comm64qt,DebugQT,HeapMEMQT" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
+        <Item4 ID="409601829338" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>
       </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
     </PublishOptions>
     <RunParams>
-      <local>
-        <FormatVersion Value="1"/>
-        <LaunchingApplication PathPlusParams=""/>
-      </local>
+      <FormatVersion Value="2"/>
+      <Modes Count="1">
+        <Mode0 Name="default"/>
+      </Modes>
     </RunParams>
     <RequiredPackages Count="7">
       <Item1>
@@ -722,18 +617,20 @@
       </Optimizations>
     </CodeGeneration>
     <Linking>
-      <Options>
-        <Win32>
-          <GraphicApplication Value="True"/>
-        </Win32>
-      </Options>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf2"/>
+      </Debugging>
     </Linking>
     <Other>
-      <CustomOptions Value="-dWidgQT"/>
-      <OtherDefines Count="3">
+      <CustomOptions Value="-dWidgQT
+-dDisableChecks
+-dplatAppImage"/>
+      <OtherDefines Count="5">
         <Define0 Value="Release"/>
         <Define1 Value="Bit32"/>
         <Define2 Value="WidgQT"/>
+        <Define3 Value="DisableChecks"/>
+        <Define4 Value="platAppImage"/>
       </OtherDefines>
     </Other>
   </CompilerOptions>

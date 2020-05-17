@@ -1168,6 +1168,7 @@ var
   Ch: Char;
   MultiLinedValue: boolean;
 
+  //KeyCodePoint Tpofile stuff, first part
   function NextLine : boolean;
   begin
     result := true;

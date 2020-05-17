@@ -28,7 +28,7 @@ uses
   StdCtrls
   , ExtCtrls, ActnList, unitsharedobj
   , lcltype {THis is needed for key up keyboard constants}
-  , synregexpr //this is the Regexpression unit
+  , regexpr //this is the Regexpression unit
   , Menus, HintFrame
   , lazutils, Buttons
   , uSingleInput
@@ -92,23 +92,44 @@ type
     actRevert: TAction;
     actPlus: TAction;
     ActionList1: TActionList;
-    btnClear : TButton;
-    btnCommandDelete : TButton;
-    btnFindCmd : TButton;
-    btnExit : TButton;
+    Bevel1 : TBevel;
+    Bevel2 : TBevel;
+    Bevel3 : TBevel;
+    btnExit : TBitBtn;
+    btnCmdLineDelete : TBitBtn;
+    btnCmdLineUnDelete : TBitBtn;
+    btnClear : TBitBtn;
+    btnRefreshFavorites : TBitBtn;
+    btnSearchRun : TBitBtn;
+    btnSimpleSearch : TBitBtn;
+    btnProfileManagement : TBitBtn;
+    btnFindCmdLine : TBitBtn;
+    btnAbout : TBitBtn;
+    btnKeyWords : TBitBtn;
+    btnOptions : TBitBtn;
+    btnThreatLevelInfo : TButton;
+    btnThreatLevelInfoLine : TButton;
+    btnVersionCommand : TBitBtn;
+    btnPlus : TBitBtn;
+    btnNewCommandLine : TBitBtn;
+    btnHelpCommand : TBitBtn;
+    btnRun_Test : TBitBtn;
+    btnSortCommands : TBitBtn;
+    btnRevert : TBitBtn;
+    btnCommandUnDelete : TBitBtn;
+    btnCommandDelete : TBitBtn;
+    btnFindCmd : TBitBtn;
+    btnSwitchDB : TBitBtn;
+    btnCancelRun : TBitBtn;
+    btnSave : TBitBtn;
     btnCmdCancel: TBitBtn;
     btnCmdEdit: TBitBtn;
-    btnCmdLineDelete: TButton;
     btnCmdLineDown: TButton;
-    btnCmdLineUnDelete: TButton;
     btnCmdLineUp: TButton;
     btnCmdOk: TBitBtn;
-    btnRefreshFavorites : TButton;
-    btnRun_Test : TButton;
     btnSearchFindCmd : TButton;
     btnSearchFindCmdLine : TButton;
     btnSearchGoToCmd : TButton;
-    btnCancelRun : TButton;
     btnSearchGoToCmdLine : TButton;
     btnSearchDisplaySearch : TButton;
     btnSearchLoadSearch : TButton;
@@ -116,65 +137,55 @@ type
     btnKeyWordSave : TButton;
     btnKeyWordDisplay : TButton;
     btnKeyWordNewSearch : TButton;
-    btnSearchRun : TButton;
     btnSearchSaveSearch : TButton;
     btnSearchSearch : TButton;
-    btnProfileManagement : TButton;
-    btnPlus : TButton;
-    btnFindCmdLine : TButton;
-    btnHelpCommand: TButton;
     btnKeyWordDelete: TButton;
     btnLineCancel: TBitBtn;
     btnLineEdit: TBitBtn;
     btnLineOk: TBitBtn;
-    btnLocationPath: TButton;
-    btnNewCommandLine: TButton;
-    btnTerminal : TButton;
-    btnSwitchDB : TButton;
-    btnRevert : TButton;
-    btnKeyWords: TButton;
-    btnSortCommands: TButton;
-    btnThreatLevelInfoLine : TButton;
-    btnVersionCommand: TButton;
+    btnLocationPath : TBitBtn;
     btnSortDetachedProcesses : TButton;
-    btnSimpleSearch: TButton;
     btnQuickRun : TButton;
-    btnAbout : TButton;
-    btnCommandUnDelete : TButton;
     btnKeyWordSearch : TButton;
-    btnSave: TButton;
-    btnThreatLevelInfo: TButton;
     btnKeyWordAdd: TButton;
     btnHaltProcess : TButton;
     btnKeyWordLoad : TButton;
-    btnOptions: TButton;
     cbDetachProcess: TCheckBox;
     cbDetachProcessLine: TCheckBox;
+    cbDispThreatLevel : TComboBox;
     cbIsFavorite: TCheckBox;
     cbIsFavoriteLine: TCheckBox;
     cbTerminalOnlyLine : TCheckBox;
     cbAlertLine : TCheckBox;
     cbTerminalOnly : TCheckBox;
-    cbWordWrapMain : TCheckBox;
+    cbThreatLevel : TComboBox;
     cbThreatLevelDisp : TComboBox;
     cbThreatLevelLine : TComboBox;
-    cbDispThreatLevel : TComboBox;
     cbThreatLevelLineDisp : TComboBox;
+    cbWordWrapMain : TCheckBox;
     cbWantsInputLine : TCheckBox;
     cbSuperUser: TCheckBox;
     cbSuperUserLine: TCheckBox;
-    cbThreatLevel: TComboBox;
     cbUseShellLine : TCheckBox;
     edtFriendlyNameLine : TEdit;
     edtHelp: TEdit;
     edtVersion: TEdit;
+    lblcapFriendlyName : TLabel;
+    lblCommandName : TLabel;
+    lblCommandNameDisp : TLabel;
+    lblCurrDB : TLabel;
     lblDispAlert : TLabel;
+    lblDispThreatLevel : TLabel;
     lblNoOptions : TLabel;
     lblDispTerminalOnly : TLabel;
     lblDispIsFavorite : TLabel;
     lblDispUseShell : TLabel;
     lblDispDetachProcess : TLabel;
     lblDispWantsInput : TLabel;
+    lblPathAlias : TLabel;
+    lblPathAliasDisp : TLabel;
+    lblTabSearch : TLabel;
+    lblTabKeyWords : TLabel;
     lblTerminalOnlyDisp : TLabel;
     lblDetachProcessLineDisp : TLabel;
     lblAlertLineDisp : TLabel;
@@ -183,6 +194,8 @@ type
     lblIsFavoriteDisp : TLabel;
     lblDispSuperUser : TLabel;
     lblTerminalOnlyLineDisp : TLabel;
+    lblThreatLevelDisp : TLabel;
+    lblThreatLevelLineDisp : TLabel;
     lblUseShellLineDisp : TLabel;
     lblSuperUserLineDisp : TLabel;
     lblSRCmds : TLabel;
@@ -191,41 +204,30 @@ type
     lblWantsInputLineDisp : TLabel;
     lbSearchCmd : TListBox;
     lbSearchCmdLine : TListBox;
-    lblAutosave : TLabel;
     lblKeyWords: TLabel;
     lblCmdPointer: TLabel;
     lblCmdLinePointer: TLabel;
-    lblTabKeyWords : TLabel;
     lblcapEntryLine: TLabel;
-    Label17 : TLabel;
     lblPestr : TLabel;
     lblHelpDisp : TLabel;
     lblCapNotesLine : TLabel;
     lblcapFriendlyNameLine : TLabel;
     lblCEditing : TLabel;
-    lblThreatLevelDisp : TLabel;
     lblFriendlyNameLineDisp : TLabel;
     lblVersionDisp : TLabel;
     lbKeywordsDisp : TListBox;
-    lblCommandNameDisp : TLabel;
     lblDispFriendlyName : TLabel;
     lblDispCommandName : TLabel;
     lblDispEntry : TLabel;
-    lblThreatLevelLineDisp : TLabel;
-    lblPathAliasDisp : TLabel;
     lblDetachedProcesses : TLabel;
     lbDetachedProcesses : TListBox;
-    lblDispThreatLevel : TLabel;
     lblPathActual: TLabel;
     lblHelp: TLabel;
     lblShowButtons: TLabel;
     lblVersion: TLabel;
-    Label9: TLabel;
     lbCmdLines: TListBox;
     lbCommands: TListBox;
     lbKeywords: TListBox;
-    lblCommandName: TLabel;
-    lblPathAlias: TLabel;
     lbDispKeywords : TListBox;
     memNotes: TMemo;
     memNotesDisp : TMemo;
@@ -236,9 +238,8 @@ type
     memDispNotes : TMemo;
     memEntry : TMemo;
     mniCmdSendTo : TMenuItem;
+    pnlCEdit : TPanel;
     pnlRefreshFavorites : TPanel;
-    pnlRun_Test : TPanel;
-    pnlSearchRun_Test : TPanel;
     pnlS : TPanel;
     popCmdPasteCmdLine : TMenuItem;
     popCmdPaste : TMenuItem;
@@ -293,22 +294,15 @@ type
     nbCommands: TExtendedNotebook;
     FrameHint1: TFrameHint;
     lblTabFavorites: TLabel;
-    lblTabSearch: TLabel;
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
     MenuItem12: TMenuItem;
-    pnlCEdit: TPanel;
     pnlCommandList: TPanel;
     pnlCmdLine: TPanel;
     pnlCmdLines: TPanel;
     pnlcommand: TPanel;
     pnlEdit: TPanel;
     pnlLineControls: TPanel;
-    pnlThreatLevel: TPanel;
-    pnlThreatLevelDisp : TPanel;
-    pnlThreatLevelLine : TPanel;
-    pnlDispThreatLevel : TPanel;
-    pnlThreatLevelLineDisp : TPanel;
     popSearchCmdLine : TPopupMenu;
     popSearchCmd : TPopupMenu;
     popNewCommandLine: TMenuItem;
@@ -328,11 +322,24 @@ type
     pmMain : TPopupMenu;
     popTabKeyWords : TPopupMenu;
     popTabSearch : TPopupMenu;
-    sbStatuses: TStatusBar;
+    shpCmdLineOut1 : TShape;
+    shpCmdOut1 : TShape;
+    shpCmdOut10 : TShape;
+    shpCmdOut2 : TShape;
+    shpCmdOut3 : TShape;
+    shpCmdOut4 : TShape;
+    shpCmdOut5 : TShape;
+    shpCmdOut6 : TShape;
+    shpCmdOut7 : TShape;
+    shpCmdOut8 : TShape;
+    shpCmdOut9 : TShape;
+    shpSRL : TShape;
+    shpSRR : TShape;
     shpCmdIn : TShape;
     shpCmdLineIn : TShape;
     shpCmdOut : TShape;
-    shpCmdLineOut : TShape;
+    shpRun_Test : TShape;
+    shpSRR1 : TShape;
     TimerBlink : TTimer;
     tsKeyWords : TTabSheet;
     tsSearch: TTabSheet;
@@ -389,7 +396,6 @@ type
     procedure btnLocationPathClick(Sender: TObject);
     procedure btnRefreshFavoritesClick( Sender : TObject );
     procedure btnSortDetachedProcessesClick( Sender : TObject );
-    procedure btnTerminalClick( Sender : TObject );
     procedure btnThreatLevelInfoClick(Sender: TObject);
     procedure btnThreatLevelInfoLineClick( Sender : TObject );
     procedure btnVersionCommandClick(Sender: TObject);
@@ -421,6 +427,7 @@ type
     procedure lbKeywordsKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lblCommandNameDblClick( Sender : TObject );
     procedure lblCommandNameDispDblClick( Sender : TObject );
+    procedure lblCurrDBDblClick( Sender : TObject );
     procedure lblDispEntryDblClick( Sender : TObject );
     procedure lblDispFriendlyNameDblClick( Sender : TObject );
     procedure lblFriendlyNameLineDispDblClick( Sender : TObject );
@@ -431,6 +438,7 @@ type
     procedure lbSearchCmdKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lbSearchCmdLineClick( Sender : TObject );
     procedure lbSearchCmdLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+    procedure memDetachedProcessesDblClick( Sender : TObject );
     procedure memDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memDispNotesDblClick( Sender : TObject );
     procedure memDispNotesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -445,6 +453,7 @@ type
     procedure memNotesLineDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memNotesLineEnter( Sender : TObject );
     procedure memNotesLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+    procedure Memo1DblClick( Sender : TObject );
     procedure Memo1KeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure mniCmdCountClick( Sender : TObject );
     procedure mniCmdSendToClick( Sender : TObject );
@@ -490,7 +499,6 @@ type
     fWarnCareful : boolean;
     fWarnCaution : boolean;
     fWarnDanger : boolean;
-    fTerminal : string;
     fAllowSqlDB : boolean;
     fAllowMultipleOpens : boolean;
     fAllowESCinOutput : boolean;
@@ -519,6 +527,8 @@ type
     fFavoritesSR : TStringList;
 
 
+    function IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
+    function CmdInPath( CheckForBuiltin : boolean = false ) : boolean;
     function AddCmdDisplayObjects( Dest : TStrings; Strings : TStringlist ) : boolean;
     procedure ApplyListChanges( theList : string; aListBox, DispListBox : TListBox );
     procedure ApplyListChangesDisplayedCmd( SrcList, aListBox, DispListBox : TListBox );
@@ -578,7 +588,7 @@ type
     function InvalidCommands( CheckCmdObj: boolean = True ): boolean;
     function InvalidCommands_Msg : boolean;
     procedure IsBusy( const TurnOn : boolean; aMsg : string = '<>'; ProcessFlag : TProcessType = ptInfo  );
-    procedure RefreshCapAndStatus;
+    procedure RefreshCap;
     procedure ResetCommandsToTop;
     procedure SearchVK_F_Keys( const Key : Word );
     procedure lbSearchCmdLine_ApplyActions;
@@ -646,7 +656,6 @@ type
     property UseDB : Boolean read fUseDB;
     property ProfilePath : string read fProfilePath;
     property IFS : TJiniFile read fIFS;//"I"nifile "F"orm "S"ettings
-    property Terminal : string read fTerminal;
 
   end;
 
@@ -755,7 +764,6 @@ resourcestring
   cmsgSearchInvalid = 'Search is invalid.';
   cmsgSearchInvalidNoLoad = ' It can not be loaded.';
   ccapSearchLoad = 'Load Search';
-  cmsgTerminalUndefined = 'There is no Terminal program defined, change in "Options".';
   ccapSendToProfile = 'Select Profile to SEND TO';
   cmsgInvalidLinuxFileName = 'The filename is invalid! System does not allow "//" in a filename.';
   ccapFileExists = '%s file exists';
@@ -926,7 +934,6 @@ begin
     exit;
   if UnSaved then
   begin
- //refactor? make an option??  autosave???
     if MsgDlgMessage( ccapUnsavedData, cmsgUnsavedData, 'cmsgUnsavedData') then
       CanClose := MsgDlgAttentionConfirm( self ) = mrYes;
   end
@@ -1050,11 +1057,12 @@ begin
 //yes you found PESTER, list of reminders BEFORE compiling and releasing a version!!!
 //================
 //before a release version
-//update INCREMENT c_PROG_VersionUpgradeCount = #; to the next upgrade if
-//prog upgrades (settings-wise) were necessary
+
+//       INCREMENT c_PROG_VersionUpgradeCount = #; to the next upgrade if
+//       prog upgrades (settings-wise) were necessary
 //
 //       cHandwrittenVersion = '#.#.#'; to match readme file
-//       as of March 2018 v. is 1.0.1
+//       as of Juneish 2020 v. is 2.0.0 //as of March 2018 v. is 1.0.1
 
 //       INCREMENT c_DB_VersionUpgradeCount = #;to the next upgrade if DB upgrades were necessary
 //       c_DB_HandwrittenVersion = '1.0.2'; upgrade if DB structure has changed
@@ -1140,8 +1148,6 @@ procedure TfrmMain.FormCreate(Sender: TObject);
     Application.Terminate;
   end;
 
-var
-  FileStr : RawByteString;
 begin
 
   Randomize;
@@ -1175,19 +1181,17 @@ begin
 
   fSuperUser := QuickProc( 'id', '-u' ) = '0';
 
-//For development, and for people who don't want to use .deb file to install in /usr, this will send
-//data file path to be in the same folder as the executable. Otherwise it is written to the .config/commandoo folder
-//Changed, I don't use .deb files at the moment, always points to prog. folder.
-  FileStr := ExtractFilePath( Application.Exename );
-  if ( pos( '/home/', FileStr ) = 1 )
-  //needed for testing in a vm, but also a good idea in general rather than going to .config area.
-    or ( pos( '/mnt/', FileStr ) = 1 )
-    or ( pos( '/media/', FileStr ) = 1 )
-       then
-    fWritingToPath := FileStr
-  else fWritingToPath := IncludeTrailingPathDelimiter( GetAppConfigDir( False ) );//gets home "." location
-  //else GetAppConfigDir( true );  //returns etc/commandoo not so useful right now
+//TODO Make a routine that will create a thumbdrive version
+//ask for appimage ask for destFolder: compy appimage and config to appimage.config
+//breadcrumb ==> here is writing path decision
+{$IFNDEF Release}
+  fWritingToPath := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
+{$ELSE}
+  fWritingToPath := IncludeTrailingPathDelimiter( GetAppConfigDir( False ) );//gets home "." location
+{$ENDIF}
+  //GetAppConfigDir( true );  //returns etc/commandoo not so useful right now
 
+//juus fSuperUser << out right?
 //=============== first time run as superuser is NOT ALLOWED. ========================================
   if fSuperUser and not DirectoryExists( fWritingToPath ) then
   begin
@@ -1217,6 +1221,7 @@ begin
   DevReleaseSettings;
 //==================================
 
+//juus making dirs
   if not DirectoryExists( fWritingToPath ) then
     ForceDirectories(fWritingToPath);
   if not DirectoryExists(fWritingToPath + cLanguageFolderName) then
@@ -1245,8 +1250,9 @@ begin
   globFontOffset := fIFS.ReadInteger( cSectTabFormSettings, cFormSettingsFontOffset, 0 );
 //Applychangefont must follow globFontOffset reading, this is my fix for custom dpi ppi
   ApplyChangeFont( Self );
-  sbStatuses.Invalidate;//won't refresh until restart
+//old status bar necessity.  sbStatuses.Invalidate;//won't refresh until restart
 
+//juus sqlitelibrary stuff
   fSqliteLibrary := fIFS.ReadString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, '' );
 
   if not TInfoServer.SqliteInstalled( fSqliteLibrary ) then
@@ -1319,13 +1325,13 @@ end;
 
 procedure TfrmMain.UpdateProfileText;
 begin
-  sbStatuses.Panels[ 0 ].Text := format( '  ' + cmsgProfileString,
-                                         [
-                                           fProfileName,
-                                           strif( fUseDB,  cDefaultDBProfileIsDBStr, cDefaultDBProfileIsDBStrNot ),
-                                           //ExtraMessage
-                                           strif( BadDB, cmsgInvalidString )
-                                         ] );
+  lblCurrDB.Caption := format( '  ' + cmsgProfileString,
+                               [
+                                 fProfileName,
+                                 strif( fUseDB,  cDefaultDBProfileIsDBStr, cDefaultDBProfileIsDBStrNot ),
+                                 //ExtraMessage
+                                 strif( BadDB, cmsgInvalidString )
+                               ] );
 end;
 
 function TfrmMain.CheckUpdates_PROG : boolean;
@@ -1351,7 +1357,8 @@ begin
     case i of
       1 : Update_PROG_Version_0001( fIFS, Self.Name );
       2 : Update_PROG_Version_0002( fIFS );
-      //3 : When an update is done on the Program that needs attention in ini file write the needed code here
+      3 : Update_PROG_Version_0003( fIFS, cSectTabFormSettings, 'TERM' );
+      //4 : When an update is done on the Program that needs attention in ini file write the needed code here
       //and set the c_PROG_VersionUpgradeCount const by +1
     end;
 
@@ -1553,11 +1560,14 @@ begin
 //not static texts so need to be updated also
   UpdateProfileText;
   UpdateDetachedProcesses( '', nil );
-  RefreshCapAndStatus;
+  RefreshCap;
 
 //were autocreated forms, but now manually created so translations can be updated.
   frmfindtext.UpdateCaptions;
   frmBusy.UpdateCaptions;
+
+//so that it doesn't get hidden, I set this manually and permanently
+  FrameHint1.cbHints.Caption := '&H  Show hints on mouse-over';
 
   ResetCommandsToTop;
 
@@ -1578,7 +1588,20 @@ begin
 end;
 
 function TfrmMain.RunExternalHelpRequest( SL : TStringList ) : string;
+var
+  str : string;
 begin
+  //help displays special because of BUILTINS
+  str := ExtractFilePath( SL[ 0 ] );
+  if str <> '' then
+//  if ( pos( '/', SL[ 0 ] ) = 1 ) then
+  begin
+    if not IsFileExist( SL[ 0 ] ) then
+    begin
+      result := format( '"%s %s" failed, invalid command', [ SL[ 0 ], SL[ 1 ] ] );
+      exit;
+    end;
+  end;
   result := GetHelpOutput( SL );
 end;
 
@@ -1616,7 +1639,7 @@ begin
        [ lblKeyWords ]
                              );
   Register_Cmd_DisplayCaption( fidFriendlyName,
-       [ lblCapFriendlyNameLine ]
+       [ lblCapFriendlyNameLine, lblCapFriendlyName ]
                              );
   Register_Cmd_DisplayCaption( fidEntry,
        [ lblCapEntryLine ]
@@ -1692,8 +1715,6 @@ begin
   with fIFS do
   begin
 
-    fTerminal := ReadString( cSectTabFormSettings, cFormSettingsTERM, 'xterm' );
-
     fMaxInOutPut := ReadString( cSectTabFormSettings, cFormSettingsMaxInOutPutCol, '1 M' );
     fDisplayOutPutMax := ReadInteger( cSectTabFormSettings, cFormSettingsOutPutDisplayMax, cDisplayOutPutMax );
 
@@ -1730,6 +1751,10 @@ begin
   end;
 
   UpdateNotebookCaptions;
+  lblTabFavorites.Caption := trim( ccapTabFavorites );
+  lblTabKeywords.Caption := trim( ccapTabKeyWords );
+  lblTabSearch.Caption := trim( ccapTabSearch );
+
   nbCommandsChange( nbCommands );
 
   fHasShown := True;
@@ -1840,7 +1865,7 @@ begin
       'tsFavorites' : tsFavorites.Caption := format( FmtStr, [ ccapTabFavorites ] );
       'tsKeyWords' : tsKeyWords.Caption := format( FmtStr, [ ccapTabKeyWords ] );
       'tsSearch' : tsSearch.Caption := format( FmtStr, [ ccapTabSearch ] );
-      'tsDetachedProcesses' : tsDetachedProcesses.Caption := format( FmtStr, [ ccapTabProcesses ] );
+//No, timer overwrites      'tsDetachedProcesses' : tsDetachedProcesses.Caption := format( FmtStr, [ lblDetachedProcesses.Caption ] );
     end;
   end;
 end;
@@ -2168,7 +2193,7 @@ begin
   end;
 
   BeginPoint.X := 10;
-  BeginPoint.Y := 236;
+  BeginPoint.Y := lbDispKeywords.top;//236;
   CO := nil;
   CLO := nil;
 
@@ -2177,7 +2202,7 @@ begin
     if CDO.IsCommandLine then
     begin
 
-      pnlS.Caption := 'CL';
+      pnlS.Caption := 'Command Line';
       CmdObjHelper.LoadCmdLineObj( CLO, CDO.CommandName, CDO.SectTab );
       lblDispEntry.Caption := CLO.Entry;
 
@@ -2210,7 +2235,7 @@ begin
     end else
     begin
 
-      pnlS.Caption := 'CMD';
+      pnlS.Caption := 'Command';
       CmdObjHelper.LoadCmdObj( CO, CDO.SectTab );
       lblDispEntry.Caption := CO.CommandName;
 
@@ -2337,6 +2362,12 @@ begin
   MsgDlgInfo( self );
 end;
 
+procedure TfrmMain.lblCurrDBDblClick( Sender : TObject );
+begin
+  MsgDlgMessage( ccapOverflow, lblCurrDb.Caption );
+  MsgDlgInfo( self );
+end;
+
 procedure TfrmMain.lblDispEntryDblClick( Sender : TObject );
 begin
   MsgDlgMessage( ccapOverflow, lblDispEntry.Caption );
@@ -2356,15 +2387,25 @@ begin
 end;
 
 procedure TfrmMain.lblPathAliasDblClick( Sender : TObject );
+var
+  str : string;
 begin
-  MsgDlgMessage( ccapOverflow, lblPathAlias.Caption );
+  if CmdInPath then
+    str := lblPathAlias.Caption + format( '   (%s)', [ lblPathActual.caption ] )
+  else str := lblPathAlias.Caption;
+  MsgDlgMessage( ccapOverflow, str );
   MsgDlgInfo( self );
   ReFocus_Edit_Memo( true );
 end;
 
 procedure TfrmMain.lblPathAliasDispDblClick( Sender : TObject );
+var
+  str : string;
 begin
-  MsgDlgMessage( ccapOverflow, lblPathAliasDisp.Caption );
+  if CmdInPath then
+    str := lblPathAliasDisp.Caption + format( '   (%s)', [ lblPathActual.caption ] )
+  else str := lblPathAliasDisp.Caption;
+  MsgDlgMessage( ccapOverflow, str );
   MsgDlgInfo( self );
 end;
 
@@ -2455,6 +2496,12 @@ begin
 
   if Key in [ VK_4, VK_5 ] then
     SearchVK_F_Keys( Key );
+end;
+
+procedure TfrmMain.memDetachedProcessesDblClick( Sender : TObject );
+begin
+  MsgDlgMessage( '', memDetachedProcesses.Text );
+  MsgDlgInfo( Self );
 end;
 
 procedure TfrmMain.memDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -2594,6 +2641,12 @@ begin
     btnLineCancel.Click;
 
   //self.FormKeyDown( Sender, Key, Shift ); memo1 dead when editing, hmmmmm.
+end;
+
+procedure TfrmMain.Memo1DblClick( Sender : TObject );
+begin
+  MsgDlgMessage( '', Memo1.Text );
+  MsgDlgInfo( Self );
 end;
 
 procedure TfrmMain.Memo1KeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -3666,6 +3719,7 @@ function TfrmMain.GetHelpOutput( SL : TStringList ) : string;
 begin
 
   result := '';
+
 //needs to be a separate section for help's because of builtin's
   StandardOutputHeader( Result, SL[ 0 ]  + ' ' + SL[ 1 ] );
 
@@ -3675,26 +3729,67 @@ begin
 
 end;
 
+function TfrmMain.CmdInPath( CheckForBuiltin : boolean = false ) : boolean;
+begin
+  Result := ( pos( cCommandInPathStr, lblPathAliasDisp.Caption ) > 0 )
+       or ( pos( cCommandInPathStr, lblPathAlias.Caption ) > 0 );
+  if Result then
+    exit;
+  if CheckForBuiltin then
+    result := lblPathActual.Caption = cLinuxBuiltInStr;
+end;
+
+function TfrmMain.IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
+begin
+  result := FileExists( FName );
+  if not result and WithNotify then
+  begin
+    MsgDlgMessage( ccapError, format( cFileNotExist, [ FName ] ) );
+    MsgDlgAttention( self );
+  end;
+end;
+
 procedure TfrmMain.btnHelpCommandClick(Sender: TObject);
 var
   SL : TStringList;
+  str : string;
 begin
 
   if not assigned(CmdObj) then
     exit;
 
-//lblPathActual.Caption (not viisble in running prog ) and edtHelp.text are always correct when editing or not editing
-//In editing the actual cmd obj is "buffered" and so anyone working on a command can change it at will and then
-//correct help will be shown if it exists. This fixes a bug where when using the command object editing changes
-//were not used.
+//lblPathActual.Caption (not viisble in running prog ) and edtHelp.text are always correct when
+//editing or not editing In editing the actual cmd obj is "buffered" and so anyone working on a
+//command can change it at will and then correct help will be shown if it exists. This fixes a
+//bug where when using the command object editing changes were not used.
 
   SL := TStringList.Create;
   try
 
+    //cCommandInPathStr = '$PATH';
+    //cLinuxBuiltInStr = '$BUILTIN';
+
     if lblPathActual.Caption <> cLinuxBuiltInStr then
     begin
-      SL.Add( lblPathActual.Caption + lblCommandName.Caption );
-      SL.Add( edtHelp.Text )
+      if CmdInPath then
+      begin
+        SL.Add( lblCommandName.Caption );
+//        SL.Add( lblPathActual.Caption + lblCommandName.Caption );
+        SL.Add( edtHelp.Text )
+      end else
+      begin
+        str := lblPathActual.Caption + lblCommandName.Caption;
+        if not IsFileExist( str, true ) then
+          exit;
+        //if not FileExists( str ) then
+        //begin
+        //  MsgDlgMessage( ccapError, format( cFileNotExist, [ str ] ) );
+        //  MsgDlgAttention( self );
+        //  exit;
+        //end;
+        SL.Add( str );
+        SL.Add( edtHelp.Text )
+      end;
     end else
     begin
       SL.Add( lblCommandName.Caption );
@@ -3724,31 +3819,14 @@ end;
 procedure TfrmMain.btnRefreshFavoritesClick( Sender : TObject );
 begin
   LoadFavorites;
-  pnlRefreshFavorites.Visible := false;
+  btnRefreshFavorites.enabled := false;
+//  pnlRefreshFavorites.Visible := false;
 end;
 
 procedure TfrmMain.btnSortDetachedProcessesClick( Sender : TObject );
 begin
   lbDetachedProcesses.Sorted := true;
   lbDetachedProcesses.Sorted := false;
-end;
-
-procedure TfrmMain.btnTerminalClick( Sender : TObject );
-begin
-  if fTerminal = '' then
-  begin
-    MsgDlgMessage( cNameItem_Problem, cmsgTerminalUndefined );
-    MsgDlgAttention( self );
-    exit;
-  end;
-
-//not needed in this case, just being complete and consistent, maybe later will be something...?
-  if not CanRunCmdLine( fTerminal, 0, false ) then
-    exit;
-
-  UpdateDisplay(
-    RunCmdLine( fTerminal, false, false, true )
-               );
 end;
 
 procedure TfrmMain.MoveCmdLine( const aFactor : integer );
@@ -3779,9 +3857,29 @@ begin
   end;
 
   //see note in btnHelpCommandClick;
-  if lblPathActual.Caption <> cLinuxBuiltInStr then
-    CmdStr := lblPathActual.Caption + lblCommandName.Caption + ' ' + edtVersion.Text
-  else CmdStr := lblCommandName.Caption + ' ' + edtVersion.Text;
+    if lblPathActual.Caption <> cLinuxBuiltInStr then
+    begin
+      if CmdInPath then
+      begin
+        CmdStr := lblCommandName.Caption + ' ' + edtVersion.Text
+      end else
+      begin
+        CmdStr := lblPathActual.Caption + lblCommandName.Caption;
+        if not IsFileExist( CmdStr, true ) then
+          exit;
+        //if not FileExists( CmdStr ) then
+        //begin
+        //  MsgDlgMessage( ccapError, format( cFileNotExist, [ CmdStr ] ) );
+        //  MsgDlgAttention( self );
+        //  exit;
+        //end;
+        CmdStr := CmdStr + ' ' + edtVersion.Text;
+      end;
+    end else CmdStr := lblCommandName.Caption + ' ' + edtVersion.Text;
+
+  //if lblPathActual.Caption <> cLinuxBuiltInStr then
+  //  CmdStr := lblPathActual.Caption + lblCommandName.Caption + ' ' + edtVersion.Text
+  //else CmdStr := lblCommandName.Caption + ' ' + edtVersion.Text;
 
   UpdateDisplay( RunCmdLineExternal( CmdStr ) );
 
@@ -3847,6 +3945,8 @@ var
 begin
 
   DoContinue := True;
+  //pnlThreatlevel.ParentColor := false;
+  //pnlThreatLevel.Color := clDefault;
 
   case TControl(Sender).Tag of
     //================
@@ -3910,6 +4010,9 @@ begin
   if not DoContinue then
     exit;
 
+//  RefreshCmdObj;
+//  ApplyThreatLevel( pnlCEdit, cbThreatLevel );
+
   ToggleEditMode( aList, IsEdit );
   case TControl(Sender).Tag of
     cEditButtonsCommandTag:
@@ -3961,6 +4064,10 @@ begin
     ShowMessage( cmsgNoCommandSelected );
     exit;
   end;
+
+  if MsgDlgMessage( ccapHaltProcess, cmsgHaltProcess, 'cmsgHaltProcess') then
+    if MsgDlgAttentionConfirm( self ) = mrNo then
+      exit;
 
   memDetachedProcesses.Clear;
   OldIndex := lbDetachedProcesses.ItemIndex;
@@ -4283,7 +4390,6 @@ begin
       cbAllowMultipleOpens.Checked := fAllowMultipleOpens;
       cbAllowESCOutput.Checked := fAllowESCinOutput;
 
-      edtTerminal.Text := fTerminal;
       cbManRefreshFavorites.Checked := fManRefreshFavorites;
 
       SUFile := fSuperUserFile.FName;
@@ -4321,7 +4427,6 @@ begin
       fAllowMultipleOpens := cbAllowMultipleOpens.Checked;
       fAllowESCinOutput := cbAllowESCOutput.Checked;
 
-      fTerminal := edtTerminal.Text;
       fManRefreshFavorites := cbManRefreshFavorites.Checked;
 
       fAllowSqlDB  := cbSqlDB.Checked;
@@ -4336,7 +4441,6 @@ begin
 
         WriteString( cSectTabFormSettings, cFormSettingsMaxInOutPutCol, fMaxInOutPut );
         WriteInteger( cSectTabFormSettings, cFormSettingsOutPutDisplayMax, fDisplayOutPutMax );
-        WriteString( cSectTabFormSettings, cFormSettingsTERM, fTerminal );
         WriteBool( cSectTabFormSettings, cFormSettingsAllowSqlDB, fAllowSqlDB );
         WriteBool( cSectTabFormSettings, cFormSettingsAllowTextDB, fAllowTextDB );
         WriteBool( cSectTabFormSettings, cFormSettingsManRefreshFav, fManRefreshFavorites );
@@ -4609,7 +4713,7 @@ begin
 
     if not fManRefreshFavorites then
       btnRefreshFavorites.Click
-    else pnlRefreshFavorites.Visible := true;
+    else btnRefreshFavorites.Enabled := true;
 
     UpdateDisplay( format( cmsgCommandsSaved, [ TimeToStr( now ) ] ), false );
 
@@ -5113,9 +5217,9 @@ begin
   try
     screen.Cursor := crHourglass;
 
-    if lblPathActual.Caption <> cLinuxBuiltInStr then
-      Input := trim( lblPathActual.Caption + lblCommandName.Caption ) + ' '
-    else Input := trim( lblCommandName.Caption ) + ' ';
+    if CmdInPath( true ) then
+      Input := trim( lblCommandName.Caption ) + ' '
+    else Input := trim( lblPathActual.Caption + lblCommandName.Caption ) + ' ';
 
     OutPut := '';
     if not EditCommandLine( format( ccapGenericAdd, [ cNameItem_CommandLine ] ), Input, Output ) then
@@ -5241,6 +5345,11 @@ begin
 
   if InvalidCommands then
     exit;
+
+  if MsgDlgMessage( ccapRevert, cmsgRevert, 'cmsgRevert') then
+    if MsgDlgAttentionConfirm( self ) = mrNo then
+      exit;
+
   if CmdObj.IsNew then
   begin
     actCommandDelete.Execute;
@@ -5269,7 +5378,7 @@ begin
                                                   cmsgProcessSingular
                                                  )
                                          ] );
-  sbStatuses.Panels[ 1 ].Text := lblDetachedProcesses.Caption;
+  tsDetachedProcesses.Caption := ccapTabProcesses + lblDetachedProcesses.Caption + '  <==';
 end;
 
 
@@ -5416,6 +5525,8 @@ begin
     IsBusy( True, ccapDetProcRunning + ': ' + RunStr, ptProcess );
 
     btnCancelRun.Visible := true;
+    shpSRL.Visible := true;
+    shpSRR.Visible := true;
 
     aProcess := nil;
     fIsRunningProcess := true;
@@ -5435,6 +5546,8 @@ begin
   finally
     IsBusy( false );
     btnCancelRun.Visible := false;
+    shpSRL.Visible := false;
+    shpSRR.Visible := false;
 
     fIsRunningProcess := false;
     globltProcessMaxOutput := LimitInfinityCnt;
@@ -5788,7 +5901,8 @@ begin
   FIsInitialized := True;
 
   Application.HintHidePause := 600000;
-  pnlCmdLine.top := lbCmdLines.top;
+
+  pnlCmdLine.top := shpCmdOut9.top;//lbCmdLines.top;
   pnlCmdLine.Left := pnlDispCmdLine.Left;//lbCmdLines.Left;
   pnlCommand.top := pnlDispCommand.top;
   pnlCommand.Left := pnlDispCommand.Left;
@@ -5806,7 +5920,7 @@ begin
 
   globltHasBASH := SystemFileFound( 'bash' );
 
-  RefreshCapAndStatus;
+  RefreshCap;
 
   if lbCommands.CanFocus then
     lbCommands.SetFocus;
@@ -5837,18 +5951,11 @@ begin
 end;
 
 
-procedure TfrmMain.RefreshCapAndStatus;
+procedure TfrmMain.RefreshCap;
 begin
   if OpenInstancesCap <> '' then
     OpenInstancesCap := format( ccapMulipleInstances, [ 2 ] );
   Self.Caption :=  RootModeCap + ' ' + ccapProgram + ' ' + OpenInstancesCap;
-  sbStatuses.Panels[ 2 ].Text := ' '
-                                 + cmsgHelpVersionInfoVersion
-                                 + ':  '
-                                 + cHandwrittenVersion
-                                 + cVersionDate
-                                 + GetWidgetString
-                                 + '  ';
 end;
 
 function TfrmMain.CommandAlreadyUsed( const CheckStr : string; const OkIdx : integer ) : boolean;
@@ -5959,11 +6066,11 @@ end.
 
 
 {
-
+        ↑
 since I ALWAYS forget where the vk_ definiations are:
 , lcltype //THis is needed for key up keyboard constants
 
-
+tags / hints / anchors / events / enabled&visible / modalresults / popup menus
 
 Cleanup checks and other notes
 end ;      autoformat problem

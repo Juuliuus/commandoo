@@ -27,7 +27,7 @@ interface
 uses
   Classes
   , SysUtils
-  , synregexpr //this is the Regexpression unit
+  , regexpr //this is the Regexpression unit
   ;
 
 type

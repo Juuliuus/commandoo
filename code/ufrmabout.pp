@@ -227,13 +227,18 @@ begin
   memOutput.Lines.Add( 'About:' );
   memOutput.Lines.Add( '======' );
   memOutput.Lines.Add( '' );
-  memOutput.Lines.Add( '' );
 
   memOutput.Lines.Add( format( cAboutLine, [ cHandwrittenVersion + cVersionDate ] ) + Frm.GetWidgetString );
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( format( cAboutBDLine, [ c_DB_HandwrittenVersion + c_DB_VersionDate ] ) );
   memOutput.Lines.Add( '' );
+{$IFDEF platAppImage}
+//anyway to get the location of the AppImage?
+  memOutput.Lines.Add( 'AppImage Version (https://appimage.org/): commandoo[XXX].AppImage' );
+  memOutput.Lines.Add( 'Extracted to and running in:' );
+{$ENDIF}
   memOutput.Lines.Add( format( cAboutInstalled, [ extractfilePath( Application.Exename ) ] ) );
+
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( format( cAboutLanguage, [ Frm.GetPODirectory ] ) );
   memOutput.Lines.Add( '' );
@@ -249,8 +254,6 @@ begin
   GetDefaultDBInfo;
   GetCustomDBInfo;
 
-  memOutput.Lines.Add( 'Terminal Program: ' + Frm.Terminal );
-  memOutput.Lines.Add( '' );
   memOutput.Lines.Add( cEmail );
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( cAboutGitHub );

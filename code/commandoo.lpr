@@ -32,6 +32,7 @@ begin
   SetHeapTraceOutput('/home/juus/Downloads/heap.trc');
   {$ENDIF}
   RequireDerivedFormResource := True;
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm( TfrmMain, frmMain );
   Application.Run;

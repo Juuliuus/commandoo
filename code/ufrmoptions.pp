@@ -32,7 +32,7 @@ uses
   , HintFrame
   , unitsharedobj
   , unitGlobForm
-  , Spin
+  , Spin, ComCtrls
   ;
 
 type
@@ -50,6 +50,7 @@ type
     btnSqlLib : TButton;
     btnTerminalReset : TButton;
     btnSqlLibReset : TButton;
+    Button2 : TButton;
     cbAllowMultipleOpens : TCheckBox;
     cbLanguage : TComboBox;
     cbMaxOutput : TComboBox;
@@ -78,7 +79,9 @@ type
     ShapeLangOK : TShape;
     speDisplayMax : TSpinEdit;
     speChangeFont : TSpinEdit;
+    StatusBar1 : TStatusBar;
     tmrLangOK : TTimer;
+    ToolBar1 : TToolBar;
     procedure btnAddLangClick(Sender : TObject);
     procedure btnAddLangOKClick( Sender : TObject );
     procedure btnRootFileClick( Sender : TObject );

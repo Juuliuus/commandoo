@@ -30,7 +30,7 @@ uses
   , unitDBStructure
   , unitDBConstants
   , unitFields
-  , synregexpr //this is the Regexpression unit
+  , regexpr //this is the Regexpression unit
   , jinifiles
   , unitSharedObj
   ;

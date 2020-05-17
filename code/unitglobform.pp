@@ -103,7 +103,8 @@ begin
 //choice of how it is setup.
 //TODO Anyway, check it out with laz 1.8 when I'm ready to switch from 1.6.
 //Til then I will make a setup option to increase/decrease font size but WILL NOT Scale the buttons.
-    ////Self.AutoAdjustLayout( lapAutoAdjustForDPI, 96, 128, Self.Width, ScaleX( Self.Width, 96 ) );
+//juus the applychangefont major proc.
+  ////Self.AutoAdjustLayout( lapAutoAdjustForDPI, 96, 128, Self.Width, ScaleX( Self.Width, 96 ) );
     //Self.AutoAdjustLayout( lapAutoAdjustForDPI, 96, Screen.PixelsPerInch, Self.Width, ScaleX( Self.Width, 96 ) );
     { High DPI in Lazarus 1.8 and above
       To handle High DPI using new features in 1.8, follow these steps:
@@ -120,6 +121,11 @@ begin
 
   if not assigned( aForm ) then
     raise EErrorDevelopment.Create( 'ApplyChangeFont: incoming objects are nil' );
+
+//  aForm.AutoAdjustLayout( lapAutoAdjustForDPI, 196, Screen.PixelsPerInch, aForm.Width, ScaleX( aForm.Width, 196 ) );
+  aForm.AutoAdjustLayout( lapAutoAdjustForDPI, aForm.DesignTimePPI, Screen.PixelsPerInch, aForm.Width, ScaleX( aForm.Width, aForm.DesignTimePPI ) );
+//  aForm.AutoAdjustLayout( lapAutoAdjustForDPI, aForm.DesignTimePPI, 96, aForm.Width, ScaleX( aForm.Width - 500, aForm.DesignTimePPI ) );
+  exit;
 
   if globFontOffset > 2 then
     globFontOffset := 0;
