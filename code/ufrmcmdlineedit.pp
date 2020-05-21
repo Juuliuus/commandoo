@@ -38,12 +38,12 @@ type
   TfrmCmdLineEdit = class(TForm)
     btnCancel : TBitBtn;
     bntOK : TBitBtn;
-    btnVarFilename : TButton;
-    btnRefresh : TButton;
-    btnDefaultHelp : TButton;
-    btnVarDecimal : TButton;
-    btnVarString : TButton;
-    btnVarInteger : TButton;
+    btnDefaultHelp : TBitBtn;
+    btnRefresh : TBitBtn;
+    btnVarDecimal : TBitBtn;
+    btnVarFilename : TBitBtn;
+    btnVarInteger : TBitBtn;
+    btnVarString : TBitBtn;
     cbWrapText : TCheckBox;
     edtOutputRefresh : TEdit;
     FrameHint1 : TFrameHint;
@@ -101,6 +101,7 @@ uses ufrmMsgDlg
      , ufrmMain
      , ufrmFindText
      , juusgen
+     , unitglob
      ;
 
 resourcestring
@@ -241,7 +242,7 @@ begin
     btnVarInteger.Hint := format( cmsgCLEVariable, [ cmsgCLEVariableInt ] );
     btnVarDecimal.Hint := format( cmsgCLEVariable, [ cmsgCLEVariableDecimal ] );
     btnVarFilename.Hint := format( cmsgCLEVariable, [ cmsgCLEVariableFileName ] );
-
+    FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
   end;
 
 end;
@@ -329,7 +330,7 @@ procedure TfrmCmdLineEdit.btnVarStringClick( Sender : TObject );
 begin
 
   fEditPosFix := memCmdLine.SelStart + cucoVariableSize;
-  case TButton( Sender ).Tag of
+  case TBitBtn( Sender ).Tag of
     1 : memCmdLine.SelText := cucoVariableString;
     2 : memCmdLine.SelText := cucoVariableInteger;
     3 : memCmdLine.SelText := cucoVariableNumber;
@@ -371,6 +372,7 @@ end;
 
 procedure TfrmCmdLineEdit.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

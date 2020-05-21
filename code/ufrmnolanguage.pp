@@ -73,6 +73,7 @@ end;
 
 procedure TfrmNoLanguage.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   fCanClose := false;
   lblProgDesc.Caption := ccapProgram;

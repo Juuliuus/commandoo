@@ -95,6 +95,7 @@ type
     Bevel1 : TBevel;
     Bevel2 : TBevel;
     Bevel3 : TBevel;
+    btnBuilder : TBitBtn;
     btnExit : TBitBtn;
     btnCmdLineDelete : TBitBtn;
     btnCmdLineUnDelete : TBitBtn;
@@ -386,6 +387,7 @@ type
     procedure actSearchSaveSearchExecute( Sender : TObject );
     procedure actSearchSearchExecute( Sender : TObject );
     procedure actSwitchDBExecute( Sender : TObject );
+    procedure btnBuilderClick( Sender : TObject );
     procedure btnCancelRunClick( Sender : TObject );
     procedure btnClearClick( Sender : TObject );
     procedure btnCmdEditClick(Sender: TObject);
@@ -488,7 +490,7 @@ type
     fIsInitialized: boolean;
     fHasShown: boolean;
     fSuperUser: boolean;
-    fSuperUserFile: TSudoFileName;//string;
+    fRootFile : string;
     fLastlbCommandsIdx: integer;
     fLastlbCmdLinesIdx: integer;
     fMaxInOutPut : string;
@@ -549,7 +551,7 @@ type
     procedure DuplicateCmd( Sender : TCmdObj );
     procedure DuplicateCmdLIne( Sender : TCmdLineObj );
     procedure EchoThreatLevelDisplay( aPnl : TPanel; aCB : TComboBox; aLBL : TLabel; const Idx : integer );
-    function EditCommandLine( const aCaption, Instr : string; var OutStr : string) : boolean;
+    function EditCommandLine( const aCaption, Instr : string; var OutStr : string; ShowCmd : boolean = true ) : boolean;
     procedure EditmemEntry;
     procedure EnableCmdLineUpDown( ExtraBool: boolean = True );
     procedure FillDisplayObj_Detail;
@@ -577,7 +579,7 @@ type
     function GetProfileStamp : string;
     function GetSearchesDirectory : string;
     procedure ShowUnsavedMessage;
-    function _GoToCommand( Sender : TListBox ) : boolean;
+    function GoTo_Command( Sender : TListBox ) : boolean;
     function GotoCommand( Sender : TListBox ) : boolean;
     procedure HandleFormSettings( TheType: TSettingsDirective );
     function GetHelpOutput( SL : TStringList) : string;
@@ -772,7 +774,7 @@ resourcestring
   cmsgInput_Detach = 'Not allowed to send input to a detached (child) process. Input turned off.';
   cmsgSystemProcessesError = 'Problem reading system processes. Halting: ';
 
-  cNameItem_Problem = 'Problem';
+  //cNameItem_Problem = 'Problem';
   cNameItem_Search = 'Search';
   cNameItem_ThreatLevel = 'Threat Level';
 
@@ -1147,9 +1149,11 @@ procedure TfrmMain.FormCreate(Sender: TObject);
     FIsInitialized := true;
     Application.Terminate;
   end;
-
+//var
+//  testme : string;
 begin
 
+  font.size := cDefaultFontSize;
   Randomize;
   application.OnException := @FinalException;
 //these were autocreated, but updating the translation not possible then
@@ -1180,6 +1184,8 @@ begin
   end;
 
   fSuperUser := QuickProc( 'id', '-u' ) = '0';
+//juus ok, not too bad, but. do all linuxes have it??? default to config is not.
+//  testme := QuickProc( 'xdg-user-dir', 'DOWNLOAD' );
 
 //TODO Make a routine that will create a thumbdrive version
 //ask for appimage ask for destFolder: compy appimage and config to appimage.config
@@ -1191,7 +1197,7 @@ begin
 {$ENDIF}
   //GetAppConfigDir( true );  //returns etc/commandoo not so useful right now
 
-//juus fSuperUser << out right?
+//juus fSuperUser << out right?  That dir might exist, need another test
 //=============== first time run as superuser is NOT ALLOWED. ========================================
   if fSuperUser and not DirectoryExists( fWritingToPath ) then
   begin
@@ -1247,9 +1253,11 @@ begin
   fAllowSqlDB := fIFS.ReadBool( cSectTabFormSettings, cFormSettingsAllowSqlDB, true );
   fAllowTextDB := fIFS.ReadBool( cSectTabFormSettings, cFormSettingsAllowTextDB, true );
 
-  globFontOffset := fIFS.ReadInteger( cSectTabFormSettings, cFormSettingsFontOffset, 0 );
-//Applychangefont must follow globFontOffset reading, this is my fix for custom dpi ppi
+
+  globFontsLarge := fIFS.ReadBool( cSectTabFormSettings, cFormSettingsLargerFont, false );
+//Applychangefont MUST FOLLOW globFontsLarge reading
   ApplyChangeFont( Self );
+
 //old status bar necessity.  sbStatuses.Invalidate;//won't refresh until restart
 
 //juus sqlitelibrary stuff
@@ -1357,7 +1365,7 @@ begin
     case i of
       1 : Update_PROG_Version_0001( fIFS, Self.Name );
       2 : Update_PROG_Version_0002( fIFS );
-      3 : Update_PROG_Version_0003( fIFS, cSectTabFormSettings, 'TERM' );
+      3 : Update_PROG_Version_0003( fIFS, cSectTabFormSettings );
       //4 : When an update is done on the Program that needs attention in ini file write the needed code here
       //and set the c_PROG_VersionUpgradeCount const by +1
     end;
@@ -1567,7 +1575,7 @@ begin
   frmBusy.UpdateCaptions;
 
 //so that it doesn't get hidden, I set this manually and permanently
-  FrameHint1.cbHints.Caption := '&H  Show hints on mouse-over';
+  FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 
   ResetCommandsToTop;
 
@@ -1705,7 +1713,7 @@ begin
   lbCommands.Items.Clear;
   NilObjects( lbCmdLines.Items );
 
-  InitMsgDlgParams( cSectTabNoShows, fIFS );
+  InitMsgDlgParams( fWritingToPath, cSectTabNoShows, fIFS );
 
   HandleFormSettings( sdLoad );
 
@@ -1728,17 +1736,7 @@ begin
     fAllowMultipleOpens := ReadBool( cSectTabFormSettings, cFormSettingsAllowMultipleOpens, false );
     fAllowESCinOutput := ReadBool( cSectTabFormSettings, cFormSettingsAllowESCOutput, false );
 
-    fSuperUserFile.FName := ReadString( cSectTabSuperUserFile, cSuperUserFile_File, '' );
-    fSuperUserFile.Param1 := ReadString( cSectTabSuperUserFile, cSuperUserFile_Param1, '' );
-    fSuperUserFile.Param2 := ReadString( cSectTabSuperUserFile, cSuperUserFile_Param2, '' );
-
-    if fSuperUserFile.FName <> cSuperUserFileOff then
-    if not FileExists( fSuperUserFile.FName ) then
-    begin
-      fSuperUserFile.FName := '';
-      fSuperUserFile.Param1 := '';
-      fSuperUserFile.Param2 := '';
-    end;
+    fRootFile := ReadString( cSectTabFormSettings, cFormSettingsRootFile, cFormSettingsRootFileDefault );
 
     fLastQuickRun := ReadString( cSectTabFormSettings, cFormSettingsLastQuickRun, '' );
     fManRefreshFavorites := ReadBool( cSectTabFormSettings, cFormSettingsManRefreshFav, false );
@@ -2691,7 +2689,7 @@ begin
     Str := Str
            + CmdObjHelper.ClipBoardVersion(
                                 TCmdLineObj( CmdObj.CmdLines.Objects[ i ] ).Entry,
-                                fSuperUserFile
+                                             fRootFile
                                            )
            + LineEnding;
   end;
@@ -2727,8 +2725,8 @@ begin
   if assigned( LB.Items.Objects[ LB.ItemIndex ] ) then
     ClipBoard.AsText := CmdObjHelper.ClipBoardVersion(
              TCmdDisplayObj( LB.Items.Objects[ LB.ItemIndex ] ).Entry,
-             fSuperUserFile
-                                                      );
+                             fRootFile
+                            );
 end;
 
 procedure TfrmMain.GetClipBoardListVersion( LB : TListbox );
@@ -2745,7 +2743,7 @@ begin
     if not assigned( CDO ) then
       continue;
     Str := Str
-           + CmdObjHelper.ClipBoardVersion( CDO.Entry, fSuperUserFile  )
+           + CmdObjHelper.ClipBoardVersion( CDO.Entry, fRootFile )
            + LineEnding;
   end;
   ClipBoard.AsText := Str;
@@ -4211,10 +4209,7 @@ begin
 
   CLO := TCmdLineObj( CmdObj.CmdLines.Objects[ lbCmdLines.ItemIndex ] );
 //separate ClipBoardVersion because these can have <UPDATE> etc on them and "Entry" cleans this.
-  ClipBoard.asText := CmdObjHelper.ClipBoardVersion(
-                            CLO.Entry,
-                            fSuperUserFile
-                                                   );
+  ClipBoard.asText := CmdObjHelper.ClipBoardVersion( CLO.Entry, fRootFile );
   if not assigned( ClipCLO ) then
     ClipCLO := TCmdLineObj.Create( CLO.DBServer, CLO.IniSection, 999 );
   ClipCLO.Assign( CLO );
@@ -4304,12 +4299,14 @@ begin
   FindItem( lbCmdLines );
 end;
 
-function TfrmMain._GoToCommand( Sender : TListBox ) : boolean;
+function TfrmMain.GoTo_Command( Sender : TListBox ) : boolean;
 var
   sqlFix : String;
   CDO : TCmdDisplayObj;
   CLO : TCmdLineObj;
 begin
+
+  result := true;
 
   sqlFix := trim( lblDispCommandName.Caption );
   CDO := nil;
@@ -4317,7 +4314,7 @@ begin
 
   if sqlFix = '' then
   begin
-//sql searches don't load commmand name like text searches (main listbox only, sub list is ok)
+//TODO sql searches don't load commmand name like text searches (main listbox only, sub list is ok)
 //so, for sql, must go ask for CL's Command entry if it wasn't loaded. Only one case: CL is in top search Listbox
 //quick fix for release. Deluxe version (later?) will address this better.
     if ( Sender.ItemIndex > -1 ) then
@@ -4339,7 +4336,8 @@ begin
                        lblDispEntry.Caption,
                        lbCommands,
                        lbCmdLines ) then
-    nbCommands.ActivePage := tsCommands;
+    nbCommands.ActivePage := tsCommands
+  else result := false;
 
 end;
 
@@ -4347,7 +4345,7 @@ function TfrmMain.GotoCommand( Sender : TListBox ) : boolean;
 begin
   result := false;
   if ( Sender.ItemIndex > -1 ) and assigned( Sender.Items.Objects[ Sender.ItemIndex ] ) then
-    Result := _GoToCommand( Sender );
+    Result := GoTo_Command( Sender );
 end;
 
 procedure TfrmMain.ForcePaintingrefresh;
@@ -4360,6 +4358,7 @@ procedure TfrmMain.actOptionsExecute( Sender : TObject );
 var
   origSqlLib : String;
   originalFontOffset, LanguageIdx: Integer;
+  originalLargerFont : boolean;
 begin
 
   if CheckEditing then
@@ -4370,7 +4369,7 @@ begin
 
   with TfrmOptions.Create(Self) do
     try
-      Caption := cmsgAdvancedOptions;
+      Caption := format( cmsgAdvancedOptions, [ btnOptions.caption ] );
 
       cbLanguage.Items.Assign(Languages.LanguageSL);
       cbLanguage.ItemIndex := GetMainLanguageIdx(Languages.ProgramLang, cbLanguage.Items);
@@ -4392,10 +4391,8 @@ begin
 
       cbManRefreshFavorites.Checked := fManRefreshFavorites;
 
-      SUFile := fSuperUserFile.FName;
-      SUParam1 := fSuperUserFile.Param1;
-      SUParam2 := fSuperUserFile.Param2;
-      edtRootFile.Text := SUFile + ' ' + SUParam1 + ' ' + SUParam2;
+      Root_File := fRootFile;
+      edtRootFile.Text := Root_File;
 
       cbSqlDB.Checked := fAllowSqlDB;
       cbSqlDB.Enabled := ( fProfileName <> cDefaultDBProfileName )
@@ -4407,11 +4404,16 @@ begin
       origSqlLib := fSqliteLibrary;
       edtSqlLib.Text := fSqliteLibrary;
 
-      originalFontOffset := globFontOffset;
-      speChangeFont.Value := globFontOffset;
+//      originalLargerFont := globFontsLarge;
+      cbLargerFont.Checked := globFontsLarge;
+
       Showmodal;
-      if originalFontOffset <> globFontOffset then
+
+      if cbLargerFont.checked <> globFontsLarge then
+      begin
+        globFontsLarge := cbLargerFont.checked;
         ApplyChangeFont( Self, true );
+      end;
 
       if VerifyLangIndex <> LanguageIdx then //cbLanguage.ItemIndex then
         if MsgDlgMessage(ccapChangeLangDoReset, cmsgChangeLangDoReset, 'cmsgChangeLangDoReset') then
@@ -4444,7 +4446,7 @@ begin
         WriteBool( cSectTabFormSettings, cFormSettingsAllowSqlDB, fAllowSqlDB );
         WriteBool( cSectTabFormSettings, cFormSettingsAllowTextDB, fAllowTextDB );
         WriteBool( cSectTabFormSettings, cFormSettingsManRefreshFav, fManRefreshFavorites );
-        WriteInteger( cSectTabFormSettings, cFormSettingsFontOffset, globFontOffset );
+        WriteBool( cSectTabFormSettings, cFormSettingsLargerFont, globFontsLarge );
 
         if origSqlLib <> edtSqlLib.Text then
         begin
@@ -4455,18 +4457,10 @@ begin
             UpdateDisplay( format( cmsgSQLiteLibNotFound, [ fSqliteLibrary ] ) );
         end;
 
-        if ( SUFile <> fSuperUserFile.FName )
-          or ( SUParam1 <> fSuperUserFile.Param1 )
-          or ( SUParam2 <> fSuperUserFile.Param2 ) then
+        if ( Root_File <> fRootFile ) then
         begin
-          fSuperUserFile.FName := SUFile;
-          fSuperUserFile.Param1 := SUParam1;
-          fSuperUserFile.Param2 := SUParam2;
-          WriteString( cSectTabSuperUserFile, cSuperUserFile_File, fSuperUserFile.FName );
-          WriteString( cSectTabSuperUserFile, cSuperUserFile_Param1, fSuperUserFile.Param1 );
-          WriteString( cSectTabSuperUserFile, cSuperUserFile_Param2, fSuperUserFile.Param2 );
-          if fSuperUserFile.FName = cSuperUserFileOff then
-           fSuperUserFile.FName := '';
+          fRootFile := Root_File;
+          WriteString( cSectTabFormSettings, cFormSettingsRootFile, fRootFile );
         end;
 
         WriteBool( cSectTabFormSettings, cFormSettingsWarnUnspecified, fWarnUnspecified );
@@ -4586,6 +4580,17 @@ end;
 procedure TfrmMain.actSwitchDBExecute( Sender : TObject );
 begin
   OpenProfiles( true );
+end;
+
+procedure TfrmMain.btnBuilderClick( Sender : TObject );
+var
+  Input, Output : string;
+begin
+  Input := memEntry.Text;
+  OutPut := '';
+  if not EditCommandLine( format( ccapGenericEdit, [ cNameItem_CommandLine ] ), Input, Output, false ) then
+    exit;
+  memEntry.Text := Output;
 end;
 
 procedure TfrmMain.btnCancelRunClick( Sender : TObject );
@@ -5155,13 +5160,14 @@ begin
 end;
 
 
-function TfrmMain.EditCommandLine( const aCaption, Instr : string; var OutStr : string ) : boolean;
+function TfrmMain.EditCommandLine( const aCaption, Instr : string; var OutStr : string; ShowCmd : boolean = true ) : boolean;
 begin
 
   result := false;
   with TfrmCmdLineEdit.Create( self ) do
   try
-    caption := aCaption + format( ' %s:  ', [ UpperCase( cNameItem_Command ) ] ) + lblCommandName.Caption;
+    if ShowCmd then
+      caption := aCaption + format( ' %s:  ', [ UpperCase( cNameItem_Command ) ] ) + lblCommandName.Caption;
 
     HelpCommand := CmdObjHelper.GetNormalizedPath( lblPathAlias.Caption,
                                                    lblPathActual.Caption,
@@ -5423,7 +5429,8 @@ begin
     exit;
   end;
 
-  if IsRoot and ( ( fSuperUserFile.FName = '' ) or ( fSuperUserFile.FName = 'off' ) ) then
+//juus here is the place to stop run if TERM or SUPERUSER
+  if IsRoot then
   begin
     MsgDlgMessage( ccapRootDisallowed, cmsgRootDisallowed );
     MsgDlgInfo( self );
@@ -5534,7 +5541,7 @@ begin
     result := result
               + LineEnding
               + ExtraInfo
-              + CmdObjHelper.RouteCommand( RunStr, fSuperUserFile, Detach, aProcess );
+              + CmdObjHelper.RouteCommand( RunStr, Detach, aProcess );
 
     if Detach and assigned( aProcess ) then
     begin
@@ -5832,46 +5839,6 @@ end;
 
 procedure TfrmMain.FormActivate(Sender: TObject);
 
-  procedure GetSuperUserFile;
-  begin
-    //fSuperUser := False;
-    //    lblRootMode.Caption := ccapRootModeWait;
-
-    if fSuperUserFile.FName <> '' then
-    begin
-      if fSuperUserFile.FName = cSuperUserFileOff then
-        fSuperUserFile.FName := '';
-      exit;
-    end;
-
-    try
-      fSuperUserFile.FName := SystemFileLocation('kdesudo');
-      if fSuperUserFile.FName = '' then
-        fSuperUserFile.FName := SystemFileLocation('gksudo');
-    except
-      fSuperUserFile.FName := '';
-    end;
-
-    if fSuperUserFile.FName = '' then
-    begin
-      MsgDlgMessage( ccapSudoSet, cmsgNoGoodSudo, 'cmsgNoGoodSudo');
-      MsgDlgInfo( self );
-    end
-    else
-    begin
-      fIFS.WriteString( cSectTabSuperUserFile, cSuperUserFile_File, fSuperUserFile.FName );
-      fIFS.WriteString( cSectTabSuperUserFile, cSuperUserFile_Param1, '' );
-      fIFS.WriteString( cSectTabSuperUserFile, cSuperUserFile_Param2, '' );
-      fIFS.UpdateFile;
-      MsgDlgMessage( ccapSudoSet, format( cmsgSudoSet, [ fSuperUserFile.Fname ] ) );
-      MsgDlgInfo( self );
-    end;
-
-    //
-    ////    btnRootMode.Visible := fSuperUserFile <> '';
-  end;
-
-
   function GetSuperUserMode : boolean;
   begin
     result := true;
@@ -5898,6 +5865,7 @@ begin
 
   if FIsInitialized then
     Exit;
+
   FIsInitialized := True;
 
   Application.HintHidePause := 600000;
@@ -5913,8 +5881,7 @@ begin
     exit;
   end;
 
-  GetSuperUserFile;
-
+//juus convert all msgdlg's to show up in the output area.
   if MsgDlgMessage( ccapIntro, format(cmsgIntro, [cGNU_GPL, cmsgOwnRisk ]), 'cmsgIntro' ) then
     MsgDlgInfo( self );
 
@@ -6071,6 +6038,9 @@ since I ALWAYS forget where the vk_ definiations are:
 , lcltype //THis is needed for key up keyboard constants
 
 tags / hints / anchors / events / enabled&visible / modalresults / popup menus
+
+strconst_en
+FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 
 Cleanup checks and other notes
 end ;      autoformat problem

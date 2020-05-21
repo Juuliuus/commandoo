@@ -39,9 +39,9 @@ type
   TfrmManageProfile = class(TForm)
     bntOK : TBitBtn;
     btnCancel : TBitBtn;
-    btnChangePath : TButton;
-    btnChangeName : TButton;
-    btnDefaultPath : TButton;
+    btnChangeName : TBitBtn;
+    btnChangePath : TBitBtn;
+    btnDefaultPath : TBitBtn;
     edtProfileName : TEdit;
     edtProfilePath : TEdit;
     FrameHint1 : TFrameHint;
@@ -96,7 +96,6 @@ uses ufrmMsgDlg
      , uSingleInput
      , ufrmProfiles
      , unitDBUtils
-     //, strconst_en
      , unitglob
      ;
 
@@ -119,6 +118,7 @@ begin
     FCanClose := false;
     HandleFormSettings( sdLoad );
     FHasShown := true;
+    FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 
     case Mode of
       mpAdd : ;
@@ -294,6 +294,7 @@ end;
 
 procedure TfrmManageProfile.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

@@ -1,45 +1,48 @@
 object frmBusy: TfrmBusy
   Left = 2065
-  Height = 100
+  Height = 133
   Top = 783
-  Width = 625
-  HorzScrollBar.Page = 296
-  VertScrollBar.Page = 97
+  Width = 700
+  HorzScrollBar.Page = 394
+  VertScrollBar.Page = 130
   AutoScroll = True
   Caption = 'busycapNT'
-  ClientHeight = 100
-  ClientWidth = 625
+  ClientHeight = 133
+  ClientWidth = 700
   Color = 4281548
-  Constraints.MaxHeight = 100
-  Constraints.MinHeight = 100
-  Constraints.MinWidth = 625
-  Font.Height = -13
+  Constraints.MaxHeight = 133
+  Constraints.MinHeight = 133
+  Constraints.MinWidth = 700
+  DesignTimePPI = 128
+  Font.Height = -17
   FormStyle = fsStayOnTop
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poDefaultSizeOnly
   ShowInTaskBar = stNever
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.6.0'
   object pnlStuff: TPanel
-    Left = 6
-    Height = 92
-    Top = 5
-    Width = 612
+    Left = 8
+    Height = 123
+    Top = 7
+    Width = 683
     Anchors = [akTop, akLeft, akRight]
-    ClientHeight = 92
-    ClientWidth = 612
+    ClientHeight = 123
+    ClientWidth = 683
     Color = clForm
+    Font.Height = -16
     ParentColor = False
+    ParentFont = False
     TabOrder = 0
     object lblBusyHint: TLabel
-      Left = 312
-      Height = 43
-      Top = 44
-      Width = 294
+      Left = 283
+      Height = 57
+      Top = 59
+      Width = 392
       Anchors = [akTop, akRight]
       AutoSize = False
       Caption = 'busyNT'
-      Font.Height = -13
+      Font.Height = -16
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
@@ -48,27 +51,25 @@ object frmBusy: TfrmBusy
     end
     object lblMsg: TLabel
       Left = 0
-      Height = 24
-      Top = 7
-      Width = 605
+      Height = 32
+      Top = 9
+      Width = 674
       Alignment = taCenter
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
       Caption = 'msgNT'
-      Font.Height = -13
+      Font.Height = -16
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
     end
     object btnbusyCancel: TBitBtn
-      Left = 6
-      Height = 45
-      Top = 42
-      Width = 154
+      Left = 8
+      Height = 41
+      Top = 70
+      Width = 174
       Caption = '&W  NT'
-      Font.Height = -13
-      GlyphShowMode = gsmNever
-      Kind = bkCancel
+      Font.Height = -16
       OnClick = btnbusyCancelClick
       ParentFont = False
       TabOrder = 0
@@ -79,7 +80,7 @@ object frmBusy: TfrmBusy
     Enabled = False
     Interval = 3000
     OnTimer = Timer1Timer
-    left = 40
-    top = 24
+    left = 53
+    top = 32
   end
 end

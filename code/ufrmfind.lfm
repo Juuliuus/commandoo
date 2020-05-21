@@ -1,17 +1,21 @@
 object frmFind: TfrmFind
   Left = 1978
-  Height = 251
+  Height = 250
   Top = 866
-  Width = 303
+  Width = 300
   ActiveControl = edtFind
   BorderStyle = bsNone
   Caption = 'frmFind'
-  ClientHeight = 251
-  ClientWidth = 303
+  ClientHeight = 250
+  ClientWidth = 300
   Color = clBlack
+  Constraints.MaxHeight = 250
+  Constraints.MaxWidth = 300
+  Constraints.MinHeight = 250
+  Constraints.MinWidth = 300
   DesignTimePPI = 128
   Font.Color = clCream
-  Font.Height = -25
+  Font.Height = -18
   KeyPreview = True
   OnCreate = FormCreate
   OnDeactivate = FormDeactivate
@@ -21,33 +25,33 @@ object frmFind: TfrmFind
     Left = 1
     Height = 45
     Top = 0
-    Width = 301
+    Width = 298
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
     Font.Color = clCream
-    Font.Height = -21
+    Font.Height = -18
     OnChange = edtFindChange
     OnKeyDown = edtFindKeyDown
     ParentColor = True
     ParentFont = False
     TabOrder = 0
-    TextHint = 'Begin typing...'
+    TextHint = 'Sanity check...'
   end
   object lbFindResult: TListBox
     Left = 1
     Height = 208
     Top = 43
-    Width = 301
+    Width = 298
     Anchors = [akTop, akLeft, akRight]
     Font.Color = clCream
-    Font.Height = -21
+    Font.Height = -18
     ItemHeight = 0
     OnDblClick = lbFindResultDblClick
     OnKeyDown = lbFindResultKeyDown
     ParentColor = True
     ParentFont = False
-    ScrollWidth = 299
+    ScrollWidth = 296
     TabOrder = 1
     TopIndex = -1
   end

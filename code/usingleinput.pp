@@ -68,11 +68,11 @@ type
     { public declarations }
     procedure SetActiveEdit( const AValue : string );
     function ReadActiveEdit : string;
-    procedure SetSingleInputMode( const FM : TSingleInputMode );
+    procedure SetSingleInputMode( const FM : TSingleInputMode; IsSave : boolean );
   end;
 
   function DoSingleInput( const ATitle: string; var AValue: string; const AFormMode: TSingleInputMode;
-    aForm: TForm; DisallowSameValue : boolean = true ): boolean;
+    aForm: TForm; DisallowSameValue : boolean = true; IsSave : boolean = false ): boolean;
 
 var
   frmSingleInput: TfrmSingleInput;
@@ -93,7 +93,7 @@ uses StrConst_EN
 {$R *.lfm}
 
 function DoSingleInput( const ATitle : string; var AValue : string;
-  const AFormMode : TSingleInputMode; aForm : TForm; DisallowSameValue : boolean ) : boolean;
+  const AFormMode : TSingleInputMode; aForm : TForm; DisallowSameValue : boolean; IsSave : boolean = false ) : boolean;
 var
   CompareMe: string;
 begin
@@ -103,8 +103,8 @@ begin
   with TfrmSingleInput.Create(aForm) do
     try
       Caption := ATitle;
-      SetSingleInputMode(AFormMode);
-      SetActiveEdit(AValue);
+      SetSingleInputMode( AFormMode, IsSave );
+      SetActiveEdit( AValue );
       showmodal;
 
       if ModalResult = mrOk then
@@ -112,7 +112,7 @@ begin
 
         CompareMe := ReadActiveEdit;
 
-        if DisallowSameValue and ( CompareStr(AValue, CompareMe) = 0 ) then
+        if DisallowSameValue and ( CompareStr( AValue, CompareMe ) = 0 ) then
           exit;
 
         AValue := CompareMe;
@@ -219,6 +219,7 @@ end;
 
 procedure TfrmSingleInput.FormCreate(Sender: TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   fNewFolder := '';
   fOriginalFolder := '';
@@ -284,7 +285,7 @@ begin
   Result := Trim( Result );
 end;
 
-procedure TfrmSingleInput.SetSingleInputMode( const FM : TSingleInputMode );
+procedure TfrmSingleInput.SetSingleInputMode( const FM : TSingleInputMode; IsSave : boolean );
 begin
   FormMode := FM;
   case FormMode of
@@ -300,6 +301,9 @@ begin
         feFile.Visible := true;
         feFile.Top := 35;
         feFile.Text := '';
+        if IsSave then
+          feFile.DialogKind := dkSave
+        else feFile.DialogKind := dkOpen;
         lblHint.Visible := true;
         ActiveEdit := feFile;//TEdit;
       end;

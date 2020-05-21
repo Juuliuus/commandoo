@@ -1,131 +1,131 @@
 object frmAddLanguage: TfrmAddLanguage
-  Left = 2223
-  Height = 222
-  Top = 544
-  Width = 655
+  Left = 2062
+  Height = 240
+  Top = 481
+  Width = 670
   Caption = 'Add Language File ( .po file)'
-  ClientHeight = 222
-  ClientWidth = 655
-  Constraints.MaxHeight = 222
-  Constraints.MinHeight = 222
-  Constraints.MinWidth = 655
-  Font.Height = -13
+  ClientHeight = 240
+  ClientWidth = 670
+  Constraints.MaxHeight = 240
+  Constraints.MinHeight = 240
+  Constraints.MinWidth = 670
+  DesignTimePPI = 128
+  Font.Height = -16
   OnActivate = FormActivate
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.6.0'
   object Label1: TLabel
-    Left = 26
-    Height = 18
-    Top = 51
-    Width = 73
+    Left = 35
+    Height = 21
+    Top = 27
+    Width = 92
     Caption = '&A  File Name'
     FocusControl = edtFileName
     ParentColor = False
   end
   object btnCancel: TBitBtn
-    Left = 468
-    Height = 55
-    Top = 105
-    Width = 98
+    Left = 487
+    Height = 37
+    Top = 104
+    Width = 86
     Anchors = [akTop, akRight]
     Cancel = True
     DefaultCaption = True
-    Font.Height = -13
     GlyphShowMode = gsmNever
     Kind = bkCancel
     OnClick = btnCancelClick
-    ParentFont = False
     TabOrder = 2
   end
   object btnOk: TBitBtn
-    Left = 568
-    Height = 55
-    Top = 105
-    Width = 75
+    Left = 595
+    Height = 37
+    Top = 104
+    Width = 59
     Anchors = [akTop, akRight]
+    Caption = '&OK'
     Default = True
-    DefaultCaption = True
-    Font.Height = -13
-    Kind = bkOK
     OnClick = btnOkClick
-    ParentFont = False
     TabOrder = 3
   end
   object edtFileName: TFileNameEdit
-    Left = 26
-    Height = 28
+    Left = 35
+    Height = 37
     Hint = 'Select the .po language file you want'#10'to install. It can be anywhere on the system'#10'and it will be copied to the language'#10'folder'#10#10'<end>'
-    Top = 71
-    Width = 621
+    Top = 54
+    Width = 624
     Filter = 'po_file|*.po'
     FilterIndex = 0
     HideDirectories = False
-    ButtonWidth = 23
+    ButtonWidth = 31
     NumGlyphs = 1
     FocusOnButtonClick = True
     Anchors = [akTop, akLeft, akRight]
     AutoSelect = False
     AutoSize = False
-    Font.Height = -13
     MaxLength = 0
-    ParentFont = False
     TabOrder = 0
     OnButtonClick = edtFileNameButtonClick
     OnExit = edtFileNameExit
   end
   object Panel1: TPanel
-    Left = 26
-    Height = 102
-    Top = 115
-    Width = 430
-    ClientHeight = 102
-    ClientWidth = 430
+    Left = 19
+    Height = 119
+    Top = 108
+    Width = 431
+    ClientHeight = 119
+    ClientWidth = 431
     ParentColor = False
     TabOrder = 1
     object edtLang: TEdit
-      Left = 22
-      Height = 28
+      Left = 29
+      Height = 37
       Hint = 'This will be used for the Languages '#10'dropdown entry. Type whatever you'#10'would like to show up there.'#10#10'<end>'
-      Top = 60
-      Width = 280
+      Top = 74
+      Width = 373
       AutoSize = False
-      Font.Height = -13
-      ParentFont = False
       TabOrder = 0
       TextHint = 'New-Neu-Neuvo-Neuf-Nuovo-Nou'
     end
     object lblLangAbbrev: TLabel
-      Left = 22
-      Height = 18
+      Left = 29
+      Height = 21
       Hint = 'This label will show the associated '#10'language symbol.'#10#10'<end>'
-      Top = 6
-      Width = 9
+      Top = 8
+      Width = 12
       Caption = '...'
       ParentColor = False
     end
     object lblLangAbbrev1: TLabel
-      Left = 22
-      Height = 18
-      Top = 36
-      Width = 201
+      Left = 29
+      Height = 21
+      Top = 48
+      Width = 250
       Caption = '&B  Language dropdown box entry'
       FocusControl = edtLang
       ParentColor = False
     end
   end
   inline FrameHint1: TFrameHint
-    Left = 330
-    Top = 3
+    Left = 341
+    Height = 26
+    Top = 4
+    Width = 318
+    ClientHeight = 26
+    ClientWidth = 318
     ParentColor = True
+    ParentFont = True
     TabOrder = 4
+    DesignLeft = 300
+    DesignTop = 539
     inherited cbHints: TCheckBox
-      Left = 40
-      Height = 26
-      Width = 268
+      Left = 88
+      Top = 1
+      Font.Height = -14
+      ParentFont = False
     end
   end
 end

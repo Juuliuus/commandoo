@@ -33,17 +33,14 @@ const
 
   cSectTabNoShows = 'NoShows';
 
-  cSectTabSuperUserFile = 'SUFile';
-  cSuperUserFile_File = 'SuperUserFile';
-  cSuperUserFile_Param1 = 'Param1';
-  cSuperUserFile_Param2 = 'Param2';
-
+  cRootFileSudo = 'sudo %s';
+  cRootFileSu = 'su -c "%s"';
+  cRootFileSuSession = 'su --session-command "%s"';
 
   cSectTabFormSettings = 'FormSettings';
   cFormSettingsProgramLangCol = 'ProgramLang';
   cFormSettingsMaxInOutPutCol = 'MaxInOutPut';
   cFormSettingsOutPutDisplayMax = 'DisplayMax';
-  cFormSettingsFontOffset = 'FontOffset';
   //cFormSettingsSystemColorsIdx = 'SystemColorsIdx';
   cFormSettingsLastQuickRun = 'LastQuickRun';
   cFormSettingsManRefreshFav = 'ManRefreshFav';
@@ -55,8 +52,11 @@ const
   cFormSettingsWarnDanger = 'WarnDanger';
   cFormSettingsAllowMultipleOpens = 'AllowMultipleOpens';
   cFormSettingsAllowESCOutput = 'AllowESC';
+  cFormSettingsLargerFont = 'LargerFont';
   cFormSettingsAllowSqlDB = 'AllowSqlDB';
   cFormSettingsAllowTextDB = 'AllowTextDB';
+  cFormSettingsRootFile = 'RootFile';
+  cFormSettingsRootFileDefault = 'sudo %s';
 
   cSectTabFormSettingsExtension = '.settings';
 

@@ -1210,6 +1210,7 @@ var
     // po requires special characters as #number
     p:=1;
     while p<=length(Value) do begin
+//juus look at warning!!
       j := UTF8CharacterLength(pchar(@Value[p]));
       if (j=1) and (Value[p] in [#0..#9,#11,#12,#14..#31,#127..#255]) then
         Value := copy(Value,1,p-1)+'#'+IntToStr(ord(Value[p]))+copy(Value,p+1,length(Value))
@@ -1226,6 +1227,7 @@ var
     K, L: Integer;
     Data: TJSONData;
   begin
+//juus look at warning
     Parser := TJSONParser.Create(InputLines.Text{$IF FPC_FULLVERSION>=30101},jsonscanner.DefaultOptions{$ENDIF});
     try
       JsonData := Parser.Parse as TJSONObject;

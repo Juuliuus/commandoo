@@ -53,7 +53,7 @@ resourceString
   cCantCopy = 'Could not copy "%s" to "%s".';
   //cCantCopyNotFound = '"%s" not found!';
   cFileNotExist = 'File "%s" does not exist.';
-  cmsgAdvancedOptions = '< All changes are saved immediately on "OK" >';
+  cmsgAdvancedOptions = '< %s >';
 
   cAboutLine = 'commandoo   Version: %s';
   cAboutBDLine = 'DB Version: %s';
@@ -452,11 +452,11 @@ resourceString
                       + LineEnding
                       + 'It appears you are using "sudo" or "su" in your command line. This is '
                       + LineEnding
-                      + 'not allowed as it is not secure! Either run this command line through '
+                      + 'not allowed as it is not secure! Run this command line through '
                       + LineEnding
-                      + 'a terminal, or remove the sudo (or su) and use the "run as SuperUser" option '
+                      + 'a terminal. Better is to remove the sudo (or su) and use the "run as SuperUser" option '
                       + LineEnding
-                      + 'which uses the secure system program(s) to go into ROOT mode. '
+                      + 'which helps you when copying and pasting using a ROOT template (look in OPTIONS). '
                       + LineEnding;
 
   ccapThreatLevelWarning = 'Allow Execution "%s"?';
@@ -608,39 +608,9 @@ resourceString
      + 're-run the search(es).'
      ;
 
-  ccapSUFileInfo = 'ROOT authentication files';
-  cmsgSUFileInfo =
-    'In order to run command lines with superuser privileges you need to select a valid agent. '
-    + LineEnding + LineEnding
-    + 'Here select it from the list, or, if necessary, search for the file. '
-    + LineEnding + LineEnding
-    + 'Raw "sudo" and "su" commands are ==NOT== allowed because they are not secure to use from a GUI. '
-    + LineEnding + LineEnding
-    + 'What you select depends on your Linux system and the authentication scheme it uses. You need to '
-    + 'know this to pick correctly. '
-    + LineEnding + LineEnding
-    + '"sudo" variants (gksudo and kdesudo) differ based on your desktop scheme, whether you use gnome '
-    + 'or KDE. This also applies to the "su" variants (gksu and kdesu). '
-    + LineEnding + LineEnding
-    + 'On Debian systems the user account is separate from the ROOT account. An "su" variant is required '
-    + 'and password used will be the ROOT password. '
-    + LineEnding + LineEnding
-    + 'However, if, on your Debian system, your user account is added to the "sudo-ers" group / list then '
-    + 'the sudo variant will also work but with your user account password. '
-    + LineEnding + LineEnding
-    + 'For `Buntu systems (and some other derivatives) the initial user has both user and ROOT privileges, '
-    + 'in this case the sudo variant ONLY will work. '
-    + LineEnding + LineEnding
-    + 'But it is possible to set a `Buntu system to have a separate ROOT. In this case the comments for the '
-    + 'Debian system apply. '
-    + LineEnding + LineEnding
-    + 'A quick summary of the most usual situations: '
-    + LineEnding + LineEnding
-    + '`Buntu systems: use one of the "sudo" variants. '
-    + LineEnding + LineEnding
-    + 'Debian: use "su" variant unless your user account has ROOT privileges in which case "sudo" variant. '
-    + LineEnding + LineEnding
-    ;
+  ccapRootFileTest = 'ROOT template test...';
+  ccapRootFileInfo = 'ROOT Copy/Paste template';
+  cmsgRootFileInfo = 'The template requires a single "%s" in it so that the command line can be placed properly. ';
 
 
   ccapSudoSet = 'ROOT Privileges';
@@ -663,8 +633,13 @@ resourceString
 
   ccapRootDisallowed = 'ROOT running Disallowed';
   cmsgRootDisallowed =
-    'You have either specifically disallowed running as ROOT or you don''t have '
-    + 'a valid Linux ROOT GUI file. You can change / check this in OPTIONS.'
+    'The ROOT choice for a command line is simply a helper so that when a CL is copied and then pasted  '
+    + 'into a terminal the proper ROOT template is used (ie., "sudo", "su -c", etc.) so that the CL can be '
+    + 'run directly in the terminal. The template can be changed in OPTIONS.'
+    + LineEnding + LineEnding
+    + 'It is not allowed to run ROOT CL''s through commandoo, it simply isn''s safe. Use a terminal to '
+    + 'run ROOT commands, or look into the other approved methods using "pkexec", or the admin:// option '
+    + 'for files.'
     + LineEnding
     ;
 
@@ -883,6 +858,11 @@ resourceString
    ccapHaltProcess = 'Halt detached process';
    cmsgHaltProcess = 'This will halt the selected process. Careful. The process may need '
      + 'to save data, best to find the program and close it normally. Do you still want to halt it??';
+
+   ccapSaveFileExists = 'Saving to an existing file';
+   cmsgSaveFileExists = 'The file "%s" already exists. Do you want to over-write it?';
+
+
 
 
 implementation

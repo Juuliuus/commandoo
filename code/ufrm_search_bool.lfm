@@ -1,28 +1,29 @@
 object frm_Search_Bool: Tfrm_Search_Bool
   Left = 2037
-  Height = 380
-  Top = 705
-  Width = 365
+  Height = 507
+  Top = 652
+  Width = 487
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'frm_Search_Bool'
-  ClientHeight = 380
-  ClientWidth = 365
-  Constraints.MaxHeight = 380
-  Constraints.MaxWidth = 365
-  Constraints.MinHeight = 380
-  Constraints.MinWidth = 365
-  Font.Height = -13
+  ClientHeight = 507
+  ClientWidth = 487
+  Constraints.MaxHeight = 507
+  Constraints.MaxWidth = 487
+  Constraints.MinHeight = 507
+  Constraints.MinWidth = 487
+  DesignTimePPI = 128
+  Font.Height = -16
   KeyPreview = True
   OnCreate = FormCreate
   OnHide = FormHide
   OnKeyDown = FormKeyDown
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.6.0'
   object rgSeList: TRadioGroup
-    Left = 9
-    Height = 100
-    Top = 32
-    Width = 349
+    Left = 52
+    Height = 133
+    Top = 43
+    Width = 368
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     Caption = 'NT'
@@ -31,30 +32,30 @@ object frm_Search_Bool: Tfrm_Search_Bool
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    Font.Height = -13
+    Font.Height = -16
     OnSelectionChanged = rgSeListSelectionChanged
     ParentFont = False
     TabOrder = 0
   end
   object lblSeType: TLabel
-    Left = 9
-    Height = 23
-    Top = 5
-    Width = 351
+    Left = 12
+    Height = 31
+    Top = 7
+    Width = 468
     Alignment = taRightJustify
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'Boolean'
-    Font.Height = -18
+    Font.Height = -21
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object rgBool: TRadioGroup
-    Left = 8
-    Height = 80
-    Top = 156
-    Width = 349
+    Left = 51
+    Height = 107
+    Top = 208
+    Width = 367
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     Caption = 'NT'
@@ -63,13 +64,15 @@ object frm_Search_Bool: Tfrm_Search_Bool
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 61
-    ClientWidth = 347
+    ClientHeight = 83
+    ClientWidth = 365
+    Font.Height = -16
     Items.Strings = (
       'True'
       'False'
     )
     OnSelectionChanged = rgBoolSelectionChanged
+    ParentFont = False
     TabOrder = 1
   end
 end

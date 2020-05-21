@@ -41,6 +41,7 @@ type
   private
     fIsInitialized : boolean;
     fSectTabName : string;
+    fSavePath : string;
 
     fMode: TmdpType;
     fIsConfirmDlg: boolean;
@@ -73,6 +74,7 @@ type
   TfrmMsgDlg = class(TForm)
     btnOk: TBitBtn;
     btnNo: TBitBtn;
+    btnSaveToFile : TBitBtn;
     btnYes: TBitBtn;
     btnClip : TButton;
     cbDoNotShow : TCheckBox;
@@ -83,6 +85,7 @@ type
     Timer1: TTimer;
     procedure btnClipClick(Sender : TObject);
     procedure btnNoClick(Sender: TObject);
+    procedure btnSaveToFileClick( Sender : TObject );
     procedure btnYesClick(Sender: TObject);
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
@@ -101,7 +104,7 @@ type
   end;
 
 
-  procedure InitMsgDlgParams( const SectionOrTableName : string; anIniFile : TJinifile );
+  procedure InitMsgDlgParams( const SavePath, SectionOrTableName : string; anIniFile : TJinifile );
 
   function MsgDlgMessage( const ACaption, AMessage : string; ShowNoMoreKey : string = ''  ) : boolean;
   function MsgDlg( const TheType : TmdpType; const IsConfirmDialog : boolean; AOwner : TForm ) : TModalResult;
@@ -117,8 +120,6 @@ type
 
   procedure MyShowmessage( const Msg : string; aForm : TForm );
 
-
-
 var
   frmMsgDlg: TfrmMsgDlg;
   MsgDlgParams : TMsgDlgParams;
@@ -129,7 +130,9 @@ implementation
 {$R *.lfm}
 
 uses  juusgen
-   ;
+      , usingleinput
+      , strconst_en
+      ;
 const
   cForgot = '<< YOU FORGOT TO SET THE %s >>';
   cForgotHintMsg = 'MESSAGE (FMsg)';
@@ -192,7 +195,7 @@ begin
 
 end;
 
-procedure InitMsgDlgParams( const SectionOrTableName : string; anIniFile : TJinifile );
+procedure InitMsgDlgParams( const SavePath, SectionOrTableName : string; anIniFile : TJinifile );
 begin
   if MsgDLgParams.IsInitialized then
   begin
@@ -202,6 +205,7 @@ begin
 
   MsgDLgParams.DoTheReset;
 
+  MsgDLgParams.fSavePath := SavePath;
   MsgDLgParams.fSectTabName := SectionOrTableName;
 
   MsgDLgParams.IniFile := anIniFile;
@@ -461,6 +465,25 @@ begin
   ModalResult := mrNo;
 end;
 
+procedure TfrmMsgDlg.btnSaveToFileClick( Sender : TObject );
+var
+  aFile : string;
+begin
+//juus make this an optional setting...Frm.Save to path....
+  aFile := MsgDLgParams.fSavePath + 'commandoo_message.txt';
+
+  if DoSingleInput( csiChooseAFile, aFile, simFile, self, false, true ) then
+  begin
+    if fileexists( aFile ) then
+      if MsgdlgMessage( ccapSaveFileExists, format( cmsgSaveFileExists, [ aFile ] ) ) then
+        if MsgDlgAttentionConfirm( self ) = mrNo then
+          exit;
+
+    memMsg.Lines.SaveToFile( aFile );
+  end;
+
+end;
+
 procedure TfrmMsgDlg.btnClipClick(Sender : TObject);
 begin
   Clipboard.AsText := memMsg.Text;
@@ -484,6 +507,7 @@ end;
 
 procedure TfrmMsgDlg.FormCreate( Sender : TObject );
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
 end;
 

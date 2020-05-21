@@ -70,7 +70,7 @@ implementation
 
 {$R *.lfm}
 
-uses ufrmMsgDlg, strconst_en, unitglob;
+uses ufrmMsgDlg, unitglob;
 
 resourcestring
   cmsglmcNoSelection = 'You have not chosen a %s to consolidate to.';
@@ -122,7 +122,7 @@ begin
   FHasShown := true;
   FCanClose := false;
   HandleFormSettings( sdLoad );
-
+  FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
   lblItem.Hint := format( cmsgLMCLabel, [ cmsgLMC ] );
   cbChoose.Hint := format( cmsgLMCComboBox, [ cmsgLMC ] );
 
@@ -200,6 +200,7 @@ end;
 
 procedure TfrmListManagerConsolidate.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := true;

@@ -1,16 +1,16 @@
 object frmSuperUserFile: TfrmSuperUserFile
-  Left = 2721
-  Height = 467
-  Top = 391
-  Width = 653
+  Left = 1996
+  Height = 400
+  Top = 527
+  Width = 585
   Caption = 'SuperUser Authentication'
-  ClientHeight = 467
-  ClientWidth = 653
-  Constraints.MaxHeight = 467
-  Constraints.MinHeight = 467
-  Constraints.MinWidth = 653
+  ClientHeight = 400
+  ClientWidth = 585
+  Constraints.MaxHeight = 400
+  Constraints.MinHeight = 400
+  Constraints.MinWidth = 585
   DesignTimePPI = 128
-  Font.Height = -17
+  Font.Height = -16
   KeyPreview = True
   OnActivate = FormActivate
   OnClose = FormClose
@@ -20,166 +20,139 @@ object frmSuperUserFile: TfrmSuperUserFile
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 225
-    Height = 48
-    Top = -4
-    Width = 569
-    ClientHeight = 48
-    ClientWidth = 569
+    Left = 254
+    Height = 33
+    Top = -2
+    Width = 325
+    ClientHeight = 33
+    ClientWidth = 325
     ParentColor = True
-    TabOrder = 9
+    TabOrder = 5
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
-      Left = 170
-      Height = 25
-      Top = 5
-      Width = 240
+      Left = 89
+      Height = 24
+      Width = 223
     end
   end
   object bntOK: TBitBtn
-    Left = 501
+    Left = 447
     Height = 51
-    Top = 75
+    Top = 128
     Width = 100
     Anchors = [akTop, akRight]
-    Default = True
-    DefaultCaption = True
-    Font.Height = -17
-    Kind = bkOK
+    Caption = '&OK'
+    Font.Height = -16
+    GlyphShowMode = gsmNever
     OnClick = bntOKClick
     ParentFont = False
     TabOrder = 6
   end
   object btnCancel: TBitBtn
-    Left = 490
+    Left = 436
     Height = 47
-    Top = 132
+    Top = 185
     Width = 120
     Anchors = [akTop, akRight]
     Cancel = True
-    DefaultCaption = True
-    Font.Height = -17
+    Caption = 'Cancel'
+    Font.Height = -16
     GlyphShowMode = gsmNever
-    Kind = bkCancel
     OnClick = btnCancelClick
     ParentFont = False
     TabOrder = 7
   end
-  object edtsufile: TEdit
-    Left = 21
+  object edtCustom: TEdit
+    Left = 48
     Height = 36
     Hint = 'The proposed ROOT file to change to.'#10#10'<end>'
-    Top = 272
-    Width = 395
+    Top = 345
+    Width = 302
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
-    Font.Height = -17
+    Font.Height = -16
+    OnKeyDown = edtCustomKeyDown
     ParentFont = False
-    ReadOnly = True
-    TabOrder = 1
-  end
-  object edtsuparam1: TEdit
-    Left = 21
-    Height = 36
-    Top = 320
-    Width = 395
-    Anchors = [akTop, akLeft, akRight]
-    AutoSize = False
-    AutoSelect = False
-    Font.Height = -17
-    OnDblClick = edtsuparam1DblClick
-    ParentFont = False
-    ReadOnly = True
-    TabOrder = 2
+    TabOrder = 0
+    TextHint = 'Type custom template here...'
   end
   object lblCurr: TLabel
     Left = 21
-    Height = 22
-    Top = 25
-    Width = 89
-    Caption = 'Currently:  '
-    Font.Height = -17
+    Height = 24
+    Top = 43
+    Width = 161
+    Caption = 'Current Template:  '
+    Font.Height = -18
     ParentColor = False
     ParentFont = False
-  end
-  object lbFiles: TListBox
-    Left = 21
-    Height = 184
-    Hint = 'This is a list of current (2017) ROOT '#10'authentication files available for gnu/Linux '#10'people.'#10#10'Choose the one you want. You may, or may'#10'not, have all of them on your system. It will'#10'tell you if it cannot find the file.'#10#10'In some cases (maybe in future) it could be'#10'you want to use something new, then use the'#10'button below and right.'#10#10'<end>'
-    Top = 75
-    Width = 395
-    Anchors = [akTop, akLeft, akRight]
-    Font.Height = -17
-    ItemHeight = 0
-    OnClick = lbFilesClick
-    ParentFont = False
-    ScrollWidth = 393
-    TabOrder = 0
-    TopIndex = -1
   end
   object lblCurrFile: TLabel
-    Left = 47
-    Height = 22
+    Left = 192
+    Height = 24
     Hint = 'This is the ROOT file you are currently using.'#10#10'<end>'
-    Top = 51
+    Top = 43
     Width = 15
     Caption = '...'
-    Font.Height = -17
+    Font.Height = -18
     ParentColor = False
     ParentFont = False
   end
-  object btnsufile: TButton
-    Left = 427
-    Height = 44
-    Hint = 'If, in future, or for special needs, the file'#10'you need is not in the list use this button to '#10'find and use it.'#10#10'You will first be asked to find the file.'#10#10'If you choose one you will then be asked to'#10'type any parameter / flag it needs.'#10#10'<end>'
-    Top = 293
-    Width = 153
-    Anchors = [akTop, akRight]
-    Caption = '&Z  Other File'
-    Font.Height = -17
-    OnClick = btnsufileClick
-    ParentFont = False
-    TabOrder = 4
-  end
-  object btnsuinfo: TButton
+  object btnTest: TBitBtn
     Left = 21
-    Height = 49
-    Hint = 'A quick introduction to the intricacieas of'#10'xxxsu and xxxsudo.'#10#10'<end>'
-    Top = 408
-    Width = 395
-    Caption = '&A  Show Information'
-    Font.Height = -17
-    OnClick = btnsuinfoClick
-    ParentFont = False
-    TabOrder = 5
-  end
-  object btnTurnOff: TButton
-    Left = 443
-    Height = 45
+    Height = 29
     Hint = 'If the file you need can not be found, or'#10'you simply don''t want to run command lines'#10'as ROOT then you can turn off the ROOT '#10'ability with this button.'#10#10'<end>'
-    Top = 192
-    Width = 201
-    Anchors = [akTop, akRight]
-    Caption = '&X  Turn off ROOT'
-    Font.Height = -17
-    OnClick = btnTurnOffClick
+    Top = 13
+    Width = 141
+    Caption = '&T  Test'
+    Font.Height = -16
+    OnClick = btnTestClick
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 2
   end
-  object edtsuparam2: TEdit
-    Left = 21
-    Height = 36
-    Top = 359
-    Width = 395
+  object btnCustom: TBitBtn
+    Left = 16
+    Height = 35
+    Hint = 'If, in future, or for special needs, the file'#10'you need is not in the list use this button to '#10'find and use it.'#10#10'You will first be asked to find the file.'#10#10'If you choose one you will then be asked to'#10'type any parameter / flag it needs.'#10#10'<end>'
+    Top = 310
+    Width = 281
     Anchors = [akTop, akLeft, akRight]
-    AutoSize = False
-    AutoSelect = False
-    Font.Height = -17
-    OnDblClick = edtsuparam2DblClick
+    Caption = '&B  Use Custom Template'
+    Font.Height = -16
+    OnClick = btnCustomClick
     ParentFont = False
-    ReadOnly = True
+    TabOrder = 1
+  end
+  object btnTemplate: TBitBtn
+    Left = 16
+    Height = 33
+    Hint = 'A quick introduction to the intricacieas of'#10'xxxsu and xxxsudo.'#10#10'<end>'
+    Top = 99
+    Width = 281
+    Anchors = [akTop, akLeft, akRight]
+    Caption = '&A  Use Common Template'
+    Font.Height = -16
+    OnClick = btnTemplateClick
+    ParentFont = False
     TabOrder = 3
+  end
+  object rgTemplates: TRadioGroup
+    Left = 48
+    Height = 140
+    Top = 137
+    Width = 302
+    Anchors = [akTop, akLeft, akRight]
+    AutoFill = True
+    Caption = ' Common Templates '
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    OnClick = rgTemplatesClick
+    TabOrder = 4
   end
 end

@@ -1498,7 +1498,7 @@ procedure TfrmBoolExpr.FocusOff;
 begin
   fLastCmdPointer := nil;
   pnlCmd.Color := $303030; // DarkGray;
-  scbCmd.Color := $303030;//$272727;//clGray;
+  scbCmd.Color := $303030;//clGray;
 end;
 
 procedure TfrmBoolExpr.TransferSearchCriteria( destBS : TBaseSearch );
@@ -1731,6 +1731,7 @@ end;
 
 procedure TfrmBoolExpr.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   fListSearchItems := TList.Create;
@@ -1778,5 +1779,7 @@ end;
 
 end.
 
-{ ✗ ✘ ⎯  ⇄ ← →  ±     }
+{
+247 740
+}
 

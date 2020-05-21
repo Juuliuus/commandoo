@@ -41,17 +41,21 @@ resourcestring
 //Re-Used button captions to keep the translating less miserable
 //I've decided to use numbers/letters for shortcuts as they are language independant
   cObjlblRun = '&R  Run';
+  cObjlblGo = '&G  Go';
   cObjlblRunTest = '&R  Test';
   cbtn_Copy = 'Copy';
-  cbtn_Done = '&O Done';
+  cbtn_Done = '&O  Done';
   cbtn_Add = 'Add';
   cbtn_Edit = 'Edit';
   cbtn_Delete = 'Delete';
   crg_MatchType = 'Match Type';
   crg_Value = 'Value';
+  ccapFindTextHint = 'Begin typing...';
+
 
 const  //button captions too BUT should NOT be translated.
   cbtn_SearchNOT = '± NOT';
+  ccbHintsEnglishOverride = '&H  Show hints on mouse-over';
 
 type
   //raise EErrorDatabaseProblem.Create( 'EXCEPTION STRESS TEST' );

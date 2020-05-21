@@ -54,21 +54,21 @@ type
   TfrmSearch = class(TForm)
     Bevel1 : TBevel;
     btnCancel : TBitBtn;
-    bntOK : TBitBtn;
-    btnUseSimpleSearch : TButton;
+    btnOK : TBitBtn;
+    btnUseSimpleSearch : TBitBtn;
     cbField : TComboBox;
     edtSearchFileName : TEdit;
     edtCurrProf : TEdit;
     FrameHint1 : TFrameHint;
     lblWhichBoolExpr : TLabel;
     lblFieldCaption : TLabel;
-    lblProgramerTip : TLabel;
+    lblProgramerTip_SearchForm : TLabel;
     lblDesignProf : TLabel;
-    lblProgramerTip1 : TLabel;
+    lblProgramerTip_Cmd : TLabel;
     lblProgramerTip2 : TLabel;
     lblSearchFileName : TLabel;
     shpDiv : TShape;
-    procedure bntOKClick(Sender : TObject);
+    procedure btnOKClick(Sender : TObject);
     procedure btnCancelClick(Sender : TObject);
     procedure btnUseSimpleSearchClick( Sender : TObject );
     procedure cbFieldSelect( Sender : TObject );
@@ -176,6 +176,7 @@ implementation
 uses ufrmMsgDlg
      , unitfields
      , unitGlob
+     , strconst_en
      ;
 
 resourcestring
@@ -183,9 +184,9 @@ resourcestring
   cfseDesignedProfileStamp = 'Search Designed in:  %s';
 
 const
-  cBETop = 112;
-  cBELeft = 8;
-  cBEGutter = 20;
+  //cBETop = 112;
+  //cBELeft = 8;
+  cBEGutter = 80;
 
 
 { TfrmSearch }
@@ -194,14 +195,14 @@ procedure TfrmSearch.CreateSubForms( SO : TSearchObj; theFields : TStrings );
 var
   i , j: Integer;
   COT : TCmdObjType;
-  FT : TufFieldType;
+  //FT : TufFieldType;
 
   procedure SetBasicProps( aForm : TObject );
   begin
     with TForm( aForm ) do
     begin
-      Top := 113;
-      Left := 575;
+      Top := lblProgramerTip_SearchForm.Top;
+      Left := lblProgramerTip_SearchForm.Left;
       Parent := Self;
       Color := clDefault;//self.Color;
       Font.Color := clDefault;
@@ -233,8 +234,8 @@ begin
             else DefaultCmdFieldID := fidCommandName;
 
       //ValidFields.Add( 'test' );
-            Top := cBETop;//112;
-            Left := cBELeft;
+            Top := lblProgramerTip_Cmd.Top;// cBETop;//112;
+            Left := lblProgramerTip_Cmd.Left;// cBELeft;
 
             cbCmdUse.Checked := SO.Searches[ i ].IsUsed;
             cbCmdUse.Enabled := fEditMode <> semLists;
@@ -261,7 +262,7 @@ begin
    //ValidFields.Add( 'test2' );
           Top := BECmd.Top + BECmd.Height + cBEGutter;
           shpDiv.Top := Top - cBEGutter + ( cBEGutter div 2 );
-          Left := cBELeft;
+            Left := lblProgramerTip_Cmd.Left;// cBELeft;
           cbCmdUse.Checked := SO.Searches[ i ].IsUsed;
           cbCmdUse.Enabled := fEditMode <> semLists;
           HelpContext := 1;
@@ -349,6 +350,7 @@ begin
   begin
     FCanClose := false;
     HandleFormSettings( sdLoad );
+    btnOK.Caption := cObjlblGo;
     FHasShown := true;
   end;
 
@@ -416,15 +418,13 @@ begin
 end;
 
 procedure TfrmSearch.FormClose(Sender : TObject; var CloseAction : TCloseAction);
-var
-  i : Integer;
 begin
   HandleFormSettings( sdSave );
   fShowingForm := nil; //do not free, pointer only
   fFocusedBoolExpr := nil; //do not free, pointer only
 end;
 
-procedure TfrmSearch.bntOKClick(Sender : TObject);
+procedure TfrmSearch.btnOKClick(Sender : TObject);
 begin
   FCanClose := true;
   Modalresult := mrOK;
@@ -655,6 +655,7 @@ begin
   if not FIsInitialized then
   begin
     FIsInitialized := true;
+    FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
   end;
 end;
 
@@ -665,6 +666,7 @@ end;
 
 procedure TfrmSearch.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

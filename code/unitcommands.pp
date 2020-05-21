@@ -55,7 +55,6 @@ const
   cReservedBlankCommand = '<EMPTY>';
 
   cReservedSuperUser = '<ROOT> ';
-  cSuperUserFileOff = 'off';
 
   cCommandInPathStr = '$PATH';
   cLinuxBuiltInStr = '$BUILTIN';
@@ -63,12 +62,12 @@ const
 
 type
 
-  TSudoFileName = record
-    FName : string;
-    Param1 : string;//needed for kdesu's -t param so that output comes back from kdesu, otherwise no output.
-                    //-tc as a single param fails for some commands (mount for instance), so it must be separate
-    Param2 : string;
-  end;
+  //TSudoFileName = record
+  //  FName : string;
+  //  Param1 : string;//needed for kdesu's -t param so that output comes back from kdesu, otherwise no output.
+  //                  //-tc as a single param fails for some commands (mount for instance), so it must be separate
+  //  Param2 : string;
+  //end;
 
   TCmdObjHelper = class;
 
@@ -422,17 +421,15 @@ type
     fLinuxEnvPath : string;
     fLinuxEnvPathSep: char;
     ftheRegX : TRegExpr;
-    procedure CheckNoSudoCommand( const SudoFileName : TSudoFileName );
     procedure GetCmdDisplayObjList( Source, Dest : TStringList; IsCmd : boolean = true );
     procedure GetCmdDisplayObjList_Cmd( Source, Dest : TStringList; DL : TDataLocation );
     procedure GetCmdDisplayObjList_CmdLine( Source, Dest : TStringList; DL : TDataLocation );
     function GetCmdDisplayObj_CmdLineEntry( const Main, Alt : string ) : string;
-    procedure ProcessCommandEntry( aString : string; SudoFileName : TSudoFileName; strings : TStrings );
+//    procedure ProcessCommandEntry( aString : string; SudoFileName : TSudoFileName; strings : TStrings );
+    procedure ProcessCommandEntry( aString : string; strings : TStrings );
     procedure SetDBServer( AValue : TInfoServer );
-    procedure StringsSudoFormat( Strings : TStrings; SudoFileName : TSudoFileName; const SudoString : string );
-    function CompleteSudoCommand( SudoFileName : TSudoFileName) : string;
+    //procedure StringsSudoFormat( Strings : TStrings; SudoFileName : TSudoFileName; const SudoString : string );
 
-    function ProcessSudo( SudoFileName : TSudoFileName; var CommandStr : string; var SudoedCommand : string ) : boolean;
     function VariablesAsClipboardText( anEntry : string ) : string;
 
     function GetCmd_ControlColumn_sql : string;
@@ -452,8 +449,7 @@ type
     function RunCommand( Params : TStrings; UseShell : boolean; ShStr : string = ''; BICommand : string = 'command') : string;
     function RunCommandDetached( var aProc : TAsyncProcess; Params : Tstrings) : string;// overload;
     procedure ProcessFileNamePath(const aComName: string; var aComFile: string; var aComPath: string);
-    function RouteCommand( aString : string; SudoFileName : TSudoFileName;
-                             const DoDetach : boolean; var aProcess : TAsyncProcess ) : string;
+    function RouteCommand( aString : string; const DoDetach : boolean; var aProcess : TAsyncProcess ) : string;
 
     function CleanCommandsEntry( aString : string) : string;
     function InitializeAndNormalizeCommandsEntry( aString : string; var IsPiped : boolean; WantsInput : boolean) : string;
@@ -471,7 +467,7 @@ type
                               iSO : integer = cFieldIntegerTypeDefault );
 
 
-    function ClipBoardVersion( const Str : string; SuperUserCommand : TSudoFileName ) : string;
+    function ClipBoardVersion( const Str, RootFile : string ) : string;
     function GetVariableAndPosition( const aString : string; var VarName : string ) : integer;
     function GetSignificantVariableFlag( const aString : string ) : string;
     function GetVariableHelp( const VariableName : string; DefaultResult : string = '' ) : string;
@@ -808,68 +804,40 @@ begin
 end;
 
 
-procedure TCmdObjHelper.CheckNoSudoCommand( const SudoFileName : TSudoFileName );
+
+//procedure TCmdObjHelper.StringsSudoFormat( Strings : TStrings; SudoFileName : TSudoFileName; const SudoString : string );
+//begin
+//  Strings.Add( SudoFileName.FName );
+//  if SudoFileName.Param1 <> '' then
+//    Strings.Add( SudoFileName.Param1 );
+//  if SudoFileName.Param2 <> '' then
+//    Strings.Add( SudoFileName.Param2 );
+//  //-c (cmd) for some progs. or if someday allow 'sudo' it requires '-S' param so it will take pword from stdin
+//  //pretty much decided no SUDO, here for history only
+//  Strings.Add( SudoString );
+////The processes all expect Tstrings, s[ 0 ] is the command to run, the rest are assigned to parameters
+////for sudo'ed this means
+////0 = kdesudo or gksudo or...
+//////1 = if it is sudo or some other sudo'er file it may reguire -S or similar to accept pword from stdin, or -c (cmd)
+////1(2) = The full command to run, it is passed on to the system by sudo'er
+//end;
+
+procedure TCmdObjHelper.ProcessCommandEntry( aString : string; strings : TStrings );
+//procedure TCmdObjHelper.ProcessCommandEntry( aString : string; SudoFileName : TSudoFileName; strings : TStrings );
+//var
+//  SudoString : String;
 begin
-  if SudoFileName.FName = '' then
-    raise EErrorSettings.create( cmsgcleNoSUFile );
-end;
-
-function TCmdObjHelper.ProcessSudo( SudoFileName : TSudoFileName; var CommandStr : string; var SudoedCommand : string) : boolean;
-begin
-  result := false;
-  if pos( cReservedSuperUser, SudoedCommand ) = 1 then
-  begin
-    CheckNoSudoCommand( SudoFileName );
-//SudoedCommand, for example: <ROOT> Mycommand MyParam
-//commandStr needs to be: Mycommand MyParam
-    CommandStr := stringreplace( SudoedCommand, cReservedSuperUser, '', [rfIgnorecase] );
-//then sudeoedCommand <ROOT> is replaced by the actually used sudo program: kdesudo, gksudo, sudo, etc.
-    SudoedCommand := stringreplace( SudoedCommand, cReservedSuperUser, SudoFileName.FName + ' ', [rfIgnorecase] );
-    result := true;
-  end;
-
-end;
-
-procedure TCmdObjHelper.StringsSudoFormat( Strings : TStrings; SudoFileName : TSudoFileName; const SudoString : string );
-begin
-  Strings.Add( SudoFileName.FName );
-  if SudoFileName.Param1 <> '' then
-    Strings.Add( SudoFileName.Param1 );
-  if SudoFileName.Param2 <> '' then
-    Strings.Add( SudoFileName.Param2 );
-  //-c (cmd) for some progs. or if someday allow 'sudo' it requires '-S' param so it will take pword from stdin
-  //pretty much decided no SUDO, here for history only
-  Strings.Add( SudoString );
-//The processes all expect Tstrings, s[ 0 ] is the command to run, the rest are assigned to parameters
-//for sudo'ed this means
-//0 = kdesudo or gksudo or...
-////1 = if it is sudo or some other sudo'er file it may reguire -S or similar to accept pword from stdin, or -c (cmd)
-//1(2) = The full command to run, it is passed on to the system by sudo'er
-end;
-
-function TCmdObjHelper.CompleteSudoCommand( SudoFileName : TSudoFileName ) : string;
-begin
-  result := '';
-  CheckNoSudoCommand( SudoFileName );
-  result := SudoFileName.FName
-           + strif( SudoFileName.Param1 <> '', ' ' + SudoFileName.Param1 )
-           + strif( SudoFileName.Param2 <> '', ' ' + SudoFileName.Param2 )
-           + ' ';
-end;
-
-
-procedure TCmdObjHelper.ProcessCommandEntry( aString : string; SudoFileName : TSudoFileName; strings : TStrings );
-var
-  SudoString : String;
-begin
-
-  SudoString := '';
-
-  if ProcessSudo( SudoFileName, SudoString, aString ) then
-  begin
-    StringsSudoFormat( Strings, SudoFileName, SudoString );
-    exit;
-  end;
+//there used to be more here regarding formatting a "sudo" string.
+//sudo'ing is no longer allowed, but in future if anything does need to be done
+//do it here.
+  //SudoString := '';
+  //
+//This formatted the "sudo" command
+  //if ProcessSudo( SudoFileName, SudoString, aString ) then
+  //begin
+  //  StringsSudoFormat( Strings, SudoFileName, SudoString );
+  //  exit;
+  //end;
 
   CommandToList( aString,  Strings );
 
@@ -1345,20 +1313,12 @@ begin
 
 end;
 
-function TCmdObjHelper.ClipBoardVersion( const Str : string; SuperUserCommand : TSudoFileName ) : string;
-var
-  RepStr : String;
+function TCmdObjHelper.ClipBoardVersion( const Str, RootFile : string ) : string;
 begin
   result := CmdObjHelper.VariablesAsClipboardText( Str );
 
   if pos( cReservedSuperUser, Str ) = 1 then
-  begin
-    if ( pos( 'sudo', SuperUserCommand.FName ) > 0 )
-       or ( ( SuperUserCommand.FName = '' ) or ( SuperUserCommand.FName = cSuperUserFileOff ) ) then
-      RepStr := 'sudo %s'
-    else RepStr := 'su -c "%s"';
-    result := format( RepStr, [ stringreplace( result, cReservedSuperUser, '', [ rfIgnoreCase ] ) ] );
-  end;
+    result := format( RootFile, [ stringreplace( result, cReservedSuperUser, '', [ rfIgnoreCase ] ) ] );
 
 end;
 
@@ -1385,9 +1345,7 @@ begin
   result := fCmdLine_ControlColumn_sql;
 end;
 
-function TCmdObjHelper.RouteCommand( aString : string; SudoFileName : TSudoFileName;
-                                        const DoDetach : boolean; var aProcess : TAsyncProcess ) : string;
-
+function TCmdObjHelper.RouteCommand( aString : string; const DoDetach : boolean; var aProcess : TAsyncProcess ) : string;
 var
   CmdSL : TCmdSL;
   DoThroughShell , IsPiped: Boolean;
@@ -1442,7 +1400,7 @@ begin
       DoThroughShell := true;//force pipes through shell too.
 
     end
-    else ProcessCommandEntry( aString, SudoFileName, CmdSL.SL );
+    else ProcessCommandEntry( aString, CmdSL.SL );
 
     if not GoodToRun then
       exit;
@@ -3713,7 +3671,8 @@ end;
 function TCmdObj.Merge_CmdLines( FromCmdObj : TCmdObj; const MergeSource : string ) : boolean;
 var
   CLOList : TStringList;
-  i , Idx, CLOIdx: Integer;
+  i , Idx, CLOIdx : integer;
+//  i , Idx : integer;
   FromCLO , ToCLO: TCmdLineObj;
 begin
 
@@ -3759,7 +3718,7 @@ end;
 function TCmdObj.Compare_CmdLines( FromCmdObj : TCmdObj ) : string;
 var
   CLOList : TStringList;
-  i , Idx, CLOIdx: Integer;
+  i , Idx : integer; //, CLOIdx: Integer;
   FromCLO : TCmdLineObj;//, ToCLO: TCmdLineObj;
   InList, InListNot, InDest : string;
 const

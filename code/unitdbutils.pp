@@ -42,7 +42,7 @@ const
   procedure Update_DB_Version_0004( const Key : string );
   procedure Update_PROG_Version_0001( IFile : TJiniFile; const FormSettEntry : string );
   procedure Update_PROG_Version_0002( IFile : TJiniFile );
-  procedure Update_PROG_Version_0003( IFile : TJiniFile; const Sect, Key : string );
+  procedure Update_PROG_Version_0003( IFile : TJiniFile; const Sect : string );
 
 //Text
   procedure UpdateUpgradeLevel( IFile : TJinifile; const aSection, aKey : string;
@@ -280,11 +280,13 @@ begin
   //IFile.EraseSection( FormSettings.GetDataSection );
 end;
 
-procedure Update_PROG_Version_0003( IFile : TJiniFile; const Sect, Key : string );
+procedure Update_PROG_Version_0003( IFile : TJiniFile; const Sect : string );
 begin
 //use this everytime, just in case.
   FormSettings.ClearAllFormSettings( IFile );
-  IFile.DeleteKey( Sect, Key );
+  IFile.DeleteKey( Sect, 'TERM' );
+  IFile.DeleteKey( Sect, 'FontOffset' );
+  IFile.EraseSection( 'SUFile' );
 end;
 
 function GenerateDBFilePath( const aPath, aFileName, anExtension : string ) : string;

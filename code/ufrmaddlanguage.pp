@@ -84,7 +84,7 @@ resourcestring
 
 implementation
 
-uses Strconst_prog, StrConst_EN, unitLanguages;
+uses Strconst_prog, StrConst_EN, unitLanguages, unitGlob;
 
 {$R *.lfm}
 
@@ -96,7 +96,7 @@ begin
     exit;
   FCanClose := false;
   FIsInitialized := true;
-
+  FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 end;
 
 procedure TfrmAddLanguage.FormClose(Sender : TObject; var CloseAction : TCloseAction);
@@ -265,6 +265,7 @@ end;
 
 procedure TfrmAddLanguage.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FLastFolder := '';
   SymbolList := TStringlist.Create;

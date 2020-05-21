@@ -20,6 +20,19 @@ unit ufrmSuperUserFile;
         You should have received a copy of the GNU General Public License
         along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+May 2020:
+This form was originally designed to select and store the name of the GUI root interfaces,
+gksu, gksudo, kdesudo, kdesu.
+But this is all deprecated now where one should use either pkexec or admin://
+
+Since they really don't want us running kdesudo and so on, I've ripped out the
+ability to do so.
+
+This form is now re-purposed (hence the odd-ish name) to hold the sudo string
+the user wants to have used when the Command line is copied and pasted:
+
+ie: <ROOT> kate
+will be pasted as:  'sudo kate' or 'su -c "kate"', etc.
 }
 
 interface
@@ -28,7 +41,7 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, HintFrame
   , lcltype {THis is needed for key up keyboard constants}
   , unitsharedobj, Buttons
-  , unitGlobForm, StdCtrls
+  , unitGlobForm, StdCtrls, ExtCtrls
   ;
 
 type
@@ -38,39 +51,31 @@ type
   TfrmSuperUserFile = class(TForm)
     btnCancel : TBitBtn;
     bntOK : TBitBtn;
-    btnsufile : TButton;
-    btnTurnOff : TButton;
-    btnsuinfo : TButton;
-    edtsufile : TEdit;
-    edtsuparam1 : TEdit;
-    edtsuparam2 : TEdit;
+    btnCustom : TBitBtn;
+    btnTemplate : TBitBtn;
+    btnTest : TBitBtn;
+    edtCustom : TEdit;
     FrameHint1 : TFrameHint;
     lblCurr : TLabel;
-    lbFiles : TListBox;
     lblCurrFile : TLabel;
+    rgTemplates : TRadioGroup;
     procedure bntOKClick(Sender : TObject);
     procedure btnCancelClick(Sender : TObject);
-    procedure btnsufileClick( Sender : TObject );
-    procedure btnsuinfoClick( Sender : TObject );
-    procedure btnTurnOffClick( Sender : TObject );
-    procedure edtsuparam1DblClick( Sender : TObject );
-    procedure edtsuparam2DblClick( Sender : TObject );
+    procedure btnCustomClick( Sender : TObject );
+    procedure btnTemplateClick( Sender : TObject );
+    procedure btnTestClick( Sender : TObject );
+    procedure edtCustomKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure FormActivate(Sender : TObject);
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCloseQuery(Sender : TObject; var CanClose : boolean);
     procedure FormCreate(Sender : TObject);
     procedure FormShow(Sender : TObject);
-    procedure lbFilesClick( Sender : TObject );
+    procedure rgTemplatesClick( Sender : TObject );
   private
     { private declarations }
     FCanClose : boolean;
     FHasShown : boolean;
     FIsInitialized : boolean;
-
-    fgksudoPath : string;
-    fgksuPath : string;
-    fkdesudoPath : string;
-    fkdesuPath : string;
 
     procedure HandleFormSettings( const TheType : TSettingsDirective );
   public
@@ -88,9 +93,11 @@ implementation
 
 uses ufrmMsgDlg
      , strconst_en
+     , strconst_prog
      , unitcommands
      , linuxtrix
      , uSingleInput
+     , unitglob
      ;
 
 resourcestring
@@ -129,7 +136,7 @@ resourcestring
 //juus SUPERUSER FILE CHOOSING DIALOG ====> OUT!
 procedure TfrmSuperUserFile.FormShow(Sender : TObject);
 var
-  aPath : String;
+  Idx : integer;
 begin
 
   if not FHasShown then
@@ -137,39 +144,27 @@ begin
     FCanClose := false;
     HandleFormSettings( sdLoad );
 
-//PolicyKit ??!?? when? how?
-    aPath := SystemFileLocation( 'kdesudo' );
-    if aPath = '' then
-      fkdesudoPath := cmsgsufBadPath
-    else fkdesudoPath := ExtractFilePath( aPath );
+    FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 
-    aPath := SystemFileLocation( 'gksudo' );
-    if aPath = '' then
-      fgksudoPath := cmsgsufBadPath
-    else fgksudoPath := ExtractFilePath( aPath );
+    rgTemplates.Items.Add( '&X  ' + cRootFileSudo );
+    rgTemplates.Items.Add( '&Y  ' + cRootFileSu );
+    rgTemplates.Items.Add( '&Z  ' + cRootFileSuSession );
 
-    aPath := SystemFileLocation( 'gksu' );
-    if aPath = '' then
-      fgksuPath := cmsgsufBadPath
-    else fgksuPath := ExtractFilePath( aPath );
+    Idx := -1;
+    if pos( cRootFileSudo, lblCurrfile.Caption ) > 0 then
+      Idx := 0
+    else if pos( cRootFileSu, lblCurrfile.Caption ) > 0 then
+      Idx := 1
+    else if pos( cRootFileSuSession, lblCurrfile.Caption ) > 0 then
+      Idx := 2;
 
-    fkdesuPath := '/usr/lib/kde4/libexec/';//not in $PATH, you just need to know where it is!!
-    if not fileexists( fkdesuPath + 'kdesu' ) then
-      fkdesuPath := cmsgsufBadPath;
+    if Idx = -1 then
+    begin
+      Idx := 0;
+      edtCustom.Text := lblCurrfile.Caption;
+    end;
 
-    lbFiles.Items.Add( 'gksudo' );
-    lbFiles.Items.Add( 'gksu' );
-    lbFiles.Items.Add( 'kdesudo' );
-    lbFiles.Items.Add( 'kdesu' );
-//other varieties as of xmas 2016
-    //lbFiles.Items.Add( 'ktsuss' ); //??!??
-    //lbFiles.Items.Add( 'beesu' ); //redhat
-
-    lbFiles.ItemIndex := lbFiles.Items.IndexOf( ExtractFileName( lblCurrFile.Caption ) );
-    lbFilesClick( Self );
-
-    edtsuparam1.Hint := csufHintParams;
-    edtsuparam2.Hint := csufHintParams;
+    rgTemplates.ItemIndex := Idx;
 
     FHasShown := true;
 
@@ -177,34 +172,9 @@ begin
 
 end;
 
-procedure TfrmSuperUserFile.lbFilesClick( Sender : TObject );
-var
-  FNName : String;
+procedure TfrmSuperUserFile.rgTemplatesClick( Sender : TObject );
 begin
-
-  if lbFiles.ItemIndex < 0 then
-    exit;
-
-  FNName := lbFiles.Items[ lbFiles.ItemIndex ];
-  edtsuparam1.Text := '';
-  edtsuparam2.Text := '';
-
-//if, in future, you want to add support to forget passwords the settings are below
-//kdesudo  kdesu: "-s" forgets password
-//gksudo gksu:  none!?! --help gives no flag for forgetting, maybe it forgets always. But why?
-
-  case lbFiles.ItemIndex of
-    0 : edtsuFile.Text := fgksudoPath + FNName;
-    1 : edtsuFile.Text := fgksuPath + FNName;
-    2 : edtsuFile.Text := fkdesudoPath + FNName;
-    3 :
-      begin
-        edtsuFile.Text := fkdesuPath + FNName;
-        edtsuparam1.Text := '-t';
-        edtsuparam2.Text := '-c';
-      end;
-  end;
-
+  btnTemplate.Click;
 end;
 
 procedure TfrmSuperUserFile.HandleFormSettings( const TheType : TSettingsDirective );
@@ -239,11 +209,6 @@ end;
 
 procedure TfrmSuperUserFile.bntOKClick(Sender : TObject);
 begin
-  if not fileexists( edtsuFile.Text ) then
-  begin
-    Showmessage( format( cmsgBadSUFile, [ edtsuFile.Text ] ) );
-    exit;
-  end;
   FCanClose := true;
   Modalresult := mrOK;
 end;
@@ -254,82 +219,55 @@ begin
   Modalresult := mrCancel;
 end;
 
-procedure TfrmSuperUserFile.btnsufileClick( Sender : TObject );
+procedure TfrmSuperUserFile.btnCustomClick( Sender : TObject );
 var
-  FNName, str : String;
-  fstr : RawByteString;
+  Idx, tempIdx : integer;
+  str, tempstr : string;
 begin
 
-  FNName := '';
-  if not DoSingleInput( ccapChooseSUFile, FNName, simFile, self, false ) then
-    exit;
-
-  if not fileexists( FNName ) then
+  if trim( edtCustom.Text ) = '' then
   begin
-    Showmessage( format( cmsgBadSUFile, [ FNName ] ) );
+    Showmessage( cInputCantBeBlank );
     exit;
   end;
 
-  fstr := ExtractFileName( FNName );
-  if ( fstr = 'su' ) or ( fstr = 'sudo' ) then
+
+  //TempStr := stringreplace( TempStr, '''<<F>>''', '<<F>>', [ rfreplaceall, rfignorecase ] );
+
+
+  str := trim( edtCustom.Text );
+  str := stringreplace( str, '%S', '%s', [ rfreplaceall ] );//, rfignorecase
+  Idx := pos( '%s', str );
+
+  tempstr := copy( str, Idx + 2, maxint );
+  tempIdx := pos( '%s', tempstr );
+
+  if ( Idx = 0 ) or ( tempIdx > 0 ) then
   begin
-    Showmessage( cmsgRawSudo );
+    MsgDlgMessage( ccapRootFileInfo, cmsgRootFileInfo );
+    MsgDlgInfo( self );
     exit;
   end;
 
-  edtsufile.Text := FNName;
-  edtsuparam1.Text := '';
-  edtsuparam2.Text := '';
-
-  str := '';
-  if DoSingleInput( ccapTypeSUFileParam1, str, simEdit, self, false ) then
-  begin
-    edtsuparam1.Text := str;
-    str := '';
-    DoSingleInput( ccapTypeSUFileParam2, str, simEdit, self, false );
-    edtsuparam2.Text := str;
-  end;
+  lblCurrFile.caption := str;
 
 end;
 
-procedure TfrmSuperUserFile.btnsuinfoClick( Sender : TObject );
+procedure TfrmSuperUserFile.btnTemplateClick( Sender : TObject );
 begin
-  MsgDlgMessage( ccapSUFileInfo, cmsgSUFileInfo );
+  lblCurrFile.Caption := copy( rgTemplates.Items[ rgTemplates.ItemIndex ], 5, Maxint );
+end;
+
+procedure TfrmSuperUserFile.btnTestClick( Sender : TObject );
+begin
+  MsgDlgMessage( ccapRootFileTest, format( lblCurrFile.Caption, [ 'myCLine --help'] ) );
   MsgDlgInfo( self );
 end;
 
-procedure TfrmSuperUserFile.btnTurnOffClick( Sender : TObject );
+procedure TfrmSuperUserFile.edtCustomKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  MsgDlgMessage( ccapTurnOffRoot, cmsgTurnOffRoot );
-  if MsgDlgConfirmation( self ) = mrNo then
-    exit;
-
-  edtsuFile.Text := cSuperUserFileOff;
-  edtsuparam1.Text := '';
-  edtsuparam2.Text := '';
-  fCanClose := true;
-  ModalResult := mrOK;
-
-end;
-
-procedure TfrmSuperUserFile.edtsuparam1DblClick( Sender : TObject );
-var
-  str : TCaption;
-begin
-  str := edtsuparam1.Text;
-  if not DoSingleInput( ccapTypeSUFileParam, str, simEdit, self, false ) then
-    exit;
-  edtsuparam1.Text := str;
-end;
-
-procedure TfrmSuperUserFile.edtsuparam2DblClick( Sender : TObject );
-var
-  str : TCaption;
-begin
-  str := edtsuparam2.Text;
-  if not DoSingleInput( ccapTypeSUFileParam, str, simEdit, self, false ) then
-    exit;
-  edtsuparam2.Text := str;
+  if Key = vk_Return then
+    btnCustom.Click;
 end;
 
 procedure TfrmSuperUserFile.FormActivate(Sender : TObject);
@@ -348,6 +286,7 @@ end;
 
 procedure TfrmSuperUserFile.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

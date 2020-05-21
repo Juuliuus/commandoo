@@ -211,6 +211,7 @@ end;
 
 procedure TfrmProfilesMerge.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

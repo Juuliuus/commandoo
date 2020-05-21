@@ -39,6 +39,7 @@ type
   Tfrm_Search_Operator = class( TForm)
     lblSeOpType : TLabel;
     rgSeOpOperator : TRadioGroup;
+    procedure FormCreate( Sender : TObject );
     procedure FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure rgSeOpOperatorSelectionChanged( Sender : TObject );
   private
@@ -64,6 +65,7 @@ implementation
 uses ufrmSearch
   , unitDBConstants
   , unitGlob
+  , unitglobform
   ;
 
 {$R *.lfm}
@@ -87,6 +89,12 @@ begin
   //pressing return in memo sent the key to parent form which clicked the OK button. ugh.
     if key = vk_return then
       Key := VK_UNKNOWN;
+end;
+
+procedure Tfrm_Search_Operator.FormCreate( Sender : TObject );
+begin
+  font.size := cDefaultFontSize;
+  ApplyChangeFont( Self );
 end;
 
 procedure Tfrm_Search_Operator.RegisterBoolExpr( BE : TfrmBoolExpr );

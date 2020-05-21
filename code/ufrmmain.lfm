@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 2160
+  Left = 1976
   Height = 900
-  Top = 178
+  Top = 244
   Width = 1432
   Caption = 'commandoo'
   ClientHeight = 900
@@ -430,9 +430,9 @@ object frmMain: TfrmMain
             end
           end
           object pnlCmdLine: TPanel
-            Left = 360
+            Left = 352
             Height = 289
-            Top = -40
+            Top = 48
             Width = 950
             Anchors = [akLeft, akRight, akBottom]
             ClientHeight = 289
@@ -453,7 +453,7 @@ object frmMain: TfrmMain
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
               ScrollBars = ssAutoVertical
-              TabOrder = 9
+              TabOrder = 10
             end
             object cbSuperUserLine: TCheckBox
               Left = 9
@@ -466,7 +466,7 @@ object frmMain: TfrmMain
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
-              TabOrder = 2
+              TabOrder = 3
             end
             object cbIsFavoriteLine: TCheckBox
               Left = 9
@@ -479,7 +479,7 @@ object frmMain: TfrmMain
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
-              TabOrder = 3
+              TabOrder = 4
             end
             object cbDetachProcessLine: TCheckBox
               Left = 9
@@ -492,17 +492,18 @@ object frmMain: TfrmMain
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
-              TabOrder = 4
+              TabOrder = 5
             end
             object lblcapEntryLine: TLabel
-              Left = 11
+              Left = 611
               Height = 18
-              Top = 4
+              Top = 8
               Width = 35
               Caption = 'NT LI'
               Font.Height = -14
               ParentColor = False
               ParentFont = False
+              Visible = False
             end
             object cbWantsInputLine: TCheckBox
               Left = 9
@@ -515,7 +516,7 @@ object frmMain: TfrmMain
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
-              TabOrder = 6
+              TabOrder = 7
             end
             object cbUseShellLine: TCheckBox
               Left = 9
@@ -528,7 +529,7 @@ object frmMain: TfrmMain
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
-              TabOrder = 5
+              TabOrder = 6
             end
             object pnlCLEdit: TPanel
               Tag = 123321
@@ -541,7 +542,7 @@ object frmMain: TfrmMain
               Font.Height = -16
               ParentColor = False
               ParentFont = False
-              TabOrder = 11
+              TabOrder = 12
             end
             object edtFriendlyNameLine: TEdit
               Left = 717
@@ -556,7 +557,7 @@ object frmMain: TfrmMain
               OnChange = edtFriendlyNameLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
-              TabOrder = 10
+              TabOrder = 11
               TextHint = 'Alias for Favorites List'
             end
             object lblCapNotesLine: TLabel
@@ -591,7 +592,7 @@ object frmMain: TfrmMain
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
-              TabOrder = 8
+              TabOrder = 9
             end
             object cbAlertLine: TCheckBox
               Left = 9
@@ -603,7 +604,7 @@ object frmMain: TfrmMain
               Font.Height = -16
               OnChange = cbSuperUserLineChange
               ParentFont = False
-              TabOrder = 7
+              TabOrder = 8
             end
             object shpCmdLineIn: TShape
               Left = 0
@@ -615,9 +616,9 @@ object frmMain: TfrmMain
             end
             object memEntry: TMemo
               Left = 11
-              Height = 74
+              Height = 64
               Hint = 'The Command Line you are editing.'#10#10'Press ENTER to open a helper window '#10'that will show help for this command line, '#10'for reference while you edit, and some '#10'helper buttons to insert "variables" into '#10'the command line.'#10#10'The variables are used to fill in values at'#10'running time. You can add a variable for '#10'any text, an integer, a real number, or a '#10'filename.'#10#10'Press ctrl-alt-enter to test run the '#10'Command Line, or click the Run/Test '#10'button.'#10#10'<end>'
-              Top = 24
+              Top = 34
               Width = 929
               Anchors = [akTop, akLeft, akRight]
               Font.Height = -16
@@ -648,7 +649,7 @@ object frmMain: TfrmMain
               OnChange = cbThreatLevelLineChange
               ParentColor = True
               ParentFont = False
-              TabOrder = 12
+              TabOrder = 13
               Text = '< Not Specified >'
             end
             object btnThreatLevelInfoLine: TButton
@@ -664,6 +665,17 @@ object frmMain: TfrmMain
               ParentFont = False
               TabOrder = 0
               TabStop = False
+            end
+            object btnBuilder: TBitBtn
+              Left = 11
+              Height = 31
+              Top = 2
+              Width = 305
+              Caption = '&K  Command Line Builder / Helper'
+              Font.Height = -14
+              OnClick = btnBuilderClick
+              ParentFont = False
+              TabOrder = 2
             end
           end
           object shpCmdLineOut1: TShape
@@ -2114,7 +2126,7 @@ object frmMain: TfrmMain
     Tag = 223322
     Left = 8
     Height = 276
-    Hint = 'Yes. Output results come here,'#10#10'<end>'
+    Hint = 'Don''t be fooled...this is not a terminal '#10'emulator, it is simply the output area '#10'for command line results.'#10#10'You can double click it to save to a file or '#10'send to clipboard.'#10#10'<end>'
     Top = 617
     Width = 1128
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -2142,12 +2154,11 @@ object frmMain: TfrmMain
     Transparent = False
   end
   object cbWordWrapMain: TCheckBox
-    Left = 1142
+    Left = 1209
     Height = 25
     Hint = 'You can choose to wrap the line content of '#10'the Output window to the left.'#10#10'Whether the output wraps or not depends'#10'on this item''s checked state.'#10#10'<end>'
-    Top = 817
+    Top = 809
     Width = 165
-    Alignment = taLeftJustify
     Anchors = [akTop, akRight]
     Caption = 'Wordwrap Output '
     Checked = True
@@ -2274,7 +2285,7 @@ object frmMain: TfrmMain
     Left = 1142
     Height = 29
     Hint = 'Maybe you don''t like clutter. Maybe you '#10'don''t want people to see what you''ve '#10'been running.'#10#10'Use this button to clear the OutPut memo.'#10#10'<end>'
-    Top = 784
+    Top = 777
     Width = 232
     Anchors = [akTop, akRight]
     Caption = 'Clear Display History'

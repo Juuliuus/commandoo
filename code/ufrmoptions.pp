@@ -44,13 +44,12 @@ type
     btnAddLangOK : TBitBtn;
     btnDone : TBitBtn;
     btnAddLang : TBitBtn;
-    btnResetDlgs : TButton;
-    btnTerminal : TButton;
-    btnRootFile : TButton;
-    btnSqlLib : TButton;
-    btnTerminalReset : TButton;
-    btnSqlLibReset : TButton;
-    Button2 : TButton;
+    btnResetDlgs : TBitBtn;
+    btnRootFile : TBitBtn;
+    btnSqlLib : TBitBtn;
+    btnSqlLibReset : TBitBtn;
+    btnTerminal : TBitBtn;
+    btnTerminalReset : TBitBtn;
     cbAllowMultipleOpens : TCheckBox;
     cbLanguage : TComboBox;
     cbMaxOutput : TComboBox;
@@ -63,12 +62,12 @@ type
     cbDanger : TCheckBox;
     cbSqlDB : TCheckBox;
     cbTextDB : TCheckBox;
+    cbLargerFont : TCheckBox;
     edtRootFile : TEdit;
     edtTerminal : TEdit;
     edtSqlLib : TEdit;
     FrameHint1 : TFrameHint;
     lblDisplayMax : TLabel;
-    lblChangeFont : TLabel;
     lblTerminalCap : TLabel;
     lblRootFileCap : TLabel;
     lblMaxOutput : TLabel;
@@ -78,10 +77,7 @@ type
     pnlAdvOpt : TPanel;
     ShapeLangOK : TShape;
     speDisplayMax : TSpinEdit;
-    speChangeFont : TSpinEdit;
-    StatusBar1 : TStatusBar;
     tmrLangOK : TTimer;
-    ToolBar1 : TToolBar;
     procedure btnAddLangClick(Sender : TObject);
     procedure btnAddLangOKClick( Sender : TObject );
     procedure btnRootFileClick( Sender : TObject );
@@ -91,28 +87,31 @@ type
     procedure btnResetDlgsClick(Sender : TObject);
     procedure btnTerminalResetClick( Sender : TObject );
     procedure cbLanguageChange(Sender : TObject);
+    procedure cbLargerFontChange( Sender : TObject );
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCreate( Sender : TObject );
     procedure FormShow(Sender : TObject);
-    procedure speChangeFontChange( Sender : TObject );
     procedure speDisplayMaxKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure tmrLangOKTimer( Sender : TObject );
   private
-    fSUFile : string;
-    fSUParam1 : string;
-    fSUParam2 : string;
+    fRoot_File : string;
+    //fSUFile : string;
+    //fSUParam1 : string;
+    //fSUParam2 : string;
+    fHasShown : boolean;
     procedure HandleFormSettings(TheType : TSettingsDirective);
-    procedure SetSUFile( AValue : string );
-    procedure SetSUParam1( AValue : string );
-    procedure SetSUParam2( AValue : string );
+    //procedure SetSUFile( AValue : string );
+    //procedure SetSUParam1( AValue : string );
+    //procedure SetSUParam2( AValue : string );
     procedure UpdateShared;
     { private declarations }
   public
     { public declarations }
     VerifyLangIndex : integer;
-    property SUFile : string read fSUFile write SetSUFile;
-    property SUParam1 : string read fSUParam1 write SetSUParam1;
-    property SUParam2 : string read fSUParam2 write SetSUParam2;
+    property Root_File : string read fRoot_File write fRoot_File;
+    //property SUFile : string read fSUFile write SetSUFile;
+    //property SUParam1 : string read fSUParam1 write SetSUParam1;
+    //property SUParam2 : string read fSUParam2 write SetSUParam2;
   end;
 
 var
@@ -128,6 +127,7 @@ uses ufrmMsgDlg, unitLanguages
   , ufrmSuperUserFile
   , unitDBConstants
   , unitGlob
+//  , strconst_en
   //, ufrmColorTest
   ;
 
@@ -320,16 +320,19 @@ procedure TfrmOptions.btnRootFileClick( Sender : TObject );
 begin
   with TfrmSuperUserFile.Create( self ) do
   try
-    lblCurrFile.Caption := SUFile;
+//    lblCurrFile.Caption := SUFile;
+    lblCurrFile.Caption := fRoot_File;
 
     ShowModal;
 
     if ModalResult = mrOK then
     begin
-      SUFile := edtsufile.Text;
-      SUParam1 := edtsuparam1.Text;
-      SUParam2 := edtsuparam2.Text;
-      edtRootFile.Text := SUFile + ' ' + SUParam1 + ' ' + SUParam2;
+      fRoot_File := lblCurrFile.Caption;
+      //SUFile := edtsufile.Text;
+      //SUParam1 := edtsuparam1.Text;
+      //SUParam2 := edtsuparam2.Text;
+//      edtRootFile.Text := SUFile + ' ' + SUParam1 + ' ' + SUParam2;
+      edtRootFile.Text := fRoot_File;
     end;
 
   finally
@@ -379,6 +382,13 @@ begin
   shapeLangOK.Visible := true;
 end;
 
+procedure TfrmOptions.cbLargerFontChange( Sender : TObject );
+begin
+  if not fHasShown then
+    exit;
+  ApplyChangeFont( Self, true );
+end;
+
 procedure TfrmOptions.FormClose(Sender : TObject; var CloseAction : TCloseAction);
 begin
   HandleFormSettings( sdSave );
@@ -386,8 +396,10 @@ end;
 
 procedure TfrmOptions.FormCreate( Sender : TObject );
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   UpdateShared;
+  fHasShown := false;
 end;
 
 procedure TfrmOptions.UpdateShared;
@@ -414,25 +426,15 @@ end;
 
 procedure TfrmOptions.FormShow(Sender : TObject);
 begin
-  HandleFormSettings( sdLoad );
+  if not fHasShown then
+  begin
+    HandleFormSettings( sdLoad );
+    btnDone.caption := cbtn_Done;
+    FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
+    fHasShown := true;
+  end;
 end;
 
-
-procedure TfrmOptions.speChangeFontChange( Sender : TObject );
-begin
-  //10 / (128/96)
-  //my chosen ref: 10, lazarus changes it to the above=7.5=7 font size when screen is 128
-  //str := 'SIppiX: ' + Inttostr( Graphics.ScreenInfo.PixelsPerInchX );
-  //Showmessage( str );
-  //str := 'SIppiY: ' + Inttostr( Graphics.ScreenInfo.PixelsPerInchY );
-  //Showmessage( str );
-  //str := 'ScreenPPI: ' + Inttostr( Screen.PixelsPerInch );
-  //Showmessage( str );
-
-  globFontOffset := speChangeFont.Value;
-  ApplyChangeFont( Self, true );
-
-end;
 
 procedure TfrmOptions.speDisplayMaxKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
@@ -470,23 +472,23 @@ begin
 
 end;
 
-procedure TfrmOptions.SetSUFile( AValue : string );
-begin
-  if fSUFile = AValue then Exit;
-  fSUFile := AValue;
-end;
-
-procedure TfrmOptions.SetSUParam1( AValue : string );
-begin
-  if fSUParam1 = AValue then Exit;
-  fSUParam1 := AValue;
-end;
-
-procedure TfrmOptions.SetSUParam2( AValue : string );
-begin
-  if fSUParam2 = AValue then Exit;
-  fSUParam2 := AValue;
-end;
+//procedure TfrmOptions.SetSUFile( AValue : string );
+//begin
+//  if fSUFile = AValue then Exit;
+//  fSUFile := AValue;
+//end;
+//
+//procedure TfrmOptions.SetSUParam1( AValue : string );
+//begin
+//  if fSUParam1 = AValue then Exit;
+//  fSUParam1 := AValue;
+//end;
+//
+//procedure TfrmOptions.SetSUParam2( AValue : string );
+//begin
+//  if fSUParam2 = AValue then Exit;
+//  fSUParam2 := AValue;
+//end;
 
 end.
 

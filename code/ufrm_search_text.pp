@@ -78,6 +78,7 @@ uses ufrmSearch
     , ufrmMsgDlg
     , unitDBConstants
     , unitGlob
+    , unitglobform
     ;
 
 {$R *.lfm}
@@ -101,6 +102,8 @@ end;
 procedure Tfrm_Search_Text.FormCreate( Sender : TObject );
 begin
 
+  font.size := cDefaultFontSize;
+  ApplyChangeFont( Self );
   fIsLoading := false;
 
   GetAllowedSearchConditions( rgSeList.Items, cConditionsAllowed_Text );

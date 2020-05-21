@@ -31,6 +31,7 @@ uses
   , unitcommands
   , uSingleInput
   , unitGlobForm
+  , unitglob
   ;
 
 type
@@ -47,14 +48,14 @@ type
     actRevert : TAction;
     actOK : TAction;
     ActionList1 : TActionList;
-    btnConsolidate : TButton;
-    btnRevert : TButton;
-    btnEdit : TButton;
+    btnAdd : TBitBtn;
+    btnConsolidate : TBitBtn;
     btnCancel : TBitBtn;
+    btnDelete : TBitBtn;
+    btnEdit : TBitBtn;
     btnOK : TBitBtn;
-    btnAdd : TButton;
-    btnDelete : TButton;
-    btnShowUsage : TButton;
+    btnRevert : TBitBtn;
+    btnShowUsage : TBitBtn;
     FrameHint1 : TFrameHint;
     gbManageList : TGroupBox;
     lblInstructions : TLabel;
@@ -133,7 +134,6 @@ uses ufrmMsgDlg
   , ufrmListManagerConsolidate
   , strconst_en
   , unitDBUtils
-  , unitglob
   ;
 
 const
@@ -163,7 +163,6 @@ resourcestring
     + 'have changed. '
     + LineEnding + LineEnding;
 
-  ccapListManagerDone = '&O  Done';
   ccapListManagerConsolidateInfo = 'Consolidate %s';
   ccapListManagerListItemUsage = '"%s" is used by:';
 
@@ -183,12 +182,13 @@ begin
   HandleFormSettings( sdLoad );
 
   UpdatelbList( -1, false );
+  FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 
   if not fManagementMode then
     Caption := format( cmsgListManagerClue, [ fDisplayWordPlural, ClueTarget ] )
   else
   begin
-    btnOK.Caption := ccapListManagerDone;
+    btnOK.Caption := cbtn_Done;
     btnCancel.Visible := false;
     lblInstructions.Caption := '';
     Caption := format( cmsgListManagerMangementMode, [ fDisplayWordPlural ] );
@@ -501,6 +501,7 @@ end;
 
 procedure TfrmListManager.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

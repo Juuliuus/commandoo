@@ -37,11 +37,11 @@ type
   { TfrmCommandsVar }
 
   TfrmCommandsVar = class(TForm)
+    btnApply : TBitBtn;
     btnCancel : TBitBtn;
-    btnApply : TButton;
-    btnFileName : TButton;
-    btnDone : TButton;
-    btnFolderName : TButton;
+    btnDone : TBitBtn;
+    btnFileName : TBitBtn;
+    btnFolderName : TBitBtn;
     edtInput : TEdit;
     edtCmdLine : TEdit;
     FrameHint1 : TFrameHint;
@@ -119,6 +119,7 @@ begin
     btnFileName.Hint := format( cmsgCVChooseFileFolder, [ cmsgCVChooseFile ] );
     btnFolderName.Hint := format( cmsgCVChooseFileFolder, [ cmsgCVChooseFolder ] );
 
+    FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 
     FHasShown := true;
   end;
@@ -271,6 +272,7 @@ end;
 
 procedure TfrmCommandsVar.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

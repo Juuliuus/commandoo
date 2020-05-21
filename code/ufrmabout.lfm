@@ -1,55 +1,57 @@
 object frmAbout: TfrmAbout
-  Left = 3058
-  Height = 380
-  Top = 364
-  Width = 690
+  Left = 2374
+  Height = 507
+  Top = 386
+  Width = 920
+  ActiveControl = memOutput
   Caption = 'Commandoo About'
-  ClientHeight = 380
-  ClientWidth = 690
+  ClientHeight = 507
+  ClientWidth = 920
   Color = clBlack
-  Constraints.MinHeight = 380
-  Constraints.MinWidth = 690
-  Font.Height = -13
+  Constraints.MinHeight = 507
+  Constraints.MinWidth = 920
+  DesignTimePPI = 128
+  Font.Height = -16
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poMainFormCenter
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.6.0'
   object memOutput: TMemo
-    Left = 32
-    Height = 306
-    Top = 24
-    Width = 528
+    Left = 43
+    Height = 358
+    Top = 27
+    Width = 704
     Anchors = [akTop, akLeft, akRight, akBottom]
-    Font.Height = -15
+    Font.Height = -16
     ParentFont = False
     ScrollBars = ssAutoVertical
     TabOrder = 0
   end
   object btnOK: TBitBtn
-    Left = 584
-    Height = 30
-    Top = 40
-    Width = 75
+    Left = 779
+    Height = 40
+    Top = 53
+    Width = 100
     Anchors = [akTop, akRight]
     Cancel = True
     Default = True
     DefaultCaption = True
-    Font.Height = -13
+    Font.Height = -16
     Kind = bkOK
     ModalResult = 1
     OnClick = btnOKClick
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 3
   end
   object Image1: TImage
-    Left = 478
-    Height = 171
-    Top = 193
-    Width = 200
+    Left = 637
+    Height = 227
+    Top = 203
+    Width = 267
     Anchors = [akRight, akBottom]
     AutoSize = True
-    Constraints.MinHeight = 170
-    Constraints.MinWidth = 200
+    Constraints.MinHeight = 227
+    Constraints.MinWidth = 267
     Picture.Data = {
       1754506F727461626C654E6574776F726B4772617068696344F3000089504E47
       0D0A1A0A0000000D49484452000000C8000000AB0806000001543FE3FC000001
@@ -2001,16 +2003,26 @@ object frmAbout: TfrmAbout
     }
     Transparent = True
   end
-  object btnToggle: TButton
-    Left = 32
-    Height = 42
-    Top = 333
-    Width = 528
-    Anchors = [akLeft, akBottom]
+  object btnToggle: TBitBtn
+    Left = 53
+    Height = 56
+    Top = 389
+    Width = 684
+    Anchors = [akLeft, akRight, akBottom]
     Caption = '&A  Toggle About => Introduction => Tips'
-    Font.Height = -13
+    Font.Height = -17
     OnClick = btnToggleClick
     ParentFont = False
     TabOrder = 1
+  end
+  object btnSaveToFile: TBitBtn
+    Left = 290
+    Height = 40
+    Top = 456
+    Width = 175
+    Anchors = [akLeft, akRight, akBottom]
+    Caption = '&F Save to file'
+    OnClick = btnSaveToFileClick
+    TabOrder = 2
   end
 end

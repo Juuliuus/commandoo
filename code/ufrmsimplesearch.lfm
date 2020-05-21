@@ -1,17 +1,17 @@
 object frmSimpleSearch: TfrmSimpleSearch
-  Left = 2066
-  Height = 733
-  Top = 426
-  Width = 1013
+  Left = 2132
+  Height = 650
+  Top = 326
+  Width = 960
   ActiveControl = memSearchValue
   Caption = 'Search selected text fields'
-  ClientHeight = 733
-  ClientWidth = 1013
-  Constraints.MaxHeight = 733
-  Constraints.MinHeight = 733
-  Constraints.MinWidth = 1013
+  ClientHeight = 650
+  ClientWidth = 960
+  Constraints.MaxHeight = 650
+  Constraints.MinHeight = 650
+  Constraints.MinWidth = 960
   DesignTimePPI = 128
-  Font.Height = -17
+  Font.Height = -16
   KeyPreview = True
   OnActivate = FormActivate
   OnClose = FormClose
@@ -23,64 +23,65 @@ object frmSimpleSearch: TfrmSimpleSearch
   LCLVersion = '2.0.6.0'
   object Bevel1: TBevel
     Left = 3
-    Height = 11
-    Top = 633
-    Width = 1004
+    Height = 6
+    Top = 561
+    Width = 951
+    Anchors = [akTop, akLeft, akRight]
   end
   inline FrameHint1: TFrameHint
-    Left = 585
-    Height = 55
-    Top = -4
-    Width = 569
-    ClientHeight = 55
-    ClientWidth = 569
+    Left = 618
+    Height = 29
+    Top = 1
+    Width = 336
+    ClientHeight = 29
+    ClientWidth = 336
     ParentColor = True
-    TabOrder = 24
+    TabOrder = 17
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
-      Left = 187
+      Left = 99
       Height = 24
       Top = 5
       Width = 223
     end
   end
-  object bntSSOK: TBitBtn
-    Left = 725
+  object btnSSOK: TBitBtn
+    Left = 672
     Height = 41
     Top = 43
     Width = 100
     Anchors = [akTop, akRight]
-    Color = 4737096
+    Caption = 'DNT'
     Default = True
-    DefaultCaption = True
-    Font.Height = -17
-    Kind = bkOK
-    OnClick = bntSSOKClick
+    Font.Height = -16
+    GlyphShowMode = gsmNever
+    OnClick = btnSSOKClick
     ParentFont = False
-    TabOrder = 22
+    TabOrder = 15
   end
   object btnSSCancel: TBitBtn
-    Left = 853
+    Left = 800
     Height = 40
     Top = 43
     Width = 137
     Anchors = [akTop, akRight]
-    Color = 4737096
-    DefaultCaption = True
-    Font.Height = -17
-    Kind = bkCancel
+    Cancel = True
+    Caption = 'Cancel'
+    Font.Height = -16
+    GlyphShowMode = gsmNever
     OnClick = btnSSCancelClick
     ParentFont = False
-    TabOrder = 23
+    TabOrder = 16
   end
   object memSearchValue: TMemo
-    Left = 21
-    Height = 79
+    Left = 22
+    Height = 74
     Hint = 'The text being searched for.'#10#10'Use the checkboxes below to '#10'indicate whether the search '#10'should be case sensitve and/or'#10'the search text is a regular'#10'expression.'#10#10'<end>'
     Top = 75
-    Width = 463
-    Font.Height = -17
+    Width = 459
+    Anchors = [akTop, akLeft, akRight]
+    Font.Height = -16
     ParentFont = False
     ScrollBars = ssAutoBoth
     TabOrder = 0
@@ -88,21 +89,22 @@ object frmSimpleSearch: TfrmSimpleSearch
   end
   object cbMatchCase: TCheckBox
     Left = 21
-    Height = 26
-    Top = 156
-    Width = 116
+    Height = 25
+    Top = 150
+    Width = 112
+    Alignment = taLeftJustify
     Caption = 'DNT MCase'
-    Font.Height = -17
+    Font.Height = -16
     OnClick = cbREClick
     ParentFont = False
     TabOrder = 1
   end
   object cgCmd: TCheckGroup
-    Left = 672
-    Height = 232
-    Top = 159
+    Left = 627
+    Height = 170
+    Top = 143
     Width = 310
-    Anchors = [akTop, akLeft, akRight]
+    Anchors = [akTop, akRight]
     AutoFill = True
     Caption = 'cgCmd'
     ChildSizing.LeftRightSpacing = 6
@@ -113,16 +115,16 @@ object frmSimpleSearch: TfrmSimpleSearch
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    Font.Height = -17
+    Font.Height = -16
     ParentFont = False
-    TabOrder = 13
+    TabOrder = 9
   end
   object cgCmdLine: TCheckGroup
-    Left = 672
-    Height = 195
-    Top = 416
+    Left = 627
+    Height = 139
+    Top = 352
     Width = 310
-    Anchors = [akTop, akLeft, akRight]
+    Anchors = [akTop, akRight]
     AutoFill = True
     Caption = 'cgCmdLine'
     ChildSizing.LeftRightSpacing = 6
@@ -133,18 +135,18 @@ object frmSimpleSearch: TfrmSimpleSearch
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    Font.Height = -17
+    Font.Height = -16
     ParentFont = False
-    TabOrder = 16
+    TabOrder = 12
   end
   object cbRE: TCheckBox
-    Left = 369
-    Height = 26
-    Top = 156
-    Width = 111
+    Left = 374
+    Height = 25
+    Top = 150
+    Width = 107
     Anchors = [akTop, akRight]
     Caption = 'DNT RegEx'
-    Font.Height = -17
+    Font.Height = -16
     OnClick = cbREClick
     ParentFont = False
     TabOrder = 2
@@ -153,58 +155,61 @@ object frmSimpleSearch: TfrmSimpleSearch
     Left = 12
     Height = 31
     Top = 39
-    Width = 641
+    Width = 598
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'Search for text:'
-    Font.Height = -24
+    Font.Height = -21
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object memSearchValue1: TMemo
-    Left = 21
-    Height = 79
-    Top = 293
-    Width = 463
-    Font.Height = -17
+    Left = 22
+    Height = 74
+    Top = 255
+    Width = 459
+    Anchors = [akTop, akLeft, akRight]
+    Font.Height = -16
     ParentFont = False
     ScrollBars = ssAutoBoth
-    TabOrder = 4
+    TabOrder = 3
     WantReturns = False
   end
   object cbMatchCase1: TCheckBox
     Tag = 1
     Left = 21
-    Height = 26
-    Top = 373
-    Width = 126
+    Height = 25
+    Top = 330
+    Width = 121
+    Alignment = taLeftJustify
     Caption = 'DNT MCase1'
-    Font.Height = -17
+    Font.Height = -16
+    OnClick = cbREClick
+    ParentFont = False
+    TabOrder = 4
+  end
+  object cbRE1: TCheckBox
+    Tag = 1
+    Left = 365
+    Height = 25
+    Top = 330
+    Width = 116
+    Anchors = [akTop, akRight]
+    Caption = 'DNT RegEx1'
+    Font.Height = -16
     OnClick = cbREClick
     ParentFont = False
     TabOrder = 5
   end
-  object cbRE1: TCheckBox
-    Tag = 1
-    Left = 364
-    Height = 26
-    Top = 373
-    Width = 121
-    Anchors = [akTop, akRight]
-    Caption = 'DNT RegEx1'
-    Font.Height = -17
-    OnClick = cbREClick
-    ParentFont = False
-    TabOrder = 6
-  end
   object lblDesignProf: TLabel
-    Left = 672
-    Height = 32
-    Top = 123
-    Width = 160
+    Left = 627
+    Height = 21
+    Top = 107
+    Width = 109
+    Anchors = [akTop, akRight]
     Caption = 'Search Fields:'
-    Font.Height = -24
+    Font.Height = -16
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
@@ -212,150 +217,106 @@ object frmSimpleSearch: TfrmSimpleSearch
   object lblSeType2: TLabel
     Left = 12
     Height = 31
-    Top = 247
-    Width = 641
+    Top = 217
+    Width = 598
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'Additional Searches (all OR''d)'
-    Font.Height = -24
+    Font.Height = -21
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object memSearchValue2: TMemo
-    Left = 21
-    Height = 79
-    Top = 437
-    Width = 463
-    Font.Height = -17
+    Left = 22
+    Height = 74
+    Top = 389
+    Width = 459
+    Anchors = [akTop, akLeft, akRight]
+    Font.Height = -16
     ParentFont = False
     ScrollBars = ssAutoBoth
-    TabOrder = 8
+    TabOrder = 6
     WantReturns = False
   end
   object cbMatchCase2: TCheckBox
     Tag = 2
     Left = 21
-    Height = 26
-    Top = 519
-    Width = 126
-    Caption = 'DNT MCase2'
-    Font.Height = -17
-    OnClick = cbREClick
-    ParentFont = False
-    TabOrder = 9
-  end
-  object cbRE2: TCheckBox
-    Tag = 2
-    Left = 364
-    Height = 26
-    Top = 519
+    Height = 25
+    Top = 464
     Width = 121
-    Anchors = [akTop, akRight]
-    Caption = 'DNT RegEx2'
-    Font.Height = -17
+    Alignment = taLeftJustify
+    Caption = 'DNT MCase2'
+    Font.Height = -16
     OnClick = cbREClick
-    ParentFont = False
-    TabOrder = 10
-  end
-  object btnClear: TButton
-    Left = 491
-    Height = 45
-    Top = 75
-    Width = 125
-    Caption = 'DNT C'
-    Font.Height = -17
-    OnClick = btnClearClick
-    ParentFont = False
-    TabOrder = 3
-  end
-  object btnClear1: TButton
-    Tag = 1
-    Left = 491
-    Height = 45
-    Top = 293
-    Width = 125
-    Caption = 'DNT C1'
-    Font.Height = -17
-    OnClick = btnClearClick
     ParentFont = False
     TabOrder = 7
   end
-  object btnClear2: TButton
+  object cbRE2: TCheckBox
     Tag = 2
-    Left = 491
-    Height = 45
-    Top = 437
-    Width = 125
-    Caption = 'DNT C2'
-    Font.Height = -17
-    OnClick = btnClearClick
+    Left = 365
+    Height = 25
+    Top = 464
+    Width = 116
+    Anchors = [akTop, akRight]
+    Caption = 'DNT RegEx2'
+    Font.Height = -16
+    OnClick = cbREClick
+    ParentFont = False
+    TabOrder = 8
+  end
+  object btnChkAllCmd: TBitBtn
+    Left = 868
+    Height = 32
+    Top = 121
+    Width = 32
+    Anchors = [akTop, akRight]
+    Caption = '☑'
+    Font.Height = -16
+    OnClick = btnChkAllCmdClick
+    ParentFont = False
+    TabOrder = 10
+  end
+  object btnChkNoneCmd: TBitBtn
+    Left = 905
+    Height = 32
+    Top = 121
+    Width = 32
+    Anchors = [akTop, akRight]
+    Caption = '☐'
+    Font.Height = -16
+    OnClick = btnChkNoneCmdClick
     ParentFont = False
     TabOrder = 11
   end
-  object btnChkAllCmd: TButton
-    Left = 913
+  object btnChkAllCmdLine: TBitBtn
+    Left = 868
     Height = 32
-    Top = 137
+    Top = 335
     Width = 32
     Anchors = [akTop, akRight]
     Caption = '☑'
-    Font.Height = -17
-    OnClick = btnChkAllCmdClick
-    ParentFont = False
-    TabOrder = 14
-  end
-  object btnChkNoneCmd: TButton
-    Left = 950
-    Height = 32
-    Top = 137
-    Width = 32
-    Anchors = [akTop, akRight]
-    Caption = '☐'
-    Font.Height = -17
-    OnClick = btnChkNoneCmdClick
-    ParentFont = False
-    TabOrder = 15
-  end
-  object btnChkAllCmdLine: TButton
-    Left = 913
-    Height = 32
-    Top = 399
-    Width = 32
-    Anchors = [akTop, akRight]
-    Caption = '☑'
-    Font.Height = -17
+    Font.Height = -16
     OnClick = btnChkAllCmdLineClick
     ParentFont = False
-    TabOrder = 17
+    TabOrder = 13
   end
-  object btnChkNoneCmdLine: TButton
-    Left = 950
+  object btnChkNoneCmdLine: TBitBtn
+    Left = 905
     Height = 32
-    Top = 399
+    Top = 335
     Width = 32
     Anchors = [akTop, akRight]
     Caption = '☐'
-    Font.Height = -17
+    Font.Height = -16
     OnClick = btnChkNoneCmdLineClick
     ParentFont = False
-    TabOrder = 18
-  end
-  object btnAdvSearchCurrent: TButton
-    Left = 21
-    Height = 37
-    Top = 687
-    Width = 155
-    Caption = '&X  Current'
-    Font.Height = -17
-    OnClick = btnAdvSearchCurrentClick
-    ParentFont = False
-    TabOrder = 19
+    TabOrder = 14
   end
   object Label1: TLabel
     Left = 21
     Height = 22
-    Top = 656
+    Top = 574
     Width = 250
     Caption = 'Use Advanced Search instead:'
     Font.Height = -17
@@ -363,41 +324,91 @@ object frmSimpleSearch: TfrmSimpleSearch
     ParentColor = False
     ParentFont = False
   end
-  object btnAdvSearchNew: TButton
+  object btnClear: TBitBtn
+    Left = 493
+    Height = 43
+    Top = 75
+    Width = 118
+    Anchors = [akTop, akRight]
+    Caption = 'DNT C'
+    Font.Height = -16
+    OnClick = btnClearClick
+    ParentFont = False
+    TabOrder = 18
+  end
+  object btnClear1: TBitBtn
     Tag = 1
-    Left = 221
-    Height = 37
-    Top = 687
-    Width = 153
-    Caption = '&Y  New'
-    Font.Height = -17
-    OnClick = btnAdvSearchCurrentClick
+    Left = 493
+    Height = 43
+    Top = 255
+    Width = 118
+    Anchors = [akTop, akRight]
+    Caption = 'DNT C1'
+    Font.Height = -16
+    OnClick = btnClearClick
+    ParentFont = False
+    TabOrder = 19
+  end
+  object btnClear2: TBitBtn
+    Tag = 2
+    Left = 493
+    Height = 43
+    Top = 389
+    Width = 118
+    Anchors = [akTop, akRight]
+    Caption = 'DNT C2'
+    Font.Height = -16
+    OnClick = btnClearClick
     ParentFont = False
     TabOrder = 20
   end
-  object btnAdvSearchLoad: TButton
+  object btnSSReset: TBitBtn
     Tag = 2
-    Left = 421
+    Left = 438
     Height = 37
-    Top = 687
-    Width = 160
-    Caption = '&Z  Load'
-    Font.Height = -17
-    OnClick = btnAdvSearchCurrentClick
+    Hint = 'Reset all search items to blank'#10'text and unchecked, and all field'#10'items to checked.'#10#10'<end>'
+    Top = 509
+    Width = 221
+    Anchors = [akTop, akRight]
+    Caption = '&W  Reset Everything'
+    Font.Height = -16
+    OnClick = btnSSResetClick
     ParentFont = False
     TabOrder = 21
   end
-  object btnSSReset: TButton
+  object btnAdvSearchLoad: TBitBtn
     Tag = 2
-    Left = 395
-    Height = 37
-    Hint = 'Reset all search items to blank'#10'text and unchecked, and all field'#10'items to checked.'#10#10'<end>'
-    Top = 573
-    Width = 221
-    Caption = '&W  Reset Everything'
-    Font.Height = -17
-    OnClick = btnSSResetClick
+    Left = 421
+    Height = 33
+    Top = 605
+    Width = 160
+    Caption = '&Z  Load'
+    Font.Height = -16
+    OnClick = btnAdvSearchCurrentClick
     ParentFont = False
-    TabOrder = 12
+    TabOrder = 22
+  end
+  object btnAdvSearchNew: TBitBtn
+    Tag = 1
+    Left = 221
+    Height = 33
+    Top = 605
+    Width = 153
+    Caption = '&Y  New'
+    Font.Height = -16
+    OnClick = btnAdvSearchCurrentClick
+    ParentFont = False
+    TabOrder = 23
+  end
+  object btnAdvSearchCurrent: TBitBtn
+    Left = 21
+    Height = 33
+    Top = 605
+    Width = 155
+    Caption = '&X  Current'
+    Font.Height = -16
+    OnClick = btnAdvSearchCurrentClick
+    ParentFont = False
+    TabOrder = 24
   end
 end

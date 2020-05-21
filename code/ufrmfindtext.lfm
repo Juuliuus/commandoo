@@ -1,7 +1,7 @@
 object frmFindText: TfrmFindText
-  Left = 2028
+  Left = 2018
   Height = 320
-  Top = 836
+  Top = 778
   Width = 467
   ActiveControl = edtFindText
   BorderStyle = bsNone
@@ -12,7 +12,7 @@ object frmFindText: TfrmFindText
   Constraints.MinHeight = 320
   Constraints.MinWidth = 467
   DesignTimePPI = 128
-  Font.Height = -25
+  Font.Height = -16
   FormStyle = fsStayOnTop
   KeyPreview = True
   OnCreate = FormCreate
@@ -30,11 +30,11 @@ object frmFindText: TfrmFindText
     AutoSelect = False
     Color = 3810335
     Font.Color = clCream
-    Font.Height = -21
+    Font.Height = -18
     OnKeyDown = edtFindTextKeyDown
     ParentFont = False
     TabOrder = 0
-    TextHint = 'Begin typing...'
+    TextHint = 'Sanity?'
   end
   object lbOldFinds: TListBox
     Left = 1
@@ -44,7 +44,7 @@ object frmFindText: TfrmFindText
     Anchors = [akTop, akLeft, akRight]
     Color = 3810335
     Font.Color = clCream
-    Font.Height = -21
+    Font.Height = -18
     ItemHeight = 0
     OnDblClick = lbOldFindsDblClick
     OnKeyDown = lbOldFindsKeyDown
@@ -55,11 +55,11 @@ object frmFindText: TfrmFindText
   end
   object lblFindNextText: TLabel
     Left = 5
-    Height = 28
+    Height = 21
     Top = 292
-    Width = 71
+    Width = 55
     Caption = 'fntDNT'
-    Font.Height = -21
+    Font.Height = -16
     ParentColor = False
     ParentFont = False
   end
@@ -81,7 +81,7 @@ object frmFindText: TfrmFindText
     Columns = 2
     Constraints.MaxHeight = 43
     Constraints.MinHeight = 43
-    Font.Height = -21
+    Font.Height = -16
     ItemIndex = 0
     Items.Strings = (
       '&DNT'

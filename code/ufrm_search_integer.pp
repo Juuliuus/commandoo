@@ -75,6 +75,7 @@ uses ufrmSearch
     , unitDBStructure
     , unitDBConstants
     , unitGlob
+    , unitglobform
     ;
 
 {$R *.lfm}
@@ -99,6 +100,8 @@ end;
 procedure Tfrm_Search_Integer.FormCreate( Sender : TObject );
 begin
 
+  font.size := cDefaultFontSize;
+  ApplyChangeFont( Self );
   fIsLoading := false;
   rgSeList.Caption := crg_MatchType;
   lblValueInt.Caption := crg_Value;

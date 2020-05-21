@@ -38,7 +38,7 @@ type
 
   TfrmCommandsInput = class(TForm)
     btnCancel : TBitBtn;
-    btnDone : TButton;
+    btnDone : TBitBtn;
     cbWordwrap : TCheckBox;
     FrameHint1 : TFrameHint;
     lblProcessInputMsg : TLabel;
@@ -86,6 +86,7 @@ begin
   begin
     HandleFormSettings( sdLoad );
     FHasShown := true;
+    FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
   end;
 
 end;
@@ -155,6 +156,7 @@ end;
 
 procedure TfrmCommandsInput.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

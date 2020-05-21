@@ -257,7 +257,7 @@ const
 
   //csoDBFileNamesEmpty = 'Hey Programmer! SavingServer.Init needs at least one filename, the first is the main file, others will be DB/etc ini files.';
   csoUseAddSetting = 'Hey Programmer! You didnt call AddSetting before calling SaveFormSettings';
-  csoFontKey = 'font';
+  //csoFontKey = 'font';
   cso_SavingServerFormSettings = 'SavingServerFormSettings';
 
 { T_IS_SearchControl }

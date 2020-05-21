@@ -74,7 +74,7 @@ implementation
 
 {$R *.lfm}
 
-uses unitGlob;
+uses unitGlob, unitglobform;
 
 resourcestring
   cmsgfftEndOfText = 'Search "%s" reached the end. Start again from top?';
@@ -242,7 +242,10 @@ end;
 
 procedure TfrmFindText.FormCreate( Sender : TObject );
 begin
+  font.size := cDefaultFontSize;
+  ApplyChangeFont( Self );
   fItemToFind := '';
+  edtFindText.TextHint := ccapFindTextHint;
   fCurrPos := 0;
   fMemo := nil;
   lbOldFinds.Items.Add( '' );

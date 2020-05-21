@@ -71,6 +71,7 @@ uses ufrmSearch
     , unitDBStructure
     , unitDBConstants
     , unitGlob
+    , unitglobform
     ;
 
 {$R *.lfm}
@@ -92,6 +93,8 @@ end;
 procedure Tfrm_Search_Enum.FormCreate( Sender : TObject );
 begin
 
+  font.size := cDefaultFontSize;
+  ApplyChangeFont( Self );
   fIsLoading := false;
   rgSeList.Caption := crg_MatchType;
   rgEnum.Caption := crg_Value;

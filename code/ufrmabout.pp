@@ -33,10 +33,12 @@ type
   { TfrmAbout }
 
   TfrmAbout = class (TForm)
+    btnSaveToFile : TBitBtn;
     btnOK : TBitBtn;
     btnToggle : TButton;
     Image1 : TImage;
     memOutput : TMemo;
+    procedure btnSaveToFileClick( Sender : TObject );
     procedure btnOKClick(Sender : TObject);
     procedure btnToggleClick( Sender : TObject );
     procedure FormCreate( Sender : TObject );
@@ -49,6 +51,7 @@ type
     function GetIsCurrent( const SettingsStr : string ) : string;
     procedure ShowAbout;
     procedure ShowIntro;
+    function GetNamebtnToggle : string;
     { private declarations }
   public
     { public declarations }
@@ -66,6 +69,8 @@ uses strconst_prog
      , ufrmMain
      , juusgen
      , unitglobform
+     , uSingleInput
+     , ufrmMsgdlg
      ;
 
 {$R *.lfm}
@@ -100,10 +105,40 @@ begin
   Close;
 end;
 
+procedure TfrmAbout.btnSaveToFileClick( Sender : TObject );
+var
+  aFile : string;
+begin
+//juus make this an optional setting...Frm.Save to path....
+  aFile := Frm.WritingToPath + GetNamebtnToggle;
+
+  if DoSingleInput( csiChooseAFile, aFile, simFile, self, false, true ) then
+  begin
+    if fileexists( aFile ) then
+      if MsgdlgMessage( ccapSaveFileExists, format( cmsgSaveFileExists, [ aFile ] ) ) then
+        if MsgDlgAttentionConfirm( self ) = mrNo then
+          exit;
+
+    memOutput.Lines.SaveToFile( aFile );
+    btnSaveToFile.enabled := false;
+  end;
+
+end;
+
 procedure TfrmAbout.ShowIntro;
 begin
   memOutput.Text := format(cmsgIntro, [cGNU_GPL, cmsgOwnRisk ] );
   memOutput.SelStart := 0;
+end;
+
+function TfrmAbout.GetNamebtnToggle : string;
+begin
+  result := 'commandoo_';
+  case btnToggle.Tag mod 3 of
+    0 : result := result + 'About.txt';
+    1 : result := result + 'Intro.txt';
+    2 : result := result + 'Tips.txt';
+  end;
 end;
 
 procedure TfrmAbout.btnToggleClick( Sender : TObject );
@@ -114,10 +149,12 @@ begin
     1 : ShowIntro;
     2 : memOutput.Text := cmsgTips;
   end;
+  btnSaveToFile.enabled := true;
 end;
 
 procedure TfrmAbout.FormCreate( Sender : TObject );
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
 end;
 

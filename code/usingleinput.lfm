@@ -1,15 +1,16 @@
 object frmSingleInput: TfrmSingleInput
   Left = 1973
-  Height = 140
+  Height = 187
   Top = 607
-  Width = 685
+  Width = 913
   Caption = 'Input'
-  ClientHeight = 140
-  ClientWidth = 685
-  Constraints.MaxHeight = 140
-  Constraints.MinHeight = 140
-  Constraints.MinWidth = 685
-  Font.Height = -13
+  ClientHeight = 187
+  ClientWidth = 913
+  Constraints.MaxHeight = 187
+  Constraints.MinHeight = 187
+  Constraints.MinWidth = 913
+  DesignTimePPI = 128
+  Font.Height = -16
   KeyPreview = True
   OnActivate = FormActivate
   OnClose = FormClose
@@ -17,85 +18,96 @@ object frmSingleInput: TfrmSingleInput
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poMainFormCenter
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.6.0'
   object deDir: TDirectoryEdit
-    Left = 24
-    Height = 28
-    Top = 33
-    Width = 637
+    Left = 32
+    Height = 37
+    Top = 44
+    Width = 849
     ShowHidden = False
-    ButtonWidth = 23
+    ButtonWidth = 31
     NumGlyphs = 1
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
+    Font.Height = -16
     MaxLength = 0
+    ParentFont = False
     TabOrder = 0
     Visible = False
     OnKeyDown = edtInputKeyDown
   end
   object feFile: TFileNameEdit
-    Left = 24
-    Height = 28
-    Top = 5
-    Width = 637
+    Left = 32
+    Height = 37
+    Top = 7
+    Width = 849
     FilterIndex = 0
     HideDirectories = False
-    ButtonWidth = 23
+    ButtonWidth = 31
     NumGlyphs = 1
     Anchors = [akTop, akLeft, akRight]
     AutoSelect = False
     AutoSize = False
+    Font.Height = -16
     MaxLength = 0
+    ParentFont = False
     TabOrder = 1
     Visible = False
     OnKeyDown = edtInputKeyDown
   end
   object edtInput: TEdit
-    Left = 24
-    Height = 28
-    Top = 62
-    Width = 637
+    Left = 32
+    Height = 37
+    Top = 83
+    Width = 849
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
+    Font.Height = -16
     OnKeyDown = edtInputKeyDown
+    ParentFont = False
     TabOrder = 2
     Visible = False
   end
-  object lblHint: TLabel
-    Left = 466
-    Height = 18
-    Top = 64
-    Width = 186
-    Alignment = taRightJustify
-    Anchors = [akTop, akRight]
-    Caption = '↑↑ Type       and / or     Browse  ↑'
-    ParentColor = False
-    Visible = False
-  end
   object btnOk: TBitBtn
-    Left = 580
-    Height = 40
-    Top = 94
-    Width = 81
+    Left = 773
+    Height = 53
+    Top = 125
+    Width = 108
     Anchors = [akTop, akRight]
-    DefaultCaption = True
-    Kind = bkOK
+    Caption = '&OK'
+    Font.Height = -16
+    GlyphShowMode = gsmNever
     OnClick = btnOkClick
+    ParentFont = False
     TabOrder = 4
   end
   object btnCancel: TBitBtn
-    Left = 457
-    Height = 33
-    Top = 97
-    Width = 113
+    Left = 609
+    Height = 44
+    Top = 129
+    Width = 151
     Anchors = [akTop, akRight]
     Cancel = True
-    DefaultCaption = True
+    Caption = 'Cancel'
+    Font.Height = -16
     GlyphShowMode = gsmNever
-    Kind = bkCancel
     OnClick = btnCancelClick
+    ParentFont = False
     TabOrder = 3
+  end
+  object lblHint: TLabel
+    Left = 610
+    Height = 21
+    Top = 85
+    Width = 259
+    Alignment = taRightJustify
+    Anchors = [akTop, akRight]
+    Caption = '↑↑ Type       and / or     Browse  ↑'
+    Font.Height = -16
+    ParentColor = False
+    ParentFont = False
+    Visible = False
   end
 end

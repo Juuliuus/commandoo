@@ -70,15 +70,15 @@ type
     actSelect : TAction;
     actOK : TAction;
     ActionList1 : TActionList;
-    btnCompare : TButton;
-    btnCopy : TButton;
-    btnEdit : TButton;
+    btnAdd : TBitBtn;
+    btnCompare : TBitBtn;
     btnCancel : TBitBtn;
-    btnConvert : TButton;
-    btnMergeTo : TButton;
+    btnConvert : TBitBtn;
+    btnCopy : TBitBtn;
+    btnDelete : TBitBtn;
+    btnEdit : TBitBtn;
+    btnMergeTo : TBitBtn;
     btnOK : TBitBtn;
-    btnAdd : TButton;
-    btnDelete : TButton;
     btnSelect : TBitBtn;
     FrameHint1 : TFrameHint;
     gbManageList : TGroupBox;
@@ -244,6 +244,7 @@ resourcestring
   cmsgMostLikely = 'Either the file(s) do not exist, there is a permissions problem, or possibly unmounted drives.' + LineEnding;
   cmsgPathDisplay = 'Path: %s';
   cmsgDefaultDisplay = '( Default Path = %s )';
+  cmsgDefaultDisplaySelect = '( Manage DB''s with button "%s" )';
   cmsgCurrentProfile = 'Current Profile = "%s"';
   ccapProDeleteOK = 'File Deletion?';
   cmsgProDeleteOK = 'Do you also want to delete the files? This cannot be undone, you should have backups just in case.';
@@ -487,16 +488,24 @@ begin
   if IsSelectMode then
   begin
     btnOK.Visible := false;
-    gbManageList.Visible := false;
+    lblDefaultDisplay.Caption := format( cmsgDefaultDisplaySelect, [ frmMain.btnProfileManagement.Caption ] );
+    lblDefaultDisplay.Top := gbManageList.top + gbManageList.Height + 3;
+//    lblDefaultDisplay.Visible := false;
+    gbManageList.enabled := false;
+//    gbManageList.Visible := false;
     lblPathDisplay.Visible := false;
-    lblDefaultDisplay.Visible := false;
     btnSelect.Visible := true;
     btnCancel.Visible := true;
     Caption := ccapProSelectDB;
     lbList.PopupMenu := PopS;
     PopupMenu := PopS;
     FilterList;
-  end else Caption := ccapProManageDB;
+  end
+  else
+  begin
+    lblDefaultDisplay.Caption := format( cmsgDefaultDisplay, [ ProgDefaultPath ] );
+    Caption := ccapProManageDB;
+  end;
 
 end;
 
@@ -510,6 +519,7 @@ begin
   HandleFormSettings( sdLoad );
   lblPathDisplay.Caption := format( cmsgPathDisplay, [ '' ] );
   lblDefaultDisplay.Caption := format( cmsgDefaultDisplay, [ ProgDefaultPath ] );
+  btnOK.Caption := cbtn_Done;
   FillList;
   SetupMode;
   actAdd.Enabled := true;
@@ -2045,6 +2055,7 @@ begin
 
     FCanClose := false;
     popMPopup( Self );
+    FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 
     if not IsSelectMode then
       if MsgDlgMessage( ccapGeneralInformation,
@@ -2073,6 +2084,7 @@ procedure TfrmProfiles.FormCreate(Sender : TObject);
   end;
 
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

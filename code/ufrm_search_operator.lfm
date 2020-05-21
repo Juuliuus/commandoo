@@ -1,27 +1,29 @@
 object frm_Search_Operator: Tfrm_Search_Operator
   Left = 2155
-  Height = 380
+  Height = 507
   Top = 646
-  Width = 365
+  Width = 487
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'frm_Search_Operator'
-  ClientHeight = 380
-  ClientWidth = 365
-  Constraints.MaxHeight = 380
-  Constraints.MaxWidth = 365
-  Constraints.MinHeight = 380
-  Constraints.MinWidth = 365
-  Font.Height = -13
+  ClientHeight = 507
+  ClientWidth = 487
+  Constraints.MaxHeight = 507
+  Constraints.MaxWidth = 487
+  Constraints.MinHeight = 507
+  Constraints.MinWidth = 487
+  DesignTimePPI = 128
+  Font.Height = -16
   KeyPreview = True
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.6.0'
   object rgSeOpOperator: TRadioGroup
-    Left = 30
-    Height = 134
+    Left = 104
+    Height = 144
     Hint = 'Select the kind of operator you want for the'#10'currently selected item.'#10#10'<end>'
-    Top = 56
-    Width = 313
+    Top = 75
+    Width = 263
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     Caption = 'Operator Kind'
@@ -30,26 +32,28 @@ object frm_Search_Operator: Tfrm_Search_Operator
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 115
-    ClientWidth = 311
+    ClientHeight = 120
+    ClientWidth = 261
+    Font.Height = -16
     Items.Strings = (
       'OR'
       'AND'
       'XOR'
     )
     OnSelectionChanged = rgSeOpOperatorSelectionChanged
+    ParentFont = False
     TabOrder = 0
   end
   object lblSeOpType: TLabel
-    Left = 9
-    Height = 23
-    Top = 5
-    Width = 351
+    Left = 12
+    Height = 31
+    Top = 7
+    Width = 468
     Alignment = taRightJustify
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'Operator'
-    Font.Height = -18
+    Font.Height = -21
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False

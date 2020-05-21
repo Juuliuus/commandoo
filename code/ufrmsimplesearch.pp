@@ -19,19 +19,19 @@ type
 
   TfrmSimpleSearch = class(TForm)
     Bevel1 : TBevel;
-    btnAdvSearchNew : TButton;
-    btnAdvSearchLoad : TButton;
+    btnAdvSearchCurrent : TBitBtn;
+    btnAdvSearchLoad : TBitBtn;
+    btnAdvSearchNew : TBitBtn;
+    btnClear : TBitBtn;
+    btnClear1 : TBitBtn;
+    btnClear2 : TBitBtn;
     btnSSCancel : TBitBtn;
-    bntSSOK : TBitBtn;
+    btnSSOK : TBitBtn;
     btnChkAllCmdLine : TButton;
     btnChkNoneCmd : TButton;
     btnChkNoneCmdLine : TButton;
-    btnClear : TButton;
-    btnClear1 : TButton;
-    btnClear2 : TButton;
     btnChkAllCmd : TButton;
-    btnAdvSearchCurrent : TButton;
-    btnSSReset : TButton;
+    btnSSReset : TBitBtn;
     cbMatchCase : TCheckBox;
     cbMatchCase1 : TCheckBox;
     cbMatchCase2 : TCheckBox;
@@ -48,7 +48,7 @@ type
     memSearchValue : TMemo;
     memSearchValue1 : TMemo;
     memSearchValue2 : TMemo;
-    procedure bntSSOKClick(Sender : TObject);
+    procedure btnSSOKClick(Sender : TObject);
     procedure btnAdvSearchCurrentClick( Sender : TObject );
     procedure btnSSCancelClick(Sender : TObject);
     procedure btnChkAllCmdClick( Sender : TObject );
@@ -92,7 +92,7 @@ implementation
 uses ufrmMsgDlg
      , unitfields
      , unitGlob
-     , strconst_prog
+     //, strconst_prog
      ;
 
 resourcestring
@@ -221,6 +221,8 @@ begin
     FCanClose := false;
 //    FormColors.ApplySystemColors( Self );
     HandleFormSettings( sdLoad );
+    btnSSOK.caption := cObjlblGo;
+    FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 
     FHasShown := true;
   end;
@@ -447,7 +449,7 @@ begin
   HandleFormSettings( sdSave );
 end;
 
-procedure TfrmSimpleSearch.bntSSOKClick(Sender : TObject);
+procedure TfrmSimpleSearch.btnSSOKClick(Sender : TObject);
 var
   i : Integer;
   HaveChecked : Boolean;
@@ -655,6 +657,7 @@ end;
 
 procedure TfrmSimpleSearch.FormCreate(Sender : TObject);
 begin
+  font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

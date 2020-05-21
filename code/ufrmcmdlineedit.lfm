@@ -1,16 +1,16 @@
 object frmCmdLineEdit: TfrmCmdLineEdit
-  Left = 2016
-  Height = 753
-  Top = 406
-  Width = 773
+  Left = 1998
+  Height = 600
+  Top = 348
+  Width = 700
   ActiveControl = memCmdLine
   Caption = 'Edit Command Line'
-  ClientHeight = 753
-  ClientWidth = 773
-  Constraints.MinHeight = 753
-  Constraints.MinWidth = 773
+  ClientHeight = 600
+  ClientWidth = 700
+  Constraints.MinHeight = 600
+  Constraints.MinWidth = 700
   DesignTimePPI = 128
-  Font.Height = -17
+  Font.Height = -16
   KeyPreview = True
   OnActivate = FormActivate
   OnClose = FormClose
@@ -20,191 +20,189 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 345
-    Height = 55
-    Top = -4
-    Width = 569
-    ClientHeight = 55
-    ClientWidth = 569
+    Left = 342
+    Height = 30
+    Top = -2
+    Width = 352
+    ClientHeight = 30
+    ClientWidth = 352
     ParentColor = True
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
-      Left = 187
+      Left = 114
       Height = 24
-      Top = 5
       Width = 223
     end
   end
   object bntOK: TBitBtn
-    Left = 638
+    Left = 415
     Height = 56
-    Top = 201
+    Top = 168
     Width = 119
     Anchors = [akTop, akRight]
     Default = True
     DefaultCaption = True
-    Font.Height = -17
+    Font.Height = -16
     Kind = bkOK
     OnClick = bntOKClick
     ParentFont = False
-    TabOrder = 11
+    TabOrder = 5
   end
   object btnCancel: TBitBtn
-    Left = 638
+    Left = 551
     Height = 40
-    Top = 261
+    Top = 176
     Width = 119
     Anchors = [akTop, akRight]
     Cancel = True
     DefaultCaption = True
-    Font.Height = -17
+    Font.Height = -16
     GlyphShowMode = gsmNever
     Kind = bkCancel
     OnClick = btnCancelClick
     ParentFont = False
-    TabOrder = 12
+    TabOrder = 6
   end
   object memOutput: TMemo
     Left = 3
-    Height = 329
+    Height = 216
     Hint = 'The output of the command''s default help '#10'or of the refresh and default help buttons '#10'above.'#10#10'Experimental right now, it is intended to '#10'display help for the command so you can'#10'see what flags / parameters you want to add'#10'to the Command Line.'#10#10'<end>'
-    Top = 385
-    Width = 767
+    Top = 349
+    Width = 694
     Anchors = [akTop, akLeft, akRight, akBottom]
     Color = clBlack
     Font.Color = clCream
-    Font.Height = -20
+    Font.Height = -16
     Font.Name = 'Courier 10 Pitch'
     ParentFont = False
     ScrollBars = ssAutoVertical
-    TabOrder = 9
+    TabOrder = 3
     WordWrap = False
-  end
-  object btnRefresh: TButton
-    Left = 21
-    Height = 33
-    Hint = 'Sometimes when editing a command line'#10'you may need to reference other commands.'#10#10'You can type in a command line below and'#10'run it by pressing this button or pressing '#10'return in the edit.'#10#10'The output will be added below.'#10#10'<end>'
-    Top = 271
-    Width = 384
-    Caption = '&X  Run Command Line below:'
-    Font.Height = -17
-    OnClick = btnRefreshClick
-    ParentFont = False
-    TabOrder = 6
   end
   object edtOutputRefresh: TEdit
     Left = 21
     Height = 39
     Hint = 'Type in a command line you want to run'#10'while you are editing. Then press return or '#10'click the button above.'#10#10'<end>'
-    Top = 305
-    Width = 736
+    Top = 265
+    Width = 663
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
-    Font.Height = -17
+    Font.Height = -16
     OnKeyDown = edtOutputRefreshKeyDown
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 2
     TextHint = 'commands with Help flags only'
-  end
-  object btnDefaultHelp: TButton
-    Left = 21
-    Height = 33
-    Hint = 'The help for the command is always displayed'#10'when you first open this form.'#10#10'But maybe later you do some other commands'#10'and then need to reference the command'#10'help quickly, then use this button.'#10#10'<end>'
-    Top = 345
-    Width = 736
-    Anchors = [akTop, akLeft, akRight]
-    Caption = '&Y  Default Help'
-    Enabled = False
-    Font.Height = -17
-    OnClick = btnDefaultHelpClick
-    ParentFont = False
-    TabOrder = 8
   end
   object cbWrapText: TCheckBox
     Left = 5
-    Height = 26
+    Height = 25
     Hint = 'Checked and the output above uses '#10'wordwrap. Not, and not.'#10#10'<end>'
-    Top = 726
-    Width = 180
+    Top = 569
+    Width = 172
     Anchors = [akLeft, akBottom]
     Caption = '&Z  Wrap Output text'
-    Font.Height = -17
+    Font.Height = -16
     OnChange = cbWrapTextChange
-    ParentFont = False
-    TabOrder = 10
-  end
-  object lblVarHint: TLabel
-    Left = 21
-    Height = 22
-    Top = 125
-    Width = 309
-    Caption = 'Add a variable at cursor / selection for: '
-    Font.Height = -17
-    ParentColor = False
-    ParentFont = False
-  end
-  object btnVarString: TButton
-    Tag = 1
-    Left = 31
-    Height = 33
-    Top = 149
-    Width = 160
-    Caption = '&S  AlphaNum'
-    Font.Height = -17
-    OnClick = btnVarStringClick
-    ParentFont = False
-    TabOrder = 2
-  end
-  object btnVarInteger: TButton
-    Tag = 2
-    Left = 196
-    Height = 33
-    Top = 149
-    Width = 160
-    Caption = '&I  Integer'
-    Font.Height = -17
-    OnClick = btnVarStringClick
-    ParentFont = False
-    TabOrder = 3
-  end
-  object btnVarDecimal: TButton
-    Tag = 3
-    Left = 363
-    Height = 33
-    Top = 149
-    Width = 160
-    Caption = '&N  Decimal'
-    Font.Height = -17
-    OnClick = btnVarStringClick
     ParentFont = False
     TabOrder = 4
   end
-  object btnVarFilename: TButton
-    Tag = 4
-    Left = 533
-    Height = 33
-    Top = 149
-    Width = 160
-    Caption = '&F  File Name'
-    Font.Height = -17
-    OnClick = btnVarStringClick
+  object lblVarHint: TLabel
+    Left = 5
+    Height = 21
+    Top = 27
+    Width = 297
+    Caption = 'Add a variable at cursor / selection for: '
+    Font.Height = -16
+    ParentColor = False
     ParentFont = False
-    TabOrder = 5
   end
   object memCmdLine: TMemo
     Left = 4
-    Height = 89
+    Height = 77
     Hint = 'The Command Line you are editing.'#10#10'You can place the cursor at a position, or'#10'select text, and then use one of the '#10'variable buttons below to use run time'#10'variables on this command line.'#10#10'<end>'
-    Top = 33
-    Width = 753
+    Top = 84
+    Width = 680
     Anchors = [akTop, akLeft, akRight]
-    Font.Height = -17
+    Font.Height = -18
     OnKeyDown = memCmdLineKeyDown
     ParentFont = False
     ScrollBars = ssAutoVertical
     TabOrder = 1
     WantReturns = False
+  end
+  object btnVarString: TBitBtn
+    Tag = 1
+    Left = 4
+    Height = 30
+    Top = 51
+    Width = 153
+    Caption = '&S  AlphaNum'
+    Font.Height = -14
+    OnClick = btnVarStringClick
+    ParentFont = False
+    TabOrder = 7
+  end
+  object btnVarInteger: TBitBtn
+    Tag = 2
+    Left = 179
+    Height = 30
+    Top = 51
+    Width = 153
+    Caption = '&I  Integer'
+    Font.Height = -14
+    OnClick = btnVarStringClick
+    ParentFont = False
+    TabOrder = 8
+  end
+  object btnVarDecimal: TBitBtn
+    Tag = 3
+    Left = 354
+    Height = 30
+    Top = 51
+    Width = 153
+    Caption = '&N  Decimal'
+    Font.Height = -14
+    OnClick = btnVarStringClick
+    ParentFont = False
+    TabOrder = 9
+  end
+  object btnVarFilename: TBitBtn
+    Tag = 4
+    Left = 529
+    Height = 30
+    Top = 51
+    Width = 153
+    Caption = '&F  File Name'
+    Font.Height = -14
+    OnClick = btnVarStringClick
+    ParentFont = False
+    TabOrder = 10
+  end
+  object btnDefaultHelp: TBitBtn
+    Left = 21
+    Height = 33
+    Hint = 'The help for the command is always displayed'#10'when you first open this form.'#10#10'But maybe later you do some other commands'#10'and then need to reference the command'#10'help quickly, then use this button.'#10#10'<end>'
+    Top = 311
+    Width = 347
+    Caption = '&Y  Default Help'
+    Enabled = False
+    Font.Height = -16
+    OnClick = btnDefaultHelpClick
+    ParentFont = False
+    TabOrder = 11
+  end
+  object btnRefresh: TBitBtn
+    Left = 21
+    Height = 33
+    Hint = 'Sometimes when editing a command line'#10'you may need to reference other commands.'#10#10'You can type in a command line below and'#10'run it by pressing this button or pressing '#10'return in the edit.'#10#10'The output will be added below.'#10#10'<end>'
+    Top = 231
+    Width = 347
+    Caption = '&X  Run Command Line below:'
+    Font.Height = -16
+    OnClick = btnRefreshClick
+    ParentFont = False
+    TabOrder = 12
   end
 end
