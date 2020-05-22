@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 1976
+  Left = 1959
   Height = 900
-  Top = 244
+  Top = 196
   Width = 1432
   Caption = 'commandoo'
   ClientHeight = 900
@@ -20,6 +20,20 @@ object frmMain: TfrmMain
   PopupMenu = pmMain
   Position = poScreenCenter
   LCLVersion = '2.0.6.0'
+  object Bevel5: TBevel
+    Left = 1130
+    Height = 4
+    Top = 838
+    Width = 291
+    Anchors = [akTop, akLeft, akRight]
+  end
+  object Bevel4: TBevel
+    Left = 1130
+    Height = 4
+    Top = 769
+    Width = 291
+    Anchors = [akTop, akLeft, akRight]
+  end
   inline FrameHint1: TFrameHint
     Left = 1056
     Height = 22
@@ -2154,15 +2168,13 @@ object frmMain: TfrmMain
     Transparent = False
   end
   object cbWordWrapMain: TCheckBox
-    Left = 1209
+    Left = 1271
     Height = 25
-    Hint = 'You can choose to wrap the line content of '#10'the Output window to the left.'#10#10'Whether the output wraps or not depends'#10'on this item''s checked state.'#10#10'<end>'
     Top = 809
-    Width = 165
+    Width = 148
+    Action = actOutputWrap
     Anchors = [akTop, akRight]
-    Caption = 'Wordwrap Output '
     Checked = True
-    OnChange = cbWordWrapMainChange
     State = cbChecked
     TabOrder = 13
   end
@@ -2281,15 +2293,13 @@ object frmMain: TfrmMain
     Anchors = [akTop, akRight]
     TabOrder = 11
   end
-  object btnClear: TBitBtn
-    Left = 1142
+  object btnMainClear: TBitBtn
+    Left = 1335
     Height = 29
-    Hint = 'Maybe you don''t like clutter. Maybe you '#10'don''t want people to see what you''ve '#10'been running.'#10#10'Use this button to clear the OutPut memo.'#10#10'<end>'
     Top = 777
-    Width = 232
+    Width = 83
+    Action = actOutPutClear
     Anchors = [akTop, akRight]
-    Caption = 'Clear Display History'
-    OnClick = btnClearClick
     TabOrder = 12
   end
   object btnQuickRun: TBitBtn
@@ -2303,6 +2313,24 @@ object frmMain: TfrmMain
     Color = 4737096
     ParentFont = False
     TabOrder = 6
+  end
+  object btnMainSave: TBitBtn
+    Left = 1244
+    Height = 29
+    Top = 777
+    Width = 83
+    Action = actOutPutSave
+    Anchors = [akTop, akRight]
+    TabOrder = 15
+  end
+  object btnMainCopy: TBitBtn
+    Left = 1153
+    Height = 29
+    Top = 777
+    Width = 83
+    Action = actOutPutCopy
+    Anchors = [akTop, akRight]
+    TabOrder = 16
   end
   object pmCommands: TPopupMenu
     OnPopup = pmCommandsPopup
@@ -2581,6 +2609,31 @@ object frmMain: TfrmMain
       Caption = 'Run Cmd Line'
       OnExecute = actSearchRunExecute
     end
+    object actOutputWrap: TAction
+      Category = 'OutPut'
+      Caption = 'Wordrap Output'
+      Checked = True
+      Hint = 'You can choose to wrap the line content of '#10'the Output window to the left.'#10#10'Whether the output wraps or not depends'#10'on this item''s checked state.'#10#10'<end>'
+      OnExecute = actOutputWrapExecute
+    end
+    object actOutPutClear: TAction
+      Category = 'OutPut'
+      Caption = 'Clear'
+      Hint = 'Maybe you don''t like clutter. Maybe you '#10'don''t want people to see what you''ve '#10'been running.'#10#10'Use this button to clear the OutPut memo.'#10#10'<end>'
+      OnExecute = actOutPutClearExecute
+    end
+    object actOutPutSave: TAction
+      Category = 'OutPut'
+      Caption = 'Save'
+      Hint = 'Save the Output to a file.'#10#10'If nothing is selected the entire output will'#10'be saved, otherwise only the selected '#10'portion.'#10#10'<end>'
+      OnExecute = actOutPutSaveExecute
+    end
+    object actOutPutCopy: TAction
+      Category = 'OutPut'
+      Caption = 'Copy'
+      Hint = 'Copy the Output to the clipboard.'#10#10'If nothing is selected the entire output will'#10'be copied, otherwise only the selected '#10'portion.'#10#10'<end>'
+      OnExecute = actOutPutCopyExecute
+    end
   end
   object pmCmdLines: TPopupMenu
     OnPopup = pmCmdLinesPopup
@@ -2681,6 +2734,25 @@ object frmMain: TfrmMain
     end
     object pmiMainAbout: TMenuItem
       Action = actAbout
+    end
+    object MenuItem1: TMenuItem
+      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+      Enabled = False
+    end
+    object mniOutput: TMenuItem
+      Caption = 'Output Area'
+      object mniOutputCopy: TMenuItem
+        Action = actOutPutCopy
+      end
+      object mniOutPutSave: TMenuItem
+        Action = actOutPutSave
+      end
+      object mniOutPutClear: TMenuItem
+        Action = actOutPutClear
+      end
+      object mniOutPutWrap: TMenuItem
+        Action = actOutputWrap
+      end
     end
     object MenuItem3: TMenuItem
       Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'

@@ -31,6 +31,8 @@ const
 
   cAttnBar = LineEnding + '==========' + LineEnding;
 
+  cSaveToFileTemplate = 'commandoo_%s.txt';
+
   cSectTabNoShows = 'NoShows';
 
   cRootFileSudo = 'sudo %s';
@@ -56,6 +58,7 @@ const
   cFormSettingsAllowSqlDB = 'AllowSqlDB';
   cFormSettingsAllowTextDB = 'AllowTextDB';
   cFormSettingsRootFile = 'RootFile';
+  cFormSettingsSavingPath = 'SavingPath';
   cFormSettingsRootFileDefault = 'sudo %s';
 
   cSectTabFormSettingsExtension = '.settings';

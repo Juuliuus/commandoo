@@ -258,8 +258,8 @@ object frmOptions: TfrmOptions
       Left = 425
       Height = 21
       Top = 437
-      Width = 140
-      Caption = 'Terminal Program:'
+      Width = 293
+      Caption = 'Path for saving output / miscellaneous'
       Font.Height = -16
       ParentColor = False
       ParentFont = False
@@ -292,8 +292,8 @@ object frmOptions: TfrmOptions
       Left = 347
       Height = 21
       Top = 591
-      Width = 189
-      Caption = 'ROOT authentication file:'
+      Width = 161
+      Caption = 'ROOT paste template'
       Font.Height = -16
       ParentColor = False
       ParentFont = False
@@ -361,7 +361,7 @@ object frmOptions: TfrmOptions
       ParentFont = False
       TabOrder = 7
     end
-    object edtTerminal: TEdit
+    object edtSavePath: TEdit
       Left = 425
       Height = 31
       Top = 463
@@ -371,7 +371,7 @@ object frmOptions: TfrmOptions
       AutoSelect = False
       BorderStyle = bsNone
       Font.Height = -16
-      OnDblClick = btnTerminalClick
+      OnDblClick = btnSavePathClick
       OnKeyDown = speDisplayMaxKeyDown
       ParentColor = True
       ParentFont = False
@@ -449,15 +449,15 @@ object frmOptions: TfrmOptions
       Brush.Color = clGreen
       Visible = False
     end
-    object btnTerminal: TBitBtn
+    object btnSavePath: TBitBtn
       Left = 9
       Height = 49
-      Hint = 'You can specify your favorite terminal '#10'program here.'#10#10'You can either type the name if it is in the '#10'system path or you can browse for it.'#10#10'<end>'
+      Hint = 'You have the ability to save certain outputs'#10'to a file in various areas of the program.'#10#10'This path is the default path to where '#10'they will be saved.'#10#10'<end>'
       Top = 455
       Width = 324
-      Caption = '&W  Change Terminal Program'
+      Caption = '&W  Change Saving Path'
       Font.Height = -16
-      OnClick = btnTerminalClick
+      OnClick = btnSavePathClick
       ParentFont = False
       TabOrder = 21
     end
@@ -497,15 +497,15 @@ object frmOptions: TfrmOptions
       ParentFont = False
       TabOrder = 24
     end
-    object btnTerminalReset: TBitBtn
+    object btnSavePathReset: TBitBtn
       Left = 345
       Height = 40
-      Hint = 'Reset the terminal program you want to use'#10'to the system default.'#10#10'<end>'
+      Hint = 'Reset the Save Path to point to commandoo''s'#10'config folder.'#10#10'<end>'
       Top = 459
       Width = 67
       Caption = '&X  ♻'
       Font.Height = -16
-      OnClick = btnTerminalResetClick
+      OnClick = btnSavePathResetClick
       ParentFont = False
       TabOrder = 25
     end

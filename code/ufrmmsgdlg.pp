@@ -66,6 +66,7 @@ type
     property IsInitialized : boolean read FIsInitialized write SetIsInitialized;
     property DoNotShowList : TStringlist read FDoNotShowList;// write SetDoNotShowList;
     property IniFile : TJiniFile read fIniFile write SetIniFile;
+    property SavePath : string read fSavePath write fSavePath;
   end;
 
 
@@ -132,6 +133,7 @@ implementation
 uses  juusgen
       , usingleinput
       , strconst_en
+      , strconst_prog
       ;
 const
   cForgot = '<< YOU FORGOT TO SET THE %s >>';
@@ -469,8 +471,7 @@ procedure TfrmMsgDlg.btnSaveToFileClick( Sender : TObject );
 var
   aFile : string;
 begin
-//juus make this an optional setting...Frm.Save to path....
-  aFile := MsgDLgParams.fSavePath + 'commandoo_message.txt';
+  aFile := MsgDLgParams.fSavePath + format( cSaveToFileTemplate, [ cSaveToFileMsg ] );
 
   if DoSingleInput( csiChooseAFile, aFile, simFile, self, false, true ) then
   begin

@@ -1,7 +1,7 @@
 object frmSuperUserFile: TfrmSuperUserFile
-  Left = 1996
+  Left = 2279
   Height = 400
-  Top = 527
+  Top = 461
   Width = 585
   Caption = 'SuperUser Authentication'
   ClientHeight = 400
@@ -66,7 +66,7 @@ object frmSuperUserFile: TfrmSuperUserFile
   object edtCustom: TEdit
     Left = 48
     Height = 36
-    Hint = 'The proposed ROOT file to change to.'#10#10'<end>'
+    Hint = 'Type the template as you need.'#10#10'It requires at least one, and only one, "%s" '#10'in it. '#10#10'Wherever the %s is is where the Command'#10'Line will be placed.'#10#10'<end>'
     Top = 345
     Width = 302
     Anchors = [akTop, akLeft, akRight]
@@ -91,7 +91,7 @@ object frmSuperUserFile: TfrmSuperUserFile
   object lblCurrFile: TLabel
     Left = 192
     Height = 24
-    Hint = 'This is the ROOT file you are currently using.'#10#10'<end>'
+    Hint = 'This is the template you want to use.'#10#10'Test it with the button above.'#10#10'<end>'
     Top = 43
     Width = 15
     Caption = '...'
@@ -102,7 +102,7 @@ object frmSuperUserFile: TfrmSuperUserFile
   object btnTest: TBitBtn
     Left = 21
     Height = 29
-    Hint = 'If the file you need can not be found, or'#10'you simply don''t want to run command lines'#10'as ROOT then you can turn off the ROOT '#10'ability with this button.'#10#10'<end>'
+    Hint = 'Show how the template will look when '#10'pasted into a terminal.'#10#10'<end>'
     Top = 13
     Width = 141
     Caption = '&T  Test'
@@ -114,7 +114,7 @@ object frmSuperUserFile: TfrmSuperUserFile
   object btnCustom: TBitBtn
     Left = 16
     Height = 35
-    Hint = 'If, in future, or for special needs, the file'#10'you need is not in the list use this button to '#10'find and use it.'#10#10'You will first be asked to find the file.'#10#10'If you choose one you will then be asked to'#10'type any parameter / flag it needs.'#10#10'<end>'
+    Hint = 'Use the custom template you specify in'#10'the edit below...'#10#10'<end>'
     Top = 310
     Width = 281
     Anchors = [akTop, akLeft, akRight]
@@ -127,7 +127,7 @@ object frmSuperUserFile: TfrmSuperUserFile
   object btnTemplate: TBitBtn
     Left = 16
     Height = 33
-    Hint = 'A quick introduction to the intricacieas of'#10'xxxsu and xxxsudo.'#10#10'<end>'
+    Hint = 'Apply the template from the checked radio'#10'button below.'#10#10'<end>'
     Top = 99
     Width = 281
     Anchors = [akTop, akLeft, akRight]
@@ -140,6 +140,7 @@ object frmSuperUserFile: TfrmSuperUserFile
   object rgTemplates: TRadioGroup
     Left = 48
     Height = 140
+    Hint = 'List of the most common ROOT templates,'#10'select the one you want.'#10#10'<end>'
     Top = 137
     Width = 302
     Anchors = [akTop, akLeft, akRight]

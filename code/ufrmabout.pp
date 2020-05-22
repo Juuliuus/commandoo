@@ -109,8 +109,8 @@ procedure TfrmAbout.btnSaveToFileClick( Sender : TObject );
 var
   aFile : string;
 begin
-//juus make this an optional setting...Frm.Save to path....
-  aFile := Frm.WritingToPath + GetNamebtnToggle;
+  aFile := Frm.SavingToPath + format( cSaveToFileTemplate, [ GetNamebtnToggle ] );
+
 
   if DoSingleInput( csiChooseAFile, aFile, simFile, self, false, true ) then
   begin
@@ -133,11 +133,11 @@ end;
 
 function TfrmAbout.GetNamebtnToggle : string;
 begin
-  result := 'commandoo_';
+  result := 'info';
   case btnToggle.Tag mod 3 of
-    0 : result := result + 'About.txt';
-    1 : result := result + 'Intro.txt';
-    2 : result := result + 'Tips.txt';
+    0 : result := cSaveToFileAbout;
+    1 : result := cSaveToFileIntro;
+    2 : result := cSaveToFileTips;
   end;
 end;
 

@@ -56,9 +56,6 @@ const
 
   cReservedSuperUser = '<ROOT> ';
 
-  cCommandInPathStr = '$PATH';
-  cLinuxBuiltInStr = '$BUILTIN';
-
 
 type
 

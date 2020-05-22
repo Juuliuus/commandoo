@@ -862,7 +862,31 @@ resourceString
    ccapSaveFileExists = 'Saving to an existing file';
    cmsgSaveFileExists = 'The file "%s" already exists. Do you want to over-write it?';
 
+   cmsgNoPathInsertion = 'The Command "%s" is a "%s", it has no path.';
 
+   cSaveToFileMsg = 'message';
+   cSaveToFileAbout = 'about';
+   cSaveToFileIntro = 'introduction';
+   cSaveToFileTips = 'tips';
+   cSaveToFileOutput = 'OutPut_%s';
+
+   cOutPutCopy1 = 'Copy';
+   cOutPutSave1 = 'Save';
+   cOutPutCopy2 = 'the clipboard';
+   cOutPutSave2 = 'a file';
+   cOutPutCopy3 = 'copied';
+   cOutPutSave3 = 'saved';
+
+   cOutPutActionHint =
+     '%s the Output area to %s.'
+     + LineEnding + LineEnding
+     + 'If nothing is selected the entire output will '
+     + LineEnding
+     + 'be %s, otherwise only the selected '
+     + LineEnding
+     + 'portion.'
+     + LineEnding + LineEnding
+     + '<end>';
 
 
 implementation

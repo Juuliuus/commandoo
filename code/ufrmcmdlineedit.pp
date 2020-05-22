@@ -42,6 +42,7 @@ type
     btnRefresh : TBitBtn;
     btnVarDecimal : TBitBtn;
     btnVarFilename : TBitBtn;
+    btnPath : TBitBtn;
     btnVarInteger : TBitBtn;
     btnVarString : TBitBtn;
     cbWrapText : TCheckBox;
@@ -53,6 +54,7 @@ type
     procedure bntOKClick(Sender : TObject);
     procedure btnCancelClick(Sender : TObject);
     procedure btnDefaultHelpClick(Sender : TObject);
+    procedure btnPathClick( Sender : TObject );
     procedure btnRefreshClick(Sender : TObject);
     procedure btnVarStringClick( Sender : TObject );
     procedure cbWrapTextChange( Sender : TObject );
@@ -101,6 +103,7 @@ uses ufrmMsgDlg
      , ufrmMain
      , ufrmFindText
      , juusgen
+     , strconst_en
      , unitglob
      ;
 
@@ -317,6 +320,23 @@ end;
 procedure TfrmCmdLineEdit.btnDefaultHelpClick(Sender : TObject);
 begin
   ShowInitialHelp;
+end;
+
+procedure TfrmCmdLineEdit.btnPathClick( Sender : TObject );
+var
+  str : string;
+begin
+
+  str := TfrmMain( Owner ).lblPathActual.Caption;
+
+  if str = cLinuxBuiltInStr then
+  begin
+    MyShowmessage( format( cmsgNoPathInsertion, [ TfrmMain( Owner ).lblCommandName.Caption, str ] ), self );
+    exit;
+  end;
+
+  memCmdLine.Text := str + memCmdLine.Text;
+
 end;
 
 procedure TfrmCmdLineEdit.btnRefreshClick(Sender : TObject);

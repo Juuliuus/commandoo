@@ -48,8 +48,8 @@ type
     btnRootFile : TBitBtn;
     btnSqlLib : TBitBtn;
     btnSqlLibReset : TBitBtn;
-    btnTerminal : TBitBtn;
-    btnTerminalReset : TBitBtn;
+    btnSavePath : TBitBtn;
+    btnSavePathReset : TBitBtn;
     cbAllowMultipleOpens : TCheckBox;
     cbLanguage : TComboBox;
     cbMaxOutput : TComboBox;
@@ -64,7 +64,7 @@ type
     cbTextDB : TCheckBox;
     cbLargerFont : TCheckBox;
     edtRootFile : TEdit;
-    edtTerminal : TEdit;
+    edtSavePath : TEdit;
     edtSqlLib : TEdit;
     FrameHint1 : TFrameHint;
     lblDisplayMax : TLabel;
@@ -83,9 +83,9 @@ type
     procedure btnRootFileClick( Sender : TObject );
     procedure btnSqlLibClick( Sender : TObject );
     procedure btnSqlLibResetClick( Sender : TObject );
-    procedure btnTerminalClick(Sender : TObject);
+    procedure btnSavePathClick(Sender : TObject);
     procedure btnResetDlgsClick(Sender : TObject);
-    procedure btnTerminalResetClick( Sender : TObject );
+    procedure btnSavePathResetClick( Sender : TObject );
     procedure cbLanguageChange(Sender : TObject);
     procedure cbLargerFontChange( Sender : TObject );
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
@@ -95,23 +95,14 @@ type
     procedure tmrLangOKTimer( Sender : TObject );
   private
     fRoot_File : string;
-    //fSUFile : string;
-    //fSUParam1 : string;
-    //fSUParam2 : string;
     fHasShown : boolean;
     procedure HandleFormSettings(TheType : TSettingsDirective);
-    //procedure SetSUFile( AValue : string );
-    //procedure SetSUParam1( AValue : string );
-    //procedure SetSUParam2( AValue : string );
     procedure UpdateShared;
     { private declarations }
   public
     { public declarations }
     VerifyLangIndex : integer;
     property Root_File : string read fRoot_File write fRoot_File;
-    //property SUFile : string read fSUFile write SetSUFile;
-    //property SUParam1 : string read fSUParam1 write SetSUParam1;
-    //property SUParam2 : string read fSUParam2 write SetSUParam2;
   end;
 
 var
@@ -127,8 +118,7 @@ uses ufrmMsgDlg, unitLanguages
   , ufrmSuperUserFile
   , unitDBConstants
   , unitGlob
-//  , strconst_en
-  //, ufrmColorTest
+  , strconst_en
   ;
 
 resourcestring
@@ -206,17 +196,16 @@ resourcestring
     + LineEnding
     ;
 
-  ccapOptDefTerminal = 'Reset to default Terminal?';
-  cmsgOptDefTerminal = 'Are you sure you want to reset the Terminal Program to Default "%s"?';
-  ccapOptTerminalProgram = 'Terminal Program';
+  cmsgOptDefSavePathIsDefault = 'The shown Save Path is already the default.';
+  ccapOptDefSavePath = 'Reset Path to config default?';
+  cmsgOptDefSavePath = 'Are you sure you want to reset the Saving Path to Default "%s"?';
+  cmsgOptFileSavePathInvalid = 'Folder "%s" does not exist.';
+  ccapOptFileSavePath = 'File saving path';
   cmsgOptSqliteActiveAlready = 'sqlite is active, no need to change it.';
   cmsgOptSqliteLibFile = 'sqlite Library file';
   ccapOptResetShowNos = 'Reset Show No More?';
   cmsgOptResetShowNos = 'Are you sure you want to re-enable Optional Messages / Information?';
 
-//const
-//  cmsgOptEngPeculiar = 'You have chosen English. Due to peculiarities of translation '
-//                       + 'files you need to restart the program to load English in the Main Window.';
 
 {$R *.lfm}
 
@@ -233,34 +222,42 @@ begin
 //  MsgDlgParams.ResetDoNotShowList( fSuperUser );
 end;
 
-procedure TfrmOptions.btnTerminalResetClick( Sender : TObject );
+procedure TfrmOptions.btnSavePathResetClick( Sender : TObject );
 var
   Str : String;
 begin
 
-  Str := 'xterm';
-  MsgDlgMessage( ccapOptDefTerminal,
-                  format( cmsgOptDefTerminal, [ Str ] )
-               );
+  Str := TfrmMain( Owner ).WritingToPath;
+  if Str = edtSavePath.Text then
+  begin
+    MyShowMessage( cmsgOptDefSavePathIsDefault, self );
+    exit;
+  end;
+  MsgDlgMessage( ccapOptDefSavePath, format( cmsgOptDefSavePath, [ Str ] ) );
   if MsgDlgConfirmation( self ) = mrNo then
     exit;
-  edtTerminal.Text := Str;
+  edtSavePath.Text := Str;
 
 end;
 
-procedure TfrmOptions.btnTerminalClick(Sender : TObject);
+procedure TfrmOptions.btnSavePathClick(Sender : TObject);
 var
   Str : String;
 begin
-  Str := edtTerminal.Text;
-  if not DoSingleInput( ccapOptTerminalProgram, Str, simFile, self, false ) then
+  Str := edtSavePath.Text;
+  if not DoSingleInput( ccapOptFileSavePath, Str, simDir, self, false ) then
     exit;
 
   if Str <> '' then
   begin
-    if CheckFileNotFound( Str ) then
+    if not DirectoryExists( str ) then
+    begin
+      MsgDlgMessage( ccapError, format( cmsgOptFileSavePathInvalid, [ Str ] ) );
+      MsgDlgInfo( self );
       exit;
-    edtTerminal.Text := Str;
+    end;
+
+    edtSavePath.Text := IncludeTrailingPathDelimiter( Str );
   end;
 end;
 
@@ -320,7 +317,6 @@ procedure TfrmOptions.btnRootFileClick( Sender : TObject );
 begin
   with TfrmSuperUserFile.Create( self ) do
   try
-//    lblCurrFile.Caption := SUFile;
     lblCurrFile.Caption := fRoot_File;
 
     ShowModal;
@@ -328,10 +324,6 @@ begin
     if ModalResult = mrOK then
     begin
       fRoot_File := lblCurrFile.Caption;
-      //SUFile := edtsufile.Text;
-      //SUParam1 := edtsuparam1.Text;
-      //SUParam2 := edtsuparam2.Text;
-//      edtRootFile.Text := SUFile + ' ' + SUParam1 + ' ' + SUParam2;
       edtRootFile.Text := fRoot_File;
     end;
 
@@ -472,23 +464,6 @@ begin
 
 end;
 
-//procedure TfrmOptions.SetSUFile( AValue : string );
-//begin
-//  if fSUFile = AValue then Exit;
-//  fSUFile := AValue;
-//end;
-//
-//procedure TfrmOptions.SetSUParam1( AValue : string );
-//begin
-//  if fSUParam1 = AValue then Exit;
-//  fSUParam1 := AValue;
-//end;
-//
-//procedure TfrmOptions.SetSUParam2( AValue : string );
-//begin
-//  if fSUParam2 = AValue then Exit;
-//  fSUParam2 := AValue;
-//end;
 
 end.
 

@@ -56,6 +56,9 @@ resourcestring
 const  //button captions too BUT should NOT be translated.
   cbtn_SearchNOT = '± NOT';
   ccbHintsEnglishOverride = '&H  Show hints on mouse-over';
+  cCommandInPathStr = '$PATH';
+  cLinuxBuiltInStr = '$BUILTIN';
+
 
 type
   //raise EErrorDatabaseProblem.Create( 'EXCEPTION STRESS TEST' );

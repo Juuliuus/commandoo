@@ -100,40 +100,8 @@ uses ufrmMsgDlg
      , unitglob
      ;
 
-resourcestring
-  cmsgsufBadPath = '//xx BAD xx/';
-  cmsgBadSUFile = 'File "%s" does not exist. Can not save it.';
-  ccapChooseSUFile = 'Choose ROOT authentication file';
-  ccapTypeSUFileParam = 'Type in flag / parameter, if any';
-  ccapTypeSUFileParam1 = 'First flag / parameter, if any';
-  ccapTypeSUFileParam2 = 'Second flag / parameter, if any';
-  cmsgRawSudo = 'Not allowed! "su" and "sudo" are not secure to use through a GUI.';
-  ccapTurnOffRoot = 'Disallow ROOT permissions?';
-  cmsgTurnOffRoot = 'If you do this you will not be able to run command lines as ROOT. Is this what you want?';
-  csufHintParams =
-    'These edits hold the param flags for the ROOT file. These '
-    + LineEnding
-    + 'are correct and shouldn''t in general be changed. '
-    + LineEnding + LineEnding
-    + 'However, someday in future maybe things change, so you can '
-    + LineEnding
-    + 'edit them by double clicking them. You should know what '
-    + LineEnding
-    + 'you are doing, any changes you make are at your own risk. '
-    + LineEnding + LineEnding
-    + 'At the time of writing only kdesu requires params. "-t" forces '
-    + LineEnding
-    + 'it to return the called process''s output, and "-c" tells it to '
-    + LineEnding
-    + 'run a command. "-c" MUST BE last.'
-    + LineEnding + LineEnding
-    + '<end>'
-    + LineEnding + LineEnding
-    ;
-
 
 { TfrmSuperUserFile }
-//juus SUPERUSER FILE CHOOSING DIALOG ====> OUT!
 procedure TfrmSuperUserFile.FormShow(Sender : TObject);
 var
   Idx : integer;
@@ -230,10 +198,6 @@ begin
     Showmessage( cInputCantBeBlank );
     exit;
   end;
-
-
-  //TempStr := stringreplace( TempStr, '''<<F>>''', '<<F>>', [ rfreplaceall, rfignorecase ] );
-
 
   str := trim( edtCustom.Text );
   str := stringreplace( str, '%S', '%s', [ rfreplaceall ] );//, rfignorecase

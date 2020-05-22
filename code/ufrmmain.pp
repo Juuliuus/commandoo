@@ -66,6 +66,10 @@ type
     actFindCmdLine : TAction;
     actExit : TAction;
     actAbout : TAction;
+    actOutPutCopy : TAction;
+    actOutPutSave : TAction;
+    actOutPutClear : TAction;
+    actOutputWrap : TAction;
     actSearchRun : TAction;
     actSearchGoToCmdLine : TAction;
     actSearchFindCmdLine : TAction;
@@ -95,11 +99,15 @@ type
     Bevel1 : TBevel;
     Bevel2 : TBevel;
     Bevel3 : TBevel;
+    Bevel4 : TBevel;
+    Bevel5 : TBevel;
     btnBuilder : TBitBtn;
     btnExit : TBitBtn;
     btnCmdLineDelete : TBitBtn;
     btnCmdLineUnDelete : TBitBtn;
-    btnClear : TBitBtn;
+    btnMainClear : TBitBtn;
+    btnMainSave : TBitBtn;
+    btnMainCopy : TBitBtn;
     btnRefreshFavorites : TBitBtn;
     btnSearchRun : TBitBtn;
     btnSimpleSearch : TBitBtn;
@@ -238,6 +246,12 @@ type
     memDetachedProcesses : TMemo;
     memDispNotes : TMemo;
     memEntry : TMemo;
+    MenuItem1 : TMenuItem;
+    mniOutPutWrap : TMenuItem;
+    mniOutPutClear : TMenuItem;
+    mniOutPutSave : TMenuItem;
+    mniOutputCopy : TMenuItem;
+    mniOutput : TMenuItem;
     mniCmdSendTo : TMenuItem;
     pnlCEdit : TPanel;
     pnlRefreshFavorites : TPanel;
@@ -363,6 +377,10 @@ type
     procedure actFindCmdExecute( Sender : TObject );
     procedure actFindCmdLineExecute( Sender : TObject );
     procedure actOptionsExecute( Sender : TObject );
+    procedure actOutPutClearExecute( Sender : TObject );
+    procedure actOutPutCopyExecute( Sender : TObject );
+    procedure actOutPutSaveExecute( Sender : TObject );
+    procedure actOutputWrapExecute( Sender : TObject );
     procedure actProfilesExecute( Sender : TObject );
     procedure actQuickRunExecute( Sender : TObject );
     procedure actManageKeyWordsExecute(Sender: TObject);
@@ -389,7 +407,6 @@ type
     procedure actSwitchDBExecute( Sender : TObject );
     procedure btnBuilderClick( Sender : TObject );
     procedure btnCancelRunClick( Sender : TObject );
-    procedure btnClearClick( Sender : TObject );
     procedure btnCmdEditClick(Sender: TObject);
     procedure btnHaltProcessClick( Sender : TObject );
     procedure btnHelpCommandClick(Sender: TObject);
@@ -407,7 +424,6 @@ type
     procedure cbSuperUserLineChange(Sender : TObject);
     procedure cbThreatLevelChange(Sender: TObject);
     procedure cbThreatLevelLineChange( Sender : TObject );
-    procedure cbWordWrapMainChange( Sender : TObject );
     procedure edtFriendlyNameLineChange( Sender : TObject );
     procedure edtHelpChange( Sender : TObject );
     procedure edtVersionChange( Sender : TObject );
@@ -487,6 +503,7 @@ type
     fProfilePath : string;
     fProfileGUID : string;
     fWritingToPath: string;
+    fSavingToPath: string;
     fIsInitialized: boolean;
     fHasShown: boolean;
     fSuperUser: boolean;
@@ -654,6 +671,7 @@ type
 
     property SuperUser: boolean read FSuperUser;
     property WritingToPath: string read fWritingToPath;
+    property SavingToPath: string read fSavingToPath;
     property ProfileName : String read fProfileName;
     property UseDB : Boolean read fUseDB;
     property ProfilePath : string read fProfilePath;
@@ -1184,8 +1202,6 @@ begin
   end;
 
   fSuperUser := QuickProc( 'id', '-u' ) = '0';
-//juus ok, not too bad, but. do all linuxes have it??? default to config is not.
-//  testme := QuickProc( 'xdg-user-dir', 'DOWNLOAD' );
 
 //TODO Make a routine that will create a thumbdrive version
 //ask for appimage ask for destFolder: compy appimage and config to appimage.config
@@ -1279,6 +1295,21 @@ begin
         fProfilePath := fWritingToPath;
       end;
     end;
+
+  fSavingToPath := fIFS.ReadString( cSectTabFormSettings, cFormSettingsSavingPath, '' );
+  if fSavingToPath = '' then
+  begin
+    if SystemFileFound( 'xdg-user-dir' ) then
+    begin
+      fSavingToPath := IncludeTrailingPathDelimiter( QuickProc( 'xdg-user-dir', 'DOWNLOAD' ) );
+      //just in case it not dependable....
+      if not DirectoryExists( fSavingToPath ) then
+        fSavingToPath := fWritingToPath;
+    end
+    else fSavingToPath := fWritingToPath;
+    fIFS.WriteString( cSectTabFormSettings, cFormSettingsSavingPath, fSavingToPath );
+    fIFS.UpdateFile;
+  end;
 
 //init Infoserver before all others, some other shared objs may depend on it.
 //============
@@ -1524,6 +1555,10 @@ procedure TfrmMain.UpdateSharedHintsAndCaptions;
 begin
 //=========================
 //this saves A LOT OF WORK for the translator to re-use hints and/or captions that are the same.
+
+  actOutPutSave.Hint := format( cOutPutActionHint, [ cOutPutSave1, cOutPutSave2, cOutPutSave3 ] );
+  actOutPutCopy.Hint := format( cOutPutActionHint, [ cOutPutCopy1, cOutPutCopy2, cOutPutCopy3 ] );
+
   btnSearchFindCmd.Hint := btnFindCmd.Hint;
   btnSearchFindCmdLine.Hint := btnFindCmd.Hint;
   btnSearchGoToCmdLine.Hint := btnSearchGoToCmd.Hint;
@@ -1713,7 +1748,7 @@ begin
   lbCommands.Items.Clear;
   NilObjects( lbCmdLines.Items );
 
-  InitMsgDlgParams( fWritingToPath, cSectTabNoShows, fIFS );
+  InitMsgDlgParams( fSavingToPath, cSectTabNoShows, fIFS );
 
   HandleFormSettings( sdLoad );
 
@@ -4357,8 +4392,7 @@ end;
 procedure TfrmMain.actOptionsExecute( Sender : TObject );
 var
   origSqlLib : String;
-  originalFontOffset, LanguageIdx: Integer;
-  originalLargerFont : boolean;
+  LanguageIdx: Integer;
 begin
 
   if CheckEditing then
@@ -4404,8 +4438,8 @@ begin
       origSqlLib := fSqliteLibrary;
       edtSqlLib.Text := fSqliteLibrary;
 
-//      originalLargerFont := globFontsLarge;
       cbLargerFont.Checked := globFontsLarge;
+      edtSavePath.Text := fSavingToPath;
 
       Showmodal;
 
@@ -4463,6 +4497,13 @@ begin
           WriteString( cSectTabFormSettings, cFormSettingsRootFile, fRootFile );
         end;
 
+        if edtSavePath.Text <> fSavingToPath then
+        begin
+          fSavingToPath := edtSavePath.Text;
+          MsgDlgParams.SavePath := fSavingToPath;
+          WriteString( cSectTabFormSettings, cFormSettingsSavingPath, fSavingToPath );
+        end;
+
         WriteBool( cSectTabFormSettings, cFormSettingsWarnUnspecified, fWarnUnspecified );
         WriteBool( cSectTabFormSettings, cFormSettingsWarnHarmless, fWarnHarmless );
         WriteBool( cSectTabFormSettings, cFormSettingsWarnCareful, fWarnCareful );
@@ -4479,6 +4520,59 @@ begin
       Free;
     end;
 
+end;
+
+procedure TfrmMain.actOutPutClearExecute( Sender : TObject );
+begin
+  fDisplayOutPut.Clear;
+  UpdateDisplay( format( cmsgDisplayOutputCleared, [ TimeToStr( now ) ] ), false );
+end;
+
+procedure TfrmMain.actOutPutCopyExecute( Sender : TObject );
+begin
+  if Memo1.SelLength > 0 then
+    Clipboard.AsText := Memo1.SelText
+  else Clipboard.AsText := Memo1.Text;
+end;
+
+procedure TfrmMain.actOutPutSaveExecute( Sender : TObject );
+var
+  aFile, aName : string;
+  SL : TStringList;
+begin
+
+  aName := stringreplace( DateTimetostr( now ), ' ', '_', [ rfreplaceall ] );
+  aName := format( cSaveToFileOutput, [ aName ] );
+
+  aFile := fSavingToPath + format( cSaveToFileTemplate, [ aName ] );
+
+  if DoSingleInput( csiChooseAFile, aFile, simFile, self, false, true ) then
+  begin
+    if fileexists( aFile ) then
+      if MsgdlgMessage( ccapSaveFileExists, format( cmsgSaveFileExists, [ aFile ] ) ) then
+        if MsgDlgAttentionConfirm( self ) = mrNo then
+          exit;
+
+    if Memo1.SelLength > 0 then
+    begin
+      try
+        SL := TStringList.Create;
+        SL.Text := Memo1.SelText;
+        SL.SaveToFile( aFile );
+      finally
+        SL.free;
+      end;
+    end
+    else Memo1.Lines.SaveToFile( aFile );
+
+  end;
+
+end;
+
+procedure TfrmMain.actOutputWrapExecute( Sender : TObject );
+begin
+  actOutPutWrap.Checked := not actOutPutWrap.checked;
+  Memo1.WordWrap := actOutPutWrap.Checked;//cbWordWrapMain.Checked;
 end;
 
 procedure TfrmMain.OpenProfiles( const IsSwitchMode : boolean );
@@ -4596,12 +4690,6 @@ end;
 procedure TfrmMain.btnCancelRunClick( Sender : TObject );
 begin
   globltDoCancelProcess := true;
-end;
-
-procedure TfrmMain.btnClearClick( Sender : TObject );
-begin
-  fDisplayOutPut.Clear;
-  UpdateDisplay( format( cmsgDisplayOutputCleared, [ TimeToStr( now ) ] ), false );
 end;
 
 procedure TfrmMain.actProfilesExecute( Sender : TObject );
@@ -5772,11 +5860,6 @@ begin
   ApplyThreatLevel( pnlCLEdit, cbThreatLevelLine );
   EchoThreatLevelDisplay( pnlCL, cbThreatLevelLineDisp, lblThreatLevelLineDisp, cbThreatLevelLine.ItemIndex );
   ReFocus_Edit_Memo( false );
-end;
-
-procedure TfrmMain.cbWordWrapMainChange( Sender : TObject );
-begin
-  Memo1.WordWrap := cbWordWrapMain.Checked;
 end;
 
 function TfrmMain.GetOpenInstances : boolean;
