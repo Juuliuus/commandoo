@@ -1418,23 +1418,14 @@ begin
 
   aComFile := ExtractFileName(aComName);
   aComPath := ExtractFilePath(aComName);
+
   if not FileExists(aComName) then
   begin
-    if aComPath = '' then
-    begin
 //found that kill, for example, came back as builtin even though there is an executable so check path first, not builtins.
-      aComPath := ExtractFilePath( SystemFileLocation( aComFile ) );
-      if ( aComPath = '' ) then
-        if IsLinuxBuiltin( aComFile ) then
-          aComPath := cLinuxBuiltInStr //'$BUILTIN';
-    end
-    else
-    if not DirectoryExists(aComPath) then
-    begin
-      //Must be a file with /'s in it with a missing path?? !!
-      aComPath := '';
-      aComFile := aComName;
-    end;
+    aComPath := ExtractFilePath( SystemFileLocation( aComFile ) );
+    if ( aComPath = '' ) then
+      if IsLinuxBuiltin( aComFile ) then
+        aComPath := cLinuxBuiltInStr //'$BUILTIN';
   end;
 
 end;
@@ -1655,7 +1646,7 @@ begin
   else
   begin
 
-//refactor? figure out if you can also somehow make text db also "transaction" aware. Meaning, all or nothing "commit"
+//someday maybe figure out if you can also somehow make text db also "transaction" aware. Meaning, all or nothing "commit"
     SL := TStringList.Create;
     try
       fDBServer.GetSectionList( SL );
@@ -2814,10 +2805,10 @@ begin
     CmdObjHelperInit( FromCmdObjHelper, SourceDB, FromList );
     CmdObjHelperInit( ToCmdObjHelper, DestDB, ToList );
 
-//TODO need to figure out what is with sqlite with mergecommands and mergecommand
+//need to figure out what is with sqlite with mergecommands and mergecommand
 //Everything is correct here but without the special fix call (immediate commit) the transaction
 //gets confused and drops insertions. This does not happen in save or convert for example (as far as I've tried)
-//So this is a total hack...that works. This is only an issue when mergion TO a sql DB.
+//So this is a total hack...that works. This is only an issue when merging TO a sql DB.
     DestDB.Initiate_Save;
 
     try
@@ -3248,7 +3239,7 @@ var
 begin
   //due to misery, uh, I mean feature of INI files if any CommandLine is changed
   //then all CmdLines must be re-written after being cleared out of ini file.
-  //refactor? for now I'm using this with sql too, could do individual updates but then need an ORDER field for sort order
+  //for now I'm using this with sql too, could do individual updates but then need an ORDER field for sort order
 
   Result := False;
   for i := 0 to CmdLines.Count - 1 do

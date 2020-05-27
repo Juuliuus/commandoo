@@ -31,7 +31,7 @@ uses
   , unitcommands
   , uSingleInput
   , unitGlobForm
-  , JIniFiles
+  , JIniFiles, ExtCtrls
   ;
 
 type
@@ -66,6 +66,7 @@ type
     actCopy : TAction;
     actConvert : TAction;
     actCompare : TAction;
+    actImport : TAction;
     actMergeTo : TAction;
     actSelect : TAction;
     actOK : TAction;
@@ -73,6 +74,7 @@ type
     btnAdd : TBitBtn;
     btnCompare : TBitBtn;
     btnCancel : TBitBtn;
+    btnImport : TBitBtn;
     btnConvert : TBitBtn;
     btnCopy : TBitBtn;
     btnDelete : TBitBtn;
@@ -88,6 +90,7 @@ type
     lblDefaultDisplay : TLabel;
     MenuItem1 : TMenuItem;
     MenuItem2 : TMenuItem;
+    mniImport : TMenuItem;
     mniCompare : TMenuItem;
     mniConvert : TMenuItem;
     mniMergeTo : TMenuItem;
@@ -98,8 +101,10 @@ type
     mniEdit : TMenuItem;
     mniDelete : TMenuItem;
     mniOK : TMenuItem;
+    OpenDialog : TOpenDialog;
     popM : TPopupMenu;
     popS : TPopupMenu;
+    rgImport : TRadioGroup;
     procedure actAddExecute(Sender : TObject);
     procedure actCancelExecute(Sender : TObject);
     procedure actCompareExecute( Sender : TObject );
@@ -107,6 +112,7 @@ type
     procedure actCopyExecute(Sender : TObject);
     procedure actDeleteExecute(Sender : TObject);
     procedure actEditExecute(Sender : TObject);
+    procedure actImportExecute( Sender : TObject );
     procedure actMergeToExecute( Sender : TObject );
     procedure actOKExecute(Sender : TObject);
     procedure actSelectExecute( Sender : TObject );
@@ -116,6 +122,7 @@ type
     procedure FormCreate(Sender : TObject);
     procedure FormDestroy( Sender : TObject );
     procedure FormShow(Sender : TObject);
+    procedure lblDefaultDisplayDblClick( Sender : TObject );
     procedure lbListClick( Sender : TObject );
     procedure lbListDblClick(Sender : TObject);
     procedure lbListKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -142,10 +149,12 @@ type
     f_DB_Profile : TProfileObj;
     f_Text_Profile : TProfileObj;
     fSelectedProfileIsDB : boolean;
+    fLastPath : string;
 
     procedure AdjustListSelectMode;
     function Compare_NameAccepted( aPO : TProfileObj ) : boolean;
     function Copy_ProfileNameCheck( const CheckStr : string ) : boolean;
+    function Import_ProfileNameUsed( const CheckStr : string; const IsSql : boolean ) : boolean;
     function CopySuccess( const FromF, ToF : string ) : boolean;
     procedure Delete_SavedSearches( aPO : TProfileobj );
     function DeleteSuccess( const FileName : string) : boolean;
@@ -186,7 +195,7 @@ type
     procedure FillList;
     procedure FilterList;
     function NameAccepted( const aCaption : string; var Str : string; NameOnly : boolean = false ) : boolean;
-    function Convert_NameAccepted( const aCaption : string; var Str : string; const Path : string; const IsDB : boolean ) : boolean;
+    function Convert_NameAccepted( const aCaption : string; var Str : string; const Path : string; const IsDB : boolean; ImportFromConfig : boolean = false ) : boolean;
     function Merge_NameAccepted( aPO : TProfileObj ) : boolean;
 
     property CurrProfileName : string read fCurrProfileName write SetCurrProfileName;
@@ -217,6 +226,10 @@ uses ufrmMsgDlg
   , ufrmProfilesMerge
   , unitGlob
   , ufrmMain
+  , unitDBConstants
+  , unitDBStructure
+  , clipbrd
+  , linuxtrix
   ;
 
 resourcestring
@@ -264,10 +277,13 @@ resourcestring
   ccapStandardSelect = '&A  Select';
   cmsgProfSwitchedOff = ' ( Switched off in Options )';
 
+  cmsgProImportNoType = 'You need to indicate in the radiobox above whether you are importing a text-based DB or a sql DB.';
 
   ccapProConvertConfirm = 'Convert %s To %s:';
   ccapProConvertSuccess = 'DB Conversion successful. You can load it from the "Switch Database" button.';
-  ccapProCopyConfirm = 'Copy Profile';
+  ccapProCopyConfirm = 'Name for the %s %s';
+  ccapProImport = 'imported';
+  ccapProCopy = 'copied';
   ccapProIsCurrentDB = '"%s" is your current database and it is in use. You may not edit or delete it.';
   ccapProMergeConfirm = 'Merge?';
   cmsgProMergeConfirm = 'Merge  "%s" to "%s"?';
@@ -299,6 +315,65 @@ resourcestring
                           + 'Do you want to overwite those text data files? '
                           + LineEnding
                           ;
+  cmsgProFileSelectionDBMismatch =
+     'while the files you chose are all valid commandoo files, they are from differing databases:'
+     + LineEnding + LineEnding
+     + 'Command file Guid      : %s'
+     + LineEnding
+     + 'Command Line file Guid : %s'
+     + LineEnding
+     + 'Misc file Guid : %s'
+     + LineEnding + LineEnding
+     + 'Perhaps you selected the wrong files?'
+     + LineEnding
+     ;
+
+  cmsgProFileSelectionWrong =
+      'while the files you chose are all valid commandoo files, they are not complete; ie., '
+      + 'they should be one of each of type: Command, CommandLine, and Miscellaneous. '
+      + 'But one of these types is duplicated!';
+  ccapProChoose =
+      'Choose %s %s DB %s';
+  cmsgImportSuccess =
+      'Profile "%s (%s)" was created.'
+      + LineEnding + LineEnding
+      + 'File:'
+      + LineEnding
+      + '"%s"'
+      + LineEnding + LineEnding
+      + 'was imported to:'
+      + LineEnding
+      + '"%s"'
+      + LineEnding
+      ;
+
+  cmsgImportSuccessFromConfig =
+      'File/files:'
+      + LineEnding
+      + '"%s"'
+      + LineEnding + LineEnding
+      + 'was/were re-activated and Profile "%s (%s)" was created.'
+      + LineEnding
+      ;
+
+  cmsgInvalidTextFileFormat =
+      'File "%s" in folder "%s" is not a valid commandoo text based DB.';
+
+  cmsgProFileSelectionError =
+    'You selected %d files but you need to select %s...';
+  cmsgProFileInstructions =
+      'You chose to import a text based DB. '
+      + 'commandoo text DB''s consist of 3 files which by default should have an extension of ".data". '
+      + 'In addition they are, by default, distinguished by either "Cmd", "CmdLine", or "Misc" just '
+      + 'before the extension. Normally the 3 files that look something like: '
+      + LineEnding + LineEnding
+      + 'NameCmd.data, NameCmdLine.data, and NameMisc.data'
+      + LineEnding + LineEnding
+      + 'It is possible that the person who gave them to you renamed them, so keep that in mind.'
+      + LineEnding
+      ;
+  cmsgProBadSqlDB = 'The imported database is either not a sqlite DB or is is not a commandoo DB.';
+
   cmsgProMergeCompareProblem ='TfrmProfiles: %s Commands had a problem.';
 
   ccapSelectProfileType = 'Select Profile to %s TO';
@@ -517,6 +592,9 @@ begin
 
   FCanClose := false;
   HandleFormSettings( sdLoad );
+  if fLastPath = '' then
+    fLastPath := TfrmMain( Owner ).SavingToPath;
+
   lblPathDisplay.Caption := format( cmsgPathDisplay, [ '' ] );
   lblDefaultDisplay.Caption := format( cmsgDefaultDisplay, [ ProgDefaultPath ] );
   btnOK.Caption := cbtn_Done;
@@ -528,6 +606,12 @@ begin
 
   FHasShown := true;
 
+end;
+
+procedure TfrmProfiles.lblDefaultDisplayDblClick( Sender : TObject );
+begin
+  MsgDlgMessage( ccapOverflow, lblDefaultDisplay.Caption );
+  MsgDlgInfo( self );
 end;
 
 function TfrmProfiles.OptionsStatus( PO : TProfileObj ) : string;
@@ -618,6 +702,7 @@ begin
       begin
         FormSettings.AddSetting( inttoStr( Height ) );
         FormSettings.AddSetting( inttoStr( Width ) );
+        FormSettings.AddSetting( fLastPath );
 
         FormSettings.SaveFormSettings( Self.Name );
       end;
@@ -626,6 +711,7 @@ begin
       case i of
         0 : Height := strtoint( theValue );
         1 : Width := strtoint( theValue );
+        2 : fLastPath := theValue;
       end;
   end;
 
@@ -897,7 +983,7 @@ begin
     exit;
 
   Str := '';
-  if not NameAccepted( ccapProCopyConfirm, Str, true ) then
+  if not NameAccepted( format( ccapProCopyConfirm, [ ccapProCopy, ccapGenericProfile ] ), Str, true ) then
     exit;
 
   PO := TProfileObj( lbList.Items.Objects[ lbList.ItemIndex ] );
@@ -931,7 +1017,7 @@ begin
             exit;
           end;
 
-          DestIS.UpdateGUID( ToF, true );
+          DestIS.UpdateGUID( ToF, '', true );
           //DestIS.SaveAll;
           DestIS.UnInitialize( false );
 
@@ -1254,6 +1340,340 @@ begin
 
 end;
 
+procedure TfrmProfiles.actImportExecute( Sender : TObject );
+var
+  AddStr, TargetFileName, TargetFolder, aFile, ProfName, tmpStr : string;
+  ImportFromConfig, IsSQl, DBCopied : boolean;
+  PO : TProfileObj;
+  AnIS : TInfoServer;
+  TDBIdx, i : integer;
+  TextDBSL : TStringlist;
+
+  HaveCmd, HaveCmdLine, HaveMisc, IsBad : boolean;
+  GuidCmd, GuidCmdLine, GuidMisc : string;
+  Ini : TJinifile;
+
+  procedure BuildTextDBSuccessMessage;
+  var
+    j : integer;
+  begin
+    TargetFileName := GenerateDBFilePath( TargetFolder, ProfName + 'Cmd', cIniDBExtension )
+                      + LineEnding
+                      + GenerateDBFilePath( TargetFolder, ProfName + 'CmdLine', cIniDBExtension )
+                      + LineEnding
+                      + GenerateDBFilePath( TargetFolder, ProfName + 'Misc', cIniDBExtension )
+                      ;
+    aFile := '';
+    for j := 0 to TextDBSL.Count - 1 do
+    begin
+      TDBIdx := pos( csoNonPrintingDelimiter, TextDBSL[ j ] );
+      tmpstr := copy( TextDBSL[ j ], 1, TDBIdx - 1 );
+      aFile := aFile + tmpstr + LineEnding;
+    end;
+    aFile := trim( aFile );
+
+  end;
+
+  function DoValidate( const Target, PName : string ) : boolean;
+  begin
+    result := false;
+    anIS := TInfoServer.Create;
+    try
+      if not anIS.Init( Target, PName, IsSql ) then
+      begin
+        deletefile( TargetFileName );
+        MsgDlgMessage( ccapError, cmsgProBadSqlDB );
+        MsgDlgAttention( self );
+      end;
+      anIS.UpdateGUID( '', '', true );
+      anIS.UnInitialize( false );
+      result := true;
+    finally
+      anIS.Free;
+    end;
+
+  end;
+
+  function FixProfName( var PName : string; const ReservedStr : string ) : boolean;
+  var
+    Idx : Integer;
+  begin
+    result := false;
+    Idx := length( ReservedStr );
+    if length( PName ) <= Idx then
+      exit;
+    tmpstr := copy( PName, length( PName) - ( Idx - 1 ), maxint );
+    if uppercase( tmpstr ) = uppercase( ReservedStr ) then
+      if length( PName ) > Idx then
+      begin
+        PName := copy( PName, 1, length( PName) - Idx );
+        result := true;
+      end;
+  end;
+
+ procedure BadFileFormat( const BadFile : string );
+ begin
+   MsgDlgMessage( ccapError, format( cmsgInvalidTextFileFormat , [ extractfilename( BadFile ), extractfilepath( BadFile ) ] ) );
+   MsgDlgAttention( self );
+ end;
+
+ procedure TestIniFile( var BadFile : boolean );
+ var
+   IsCmd, IsCmdLine, IsMisc : boolean;
+   Guid : string;
+ begin
+   tmpStr := Ini.ValidateKey( cSectTab_DB_VersionCount, cKey_TextDataType );
+   if tmpStr <> '' then
+   begin
+     //easy way, modern
+     Guid := Ini.ValidateKey( cSectTab_DB_ProfileGUID, cKey_ProfileGuid );
+     if tmpStr = cIniFileNameCommands then
+     begin
+       TDBidx := 1;
+       HaveCmd := true;
+       GuidCmd := Guid;
+     end;
+     if tmpStr = cIniFileNameCommandLines then
+     begin
+       TDBidx := 2;
+       HaveCmdLine := true;
+       GuidCmdLine := Guid;
+     end;
+     if tmpStr = cIniFileNameMisc then
+     begin
+       TDBidx := 3;
+       HaveMisc := true;
+       GuidMisc := Guid;
+     end;
+   end //if tempstr <> ''
+   else
+   begin
+     //hard way cause old ones have no or may not have comprehensive definite indicators of the type they are
+     Guid := Ini.ValidateKey( cSectTab_DB_ProfileGUID, cKey_ProfileGuid );
+     if Guid = '' then
+     begin
+       BadFile := true;
+       exit;
+     end;
+
+     IsCmd := Ini.SectionExists( Get_IniFile_List_Section( dlCmd ) );
+     IsMisc := Ini.SectionExists( Get_IniFile_List_Section( dlKeyWord ) );
+//readsections doesn't return the [ and ]
+//     IsCmdLine := Ini.RegExpressionSectionSearch( '\[.+\/\/.+\]' ) and not IsCmd and not isMisc;
+     IsCmdLine := Ini.RegExpressionSectionSearch( '.+\/\/.+\/\/[0-9]' ) and not IsCmd and not isMisc;
+
+     if IsCmd then
+     begin
+       TDBidx := 1;
+       HaveCmd := true;
+       GuidCmd := Guid;
+     end;
+     if IsCmdLine then
+     begin
+       TDBidx := 2;
+       HaveCmdLine := true;
+       GuidCmdLine := Guid;
+     end;
+     if IsMisc or not( IsCmd or IsCmdLine ) then
+     begin
+       TDBidx := 3;
+       HaveMisc := true;
+       GuidMisc := Guid;
+     end;
+
+   end;
+ end;
+
+begin
+
+  if rgImport.ItemIndex < 0 then
+  begin
+    MsgDlgMessage( ccapError, cmsgProImportNoType );
+    MsgDlgAttention( self );
+    exit;
+  end;
+
+  isSql := rgImport.ItemIndex = 0;
+
+  aFile := fLastPath;
+  OpenDialog.InitialDir := fLastPath;
+
+  ProfName := '';
+  Ini := nil;
+
+  TextDBSL := TStringlist.Create;
+  try
+
+    if isSql then
+    begin
+
+      OpenDialog.Title := format( ccapProChoose, [ '1', 'sql', 'file' ] );
+      if OpenDialog.Execute then
+      begin
+        if ( OpenDialog.Files.Count > 1 ) or ( OpenDialog.Files.Count = 0 ) then
+        begin
+          MsgDlgMessage( ccapError, format( cmsgProFileSelectionError, [ OpenDialog.Files.Count, '1' ] ) );
+          MsgDlgInfo( self );
+          exit;
+        end;
+        aFile := OpenDialog.Files[ 0 ];
+      end else exit;
+
+      ProfName := ChangeFileExt( extractfilename( aFile ), '' );
+      if pos( '.', ProfName ) = 1 then
+        ProfName := stringreplace( ProfName, '.', 'dot', [] );
+
+    end //isSql
+    else
+    begin
+
+      MsgDlgMessage( ccapInstructions, cmsgProFileInstructions, 'cmsgProFileInstructions' );
+      MsgDlgInfo( self );
+
+      TDBIdx := 0;
+      HaveCmd := false;
+      HaveCmdLine := false;
+      HaveMisc := false;
+      IsBad := false;
+
+      OpenDialog.Title := format( ccapProChoose, [ '3', 'text', 'files' ] );
+      if OpenDialog.Execute then
+      begin
+        if OpenDialog.Files.Count <> 3  then
+        begin
+          MsgDlgMessage( ccapError, format( cmsgProFileSelectionError, [ OpenDialog.Files.Count, '3' ] ) );
+          MsgDlgInfo( self );
+          exit;
+        end;
+      end else exit;
+
+      ProfName := 'NewTextDB';
+      for i := 0 to 2 do
+      begin
+        aFile := OpenDialog.Files[ i ];
+        Ini := TJiniFile.Create( aFile );
+        TestIniFile( isBad );
+        freeandnil( Ini );
+        if IsBad then
+          break;
+        if ( i = 0 ) and not( HaveCmd or HaveCmdLine or HaveMisc ) then //can check the first one...
+        begin
+          BadFileFormat( aFile );
+          exit;
+        end;
+
+        //TextDBSL.AddObject( aFile, Tobject( Pointer( TDBIdx ) ) );
+        TextDBSL.Add( inttostr( TDBidx ) + aFile );
+
+        tmpStr := ProfName;
+        ProfName := ChangeFileExt( extractfilename( aFile ), '' );
+        if ( pos( '.', ProfName ) = 1 ) then //was .file
+          ProfName := tmpStr; //reset to something valid
+
+      end;
+
+      if IsBad then
+      begin
+        BadFileFormat( aFile );
+        exit;
+      end;
+
+      if not( HaveCmd and HaveCmdLine and HaveMisc ) then
+      begin
+        MsgDlgMessage( ccapError, cmsgProFileSelectionWrong );
+        MsgDlgAttention( self );
+        exit;
+      end;
+
+      if not( ( GuidCmd = GuidCmdLine ) and ( GuidCmdLine = GuidMisc ) ) then
+      begin
+        MsgDlgMessage( ccapError, format( cmsgProFileSelectionDBMismatch, [ GuidCmd, GuidCmdLine, GuidMisc ] ) );
+        MsgDlgAttention( self );
+        exit;
+      end;
+
+      if not FixProfName( ProfName, cIniFileNameCommands ) then
+        if not FixProfName( ProfName, cIniFileNameCommandLines ) then
+          FixProfName( ProfName, cIniFileNameMisc );
+
+    end;
+
+    fLastPath := extractfilepath( aFile );
+    TargetFolder := TfrmMain( Owner ).WritingToPath;
+    ImportFromConfig := fLastPath = TargetFolder; //importing from .config itself
+
+    if not Convert_NameAccepted( format( ccapProCopyConfirm, [ ccapProImport, ccapGenericProfile ] ),
+                                 ProfName,
+                                 TargetFolder,
+                                 IsSql,
+                                 ImportFromConfig
+                                 ) then
+      exit;
+
+    rgImport.ItemIndex := -1;
+
+    if isSql then
+    begin
+
+      DBCopied := false;
+      TargetFileName := GenerateDBFilePath( TargetFolder, ProfName, cSqlDBExtension );
+
+      if TargetFileName <> aFile then //not in .config dir, so need to copy
+      begin
+        if not CopySuccess( aFile, TargetFileName ) then
+           exit;
+        DBCopied := true;
+      end;
+
+      if not DoValidate( TargetFolder, ProfName ) then
+        exit;
+
+      if not DBCopied then
+        MsgDlgMessage( ccapSuccess, format( cmsgImportSuccessFromConfig, [ TargetFileName, ProfName, strif( IsSql, 'sql', 'text' ) ] ) )
+      else MsgDlgMessage( ccapSuccess, format( cmsgImportSuccess, [ ProfName, strif( IsSql, 'sql', 'text' ), aFile, TargetFileName ] ) );
+
+    end else
+    begin
+
+      DBCopied := false;
+      if not( ImportFromConfig and IniDBFilesExist( TargetFolder, ProfName ) ) then
+      begin
+        GetIniDBFileFromToListImport( TextDBSL, TargetFolder, ProfName );
+        if not ProcessTextFiles( TextDBSL, false ) then
+          exit;
+        DBCopied := true;
+      end;
+
+      BuildTextDBSuccessMessage;
+
+      if not DBCopied then
+        MsgDlgMessage( ccapSuccess, format( cmsgImportSuccessFromConfig, [ TargetFileName, ProfName, strif( IsSql, 'sql', 'text' ) ] ) )
+      else MsgDlgMessage( ccapSuccess, format( cmsgImportSuccess, [ ProfName, strif( IsSql, 'sql', 'text' ), aFile, TargetFileName ] ) );
+
+    end;
+
+    PO := TProfileObj.Create;
+    PO.fName := ProfName;
+    PO.fIsDB := IsSql;
+    PO.fPath := TargetFolder;
+    AddStr := GetAdjustedProfileName( ProfName, PO.fIsDB );
+
+    lbList.Items.AddObject( AddStr, PO );
+    WriteList( AddStr, PO.fPath );
+    RefreshList( AddStr );
+
+    popMPopup( self );
+
+    //MsgDlgMessage(  ); //<==== Done above
+    MsgDlgInfo( self );
+
+  finally
+    if assigned( TextDBSL ) then freeandnil( TextDBSL);
+    if assigned( Ini ) then freeandnil( Ini );
+  end;
+
+end;
+
 
 function TfrmProfiles.SourceExists( tmpPO : TProfileObj; DBType : string = 'Source' ) : boolean;
 var
@@ -1561,9 +1981,10 @@ var
   i : Integer;
   Idx : SizeInt;
   Success : Boolean;
-  FromF , ToF: String;
+  FromF, ToF, Guid: String;
 begin
   result := true;
+  Guid := GetRawGuidString;
   for i := 0 to Strings.Count - 1 do
   begin
 
@@ -1580,7 +2001,7 @@ begin
     begin
       Success := CopySuccess( FromF, ToF );
       if Success then
-        InfoServer.UpdateGUID( ToF, false )
+        InfoServer.UpdateGUID( ToF, Guid, false )
     end;
 
     if not Success then
@@ -1747,6 +2168,28 @@ begin
 
 end;
 
+function TfrmProfiles.Import_ProfileNameUsed( const CheckStr : string; const IsSql : boolean ) : boolean;
+var
+  i : Integer;
+  PO : TProfileObj;
+begin
+  result := false;
+
+  for i := fHeaderCount to lbList.Items.Count - 1 do
+  begin
+    PO := TProfileObj( lbList.Items.Objects[ i ] );
+    if not assigned( PO ) then
+      continue;
+    if PO.fName = CheckStr then
+      if PO.fIsDB = IsSql then
+    begin
+      result := true;
+      break;
+    end;
+  end;
+
+end;
+
 function TfrmProfiles.ProfileNameAlreadyUsed( const CheckStr : string; NameOnly : boolean = false ) : boolean;
 begin
   result := false;
@@ -1846,7 +2289,7 @@ begin
 
 end;
 
-function TfrmProfiles.Convert_NameAccepted( const aCaption : string; var Str : string; const Path : string; const IsDB : boolean ) : boolean;
+function TfrmProfiles.Convert_NameAccepted( const aCaption : string; var Str : string; const Path : string; const IsDB : boolean; ImportFromConfig : boolean = false ) : boolean;
 var
   IsUsed : Boolean;
 begin
@@ -1863,9 +2306,14 @@ begin
       Continue;
     //else break;
 
-    if IsDB then
-      IsUsed := FileExists( GenerateDBFilePath( Path, Str, cSqlDBExtension ) )
-    else IsUsed := IniDBFilesExist( path, Str, false );
+    if ImportFromConfig then
+      IsUsed := Import_ProfileNameUsed( Str, IsDB )
+    else
+    begin
+      if IsDB then
+        IsUsed := FileExists( GenerateDBFilePath( Path, Str, cSqlDBExtension ) )
+      else IsUsed := IniDBFilesExist( path, Str, false );
+    end;
 
     if IsUsed then
     begin
@@ -2086,6 +2534,7 @@ procedure TfrmProfiles.FormCreate(Sender : TObject);
 begin
   font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
+
   FHasShown := false;
   FIsInitialized := false;
   fConsolidateMode := false;
@@ -2108,6 +2557,10 @@ begin
   f_Text_Profile := TProfileObj.Create;
   FillProf( f_Text_Profile, false );
 
+  rgImport.Items.Add( '&S  ' + cmsgProDBsqlStr );
+  rgImport.Items.Add( '&T  ' + cmsgProDBTextStr );
+
+  rgImport.Hint := btnImport.Hint;
 
 end;
 

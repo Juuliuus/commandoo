@@ -50,6 +50,8 @@ resourceString
   cstrCmdDisplayObjects = '>>         ↑ Commands   ---   ↓ Command Lines';
 
   ccapError = 'Error';
+  ccapSuccess = 'Success';
+  ccapInstructions = 'Instructions';
   cCantCopy = 'Could not copy "%s" to "%s".';
   //cCantCopyNotFound = '"%s" not found!';
   cFileNotExist = 'File "%s" does not exist.';
@@ -824,22 +826,21 @@ resourceString
                         + LineEnding + LineEnding;
    ccapApology = 'Merging TO sql DB''s:  My Apologies!!!';
    cmsgApology =
-     'PLEASE READ: (!!!!) '
+     'Please read!: '
      + Lineending + LineEnding
      + 'There is some, very very very subtle issue, when merging INTO '
-     + 'a sql database. Depending on circumstances it can take a VERY long time. '
-     + 'I''ve done what I can to make it as fast as I can but it can be terribly, '
-     + 'terribly slow. Best circumstances are small merges of course. And where the '
-     + 'merging items are not already present in the database. Those will be fast-ish. '
+     + 'a SQL database. Depending on circumstances it can take a VERY long time. '
+     + 'I''ve done what I can to make it as fast as I can but it could be '
+     + 'slow. Best circumstances are small merges of course. And where the '
+     + 'merging items are not already present in the TO database. '
      + Lineending + LineEnding
      + 'The worst case is where many of the incoming commands already exist in the destination. '
-     + 'It''s really really bad slooowwww. So I truly apologize for this issue which I am trying '
-     + 'to figure out. '
+     + 'It may not affect you, but it could be slooowwww. If it is I apologize for the issue, be patient it will finish.'
      + Lineending + LineEnding
      + 'You can, of course, merge commands one at a time from the right click popup on the commands '
-     + 'list which then copy instantly to the destination. '
+     + 'list which are then copy instantly to the destination. '
      + Lineending + LineEnding
-     + 'So do you still want to merge to a sql destination?? ';
+     + 'So do you still want to merge to a SQL destination?? ';
 
    cmsgDispNoNotes = '< No Notes >';
    cmsgDispNoKeyWords = '< No KeyWords >';

@@ -1,14 +1,14 @@
 object frmProfiles: TfrmProfiles
-  Left = 2223
+  Left = 1955
   Height = 693
-  Top = 339
-  Width = 540
+  Top = 419
+  Width = 590
   ActiveControl = lbList
   Caption = 'Manage Database Profiles'
   ClientHeight = 693
-  ClientWidth = 540
+  ClientWidth = 590
   Constraints.MinHeight = 693
-  Constraints.MinWidth = 540
+  Constraints.MinWidth = 590
   DesignTimePPI = 128
   Font.Height = -16
   KeyPreview = True
@@ -22,9 +22,8 @@ object frmProfiles: TfrmProfiles
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 208
+    Left = 264
     Height = 32
-    Top = -1
     Width = 325
     ClientHeight = 32
     ClientWidth = 325
@@ -40,7 +39,7 @@ object frmProfiles: TfrmProfiles
     end
   end
   object btnOK: TBitBtn
-    Left = 379
+    Left = 429
     Height = 52
     Top = 71
     Width = 148
@@ -53,7 +52,7 @@ object frmProfiles: TfrmProfiles
     TabOrder = 1
   end
   object btnCancel: TBitBtn
-    Left = 395
+    Left = 445
     Height = 40
     Top = 185
     Width = 120
@@ -71,7 +70,7 @@ object frmProfiles: TfrmProfiles
     Height = 301
     Hint = 'List of Program managed and custom '#10'Database Profiles. '#10#10'The first two ("DB") are managed by the '#10'Program and are always displayed, you'#10'can not delete or edit them. They are'#10'Profiles for the pre-collected database in'#10'text and sql format.'#10#10'You may add custom profiles at any time'#10'and those will be listed here.'#10#10'Profiles can have the same name as long'#10'as they use a different DB type.'#10#10'<end>'
     Top = 71
-    Width = 354
+    Width = 404
     Anchors = [akTop, akLeft, akRight, akBottom]
     ExtendedSelect = False
     Font.Height = -16
@@ -81,26 +80,27 @@ object frmProfiles: TfrmProfiles
     OnKeyDown = lbListKeyDown
     ParentFont = False
     PopupMenu = popM
-    ScrollWidth = 352
+    ScrollWidth = 402
     TabOrder = 0
     TopIndex = -1
   end
   object gbManageList: TGroupBox
-    Left = 21
+    Left = 9
     Height = 194
     Top = 463
-    Width = 505
+    Width = 566
     Anchors = [akLeft, akBottom]
     Caption = 'Manage Profile List'
     ClientHeight = 170
-    ClientWidth = 503
+    ClientWidth = 564
     Font.Height = -16
     ParentColor = False
     ParentFont = False
     TabOrder = 4
     object btnAdd: TBitBtn
-      Left = 32
+      Left = 9
       Height = 32
+      Hint = 'Make a completely new DB from scratch.'#10#10'<end>'
       Top = 4
       Width = 164
       Action = actAdd
@@ -110,8 +110,9 @@ object frmProfiles: TfrmProfiles
       TabOrder = 0
     end
     object btnCopy: TBitBtn
-      Left = 300
+      Left = 198
       Height = 32
+      Hint = 'This makes a copy of the DB with a name you'#10'choose.'#10#10'It will be of the same type as the original; ie.'#10'text goes to a text DB, sql goes to a sql DB.'#10#10'If you want to the change the type from text '#10'to sql, or sql to text use the CONVERT button.'#10#10'<end>'
       Top = 4
       Width = 164
       Action = actCopy
@@ -121,8 +122,9 @@ object frmProfiles: TfrmProfiles
       TabOrder = 1
     end
     object btnEdit: TBitBtn
-      Left = 32
+      Left = 9
       Height = 32
+      Hint = 'Edit the existing Profile entry. '#10#10'It does give you the option of moving the '#10'profile to other folders other than commandoo''s'#10'"config" folder if you need to.'#10#10'<end>'
       Top = 42
       Width = 164
       Action = actEdit
@@ -132,8 +134,9 @@ object frmProfiles: TfrmProfiles
       TabOrder = 2
     end
     object btnDelete: TBitBtn
-      Left = 300
+      Left = 198
       Height = 32
+      Hint = 'Actually you can either delete the DB or'#10'de-activate it.'#10#10'The first "delete" is to remove the Profile'#10'Name from the list. '#10#10'Then you can choose to either delete, or '#10'keep, the actual DB file the entry pointed'#10'to. '#10#10'If you keep the actual DB file, it is effectively'#10'de-activated. You can re-activate it using'#10'the IMPORT button.'#10#10'<end>'
       Top = 42
       Width = 164
       Action = actDelete
@@ -143,37 +146,67 @@ object frmProfiles: TfrmProfiles
       TabOrder = 3
     end
     object btnCompare: TBitBtn
-      Left = 164
+      Left = 198
       Height = 32
-      Top = 89
+      Hint = 'This does an exhaustive compare of the '#10'entries of two of your DB''s.'#10#10'Select in the list the first DB and then use '#10'this button.'#10#10'<end>'#10
+      Top = 129
       Width = 163
       Action = actCompare
       Font.Height = -16
       GlyphShowMode = gsmNever
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 7
     end
     object btnConvert: TBitBtn
       Left = 9
       Height = 32
+      Hint = 'This will make a new DB as copy of the original'#10'by converting it''s type.'#10#10'If the DB is sql it will be converted to text, '#10'and vice versa.'#10#10'If you want the new DB to be the same type'#10'use the COPY button.'#10#10'<end>'
       Top = 129
       Width = 163
       Action = actConvert
       Font.Height = -16
       GlyphShowMode = gsmNever
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 6
     end
     object btnMergeTo: TBitBtn
-      Left = 323
+      Left = 387
       Height = 32
+      Hint = 'This will merge the entires in the selected '#10'DB to another DB of your choice.'#10#10'If entries are identical nothing is done.'#10#10'If entries are similar it will make the best'#10'choice and describe the differences in the '#10'"notes" field of the affected Command and/or'#10'Command Line.'#10#10'<end>'
       Top = 129
       Width = 163
       Action = actMergeTo
       Font.Height = -16
       GlyphShowMode = gsmNever
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 8
+    end
+    object btnImport: TBitBtn
+      Left = 377
+      Height = 32
+      Hint = 'Here import commandoo databases from'#10'other people or archives, or re-activate '#10'deactivated DB''s.'#10#10'Put the to be imported DB in a folder of your'#10'choice. On import it will be copied to the'#10'commandoo "config" location (use the '#10'About button to see where that will be)'#10'and added to the profile list with the profile'#10'name you choose.'#10#10'commandoo gives you the option of using'#10'SQL DB''s and/or text based DB''s.'#10#10'The DB profile name is tied to the DB files'#10'in the following ways:'#10#10'A sql DB is a single file. By default it has an'#10'extension of ".sqlite". So this file will look '#10'like:  <profilename>.sqlite'#10#10'Text based DB''s consist of 3 files. All by '#10'default have an extension of ".data". These'#10'files will look like:'#10'<profilename>cmd.data'#10'<profilename>cmdline.data'#10'<profilename>misc.data'#10#10'<end>'
+      Top = 68
+      Width = 181
+      Action = actImport
+      Font.Height = -16
+      GlyphShowMode = gsmNever
+      ParentFont = False
+      TabOrder = 5
+    end
+    object rgImport: TRadioGroup
+      Left = 395
+      Height = 64
+      Top = 5
+      Width = 148
+      AutoFill = True
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 1
+      TabOrder = 4
     end
   end
   object lblPathDisplay: TLabel
@@ -181,7 +214,7 @@ object frmProfiles: TfrmProfiles
     Height = 28
     Hint = 'The Path/Folder of the currently selected'#10'Profile.'#10#10'This may, for the default DB''s, show that'#10'they are "switched off in Options". This means '#10'that while they are visible in Profile '#10'Management Mode they will not be visible'#10'in Switch Database mode. This is changed'#10'in Options.'#10#10'<end>'
     Top = 37
-    Width = 507
+    Width = 557
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = '1...'
@@ -194,20 +227,21 @@ object frmProfiles: TfrmProfiles
     Height = 22
     Hint = 'Reference only. It shows the default data'#10'file Path/Folder for the program.'#10#10'<end>'
     Top = 435
-    Width = 495
+    Width = 545
     Anchors = [akLeft, akRight, akBottom]
     AutoSize = False
     Caption = '3...'
     Font.Height = -16
     ParentColor = False
     ParentFont = False
+    OnDblClick = lblDefaultDisplayDblClick
   end
   object lblCurrentProfile: TLabel
     Left = 21
     Height = 22
     Hint = 'Reference only. It shows the default data'#10'file Path/Folder for the program.'#10#10'<end>'
     Top = 384
-    Width = 494
+    Width = 544
     Anchors = [akLeft, akRight, akBottom]
     AutoSize = False
     Caption = '2...'
@@ -216,7 +250,7 @@ object frmProfiles: TfrmProfiles
     ParentFont = False
   end
   object btnSelect: TBitBtn
-    Left = 379
+    Left = 429
     Height = 52
     Top = 129
     Width = 148
@@ -245,6 +279,9 @@ object frmProfiles: TfrmProfiles
     end
     object mniDelete: TMenuItem
       Action = actDelete
+    end
+    object mniImport: TMenuItem
+      Action = actImport
     end
     object MenuItem1: TMenuItem
       Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
@@ -315,6 +352,10 @@ object frmProfiles: TfrmProfiles
       Caption = '&Y  Compare'
       OnExecute = actCompareExecute
     end
+    object actImport: TAction
+      Caption = '&I  Import'
+      OnExecute = actImportExecute
+    end
   end
   object popS: TPopupMenu
     left = 468
@@ -325,5 +366,10 @@ object frmProfiles: TfrmProfiles
     object mniCancelS: TMenuItem
       Action = actCancel
     end
+  end
+  object OpenDialog: TOpenDialog
+    Options = [ofAllowMultiSelect, ofPathMustExist, ofFileMustExist, ofEnableSizing, ofForceShowHidden, ofViewDetail]
+    left = 508
+    top = 251
   end
 end

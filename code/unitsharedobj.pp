@@ -167,12 +167,13 @@ type
 
     function GetFieldValue( const ColName, Key : string ) : variant;
     function GetDBGUID : string;
-    function UpdateGUID( const FName : string; const isSql : boolean ) : boolean;
+    function UpdateGUID( const FName, Guid : string; const isSql : boolean ) : boolean;
     function GetDBVersionUpgradeCount : integer;
     procedure UpdateDBVersionCount( const UpgradedToVersion : integer );
     procedure RemoveField_File( const Key : string; DL : TDataLocation; IgnoreSection : string = '' );
     procedure DBUpgrade_Cleanup0002( const Key : string );
     procedure DBUpgrade_Cleanup0003( const DL : TDataLocation; const Key : string );
+    procedure EnsureTextDataType;
 
     property UseDB : boolean read FUseDB;
     property NeedsCommit : boolean read fNeedsCommit write SetNeedsCommit;
@@ -403,7 +404,7 @@ begin
   end;
 end;
 
-function TInfoServer.UpdateGUID( const FName : string; const isSql : boolean ) : boolean;
+function TInfoServer.UpdateGUID( const FName, Guid : string; const isSql : boolean ) : boolean;
 var
   IFile : TJiniFile;
 begin
@@ -421,7 +422,7 @@ begin
         SetProfileGUID( IFile,
                         cSectTab_DB_ProfileGUID,
                         cKey_ProfileGuid,
-                        GetRawGuidString );
+                        Guid );
         IFile.UpdateFile;
       end;
 
@@ -676,7 +677,7 @@ end;
 
 function TInfoServer.Init( const FilePath, FileName : string; const DoUseDB : boolean ) : boolean;
 var
-  DBName, TName : string;
+  DBName, TName, TextDataStr : string;
   IsNew : boolean;
   i, Idx : Integer;
   DL : TDataLocation;
@@ -764,6 +765,7 @@ begin
       begin
         DL := aryTextData[ i ];
         DBName := GetTableNames( DL, fUseDB );
+        TextDataStr := DBName;
         if DBName = '' then
         begin
 //No exceptions here, need result back in main form.
@@ -789,10 +791,18 @@ begin
           begin
             WriteSetIniFileWarning( false );
             UpdateUpgradeLevel( TJIniFile( fControlSlots.Objects[ Idx ] ),
-                              cSectTab_DB_VersionCount,
-                              cKey_VersionCount,
-                              c_DB_VersionUpgradeCount
+                                cSectTab_DB_VersionCount,
+                                cKey_VersionCount,
+                                c_DB_VersionUpgradeCount,
+                                false
                                );
+            WriteTextDataType( TJIniFile( fControlSlots.Objects[ Idx ] ),
+                                cSectTab_DB_VersionCount,
+                                cKey_TextDataType,
+                                TextDataStr,
+                                true
+                               );
+
           end;
         end;
 
@@ -809,6 +819,32 @@ begin
       result := false;
       InternalMessage( format( errmsg, [ 'Error: ' ] ) + e.message );
     end;
+  end;
+
+end;
+
+procedure TInfoServer.EnsureTextDataType;
+var
+  i, Idx : Integer;
+  DBName : string;
+  DL : TDataLocation;
+begin
+
+  if fUseDB then
+    exit;
+
+  for i := 0 to High( aryTextData ) do
+  begin
+    DL := aryTextData[ i ];
+    DBName := GetTableNames( DL, fUseDB );
+    Idx := Ord( DL );
+
+    WriteTextDataType( TJIniFile( fControlSlots.Objects[ Idx ] ),
+                        cSectTab_DB_VersionCount,
+                        cKey_TextDataType,
+                        DBName
+                       );
+
   end;
 
 end;

@@ -1,7 +1,7 @@
 object frmManageProfile: TfrmManageProfile
-  Left = 2137
+  Left = 1952
   Height = 420
-  Top = 579
+  Top = 723
   Width = 420
   ActiveControl = edtProfileName
   Caption = 'Add Profile'
@@ -161,13 +161,13 @@ object frmManageProfile: TfrmManageProfile
     Visible = False
   end
   object btnDefaultPath: TBitBtn
-    Left = 309
+    Left = 253
     Height = 33
     Hint = 'This resets the Path to "Default".'#10#10'Default is the program''s default data location.'#10#10'This is usually the folder where the commandoo'#10'program is run from.'#10#10'<end>'
     Top = 232
-    Width = 88
+    Width = 144
     Anchors = [akTop, akRight]
-    Caption = '&R   = '
+    Caption = '&R   default'
     Font.Height = -16
     OnClick = btnDefaultPathClick
     ParentFont = False

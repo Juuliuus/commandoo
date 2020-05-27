@@ -33,7 +33,7 @@ uses
 
 type
 
-  TMPType = ( mpAdd, mpEdit, mpCopy );
+  TMPType = ( mpAdd, mpEdit, mpCopy, mpImport );
   { TfrmManageProfile }
 
   TfrmManageProfile = class(TForm)
@@ -121,7 +121,7 @@ begin
     FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 
     case Mode of
-      mpAdd : ;
+      mpAdd, mpCopy : ;
       mpEdit :
         begin
           Caption := format( ccapGenericEdit, [ ccapGenericProfile ] );
@@ -133,7 +133,11 @@ begin
           rgType.Enabled := false;
         end;
 
-      mpCopy : ;
+      mpImport :
+        begin
+          Caption := format( ccapGenericImport, [ ccapGenericProfile ] );
+
+        end;
     end;
   end;
 

@@ -32,6 +32,7 @@ resourcestring
   ccapGenericEdit = 'Edit %s';
   ccapGenericAdd = 'Add %s';
   ccapGenericDelete = 'Delete %s';
+  ccapGenericImport = 'Import %s';
   cmsgGenericDelete = 'Are you sure you want to delete the selected items?';
   ccapGenericChoose = 'Choose %s';
   ccapGenericFile = 'File';

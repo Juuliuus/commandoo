@@ -23,7 +23,7 @@ object frmMsgDlg: TfrmMsgDlg
     Top = 55
     Width = 827
     Anchors = [akTop, akLeft, akRight, akBottom]
-    Font.Height = -16
+    Font.Height = -18
     ParentFont = False
     ReadOnly = True
     ScrollBars = ssAutoVertical
@@ -92,7 +92,7 @@ object frmMsgDlg: TfrmMsgDlg
     Top = 4
     Width = 216
     Anchors = [akTop, akRight]
-    Caption = '&C  Copy to Clipboard'
+    Caption = '&K  Copy to Clipboard'
     Font.Height = -16
     OnClick = btnClipClick
     ParentFont = False

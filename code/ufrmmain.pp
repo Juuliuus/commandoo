@@ -748,8 +748,6 @@ const
   cDisplayOutPutMax = 25000;
 
 
-//todo search for refactor for later ideas (we're talkin' after first off. release
-
 resourcestring
   cmsgProgramKeyWord = 'The Name "%s" at beginning of name is reserved for the program to use.';
   cmsgCommandNameDuplicate =
@@ -1078,8 +1076,8 @@ begin
 //================
 //before a release version
 
-//       INCREMENT c_PROG_VersionUpgradeCount = #; to the next upgrade if
-//       prog upgrades (settings-wise) were necessary
+//       INCREMENT c_PROG_VersionUpgradeCount = #; to the next upgrade
+//       if prog upgrades (settings-wise) were necessary
 //
 //       cHandwrittenVersion = '#.#.#'; to match readme file
 //       as of Juneish 2020 v. is 2.0.0 //as of March 2018 v. is 1.0.1
@@ -1209,7 +1207,8 @@ begin
 {$IFNDEF Release}
   fWritingToPath := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
 {$ELSE}
-  fWritingToPath := IncludeTrailingPathDelimiter( GetAppConfigDir( False ) );//gets home "." location
+  //fWritingToPath := IncludeTrailingPathDelimiter( GetAppConfigDir( False ) );//gets home "." location
+  fWritingToPath := GetAppConfigDir( False );//gets home "." location false is xdg, true is system
 {$ENDIF}
   //GetAppConfigDir( true );  //returns etc/commandoo not so useful right now
 
@@ -1441,7 +1440,8 @@ begin
       2 : Update_DB_Version_0002( 'Entry' );
       3 : Update_DB_Version_0003( 'ThreatLevel' );
       4 : Update_DB_Version_0004( 'ObjID' );
-      //5 : When an update is done on the DB write the needed code here, increase the
+      5 : Update_DB_Version_0005;
+      //6 : When an update is done on the DB write the needed code here, increase the
       //  c_DB_VersionUpgradeCount const by 1
     end;
 
@@ -1694,22 +1694,6 @@ begin
        [ lblVersion, lblVersionDisp ]
                              );
 
-//  Register_Cmd_DisplayCaption( fidHelpCommand,
-//       [ lblHelp, lblHelpDisp, btnHelpCommand ]
-//                             );
-////Ok, strange=ish problem with QT(?). Change button caption and
-////I can't change the button color through the System Colors routines, just doesn't work.
-////UNLESS I use clBtnFace which DOES work. Soooooo. Not what I want so I no longer set the
-////captions here. Would've been nice.
-////refactor I leave this here...maybe...in future...this is fixed / addressed???
-////  btnHelpCommand.Color := clBtnFace;//clred;
-//
-//  Register_Cmd_DisplayCaption( fidVersionCommand,
-//       [ lblVersion, lblVersionDisp, btnVersionCommand ]
-//                             );
-//  Register_Cmd_DisplayCaption( fidLocationPath,
-//       [ btnLocationPath ]
-//                             );
 end;
 
 procedure TfrmMain.LoadCurrentSearches;
@@ -1959,10 +1943,7 @@ begin
     if InvalidCommands( false ) then
     begin
  //the list is empty now (rare case of deleting everything) and so must make sure CmdObj is invalid
- //refactor? look into using params everywhere instead of a local global??
-      if assigned( CmdObj ) then
-        CmdObj := nil;
-        //FreeAndNil( CmdObj ); oops
+      CmdObj := nil;
       exit;
     end;
 
@@ -3742,9 +3723,6 @@ end;
 
 function TfrmMain.GetProfileStamp : string;
 begin
-  //could use these but I'm not sure I had something special going with Profilenames, maybe in refactor
-  //cDefaultDBProfileIsDBStrNot = '   < file >';
-  //cDefaultDBProfileIsDBStr = '   < sql >';
   result := fProfileName + strif( fUseDB, '  (sql)', '  (text)' );
 end;
 
@@ -5263,7 +5241,7 @@ begin
     HelpParameter := edtHelp.Text;
     btnDefaultHelp.Caption := format( cclecapDefaultHelp, [ lblCommandName.Caption ] );
 
-    memCmdLine.Lines.Text := Instr + ' ';
+    memCmdLine.Lines.Text := Instr;
     ShowModal;
     if ModalResult = mrOK then
     begin
@@ -5561,18 +5539,26 @@ var
   end;
 
   function Literal_Su_Sudo : boolean;
+  var
+    idx : integer;
+
+    function IsSU( const CheckStr : string ) : boolean;
+    begin
+      result := ( CheckStr = 'su' ) or ( CheckStr = 'sudo' );
+    end;
+
   begin
     result := false;
-    RegX.Expression := '\bsu(do)?\s';
-  // refactor this stops backlash too "\", so not perfect but can't figure out how to do both to find "/"
-  // could use a second find on: /+su(do)?\s  so maybe in future I find a way to this as bulletproof as possible.
-    if RegX.Exec( RunStr + ' ' ) then  //the space is a hack to if last word in string, I not a regex expert!
-    begin
-  //guess this belongs here and not in the other machinery. Be aware there may be other things the user can do
-  //that will mess up if sent through a process.
-//was updating screen twice so don't do here      UpdateDisplay( RunStr + cmsgSudoSuProblem );
-      result := true;
-    end;
+    idx := pos( ' ', RunStr );
+    if idx = 0 then
+      result := IsSU( ExtractfileName( RunStr ) )
+    else result := IsSU( ExtractfileName( copy( RunStr, 1, Idx - 1 ) ) );
+//regexp was simply too complicated and still let things fall thru like cat /home/su
+//    RegX.Expression := '[^ ]/su[do]* +|^su[do]* +|^su[do]*$';
+//    if RegX.Exec( RunStr + ' ' ) then  //the space is a hack to if last word in string, I not a regex expert!
+//    begin
+//      result := true;
+//    end;
   end;
 
 begin
@@ -6152,8 +6138,6 @@ test option and set to don't want either DB sql/text
 Didn't you know a way to send email from a button setting subject??
 fresh install with and without data
 
-Later:
-refactor ==>  Search all text fields: wait til next release
 
 
 

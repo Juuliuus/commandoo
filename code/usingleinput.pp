@@ -68,7 +68,7 @@ type
     { public declarations }
     procedure SetActiveEdit( const AValue : string );
     function ReadActiveEdit : string;
-    procedure SetSingleInputMode( const FM : TSingleInputMode; IsSave : boolean );
+    procedure SetSingleInputMode( const FM : TSingleInputMode; const IsSave : boolean; const InitFolder : string );
   end;
 
   function DoSingleInput( const ATitle: string; var AValue: string; const AFormMode: TSingleInputMode;
@@ -103,7 +103,8 @@ begin
   with TfrmSingleInput.Create(aForm) do
     try
       Caption := ATitle;
-      SetSingleInputMode( AFormMode, IsSave );
+
+      SetSingleInputMode( AFormMode, IsSave, extractfilePath( aValue ) );
       SetActiveEdit( AValue );
       showmodal;
 
@@ -285,7 +286,7 @@ begin
   Result := Trim( Result );
 end;
 
-procedure TfrmSingleInput.SetSingleInputMode( const FM : TSingleInputMode; IsSave : boolean );
+procedure TfrmSingleInput.SetSingleInputMode( const FM : TSingleInputMode; const IsSave : boolean; const InitFolder : string );
 begin
   FormMode := FM;
   case FormMode of
@@ -303,7 +304,12 @@ begin
         feFile.Text := '';
         if IsSave then
           feFile.DialogKind := dkSave
-        else feFile.DialogKind := dkOpen;
+        else
+        begin
+          feFile.DialogKind := dkOpen;
+          if InitFolder <> '' then
+            feFile.InitialDir := InitFolder;
+        end;
         lblHint.Visible := true;
         ActiveEdit := feFile;//TEdit;
       end;

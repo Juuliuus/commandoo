@@ -198,6 +198,9 @@ type
     procedure EraseSection(const Section: string); override;
     procedure RenameSection (const OldSection, NewSection : String );
     procedure DeleteKey(const Section, Ident: String); override;
+    //function IsValidKey( const Check: String ) : boolean;
+    function ValidateKey( const Section, Ident: String ) : string;
+    function RegExpressionSectionSearch( Reg : string ) : boolean;
     procedure UpdateFile; override;
     procedure GetSectionList( Strings : TStrings );
     procedure ShowSectionList(SearchTerm : string; Strings : TStrings);
@@ -218,6 +221,8 @@ type
   end;
 
 implementation
+
+uses regexpr, clipbrd;
 
 Resourcestring
   SErrCouldNotCreatePath = 'Could not create directory "%s"';
@@ -978,6 +983,39 @@ begin
   end;
 end;
 
+//const
+//   InValidStr = '^x^';
+//
+//function TJiniFile.IsValidKey( const Check: String ) : boolean;
+//begin
+//  result := Check <> InValidStr;
+//end;
+
+function TJiniFile.ValidateKey( const Section, Ident: String ) : string;
+begin
+//  result := ReadString( Section, Ident, InValidStr );
+  result := ReadString( Section, Ident, '' );
+end;
+
+function TJiniFile.RegExpressionSectionSearch( Reg : string ) : boolean;
+var
+  RegX : TRegExpr;
+  SL : TStringlist;
+begin
+  RegX := TRegExpr.Create;
+  SL := TStringlist.Create;
+  try
+    ReadSections( SL );
+    clipboard.astext := SL.Text;
+
+    RegX.Expression := Reg;
+    result := RegX.Exec( SL.Text );
+  finally
+    if assigned( RegX ) then freeandnil( RegX );
+    if assigned( SL ) then freeandnil( SL );
+  end;
+
+end;
 
 procedure TJiniFile.RenameSection(const OldSection, NewSection : String);
 var

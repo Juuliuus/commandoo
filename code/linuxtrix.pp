@@ -164,7 +164,6 @@ end;
 
 function GetLinuxEnvPathString( var PathEnvirString : string; AddEndingLinuxSlash : boolean = false ) : char;
 begin
-//todo are env var's  in locale?? Or always english??
   PathEnvirString := GetEnvironmentVariable( 'PATH' );
   result := DeterminePathSeparatorUsed( PathEnvirString );
   if AddEndingLinuxSlash then
@@ -694,24 +693,19 @@ end;
 
 
 function IsLinuxBuiltin( const FName : string ) : boolean;
-//var
-//  ChkStr : String;
+var
+  ChkStr : String;
 begin
+//finally, after installing german and catalan, it does appear the best way to find builtin
+//is via : or /, is it bulletproof? No idea what non-latin alphabets will do...but assume linux
+//keeps its formats
+  result := false;
   if not globltHasBASH then
-    result := pos ( ' builtin', SimpleProc( format( 'sh -c "type %s"', [ FName ] ), true, false, false ) ) > 0
-//NO!!==>  else result := pos ( ' builtin', SimpleProc( format( 'bash -i -c "type %s"', [ FName ] ), true, false, false ) ) > 0;
-  else result := pos ( ' builtin', SimpleProc( format( 'bash -c "type %s"', [ FName ] ), true, false, false ) ) > 0;
+    ChkStr := SimpleProc( format( 'sh -c "type %s"', [ FName ] ), true, false, false )
+  else ChkStr := SimpleProc( format( 'bash -c "type %s"', [ FName ] ), true, false, false );
 
-  //later>> ok I changed languages and the type return messgae is still in
-  //English so I'm going to use above rather than below code...
-  //
-  //this is sooooo FUNKY, but linux is not giving much help here
-  //a positive check is "builtin' in string, much simpler but...
-  //..does that vary from linux to linux, what about other locale's?
-  //so this is the best I've got right now. Todo: make bulletproof.
-
-//  ChkStr := QuickProc( format( 'sh -c "type %s"', [ FName ] ) );
-//  result := ( pos( ':', ChkStr ) = 0 ) and ( pos( '/', ChkStr ) = 0 );
+  if ChkStr <> '' then
+    result := ( pos( ':', ChkStr ) = 0 ) and ( pos( '/', ChkStr ) = 0 );
 
 end;
 

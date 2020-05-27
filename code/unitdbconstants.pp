@@ -39,13 +39,14 @@ const
   //increment this number for any database cleanup / change, ONLY needs to be done if there is a change
     //c_DB_VersionUpgradeCount = 2;//oct 26 2016
     //c_DB_VersionUpgradeCount = 3;//Jan 25 2017  Make ThreatLevel intuitive remove 0th useless element
-    c_DB_VersionUpgradeCount = 4;//April 28 2017  ObjId removed
+    //c_DB_VersionUpgradeCount = 4;//April 28 2017  ObjId removed
+    c_DB_VersionUpgradeCount = 5;//May 26 2020 overlooked "table" specifier for INI files
   //=====  DATABASE  ==============================
     //c_DB_HandwrittenVersion = '1.0.2'; //lineiniidx goes from db
     //c_DB_HandwrittenVersion = '1.0.3'; //'<<F>>' fiasco, quotes shouldn't have been there.
     //c_DB_HandwrittenVersion = '1.0.4'; //Make ThreatLevel intuitive remove 0th useless elemnet
-    c_DB_HandwrittenVersion = '2.0.0'; //integration of sql / text, objid goes away, sortorder added to cmdlines
-    c_DB_VersionDate = ' (April 2017)';
+    c_DB_HandwrittenVersion = '2.0.1'; //integration of sql / text, objid goes away, sortorder added to cmdlines
+    c_DB_VersionDate = ' (May 2020)';
 
 
 type

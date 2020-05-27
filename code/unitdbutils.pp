@@ -40,11 +40,15 @@ const
   procedure Update_DB_Version_0002( const Key : string );
   procedure Update_DB_Version_0003( const Key : string );
   procedure Update_DB_Version_0004( const Key : string );
+  procedure Update_DB_Version_0005;
   procedure Update_PROG_Version_0001( IFile : TJiniFile; const FormSettEntry : string );
   procedure Update_PROG_Version_0002( IFile : TJiniFile );
   procedure Update_PROG_Version_0003( IFile : TJiniFile; const Sect : string );
 
 //Text
+
+  procedure WriteTextDataType( IFile : TJinifile; const aSection, aKey : string;
+                                 const aValue : string; const DoSave : boolean = true );
   procedure UpdateUpgradeLevel( IFile : TJinifile; const aSection, aKey : string;
                                    const aValue : integer; const DoSave : boolean = true );
   function GetUpgradeLevel( IFile : TJinifile; const aSection : string ) : integer;
@@ -58,6 +62,8 @@ const
   function GetIniDBNameTemplate( const DL : TDataLocation ) : string;
   function GetIniDBFileFromToList( Strings : TStrings; const OldPath, NewPath, OldProfileName, NewProfileName : string;
                                    SeparatorChar : string = csoNonPrintingDelimiter ) : boolean;
+  function GetIniDBFileFromToListImport( Strings : TStrings; const NewPath, NewProfileName : string;
+                                         SeparatorChar : string = csoNonPrintingDelimiter ) : boolean;
   function IniDBFilesExist( const Currpath, CurrName : string; MustBeCorrect : boolean = true ) : boolean;
   function GetIniDBFiles( Strings : TStrings; const Currpath, CurrName : string; MustBeCorrect : boolean = true ) : integer;
   function PathDisplayToPathValue( const Path : string ) : string; overload;
@@ -86,6 +92,7 @@ resourcestring
 
 const
   cKey_VersionCount = 'LastVersionUpgrade';
+  cKey_TextDataType = 'TextDataType';
   cKey_ProfileGuid = 'GUID';
   cSqlDBExtension = '.sqlite';
   cIniDBExtension = '.data';
@@ -219,6 +226,15 @@ begin
   result := IFile.ReadInteger( aSection, cKey_VersionCount, 0 );
 end;
 
+procedure WriteTextDataType( IFile : TJinifile; const aSection, aKey : string;
+                                 const aValue : string; const DoSave : boolean = true );
+begin
+  //if not UseDB then MAYBE
+  IFile.WriteString( aSection, aKey, aValue );
+  if DoSave then
+    IFIle.UpdateFile;
+end;
+
 procedure UpdateUpgradeLevel( IFile : TJinifile; const aSection, aKey : string;
                                  const aValue : integer; const DoSave : boolean = true );
 begin
@@ -258,6 +274,14 @@ begin
 //this needs to be done for both Cmd and CmdLine, but only ini files
   InfoServer.RemoveField_File( Key, dlCmd, '-LoadMe_List_CmdObj-' );
   InfoServer.RemoveField_File( Key, dlCmdLine );
+end;
+
+procedure Update_DB_Version_0005;
+begin
+//On implementing a better "import" noticed there was no way to distinguish
+//inifile "tabletype" other than through the filename, which was not good enough.
+//late, should have done this at beginning! Better late than never? Only ini files
+  InfoServer.EnsureTextDataType;
 end;
 
 procedure Update_PROG_Version_0001( IFile : TJiniFile; const FormSettEntry : string );
@@ -320,6 +344,50 @@ begin
     ToF := GenerateDBFilePath( NewPath, format( GetIniDBNameTemplate( aryTextData[ i ] ), [ NewProfileName ] ), cIniDBExtension );
     Strings.Add( FromF + SeparatorChar + ToF );
   end;
+end;
+
+function GetIniDBFileFromToListImport( Strings : TStrings; const NewPath, NewProfileName : string;
+                                       SeparatorChar : string = csoNonPrintingDelimiter ) : boolean;
+var
+  i, Idx : Integer;
+  ToF, CalcName: String;
+
+  tempstr : string;
+begin
+  result := false;
+//  Strings.Clear;
+
+//  for i := 0 to High( aryTextData ) do
+  for i := 0 to Strings.Count - 1 do
+  begin
+    Idx := strtoint( copy( Strings[ i ], 1, 1 ) ) - 1;
+    calcName := format( GetIniDBNameTemplate( aryTextData[ Idx ] ), [ NewProfileName ] );
+    Strings[ i ] := copy( strings[ i ], 2, maxint );
+    tempstr := strings[ i ];
+
+    //case Idx of
+    //  1 : format( GetIniDBNameTemplate( aryTextData[ 1 ] ), [ NewProfileName ] );
+    //  2 : ;
+    //  3 : ;
+    //  else
+    //    begin
+    //
+    //    end;
+    //end;
+    //FromF := GenerateDBFilePath( OldPath, format( GetIniDBNameTemplate( aryTextData[ i ] ), [ OldProfileName ] ), cIniDBExtension );
+    //if not FileExists( FromF ) then
+    //begin
+    //  result := false;
+    //  exit;
+    //end;
+    ToF := GenerateDBFilePath( NewPath, CalcName, cIniDBExtension );
+    Strings[ i ] := Strings[ i ]
+                    + SeparatorChar
+                    + ToF;
+    //Strings.Add( FromF + SeparatorChar + ToF );
+  end;
+
+  result := true;
 end;
 
 function IniDBFilesExist( const Currpath, CurrName : string; MustBeCorrect : boolean = true ) : boolean;
