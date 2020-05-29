@@ -11,6 +11,9 @@ used in a much wider range of Gnu-Linux versions. Check back
 soon... 
 
 NOTE: 29 May 2020 
+Dowloads for the older version are removed from this page but
+still available at:  https://www.timepirate.org/downloads.html
+
 The listed downloads will work as advertised in, for example, 
 Kubuntu 18.04. However, a bug limits its use to english language locale.
 And there are missing features and a couple other minor-ish bugs.
@@ -23,9 +26,6 @@ Project is being re-worked.
 
 Updated version 1.0.1 released March 2018
 (Original release 1.0.0, July/August 2017)
-
-Downloads available in 'Downloads' folder here,
-or at https://www.timepirate.org/downloads.html
 
 The new updated release fixes some silly mistakes, adds 
 some quality of life improvements, and sees the addition
