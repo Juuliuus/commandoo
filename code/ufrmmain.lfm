@@ -20,6 +20,13 @@ object frmMain: TfrmMain
   PopupMenu = pmMain
   Position = poScreenCenter
   LCLVersion = '2.0.6.0'
+  object shpCurrProfile: TShape
+    Left = 573
+    Height = 4
+    Top = 28
+    Width = 271
+    Brush.Color = 12966215
+  end
   object Bevel5: TBevel
     Left = 1130
     Height = 4
@@ -33,26 +40,6 @@ object frmMain: TfrmMain
     Top = 769
     Width = 291
     Anchors = [akTop, akLeft, akRight]
-  end
-  inline FrameHint1: TFrameHint
-    Left = 1056
-    Height = 22
-    Top = 9
-    Width = 275
-    ClientHeight = 22
-    ClientWidth = 275
-    ParentColor = True
-    TabOrder = 4
-    DesignLeft = 41
-    DesignTop = 309
-    inherited cbHints: TCheckBox
-      Left = 32
-      Height = 24
-      Hint = 'Help HInts now Showing'#10#10'<end>'
-      Top = -3
-      Width = 223
-      OnKeyDown = nil
-    end
   end
   object nbCommands: TExtendedNotebook
     Left = 12
@@ -2155,9 +2142,9 @@ object frmMain: TfrmMain
     TabOrder = 7
   end
   object lblPestr: TLabel
-    Left = 736
+    Left = 1128
     Height = 32
-    Top = -5
+    Top = 824
     Width = 347
     Caption = 'Search for PESTER in ufrmMain'
     Color = 1710618
@@ -2181,7 +2168,7 @@ object frmMain: TfrmMain
   object btnSave: TBitBtn
     Left = 21
     Height = 29
-    Top = 3
+    Top = 4
     Width = 151
     Action = actSave
     Caption = '&O  Save'
@@ -2190,7 +2177,7 @@ object frmMain: TfrmMain
   object btnCancelRun: TBitBtn
     Left = 215
     Height = 29
-    Top = 3
+    Top = 4
     Width = 152
     Caption = '&W  Stop Run'
     OnClick = btnCancelRunClick
@@ -2200,7 +2187,7 @@ object frmMain: TfrmMain
   object shpSRL: TShape
     Left = 198
     Height = 23
-    Top = 6
+    Top = 7
     Width = 14
     Brush.Color = 160
     Visible = False
@@ -2208,7 +2195,7 @@ object frmMain: TfrmMain
   object shpSRR: TShape
     Left = 371
     Height = 23
-    Top = 6
+    Top = 7
     Width = 14
     Brush.Color = 160
     Visible = False
@@ -2217,7 +2204,7 @@ object frmMain: TfrmMain
     Left = 412
     Height = 29
     Hint = 'Open the Database Profile Window in '#10'"Select" mode. That is, here is where you'#10'can switch databases.'#10#10'The current database will not be listed.'#10#10'In addition, the default database profiles '#10'for "DB" may, or may not, be optioons'#10'depending on the settings in Options.'#10#10'<end>'
-    Top = 3
+    Top = 4
     Width = 172
     Action = actSwitchDB
     Caption = '&P  Switch DB'
@@ -2226,21 +2213,11 @@ object frmMain: TfrmMain
   object lblCurrDB: TLabel
     Left = 592
     Height = 21
-    Top = 6
+    Top = 2
     Width = 74
     Caption = 'lblCurrDB'
     ParentColor = False
     OnDblClick = lblCurrDBDblClick
-  end
-  object btnAbout: TBitBtn
-    Left = 1341
-    Height = 29
-    Hint = 'Show about form which lists all the paths'#10'to program, database files, etc. and '#10'license information. It also has Tips for '#10'use and you can re-read the introduction.'#10#10'<end>'
-    Top = 3
-    Width = 78
-    Action = actAbout
-    Anchors = [akTop, akRight]
-    TabOrder = 5
   end
   object btnExit: TBitBtn
     Left = 1187
@@ -2331,6 +2308,36 @@ object frmMain: TfrmMain
     Action = actOutPutCopy
     Anchors = [akTop, akRight]
     TabOrder = 16
+  end
+  inline FrameHint1: TFrameHint
+    Left = 1056
+    Height = 22
+    Top = 9
+    Width = 275
+    ClientHeight = 22
+    ClientWidth = 275
+    ParentColor = True
+    TabOrder = 4
+    DesignLeft = 41
+    DesignTop = 309
+    inherited cbHints: TCheckBox
+      Left = 32
+      Height = 24
+      Hint = 'Help HInts now Showing'#10#10'<end>'
+      Top = -2
+      Width = 223
+      OnKeyDown = nil
+    end
+  end
+  object btnAbout: TBitBtn
+    Left = 1341
+    Height = 29
+    Hint = 'Show about form which lists all the paths'#10'to program, database files, etc. and '#10'license information. It also has Tips for '#10'use and you can re-read the introduction.'#10#10'<end>'
+    Top = 4
+    Width = 78
+    Action = actAbout
+    Anchors = [akTop, akRight]
+    TabOrder = 5
   end
   object pmCommands: TPopupMenu
     OnPopup = pmCommandsPopup

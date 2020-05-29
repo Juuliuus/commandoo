@@ -348,6 +348,7 @@ type
     shpCmdOut7 : TShape;
     shpCmdOut8 : TShape;
     shpCmdOut9 : TShape;
+    shpCurrProfile : TShape;
     shpSRL : TShape;
     shpSRR : TShape;
     shpCmdIn : TShape;
@@ -1212,7 +1213,7 @@ begin
 {$ENDIF}
   //GetAppConfigDir( true );  //returns etc/commandoo not so useful right now
 
-//juus fSuperUser << out right?  That dir might exist, need another test
+//juuus fSuperUser << out right?  That dir might exist, need another test
 //=============== first time run as superuser is NOT ALLOWED. ========================================
   if fSuperUser and not DirectoryExists( fWritingToPath ) then
   begin
@@ -1242,7 +1243,7 @@ begin
   DevReleaseSettings;
 //==================================
 
-//juus making dirs
+//juuus making dirs
   if not DirectoryExists( fWritingToPath ) then
     ForceDirectories(fWritingToPath);
   if not DirectoryExists(fWritingToPath + cLanguageFolderName) then
@@ -1275,7 +1276,7 @@ begin
 
 //old status bar necessity.  sbStatuses.Invalidate;//won't refresh until restart
 
-//juus sqlitelibrary stuff
+//juuus sqlitelibrary stuff
   fSqliteLibrary := fIFS.ReadString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, '' );
 
   if not TInfoServer.SqliteInstalled( fSqliteLibrary ) then
@@ -1721,6 +1722,7 @@ begin
 
   if fHasShown then
     Exit;
+  shpCurrProfile.Brush.Color := btnSwitchDB.Color;
 
   RegisterDisplayCaptions;
   UpdateSharedHintsAndCaptions;
@@ -2378,8 +2380,9 @@ end;
 
 procedure TfrmMain.lblCurrDBDblClick( Sender : TObject );
 begin
-  MsgDlgMessage( ccapOverflow, lblCurrDb.Caption );
-  MsgDlgInfo( self );
+  btnSwitchDB.Click;
+  //MsgDlgMessage( ccapOverflow, lblCurrDb.Caption );
+  //MsgDlgInfo( self );
 end;
 
 procedure TfrmMain.lblDispEntryDblClick( Sender : TObject );
@@ -5495,7 +5498,7 @@ begin
     exit;
   end;
 
-//juus here is the place to stop run if TERM or SUPERUSER
+//juuus here is the place to stop run if TERM or SUPERUSER
   if IsRoot then
   begin
     MsgDlgMessage( ccapRootDisallowed, cmsgRootDisallowed );
@@ -5950,7 +5953,7 @@ begin
     exit;
   end;
 
-//juus convert all msgdlg's to show up in the output area.
+//juuus convert all msgdlg's to show up in the output area.
   if MsgDlgMessage( ccapIntro, format(cmsgIntro, [cGNU_GPL, cmsgOwnRisk ]), 'cmsgIntro' ) then
     MsgDlgInfo( self );
 

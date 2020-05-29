@@ -7,7 +7,7 @@ code/*.dbg
 code/commandoo
 code/commandoo64*
 code/commandoo.settings
-code/juus*.data
+code/*.data
 code/*.sqlite
 code/searches
 download/*

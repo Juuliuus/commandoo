@@ -174,6 +174,7 @@ type
     procedure DBUpgrade_Cleanup0002( const Key : string );
     procedure DBUpgrade_Cleanup0003( const DL : TDataLocation; const Key : string );
     procedure EnsureTextDataType;
+    procedure CheckV4GuidMisMatch;
 
     property UseDB : boolean read FUseDB;
     property NeedsCommit : boolean read fNeedsCommit write SetNeedsCommit;
@@ -456,13 +457,13 @@ begin
     if fUseDB then
     begin
     //sql db should never be updated, it is made at creation and stays with it. So this section "should" never be hit
-    // COPY db is an exception but see UpdateGUID
+    // COPY/Import db is an exception but see UpdateGUID
       internalMessage( format( csocapSqlNoGuid, [ 'TInfoServer.GetDBGUID' ] ) );
       result := csocapSqlNoGuidValue;
     end
     else
     begin
-      //this one is simply adding it to legacy inifile DB's (maybe new inifiles too, but not a problem).
+      //this one is simply adding it to legacy inifile DB's (new inifiles too, but not a problem, a blessing).
       for i := 0 to High( aryTextData ) do
         SetProfileGUID( TJIniFile( fControlSlots.Objects[ Ord( aryTextData[ i ] ) ] ),
                         cSectTab_DB_ProfileGUID,
@@ -849,6 +850,40 @@ begin
 
 end;
 
+procedure TInfoServer.CheckV4GuidMisMatch;
+var
+  i, Idx : Integer;
+  //DBName : string;
+  Guid, GuidCmd, GuidCmdLine, GuidMisc : string;
+  DL : TDataLocation;
+begin
+
+  if fUseDB then
+    exit;
+
+//This is coming through DB Upgrade to ver 5
+//at time of ver 4 or less it can only be 0 to 2
+//  for i := 0 to High( aryTextData ) do
+  for i := 0 to 2 do
+  begin
+    Guid := GetProfileGUID( TJIniFile( fControlSlots.Objects[ Ord( aryTextData[ i ] ) ] ),
+                            cSectTab_DB_ProfileGUID
+                            );
+    case i of
+      0 : GuidCmd := Guid;
+      1 : GuidCmdLine := Guid;
+      2 : GuidMisc := Guid;
+    end;
+  end;
+
+  if not ( (GuidCmd = GuidCmdLine ) and ( GuidCmdLine = GuidMisc ) ) then
+    for i := 1 to 2 do
+      SetProfileGUID( TJIniFile( fControlSlots.Objects[ Ord( aryTextData[ i ] ) ] ),
+                      cSectTab_DB_ProfileGUID,
+                      cKey_ProfileGuid,
+                      GuidCmd );
+
+end;
 
 function TInfoServer.UnInitialize( const DoSave : boolean ) : boolean;
 begin

@@ -10,10 +10,16 @@ an AppImage to fix this issue which should also allow it to be
 used in a much wider range of Gnu-Linux versions. Check back 
 soon... 
 
+NOTE: 29 May 2020 
 The listed downloads will work as advertised in, for example, 
-Kubuntu 18.04.
+Kubuntu 18.04. However, a bug limits its use to english language locale.
+And there are missing features and a couple other minor-ish bugs.
+These are being addressed and so I recommend waiting for the
+new version and then upgrading to a 2020 linux version. The new version
+should be ready in the next month (or two).
 
-Project is complete. 
+
+Project is being re-worked. 
 
 Updated version 1.0.1 released March 2018
 (Original release 1.0.0, July/August 2017)

@@ -282,6 +282,10 @@ begin
 //inifile "tabletype" other than through the filename, which was not good enough.
 //late, should have done this at beginning! Better late than never? Only ini files
   InfoServer.EnsureTextDataType;
+//Due to a mistake in prior versions using the copy DB Profile function the resulting text DB's
+//will have different GUIDS in each file. Argh. So I need to allow mismatched text GUIDS to import
+//when, and only when, the version coming in is 4 or less.
+  InfoServer.CheckV4GuidMisMatch;
 end;
 
 procedure Update_PROG_Version_0001( IFile : TJiniFile; const FormSettEntry : string );

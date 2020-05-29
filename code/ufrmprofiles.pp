@@ -230,6 +230,7 @@ uses ufrmMsgDlg
   , unitDBStructure
   , clipbrd
   , linuxtrix
+  //, math
   ;
 
 resourcestring
@@ -259,11 +260,12 @@ resourcestring
   cmsgDefaultDisplay = '( Default Path = %s )';
   cmsgDefaultDisplaySelect = '( Manage DB''s with button "%s" )';
   cmsgCurrentProfile = 'Current Profile = "%s"';
-  ccapProDeleteOK = 'File Deletion?';
+  ccapProDeleteHeader = 'Delete DB Profile "%s"?';
+  ccapProDeleteOK = 'Delete Profile "%s"''s file(s) too?';
   cmsgProDeleteOK = 'Do you also want to delete the files? This cannot be undone, you should have backups just in case.';
-  ccapProDeleteFinal = 'Final Confirmation';
-  cmsgProDeleteFinal = 'The Profile == AND == the Database file(s) will be deleted. Continue?.';
-  cmsgProDeleteFinalNoDelete = 'The Profile will be deleted == BUT == the Database file(s) will remain. Continue?.';
+  ccapProDeleteFinal = 'Final Delete Confirmation...';
+  cmsgProDeleteFinal = 'The Profile "%s" == AND == the Database file(s) will be deleted. Continue?.';
+  cmsgProDeleteFinalNoDelete = 'The Profile "%s" will be deleted == BUT == the Database file(s) will remain, ie. de-activation. Continue?.';
   ccapProCantCopy = 'Can not Copy';
   cmsgProCantCopy = 'Data files for Profile "%s" already exist in "%s". Copy not allowed, you '
                      + 'need to decide what to do with them. If you want to use them then add '
@@ -298,7 +300,8 @@ resourcestring
   cmsgProNoInitialize = 'Could not initialize DB';
 
   ccapProDBFileNotExist = '%s does not exist';
-  cmsgProDBFileNotExist = '"%s"  DB has not been initialized and so is empty, %s DB file must exist.';
+  cmsgProDBFileNotExist = '"%s"  DB has not been initialized and so is empty, %s DB file must exist. '
+                          + 'If it is a newly added DB Profile then you simply need to open it once to initialize it.';
   cmsgProDestNotExist = 'You can use copy or convert instead.';
   cmsgProSourceNotExist = 'Open the DB at least once and, preferably, put some data into it.';
   ccapProDestFileExists = '%s File Exists!';
@@ -332,6 +335,9 @@ resourcestring
       'while the files you chose are all valid commandoo files, they are not complete; ie., '
       + 'they should be one of each of type: Command, CommandLine, and Miscellaneous. '
       + 'But one of these types is duplicated!';
+  cmsgProFileSelectionWrongVer =
+      'while the files you chose are all valid commandoo files, they are mismatched; ie., '
+      + 'they have differing DB Version numbers. ';
   ccapProChoose =
       'Choose %s %s DB %s';
   cmsgImportSuccess =
@@ -348,11 +354,11 @@ resourcestring
       ;
 
   cmsgImportSuccessFromConfig =
-      'File/files:'
+      'File (or files):'
       + LineEnding
       + '"%s"'
       + LineEnding + LineEnding
-      + 'was/were re-activated and Profile "%s (%s)" was created.'
+      + 'was (or were) re-activated and Profile "%s (%s)" was created.'
       + LineEnding
       ;
 
@@ -1111,7 +1117,7 @@ begin
   SL := TStringList.Create;
   try
 
-    MsgDlgMessage( format( ccapGenericDelete, [ PO.fName ] ), cmsgGenericDelete );
+    MsgDlgMessage( format( ccapProDeleteHeader, [ PO.fName ] ), cmsgGenericDelete );
     if MsgDlgConfirmation( self ) = mrNo then
       exit
     else
@@ -1131,7 +1137,7 @@ begin
 
       if SL.Count > 0 then
       begin
-        MsgDlgMessage( ccapProDeleteOK, cmsgProDeleteOK );
+        MsgDlgMessage( format( ccapProDeleteOK, [ PO.fName ] ), cmsgProDeleteOK );
         DoDeletefiles := MsgDlgConfirmation( self ) = mrYes;
       end;
 
@@ -1139,7 +1145,7 @@ begin
 
     if DoDeleteFiles then
     begin
-      if MsgDlgMessage( ccapProDeleteFinal, cmsgProDeleteFinal ) then
+      if MsgDlgMessage( ccapProDeleteFinal, Format( cmsgProDeleteFinal, [ PO.fName ] ) ) then
         if MsgDlgConfirmation( self ) = mrNo then
           exit;
 
@@ -1151,7 +1157,7 @@ begin
     end
     else if SL.Count > 0 then
     begin
-      if MsgDlgMessage( ccapProDeleteFinal, cmsgProDeleteFinalNoDelete ) then
+      if MsgDlgMessage( ccapProDeleteFinal, format( cmsgProDeleteFinalNoDelete, [ PO.fName ] ) ) then
         if MsgDlgConfirmation( self ) = mrNo then
           exit;
     end;
@@ -1351,6 +1357,7 @@ var
 
   HaveCmd, HaveCmdLine, HaveMisc, IsBad : boolean;
   GuidCmd, GuidCmdLine, GuidMisc : string;
+  VerCmd, VerCmdLine, VerMisc : integer;
   Ini : TJinifile;
 
   procedure BuildTextDBSuccessMessage;
@@ -1374,7 +1381,7 @@ var
 
   end;
 
-  function DoValidate( const Target, PName : string ) : boolean;
+  function DoValidate( const Target, PName : string; const NeedUpdate : boolean ) : boolean;
   begin
     result := false;
     anIS := TInfoServer.Create;
@@ -1385,7 +1392,8 @@ var
         MsgDlgMessage( ccapError, cmsgProBadSqlDB );
         MsgDlgAttention( self );
       end;
-      anIS.UpdateGUID( '', '', true );
+      if NeedUpdate then
+        anIS.UpdateGUID( '', '', true );
       anIS.UnInitialize( false );
       result := true;
     finally
@@ -1421,7 +1429,12 @@ var
  var
    IsCmd, IsCmdLine, IsMisc : boolean;
    Guid : string;
+   Ver : integer;
  begin
+   //Due to a mistake in prior versions using the copy DB Profile function the resulting text DB's
+   //will have different GUIDS in each file. Argh. So I need to allow mismatched text GUIDS to import
+   //when, and only when, the version coming in is 4 or less.
+   Ver := Ini.ReadInteger( cSectTab_DB_VersionCount, cKey_VersionCount, 4 );
    tmpStr := Ini.ValidateKey( cSectTab_DB_VersionCount, cKey_TextDataType );
    if tmpStr <> '' then
    begin
@@ -1432,18 +1445,21 @@ var
        TDBidx := 1;
        HaveCmd := true;
        GuidCmd := Guid;
+       VerCmd := Ver;
      end;
      if tmpStr = cIniFileNameCommandLines then
      begin
        TDBidx := 2;
        HaveCmdLine := true;
        GuidCmdLine := Guid;
+       VerCmdLine := Ver;
      end;
      if tmpStr = cIniFileNameMisc then
      begin
        TDBidx := 3;
        HaveMisc := true;
        GuidMisc := Guid;
+       VerMisc := Ver;
      end;
    end //if tempstr <> ''
    else
@@ -1467,18 +1483,21 @@ var
        TDBidx := 1;
        HaveCmd := true;
        GuidCmd := Guid;
+       VerCmd := Ver;
      end;
      if IsCmdLine then
      begin
        TDBidx := 2;
        HaveCmdLine := true;
        GuidCmdLine := Guid;
+       VerCmdLine := Ver;
      end;
      if IsMisc or not( IsCmd or IsCmdLine ) then
      begin
        TDBidx := 3;
        HaveMisc := true;
        GuidMisc := Guid;
+       VerMisc := Ver;
      end;
 
    end;
@@ -1548,6 +1567,10 @@ begin
       end else exit;
 
       ProfName := 'NewTextDB';
+      VerCmd := -1;
+      VerCmdLine := -1;
+      VerMisc := -1;
+
       for i := 0 to 2 do
       begin
         aFile := OpenDialog.Files[ i ];
@@ -1578,14 +1601,21 @@ begin
         exit;
       end;
 
-      if not( HaveCmd and HaveCmdLine and HaveMisc ) then
+      if not( HaveCmd and HaveCmdLine and HaveMisc )then
       begin
         MsgDlgMessage( ccapError, cmsgProFileSelectionWrong );
         MsgDlgAttention( self );
         exit;
       end;
 
-      if not( ( GuidCmd = GuidCmdLine ) and ( GuidCmdLine = GuidMisc ) ) then
+      if not( ( VerCmd = VerCmdLine ) and ( VerCmdLine = VerMisc ) ) then
+      begin
+        MsgDlgMessage( ccapError, cmsgProFileSelectionWrongVer );
+        MsgDlgAttention( self );
+        exit;
+      end;
+
+      if not( ( GuidCmd = GuidCmdLine ) and ( GuidCmdLine = GuidMisc ) ) and ( VerCmd >= 5 ) then
       begin
         MsgDlgMessage( ccapError, format( cmsgProFileSelectionDBMismatch, [ GuidCmd, GuidCmdLine, GuidMisc ] ) );
         MsgDlgAttention( self );
@@ -1625,7 +1655,7 @@ begin
         DBCopied := true;
       end;
 
-      if not DoValidate( TargetFolder, ProfName ) then
+      if not DoValidate( TargetFolder, ProfName, DBCopied ) then
         exit;
 
       if not DBCopied then

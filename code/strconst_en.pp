@@ -420,7 +420,7 @@ resourceString
   ccapPathCaption = 'Path to: "%s"';
   cmsgNotSpecified = '-???-';
   cmsgInvalidString = '< Invalid >';
-  cmsgProfileString = 'Curr. Profile:   %s%s %s';
+  cmsgProfileString = 'Current DB:   %s%s %s';
 
 
   cmsgProcessSingular = 'Proc';
