@@ -47,9 +47,11 @@ type
     btnResetDlgs : TBitBtn;
     btnRootFile : TBitBtn;
     btnSqlLib : TBitBtn;
+    btnBaseFolder : TBitBtn;
     btnSqlLibReset : TBitBtn;
     btnSavePath : TBitBtn;
     btnSavePathReset : TBitBtn;
+    btnBaseFolderReset : TBitBtn;
     cbAllowMultipleOpens : TCheckBox;
     cbLanguage : TComboBox;
     cbMaxOutput : TComboBox;
@@ -66,8 +68,10 @@ type
     edtRootFile : TEdit;
     edtSavePath : TEdit;
     edtSqlLib : TEdit;
+    edtBaseFolder : TEdit;
     FrameHint1 : TFrameHint;
     lblDisplayMax : TLabel;
+    lblBaseFolder : TLabel;
     lblTerminalCap : TLabel;
     lblRootFileCap : TLabel;
     lblMaxOutput : TLabel;
@@ -75,11 +79,14 @@ type
     lblThreatLevel : TLabel;
     lblLanguage : TLabel;
     pnlAdvOpt : TPanel;
+    DirectoryDialog : TSelectDirectoryDialog;
     ShapeLangOK : TShape;
     speDisplayMax : TSpinEdit;
     tmrLangOK : TTimer;
     procedure btnAddLangClick(Sender : TObject);
     procedure btnAddLangOKClick( Sender : TObject );
+    procedure btnBaseFolderClick( Sender : TObject );
+    procedure btnBaseFolderResetClick( Sender : TObject );
     procedure btnRootFileClick( Sender : TObject );
     procedure btnSqlLibClick( Sender : TObject );
     procedure btnSqlLibResetClick( Sender : TObject );
@@ -198,7 +205,9 @@ resourcestring
 
   cmsgOptDefSavePathIsDefault = 'The shown Save Path is already the default.';
   ccapOptDefSavePath = 'Reset Path to config default?';
-  cmsgOptDefSavePath = 'Are you sure you want to reset the Saving Path to Default "%s"?';
+  cmsgOptDefWritePathStr = 'Base';
+  cmsgOptDefSavePathStr = 'Saving';
+  cmsgOptDefSavePath = 'Are you sure you want to reset the %s Path to Default "%s"?';
   cmsgOptFileSavePathInvalid = 'Folder "%s" does not exist.';
   ccapOptFileSavePath = 'File saving path';
   cmsgOptSqliteActiveAlready = 'sqlite is active, no need to change it.';
@@ -233,7 +242,8 @@ begin
     MyShowMessage( cmsgOptDefSavePathIsDefault, self );
     exit;
   end;
-  MsgDlgMessage( ccapOptDefSavePath, format( cmsgOptDefSavePath, [ Str ] ) );
+
+  MsgDlgMessage( ccapOptDefSavePath, format( cmsgOptDefSavePath, [ cmsgOptDefSavePathStr, Str ] ) );
   if MsgDlgConfirmation( self ) = mrNo then
     exit;
   edtSavePath.Text := Str;
@@ -311,6 +321,35 @@ begin
       tmrLangOK.Enabled := false;
       cbMaxOutput.ItemIndex := IdxMO;
     end;
+end;
+
+procedure TfrmOptions.btnBaseFolderClick( Sender : TObject );
+begin
+
+  DirectoryDialog.InitialDir := edtBasefolder.Text;
+  DirectoryDialog.Title := 'fixme';
+  if DirectoryDialog.Execute then
+  begin
+    MsgDlgMessage( ccapOptDefSavePath, format( cmsgOptDefSavePath, [ cmsgOptDefWritePathStr, DirectoryDialog.FileName ] ) );
+    if MsgDlgConfirmation( self ) = mrNo then
+      exit;
+    edtBasefolder.Text := IncludeTrailingPathDelimiter( DirectoryDialog.FileName );
+  end;
+
+end;
+
+procedure TfrmOptions.btnBaseFolderResetClick( Sender : TObject );
+var
+  str : string;
+begin
+  str := GetAppConfigDir( False );
+  if str = edtBasefolder.Text then
+    exit;
+  MsgDlgMessage( ccapOptDefSavePath, format( cmsgOptDefSavePath, [ cmsgOptDefWritePathStr, Str ] ) );
+  if MsgDlgConfirmation( self ) = mrNo then
+    exit;
+
+  edtBasefolder.Text := str;
 end;
 
 procedure TfrmOptions.btnRootFileClick( Sender : TObject );

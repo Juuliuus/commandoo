@@ -547,6 +547,8 @@ type
     fFavoritesSR : TStringList;
 
 
+    procedure CheckPathOverride(var ConPath : string );
+    procedure WritePathOverride(const ConPath : string );
     function IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
     function CmdInPath( CheckForBuiltin : boolean = false ) : boolean;
     function AddCmdDisplayObjects( Dest : TStrings; Strings : TStringlist ) : boolean;
@@ -1071,7 +1073,6 @@ procedure TfrmMain.DevReleaseSettings;
 begin
   lblPestr.Visible := false;
 
-
 //PESTER PESTER PESTER PESTER PESTER PESTER
 //yes you found PESTER, list of reminders BEFORE compiling and releasing a version!!!
 //================
@@ -1158,6 +1159,36 @@ begin
 
 end;
 
+procedure TfrmMain.CheckPathOverride(var ConPath : string );
+var
+  Ini : TJinifile;
+begin
+  if fileexists( ConPath + cConfigPathFileName ) then
+  try
+    Ini := TJiniFile.Create( ConPath + cConfigPathFileName );
+//    Ini.CacheUpdates := true;
+    Ini.CaseSensitive := true;
+    ConPath := Ini.ReadString( cConfigPathSection, cConfigPathWritingPath, GetAppConfigDir( False ) );
+  finally
+    freeandnil( Ini );
+  end;
+end;
+
+procedure TfrmMain.WritePathOverride(const ConPath : string );
+var
+  Ini : TJinifile;
+begin
+  try
+    Ini := TJiniFile.Create( GetAppConfigDir( False ) + cConfigPathFileName );
+    Ini.CacheUpdates := true;
+    Ini.CaseSensitive := true;
+    Ini.WriteString( cConfigPathSection, cConfigPathWritingPath, ConPath );
+    Ini.UpdateFile;
+  finally
+    freeandnil( Ini );
+  end;
+end;
+
 procedure TfrmMain.FormCreate(Sender: TObject);
 
   procedure killit;
@@ -1202,60 +1233,41 @@ begin
 
   fSuperUser := QuickProc( 'id', '-u' ) = '0';
 
-//TODO Make a routine that will create a thumbdrive version
-//ask for appimage ask for destFolder: compy appimage and config to appimage.config
-//breadcrumb ==> here is writing path decision
-{$IFNDEF Release}
-  fWritingToPath := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
-{$ELSE}
-  //fWritingToPath := IncludeTrailingPathDelimiter( GetAppConfigDir( False ) );//gets home "." location
-  fWritingToPath := GetAppConfigDir( False );//gets home "." location false is xdg, true is system
-{$ENDIF}
-  //GetAppConfigDir( true );  //returns etc/commandoo not so useful right now
-
-//juuus fSuperUser << out right?  That dir might exist, need another test
-//=============== first time run as superuser is NOT ALLOWED. ========================================
-  if fSuperUser and not DirectoryExists( fWritingToPath ) then
-  begin
-    showmessage( cmsgRootNoStartup );
-    Killit;
-    exit;
-  end;
-
-  fKeyWordSO := TSearchObj.Create( GetProfileStamp, InfoServer );
-  fKeyWordSO.UserTag := Ord( tcsKeyWordList );
-  fKeyWordSO.Searches[ cIdxCmdLine ].IsUsed := false;
-
-  fSearchSO := TSearchObj.Create( GetProfileStamp, InfoServer );
-  fSearchSO.UserTag := Ord( tcsNormal );
-
-  fFavoritesSO := TSearchObj.Create( 'FavS', InfoServer );
-  fFavoritesSO.Searches[ cIdxCmd ].AddSearchItem( fidIsFavorite, dbsTrueStr, coEqual, false );
-  fFavoritesSO.Searches[ cIdxCmdLine ].AddSearchItem( fidIsFavorite, dbsTrueStr, coEqual, false );
-
-  fSearchSR := TStringList.Create;
-  fKeyWordSR := TStringList.Create;
-  fFavoritesSR := TStringList.Create;
-
-  Get_Cmd_Fields_Searchable( fSearchFields );
-
-//================================== Don't move
+//==================================
   DevReleaseSettings;
 //==================================
 
-//juuus making dirs
+
+//TODO Make a routine that will create a thumbdrive version
+//ask for appimage ask for destFolder: compy appimage and config to appimage.config
+
+//breadcrumb ==> here is writing path decision
+{$IFNDEF Release}
+  //fWritingToPath := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
+  fWritingToPath := GetAppConfigDir( False );
+{$ELSE}
+  fWritingToPath := GetAppConfigDir( False );//gets home "." location false is xdg .config, true is system /etc
+{$ENDIF}
+
   if not DirectoryExists( fWritingToPath ) then
-    ForceDirectories(fWritingToPath);
+  begin
+//juuus fSuperUser << out right?  That dir might exist, ie. AppImage creates it? need another test
+//=============== first time run as superuser is NOT ALLOWED. ========================================
+    if fSuperUser then
+    begin
+      showmessage( cmsgRootNoStartup );
+      Killit;
+      exit;
+    end;
+    ForceDirectories( fWritingToPath );
+  end;
+//Get the config path re-route if any
+  CheckPathOverride( fWritingToPath );
+
   if not DirectoryExists(fWritingToPath + cLanguageFolderName) then
-    CreateDir(fWritingToPath + cLanguageFolderName);
+    CreateDir( fWritingToPath + cLanguageFolderName );
   if not DirectoryExists( fWritingToPath + cSearchFolderName ) then
     CreateDir( fWritingToPath + cSearchFolderName );
-
-  lblFriendlyNameLineDisp.Caption := '';//I use "..." as caption so I can see it in dev environment, clear that here
-
-  SetUp_Edit_Structure;
-
-  RegX := TRegExpr.Create;
 
   fIFS := TJiniFile.Create( fWritingToPath + cReferenceProgramName + cSectTabFormSettingsExtension );
   fIFS.CacheUpdates := true;
@@ -1271,7 +1283,7 @@ begin
 
 
   globFontsLarge := fIFS.ReadBool( cSectTabFormSettings, cFormSettingsLargerFont, false );
-//Applychangefont MUST FOLLOW globFontsLarge reading
+//===>>> Applychangefont MUST FOLLOW globFontsLarge reading
   ApplyChangeFont( Self );
 
 //old status bar necessity.  sbStatuses.Invalidate;//won't refresh until restart
@@ -1310,6 +1322,29 @@ begin
     fIFS.WriteString( cSectTabFormSettings, cFormSettingsSavingPath, fSavingToPath );
     fIFS.UpdateFile;
   end;
+
+  fKeyWordSO := TSearchObj.Create( GetProfileStamp, InfoServer );
+  fKeyWordSO.UserTag := Ord( tcsKeyWordList );
+  fKeyWordSO.Searches[ cIdxCmdLine ].IsUsed := false;
+
+  fSearchSO := TSearchObj.Create( GetProfileStamp, InfoServer );
+  fSearchSO.UserTag := Ord( tcsNormal );
+
+  fFavoritesSO := TSearchObj.Create( 'FavS', InfoServer );
+  fFavoritesSO.Searches[ cIdxCmd ].AddSearchItem( fidIsFavorite, dbsTrueStr, coEqual, false );
+  fFavoritesSO.Searches[ cIdxCmdLine ].AddSearchItem( fidIsFavorite, dbsTrueStr, coEqual, false );
+
+  fSearchSR := TStringList.Create;
+  fKeyWordSR := TStringList.Create;
+  fFavoritesSR := TStringList.Create;
+
+  Get_Cmd_Fields_Searchable( fSearchFields );
+
+  lblFriendlyNameLineDisp.Caption := '';//I use "..." as caption so I can see it in dev environment, clear that here
+
+  SetUp_Edit_Structure;
+
+  RegX := TRegExpr.Create;
 
 //init Infoserver before all others, some other shared objs may depend on it.
 //============
@@ -4421,6 +4456,7 @@ begin
 
       cbLargerFont.Checked := globFontsLarge;
       edtSavePath.Text := fSavingToPath;
+      edtBaseFolder.Text := fWritingToPath;
 
       Showmodal;
 
@@ -4495,6 +4531,13 @@ begin
 
         UpdateFile;
 
+      end;
+
+      if edtBaseFolder.Text <> fWritingToPath then
+      begin
+        WritePathOverride( edtBaseFolder.Text );
+        MyShowmessage( cOutPutChangedBaseFolder, self );
+        UpdateDisplay( cOutPutChangedBaseFolder, false );
       end;
 
     finally

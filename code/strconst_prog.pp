@@ -29,6 +29,10 @@ uses
 
 const
 
+  cConfigPathFileName = 'config_path__DoNotDelete';
+  cConfigPathSection = 'Working_Config_Path';
+  cConfigPathWritingPath = 'WritingPath';
+
   cAttnBar = LineEnding + '==========' + LineEnding;
 
   cSaveToFileTemplate = 'commandoo_%s.txt';

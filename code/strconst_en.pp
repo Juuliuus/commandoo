@@ -889,6 +889,10 @@ resourceString
      + LineEnding + LineEnding
      + '<end>';
 
+   cOutPutChangedBaseFolder =
+     '==> Program re-start needed'
+     + LineEnding + LineEnding
+     + 'You changed the base folder path, commandoo needs to be restarted before the changes can take effect.';
 
 implementation
 

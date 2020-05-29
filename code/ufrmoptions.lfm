@@ -1,7 +1,7 @@
 object frmOptions: TfrmOptions
-  Left = 2377
+  Left = 2369
   Height = 693
-  Top = 324
+  Top = 317
   Width = 913
   ActiveControl = btnDone
   Caption = 'DDNT AO'
@@ -41,7 +41,7 @@ object frmOptions: TfrmOptions
     object btnDone: TBitBtn
       Left = 765
       Height = 79
-      Top = 57
+      Top = 33
       Width = 121
       Anchors = [akTop, akRight]
       Cancel = True
@@ -51,7 +51,7 @@ object frmOptions: TfrmOptions
       GlyphShowMode = gsmNever
       ModalResult = 11
       ParentFont = False
-      TabOrder = 19
+      TabOrder = 28
     end
     object cbLanguage: TComboBox
       Left = 492
@@ -94,7 +94,7 @@ object frmOptions: TfrmOptions
       OnChange = cbLanguageChange
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 9
     end
     object lblLanguage: TLabel
       Left = 427
@@ -109,7 +109,7 @@ object frmOptions: TfrmOptions
     end
     object btnAddLang: TBitBtn
       Left = 587
-      Height = 41
+      Height = 40
       Top = 68
       Width = 153
       Anchors = [akTop, akRight]
@@ -118,7 +118,7 @@ object frmOptions: TfrmOptions
       GlyphShowMode = gsmNever
       OnClick = btnAddLangClick
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 11
     end
     inline FrameHint1: TFrameHint
       Left = 547
@@ -128,7 +128,7 @@ object frmOptions: TfrmOptions
       ClientHeight = 34
       ClientWidth = 346
       ParentColor = True
-      TabOrder = 20
+      TabOrder = 29
       DesignLeft = 41
       DesignTop = 309
       inherited cbHints: TCheckBox
@@ -187,7 +187,7 @@ object frmOptions: TfrmOptions
       )
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 12
     end
     object lblThreatLevel: TLabel
       Left = 9
@@ -208,7 +208,7 @@ object frmOptions: TfrmOptions
       Font.Height = -16
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 1
     end
     object cbHarmless: TCheckBox
       Left = 40
@@ -219,7 +219,7 @@ object frmOptions: TfrmOptions
       Font.Height = -16
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 2
     end
     object cbCareful: TCheckBox
       Left = 40
@@ -230,7 +230,7 @@ object frmOptions: TfrmOptions
       Font.Height = -16
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 3
     end
     object cbCaution: TCheckBox
       Left = 40
@@ -241,7 +241,7 @@ object frmOptions: TfrmOptions
       Font.Height = -16
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 4
     end
     object cbDanger: TCheckBox
       Left = 40
@@ -252,12 +252,12 @@ object frmOptions: TfrmOptions
       Font.Height = -16
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 5
     end
     object lblTerminalCap: TLabel
-      Left = 425
+      Left = 413
       Height = 21
-      Top = 437
+      Top = 398
       Width = 293
       Caption = 'Path for saving output / miscellaneous'
       Font.Height = -16
@@ -267,31 +267,31 @@ object frmOptions: TfrmOptions
     object cbSqlDB: TCheckBox
       Left = 659
       Height = 25
-      Top = 328
+      Top = 312
       Width = 214
       Anchors = [akTop, akRight]
       Caption = '&U  Default sql DB allowed'
       Font.Height = -16
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 14
+      TabOrder = 15
     end
     object cbTextDB: TCheckBox
       Left = 653
       Height = 25
-      Top = 365
+      Top = 349
       Width = 219
       Anchors = [akTop, akRight]
       Caption = '&V  Default text DB allowed'
       Font.Height = -16
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 15
+      TabOrder = 16
     end
     object lblRootFileCap: TLabel
       Left = 347
       Height = 21
-      Top = 591
+      Top = 609
       Width = 161
       Caption = 'ROOT paste template'
       Font.Height = -16
@@ -324,13 +324,13 @@ object frmOptions: TfrmOptions
       MinValue = 10000
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 12
+      TabOrder = 13
       Value = 10000
     end
     object lblSqlLibCap: TLabel
-      Left = 419
+      Left = 413
       Height = 21
-      Top = 511
+      Top = 535
       Width = 296
       Caption = 'sqlite Library location (blank is default):'
       Font.Height = -16
@@ -341,30 +341,30 @@ object frmOptions: TfrmOptions
       Left = 4
       Height = 25
       Hint = 'Check this to force manually refreshed'#10'favorites list.'#10#10'By default favorites refresh automatically'#10'on saving. But perhaps you want to work'#10'with the current list and save your cursor'#10'locations. In this case check this box but '#10'then you will have to manually refresh '#10'favorites when you want using the '#10'provided button.'#10#10'<end>'
-      Top = 313
+      Top = 257
       Width = 246
       Caption = '&K  Manually Refresh Favoirtes'
       Font.Height = -16
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 6
     end
     object cbAllowMultipleOpens: TCheckBox
       Left = 4
       Height = 25
       Hint = 'It is strongly recommended that you have'#10'only one copy of commandoo open at a '#10'time.'#10#10'This is because multiple copies could easily'#10'interfere with each other if you are not '#10'careful and understand what you are doing.'#10#10'However, I''m not your Mother. If you want to'#10'be able to use multiple copies do so at your '#10'own risk and be aware of which copy is '#10'using which database.'#10#10'Unchecked and commandoo will not allow'#10'another copy to be opened.'#10#10'Checked it will allow it and give you a '#10'optionally disabled confirmation message.'#10#10'<end>'
-      Top = 383
+      Top = 327
       Width = 325
       Caption = '&M  Allow multiple commandoo windows'
       Font.Height = -16
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 8
     end
     object edtSavePath: TEdit
-      Left = 425
+      Left = 411
       Height = 31
-      Top = 463
+      Top = 422
       Width = 449
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
@@ -377,12 +377,12 @@ object frmOptions: TfrmOptions
       ParentFont = False
       ReadOnly = True
       TabStop = False
-      TabOrder = 16
+      TabOrder = 17
     end
     object edtSqlLib: TEdit
-      Left = 427
+      Left = 413
       Height = 31
-      Top = 541
+      Top = 563
       Width = 446
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
@@ -395,12 +395,12 @@ object frmOptions: TfrmOptions
       ParentFont = False
       ReadOnly = True
       TabStop = False
-      TabOrder = 17
+      TabOrder = 23
     end
     object edtRootFile: TEdit
       Left = 347
       Height = 31
-      Top = 613
+      Top = 631
       Width = 527
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
@@ -413,19 +413,19 @@ object frmOptions: TfrmOptions
       ParentFont = False
       ReadOnly = True
       TabStop = False
-      TabOrder = 18
+      TabOrder = 26
     end
     object cbAllowESCOutput: TCheckBox
       Left = 4
       Height = 25
       Hint = 'Checking this allows <esc> characters in'#10'command output.'#10#10'This is problematic. When escape chars '#10'(for example, from "curl" command or using'#10'/devNul) can cause cursor location in the'#10'output area to become unstable. This can be '#10'fixed by clearing the output area.'#10#10'But there is the question of whether it could'#10'cause other problems. So just be aware of '#10'this.'#10#10'<end>'
-      Top = 345
+      Top = 289
       Width = 249
       Caption = '&L  Allow <esc> chars in Output'
       Font.Height = -16
       OnKeyDown = speDisplayMaxKeyDown
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 7
     end
     object btnAddLangOK: TBitBtn
       Left = 425
@@ -438,7 +438,7 @@ object frmOptions: TfrmOptions
       GlyphShowMode = gsmNever
       OnClick = btnAddLangOKClick
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 10
       Visible = False
     end
     object ShapeLangOK: TShape
@@ -451,86 +451,138 @@ object frmOptions: TfrmOptions
     end
     object btnSavePath: TBitBtn
       Left = 9
-      Height = 49
+      Height = 40
       Hint = 'You have the ability to save certain outputs'#10'to a file in various areas of the program.'#10#10'This path is the default path to where '#10'they will be saved.'#10#10'<end>'
-      Top = 455
+      Top = 418
       Width = 324
       Caption = '&W  Change Saving Path'
       Font.Height = -16
       OnClick = btnSavePathClick
       ParentFont = False
-      TabOrder = 21
+      TabOrder = 18
     end
     object btnSqlLib: TBitBtn
       Left = 9
-      Height = 45
+      Height = 40
       Hint = 'If the program can''t find your sqlite library'#10'location you can specify it here.'#10#10'If you can''t find it first make sure sqlite is'#10'installed on your system. Then use the '#10'locate command in a terminal with:'#10#10'locate libsqlite3.so.0'#10#10'To reset your program to the default '#10'location use the reset button next to this'#10'button.'#10#10'<end>'
-      Top = 535
+      Top = 559
       Width = 324
       Caption = '&Y  Change sqlite Library'
       Font.Height = -16
       OnClick = btnSqlLibClick
       ParentFont = False
-      TabOrder = 22
+      TabOrder = 24
     end
     object btnRootFile: TBitBtn
       Left = 9
-      Height = 45
+      Height = 40
       Hint = 'You have the ability to use any ROOT '#10'Authentication file you want (as long as it '#10'is on your system, of course).'#10#10'Use this button to change it if needed'#10#10'<end>'
-      Top = 600
+      Top = 622
       Width = 324
-      Caption = '&G  Change ROOT File'
+      Caption = '&Z  Change ROOT Template'
       Font.Height = -16
       OnClick = btnRootFileClick
       ParentFont = False
-      TabOrder = 23
+      TabOrder = 27
     end
     object btnResetDlgs: TBitBtn
       Left = 4
-      Height = 44
+      Height = 40
       Hint = 'Many of the messages in this program'#10'give the option to not show it again.'#10#10'This will reset all those messages'#10'you''ve chosen not to show. This'#10'means, of course, that you will have'#10'to go through all those again and '#10're-check them if you don''t want to see '#10'them anymore.'#10#10'<end>'
       Top = 5
-      Width = 368
+      Width = 363
       Caption = '&A  Reset "Show no more" Dialogs'
       Font.Height = -17
       OnClick = btnResetDlgsClick
       ParentFont = False
-      TabOrder = 24
+      TabOrder = 0
     end
     object btnSavePathReset: TBitBtn
-      Left = 345
+      Left = 333
       Height = 40
       Hint = 'Reset the Save Path to point to commandoo''s'#10'config folder.'#10#10'<end>'
-      Top = 459
-      Width = 67
-      Caption = '&X  ♻'
+      Top = 418
+      Width = 55
+      Caption = '♻'
       Font.Height = -16
       OnClick = btnSavePathResetClick
       ParentFont = False
-      TabOrder = 25
+      TabOrder = 19
     end
     object btnSqlLibReset: TBitBtn
-      Left = 345
+      Left = 333
       Height = 40
       Hint = 'Reset the program so it uses the default'#10'location of the sqlite library file.'#10#10'<end>'
-      Top = 537
-      Width = 67
-      Caption = '&Z  ♻'
+      Top = 559
+      Width = 55
+      Caption = '♻'
       Font.Height = -16
       OnClick = btnSqlLibResetClick
       ParentFont = False
-      TabOrder = 26
+      TabOrder = 25
     end
     object cbLargerFont: TCheckBox
       Left = 691
       Height = 25
       Hint = 'Make the font size in all windows a bit '#10'larger.'#10#10'<end>'
-      Top = 280
+      Top = 264
       Width = 181
       Anchors = [akTop, akRight]
       Caption = '&T  Slightly larger font'
       OnChange = cbLargerFontChange
-      TabOrder = 13
+      TabOrder = 14
+    end
+    object btnBaseFolder: TBitBtn
+      Left = 9
+      Height = 40
+      Hint = 'If the program can''t find your sqlite library'#10'location you can specify it here.'#10#10'If you can''t find it first make sure sqlite is'#10'installed on your system. Then use the '#10'locate command in a terminal with:'#10#10'locate libsqlite3.so.0'#10#10'To reset your program to the default '#10'location use the reset button next to this'#10'button.'#10#10'<end>'
+      Top = 487
+      Width = 324
+      Caption = '&X  Change Base/DB Folder'
+      Font.Height = -16
+      OnClick = btnBaseFolderClick
+      ParentFont = False
+      TabOrder = 21
+    end
+    object btnBaseFolderReset: TBitBtn
+      Left = 333
+      Height = 40
+      Hint = 'Reset the program so it uses the default'#10'location of the sqlite library file.'#10#10'<end>'
+      Top = 487
+      Width = 55
+      Caption = '♻'
+      Font.Height = -16
+      OnClick = btnBaseFolderResetClick
+      ParentFont = False
+      TabOrder = 22
+    end
+    object lblBaseFolder: TLabel
+      Left = 413
+      Height = 21
+      Top = 463
+      Width = 306
+      Caption = 'Path where DB''s and settings are stored:'
+      Font.Height = -16
+      ParentColor = False
+      ParentFont = False
+    end
+    object edtBaseFolder: TEdit
+      Left = 411
+      Height = 31
+      Top = 491
+      Width = 446
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      AutoSelect = False
+      BorderStyle = bsNone
+      Font.Height = -16
+      OnDblClick = btnBaseFolderClick
+      OnKeyDown = speDisplayMaxKeyDown
+      ParentColor = True
+      ParentFont = False
+      ReadOnly = True
+      TabStop = False
+      TabOrder = 20
     end
   end
   object tmrLangOK: TTimer
@@ -539,5 +591,10 @@ object frmOptions: TfrmOptions
     OnTimer = tmrLangOKTimer
     left = 445
     top = 11
+  end
+  object DirectoryDialog: TSelectDirectoryDialog
+    Options = [ofPathMustExist, ofCreatePrompt, ofShareAware, ofEnableSizing, ofViewDetail]
+    left = 536
+    top = 325
   end
 end
