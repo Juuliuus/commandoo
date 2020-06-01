@@ -30,7 +30,6 @@ const
   //ccapTabSelectedy = '◉ %s ◉';  ◆  ◢  ◣
   ccapTabSelected = '◢  %s  ◣';
   ccapTabUnSelected = ' %s ';
-  cRootMode = '<< ROOT MODE >> ';
 
 
 resourceString
@@ -386,7 +385,7 @@ resourceString
   cmsgMultipleDisallowed = 'commandoo is already running and your OPTIONS setting disallows this.'
                         + LineEnding
                         ;
-  ccapMulipleInstances = '  >>>>>  %d or More COPIES OPEN!! Careful!!';
+  ccapMulipleInstances = '  >>>>> %d COPIES OPEN!! Careful!!';
   cmsgMulipleInstances = '%d COPIES OPEN, Closing this window is highly recommended!! '
                         + 'Continue using it at your own risk with the understandking that '
                         + 'these windows know nothing about what the other(s) is doing and '
@@ -395,15 +394,6 @@ resourceString
                         + 'Do you STILL want two (or more?!) commandoo windows open?????'
                         + LineEnding
                         ;
-  //ccapRootModeWait = '>>>>>>  Waiting for  ROOT MODE  to close...  <<<<<<';
-  ccapProgram = 'COMMANDOO : GUI for Linux Commands / CLI';
-  //cmsgAlreadyRoot = 'This program is already running as ROOT';
-  //cmsgSUAdvancedOptions =
-  //  'You are in SuperUser mode. Any changes you make in '
-  //  + 'advanced options will be for the SuperUser session '
-  //  + 'only (excepting "stub" changes) and will NOT be '
-  //  + 'saved to main program.'
-  //  ;
 
   cMsgHarmless = 'No changes to system or files';
   cMsgCareful = 'Can change system and/or files, know how to use';
@@ -580,7 +570,8 @@ resourceString
     + '<end> '
     ;
 
-  cmsgRootNoStartup = 'It not allowed to run the program the FIRST TIME as <ROOT>.   Halting.';
+  //cmsgRootNoStartup = 'It not allowed to run the program the FIRST TIME as <ROOT>.   Halting.';
+  cmsgPermissionsError = 'Could not write to "%s", apparent system permissions problem.   Halting.';
   ccapRootModeConfirmation = 'Confirm <ROOT> Mode';
   cmsgRootModeConfirmation =
      'Hi. You are running commandoo in <ROOT> mode. '
@@ -892,7 +883,8 @@ resourceString
    cOutPutChangedBaseFolder =
      '==> Program re-start needed'
      + LineEnding + LineEnding
-     + 'You changed the base folder path, commandoo needs to be restarted before the changes can take effect.';
+     + 'You changed the base folder path, commandoo needs to be restarted before the changes can take effect. '
+     + 'If you have other copies open best to close them all.';
 
 implementation
 

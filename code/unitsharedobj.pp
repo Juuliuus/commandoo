@@ -689,8 +689,11 @@ begin
 
     result := false;
 
+{$IFNDEF Release}
     if DontRun( IsInitialized, format( csoCallOnce, [ 'InfoServer' ] ) ) then
       exit;
+{$ENDIF}
+
 
 
     fUseDB := DoUseDB;
@@ -1099,8 +1102,10 @@ begin
 
   result := false;
 
+{$IFNDEF Release}
   if DontRun( not IsInitialized, format( csoObjectNotInitialized, [ 'InfoServer','LoadList' ] ) ) then
     exit;
+{$ENDIF}
 
   anSL.Clear;
 
@@ -1187,10 +1192,12 @@ begin
 
   result := false;
 
+{$IFNDEF Release}
   if DontRun( not IsInitialized, format( csoObjectNotInitialized, [ 'InfoServer','SaveList' ] ) )
      or DontRun( not assigned( anSL ), format( csoGenError, [ self.ClassName + '.SaveList', 'anSL is nil' ] ) )
   then
     exit;
+{$ENDIF}
 
   if UseDB then
   begin
@@ -1527,9 +1534,10 @@ begin
 
   result := false;
 
-  if DontRun( IsInitialized, format( csoCallOnce, [ 'FormSettings' ] ) )
-  then
+{$IFNDEF Release}
+  if DontRun( IsInitialized, format( csoCallOnce, [ 'FormSettings' ] ) ) then
     exit;
+{$ENDIF}
 
   fIniFile := anIniFile;
 
@@ -1558,8 +1566,10 @@ var
   Key : string;
 begin
 
+{$IFNDEF Release}
   if DontRun( not IsInitialized, format( csoObjectNotInitialized, [ 'FormSettings', 'LoadFormSettings' ] ) ) then
     exit;
+{$ENDIF}
 
   Key := uppercase( FormName );
 
@@ -1604,8 +1614,10 @@ begin
 
   Result := false;
 
+{$IFNDEF Release}
   if DontRun( not IsInitialized, format( csoObjectNotInitialized, [ 'FormSettings', 'ReadFormSettings' ] ) ) then
     exit;
+{$ENDIF}
 
   if not FIsReading then
   begin
@@ -1677,8 +1689,10 @@ begin
 
   try
 
+{$IFNDEF Release}
     if DontRun( FSettingsList.Count = 0, csoUseAddSetting ) then
       exit;
+{$ENDIF}
 
     Key := uppercase( FormName );
 

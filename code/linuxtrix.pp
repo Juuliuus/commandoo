@@ -929,7 +929,8 @@ end;
 //  str : String;
 //  SL : TStringlist;
 //const
-//  cLinuxSlash = '/';//there is a laz variable that has this, can't remember it right now
+////  cLinuxSlash = '/';
+//  cLinuxSlash = DirectorySeparator; //this is the laz var, check if it works
 //begin
 //  //This grabs all currently mounted drives using df command, filtered out system drives
 //  //Strings should be the list of drives that have been historically mounted on this computer

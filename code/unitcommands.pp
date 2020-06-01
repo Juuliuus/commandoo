@@ -789,10 +789,12 @@ end;
 procedure TCmdObjHelper.GetCmdList( anSL : TStrings );
 begin
 
+{$IFNDEF Release}
   if DontRun( not assigned( fDBServer ),
               'TCmdObjHelper.GetCmdList: Programmer! fDBServer not assigned, set before using CmdObjHelper'
              ) then
     exit;
+{$ENDIF}
 
   fDBServer.SetControlSlot( dlCmd );
 
@@ -1205,10 +1207,12 @@ var
   InsertIdx , i: Integer;
 begin
 
+{$IFNDEF Release}
   if DontRun( not assigned( fDBServer ),
               'TCmdObjHelper.Search: Programmer!! fDBServer not assigned, set before using CmdObjHelper'
              ) then
     exit;
+{$ENDIF}
 
     result := -1;
     InsertIdx := -1;

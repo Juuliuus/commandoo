@@ -177,7 +177,7 @@ end;
 
 function NumberOfInifiles : integer;
 begin
-  result := High( aryTextData );
+  result := High( aryTextData ) + 1;
 end;
 
 function BuildUpdateStrings( sFld, sVal : TStrings ) : string;

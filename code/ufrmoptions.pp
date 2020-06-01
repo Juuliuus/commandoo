@@ -41,45 +41,40 @@ type
 
   TfrmOptions = class(TForm)
     Bevel1 : TBevel;
-    btnAddLangOK : TBitBtn;
-    btnDone : TBitBtn;
     btnAddLang : TBitBtn;
+    btnAddLangOK : TBitBtn;
+    btnBaseFolder : TBitBtn;
+    btnBaseFolderReset : TBitBtn;
+    btnDone : TBitBtn;
     btnResetDlgs : TBitBtn;
     btnRootFile : TBitBtn;
-    btnSqlLib : TBitBtn;
-    btnBaseFolder : TBitBtn;
-    btnSqlLibReset : TBitBtn;
     btnSavePath : TBitBtn;
     btnSavePathReset : TBitBtn;
-    btnBaseFolderReset : TBitBtn;
-    cbAllowMultipleOpens : TCheckBox;
-    cbLanguage : TComboBox;
-    cbMaxOutput : TComboBox;
-    cbManRefreshFavorites : TCheckBox;
+    btnSqlLib : TBitBtn;
+    btnSqlLibReset : TBitBtn;
     cbAllowESCOutput : TCheckBox;
-    cbUnspecified : TCheckBox;
-    cbHarmless : TCheckBox;
+    cbAllowMultipleOpens : TCheckBox;
     cbCareful : TCheckBox;
     cbCaution : TCheckBox;
     cbDanger : TCheckBox;
+    cbHarmless : TCheckBox;
+    cbLanguage : TComboBox;
+    cbLargerFont : TCheckBox;
+    cbManRefreshFavorites : TCheckBox;
+    cbMaxOutput : TComboBox;
     cbSqlDB : TCheckBox;
     cbTextDB : TCheckBox;
-    cbLargerFont : TCheckBox;
-    edtRootFile : TEdit;
-    edtSavePath : TEdit;
-    edtSqlLib : TEdit;
-    edtBaseFolder : TEdit;
-    FrameHint1 : TFrameHint;
-    lblDisplayMax : TLabel;
-    lblBaseFolder : TLabel;
-    lblTerminalCap : TLabel;
-    lblRootFileCap : TLabel;
-    lblMaxOutput : TLabel;
-    lblSqlLibCap : TLabel;
-    lblThreatLevel : TLabel;
-    lblLanguage : TLabel;
-    pnlAdvOpt : TPanel;
+    cbUnspecified : TCheckBox;
     DirectoryDialog : TSelectDirectoryDialog;
+    FrameHint1 : TFrameHint;
+    lblBaseFolder : TLabel;
+    lblDisplayMax : TLabel;
+    lblLanguage : TLabel;
+    lblMaxOutput : TLabel;
+    lblRootFile : TLabel;
+    lblSavePath : TLabel;
+    lblSqlLib : TLabel;
+    lblThreatLevel : TLabel;
     ShapeLangOK : TShape;
     speDisplayMax : TSpinEdit;
     tmrLangOK : TTimer;
@@ -98,6 +93,7 @@ type
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCreate( Sender : TObject );
     procedure FormShow(Sender : TObject);
+    procedure lblSavePathDblClick( Sender : TObject );
     procedure speDisplayMaxKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure tmrLangOKTimer( Sender : TObject );
   private
@@ -129,6 +125,14 @@ uses ufrmMsgDlg, unitLanguages
   ;
 
 resourcestring
+
+  cOptLabelHints =
+    'If this line is too long, Dbl-click it to see the '
+    + LineEnding
+    + 'full text.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding;
 
   cAddLangHint =
     'Add new language packs via this button. '
@@ -204,10 +208,13 @@ resourcestring
     ;
 
   cmsgOptDefSavePathIsDefault = 'The shown Save Path is already the default.';
-  ccapOptDefSavePath = 'Reset Path to config default?';
+  ccapOptDefSavePath = 'Reset Path to Default?';
   cmsgOptDefWritePathStr = 'Base';
   cmsgOptDefSavePathStr = 'Saving';
-  cmsgOptDefSavePath = 'Are you sure you want to reset the %s Path to Default "%s"?';
+  cmsgOptDefSavePath = 'Are you sure you want to reset the %s path to Default "%s"?';
+  ctitOptDefBasePath = 'Select new config path';
+  ccapOptDefBasePath = 'Reset base config path?';
+  cmsgOptDefBasePath = 'Are you sure you want to reset the base config path to "%s"?';
   cmsgOptFileSavePathInvalid = 'Folder "%s" does not exist.';
   ccapOptFileSavePath = 'File saving path';
   cmsgOptSqliteActiveAlready = 'sqlite is active, no need to change it.';
@@ -226,9 +233,6 @@ begin
   if MsgDlgConfirmation( self ) = mrNo then
     exit;
   MsgDlgParams.ResetDoNotShowList;
-//this was the old code, devised so that if ROOT is running this session, permanent changes are not made to settings.
-//here for historical reasons in case I need to consider that again.
-//  MsgDlgParams.ResetDoNotShowList( fSuperUser );
 end;
 
 procedure TfrmOptions.btnSavePathResetClick( Sender : TObject );
@@ -237,7 +241,7 @@ var
 begin
 
   Str := TfrmMain( Owner ).WritingToPath;
-  if Str = edtSavePath.Text then
+  if Str = lblSavePath.Caption then
   begin
     MyShowMessage( cmsgOptDefSavePathIsDefault, self );
     exit;
@@ -246,7 +250,7 @@ begin
   MsgDlgMessage( ccapOptDefSavePath, format( cmsgOptDefSavePath, [ cmsgOptDefSavePathStr, Str ] ) );
   if MsgDlgConfirmation( self ) = mrNo then
     exit;
-  edtSavePath.Text := Str;
+  lblSavePath.Caption := Str;
 
 end;
 
@@ -254,7 +258,7 @@ procedure TfrmOptions.btnSavePathClick(Sender : TObject);
 var
   Str : String;
 begin
-  Str := edtSavePath.Text;
+  Str := lblSavePath.Caption;
   if not DoSingleInput( ccapOptFileSavePath, Str, simDir, self, false ) then
     exit;
 
@@ -267,7 +271,7 @@ begin
       exit;
     end;
 
-    edtSavePath.Text := IncludeTrailingPathDelimiter( Str );
+    lblSavePath.Caption := IncludeTrailingPathDelimiter( Str );
   end;
 end;
 
@@ -309,7 +313,8 @@ begin
         exit;
       end;
 
-      Languages.UpdateProgramLang( LangId );
+      if not Languages.UpdateProgramLang( LangId ) then
+        exit;
 
       UpdateShared;
       TfrmMain( Owner ).UpdateSharedHintsAndCaptions;
@@ -325,15 +330,19 @@ end;
 
 procedure TfrmOptions.btnBaseFolderClick( Sender : TObject );
 begin
-
-  DirectoryDialog.InitialDir := edtBasefolder.Text;
-  DirectoryDialog.Title := 'fixme';
+  if TfrmMain( Owner ).SuperUser then
+  begin
+    showmessage( 'Not allowed' );
+    exit;
+  end;
+  DirectoryDialog.InitialDir := lblBaseFolder.Caption;
+  DirectoryDialog.Title := ctitOptDefBasePath;
   if DirectoryDialog.Execute then
   begin
-    MsgDlgMessage( ccapOptDefSavePath, format( cmsgOptDefSavePath, [ cmsgOptDefWritePathStr, DirectoryDialog.FileName ] ) );
+    MsgDlgMessage( ccapOptDefBasePath, format( cmsgOptDefBasePath, [ DirectoryDialog.FileName ] ) );
     if MsgDlgConfirmation( self ) = mrNo then
       exit;
-    edtBasefolder.Text := IncludeTrailingPathDelimiter( DirectoryDialog.FileName );
+    lblBaseFolder.Caption := IncludeTrailingPathDelimiter( DirectoryDialog.FileName );
   end;
 
 end;
@@ -342,14 +351,20 @@ procedure TfrmOptions.btnBaseFolderResetClick( Sender : TObject );
 var
   str : string;
 begin
+  if TfrmMain( Owner ).SuperUser then
+  begin
+    showmessage( 'Not allowed' );
+    exit;
+  end;
+
   str := GetAppConfigDir( False );
-  if str = edtBasefolder.Text then
+  if str = lblBaseFolder.Caption then
     exit;
   MsgDlgMessage( ccapOptDefSavePath, format( cmsgOptDefSavePath, [ cmsgOptDefWritePathStr, Str ] ) );
   if MsgDlgConfirmation( self ) = mrNo then
     exit;
 
-  edtBasefolder.Text := str;
+  lblBaseFolder.Caption := str;
 end;
 
 procedure TfrmOptions.btnRootFileClick( Sender : TObject );
@@ -363,7 +378,7 @@ begin
     if ModalResult = mrOK then
     begin
       fRoot_File := lblCurrFile.Caption;
-      edtRootFile.Text := fRoot_File;
+      lblRootFile.Caption := fRoot_File;
     end;
 
   finally
@@ -381,7 +396,7 @@ begin
     exit;
   end;
 
-  Str := edtSqlLib.Text;
+  Str := lblSqlLib.Caption;
   if not DoSingleInput( cmsgOptSqliteLibFile, Str, simFile, self, false ) then
     exit;
 
@@ -389,7 +404,7 @@ begin
   begin
     if CheckFileNotFound( Str ) then
       exit;
-    edtSqlLib.Text := Str;
+    lblSqlLib.Caption := Str;
   end;
 
 end;
@@ -402,7 +417,7 @@ begin
     exit;
   end;
 
-  edtSqlLib.Text := '';
+  lblSqlLib.Caption := '';
 
 end;
 
@@ -431,6 +446,9 @@ begin
   ApplyChangeFont( Self );
   UpdateShared;
   fHasShown := false;
+  lblSqlLib.Hint := cOptLabelHints;
+  lblBaseFolder.Hint := cOptLabelHints;
+  lblSavePath.Hint := cOptLabelHints;
 end;
 
 procedure TfrmOptions.UpdateShared;
@@ -466,6 +484,11 @@ begin
   end;
 end;
 
+procedure TfrmOptions.lblSavePathDblClick( Sender : TObject );
+begin
+  MsgDlgMessage( ccapOverflow, TLabel( Sender ).caption );
+  MsgDlgInfo( self );
+end;
 
 procedure TfrmOptions.speDisplayMaxKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin

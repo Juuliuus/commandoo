@@ -59,7 +59,7 @@ implementation
 
 { TfrmNoLanguage }
 
-uses strconst_en;
+uses strconst_prog;
 
 procedure TfrmNoLanguage.btnOKClick(Sender : TObject);
 begin

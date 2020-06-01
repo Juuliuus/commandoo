@@ -240,7 +240,7 @@ resourcestring
     + 'Changes made to this list are immediate. DB files, if they exist, will be renamed, moved, '
     + 'or deleted immediately. '
     + LineEnding + LineEnding
-    + 'Assume Profile Name of "Bob". '
+    + 'Conventions:  Assume Profile Name of "Bob". '
     + LineEnding + LineEnding
     + 'For sql DB''s it is a single file and the file name convention is "Bob.sqlite"  '
     + LineEnding + LineEnding

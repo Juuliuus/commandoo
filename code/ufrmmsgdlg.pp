@@ -61,7 +61,7 @@ type
     constructor Create;
     destructor Destroy; override;
 
-    procedure ResetDoNotShowList(DontUpdateDB : boolean = false);
+    procedure ResetDoNotShowList;
 
     property IsInitialized : boolean read FIsInitialized write SetIsInitialized;
     property DoNotShowList : TStringlist read FDoNotShowList;// write SetDoNotShowList;
@@ -199,11 +199,15 @@ end;
 
 procedure InitMsgDlgParams( const SavePath, SectionOrTableName : string; anIniFile : TJinifile );
 begin
+
+{$IFNDEF Release}
   if MsgDLgParams.IsInitialized then
   begin
     Showmessage( 'Hey Programmer! InitMsgDlgParams should only be called once and, generally, only from Main Form.' );
     exit;
   end;
+{$ENDIF}
+
 
   MsgDLgParams.DoTheReset;
 
@@ -389,17 +393,15 @@ begin
   inherited Destroy;
 end;
 
-procedure TMsgDLgParams.ResetDoNotShowList( DontUpdateDB : boolean = false );
+procedure TMsgDLgParams.ResetDoNotShowList;
 begin
 
   fDoNotShowList.Clear;
 
-//added mostly because I don't want database updated if it is superuser running
-  if DontUpdateDB then
-    exit;
-
+{$IFNDEF Release}
   if DontRun( ( MsgDLgParams.fSectTabName = '' ), cTableColumnEmpty ) then
     exit;
+{$ENDIF}
 
   IniFile.EraseSection( fSectTabName );
   IniFile.UpdateFile;
@@ -411,8 +413,11 @@ begin
 
   result := false;
 
+{$IFNDEF Release}
   if DontRun( ( MsgDLgParams.fSectTabName = '' ), cTableColumnEmpty ) then
     exit;
+{$ENDIF}
+
 
   result := IniFile.LoadList( fSectTabName,
                               fDoNotShowList );

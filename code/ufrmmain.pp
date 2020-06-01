@@ -525,6 +525,7 @@ type
     fAllowTextDB : boolean;
     fManRefreshFavorites : boolean;
     fIFS : TJiniFile;//"I"nifile "F"orm "S"ettings
+    fOpenInstances : byte;
 
 ////edit focusing
 //when editing and you are typing and then click a checkbox or click a button focus is stolen and
@@ -547,7 +548,7 @@ type
     fFavoritesSR : TStringList;
 
 
-    procedure CheckPathOverride(var ConPath : string );
+    function CheckPathOverride(var ConPath : string ) : boolean;
     procedure WritePathOverride(const ConPath : string );
     function IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
     function CmdInPath( CheckForBuiltin : boolean = false ) : boolean;
@@ -685,13 +686,60 @@ type
 var
   frmMain: TfrmMain;
 
+resourcestring
+  ccapMainBadPath = 'Config Problem, Re-set??';
+  cmsgMainBadPath =
+      'This custom config path can not'
+      + LineEnding
+      + 'be written to:'
+      + LineEnding
+      + '==>  %s'
+      + LineEnding + LineEnding
+      + 'This is due to either it being'
+      + LineEnding
+      + 'on an unmounted drive or media,'
+      + LineEnding
+      + 'or is unwritable due to'
+      + LineEnding
+      + 'permissions.'
+      //+ '(eg., it is pointing to a root folder.'
+      //+ 'permissions (eg. it is pointing to a root folder like /usr/bin, etc.).'
+      + LineEnding + LineEnding
+      + 'I can re-set the config folder'
+      + LineEnding
+      + 'to the default user config'
+      + LineEnding
+      + 'folder:'
+      + LineEnding
+      + '%s'
+      + LineEnding + LineEnding
+      + 'Or I can leave the situation as'
+      + LineEnding
+      + 'is, so you can fix it youself.'
+      + LineEnding + LineEnding
+      + 'Tell me what you want me to do:'
+      + LineEnding
+      + '   Yes = reset to a usable default'
+      + LineEnding
+      + '   No = You will take care of it'
+      + LineEnding;
+
+  cmsgMainBadPathDoReset = 'Okay. Re-set to:'
+                           + Lineending
+                           + '"%s"'
+                           + Lineending
+                           ;
+  cmsgMainBadPathResetFail = 'Was not able to delete "%s" custom file, you''ll need to manually fix it.';
+  cmsgMainBadPathKillIt = 'Okay. Fix the situation and re-start commandoo.';
+  ccapMainOptionsNotAvailable = 'Options not currently available.';
+  cmsgMainMultipleCopiesOpen = 'Multiple copies of commandoo are running, changing options not allowed. '
+                               + 'Close all instances, restart, and then change options.';
 
 //turned in as bug!!!  https://bugs.freepascal.org/view.php?id=32091
 //Had a couple tough days there where I could not debug the program anymore!!! Turns out it was because I had
 //a reminder in an IFDEF section that the phrase:  'k??
 //uncommented because I wanted the program to stop there. That caused the tracing to be offset by one line!! ouch.
 
-//Too heavy, not going to use. XML export/import unit LazUtils;  http://wiki.freepascal.org/XML_Tutorial
 
 implementation
 
@@ -1021,14 +1069,13 @@ end;
 
 procedure TfrmMain.LoadLanguages;
 begin
-
   Languages.Init( GetPODirectory,
                   cSectTabSupportedLanguages, //cLanguageFolderName,
                   cSectTabFormSettings,
                   cFormSettingsProgramLangCol,
                   fIFS
                  );
-
+  //Init fails it will just load normally but only in english and be dead in the language options
   Languages.PrepAndApplyLanguage( true );
 
   BiDiMode := Languages.GetBiDiMode;
@@ -1159,19 +1206,34 @@ begin
 
 end;
 
-procedure TfrmMain.CheckPathOverride(var ConPath : string );
+function TfrmMain.CheckPathOverride(var ConPath : string ) : boolean;
 var
   Ini : TJinifile;
+  str : string;
 begin
+  result := true;
+  Str := ConPath;
+//this is the system user config: ie., ~/.config
   if fileexists( ConPath + cConfigPathFileName ) then
-  try
-    Ini := TJiniFile.Create( ConPath + cConfigPathFileName );
-//    Ini.CacheUpdates := true;
-    Ini.CaseSensitive := true;
-    ConPath := Ini.ReadString( cConfigPathSection, cConfigPathWritingPath, GetAppConfigDir( False ) );
-  finally
-    freeandnil( Ini );
-  end;
+  begin
+    try
+      Ini := TJiniFile.Create( ConPath + cConfigPathFileName );
+      Ini.CacheUpdates := true;
+      Ini.CaseSensitive := true;
+      Str := Ini.ReadString( cConfigPathSection, cConfigPathWritingPath, '' );
+    finally
+      freeandnil( Ini );
+    end;
+  end else exit;
+
+  if ( str = '' ) or ( str = ConPath ) then
+    exit;
+
+  ConPath := str;
+
+  if not DirectoryExists( ConPath ) then
+    Result := ForceDirectories( ConPath );
+
 end;
 
 procedure TfrmMain.WritePathOverride(const ConPath : string );
@@ -1197,11 +1259,53 @@ procedure TfrmMain.FormCreate(Sender: TObject);
     FIsInitialized := true;
     Application.Terminate;
   end;
+
+  function GetDefaultWritingToPath : string;
+  begin
+    {$IFNDEF Release}
+      result := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
+    {$ELSE}
+      if fSuperUser then
+        result := '/root/.config/commandoo_root/'
+      else result := GetAppConfigDir( False );//gets home "." location false is xdg .config, true is system /etc
+    {$ENDIF}
+  end;
+
+  function DoResetConfig( const Extra : string ) : boolean;
+  var
+    BadPath : string;
+  begin
+    result := true;
+    BadPath := fWritingToPath;
+    //reset to something valid!
+    fWritingToPath := GetDefaultWritingToPath;
+
+    if MessageDlg( ccapMainBadPath, format( cmsgMainBadPath, [ BadPath + Extra, fWritingToPath + Extra ] ),
+                     mtConfirmation, [ mbYes, mbNo ], 0 ) = mrYes then
+    begin
+      //get rid of then bogus entry in the config path control file
+      if fileexists( fWritingToPath + cConfigPathFileName ) then
+        if not deletefile( fWritingToPath + cConfigPathFileName ) then
+        begin
+          Showmessage( format( cmsgMainBadPathResetFail, [ fWritingToPath + cConfigPathFileName ] ) );
+          result := false;
+          exit;
+        end;
+      Showmessage( format( cmsgMainBadPathDoReset, [ fWritingToPath + Extra ] ) );
+    end
+    else
+    begin
+      Showmessage( cmsgMainBadPathKillIt );
+      result := false;
+    end;
+  end;
+
 //var
-//  testme : string;
+////  testme : string;
 begin
 
   font.size := cDefaultFontSize;
+
   Randomize;
   application.OnException := @FinalException;
 //these were autocreated, but updating the translation not possible then
@@ -1237,35 +1341,38 @@ begin
   DevReleaseSettings;
 //==================================
 
-
 //TODO Make a routine that will create a thumbdrive version
 //ask for appimage ask for destFolder: compy appimage and config to appimage.config
 
 //breadcrumb ==> here is writing path decision
-{$IFNDEF Release}
-  //fWritingToPath := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
-  fWritingToPath := GetAppConfigDir( False );
-{$ELSE}
-  fWritingToPath := GetAppConfigDir( False );//gets home "." location false is xdg .config, true is system /etc
-{$ENDIF}
+  fWritingToPath := GetDefaultWritingToPath;
 
   if not DirectoryExists( fWritingToPath ) then
-  begin
-//juuus fSuperUser << out right?  That dir might exist, ie. AppImage creates it? need another test
-//=============== first time run as superuser is NOT ALLOWED. ========================================
-    if fSuperUser then
+    if not ForceDirectories( fWritingToPath ) then
     begin
-      showmessage( cmsgRootNoStartup );
+      //complete failure: ie., system gives back ~/.config/commandoo and it doesn't work!!
+      showmessage( format( cmsgPermissionsError, [ fWritingToPath ] ) );
       Killit;
       exit;
     end;
-    ForceDirectories( fWritingToPath );
-  end;
-//Get the config path re-route if any
-  CheckPathOverride( fWritingToPath );
 
-  if not DirectoryExists(fWritingToPath + cLanguageFolderName) then
-    CreateDir( fWritingToPath + cLanguageFolderName );
+//Get the config path re-route if any
+  if not CheckPathOverride( fWritingToPath ) then
+    if not DoResetConfig( '' ) then
+    begin
+      Killit;
+      exit;
+    end;
+  //in the check above the path may be valid (/usr/bin), this check is the final check to see if I can
+  //write there...
+  if not DirectoryExists( fWritingToPath + cLanguageFolderName ) then
+    if not CreateDir( fWritingToPath + cLanguageFolderName ) then
+      if not DoResetConfig( cLanguageFolderName ) then
+      begin
+        Killit;
+        exit;
+      end;
+  //if above succeeds then this will too, unless is the last byte on the hard drive.
   if not DirectoryExists( fWritingToPath + cSearchFolderName ) then
     CreateDir( fWritingToPath + cSearchFolderName );
 
@@ -1313,7 +1420,9 @@ begin
   begin
     if SystemFileFound( 'xdg-user-dir' ) then
     begin
-      fSavingToPath := IncludeTrailingPathDelimiter( QuickProc( 'xdg-user-dir', 'DOWNLOAD' ) );
+      if fSuperUser then
+        fSavingToPath := fWritingToPath //'/tmp/'
+      else fSavingToPath := IncludeTrailingPathDelimiter( QuickProc( 'xdg-user-dir', 'DOWNLOAD' ) );
       //just in case it not dependable....
       if not DirectoryExists( fSavingToPath ) then
         fSavingToPath := fWritingToPath;
@@ -4414,8 +4523,15 @@ begin
   if CheckEditing then
     exit;
 
-  //if fSuperUser then
-  //  ShowMessage(cmsgSUAdvancedOptions);
+{$IFDEF Release}
+//Todo test in all cases
+  if fOpenInstances > 1 then
+  begin
+    MsgDlgMessage( ccapMainOptionsNotAvailable, cmsgMainMultipleCopiesOpen );
+    MsgDlgAttention( self );
+    exit;
+  end;
+{$ENDIF}
 
   with TfrmOptions.Create(Self) do
     try
@@ -4436,13 +4552,14 @@ begin
       cbCareful.Checked := fWarnCareful;
       cbCaution.Checked := fWarnCaution;
       cbDanger.Checked := fWarnDanger;
+      cbAllowMultipleOpens.Visible := not fSuperUser;
       cbAllowMultipleOpens.Checked := fAllowMultipleOpens;
       cbAllowESCOutput.Checked := fAllowESCinOutput;
 
       cbManRefreshFavorites.Checked := fManRefreshFavorites;
 
       Root_File := fRootFile;
-      edtRootFile.Text := Root_File;
+      lblRootFile.Caption := Root_File;
 
       cbSqlDB.Checked := fAllowSqlDB;
       cbSqlDB.Enabled := ( fProfileName <> cDefaultDBProfileName )
@@ -4452,11 +4569,11 @@ begin
                          or ( ( fProfileName = cDefaultDBProfileName ) and fUseDB );
 
       origSqlLib := fSqliteLibrary;
-      edtSqlLib.Text := fSqliteLibrary;
+      lblSqlLib.Caption := fSqliteLibrary;
 
       cbLargerFont.Checked := globFontsLarge;
-      edtSavePath.Text := fSavingToPath;
-      edtBaseFolder.Text := fWritingToPath;
+      lblSavePath.Caption := fSavingToPath;
+      lblBaseFolder.Caption := fWritingToPath;
 
       Showmodal;
 
@@ -4469,8 +4586,7 @@ begin
       if VerifyLangIndex <> LanguageIdx then //cbLanguage.ItemIndex then
         if MsgDlgMessage(ccapChangeLangDoReset, cmsgChangeLangDoReset, 'cmsgChangeLangDoReset') then
           if MsgDlgConfirmation( self ) = mrYes then
-            //MsgDlgParams.ResetDoNotShowList( fSuperUser );
-            MsgDlgParams.ResetDoNotShowList( False );
+            MsgDlgParams.ResetDoNotShowList;
 
       fWarnUnspecified := cbUnspecified.Checked;
       fWarnHarmless    := cbHarmless.Checked;
@@ -4499,9 +4615,10 @@ begin
         WriteBool( cSectTabFormSettings, cFormSettingsManRefreshFav, fManRefreshFavorites );
         WriteBool( cSectTabFormSettings, cFormSettingsLargerFont, globFontsLarge );
 
-        if origSqlLib <> edtSqlLib.Text then
+        fSqliteLibrary := lblSqlLib.Caption;
+        if origSqlLib <> lblSqlLib.Caption then
         begin
-          fSqliteLibrary := edtSqlLib.Text;
+          fSqliteLibrary := lblSqlLib.Caption;
           WriteString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, fSqliteLibrary );
           TInfoServer.Rechecking_SqliteIsActive;
           if not TInfoServer.SqliteInstalled( fSqliteLibrary ) then
@@ -4514,9 +4631,9 @@ begin
           WriteString( cSectTabFormSettings, cFormSettingsRootFile, fRootFile );
         end;
 
-        if edtSavePath.Text <> fSavingToPath then
+        if lblSavePath.Caption <> fSavingToPath then
         begin
-          fSavingToPath := edtSavePath.Text;
+          fSavingToPath := lblSavePath.Caption;
           MsgDlgParams.SavePath := fSavingToPath;
           WriteString( cSectTabFormSettings, cFormSettingsSavingPath, fSavingToPath );
         end;
@@ -4533,9 +4650,9 @@ begin
 
       end;
 
-      if edtBaseFolder.Text <> fWritingToPath then
+      if lblBaseFolder.Caption <> fWritingToPath then
       begin
-        WritePathOverride( edtBaseFolder.Text );
+        WritePathOverride( lblBaseFolder.Caption );
         MyShowmessage( cOutPutChangedBaseFolder, self );
         UpdateDisplay( cOutPutChangedBaseFolder, false );
       end;
@@ -5897,14 +6014,12 @@ end;
 function TfrmMain.GetOpenInstances : boolean;
 var
   Str: string;
-  cnt: integer;
   ProgName: string;
   idx: SizeInt;
 begin
 
   try
 
-  //2 or more copies open
     result := true;
 
     if not SystemFileFound( 'ps', True ) then
@@ -5912,7 +6027,8 @@ begin
 
     ProgName := extractfilename(application.exename);
     Str := QuickProc( 'ps', '-A' );
-    cnt := 1;
+    //Str := QuickProc( 'ps', '-aux' );
+    fOpenInstances := 1;
     idx := pos(ProgName, Str);
     Str := Copy(Str, idx + Length(ProgName), length(Str));
     while True do
@@ -5920,10 +6036,10 @@ begin
       idx := pos(ProgName, Str);
       if idx = 0 then
         break;
-      Inc(cnt);
+      Inc( fOpenInstances );
       Str := Copy(Str, idx + Length(ProgName), length(Str));
     end;
-    if cnt > 1 then
+    if fOpenInstances > 1 then
     begin
   {$IFDEF Release}
       if not fAllowMultipleOpens then
@@ -5934,9 +6050,9 @@ begin
         exit;
       end;
   {$ENDIF}
-      OpenInstancesCap := format( ccapMulipleInstances, [ cnt ] );
+      OpenInstancesCap := format( ccapMulipleInstances, [ fOpenInstances ] );
   {$IFDEF Release}
-      if MsgDlgMessage( ccapMulipleInstances, format( cmsgMulipleInstances, [ cnt ] ) ) then
+      if MsgDlgMessage( ccapMulipleInstances, format( cmsgMulipleInstances, [ fOpenInstances ] ) ) then
         if MsgDlgConfirmation( self ) = mrNo then
           result := false;
   {$ENDIF}
@@ -5957,9 +6073,7 @@ procedure TfrmMain.FormActivate(Sender: TObject);
   function GetSuperUserMode : boolean;
   begin
     result := true;
-    //Self.Caption := ccapProgram;
 
-    //if SystemFileFound('id', True) and (QuickProc('id', '-u') = '0') then
     if fSuperUser then
     begin
       RootModeCap := cRootMode;
@@ -6036,8 +6150,8 @@ end;
 procedure TfrmMain.RefreshCap;
 begin
   if OpenInstancesCap <> '' then
-    OpenInstancesCap := format( ccapMulipleInstances, [ 2 ] );
-  Self.Caption :=  RootModeCap + ' ' + ccapProgram + ' ' + OpenInstancesCap;
+    OpenInstancesCap := format( ccapMulipleInstances, [ fOpenInstances ] );
+  Self.Caption :=  trim( RootModeCap + ' ' + ccapProgram + ' ' + OpenInstancesCap );
 end;
 
 function TfrmMain.CommandAlreadyUsed( const CheckStr : string; const OkIdx : integer ) : boolean;

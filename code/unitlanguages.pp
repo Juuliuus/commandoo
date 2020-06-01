@@ -43,7 +43,7 @@ type
     fSectTabLanguages : string;
     fSectTabFormSettings : string;
     fFormSettingsProgramLangCol : string;
-    fIniFile : TJinifile;
+    fIniFile : TJinifile; //pointer only
 
     procedure SetProgramLang(AValue : string);
 
@@ -59,7 +59,7 @@ type
     function ChooseLanguage( var Cnt : integer ) : string;
     function InstallNewLanguage( aList : TStrings ) : integer;
     function Under18( const LangID : string ) : boolean;
-    procedure UpdateProgramLang( const Lang : string; OnlyEnglish : boolean = false );
+    function UpdateProgramLang( const Lang : string; OnlyEnglish : boolean = false ) : boolean;
 
     property LanguageSL : TStringList read fLanguageSL;
     property ProgramLang : string read FProgramLang write SetProgramLang;
@@ -84,6 +84,7 @@ resourcestring
     + 'like "es" or "en" or "pyr", etc.). Everything should be in lowercase. ';
    cLangSymbol = 'Language Symbol: "%s"';
    cmsgTranslation_missingPOFile = 'The language file "%s" is not installed. Maybe it was deleted??';
+   cmsgLangIsUninitialized = 'Not available, Languages was not initialized, probable a bad config path.';
 
 
 
@@ -178,6 +179,7 @@ end;
 
 destructor TLanguages.Destroy;
 begin
+  fIniFile := nil;
   if Assigned( fLanguageSL ) then
     FreeAndNil( fLanguageSL );
 
@@ -193,6 +195,8 @@ begin
 
   TrimLanguageFilesFolder := Trim( LanguageFilesFolder );
 
+{$IFNDEF Release}
+  fIniFile := TheIniFile;
   if DontRun( IsInitialized, format( csoCallOnce, [ 'TLanguages' ] ) )
      or DontRun( TrimLanguageFilesFolder = '', claLanguageFilesFolderBlankOrInvalid )
      or DontRun( not DirectoryExists( TrimLanguageFilesFolder ), claLanguageFilesFolderBlankOrInvalid )
@@ -200,8 +204,13 @@ begin
      or DontRun( Trim( SectTabFormSettings ) = '', claSectTabFormSettingsInvalid )
      or DontRun( not assigned( TheIniFile ), claBadInifile )
      or DontRun( Trim( FormSettingsProgramLangCol ) = '', claFormSettingsProgramLangColInvalid )
+     //or DontRun( true, 'Yikes' )
   then
+  begin
+    fIniFile := nil;
     exit;
+  end;
+{$ENDIF}
 
   fLanguageFilesFolder := TrimLanguageFilesFolder;
   fSectTabLanguages := LanguagesSectionOrTableName;
@@ -219,6 +228,9 @@ var
   FallbackLang : String;
   Cnt : integer;
 begin
+
+  if not IsInitialized then
+    exit;
 
   if fIniFile.SectionExists( 'languages' ) then //old section name, needed new list and using new section name.
     fIniFile.EraseSection( 'languages' );
@@ -299,11 +311,19 @@ begin
 
 end;
 
-procedure TLanguages.UpdateProgramLang( const Lang : string; OnlyEnglish : boolean = false );
+function TLanguages.UpdateProgramLang( const Lang : string; OnlyEnglish : boolean = false ) : boolean;
 var
   POFileName : string;
 begin
+  result := false;
 
+  if not IsInitialized then
+  begin
+    MyShowMessage( cmsgLangIsUninitialized, nil );
+    exit;
+  end;
+
+  result := true;
   fProgramLang := Lang;
 
   fIniFile.WriteString( fSectTabFormSettings, fFormSettingsProgramLangCol, fProgramLang );
@@ -382,6 +402,12 @@ var
 begin
 
   result := -1;
+  if not IsInitialized then
+  begin
+    MyShowMessage( cmsgLangIsUninitialized, nil );
+    exit;
+  end;
+
 
   with TfrmAddLanguage.Create( nil ) do
   try

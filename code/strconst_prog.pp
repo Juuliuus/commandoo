@@ -32,6 +32,8 @@ const
   cConfigPathFileName = 'config_path__DoNotDelete';
   cConfigPathSection = 'Working_Config_Path';
   cConfigPathWritingPath = 'WritingPath';
+  cRootMode = '<< ROOT MODE >> ';
+  ccapProgram = 'COMMANDOO : GUI for Linux Commands / CLI';
 
   cAttnBar = LineEnding + '==========' + LineEnding;
 
