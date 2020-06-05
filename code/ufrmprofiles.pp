@@ -658,9 +658,10 @@ end;
 
 procedure TfrmProfiles.lbListDblClick(Sender : TObject);
 begin
-  if IsSelectMode and btnSelect.Enabled then
+  if IsSelectMode then
   begin
-    btnSelect.Click;
+    if btnSelect.Enabled then
+      btnSelect.Click;
     exit;
   end;
   if actEdit.Enabled then
@@ -671,8 +672,7 @@ procedure TfrmProfiles.lbListKeyDown( Sender : TObject; var Key : Word; Shift : 
 begin
   if Key = vk_Return then
   begin
-    if actEdit.Enabled then
-      actEdit.Execute;
+    lbListDblClick( Self );
   end;
 end;
 
@@ -1775,9 +1775,8 @@ begin
 
     if ToPo.IsDB then
     begin
-      MsgDlgMessage( ccapApology, cmsgApology, 'cmsgApology' );
-      if MsgDlgConfirmation( self ) = mrNo then
-        exit;
+      MsgDlgMessage( ccapDBMergeInfo, cmsgDBMergeInfo, 'cmsgDBMergeInfo' );
+      MsgDlgInfo( self );
     end;
 
     MsgDlgMessage( ccapProMergeConfirm, format( cmsgProMergeConfirm, [ GetDispStr( FromPO ), GetDispStr( ToPO ) ] ) );

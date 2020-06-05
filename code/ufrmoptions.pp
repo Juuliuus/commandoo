@@ -65,10 +65,12 @@ type
     cbSqlDB : TCheckBox;
     cbTextDB : TCheckBox;
     cbUnspecified : TCheckBox;
+    cbMissingSqlMsg : TCheckBox;
     DirectoryDialog : TSelectDirectoryDialog;
     FrameHint1 : TFrameHint;
     lblBaseFolder : TLabel;
     lblDisplayMax : TLabel;
+    lblMaxOutputWait : TLabel;
     lblLanguage : TLabel;
     lblMaxOutput : TLabel;
     lblRootFile : TLabel;
@@ -77,6 +79,7 @@ type
     lblThreatLevel : TLabel;
     ShapeLangOK : TShape;
     speDisplayMax : TSpinEdit;
+    speMaxOutputWait : TSpinEdit;
     tmrLangOK : TTimer;
     procedure btnAddLangClick(Sender : TObject);
     procedure btnAddLangOKClick( Sender : TObject );
@@ -206,6 +209,21 @@ resourcestring
     + '<end>'
     + LineEnding
     ;
+  ccapOptSqliteSearch = 'Attempt to re-set sqlib';
+  cmsgOptSqliteSearch =
+    'commandoo could not find the sqlite 3 library, is the sqllite 3 library package installed? '
+    + 'If you are sure that it is, it is in an unusual location and you need to find the library '
+    + 'manually using the button to the left...%s'
+    ;
+  ccapOptSqlite_soname = 'Unusual sqlite 3 library name...';
+  cmsgOptSqlite_soname =
+    'The sqlite library name is usually "%s" with a numeric character after it, like "%s".'
+    + LineEnding + LineEnding
+    + 'You have chosen "%s". Choosing the wrong library could cause the program to crash when accessing '
+    + 'sql DB''s. Please, be sure you know what you are doing! Are you sure you want use this library?'
+    + LineEnding
+    ;
+
 
   cmsgOptDefSavePathIsDefault = 'The shown Save Path is already the default.';
   ccapOptDefSavePath = 'Reset Path to Default?';
@@ -388,7 +406,7 @@ end;
 
 procedure TfrmOptions.btnSqlLibClick( Sender : TObject );
 var
-  Str : TCaption;
+  Str, Comp : string;
 begin
   if TInfoServer.SqliteIsActive then
   begin
@@ -404,20 +422,37 @@ begin
   begin
     if CheckFileNotFound( Str ) then
       exit;
+    Comp := extractfilename( str );
+//    Comp := 'libsqlite3.so'; //testing
+
+    if ( pos( cSqlite_soname, Comp ) <> 1 ) or ( Comp <> cSqlite_soname + '.0' ) then
+    begin
+      MsgDlgMessage( ccapOptSqlite_soname, format( cmsgOptSqlite_soname, [ cSqlite_soname, cSqlite_soname + cSqlite_sonameExt, Str ] ) );
+      if MsgDlgConfirmation( self ) = mrNo then
+        exit;
+    end;
     lblSqlLib.Caption := Str;
   end;
 
 end;
 
 procedure TfrmOptions.btnSqlLibResetClick( Sender : TObject );
+var
+  str, Msg : string;
 begin
   if TInfoServer.SqliteIsActive then
   begin
     Showmessage( cmsgOptSqliteActiveAlready );
     exit;
   end;
+  str := '';
+  if not TInfoServer.SqliteInstalled( str, Msg ) then
+  begin
+    MsgDlgMessage( ccapOptSqliteSearch, format( cmsgOptSqliteSearch, [ Msg ] ) );
+    MsgDlgInfo( self );
+  end;
 
-  lblSqlLib.Caption := '';
+  lblSqlLib.Caption := str;
 
 end;
 

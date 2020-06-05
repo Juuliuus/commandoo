@@ -2211,7 +2211,7 @@ object frmMain: TfrmMain
     TabOrder = 3
   end
   object lblCurrDB: TLabel
-    Left = 592
+    Left = 594
     Height = 21
     Top = 2
     Width = 74

@@ -106,7 +106,7 @@ type
     constructor Create; override;
     destructor Destroy; override;
 
-    class function SqliteInstalled( sqlLib : string) : boolean;
+    class function SqliteInstalled( var sqlLibFile, Msg : string ) : boolean;
     class function SqliteIsActive : boolean;
     class procedure Rechecking_SqliteIsActive;
 
@@ -223,19 +223,14 @@ var
   FormSettings : TFormSettings;
 
 const
-  //cfcTabSectColInvalid = 'Hey Programmer! TFormColor.Init needs valid Section/Table & Column Names to save and read SystemColors preference';
-//were tags that were used in old system color management which turned out to be a bad idea
-  //csoIgnoreColorChange = 123321;
-  //csoIgnoreColorChangeChildren = 223322;
   csoCallOnce = 'Hey Programmer! %s.Init should only be called once and, generally, only from Main Form.';
   csoObjectNotInitialized = 'Hey Programmer! %s is not initialized, %s halted';
   csoGenError = '%s: Error %s';
   csoSqlite_rowid = 'rowid';
 
-  //crefOldSystemColorKey = 'UseSystemColors';
-
-  cSqliteDefaultLibraryLocation64 = '/usr/lib/x86_64-linux-gnu/libsqlite3.so.0';
-  cSqliteDefaultLibraryLocation32 = '/usr/lib/i386-linux-gnu/libsqlite3.so.0';
+  cSqlite_soname = 'libsqlite3.so';
+  cSqlite_sonameExt = '.0';
+  cSqliteDefaultLibraryLocationUNKNOWN = '<libsqlite location unknown>';
   csocapSqlNoGuidValue = '{unkGUID}';
 
 resourcestring
@@ -250,6 +245,7 @@ uses juusgen
      , linuxtrix
      , stdCtrls
      , unitGlob
+     , clipbrd
      ;
 
 var
@@ -261,6 +257,7 @@ const
   csoUseAddSetting = 'Hey Programmer! You didnt call AddSetting before calling SaveFormSettings';
   //csoFontKey = 'font';
   cso_SavingServerFormSettings = 'SavingServerFormSettings';
+  csoTestingDBFileName = 'xxx.xxx';
 
 { T_IS_SearchControl }
 
@@ -683,7 +680,7 @@ var
   i, Idx : Integer;
   DL : TDataLocation;
 const
-  Errmsg = 'TInfoServer.Init: %s structure not defined properly';
+  Errmsg = 'TInfoServer.Init: %s structure not defined properly ';
 begin
   try
 
@@ -994,31 +991,72 @@ begin
   SqliteAllowed := false;
 end;
 
-class function TInfoServer.SqliteInstalled( sqlLib : string ) : boolean;
+
+class function TInfoServer.SqliteInstalled( var sqlLibFile, Msg : string ) : boolean;
+var
+  isOK : boolean;
+const
+  cMsg = LineEnding + LineEnding + 'sqlite 3 library changed from invalid "%s"' + LineEnding + 'to "%s"' + LineEnding + LineEnding;
+
+
+  function GoodTest( const aFile : string; const DoChange : boolean = true ) : boolean;
+  begin
+    result := false;
+    if not FileExists( aFile ) then
+      exit;
+    sqlite3dyn.SQLiteDefaultLibrary := aFile;
+    if DoChange then
+    begin
+      if sqlLibFile <> '' then
+        Msg := format( cMsg, [ sqlLibFile, aFile ] );
+      sqlLibFile := aFile;
+    end;
+    result := true;
+    isOK := true;
+  end;
+
 begin
-  //cSqliteDefaultLibraryLocation64 = '/usr/lib/x86_64-linux-gnu/libsqlite3.so.0';
-  //cSqliteDefaultLibraryLocation32 = '/usr/lib/i386-linux-gnu/libsqlite3.so.0';
+
   result := false;
+  isOK := false;
 
   if SqliteAllowed then
     exit; //have already found it this session.
   //needs this kind of protection because what if sqlite is working fine?!
   //then it is NOT allowed to be changed and information should not be updated
 
-  if sqlLib = '' then
-{$IFDEF Bit32}
-    sqlLib := cSqliteDefaultLibraryLocation32;
-{$ELSE}
-    sqlLib := cSqliteDefaultLibraryLocation64;
-{$ENDIF}
-
-  if not FileExists( sqlLib ) then //+ 'xxx' ) then testing
+//if last check couldn't find it no need to look again, they need to go to OPTIONS and fix it.
+  if sqlLibFile = cSqliteDefaultLibraryLocationUNKNOWN then
     exit;
 
-  sqlite3dyn.SQLiteDefaultLibrary := sqlLib;
+  try
 
-  result := true;
-  SqliteAllowed := true;
+    if ( sqlLibFile <> '' ) then
+      if GoodTest( sqlLibFile, false ) then
+       exit;
+
+    //cSqliteDefaultLibraryLocationDeb = '/usr/lib/x86_64-linux-gnu/libsqlite3.so.0';
+   if GoodTest( '/usr/lib/x86_64-linux-gnu/' + cSqlite_soname + cSqlite_sonameExt ) then //debian
+      exit;
+
+    if GoodTest( '/usr/lib64/' + cSqlite_soname + cSqlite_sonameExt ) then //fedora
+      exit;
+
+    if GoodTest( '/usr/local/lib64/' + cSqlite_soname + cSqlite_sonameExt ) then //punt, maybe?
+      exit;
+
+    Msg := format( cMsg, [ sqlLibFile, cSqliteDefaultLibraryLocationUNKNOWN ] );
+    sqlLibFile := cSqliteDefaultLibraryLocationUNKNOWN;
+//need to give it something valid-y so sql will fail gracefully
+    sqlite3dyn.SQLiteDefaultLibrary := '/usr/lib64/' + cSqlite_soname + cSqlite_sonameExt;
+
+  finally
+    if isOK then
+    begin
+     result := true;
+     SqliteAllowed := true;
+    end;
+  end;
 
 end;
 

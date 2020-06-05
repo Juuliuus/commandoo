@@ -1,15 +1,15 @@
 object frmAbout: TfrmAbout
   Left = 2374
-  Height = 507
+  Height = 515
   Top = 386
-  Width = 920
+  Width = 985
   ActiveControl = memOutput
   Caption = 'Commandoo About'
-  ClientHeight = 507
-  ClientWidth = 920
+  ClientHeight = 515
+  ClientWidth = 985
   Color = clBlack
-  Constraints.MinHeight = 507
-  Constraints.MinWidth = 920
+  Constraints.MinHeight = 515
+  Constraints.MinWidth = 985
   DesignTimePPI = 128
   Font.Height = -16
   OnCreate = FormCreate
@@ -18,9 +18,9 @@ object frmAbout: TfrmAbout
   LCLVersion = '2.0.6.0'
   object memOutput: TMemo
     Left = 43
-    Height = 358
-    Top = 27
-    Width = 704
+    Height = 366
+    Top = 35
+    Width = 769
     Anchors = [akTop, akLeft, akRight, akBottom]
     Font.Height = -16
     ParentFont = False
@@ -28,7 +28,7 @@ object frmAbout: TfrmAbout
     TabOrder = 0
   end
   object btnOK: TBitBtn
-    Left = 779
+    Left = 844
     Height = 40
     Top = 53
     Width = 100
@@ -44,9 +44,9 @@ object frmAbout: TfrmAbout
     TabOrder = 3
   end
   object Image1: TImage
-    Left = 637
+    Left = 702
     Height = 227
-    Top = 203
+    Top = 211
     Width = 267
     Anchors = [akRight, akBottom]
     AutoSize = True
@@ -2006,23 +2006,34 @@ object frmAbout: TfrmAbout
   object btnToggle: TBitBtn
     Left = 53
     Height = 56
-    Top = 389
-    Width = 684
+    Top = 405
+    Width = 749
     Anchors = [akLeft, akRight, akBottom]
-    Caption = '&A  Toggle About => Introduction => Tips'
+    Caption = '...'
     Font.Height = -17
     OnClick = btnToggleClick
     ParentFont = False
     TabOrder = 1
   end
   object btnSaveToFile: TBitBtn
-    Left = 290
+    Left = 730
     Height = 40
-    Top = 456
-    Width = 175
+    Top = 467
+    Width = 240
     Anchors = [akLeft, akRight, akBottom]
     Caption = '&F Save to file'
     OnClick = btnSaveToFileClick
     TabOrder = 2
+  end
+  object lblTopic: TLabel
+    Left = 42
+    Height = 24
+    Top = 5
+    Width = 66
+    Caption = 'lblTopic'
+    Font.Color = clCream
+    Font.Height = -18
+    ParentColor = False
+    ParentFont = False
   end
 end

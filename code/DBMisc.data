@@ -7,7 +7,8 @@ README5=
 README6==================================
 
 [_DB_VersionCount]
-LastVersionUpgrade=4
+LastVersionUpgrade=5
+TextDataType=Misc
 
 [_DB_ProfileGUID]
 GUID={07025217-8DDA-4CD4-BBEB-95481A2760CD}

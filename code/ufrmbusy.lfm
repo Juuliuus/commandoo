@@ -78,7 +78,7 @@ object frmBusy: TfrmBusy
   end
   object Timer1: TTimer
     Enabled = False
-    Interval = 3000
+    Interval = 5000
     OnTimer = Timer1Timer
     left = 53
     top = 32

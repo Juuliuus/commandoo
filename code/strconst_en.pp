@@ -109,17 +109,86 @@ resourceString
     + LineEnding + LineEnding
     ;
 
+  cmsgFirstLocalRunAbout = '<this is the message one sees from a First run of the program>'
+    + LineEnding + LineEnding
+    ;
+  cmsgFirstLocalRun =
+    'Hi. This looks like a first run of commandoo.'
+    + LineEnding + LineEnding
+    + 'First, some orientation. HELP is written into commandoo. At the top/right of almost '
+    + 'every window is a checkbox. Click it, or use alt-h, and then help will be shown as you '
+    + 'move your mouse over all the controls. '
+    + LineEnding + LineEnding
+    + 'Also at the top/right is the ABOUT button, this opens a window where you can view '
+    + 'information about commandoo, an Introduction, Tips and Tricks, and more. '
+    + LineEnding + LineEnding
+    + 'Other "Language / Sprache / Idioma / Langue" can be installed in OPTIONS if you have '
+    + 'a language (.po) file for it.'
+    + LineEnding + LineEnding
+    + 'If you are upgrading from commandoo v1.0.1, see the ABOUT window for instructions.'
+    + LineEnding + LineEnding
+    + 'Most all windows are re-sizeable in width, height, or both. And they remember their positions '
+    + 'and sizes. '
+    + LineEnding + LineEnding
+    + 'Use the copy/save buttons to the right to store any text in this memo, if nothing is '
+    + 'selected it will take the entire text, otherwise just what is selected. '
+    + LineEnding + LineEnding
+    + 'You may wonder why the shortcut keys are seemingly random...This is done so that they '
+    + 'remain the same if you change languages. '
+    + LineEnding + LineEnding
+    + 'Be sure to check out the OPTIONS button, don''t forget to use the alt-h help there. '
+    + LineEnding + LineEnding
+    + 'A note about "ibus", the linux system used, principally, for asian character entry. '
+    + 'In earlier linux versions a problem would crop up where when you typed the characters '
+    + '"the" one would get "tthhee", ie., doubled, or just a "t". And there were other systemic problems. '
+    + 'This is an ibus problem, not a commandoo problem. '
+    + 'If it affects you check out the ibus solution in the ABOUT window.'
+    + LineEnding + LineEnding + LineEnding //I want space here
+    ;
 
-  ccapIbus = 'Possible "ibus" problem and solution if it affects you';
+  cmsgCommandooUpgrade =
+    'If you upgraded commandoo from the original version 1.0.1...'
+    + LineEnding + LineEnding
+    + '...you will notice your customized databases aren''t shown! '
+    + 'But it is easy to point to them in just a few clicks.'
+    + LineEnding + LineEnding
+    + 'This new commandoo is future-proofed (!?), but the old one was not. '
+    + LineEnding + LineEnding
+    + 'The easiest way is to go to options and use the "Base/DB folder" button to choose the folder where '
+    + 'your old databases are. Confirm, close commandoo, and re-start. Voila, all is right with the world. '
+    + LineEnding + LineEnding
+    + 'The other easy way, only a bit more work, is to use the "Manage DB Profiles" button, and then use '
+    + 'the new IMPORT function. You can then import your custom DB''s one at a time into the new config '
+    + 'area. '
+    + LineEnding + LineEnding
+    + 'What, exactly, has changed? The old commandoo simply looked in the same folder where it was installed. '
+    + 'The new commandoo queries the system for the system determined user config folder (usually .config). '
+    + 'But, as you now know, this can be over-ridden as described. '
+    + LineEnding + LineEnding
+    + 'Would it be better to import which moves everything to the new config folder? It is entirely up to you, '
+    + 'commandoo doesn''t =care= where they are, it just needs to =know= where they are. If there is any advantage '
+    + 'to importing it would be that the final structure is in line with gnu/linux quidelines and, in that '
+    + 'way, "future-proofed".'
+    + LineEnding + LineEnding
+    + 'By the way, if you import your DB''s, it does not destroy the original files, they will still be in '
+    + 'their original location. This is true of any imported DB.'
+    + LineEnding + LineEnding
+    + 'By this time you probably have thought that this would be a neat way of keeping separate folders of '
+    + 'DB''s for different purposes and simply using this DB path to move between them. Yeah, you can do that '
+    + 'now. The only reason I don''t recommend this method is that you could start getting confused as to what '
+    + 'is where, and start making edits in one folder that you meant to make in another.'
+    + LineEnding
+    ;
+
+
   cmsgIbus =
-    'IMPORTANT <==========='
+    'Possible "ibus" problem and solution if it affects you'
     + LineEnding + LineEnding
-    + 'commandoo has found that the program "ibus" is installed on your system. '
+    + '"ibus" is a gnu/linux input method (ie., keyboard entries) that is installed in many linux''s by default.'
     + LineEnding + LineEnding
-    + 'THIS CAN CAUSE PROGRAM MISBEHAVIOR, making commandoo unusable. The problem '
-    + 'and solution are outlined below, but first use the copy to clipboard button '
-    + 'above so that you can save this information and read it when commandoo is not '
-    + 'running. '
+    + 'In some older versions of gnu/linux ibus CAN CAUSE PROGRAM MISBEHAVIOR, making commandoo unusable. The problem '
+    + 'and solution are outlined below. You may want to use the save to file button '
+    + 'below, so that you can open it separately from this window.'
     + LineEnding + LineEnding
     + '==================== '
     + LineEnding
@@ -153,12 +222,12 @@ resourceString
     + 'On the fresh KDE install not only was commandoo affected but KDE windows '
     + '(like kdesudo) failed, one can not type into the input fields. It also affects typing '
     + 'in the KDE kicker when trying to find some installed program, only the first typed '
-    + 'character was displayed. Web research showed that many people are having this problem '
+    + 'character was displayed. Web research showed that many people were having this problem '
     + 'with KDE and Debian 9 and ibus. '
     + LineEnding + LineEnding
-    + 'You will see immediately if you are affected by this problem. Simply close this window '
-    + 'and continue on into commandoo. First thing type alt-F to open the find dialog and type '
-    + '"dog" if "dog" is the result then you do not have this problem. If it comes out only "d" '
+    + 'You can see immediately if you are affected by this problem. Simply close this window '
+    + 'and continue on into commandoo. Focus the command list and type alt-F to open the find dialog and type '
+    + '"dog". If "dog" is the result then you do not have this problem. If it comes out only "d" '
     + 'or as "ddoogg" then you do have the problem and should apply the solution. '
     + LineEnding + LineEnding
     + 'When I discovered this back in August I recommended either removing ibus (if you are '
@@ -235,9 +304,6 @@ resourceString
     + LineEnding + LineEnding
     + 'Welcome to commandoo the Graphical User Interface (GUI) for the Linux '
     + 'Command Line Interface (CLI), perhaps better known as the "Terminal". '
-    + 'You can read this introduction again later in the "About" window. '
-    + 'Also available in the "About" window are some == TIPS == for use, '
-    + 'recommended reading... '
     + LineEnding + LineEnding
     + 'It''s purpose is to give you a place to store the cool and/or useful '
     + 'command lines you find, discover, or create. Then, months later, when '
@@ -278,14 +344,17 @@ resourceString
     + LineEnding + LineEnding
     + 'You can choose to use text based database files or sqlite db files. You can convert '
     + 'from one to the other. You can merge from one to the other. You can send individual Command Lines '
-    + 'from your open db and send it to another db.'
+    + 'from your open DB and send it to another DB. You can import DB''s from other commandoo users. You can '
+    + 'compare DB''s. You can mix and match all these functions to manipulate your DB''s at will. '
+    + LineEnding + LineEnding
+    + 'You can edit a Command and a CL at the same time. '
     + LineEnding + LineEnding
     + 'This is completely "open" software, the source code is on GitHub, see the link in the '
     + '"About" window. It is written in pascal (thank you FreePascal) with the Lazarus IDE (thank you Lazarus). '
     + LineEnding + LineEnding
     + 'Help is included in the program. Almost all windows have a checkbox in the upper right to "show '
-    + 'hints on mouseover". Check that and then move the mouse over the control you have a question '
-    + 'about. '
+    + 'hints on mouse-over". Check that and then move the mouse over the control you have a question '
+    + 'about. Uncheck it when you''re done.'
     + LineEnding + LineEnding
     + 'A word of CAUTION:     Be careful out there. '
     + LineEnding + LineEnding
@@ -299,7 +368,7 @@ resourceString
     + 'then it IS harmless you can be certain. If a command line is marked careful or higher then you '
     + 'may want to spend some time learning about that command so you understand WHY it is not completely harmless. '
     + LineEnding + LineEnding
-    + 'Another word of CAUTION:     Backup your database files regularly. File locations can be seen in the "About" '
+    + 'Another word of CAUTION:  Backup your database files regularly. File locations can be seen in the "About" '
     + 'window. And now License Information: '
     + LineEnding + LineEnding
     + '%s'
@@ -312,19 +381,14 @@ resourceString
     + '===== '
     + LineEnding + LineEnding
     + 'Commands are entries that describe the command you are using. Commands >> CAN NOT BE RUN <<. '
-    + 'Only Command Lines can be run, but you must add the command first. Then you add command lines to it. '
+    + 'Only Command Lines (CL''s) can be run, but you must add the command first. Then you add command lines to it. '
     + LineEnding + LineEnding
     + 'Before adding Command Lines you should edit your new Command and give it a threat level and so on. '
-    + 'This is because any command lines you add will "inherit" those settings (excepting the notes and KeyWords) '
+    + 'This is because any command lines you add will "inherit" those settings '
     + 'saving you some work. '
     + LineEnding + LineEnding
-    + 'Note for Debian users: If an entered command you know you should have and it comes back with "badpath" this is '
-    + 'probably because the command is in /sbin/ and not in your $PATH. Edit the Command (go into edit mode and '
-    + 'double click the command name) and simply type the /sbin/ manually. /sbin/ commands are usually reserved for '
-    + 'ROOT users and so will not be seen by the program under your normal login. '
-    + LineEnding + LineEnding
-    + 'commandoo supports variables in Command Lines. Highlight the CL you want and go into edit mode. Double '
-    + 'click the command line and you will be taken to a edit window that has buttons to allow you to enter various '
+    + 'commandoo supports variables in Command Lines. Select the CL you want and go into edit mode. Then use '
+    + 'the CL builder/helper button and you will be taken to a edit window that has buttons to allow you to enter various '
     + 'types of variables (strings, integer, real, and file/folder names).  '
     + LineEnding + LineEnding
     + 'Look through the provided database, there are examples of variables, Command Line input, etc. '
@@ -336,11 +400,11 @@ resourceString
     + 'If you want commandoo to act as a "launcher" be sure to check the "Child Proc" checkbox in the Command Line. '
     + 'Otherwise, it will (usually) return immediately, having not done anything. Say you are running Gimp or Blender, '
     + 'well sending it out to be run like "uname" does precisely that. It runs it, and then stops and kills it. The '
-    + 'Child Proc setting says "hey, this is GUI program, keep it open". '
+    + 'Child Proc setting says "hey, this is a GUI program, keep it open". '
     + LineEnding + LineEnding
     + '"Use Shell" attempts to let the system handle it and this usually works pretty well. It is necessary for '
     + 'processes that use more terminal like syntax (semicolons and such). commandoo can internally handle the basic '
-    + 'command lines, but if yours doesn''t seem to work, try Use Shell and see if that does it. If not then '
+    + 'command lines, but if yours doesn''t seem to work, try "Use Shell" and see if that does it. If not then '
     + 'that Command Line should only be run in a Terminal (term. only). '
     + LineEnding + LineEnding
     + 'If the Command Line is mission critical, complex, etc. you should probably only use it in a Terminal. commandoo '
@@ -351,19 +415,22 @@ resourceString
     + 'option for a Command Line will ask you for input before running the Command Line. So for something like grep you '
     + 'can paste in some text you want to search. '
     + LineEnding + LineEnding
-    + 'SuperUser (you can set details in OPTIONS): how this works varies on your distribution. If you are on Debian '
-    + 'there is an admin user and then your personal login. If you are not part of "sudo''ers" then you can not run '
-    + 'Commands as ROOT and you will need to know the admin password. For ''buntu distribs this is not the case unless '
-    + 'you have set your system up specifically as such. See OPTIONS for SuperUser for more details. '
+    + 'The "SuperUser" setting only marks the CL that it should/will be run as root in a terminal. Setting '
+    + 'this adds a "<root> " at the beginning of the CL. Later if you need this command, copy it from commandoo''s '
+    + 'right click menu, then when you paste it in a terminal it will fill the CL out for you with the proper superuser '
+    + 'command, ie., <root> alias will be pasted as sudo alias. What <root> get''s replaced with is from a template '
+    + 'you can set from OPTIONS. You can not / may not run sudo or su commands from within commandoo, they must be '
+    + 'run in a terminal. I have had success, however, with pkexec which I use from commandoo to mount a ram drive. '
+    + 'So try pkexec too. Success of running CL''s with pkexec permissions will depend on your system''s policies.'
     + LineEnding + LineEnding
     + 'Use DB profiles, why not? The provided database is of basic Linux commands. Now you can add more and more to this '
     + 'database as you like, fine. But you could also make specific databases for specific needs. This is another way '
     + 'to make commandoo useful for you. Maybe you want a GUI launcher database for all your programs. And another that '
     + 'just deals with hardware commands. Etc. Make commandoo yours. '
     + LineEnding + LineEnding
-    + 'Almost every window in commandoo has a checkbox at upper right to show hints on mouseover. Use it!! Lot''s of information '
+    + 'Almost every window in commandoo has a checkbox at upper right to show hints on mouse-over. Use it!! Lot''s of information '
     + 'there. When you are done reading, uncheck it to stop the hints. The detailed hints for the Commands and CL''s are '
-    + 'only shown in edit mode. '
+    + 'only shown in edit mode, so be sure to go into the 2 edit modes to see those details. '
     + LineEnding + LineEnding
     + 'Heads UP: I ran into an odd problem with a couple of the more abstruse, esoteric Commands. When you add  '
     + 'a new Command the HELP and VERSION fields are filled in for you with the most common variants: "--help" and '
@@ -375,8 +442,9 @@ resourceString
     ;
 
   cmsgOwnRisk =
-    'The use of of this software is at YOUR OWN RISK. While I strive for complete testing it has no implicit or explicit '
-    + 'warranty or guarantee of being bug free. '
+    'The use of of this FREE as in FREEDOM software is at YOUR OWN RISK. While I strive for complete testing it '
+    + 'has no implicit or explicit warranty or guarantee of being bug free. '
+    + LineEnding + LineEnding
     + 'I hope you find it useful, enjoy. '
     + LineEnding + LineEnding
     ;
@@ -815,23 +883,15 @@ resourceString
    cmsgBadData_ESC_OK = LineEnding + LineEnding +
                         '%s. This can mess up the output display. By default the output is thrown out. This can be changed in OPTIONS. '
                         + LineEnding + LineEnding;
-   ccapApology = 'Merging TO sql DB''s:  My Apologies!!!';
-   cmsgApology =
-     'Please read!: '
-     + Lineending + LineEnding
-     + 'There is some, very very very subtle issue, when merging INTO '
-     + 'a SQL database. Depending on circumstances it can take a VERY long time. '
-     + 'I''ve done what I can to make it as fast as I can but it could be '
-     + 'slow. Best circumstances are small merges of course. And where the '
-     + 'merging items are not already present in the TO database. '
-     + Lineending + LineEnding
-     + 'The worst case is where many of the incoming commands already exist in the destination. '
-     + 'It may not affect you, but it could be slooowwww. If it is I apologize for the issue, be patient it will finish.'
-     + Lineending + LineEnding
-     + 'You can, of course, merge commands one at a time from the right click popup on the commands '
-     + 'list which are then copy instantly to the destination. '
-     + Lineending + LineEnding
-     + 'So do you still want to merge to a SQL destination?? ';
+   ccapDBMergeInfo = 'Merging TO sql DB''s:';
+   cmsgDBMergeInfo =
+     'Depending on the amount of data you are merging, and how much of that data already exists in the '
+     + 'Target DB, and the speed of your hard drives, the process of merging to a sql DB can take time. '
+     + LineEnding + LineEnding
+     + 'Please be patient, it will finish. '
+     + LineEnding + LineEnding
+     + 'According to the hompage of the sqlite3 team, speed is limited because DB transactions '
+     + 'must be ensured to be accurate and definitely written to disk for the safey of your data.';
 
    cmsgDispNoNotes = '< No Notes >';
    cmsgDispNoKeyWords = '< No KeyWords >';
@@ -860,6 +920,9 @@ resourceString
    cSaveToFileAbout = 'about';
    cSaveToFileIntro = 'introduction';
    cSaveToFileTips = 'tips';
+   cSaveToFileFreshStart = 'freshstart';
+   cSaveToFileUpgrade = 'upgrade';
+   cSaveToFileIbus = 'ibus';
    cSaveToFileOutput = 'OutPut_%s';
 
    cOutPutCopy1 = 'Copy';

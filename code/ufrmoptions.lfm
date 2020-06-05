@@ -1,7 +1,7 @@
 object frmOptions: TfrmOptions
-  Left = 2369
+  Left = 1920
   Height = 693
-  Top = 317
+  Top = 341
   Width = 913
   Caption = 'DDNT AO'
   ClientHeight = 693
@@ -112,7 +112,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 8
   end
   object cbAllowESCOutput: TCheckBox
     Left = 12
@@ -124,7 +124,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 7
   end
   object ShapeLangOK: TShape
     Left = 404
@@ -156,19 +156,19 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnSqlLibClick
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 13
   end
   object btnRootFile: TBitBtn
     Left = 17
     Height = 34
     Hint = 'This is the ROOT paste template that will'#10'be used.'#10#10'A ROOT indicator on a command is '#10'generic.'#10#10'When you copy a ROOT command and then'#10'paste it into a terminal, or wherever, this'#10'template is used on the pasted text so that'#10'it will work in the terminal.'#10#10'For example, given >su -c "%s"< as the'#10'template, and copying (from within'#10'commandoo)  the command:'#10'<ROOT> /sbin/blkid sda1'#10#10'will be pasted:'#10'su -c "/sbin/blkid sda1"'#10#10'<end>'
-    Top = 579
+    Top = 603
     Width = 324
     Caption = '&Z  ROOT Paste Template'
     Font.Height = -16
     OnClick = btnRootFileClick
     ParentFont = False
-    TabOrder = 11
+    TabOrder = 16
   end
   object btnResetDlgs: TBitBtn
     Left = 12
@@ -180,7 +180,7 @@ object frmOptions: TfrmOptions
     Font.Height = -17
     OnClick = btnResetDlgsClick
     ParentFont = False
-    TabOrder = 12
+    TabOrder = 26
   end
   object btnSavePathReset: TBitBtn
     Left = 341
@@ -192,7 +192,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnSavePathResetClick
     ParentFont = False
-    TabOrder = 13
+    TabOrder = 10
   end
   object btnSqlLibReset: TBitBtn
     Left = 341
@@ -216,7 +216,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnBaseFolderClick
     ParentFont = False
-    TabOrder = 15
+    TabOrder = 11
   end
   object btnBaseFolderReset: TBitBtn
     Left = 341
@@ -228,7 +228,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnBaseFolderResetClick
     ParentFont = False
-    TabOrder = 16
+    TabOrder = 12
   end
   inline FrameHint1: TFrameHint
     Left = 555
@@ -285,7 +285,7 @@ object frmOptions: TfrmOptions
     Left = 353
     Height = 21
     Hint = 'This template is used when pasting a copied'#10'"root" command into a terminal, or wherever.'#10#10'Use button to the right or Dbl-click to edit.'#10#10'<end>'
-    Top = 586
+    Top = 610
     Width = 12
     Caption = '...'
     Font.Height = -16
@@ -306,7 +306,7 @@ object frmOptions: TfrmOptions
     GlyphShowMode = gsmNever
     ModalResult = 11
     ParentFont = False
-    TabOrder = 17
+    TabOrder = 27
   end
   object cbLanguage: TComboBox
     Left = 500
@@ -349,7 +349,7 @@ object frmOptions: TfrmOptions
     OnChange = cbLanguageChange
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 18
+    TabOrder = 17
   end
   object lblLanguage: TLabel
     Left = 435
@@ -388,11 +388,11 @@ object frmOptions: TfrmOptions
     ParentFont = False
   end
   object cbMaxOutput: TComboBox
-    Left = 740
+    Left = 739
     Height = 37
     Hint = 'This is a safety measure for processes '#10'that could produce too much output.'#10#10'The program will wait until the process is '#10'finished -OR- stop after this many '#10'characters are recieved.'#10#10'This is obviously useful if you by accident'#10'output an infinite amount of information by '#10'calling, say, cat /dev/zero.'#10#10'So, be careful that this is not too high, or'#10'you will be waiting some time for the '#10'process to finish maybe.'#10#10'<end>'
     Top = 176
-    Width = 145
+    Width = 147
     Anchors = [akTop, akRight]
     AutoSelect = False
     AutoSize = False
@@ -428,31 +428,31 @@ object frmOptions: TfrmOptions
   object cbSqlDB: TCheckBox
     Left = 667
     Height = 25
-    Top = 308
+    Top = 348
     Width = 214
     Anchors = [akTop, akRight]
     Caption = '&U  Default sql DB allowed'
     Font.Height = -16
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 21
+    TabOrder = 24
   end
   object cbTextDB: TCheckBox
     Left = 661
     Height = 25
-    Top = 344
+    Top = 384
     Width = 219
     Anchors = [akTop, akRight]
     Caption = '&V  Default text DB allowed'
     Font.Height = -16
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 22
+    TabOrder = 25
   end
   object lblDisplayMax: TLabel
     Left = 522
     Height = 21
-    Top = 227
+    Top = 267
     Width = 210
     Anchors = [akTop, akRight]
     Caption = '&S  Maximum Display Output'
@@ -465,7 +465,7 @@ object frmOptions: TfrmOptions
     Left = 739
     Height = 37
     Hint = 'This lets you set how much "history" in the'#10'Display Output is kept. The program will'#10'periodically clear history to keep the display'#10'output around this valiue.'#10#10'No worries if this is lower than the max/min'#10'process output above. Process output will'#10'always be shown in its entirety, or up to'#10'the maximum you set above.'#10#10'<end>'
-    Top = 217
+    Top = 257
     Width = 147
     Anchors = [akTop, akRight]
     AutoSize = False
@@ -475,7 +475,7 @@ object frmOptions: TfrmOptions
     MinValue = 10000
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 23
+    TabOrder = 22
     Value = 10000
   end
   object btnAddLangOK: TBitBtn
@@ -489,19 +489,54 @@ object frmOptions: TfrmOptions
     GlyphShowMode = gsmNever
     OnClick = btnAddLangOKClick
     ParentFont = False
-    TabOrder = 24
+    TabOrder = 18
     Visible = False
   end
   object cbLargerFont: TCheckBox
     Left = 699
     Height = 25
     Hint = 'Make the font size in all windows a bit '#10'larger.'#10#10'<end>'
-    Top = 272
+    Top = 312
     Width = 181
     Anchors = [akTop, akRight]
     Caption = '&T  Slightly larger font'
     OnChange = cbLargerFontChange
-    TabOrder = 25
+    TabOrder = 23
+  end
+  object lblMaxOutputWait: TLabel
+    Left = 552
+    Height = 21
+    Top = 226
+    Width = 180
+    Anchors = [akTop, akRight]
+    Caption = '&N  Output Timeout (sec)'
+    FocusControl = speMaxOutputWait
+    Font.Height = -16
+    ParentColor = False
+    ParentFont = False
+  end
+  object speMaxOutputWait: TSpinEdit
+    Left = 739
+    Height = 37
+    Hint = 'This lets you set how much "history" in the'#10'Display Output is kept. The program will'#10'periodically clear history to keep the display'#10'output around this valiue.'#10#10'No worries if this is lower than the max/min'#10'process output above. Process output will'#10'always be shown in its entirety, or up to'#10'the maximum you set above.'#10#10'<end>'
+    Top = 216
+    Width = 147
+    Anchors = [akTop, akRight]
+    AutoSize = False
+    Font.Height = -16
+    MaxValue = 0
+    OnKeyDown = speDisplayMaxKeyDown
+    ParentFont = False
+    TabOrder = 21
+  end
+  object cbMissingSqlMsg: TCheckBox
+    Left = 73
+    Height = 25
+    Hint = 'The program will, at start up, warn you if it '#10'can not find the sqlite 3 library.'#10#10'But perhaps you don''t want to use sql, so '#10'you don''t need the warning. Check this to '#10'suppress the warning.'#10#10'<end>'
+    Top = 565
+    Width = 268
+    Caption = 'Warn when sql library is missing'
+    TabOrder = 15
   end
   object tmrLangOK: TTimer
     Enabled = False

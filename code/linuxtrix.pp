@@ -88,8 +88,8 @@ resourcestring
 
   cltProcessResultUndefined = '< Process failed to run properly >';
   cltProcessResultCanceled = '< process canceled >';
-  cltProcessResultTooMuch = '< %s exceeded internal maximum of %d characters, use a terminal or change maximium >';
-  cltProcessResultTimeOut = '< timeout waiting for process output >';
+  cltProcessResultTooMuch = '< %s exceeded internal maximum of %d characters (OPTIONS), use a terminal or change maximium >';
+  cltProcessResultTimeOut = '< your timeout limit (OPTIONS) was reached while waiting for process output >';
   cltProcessResultUnknown = '< process finished with unknown code: %d >';
   cltProcessRefusesInput = '< The Process would not allow input. >';
   cltProcessNoneStr = '< none >';
@@ -102,11 +102,16 @@ var
   globltHasBASH : boolean = false;
   globltDoCancelProcess : boolean;
   globltProcessMaxOutput : integer = 500000;
+  globltMaxOutputWait : int64 = 20; //seconds
+
   //globltOutputMemo : TMemo;
 
   globltInputForProcess : string = '';
 
 const
+  cMaxOutputWaitMinimum = 5; //seconds
+  cMaxOutputWaitMaximum = 3600; //seconds
+  cMaxOutputWaitSleepTime = 10;// milliseconds
   cProcessResultUndefined = -2;
   cProcessResultCanceled = -3;
   cProcessResultTooMuch = -4;
@@ -339,7 +344,7 @@ var
   BytRead: LongInt;
   SStream : TStringStream;
   theOutput : TInputPipeStream;
-  EmergencyCordCnt , CheckCancel: Integer;
+  EmergencyCordCnt, CheckCancel, TimedOut: Integer;
 begin
 
   result := cProcessResultUndefined;
@@ -358,6 +363,11 @@ begin
 
   if not assigned( theOutput ) then
     exit;
+
+  if globltMaxOutputWait < cMaxOutputWaitMinimum then
+    TimedOut := cMaxOutputWaitMinimum * 1000
+  else TimedOut := globltMaxOutputWait * 1000;
+  TimedOut := trunc( TimedOut / cMaxOutputWaitSleepTime );
 
   EmergencyCordCnt := 0;
   SStream := TStringStream.Create( '' );
@@ -383,10 +393,10 @@ begin
 
       if theOutput.NumBytesAvailable = 0 then
       begin
-        sleep( 10 );//===>> this turned out to be super important
- //temporary (?) emergency cord: just in case for now
+        sleep( cMaxOutputWaitSleepTime );//10 ===>> this turned out to be super important
+ //emergency cord: just in case
         inc( EmergencyCordCnt );
-        if EmergencyCordCnt > 200 then
+        if EmergencyCordCnt > TimedOut then
         begin
           result := cProcessResultTimeOut;
           break;
@@ -760,13 +770,13 @@ begin
 //DEBIAN fix for where sbin's not in $PATH, even sudo'er
   if ExtractFilePath( result ) = '' then
   begin
-    result := '/sbin/' + FName;
-    if FileExists( result ) then
-      exit;
     result := '/usr/sbin/' + FName;
     if FileExists( result ) then
       exit;
     result := '/usr/local/sbin/' + FName;
+    if FileExists( result ) then
+      exit;
+    result := '/sbin/' + FName;
     if FileExists( result ) then
       exit;
     result := '';

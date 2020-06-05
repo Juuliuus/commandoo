@@ -49,6 +49,7 @@ const
   cFormSettingsProgramLangCol = 'ProgramLang';
   cFormSettingsMaxInOutPutCol = 'MaxInOutPut';
   cFormSettingsOutPutDisplayMax = 'DisplayMax';
+  cFormSettingsMaxOutputWait = 'MaxOutputWait';
   //cFormSettingsSystemColorsIdx = 'SystemColorsIdx';
   cFormSettingsLastQuickRun = 'LastQuickRun';
   cFormSettingsManRefreshFav = 'ManRefreshFav';
@@ -62,6 +63,7 @@ const
   cFormSettingsAllowESCOutput = 'AllowESC';
   cFormSettingsLargerFont = 'LargerFont';
   cFormSettingsAllowSqlDB = 'AllowSqlDB';
+  cFormSettingsDoShowSqlMissing = 'DoShowSqlMissing';
   cFormSettingsAllowTextDB = 'AllowTextDB';
   cFormSettingsRootFile = 'RootFile';
   cFormSettingsSavingPath = 'SavingPath';

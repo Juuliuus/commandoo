@@ -264,11 +264,13 @@ begin
 
   end;
 
-  fProgramLang := fIniFile.Readstring( fSectTabFormSettings, fFormSettingsProgramLangCol, '' );
+//todo this bypasses the big opening choose language form, which makes no sense when there are
+//no other languages to choose from.
+  fProgramLang := fIniFile.Readstring( fSectTabFormSettings, fFormSettingsProgramLangCol, cLangAbbrev_en );
 
   FallbackLang := GetInstalledLanguages;
 
-  if FromStartUp and ( fProgramLang = 'en' ) then
+  if FromStartUp and ( fProgramLang = cLangAbbrev_en ) then
     exit;
 
   if FallbackLang <> '' then

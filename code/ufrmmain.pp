@@ -523,9 +523,11 @@ type
     fAllowMultipleOpens : boolean;
     fAllowESCinOutput : boolean;
     fAllowTextDB : boolean;
+    fDoShowSqlMissing : boolean;
     fManRefreshFavorites : boolean;
     fIFS : TJiniFile;//"I"nifile "F"orm "S"ettings
-    fOpenInstances : byte;
+    fOpenInstances : integer;
+    fFirstLocalRun : boolean;
 
 ////edit focusing
 //when editing and you are typing and then click a checkbox or click a button focus is stolen and
@@ -660,7 +662,7 @@ type
     procedure UpdateNotebookCaptions;
     procedure UpdateNotebookEditingStatus;
     procedure UpdatePathsInEdit( const ThePath : string );
-    procedure UpdateProfileText;
+    procedure UpdateProfileText( const IsBad : boolean );
     procedure UpdateSaveStatus;
   public
     { public declarations }
@@ -687,7 +689,11 @@ var
   frmMain: TfrmMain;
 
 resourcestring
+  cmsgMainWorking = 'Working...Check if this causes the timeout';
   ccapMainBadPath = 'Config Problem, Re-set??';
+  cmsgMainBasePath = 'Base DB/Settings path: ';
+  cmsgMainSavingPath = 'Saving path: ';
+  cmsgMainRootTemplate = 'ROOT template: ';
   cmsgMainBadPath =
       'This custom config path can not'
       + LineEnding
@@ -777,6 +783,7 @@ var
   BadDB : boolean;
   RootModeCap : string = '';
   OpenInstancesCap : string = '';
+  CommsFromFormCreate : string = '';
 
 
 const
@@ -822,7 +829,31 @@ resourcestring
   cmsgFinExMessage = 'Error Message: ';
   cmsgFinExClibboard = '( This message is also in your clipboard. )';
   cmsgKill_BadLinux = 'Unexpected system problem: command "id" not found! Terminating.';
-  cmsgSqlLibNotFound = '===> sqlite system library not found <===';
+//todo fix this message
+//todo add the locate command to default db's
+//todo is it possible (think vmware installer) or necessary to take a copy and put it in the appimage?
+  cmsgSqlLibNotFound = '===> sqlite 3 system library not found <==='
+     + LineEnding + LineEnding
+     + 'commandoo could not find the location of this library, so only text based DB''s '
+     + 'can be used until this is fixed. '
+     + LineEnding + LineEnding
+     + 'You can set/search this location in OPTIONS. '
+     + 'But, first make sure libsqlite3 is installed on your system. Usually it is by default '
+     + 'but maybe it was removed, moved, or customized. If you are not sure '
+     + 'use a package manager and look to see if a package called "libsqlite3-0", or something similar, is installed. '
+     + LineEnding + LineEnding
+     + 'If/when it is installed, then, in OPTIONS,  try re-setting to "default". '
+     + 'If commandoo still can''t find it then determine the library''s location and point to it '
+     + 'manually. Typing the following in a terminal window (or using commandoo) should help you find it: '
+     + LineEnding + LineEnding
+     + '"locate -i -e libsqlite3.so.0" or "locate -i -e libsqlite3.so"'
+     + LineEnding + LineEnding
+     + 'examine the output for the proper location (should start with "/usr/" and have "x86_64" or "x64" '
+     + 'similar in the path name) '
+     + 'and use that location. Normally the file is named "libsqlite3.so.0".'
+     + LineEnding + LineEnding
+     ;
+
   cmsgInitISProblem = 'Could not initialize InfoServer';
   ccapDetProcRunning = 'Running';
   ccapDetProcRunningNot = 'not Running';
@@ -1075,7 +1106,7 @@ begin
                   cFormSettingsProgramLangCol,
                   fIFS
                  );
-  //Init fails it will just load normally but only in english and be dead in the language options
+  //if Init fails it will just load normally but only in english and be dead in the language options
   Languages.PrepAndApplyLanguage( true );
 
   BiDiMode := Languages.GetBiDiMode;
@@ -1252,6 +1283,8 @@ begin
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
+var
+  NeedsWrite : boolean;
 
   procedure killit;
   begin
@@ -1300,11 +1333,48 @@ procedure TfrmMain.FormCreate(Sender: TObject);
     end;
   end;
 
-//var
-////  testme : string;
+  procedure SetSqliteLibrary;
+  var
+    SqlLibRead, SqlLibChange : string;
+  begin
+    SqlLibRead := fSqliteLibrary;
+    SqlLibChange := '';
+
+    if not TInfoServer.SqliteInstalled( fSqliteLibrary, SqlLibChange ) then
+    begin
+      if fUseDB then
+      begin
+        fUseDB := false;
+        try
+          if not IniDBFilesExist( fProfilePath, fProfileName ) then
+          begin
+            fProfileName := cDefaultDBProfileName;
+            fProfilePath := fWritingToPath;
+          end;
+        except
+          fProfileName := cDefaultDBProfileName;
+          fProfilePath := fWritingToPath;
+        end;
+      end;
+      fIFS.WriteString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, fSqliteLibrary );
+      NeedsWrite := true;
+    end
+    else if fSqliteLibrary <> SqlLibRead then
+      begin
+        fIFS.WriteString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, fSqliteLibrary );
+        NeedsWrite := true;
+      end;
+
+    if SqlLibChange <> '' then
+      CommsFromFormCreate := CommsFromFormCreate + SqlLibChange;
+    if ( fSqliteLibrary = cSqliteDefaultLibraryLocationUNKNOWN ) and fDoShowSqlMissing then
+      CommsFromFormCreate := CommsFromFormCreate + cmsgSqlLibNotFound;
+  end;
+
 begin
 
   font.size := cDefaultFontSize;
+  NeedsWrite := false;
 
   Randomize;
   application.OnException := @FinalException;
@@ -1312,6 +1382,7 @@ begin
   frmfindtext := Tfrmfindtext.Create( self );
   frmBusy := TfrmBusy.Create( self );
 
+  fFirstLocalRun := false;
   fSuperUser := False;
   fDisplayOutPut := TStringlist.Create;
   //fCLFocus := nil; //do not create, pointer only
@@ -1374,7 +1445,10 @@ begin
       end;
   //if above succeeds then this will too, unless is the last byte on the hard drive.
   if not DirectoryExists( fWritingToPath + cSearchFolderName ) then
+  begin
     CreateDir( fWritingToPath + cSearchFolderName );
+    fFirstLocalRun := true;
+  end;
 
   fIFS := TJiniFile.Create( fWritingToPath + cReferenceProgramName + cSectTabFormSettingsExtension );
   fIFS.CacheUpdates := true;
@@ -1383,6 +1457,7 @@ begin
 
   fProfileName := fIFS.ReadString( cSectTabCurrProfile, cCurrProfileName, cDefaultDBProfileName );
   fUseDB := fIFS.ReadBool( cSectTabCurrProfile, cCurrProfileIsDB, cDefaultDBProfileIsDB );
+  fDoShowSqlMissing := fIFS.ReadBool( cSectTabFormSettings, cFormSettingsDoShowSqlMissing, true );
   fProfilePath := fIFS.ReadString( cSectTabCurrProfile, cCurrProfilePath, constDefaultPathValue );
 
   fAllowSqlDB := fIFS.ReadBool( cSectTabFormSettings, cFormSettingsAllowSqlDB, true );
@@ -1393,27 +1468,13 @@ begin
 //===>>> Applychangefont MUST FOLLOW globFontsLarge reading
   ApplyChangeFont( Self );
 
-//old status bar necessity.  sbStatuses.Invalidate;//won't refresh until restart
-
 //juuus sqlitelibrary stuff
-  fSqliteLibrary := fIFS.ReadString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, '' );
+  //fSqliteLibrary := fIFS.ReadString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, cSqliteDefaultLibraryLocationUNKNOWN );
+  fSqliteLibrary := fIFS.ReadString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, '' );//new install
 
-  if not TInfoServer.SqliteInstalled( fSqliteLibrary ) then
-    if fUseDB then
-    begin
-      UpdateDisplay( cmsgSqlLibNotFound, false );
-      fUseDB := false;
-      try
-        if not IniDBFilesExist( fProfilePath, fProfileName ) then
-        begin
-          fProfileName := cDefaultDBProfileName;
-          fProfilePath := fWritingToPath;
-        end;
-      except
-        fProfileName := cDefaultDBProfileName;
-        fProfilePath := fWritingToPath;
-      end;
-    end;
+//====== don't move must follow initial ini file read
+  SetSqliteLibrary; //don't move
+//======
 
   fSavingToPath := fIFS.ReadString( cSectTabFormSettings, cFormSettingsSavingPath, '' );
   if fSavingToPath = '' then
@@ -1429,8 +1490,11 @@ begin
     end
     else fSavingToPath := fWritingToPath;
     fIFS.WriteString( cSectTabFormSettings, cFormSettingsSavingPath, fSavingToPath );
-    fIFS.UpdateFile;
+    NeedsWrite := true;
   end;
+
+  if NeedsWrite then
+    fIFS.UpdateFile;
 
   fKeyWordSO := TSearchObj.Create( GetProfileStamp, InfoServer );
   fKeyWordSO.UserTag := Ord( tcsKeyWordList );
@@ -1458,6 +1522,7 @@ begin
 //init Infoserver before all others, some other shared objs may depend on it.
 //============
   BadDb := not InitDBManager( fProfileName, fUseDB );
+  UpdateProfileText( BadDB );
 //============
 //from here on Infoserver is ready to use
 
@@ -1506,14 +1571,15 @@ begin
 //  end;
 end;
 
-procedure TfrmMain.UpdateProfileText;
+procedure TfrmMain.UpdateProfileText( const IsBad : boolean );
 begin
-  lblCurrDB.Caption := format( '  ' + cmsgProfileString,
+  lblCurrDB.Caption := format( cmsgProfileString,
                                [
                                  fProfileName,
                                  strif( fUseDB,  cDefaultDBProfileIsDBStr, cDefaultDBProfileIsDBStrNot ),
                                  //ExtraMessage
-                                 strif( BadDB, cmsgInvalidString )
+//                                 strif( BadDB, cmsgInvalidString )
+                                 strif( IsBad, cmsgInvalidString )
                                ] );
 end;
 
@@ -1639,7 +1705,7 @@ begin
     end;
 
   finally
-    UpdateProfileText;
+    UpdateProfileText( result );
   end;
 
 end;
@@ -1654,6 +1720,7 @@ procedure TfrmMain.SwitchDB( const ProfileName : string; const UseDB : boolean; 
 begin
   CloseDownDB( true, DoSave );
   BadDb := not InitDBManager( ProfileName, UseDB );
+  UpdateProfileText( BadDB );
   LoadDBObjects;
 end;
 
@@ -1746,7 +1813,7 @@ begin
   btnRun_Test.Caption := cObjlblRun;
 
 //not static texts so need to be updated also
-  UpdateProfileText;
+  UpdateProfileText( BadDB );
   UpdateDetachedProcesses( '', nil );
   RefreshCap;
 
@@ -1866,6 +1933,7 @@ begin
 
   if fHasShown then
     Exit;
+
   shpCurrProfile.Brush.Color := btnSwitchDB.Color;
 
   RegisterDisplayCaptions;
@@ -1890,6 +1958,7 @@ begin
 
     fMaxInOutPut := ReadString( cSectTabFormSettings, cFormSettingsMaxInOutPutCol, '1 M' );
     fDisplayOutPutMax := ReadInteger( cSectTabFormSettings, cFormSettingsOutPutDisplayMax, cDisplayOutPutMax );
+    globltMaxOutputWait := ReadInteger( cSectTabFormSettings, cFormSettingsMaxOutputWait, globltMaxOutputWait );
 
     globltProcessMaxOutput := ConvertSizeStrToInt( fMaxInOutPut );
 
@@ -4516,8 +4585,9 @@ end;
 
 procedure TfrmMain.actOptionsExecute( Sender : TObject );
 var
-  origSqlLib : String;
+  //origSqlLib : String;
   LanguageIdx: Integer;
+  MsgStr : string;
 begin
 
   if CheckEditing then
@@ -4546,6 +4616,9 @@ begin
 
       cbMaxOutput.Text := fMaxInOutPut;
       speDisplayMax.Value := fDisplayOutPutMax;
+      speMaxOutputWait.MinValue := cMaxOutputWaitMinimum;
+      speMaxOutputWait.MaxValue := cMaxOutputWaitMaximum;
+      speMaxOutputWait.Value := globltMaxOutputWait;
 
       cbUnspecified.Checked := fWarnUnspecified;
       cbHarmless.Checked := fWarnHarmless;
@@ -4555,7 +4628,7 @@ begin
       cbAllowMultipleOpens.Visible := not fSuperUser;
       cbAllowMultipleOpens.Checked := fAllowMultipleOpens;
       cbAllowESCOutput.Checked := fAllowESCinOutput;
-
+      cbMissingSqlMsg.Checked := fDoShowSqlMissing;
       cbManRefreshFavorites.Checked := fManRefreshFavorites;
 
       Root_File := fRootFile;
@@ -4568,7 +4641,7 @@ begin
       cbTextDB.Enabled := ( fProfileName <> cDefaultDBProfileName )
                          or ( ( fProfileName = cDefaultDBProfileName ) and fUseDB );
 
-      origSqlLib := fSqliteLibrary;
+      //origSqlLib := fSqliteLibrary;
       lblSqlLib.Caption := fSqliteLibrary;
 
       cbLargerFont.Checked := globFontsLarge;
@@ -4593,6 +4666,7 @@ begin
       fWarnCareful     := cbCareful.Checked;
       fWarnCaution     := cbCaution.Checked;
       fWarnDanger      := cbDanger.Checked;
+      fDoShowSqlMissing := cbMissingSqlMsg.Checked;
       fAllowMultipleOpens := cbAllowMultipleOpens.Checked;
       fAllowESCinOutput := cbAllowESCOutput.Checked;
 
@@ -4602,6 +4676,7 @@ begin
       fAllowTextDB := cbTextDB.Checked;
       fMaxInOutPut := cbMaxOutput.Text;
       globltProcessMaxOutput := ConvertSizeStrToInt( fMaxInOutPut );
+      globltMaxOutputWait := speMaxOutputWait.Value;
       fDisplayOutPutMax := speDisplayMax.Value;
 
 //Now save general formsettings, I like formsettings to be saved immediately
@@ -4610,19 +4685,27 @@ begin
 
         WriteString( cSectTabFormSettings, cFormSettingsMaxInOutPutCol, fMaxInOutPut );
         WriteInteger( cSectTabFormSettings, cFormSettingsOutPutDisplayMax, fDisplayOutPutMax );
+        WriteInteger( cSectTabFormSettings, cFormSettingsMaxOutputWait, globltMaxOutputWait );
         WriteBool( cSectTabFormSettings, cFormSettingsAllowSqlDB, fAllowSqlDB );
         WriteBool( cSectTabFormSettings, cFormSettingsAllowTextDB, fAllowTextDB );
         WriteBool( cSectTabFormSettings, cFormSettingsManRefreshFav, fManRefreshFavorites );
         WriteBool( cSectTabFormSettings, cFormSettingsLargerFont, globFontsLarge );
+        WriteBool( cSectTabFormSettings, cFormSettingsDoShowSqlMissing, fDoShowSqlMissing );
 
-        fSqliteLibrary := lblSqlLib.Caption;
-        if origSqlLib <> lblSqlLib.Caption then
+        if ( fSqliteLibrary <> lblSqlLib.Caption ) then
         begin
           fSqliteLibrary := lblSqlLib.Caption;
-          WriteString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, fSqliteLibrary );
           TInfoServer.Rechecking_SqliteIsActive;
-          if not TInfoServer.SqliteInstalled( fSqliteLibrary ) then
-            UpdateDisplay( format( cmsgSQLiteLibNotFound, [ fSqliteLibrary ] ) );
+          if not TInfoServer.SqliteInstalled( fSqliteLibrary, MsgStr ) then
+          begin
+            UpdateDisplay( format( cmsgSQLiteLibNotFound, [ fSqliteLibrary ] )
+                           + LineEnding + LineEnding
+                           + cmsgSqlLibNotFound,
+                           false );
+            if MsgStr <> '' then
+              UpdateDisplay( MsgStr, false );
+          end;
+          WriteString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, fSqliteLibrary );
         end;
 
         if ( Root_File <> fRootFile ) then
@@ -5132,40 +5215,47 @@ end;
 
 procedure TfrmMain.IsBusy( const TurnOn : boolean; aMsg : string; ProcessFlag : TProcessType );
 
-  procedure EnsureDamnMessageShowsUp;
-  begin
-    //make sure labal shows, probably overkill but I've had problems with this
-    //when everything is running full speed.
-    frmBusy.lblMsg.Invalidate;
-    application.ProcessMessages;
-  end;
+  //procedure EnsureDamnMessageShowsUp;
+  //begin
+  //  //make sure labal shows, probably overkill but I've had problems with this
+  //  //when everything is running full speed.
+  //  frmBusy.lblMsg.Invalidate;
+  //  application.ProcessMessages;
+  //end;
 
 begin
   if TurnOn then
   begin
-    frmBusy.lblMsg.Caption := aMsg;
-    frmBusy.ShowPoint := GetPreciseControlCoords( btnSave );
-    case ProcessFlag of
-      ptProcess : frmBusy.ProcessMode;//( ptProcess );
-      ptPipe    : frmBusy.ProcessMode;//( ptPipe );
-      else
-      begin
-        frmBusy.Show;
-        EnsureDamnMessageShowsUp;
-        Screen.Cursor := crHourglass;
-      end;
-    end;
+//todo figure this out pleez.
+{$IFNDEF Release}
+    UpdateDisplay( cmsgMainWorking, false );
+{$ENDIF}
+UpdateDisplay( '<busy...>', false );
+Screen.Cursor := crHourglass;
+    //frmBusy.lblMsg.Caption := aMsg;
+    //frmBusy.ShowPoint := GetPreciseControlCoords( btnSave );
+    //case ProcessFlag of
+    //  ptProcess : frmBusy.ProcessMode;//( ptProcess );
+    //  ptPipe    : frmBusy.ProcessMode;//( ptPipe );
+    //  else
+    //  begin
+    //    frmBusy.Show;
+    //    EnsureDamnMessageShowsUp;
+    //    Screen.Cursor := crHourglass;
+    //  end;
+    //end;
   end
   else
   begin
     Screen.Cursor := crDefault;
-    if not frmBusy.Showing then
-    begin
-      frmBusy.Timer1.Enabled := false;
-      exit;
-    end;
-    EnsureDamnMessageShowsUp;
-    frmBusy.Shutdown;//Hide;
+    UpdateDisplay( '<idle...>', false );
+    //if not frmBusy.Showing then
+    //begin
+    //  frmBusy.Timer1.Enabled := false;
+    //  exit;
+    //end;
+    //EnsureDamnMessageShowsUp;
+    //frmBusy.Shutdown;//Hide;
   end;
 end;
 
@@ -6069,8 +6159,10 @@ end;
 
 
 procedure TfrmMain.FormActivate(Sender: TObject);
+var
+  OpeningState : string;
 
-  function GetSuperUserMode : boolean;
+  function GetSpecialMode : boolean;
   begin
     result := true;
 
@@ -6104,15 +6196,36 @@ begin
   pnlCommand.top := pnlDispCommand.top;
   pnlCommand.Left := pnlDispCommand.Left;
 
-  if not GetSuperUserMode then
+  if not GetSpecialMode then
   begin
     Application.Terminate;
     exit;
   end;
 
-//juuus convert all msgdlg's to show up in the output area.
-  if MsgDlgMessage( ccapIntro, format(cmsgIntro, [cGNU_GPL, cmsgOwnRisk ]), 'cmsgIntro' ) then
-    MsgDlgInfo( self );
+  if fFirstLocalRun then
+    UpdateDisplay( cmsgFirstLocalRun
+                   + LineEnding + LineEnding
+                   + cmsgOwnRisk,
+                   false );
+
+  OpeningState := 'Opening State:'
+    + LineEnding
+    + lblCurrDB.Caption
+    + LineEnding
+    + cmsgMainBasePath + fWritingToPath
+    + LineEnding
+    + cmsgMainSavingPath + fSavingToPath
+    + LineEnding
+    + cmsgMainRootTemplate + fRootFile
+    + LineEnding + LineEnding
+    ;
+
+  UpdateDisplay( OpeningState, false );
+
+  if CommsFromFormCreate <> '' then
+    UpdateDisplay( trim( CommsFromFormCreate) + LineEnding, false );
+
+  memo1.SelStart := 1;
 
   globltHasBASH := SystemFileFound( 'bash' );
 
@@ -6120,16 +6233,6 @@ begin
 
   if lbCommands.CanFocus then
     lbCommands.SetFocus;
-
-  if SystemFileFound( 'ibus' ) then
-  begin
-    if MsgDlgMessage( ccapIbus, cmsgIbus, 'cmsgIbus' ) then
-      MsgDlgInfo( self );
-  end;
-
-//something changed in Debian 9 and this proc got re-entrant
-//and pushed the ibus message 3 times!!
-//  FIsInitialized := True;
 
 end;
 

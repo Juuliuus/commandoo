@@ -37,6 +37,7 @@ type
     btnOK : TBitBtn;
     btnToggle : TButton;
     Image1 : TImage;
+    lblTopic : TLabel;
     memOutput : TMemo;
     procedure btnSaveToFileClick( Sender : TObject );
     procedure btnOKClick(Sender : TObject);
@@ -92,6 +93,8 @@ resourcestring
   cmsgAboutCustomProfileHeader = 'Custom Database Profile(s):';
   cmsgCurrentDB = '          <== ( CURRENT )';
 
+  ccapAboutToggle = '&A  Toggle: About  =>  Introduction  =>  Tips  =>  FreshStart  =>  upgrade  =>  ibus';
+
 
 const
   constSeparator = '-----------------------------------';
@@ -109,7 +112,8 @@ procedure TfrmAbout.btnSaveToFileClick( Sender : TObject );
 var
   aFile : string;
 begin
-  aFile := Frm.SavingToPath + format( cSaveToFileTemplate, [ GetNamebtnToggle ] );
+  //aFile := Frm.SavingToPath + format( cSaveToFileTemplate, [ GetNamebtnToggle ] );
+  aFile := Frm.SavingToPath + format( cSaveToFileTemplate, [ lblTopic.Caption ] );
 
 
   if DoSingleInput( csiChooseAFile, aFile, simFile, self, false, true ) then
@@ -134,21 +138,28 @@ end;
 function TfrmAbout.GetNamebtnToggle : string;
 begin
   result := 'info';
-  case btnToggle.Tag mod 3 of
+  case btnToggle.Tag mod 6 of
     0 : result := cSaveToFileAbout;
     1 : result := cSaveToFileIntro;
     2 : result := cSaveToFileTips;
+    3 : result := cSaveToFileFreshStart;
+    4 : result := cSaveToFileUpgrade;
+    5 : result := cSaveToFileIbus;
   end;
 end;
 
 procedure TfrmAbout.btnToggleClick( Sender : TObject );
 begin
   btnToggle.Tag := btnToggle.Tag + 1;
-  case btnToggle.Tag mod 3 of
+  case btnToggle.Tag mod 6 of
     0 : ShowAbout;
     1 : ShowIntro;
     2 : memOutput.Text := cmsgTips;
+    3 : memOutput.Text := cmsgFirstLocalRunAbout + cmsgFirstLocalRun;
+    4 : memOutput.Text := cmsgCommandooUpgrade;
+    5 : memOutput.Text := cmsgIbus;
   end;
+  lblTopic.Caption := GetNamebtnToggle;
   btnSaveToFile.enabled := true;
 end;
 
@@ -311,6 +322,8 @@ end;
 procedure TfrmAbout.FormShow( Sender : TObject );
 begin
   Frm := TfrmMain( Owner );
+  btnToggle.Caption := ccapAboutToggle;
+  lblTopic.Caption := GetNamebtnToggle;
   ShowAbout;
 end;
 

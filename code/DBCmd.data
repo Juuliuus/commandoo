@@ -320,7 +320,8 @@ LocationPath=/bin/
 VersionCommand=--version
 
 [_DB_VersionCount]
-LastVersionUpgrade=4
+LastVersionUpgrade=5
+TextDataType=Cmd
 
 [_DB_ProfileGUID]
 GUID={07025217-8DDA-4CD4-BBEB-95481A2760CD}
