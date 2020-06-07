@@ -89,7 +89,7 @@ type
     lbList : TListBox;
     lblDefaultDisplay : TLabel;
     MenuItem1 : TMenuItem;
-    MenuItem2 : TMenuItem;
+    MenuItem3 : TMenuItem;
     mniImport : TMenuItem;
     mniCompare : TMenuItem;
     mniConvert : TMenuItem;

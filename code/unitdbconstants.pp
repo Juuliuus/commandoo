@@ -136,7 +136,7 @@ resourcestring
   cThreatLevelCareful = 'Careful';
   cThreatLevelCaution = 'Caution';
   cThreatLevelDanger = 'Danger';
-  cThreatLevelNotSpecified = '<Not_Set!>';
+  cThreatLevelNotSpecified = '...';
 
 
 const

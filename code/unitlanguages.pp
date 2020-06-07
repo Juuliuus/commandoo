@@ -264,7 +264,7 @@ begin
 
   end;
 
-//todo this bypasses the big opening choose language form, which makes no sense when there are
+//juuus this bypasses the big opening choose language form, which makes no sense when there are
 //no other languages to choose from.
   fProgramLang := fIniFile.Readstring( fSectTabFormSettings, fFormSettingsProgramLangCol, cLangAbbrev_en );
 
@@ -337,7 +337,7 @@ begin
 
   POFileName := fLanguageFilesFolder + format( cLanguageFileNamePO, [ cReferenceProgramName, fProgramLang ] );
 //===============================================================
-//todo this may all be fixed in Laz 1.8??!!
+//juuus this may all be fixed in Laz 1.8??!!
 //YOU HAVE TO UPDATE LCLTranslator too! Don't forget!!!   //note to self (and anyone else compiling program)
 //===============================================================
   if fileexists ( POFileName ) then

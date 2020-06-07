@@ -125,6 +125,7 @@ uses ufrmMsgDlg, unitLanguages
   , unitDBConstants
   , unitGlob
   , strconst_en
+  , strconst_prog
   ;
 
 resourcestring
@@ -208,12 +209,6 @@ resourcestring
     + LineEnding + LineEnding
     + '<end>'
     + LineEnding
-    ;
-  ccapOptSqliteSearch = 'Attempt to re-set sqlib';
-  cmsgOptSqliteSearch =
-    'commandoo could not find the sqlite 3 library, is the sqllite 3 library package installed? '
-    + 'If you are sure that it is, it is in an unusual location and you need to find the library '
-    + 'manually using the button to the left...%s'
     ;
   ccapOptSqlite_soname = 'Unusual sqlite 3 library name...';
   cmsgOptSqlite_soname =
@@ -446,9 +441,13 @@ begin
     exit;
   end;
   str := '';
+  Msg := '';
   if not TInfoServer.SqliteInstalled( str, Msg ) then
   begin
-    MsgDlgMessage( ccapOptSqliteSearch, format( cmsgOptSqliteSearch, [ Msg ] ) );
+    MsgDlgMessage( ccapOptSqliteSearch, cmsgOptSqliteSearch );
+    if MsgDlgConfirmation( self ) = mrNo then
+      exit;
+    MsgDlgMessage( ccapOptSqliteSearch, TfrmMain( Owner ).RunCmdLineExternal( cSqliteLocateCommand ) );
     MsgDlgInfo( self );
   end;
 

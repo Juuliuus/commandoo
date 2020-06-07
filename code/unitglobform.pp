@@ -37,7 +37,7 @@ type
 
   TSettingsDirective = (sdSave, sdLoad );
 
-procedure StandardOutputHeader( var Str : String; const Cmd : string ); //overload;
+function StandardOutputHeader( const Cmd : string ) : string;
 function CanJumpToCommand( const CmdStr, CmdLineStr : string; LBCmd, LBCmdLIne : TListbox ) : boolean;
 function TryToFindEditedCommand( const CmdSearch : string; LBCmd : TListbox ) : integer;
 procedure ApplyChangeFont( AForm : TForm; AlwaysChange : boolean = false );
@@ -99,13 +99,12 @@ begin
 
 end;
 
-procedure StandardOutputHeader( var Str : String; const Cmd : string );
+function StandardOutputHeader( const Cmd : string ) : string;
 begin
-  Str :=
+  result :=
     trim( cmsgcleExecuting + Cmd )
     + LineEnding
-    + '______________________'
-    + LineEnding;
+    + '______________________';
 end;
 
 procedure JumpToCommand( anIdx : integer; CmdLineStr : string; LBCmd, LBCmdLIne : TListbox );

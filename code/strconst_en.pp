@@ -119,6 +119,9 @@ resourceString
     + 'every window is a checkbox. Click it, or use alt-h, and then help will be shown as you '
     + 'move your mouse over all the controls. '
     + LineEnding + LineEnding
+    + 'The UI is large with many controls. Use Ctrl-g to bring up a popup menu to easily move '
+    + 'to the most important sections.'
+    + LineEnding + LineEnding
     + 'Also at the top/right is the ABOUT button, this opens a window where you can view '
     + 'information about commandoo, an Introduction, Tips and Tricks, and more. '
     + LineEnding + LineEnding
@@ -387,6 +390,8 @@ resourceString
     + 'This is because any command lines you add will "inherit" those settings '
     + 'saving you some work. '
     + LineEnding + LineEnding
+    + 'Ctrl-g anywhere to easily move to important controls.'
+    + LineEnding + LineEnding
     + 'commandoo supports variables in Command Lines. Select the CL you want and go into edit mode. Then use '
     + 'the CL builder/helper button and you will be taken to a edit window that has buttons to allow you to enter various '
     + 'types of variables (strings, integer, real, and file/folder names).  '
@@ -517,6 +522,8 @@ resourceString
                       + 'a terminal. Better is to remove the sudo (or su) and use the "run as SuperUser" option '
                       + LineEnding
                       + 'which helps you when copying and pasting using a ROOT template (look in OPTIONS). '
+                      + 'You can also try "pkexec", which depends on system security profiles but can '
+                      + 'give good results in some cases (test in terminal first)'
                       + LineEnding;
 
   ccapThreatLevelWarning = 'Allow Execution "%s"?';
@@ -942,6 +949,17 @@ resourceString
      + 'portion.'
      + LineEnding + LineEnding
      + '<end>';
+
+   ccapOptSqliteSearch = 'Attempt to re-set sqlib';
+   cmsgOptSqliteSearch =
+     'commandoo could not find the sqlite 3 library, is the sqllite 3 library package installed? '
+     + 'If you are sure that it is, maybe it is in an unusual location and you need to find the library. '
+     + 'Once found add it manually using the button to the left.'
+     + LineEnding + LineEnding
+     + 'I can run the command "locate -i -e libsqlite3" for you which should give the location of the '
+     + '"libsqlite3.so.0" file. Would you like me to do that for you?'
+     + LineEnding
+     ;
 
    cOutPutChangedBaseFolder =
      '==> Program re-start needed'

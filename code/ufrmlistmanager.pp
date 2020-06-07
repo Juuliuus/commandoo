@@ -62,7 +62,7 @@ type
     lbList : TListBox;
     MenuItem1 : TMenuItem;
     MenuItem2 : TMenuItem;
-    MenuItem3 : TMenuItem;
+    MenuItem4 : TMenuItem;
     mniShowUsage : TMenuItem;
     mniRevert : TMenuItem;
     mniConsolidate : TMenuItem;

@@ -1,5 +1,5 @@
 object frmMain: TfrmMain
-  Left = 1959
+  Left = 1940
   Height = 900
   Top = 196
   Width = 1432
@@ -46,11 +46,11 @@ object frmMain: TfrmMain
     Height = 569
     Top = 40
     Width = 1424
-    ActivePage = tsCommands
+    ActivePage = tsKeyWords
     Anchors = [akTop, akLeft, akRight]
     Font.Height = -16
     ParentFont = False
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     OnChange = nbCommandsChange
     object tsCommands: TTabSheet
@@ -276,7 +276,7 @@ object frmMain: TfrmMain
               ParentFont = False
               ReadOnly = True
               ScrollBars = ssAutoVertical
-              TabOrder = 1
+              TabOrder = 0
             end
             object pnlCL: TPanel
               Tag = 123321
@@ -400,7 +400,7 @@ object frmMain: TfrmMain
               )
               ParentColor = True
               ParentFont = False
-              TabOrder = 0
+              TabOrder = 1
               TabStop = False
               Text = '< Not Specified >'
               Visible = False
@@ -431,9 +431,9 @@ object frmMain: TfrmMain
             end
           end
           object pnlCmdLine: TPanel
-            Left = 352
+            Left = 112
             Height = 289
-            Top = 48
+            Top = 40
             Width = 950
             Anchors = [akLeft, akRight, akBottom]
             ClientHeight = 289
@@ -454,7 +454,7 @@ object frmMain: TfrmMain
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
               ScrollBars = ssAutoVertical
-              TabOrder = 10
+              TabOrder = 2
             end
             object cbSuperUserLine: TCheckBox
               Left = 9
@@ -543,7 +543,7 @@ object frmMain: TfrmMain
               Font.Height = -16
               ParentColor = False
               ParentFont = False
-              TabOrder = 12
+              TabOrder = 11
             end
             object edtFriendlyNameLine: TEdit
               Left = 717
@@ -558,7 +558,7 @@ object frmMain: TfrmMain
               OnChange = edtFriendlyNameLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
-              TabOrder = 11
+              TabOrder = 10
               TextHint = 'Alias for Favorites List'
             end
             object lblCapNotesLine: TLabel
@@ -626,7 +626,7 @@ object frmMain: TfrmMain
               OnKeyDown = memEntryKeyDown
               ParentFont = False
               ScrollBars = ssAutoVertical
-              TabOrder = 1
+              TabOrder = 0
               WantReturns = False
             end
             object cbThreatLevelLine: TComboBox
@@ -650,7 +650,7 @@ object frmMain: TfrmMain
               OnChange = cbThreatLevelLineChange
               ParentColor = True
               ParentFont = False
-              TabOrder = 13
+              TabOrder = 12
               Text = '< Not Specified >'
             end
             object btnThreatLevelInfoLine: TButton
@@ -664,7 +664,7 @@ object frmMain: TfrmMain
               Font.Style = [fsBold]
               OnClick = btnThreatLevelInfoLineClick
               ParentFont = False
-              TabOrder = 0
+              TabOrder = 13
               TabStop = False
             end
             object btnBuilder: TBitBtn
@@ -676,7 +676,7 @@ object frmMain: TfrmMain
               Font.Height = -14
               OnClick = btnBuilderClick
               ParentFont = False
-              TabOrder = 2
+              TabOrder = 1
             end
           end
           object shpCmdLineOut1: TShape
@@ -985,9 +985,9 @@ object frmMain: TfrmMain
           end
         end
         object pnlcommand: TPanel
-          Left = 320
+          Left = 240
           Height = 200
-          Top = 44
+          Top = 24
           Width = 927
           Anchors = [akTop, akLeft, akRight]
           ClientHeight = 200
@@ -2127,7 +2127,7 @@ object frmMain: TfrmMain
     Tag = 223322
     Left = 8
     Height = 276
-    Hint = 'Don''t be fooled...this is not a terminal '#10'emulator, it is simply the output area '#10'for command line results.'#10#10'You can double click it to save to a file or '#10'send to clipboard.'#10#10'<end>'
+    Hint = 'Don''t be fooled...this is not a terminal '#10'emulator, it is simply the output area '#10'for command line results.'#10#10'You can double click it to save to a file or '#10'send to clipboard.'#10#10'Ctrl-f to find, ctrl-l repeat last find.'#10#10'<end>'
     Top = 617
     Width = 1128
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -2163,7 +2163,7 @@ object frmMain: TfrmMain
     Anchors = [akTop, akRight]
     Checked = True
     State = cbChecked
-    TabOrder = 13
+    TabOrder = 15
   end
   object btnSave: TBitBtn
     Left = 21
@@ -2189,7 +2189,7 @@ object frmMain: TfrmMain
     Height = 23
     Top = 7
     Width = 14
-    Brush.Color = 160
+    Brush.Color = 2914506
     Visible = False
   end
   object shpSRR: TShape
@@ -2226,7 +2226,7 @@ object frmMain: TfrmMain
     Width = 232
     Action = actExit
     Anchors = [akRight, akBottom]
-    TabOrder = 14
+    TabOrder = 16
   end
   object btnProfileManagement: TBitBtn
     Left = 1187
@@ -2277,7 +2277,7 @@ object frmMain: TfrmMain
     Width = 83
     Action = actOutPutClear
     Anchors = [akTop, akRight]
-    TabOrder = 12
+    TabOrder = 14
   end
   object btnQuickRun: TBitBtn
     Left = 1052
@@ -2298,7 +2298,7 @@ object frmMain: TfrmMain
     Width = 83
     Action = actOutPutSave
     Anchors = [akTop, akRight]
-    TabOrder = 15
+    TabOrder = 13
   end
   object btnMainCopy: TBitBtn
     Left = 1153
@@ -2307,7 +2307,7 @@ object frmMain: TfrmMain
     Width = 83
     Action = actOutPutCopy
     Anchors = [akTop, akRight]
-    TabOrder = 16
+    TabOrder = 12
   end
   inline FrameHint1: TFrameHint
     Left = 1056
@@ -2361,9 +2361,8 @@ object frmMain: TfrmMain
       Enabled = False
       OnClick = popCmdLinePasteClick
     end
-    object MenuItem5: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem8: TMenuItem
+      Caption = '-'
     end
     object pmiFindCmd: TMenuItem
       Action = actFindCmd
@@ -2377,16 +2376,14 @@ object frmMain: TfrmMain
       Caption = 'Copy List to Clipboard   (ctrl-shift-c)'
       OnClick = mniCopyCmdListClipClick
     end
-    object MenuItem7: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem5: TMenuItem
+      Caption = '-'
     end
     object popRevert: TMenuItem
       Action = actRevert
     end
-    object MenuItem10: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem7: TMenuItem
+      Caption = '-'
     end
     object popCommandDelete: TMenuItem
       Action = actCommandDelete
@@ -2396,9 +2393,8 @@ object frmMain: TfrmMain
       Action = actCommandUndelete
       Caption = 'Undo -   (ctrl-Delete/-)'
     end
-    object MenuItem6: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem10: TMenuItem
+      Caption = '-'
     end
     object mniCmdSendTo: TMenuItem
       Caption = 'Send to DB Profile...'
@@ -2659,9 +2655,8 @@ object frmMain: TfrmMain
       Enabled = False
       OnClick = popCmdLinePasteClick
     end
-    object MenuItem13: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem17: TMenuItem
+      Caption = '-'
     end
     object pmiFindCmdLine: TMenuItem
       Action = actFindCmdLine
@@ -2671,9 +2666,8 @@ object frmMain: TfrmMain
       Caption = 'Copy List to Clipboard   (ctrl-shift-c)'
       OnClick = mniCopyCLListClipClick
     end
-    object MenuItem12: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem13: TMenuItem
+      Caption = '-'
     end
     object popRun: TMenuItem
       Action = actRun
@@ -2683,9 +2677,8 @@ object frmMain: TfrmMain
       Action = actCopyClipCmdLine
       Caption = 'Copy to ClipBoard   (ctrl-c)'
     end
-    object MenuItem11: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem12: TMenuItem
+      Caption = '-'
     end
     object popCmdLineUp: TMenuItem
       Action = actCmdLineUp
@@ -2693,9 +2686,8 @@ object frmMain: TfrmMain
     object popCmdLineDown: TMenuItem
       Action = actCmdLineDown
     end
-    object MenuItem8: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem11: TMenuItem
+      Caption = '-'
     end
     object popCmdLIneDelete: TMenuItem
       Action = actCmdLineDelete
@@ -2707,7 +2699,7 @@ object frmMain: TfrmMain
     end
   end
   object TimerDetachedProcesses: TTimer
-    Interval = 5000
+    Interval = 3000
     OnTimer = TimerDetachedProcessesTimer
     left = 72
     top = 664
@@ -2719,16 +2711,14 @@ object frmMain: TfrmMain
       Action = actSave
       Caption = 'Save (ctrl-s)'
     end
-    object MenuItem14: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem6: TMenuItem
+      Caption = '-'
     end
     object mniSwitchDB: TMenuItem
       Action = actSwitchDB
     end
-    object MenuItem2: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem14: TMenuItem
+      Caption = '-'
     end
     object mniProfiles: TMenuItem
       Action = actProfiles
@@ -2742,9 +2732,8 @@ object frmMain: TfrmMain
     object pmiMainAbout: TMenuItem
       Action = actAbout
     end
-    object MenuItem1: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem2: TMenuItem
+      Caption = '-'
     end
     object mniOutput: TMenuItem
       Caption = 'Output Area'
@@ -2761,9 +2750,8 @@ object frmMain: TfrmMain
         Action = actOutputWrap
       end
     end
-    object MenuItem3: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem1: TMenuItem
+      Caption = '-'
     end
     object pmiMainExit: TMenuItem
       Action = actExit
@@ -2864,6 +2852,150 @@ object frmMain: TfrmMain
     object mniSearchCmdLineItemClip: TMenuItem
       Caption = 'Copy CL Item to ClipBoard   (ctrl-c)'
       OnClick = mniSearchCmdLineItemClipClick
+    end
+  end
+  object tmrCancelRun: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = tmrCancelRunTimer
+    left = 504
+    top = 664
+  end
+  object tmrCancelRunBlink: TTimer
+    Enabled = False
+    Interval = 2300
+    OnTimer = tmrCancelRunBlinkTimer
+    left = 584
+    top = 664
+  end
+  object popGoto: TPopupMenu
+    left = 1152
+    top = 701
+    object mniMainCommands: TMenuItem
+      Caption = 'Commands'
+      OnClick = mniMainCommandsClick
+    end
+    object mniMainDisplay: TMenuItem
+      Caption = 'Output memo'
+      OnClick = mniMainCommandsClick
+    end
+    object mniMainLastCmd: TMenuItem
+      Caption = 'Last "found" Cmd'
+      OnClick = mniMainCommandsClick
+    end
+    object mniMainLastCmdLine: TMenuItem
+      Caption = 'Last "found" Cmd Line'
+      OnClick = mniMainCommandsClick
+    end
+    object MenuItem4: TMenuItem
+      Caption = '-'
+    end
+    object mniMainCommandLines: TMenuItem
+      Caption = 'Command Lines'
+      OnClick = mniMainCommandsClick
+    end
+    object mniMainCmdNoteDisp: TMenuItem
+      Caption = 'Find in Cmd Notes'
+      OnClick = mniMainCommandsClick
+    end
+    object mniMainCmdLineNoteDisp: TMenuItem
+      Caption = 'Find in CmdLine Notes'
+      OnClick = mniMainCommandsClick
+    end
+    object MenuItem9: TMenuItem
+      Caption = '-'
+    end
+    object mniMainCmdNameEdit: TMenuItem
+      Caption = 'Edit Cmd Name'
+      OnClick = mniMainCommandsClick
+    end
+    object mniMainCmdNotes: TMenuItem
+      Caption = 'Cmd Notes'
+      OnClick = mniMainCommandsClick
+    end
+    object mniMainCmdLineEntry: TMenuItem
+      Caption = 'CmdLine Entry'
+      OnClick = mniMainCommandsClick
+    end
+    object mniMainCmdLineNotes: TMenuItem
+      Caption = 'CmdLine Notes'
+      OnClick = mniMainCommandsClick
+    end
+    object MenuItem15: TMenuItem
+      Caption = '-'
+    end
+    object mniMainCmdList: TMenuItem
+      Caption = 'Cmd list in...'
+      object mniMainCmdListFav: TMenuItem
+        Caption = 'Favorites'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainCmdListKey: TMenuItem
+        Caption = 'Keywords'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainCmdListSearch: TMenuItem
+        Caption = 'Search'
+        OnClick = mniMainCommandsClick
+      end
+    end
+    object mniMainCmdLineList: TMenuItem
+      Caption = 'Cmd Line list in...'
+      object mniMainCmdLineFav: TMenuItem
+        Caption = 'Favorites'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainCmdLineKey: TMenuItem
+        Caption = 'Keywords'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainCmdLineSearch: TMenuItem
+        Caption = 'Search'
+        OnClick = mniMainCommandsClick
+      end
+    end
+    object mniMainProcs: TMenuItem
+      Caption = 'Detached Processes'
+      OnClick = mniMainCommandsClick
+    end
+    object mniMainTabs: TMenuItem
+      Caption = 'Tabs'
+      object mniMainTabsCommands: TMenuItem
+        Tag = 1
+        Caption = 'Commands'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainFavTab: TMenuItem
+        Tag = 2
+        Caption = 'Favorites'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainTabsKeyWords: TMenuItem
+        Tag = 3
+        Caption = 'Keywords'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMaintabsSearch: TMenuItem
+        Tag = 4
+        Caption = 'Search'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainTabsProcs: TMenuItem
+        Tag = 5
+        Caption = 'Detached Processes'
+        OnClick = mniMainCommandsClick
+      end
+    end
+    object MenuItem16: TMenuItem
+      Caption = '-'
+    end
+    object mniMainRun: TMenuItem
+      Caption = 'Run / Test'
+      OnClick = mniMainCommandsClick
+    end
+    object mniMainHint: TMenuItem
+      Caption = 'Toggle Hints'
+      OnClick = mniMainCommandsClick
     end
   end
 end

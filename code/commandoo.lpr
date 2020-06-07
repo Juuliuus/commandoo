@@ -10,7 +10,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, ufrmMain, ufrmMsgdlg, unitsharedobj, juusgen, memdslaz, sdflaz, strconst_prog, strconst_en, JiniFiles,
   ufrmAbout, ufrmnolanguage, unitLanguages, ufrmaddlanguage, HintFrame, unitcommands, uSingleInput,
-  lazcontrols, ufrmProfiles, unitGlobForm, ufrmListManagerConsolidate, ufrmBusy, ufrmcmdlineedit, linuxtrix,
+  lazcontrols, ufrmProfiles, unitGlobForm, ufrmListManagerConsolidate, ufrmcmdlineedit, linuxtrix,
   unitfrmcommandsinput, unitfrmCommandsVar, unitfields, ufrmfindtext, unitDBUtils, ufrmListManager, ufrmManageProfile,
   unitDBStructure, unitSearch, ufrmSearch, ufrmBoolExpr, ufrm_search_operator, ufrm_search_double, ufrmSuperUserFile,
   ufrm_search_list, ufrm_search_text, ufrm_search_string, ufrm_search_bool, ufrm_search_enum, ufrm_search_integer,

@@ -260,8 +260,8 @@ object frmBoolExpr: TfrmBoolExpr
     TabOrder = 12
   end
   object ActionList1: TActionList
-    left = 75
-    top = 192
+    left = 176
+    top = 96
     object actCmdSI_L_Add: TAction
       Category = 'Cmd'
       Caption = ' << +'
@@ -314,17 +314,16 @@ object frmBoolExpr: TfrmBoolExpr
     end
   end
   object popCmd: TPopupMenu
-    left = 21
-    top = 192
+    left = 48
+    top = 112
     object mniCmdSelectLeft: TMenuItem
       Action = actCmdSelectLeft
     end
     object mniCmdSelectRight: TMenuItem
       Action = actCmdSelectRight
     end
-    object mniBEBar1: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem1: TMenuItem
+      Caption = '-'
     end
     object mniCmdSI_L_Add: TMenuItem
       Action = actCmdSI_L_Add
@@ -335,9 +334,8 @@ object frmBoolExpr: TfrmBoolExpr
     object mniCmd_NOT_Toggle: TMenuItem
       Action = actCmd_NOT_Toggle
     end
-    object mniBEBar2: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem2: TMenuItem
+      Caption = '-'
     end
     object mniCmd_Delete: TMenuItem
       Action = actCmd_Delete
@@ -346,9 +344,8 @@ object frmBoolExpr: TfrmBoolExpr
     object mniCmd_Exchange: TMenuItem
       Action = actCmd_Exchange
     end
-    object mniBEBar3: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem3: TMenuItem
+      Caption = '-'
     end
     object mniCmd_Paren_Add: TMenuItem
       Action = actCmd_Paren_Add
@@ -366,7 +363,7 @@ object frmBoolExpr: TfrmBoolExpr
     OnTimer = TmrTimer
     OnStartTimer = TmrStartTimer
     OnStopTimer = TmrStopTimer
-    left = 139
-    top = 192
+    left = 272
+    top = 104
   end
 end

@@ -34,7 +34,6 @@ uses
   , uSingleInput
   , unitcommands, ComCtrls, ExtendedNotebook
   , unitGlobForm, Types
-  , ufrmBusy
   , ufrmAbout
   , JIniFiles
   , unitSearch
@@ -247,6 +246,49 @@ type
     memDispNotes : TMemo;
     memEntry : TMemo;
     MenuItem1 : TMenuItem;
+    MenuItem10 : TMenuItem;
+    MenuItem11 : TMenuItem;
+    MenuItem12 : TMenuItem;
+    MenuItem13 : TMenuItem;
+    MenuItem14 : TMenuItem;
+    MenuItem15 : TMenuItem;
+    MenuItem16 : TMenuItem;
+    MenuItem17 : TMenuItem;
+    MenuItem2 : TMenuItem;
+    MenuItem5 : TMenuItem;
+    MenuItem6 : TMenuItem;
+    MenuItem7 : TMenuItem;
+    MenuItem8 : TMenuItem;
+    mniMainLastCmdLine : TMenuItem;
+    mniMainLastCmd : TMenuItem;
+    mniMainHint : TMenuItem;
+    mniMainRun : TMenuItem;
+    mniMainTabsProcs : TMenuItem;
+    mniMaintabsSearch : TMenuItem;
+    mniMainTabsKeyWords : TMenuItem;
+    mniMainFavTab : TMenuItem;
+    mniMainTabsCommands : TMenuItem;
+    mniMainTabs : TMenuItem;
+    mniMainProcs : TMenuItem;
+    mniMainCmdLineSearch : TMenuItem;
+    mniMainCmdLineKey : TMenuItem;
+    mniMainCmdLineFav : TMenuItem;
+    mniMainCmdListSearch : TMenuItem;
+    mniMainCmdListKey : TMenuItem;
+    mniMainCmdListFav : TMenuItem;
+    mniMainCmdLineList : TMenuItem;
+    mniMainCmdList : TMenuItem;
+    mniMainCmdLineNotes : TMenuItem;
+    mniMainCmdLineEntry : TMenuItem;
+    mniMainCmdNotes : TMenuItem;
+    mniMainCmdNameEdit : TMenuItem;
+    MenuItem4 : TMenuItem;
+    MenuItem9 : TMenuItem;
+    mniMainCommandLines : TMenuItem;
+    mniMainCmdLineNoteDisp : TMenuItem;
+    mniMainCmdNoteDisp : TMenuItem;
+    mniMainDisplay : TMenuItem;
+    mniMainCommands : TMenuItem;
     mniOutPutWrap : TMenuItem;
     mniOutPutClear : TMenuItem;
     mniOutPutSave : TMenuItem;
@@ -274,14 +316,12 @@ type
     mniTabSearchSearchNew : TMenuItem;
     mniTabKeyWordsSearchSave : TMenuItem;
     mniTabKeyWordsSearchDisplay : TMenuItem;
-    MenuItem6 : TMenuItem;
     mniTabKeyWordsSearchNew : TMenuItem;
     mniTabKeyWordsSearch : TMenuItem;
     mniCmdCount : TMenuItem;
     mniCopyCLListClip : TMenuItem;
     mniCopyCmdListClip : TMenuItem;
     mniSwitchDB : TMenuItem;
-    MenuItem2 : TMenuItem;
     mniProfiles : TMenuItem;
     mniTabSearchSearchSave : TMenuItem;
     pnlC : TPanel;
@@ -289,14 +329,10 @@ type
     pnlSearchResults : TPanel;
     pmiMainOptions : TMenuItem;
     pmiMainSave : TMenuItem;
-    MenuItem13 : TMenuItem;
-    MenuItem14 : TMenuItem;
     pmiMainExit : TMenuItem;
-    MenuItem3 : TMenuItem;
     pmiMainAbout : TMenuItem;
     pmiMainKeyWords : TMenuItem;
     pmiFindCmdLine : TMenuItem;
-    MenuItem5 : TMenuItem;
     pmiFindCmd : TMenuItem;
     pnlCLEdit : TPanel;
     pnlDispCmdLine : TPanel;
@@ -309,9 +345,6 @@ type
     nbCommands: TExtendedNotebook;
     FrameHint1: TFrameHint;
     lblTabFavorites: TLabel;
-    MenuItem10: TMenuItem;
-    MenuItem11: TMenuItem;
-    MenuItem12: TMenuItem;
     pnlCommandList: TPanel;
     pnlCmdLine: TPanel;
     pnlCmdLines: TPanel;
@@ -323,8 +356,6 @@ type
     popNewCommandLine: TMenuItem;
     popRun: TMenuItem;
     popCmdLineUp: TMenuItem;
-    MenuItem7: TMenuItem;
-    MenuItem8: TMenuItem;
     popCmdLineDown: TMenuItem;
     popCmdLineUnDelete: TMenuItem;
     popCmdLIneDelete: TMenuItem;
@@ -337,6 +368,7 @@ type
     pmMain : TPopupMenu;
     popTabKeyWords : TPopupMenu;
     popTabSearch : TPopupMenu;
+    popGoto : TPopupMenu;
     shpCmdLineOut1 : TShape;
     shpCmdOut1 : TShape;
     shpCmdOut10 : TShape;
@@ -356,6 +388,8 @@ type
     shpCmdOut : TShape;
     shpRun_Test : TShape;
     shpSRR1 : TShape;
+    tmrCancelRunBlink : TTimer;
+    tmrCancelRun : TTimer;
     TimerBlink : TTimer;
     tsKeyWords : TTabSheet;
     tsSearch: TTabSheet;
@@ -478,6 +512,7 @@ type
     procedure mniCmdSendToClick( Sender : TObject );
     procedure mniCopyCLListClipClick( Sender : TObject );
     procedure mniCopyCmdListClipClick( Sender : TObject );
+    procedure mniMainCommandsClick( Sender : TObject );
     procedure mniSearchCmdLineItemClipClick( Sender : TObject );
     procedure mniSearchCmdLineListClipClick( Sender : TObject );
     procedure mniSearchCmdListClipClick( Sender : TObject );
@@ -490,6 +525,8 @@ type
     procedure TimerBlinkStopTimer( Sender : TObject );
     procedure TimerBlinkTimer( Sender : TObject );
     procedure TimerDetachedProcessesTimer( Sender : TObject );
+    procedure tmrCancelRunBlinkTimer( Sender : TObject );
+    procedure tmrCancelRunTimer( Sender : TObject );
     { private declarations }
   private
     fDisplayOutPut : TStringList;
@@ -528,6 +565,9 @@ type
     fIFS : TJiniFile;//"I"nifile "F"orm "S"ettings
     fOpenInstances : integer;
     fFirstLocalRun : boolean;
+    fInternalComs : boolean;
+    fUpdateDisplayOffset : Int64;
+    fUpdateDisplayOffsetFlag : boolean;
 
 ////edit focusing
 //when editing and you are typing and then click a checkbox or click a button focus is stolen and
@@ -612,11 +652,10 @@ type
     function InvalidCommandLines: boolean;
     function InvalidCommands( CheckCmdObj: boolean = True ): boolean;
     function InvalidCommands_Msg : boolean;
-    procedure IsBusy( const TurnOn : boolean; aMsg : string = '<>'; ProcessFlag : TProcessType = ptInfo  );
     procedure RefreshCap;
     procedure ResetCommandsToTop;
     procedure SearchVK_F_Keys( const Key : Word );
-    procedure lbSearchCmdLine_ApplyActions;
+    procedure lbSearchCmdLine_ApplyActions( const IsCmd : byte );
     procedure LoadCurrentSearches;
     procedure LoadData;
     procedure ClearDBObjects( const IsNormal : boolean );
@@ -638,6 +677,7 @@ type
     procedure RefreshCmdObj( CLOIdx : integer = cUseItemIndexFlag );
     procedure RunCmdDisplayObj( Sender : TListBox );
     function RunCmdLine( RunStr : string; WantsInput : boolean; const UseShell, Detach : boolean ) : string;
+    procedure CloseCancelRun;
     procedure SaveCurrentSearches;
     procedure SaveSearch( SO : TSearchObj );
     procedure SelectProfile;
@@ -656,6 +696,7 @@ type
     function Unsaved : boolean;
     procedure UpdateDetachedProcesses( const DisplayStr : string; aProcess : TAsyncProcess );
     procedure UpdateDisplay( const Output : string; DoIndicate : boolean = true );
+    procedure UpdateDisplay_Internal( const Output : string; const DoIndicate : boolean );
     procedure UpdateLbCmdLines( const Idx: integer; SaveState: boolean = True );
     procedure UpdateLbCommands( const DoSave: boolean; TheIdx: integer = cUseItemIndexFlag );
     procedure UpdateMainActions;
@@ -829,28 +870,25 @@ resourcestring
   cmsgFinExMessage = 'Error Message: ';
   cmsgFinExClibboard = '( This message is also in your clipboard. )';
   cmsgKill_BadLinux = 'Unexpected system problem: command "id" not found! Terminating.';
-//todo fix this message
-//todo add the locate command to default db's
-//todo is it possible (think vmware installer) or necessary to take a copy and put it in the appimage?
   cmsgSqlLibNotFound = '===> sqlite 3 system library not found <==='
      + LineEnding + LineEnding
      + 'commandoo could not find the location of this library, so only text based DB''s '
      + 'can be used until this is fixed. '
      + LineEnding + LineEnding
-     + 'You can set/search this location in OPTIONS. '
-     + 'But, first make sure libsqlite3 is installed on your system. Usually it is by default '
+     + 'You can set/search the location in OPTIONS. '
+     + 'But, first make sure the libsqlite3 package is installed on your system. Usually it is by default '
      + 'but maybe it was removed, moved, or customized. If you are not sure '
      + 'use a package manager and look to see if a package called "libsqlite3-0", or something similar, is installed. '
      + LineEnding + LineEnding
      + 'If/when it is installed, then, in OPTIONS,  try re-setting to "default". '
      + 'If commandoo still can''t find it then determine the library''s location and point to it '
-     + 'manually. Typing the following in a terminal window (or using commandoo) should help you find it: '
+     + 'manually. Typing the following in a commandoo CL or a terminal window should help you find it: '
      + LineEnding + LineEnding
      + '"locate -i -e libsqlite3.so.0" or "locate -i -e libsqlite3.so"'
      + LineEnding + LineEnding
-     + 'examine the output for the proper location (should start with "/usr/" and have "x86_64" or "x64" '
-     + 'similar in the path name) '
-     + 'and use that location. Normally the file is named "libsqlite3.so.0".'
+     + 'examine the output for the proper location (usually starts with "/usr/" and has "x86_64" or "x64" '
+     + 'or similar in the path name) '
+     + 'and use that location. In most cases the library file is named "libsqlite3.so.0".'
      + LineEnding + LineEnding
      ;
 
@@ -942,13 +980,6 @@ begin
     frmfindtext.close;
     frmfindtext.Free;
     frmfindtext := nil;
-  end;
-
-  if assigned( frmBusy ) then
-  begin
-    frmBusy.close;
-    frmBusy.Free;
-    frmBusy := nil;
   end;
 
   if assigned( fSearchSR ) then
@@ -1375,12 +1406,13 @@ begin
 
   font.size := cDefaultFontSize;
   NeedsWrite := false;
-
+  fInternalComs := false;
+  fUpdateDisplayOffset := 0;
+  fUpdateDisplayOffsetFlag := false;
   Randomize;
   application.OnException := @FinalException;
-//these were autocreated, but updating the translation not possible then
+//this was autocreated, but updating the translation not possible then
   frmfindtext := Tfrmfindtext.Create( self );
-  frmBusy := TfrmBusy.Create( self );
 
   fFirstLocalRun := false;
   fSuperUser := False;
@@ -1412,7 +1444,7 @@ begin
   DevReleaseSettings;
 //==================================
 
-//TODO Make a routine that will create a thumbdrive version
+//juuus Make a routine that will create a thumbdrive version
 //ask for appimage ask for destFolder: compy appimage and config to appimage.config
 
 //breadcrumb ==> here is writing path decision
@@ -1533,7 +1565,19 @@ begin
 end;
 
 procedure TfrmMain.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+var
+  PosPt : TPoint;
 begin
+
+  if ( ssCtrl in Shift ) and not ( ( ssAlt in Shift ) or ( ssShift in Shift ) ) then
+  begin
+    if key = VK_G then
+    begin
+      PosPt := GetPreciseControlCoords( self.ActiveControl, 30, 30 );
+      popGoto.Popup( PosPt.x, PosPt.y );
+    end;
+  end;
+
   if Editing then
     exit;
 
@@ -1819,7 +1863,6 @@ begin
 
 //were autocreated forms, but now manually created so translations can be updated.
   frmfindtext.UpdateCaptions;
-  frmBusy.UpdateCaptions;
 
 //so that it doesn't get hidden, I set this manually and permanently
   FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
@@ -1830,11 +1873,13 @@ end;
 
 function TfrmMain.RunCmdLineExternal( const RunStr : string ) : string;
 begin
+//is used internally, calls to forms using this function must be wrapped in a fInternalComs := true/false pair;
+//ensure the command is safe! There are no checks here!
 
-  Result := '';
+  result := format( '<failed permission to run "%s">', [ RunStr ] );
+  if not fInternalComs then
+    exit;
 
-//is used internally
-//not needed in this case, just being complete and consistent, maybe later will be something...?
   if not CanRunCmdLine( RunStr, 0, false ) then
     exit;
 
@@ -1849,7 +1894,6 @@ begin
   //help displays special because of BUILTINS
   str := ExtractFilePath( SL[ 0 ] );
   if str <> '' then
-//  if ( pos( '/', SL[ 0 ] ) = 1 ) then
   begin
     if not IsFileExist( SL[ 0 ] ) then
     begin
@@ -2050,9 +2094,7 @@ begin
         begin
           if actCopyClipCmdLine.Enabled then
             actCopyClipCmdLine.Execute;
-//listbox was overriding my ctrl-c;
-//TODO you need to check other cases like this
-          Key := VK_UNKNOWN;
+          Key := VK_UNKNOWN;//listbox was overriding my ctrl-c;
         end;
       VK_V :
         if assigned( ClipCLO ) then //popCmdLinePaste.Enabled then
@@ -2251,8 +2293,11 @@ begin
         if btnPlus.Enabled then
           btnPlus.Click;
       VK_C :
-        if actCopyClipCmd.Enabled then
-          actCopyClipCmd.Execute;
+        begin
+          if actCopyClipCmd.Enabled then
+            actCopyClipCmd.Execute;
+          Key := VK_UNKNOWN; //listbox was overriding my ctrl-c;
+        end;
       VK_V :
         if assigned( ClipCLO ) then
           popCmdPasteCmdLine.Click;
@@ -2570,10 +2615,17 @@ begin
 
 end;
 
-procedure TfrmMain.lbSearchCmdLine_ApplyActions;
+procedure TfrmMain.lbSearchCmdLine_ApplyActions( const IsCmd : byte );
 begin
-  actSearchGotoCmdLIne.Enabled := lbSearchCmdLine.ItemIndex > -1;
-  actSearchFindCmdLine.Enabled := lbSearchCmdLine.Items.Count > 1;
+  if IsCmd = 0 then
+  begin
+    actSearchGotoCmd.Enabled := trim( lbSearchCmd.Items[ 0 ] ) <> '';
+    actSearchFindCmd.Enabled := actSearchGotoCmd.Enabled and ( lbSearchCmd.Items.Count > 4 );
+  end else
+  begin
+    actSearchGotoCmdLine.Enabled := lbSearchCmdLine.ItemIndex > -1;
+    actSearchFindCmdLine.Enabled := actSearchGotoCmdLine.Enabled and ( lbSearchCmdLine.Items.Count > 1 );
+  end;
 end;
 
 procedure TfrmMain.lblCommandNameDblClick( Sender : TObject );
@@ -2649,11 +2701,10 @@ procedure TfrmMain.lbSearchCmdClick( Sender : TObject );
 begin
 
   ProcessCmdDisplayObj( lbSearchCmd );
-  actSearchGotoCmd.Enabled := lbSearchCmd.ItemIndex > -1;
-  actSearchFindCmd.Enabled := lbSearchCmd.Items.Count > 1;
+  lbSearchCmdLine_ApplyActions( 0 );
 
   FillDisplayObj_Detail;
-  lbSearchCmdLine_ApplyActions;
+  lbSearchCmdLine_ApplyActions( 1 );
 
 //store last viewed indices on the current tabsheet
   nbCommands.ActivePage.Tag := lbSearchCmd.ItemIndex;
@@ -2668,9 +2719,9 @@ begin
       VK_F :
         if btnSearchFindCmd.Enabled then
           btnSearchFindCmd.Click;
-      VK_G :
-        if btnSearchGotoCmd.Enabled then
-          btnSearchGotoCmd.Click;
+      //VK_G :
+      //  if btnSearchGotoCmd.Enabled then
+      //    btnSearchGotoCmd.Click;
     end;
     exit;
   end;
@@ -2690,7 +2741,7 @@ procedure TfrmMain.lbSearchCmdLineClick( Sender : TObject );
 begin
   if lbSearchCmdLine.Items.Count > 0 then
     ProcessCmdDisplayObj( lbSearchCmdLine );
-  lbSearchCmdLine_ApplyActions;
+  lbSearchCmdLine_ApplyActions( 1 );
 end;
 
 procedure TfrmMain.lbSearchCmdLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -2708,11 +2759,14 @@ begin
       VK_F :
         if btnSearchFindCmdLine.Enabled then
           btnSearchFindCmdLine.Click;
-      VK_G :
-        if btnSearchGotoCmdLine.Enabled then
-          btnSearchGotoCmdLine.Click;
+      //VK_G :
+      //  if btnSearchGotoCmdLine.Enabled then
+      //    btnSearchGotoCmdLine.Click;
       VK_C :
-        mniSearchCmdLineItemClipClick( Self );
+        begin
+          mniSearchCmdLineItemClipClick( Self );
+          Key := VK_UNKNOWN; //listbox was overriding my ctrl-c;
+        end;
     end;
     exit;
   end;
@@ -2885,6 +2939,8 @@ begin
 end;
 
 procedure TfrmMain.UnassMemosKeyDown( const Sender : TMemo; const Key : Word; const Shift : TShiftState );
+var
+  PosPt : TPoint;
 begin
   if ( ssCtrl in Shift ) and not ( ssAlt in Shift ) then
   begin
@@ -2894,6 +2950,11 @@ begin
         frmFindText.ReFindinMemo( Sender )
       else FindInMemo( Sender );
     end;
+    //if key = VK_G then
+    //begin
+    //  PosPt := GetPreciseControlCoords( Sender, 30, 30 );
+    //  popGoto.Popup( PosPt.x, PosPt.y );
+    //end;
     if key = VK_L then
       frmFindText.ReFindinMemo( Sender );
   end;
@@ -2932,6 +2993,41 @@ end;
 procedure TfrmMain.mniCopyCmdListClipClick( Sender : TObject );
 begin
   ClipBoard.AsText := lbCommands.Items.Text;
+end;
+
+procedure TfrmMain.mniMainCommandsClick( Sender : TObject );
+var
+  DoTab : boolean;
+
+  procedure SetTab( aTab : TTabSheet );
+  begin
+    if nbCommands.ActivePage <> aTab then
+    begin
+      nbCommands.ActivePage := aTab;
+      DoTab := true;
+    end;
+  end;
+
+begin
+  DoTab := false;
+  case TControl(Sender).Tag of
+    1 : SetTab( tsCommands );
+    2,3,4,5 :
+      begin
+        if Editing then exit;
+        case TControl(Sender).Tag of
+          2 : SetTab( tsFavorites );
+          3 : SetTab( tsKeyWords );
+          4 : SetTab( tsSearch );
+          5 : SetTab( tsDetachedProcesses );
+        end;
+      end;
+  end;
+  //why do I need to do this here and not anywhere else???? puzzling....
+  if DoTab then
+    nbCommandsChange( nbCommands );
+
+
 end;
 
 procedure TfrmMain.mniSearchCmdLineItemClipClick( Sender : TObject );
@@ -3061,6 +3157,15 @@ begin
 
 end;
 
+procedure TfrmMain.UpdateDisplay_Internal( const Output : string; const DoIndicate : boolean );
+begin
+  fUpdateDisplayOffsetFlag := true;
+  //needs serious love but not now. There are two very hard to find/manage LineEnding's out from OUTPUT routine
+  //and that makes the adjustment inexact. Hence, + 2
+  fUpdateDisplayOffset := length( Output ) + 2;
+  UpdateDisplay( Output, DoIndicate );
+end;
+
 procedure TfrmMain.UpdateDisplay( const Output : string; DoIndicate : boolean = true );
 var
 {$IFDEF Bit32}
@@ -3103,7 +3208,17 @@ begin
 
   Memo1.Lines := TStrings( fDisplayOutPut );
 
-  Memo1.SelStart := GoToPos + 1;
+  if fUpdateDisplayOffsetFlag then
+  begin
+    Memo1.SelStart := GoToPos + 1;
+    fUpdateDisplayOffsetFlag := false;
+  end
+  else
+  begin
+    Memo1.SelStart := GoToPos + 1 - fUpdateDisplayOffset;
+    fUpdateDisplayOffset := 0;
+  end;
+
   if FIsInitialized and Memo1.CanFocus then
     Memo1.SetFocus;
 
@@ -3944,16 +4059,12 @@ end;
 
 function TfrmMain.GetHelpOutput( SL : TStringList ) : string;
 begin
-
-  result := '';
-
 //needs to be a separate section for help's because of builtin's
-  StandardOutputHeader( Result, SL[ 0 ]  + ' ' + SL[ 1 ] );
+  if not fInternalComs then
+    //UpdateDisplay( StandardOutputHeader( SL[ 0 ]  + ' ' + SL[ 1 ] ), false );
+    UpdateDisplay_Internal( StandardOutputHeader( SL[ 0 ]  + ' ' + SL[ 1 ] ), false );
 
-  Result := Result
-           + LineEnding
-           + CmdObjHelper.RunCommand( SL, false, '', 'help' );
-
+  Result := CmdObjHelper.RunCommand( SL, false, '', 'help' );
 end;
 
 function TfrmMain.CmdInPath( CheckForBuiltin : boolean = false ) : boolean;
@@ -4094,21 +4205,14 @@ begin
         CmdStr := lblPathActual.Caption + lblCommandName.Caption;
         if not IsFileExist( CmdStr, true ) then
           exit;
-        //if not FileExists( CmdStr ) then
-        //begin
-        //  MsgDlgMessage( ccapError, format( cFileNotExist, [ CmdStr ] ) );
-        //  MsgDlgAttention( self );
-        //  exit;
-        //end;
         CmdStr := CmdStr + ' ' + edtVersion.Text;
       end;
     end else CmdStr := lblCommandName.Caption + ' ' + edtVersion.Text;
 
-  //if lblPathActual.Caption <> cLinuxBuiltInStr then
-  //  CmdStr := lblPathActual.Caption + lblCommandName.Caption + ' ' + edtVersion.Text
-  //else CmdStr := lblCommandName.Caption + ' ' + edtVersion.Text;
+  if not CanRunCmdLine( CmdStr, 0, false ) then
+    exit;
 
-  UpdateDisplay( RunCmdLineExternal( CmdStr ) );
+  UpdateDisplay( RunCmdLine( CmdStr, false, false, false ) );
 
 end;
 
@@ -4318,6 +4422,33 @@ begin
       RemoveDetachedProcess( i, -1, aProcess );
   end;
   UpdateDetachedProcesses( '', nil );
+end;
+
+procedure TfrmMain.tmrCancelRunBlinkTimer( Sender : TObject );
+begin
+  if tmrCancelRunBlink.Interval > 2000 then
+  begin
+    tmrCancelRunBlink.Interval := 750;
+    shpSRL.Brush.Color := $002C78CA;
+    shpSRR.Brush.Color := $002C78CA;
+  end else
+  begin
+    tmrCancelRunBlink.Interval := 2300;
+    shpSRL.Brush.Color := $000000A0;
+    shpSRR.Brush.Color := $000000A0;
+  end;
+end;
+
+procedure TfrmMain.tmrCancelRunTimer( Sender : TObject );
+begin
+  tmrCancelRun.enabled := false;
+  btnCancelRun.Visible := true;
+  shpSRL.Brush.Color := $000000A0;
+  shpSRR.Brush.Color := $000000A0;
+  shpSRL.Visible := true;
+  shpSRR.Visible := true;
+  tmrCancelRunBlink.Interval := 2300;
+  tmrCancelRunBlink.Enabled := true;
 end;
 
 
@@ -4543,7 +4674,7 @@ begin
 
   if sqlFix = '' then
   begin
-//TODO sql searches don't load commmand name like text searches (main listbox only, sub list is ok)
+//punt for now: sql searches don't load commmand name like text searches (main listbox only, sub list is ok)
 //so, for sql, must go ask for CL's Command entry if it wasn't loaded. Only one case: CL is in top search Listbox
 //quick fix for release. Deluxe version (later?) will address this better.
     if ( Sender.ItemIndex > -1 ) then
@@ -4585,7 +4716,6 @@ end;
 
 procedure TfrmMain.actOptionsExecute( Sender : TObject );
 var
-  //origSqlLib : String;
   LanguageIdx: Integer;
   MsgStr : string;
 begin
@@ -4594,7 +4724,6 @@ begin
     exit;
 
 {$IFDEF Release}
-//Todo test in all cases
   if fOpenInstances > 1 then
   begin
     MsgDlgMessage( ccapMainOptionsNotAvailable, cmsgMainMultipleCopiesOpen );
@@ -4602,7 +4731,7 @@ begin
     exit;
   end;
 {$ENDIF}
-
+  MsgStr := '';
   with TfrmOptions.Create(Self) do
     try
       Caption := format( cmsgAdvancedOptions, [ btnOptions.caption ] );
@@ -4641,14 +4770,15 @@ begin
       cbTextDB.Enabled := ( fProfileName <> cDefaultDBProfileName )
                          or ( ( fProfileName = cDefaultDBProfileName ) and fUseDB );
 
-      //origSqlLib := fSqliteLibrary;
       lblSqlLib.Caption := fSqliteLibrary;
 
       cbLargerFont.Checked := globFontsLarge;
       lblSavePath.Caption := fSavingToPath;
       lblBaseFolder.Caption := fWritingToPath;
 
+      fInternalComs := true;
       Showmodal;
+      fInternalComs := false;
 
       if cbLargerFont.checked <> globFontsLarge then
       begin
@@ -4704,7 +4834,12 @@ begin
                            false );
             if MsgStr <> '' then
               UpdateDisplay( MsgStr, false );
-          end;
+
+            MsgDlgMessage( ccapOptSqliteSearch, cmsgOptSqliteSearch );
+            if MsgDlgConfirmation( self ) = mrYes then
+              if CanRunCmdLine( cSqliteLocateCommand, 0, false ) then
+                UpdateDisplay( RunCmdLine( cSqliteLocateCommand, false, false, false ), false );
+            end;
           WriteString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, fSqliteLibrary );
         end;
 
@@ -4913,6 +5048,7 @@ end;
 
 procedure TfrmMain.btnCancelRunClick( Sender : TObject );
 begin
+  CloseCancelRun;
   globltDoCancelProcess := true;
 end;
 
@@ -4923,16 +5059,11 @@ end;
 
 procedure TfrmMain.actQuickRunExecute( Sender : TObject );
 begin
-//only shown in developer mode, decided to dangerous (no checks) to have it as a general option
+//only shown in developer mode, decided too dangerous (no checks) to have it as a general option
 {$IFNDEF RELEASE}
   if not DoSingleInput( ccapQuickRun, fLastQuickRun, simEdit, self, false ) then
     exit;
-
-  if not CanRunCmdLine( fLastQuickRun, 0, false ) then
-    exit;
-
-  UpdateDisplay( RunCmdLineExternal( fLastQuickRun ) );
-
+  UpdateDisplay( RunCmdLine( fLastQuickRun, false, false, false ) );
   fIFS.WriteString( cSectTabFormSettings, cFormSettingsLastQuickRun, fLastQuickRun );
 {$ENDIF}
 end;
@@ -5196,7 +5327,7 @@ begin
 
     fSearchMayHaveChanged := fKeyWordList.NeedsDBUpdate;
     if fSearchMayHaveChanged then
-      IsBusy( True, format( cDisplayUpdating, [ KeyWordStruct.DisplayCaptionPlural ] ) );
+      Screen.Cursor := crHourglass;
 
     fKeyWordList.ApplyUpdateList( dbltKeyWord, lbCommands.Items, lbCommands.ItemIndex );
 
@@ -5207,58 +5338,11 @@ begin
       ApplyListChangesDisplayedCmd( lbList, aListBox, DispListBox );
 
   finally
-    IsBusy( False );
+    Screen.Cursor := crDefault;
     Free;
   end;
 
 end;
-
-procedure TfrmMain.IsBusy( const TurnOn : boolean; aMsg : string; ProcessFlag : TProcessType );
-
-  //procedure EnsureDamnMessageShowsUp;
-  //begin
-  //  //make sure labal shows, probably overkill but I've had problems with this
-  //  //when everything is running full speed.
-  //  frmBusy.lblMsg.Invalidate;
-  //  application.ProcessMessages;
-  //end;
-
-begin
-  if TurnOn then
-  begin
-//todo figure this out pleez.
-{$IFNDEF Release}
-    UpdateDisplay( cmsgMainWorking, false );
-{$ENDIF}
-UpdateDisplay( '<busy...>', false );
-Screen.Cursor := crHourglass;
-    //frmBusy.lblMsg.Caption := aMsg;
-    //frmBusy.ShowPoint := GetPreciseControlCoords( btnSave );
-    //case ProcessFlag of
-    //  ptProcess : frmBusy.ProcessMode;//( ptProcess );
-    //  ptPipe    : frmBusy.ProcessMode;//( ptPipe );
-    //  else
-    //  begin
-    //    frmBusy.Show;
-    //    EnsureDamnMessageShowsUp;
-    //    Screen.Cursor := crHourglass;
-    //  end;
-    //end;
-  end
-  else
-  begin
-    Screen.Cursor := crDefault;
-    UpdateDisplay( '<idle...>', false );
-    //if not frmBusy.Showing then
-    //begin
-    //  frmBusy.Timer1.Enabled := false;
-    //  exit;
-    //end;
-    //EnsureDamnMessageShowsUp;
-    //frmBusy.Shutdown;//Hide;
-  end;
-end;
-
 
 procedure TfrmMain.btnKeyWordAddClick(Sender: TObject);
 begin
@@ -5495,7 +5579,9 @@ begin
     btnDefaultHelp.Caption := format( cclecapDefaultHelp, [ lblCommandName.Caption ] );
 
     memCmdLine.Lines.Text := Instr;
+    fInternalComs := true;
     ShowModal;
+    fInternalComs := false;
     if ModalResult = mrOK then
     begin
       OutStr := trim( memCmdLine.Lines.Text );
@@ -5852,23 +5938,17 @@ begin
     RunStr := csoNonPrintingDelimiter + RunStr;
 
   try
-    screen.Cursor := crHourglass;
+    Screen.Cursor := crHourglass;
 
-    StandardOutputHeader( result, RunStr );
+    if not fInternalComs then
+      UpdateDisplay_Internal( StandardOutputHeader( RunStr ), false );
 
-    IsBusy( True, ccapDetProcRunning + ': ' + RunStr, ptProcess );
-
-    btnCancelRun.Visible := true;
-    shpSRL.Visible := true;
-    shpSRR.Visible := true;
+    tmrCancelRun.Enabled := true;
 
     aProcess := nil;
     fIsRunningProcess := true;
 
-    result := result
-              + LineEnding
-              + ExtraInfo
-              + CmdObjHelper.RouteCommand( RunStr, Detach, aProcess );
+    result := ExtraInfo + CmdObjHelper.RouteCommand( RunStr, Detach, aProcess );
 
     if Detach and assigned( aProcess ) then
     begin
@@ -5878,16 +5958,21 @@ begin
     end;
 
   finally
-    IsBusy( false );
-    btnCancelRun.Visible := false;
-    shpSRL.Visible := false;
-    shpSRR.Visible := false;
-
+    tmrCancelRun.Enabled := false;
+    Screen.Cursor := crDefault;
+    CloseCancelRun;
     fIsRunningProcess := false;
     globltProcessMaxOutput := LimitInfinityCnt;
-
   end;
 
+end;
+
+procedure TfrmMain.CloseCancelRun;
+begin
+  tmrCancelRunBlink.Enabled := false;
+  btnCancelRun.Visible := false;
+  shpSRL.Visible := false;
+  shpSRR.Visible := false;
 end;
 
 
@@ -6365,6 +6450,9 @@ end.
 
 
 {
+RUN
+Hints
+
         ↑
 since I ALWAYS forget where the vk_ definiations are:
 , lcltype //THis is needed for key up keyboard constants

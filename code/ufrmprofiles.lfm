@@ -283,9 +283,8 @@ object frmProfiles: TfrmProfiles
     object mniImport: TMenuItem
       Action = actImport
     end
-    object MenuItem1: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem3: TMenuItem
+      Caption = '-'
     end
     object mniConvert: TMenuItem
       Action = actConvert
@@ -296,9 +295,8 @@ object frmProfiles: TfrmProfiles
     object mniMergeTo: TMenuItem
       Action = actMergeTo
     end
-    object MenuItem2: TMenuItem
-      Caption = '⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
-      Enabled = False
+    object MenuItem1: TMenuItem
+      Caption = '-'
     end
     object mniOK: TMenuItem
       Action = actOK
@@ -358,8 +356,8 @@ object frmProfiles: TfrmProfiles
     end
   end
   object popS: TPopupMenu
-    left = 468
-    top = 288
+    left = 472
+    top = 328
     object mniSelect: TMenuItem
       Action = actSelect
     end

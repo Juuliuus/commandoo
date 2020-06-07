@@ -29,6 +29,7 @@ uses
 
 const
 
+  cSqliteLocateCommand = 'locate -i -e libsqlite3.so';
   cConfigPathFileName = 'config_path__DoNotDelete';
   cConfigPathSection = 'Working_Config_Path';
   cConfigPathWritingPath = 'WritingPath';
