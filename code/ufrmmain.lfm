@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 1940
+  Left = 1993
   Height = 900
-  Top = 196
+  Top = 248
   Width = 1432
   Caption = 'commandoo'
   ClientHeight = 900
@@ -46,11 +46,11 @@ object frmMain: TfrmMain
     Height = 569
     Top = 40
     Width = 1424
-    ActivePage = tsKeyWords
+    ActivePage = tsCommands
     Anchors = [akTop, akLeft, akRight]
     Font.Height = -16
     ParentFont = False
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     OnChange = nbCommandsChange
     object tsCommands: TTabSheet
@@ -147,7 +147,6 @@ object frmMain: TfrmMain
             object btnRun_Test: TBitBtn
               Left = 14
               Height = 36
-              Hint = 'This executes the highlighted Command'#10'Line, the results are shown in the memo'#10'at the bottom.'#10#10'<end>'
               Top = 6
               Width = 94
               Action = actRun
@@ -271,7 +270,7 @@ object frmMain: TfrmMain
               Anchors = [akTop, akLeft, akRight]
               BorderStyle = bsNone
               Font.Height = -16
-              OnDblClick = memNotesLineDispDblClick
+              OnDblClick = Memo1DblClick
               OnKeyDown = memNotesLineDispKeyDown
               ParentFont = False
               ReadOnly = True
@@ -431,9 +430,9 @@ object frmMain: TfrmMain
             end
           end
           object pnlCmdLine: TPanel
-            Left = 112
+            Left = 264
             Height = 289
-            Top = 40
+            Top = 48
             Width = 950
             Anchors = [akLeft, akRight, akBottom]
             ClientHeight = 289
@@ -451,6 +450,7 @@ object frmMain: TfrmMain
               Anchors = [akTop, akLeft, akRight]
               Font.Height = -16
               OnChange = memNotesLineChange
+              OnDblClick = Memo1DblClick
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
               ScrollBars = ssAutoVertical
@@ -623,6 +623,7 @@ object frmMain: TfrmMain
               Width = 929
               Anchors = [akTop, akLeft, akRight]
               Font.Height = -16
+              OnDblClick = Memo1DblClick
               OnKeyDown = memEntryKeyDown
               ParentFont = False
               ScrollBars = ssAutoVertical
@@ -747,24 +748,24 @@ object frmMain: TfrmMain
           TabOrder = 0
         end
         object lblCmdPointer: TLabel
-          Left = 1
+          Left = 0
           Height = 18
           Top = 5
-          Width = 94
+          Width = 123
           Alignment = taRightJustify
-          Caption = 'Command  ↓'
+          Caption = 'Command  ↓DNT'
           Font.Height = -14
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object lblCmdLinePointer: TLabel
-          Left = 3
+          Left = 0
           Height = 18
           Top = 178
-          Width = 126
+          Width = 163
           Alignment = taRightJustify
-          Caption = 'Command Lines↓'
+          Caption = 'Command Lines  ↓DNT'
           Font.Height = -14
           Font.Style = [fsBold]
           ParentColor = False
@@ -802,7 +803,7 @@ object frmMain: TfrmMain
             Anchors = [akTop, akLeft, akRight]
             BorderStyle = bsNone
             Font.Height = -16
-            OnDblClick = memNotesDispDblClick
+            OnDblClick = Memo1DblClick
             OnKeyDown = memNotesDispKeyDown
             ParentFont = False
             ReadOnly = True
@@ -985,9 +986,9 @@ object frmMain: TfrmMain
           end
         end
         object pnlcommand: TPanel
-          Left = 240
+          Left = 360
           Height = 200
-          Top = 24
+          Top = 32
           Width = 927
           Anchors = [akTop, akLeft, akRight]
           ClientHeight = 200
@@ -1048,6 +1049,7 @@ object frmMain: TfrmMain
             Width = 411
             Anchors = [akTop, akLeft, akRight]
             Font.Height = -16
+            OnDblClick = Memo1DblClick
             OnKeyDown = memNotesKeyDown
             ParentFont = False
             ScrollBars = ssAutoVertical
@@ -1525,7 +1527,7 @@ object frmMain: TfrmMain
           Lines.Strings = (
             'memDispNotes'
           )
-          OnDblClick = memDispNotesDblClick
+          OnDblClick = Memo1DblClick
           OnKeyDown = memDispNotesKeyDown
           ParentColor = True
           ParentFont = False
@@ -1760,55 +1762,56 @@ object frmMain: TfrmMain
       ParentFont = False
       PopupMenu = popTabKeyWords
       object btnKeyWordSearch: TBitBtn
-        Left = 21
+        Left = 5
         Height = 33
         Top = 11
         Width = 148
         Action = actSearchKeyCmd
+        Caption = '&A  Search'
         Font.Height = -16
         ParentFont = False
         TabOrder = 0
       end
       object btnKeyWordLoad: TBitBtn
-        Left = 341
+        Left = 325
         Height = 33
         Top = 12
         Width = 148
         Action = actSearchLoadKeyCmd
-        Caption = 'Load'
+        Caption = '&C  Load'
         Font.Height = -16
         ParentFont = False
         TabOrder = 2
       end
       object btnKeyWordSave: TBitBtn
-        Left = 563
+        Left = 537
         Height = 33
         Top = 12
-        Width = 105
+        Width = 110
         Action = actSearchSaveKeyCmd
-        Caption = 'Save'
+        Caption = '&S  Save'
         Font.Height = -16
         ParentFont = False
         TabOrder = 3
       end
       object btnKeyWordDisplay: TBitBtn
-        Left = 676
+        Left = 664
         Height = 33
         Top = 12
-        Width = 113
+        Width = 119
         Action = actSearchDisplayKeyCmd
-        Caption = 'Display'
+        Caption = '&I  Display'
         Font.Height = -16
         ParentFont = False
         TabOrder = 4
       end
       object btnKeyWordNewSearch: TBitBtn
-        Left = 181
+        Left = 165
         Height = 33
         Top = 12
         Width = 148
         Action = actSearchNewKeyCmd
-        Caption = 'New'
+        Caption = '&B  New'
         Font.Height = -16
         ParentFont = False
         TabOrder = 1
@@ -1837,7 +1840,7 @@ object frmMain: TfrmMain
         object lbSearchCmd: TListBox
           Left = 8
           Height = 222
-          Hint = 'This presents search results for the various '#10'Favorites, KeyWords, and General Searches.'#10#10'The list can consist of both Commands '#10'(listed first if any) and Command Lines '#10'(listed second). If so there will be a '#10'''seperator'' section between them.'#10#10'Clicking on an item shows it''s details to '#10'the right. If the selected item is a Command'#10'it''s Command Lines will be listed in'#10'the listbox below.'#10#10'Keep in mind that Commands / Command'#10'Lines that are in an edited state (i.e., not'#10'saved) will NOT be included in the filtering.'#10'To see an accurate list be sure everything'#10'is saved.'#10#10'For the ClipBoard:'#10#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'ctrl-g goes to the Cmd'#10#10'These are global:'#10'<alt-1> Search Keywords'#10'<alt-2> New Search KeyWords'#10'<alt-3> Load Search'#10#10'Local:'#10'<alt-4> save  search KeyWords'#10'<alt-5> display search KeyWords'#10#10'<end>'
+          Hint = 'This presents search results for the various '#10'Favorites, KeyWords, and General Searches.'#10#10'The list can consist of both Commands '#10'(listed first if any) and Command Lines '#10'(listed second). If so there will be a '#10'''seperator'' section between them.'#10#10'Clicking on an item shows it''s details to '#10'the right. If the selected item is a Command'#10'it''s Command Lines will be listed in'#10'the listbox below.'#10#10'Keep in mind that Commands / Command'#10'Lines that are in an edited state (i.e., not'#10'saved) will NOT be included in the filtering.'#10'To see an accurate list be sure everything'#10'is saved.'#10#10'For the ClipBoard:'#10#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'ctrl-t goes to the Cmd'#10#10'These are global:'#10'<alt-1> Search Keywords'#10'<alt-2> New Search KeyWords'#10'<alt-3> Load Search'#10#10'Local:'#10'<alt-4> save  search KeyWords'#10'<alt-5> display search KeyWords'#10#10'<end>'
           Top = 12
           Width = 747
           HelpContext = 1
@@ -1859,6 +1862,7 @@ object frmMain: TfrmMain
           Top = 238
           Width = 185
           Action = actSearchFindCmd
+          Caption = '&D  Find Command'
           Font.Height = -14
           ParentFont = False
           TabOrder = 1
@@ -1870,6 +1874,7 @@ object frmMain: TfrmMain
           Top = 238
           Width = 185
           Action = actSearchGoToCmd
+          Caption = '&E  Go to Command'
           Font.Height = -14
           ParentFont = False
           TabOrder = 2
@@ -1888,7 +1893,7 @@ object frmMain: TfrmMain
         object lbSearchCmdLine: TListBox
           Left = 11
           Height = 151
-          Hint = 'This will show any Command Lines belonging'#10'to the item selected in the list above if'#10'it is a Command.'#10#10'Click on a Command Line to enable the'#10'RUN button.'#10#10'It will be automatically cleared in some cases'#10'like when you edit the Master Keywords'#10'or maybe in some other cases.'#10#10'<Enter> runs the command line.'#10#10'For the ClipBoard:'#10#10'Ctrl-c copies the selected command, '#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'ctrl-g goes to the Command Line'#10#10'These are global:'#10'<alt-1> Search Keywords'#10'<alt-2> New Search KeyWords'#10'<alt-3> Load Search'#10#10'Local:'#10'<alt-4> save  search KeyWords'#10'<alt-5> display search KeyWords'#10#10'<end>'
+          Hint = 'This will show any Command Lines belonging'#10'to the item selected in the list above if'#10'it is a Command.'#10#10'Click on a Command Line to enable the'#10'RUN button.'#10#10'It will be automatically cleared in some cases'#10'like when you edit the Master Keywords'#10'or maybe in some other cases.'#10#10'<Enter> runs the command line.'#10#10'For the ClipBoard:'#10#10'Ctrl-c copies the selected command, '#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'ctrl-t goes to the Command Line'#10#10'These are global:'#10'<alt-1> Search Keywords'#10'<alt-2> New Search KeyWords'#10'<alt-3> Load Search'#10#10'Local:'#10'<alt-4> save  search KeyWords'#10'<alt-5> display search KeyWords'#10#10'<end>'
           Top = 288
           Width = 747
           HelpContext = 1
@@ -1910,6 +1915,7 @@ object frmMain: TfrmMain
           Top = 443
           Width = 185
           Action = actSearchFindCmdLine
+          Caption = '&F  Find Cmd Line'
           Font.Height = -14
           ParentFont = False
           TabOrder = 4
@@ -1920,6 +1926,7 @@ object frmMain: TfrmMain
           Top = 443
           Width = 185
           Action = actSearchGoToCmdLine
+          Caption = '&K  Go to Cmd Line'
           Font.Height = -14
           ParentFont = False
           TabOrder = 5
@@ -1950,7 +1957,7 @@ object frmMain: TfrmMain
           Top = 443
           Width = 124
           Action = actSearchRun
-          Caption = 'Run CL'
+          Caption = '&R  Run CL'
           Font.Height = -16
           ParentFont = False
           TabOrder = 6
@@ -1979,55 +1986,56 @@ object frmMain: TfrmMain
       ParentFont = False
       PopupMenu = popTabSearch
       object btnSearchSearch: TBitBtn
-        Left = 21
+        Left = 5
         Height = 33
         Top = 11
         Width = 148
         Action = actSearchSearch
+        Caption = '&A  Search'
         Font.Height = -17
         ParentFont = False
         TabOrder = 0
       end
       object btnSearchNewSearch: TBitBtn
-        Left = 181
+        Left = 165
         Height = 33
         Top = 12
         Width = 148
         Action = actSearchNewSearch
-        Caption = 'New'
+        Caption = '&B  New'
         Font.Height = -17
         ParentFont = False
         TabOrder = 1
       end
       object btnSearchSaveSearch: TBitBtn
-        Left = 563
+        Left = 529
         Height = 33
         Top = 12
-        Width = 105
+        Width = 110
         Action = actSearchSaveSearch
-        Caption = 'Save'
+        Caption = '&S  Save'
         Font.Height = -17
         ParentFont = False
         TabOrder = 3
       end
       object btnSearchLoadSearch: TBitBtn
-        Left = 341
+        Left = 325
         Height = 33
         Top = 12
         Width = 148
         Action = actSearchLoadSearch
-        Caption = 'Load'
+        Caption = '&C  Load'
         Font.Height = -17
         ParentFont = False
         TabOrder = 2
       end
       object btnSearchDisplaySearch: TBitBtn
-        Left = 676
+        Left = 656
         Height = 33
         Top = 12
-        Width = 113
+        Width = 119
         Action = actSearchDisplaySearch
-        Caption = 'Display'
+        Caption = '&I  Display'
         Font.Height = -17
         ParentFont = False
         TabOrder = 4
@@ -2054,7 +2062,7 @@ object frmMain: TfrmMain
       object lbDetachedProcesses: TListBox
         Left = 11
         Height = 427
-        Hint = 'You have the ability to "detach" command'#10'line processes. This means it runs alongside'#10'this program separately and independently.'#10#10'Detached processes are listed here. Clicking'#10'on them shows information, and you can '#10'halt the process with the button.'#10#10'<end>'
+        Hint = 'You have the ability to "detach" command'#10'line processes. This means it runs alongside'#10'this program separately and independently.'#10#10'Detached processes are listed here. Clicking'#10'on them shows information, and you can '#10'halt the process with the button.'#10#10'ctrl-f opens a search window.'#10#10'<end>'
         Top = 44
         Width = 630
         HelpContext = 1
@@ -2088,7 +2096,7 @@ object frmMain: TfrmMain
         Top = 48
         Width = 203
         Anchors = [akTop, akRight]
-        Caption = '&M  Halt Process'
+        Caption = '&X  Halt Process'
         Font.Height = -16
         OnClick = btnHaltProcessClick
         ParentFont = False
@@ -2102,7 +2110,7 @@ object frmMain: TfrmMain
         Width = 627
         Anchors = [akTop, akRight, akBottom]
         Font.Height = -16
-        OnDblClick = memDetachedProcessesDblClick
+        OnDblClick = Memo1DblClick
         OnKeyDown = memDetachedProcessesKeyDown
         ParentFont = False
         ScrollBars = ssAutoBoth
@@ -2823,7 +2831,7 @@ object frmMain: TfrmMain
     end
     object mniSearchGoToCmd: TMenuItem
       Action = actSearchGoToCmd
-      Caption = 'Go to Command   (ctrl-g)'
+      Caption = 'Go to Command   (ctrl-t)'
     end
     object mniSearchCmdListClip: TMenuItem
       Caption = 'Copy List to Clipboard   (ctrl-shift-c)'
@@ -2843,7 +2851,7 @@ object frmMain: TfrmMain
     end
     object mniSearchGotoCmdLine: TMenuItem
       Action = actSearchGoToCmdLine
-      Caption = 'Go to Cmd Line   (ctrl-g)'
+      Caption = 'Go to Cmd Line   (ctrl-t)'
     end
     object mniSearchCmdLineListClip: TMenuItem
       Caption = 'Copy List to ClipBoard   (ctrl-shift-c)'
@@ -2869,56 +2877,86 @@ object frmMain: TfrmMain
     top = 664
   end
   object popGoto: TPopupMenu
+    OnPopup = popGotoPopup
     left = 1152
     top = 701
     object mniMainCommands: TMenuItem
-      Caption = 'Commands'
+      Caption = 'DNT Commands'
       OnClick = mniMainCommandsClick
     end
     object mniMainDisplay: TMenuItem
-      Caption = 'Output memo'
+      Caption = 'Output dislay'
       OnClick = mniMainCommandsClick
     end
-    object mniMainLastCmd: TMenuItem
-      Caption = 'Last "found" Cmd'
-      OnClick = mniMainCommandsClick
-    end
-    object mniMainLastCmdLine: TMenuItem
-      Caption = 'Last "found" Cmd Line'
-      OnClick = mniMainCommandsClick
+    object mniMainTabs: TMenuItem
+      Caption = 'Page...'
+      object mniMainTabsCommands: TMenuItem
+        Caption = 'DNT Commands'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainTabsFav: TMenuItem
+        Caption = 'DNT Favorites'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainTabsKeyWords: TMenuItem
+        Caption = 'DNT Keywords'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMaintabsSearch: TMenuItem
+        Caption = 'DNT Search'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainTabsProcs: TMenuItem
+        Caption = 'DNT Detached Processes'
+        OnClick = mniMainCommandsClick
+      end
     end
     object MenuItem4: TMenuItem
       Caption = '-'
     end
     object mniMainCommandLines: TMenuItem
-      Caption = 'Command Lines'
+      Caption = 'DNT Command Lines'
       OnClick = mniMainCommandsClick
     end
     object mniMainCmdNoteDisp: TMenuItem
-      Caption = 'Find in Cmd Notes'
-      OnClick = mniMainCommandsClick
+      Caption = 'DNT Find in Cmd Notes'
+      object mniMainFIndCmdFind: TMenuItem
+        Caption = 'DNT Find'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainFIndCmdReFind: TMenuItem
+        Caption = 'DNT ReFind'
+        OnClick = mniMainCommandsClick
+      end
     end
     object mniMainCmdLineNoteDisp: TMenuItem
-      Caption = 'Find in CmdLine Notes'
-      OnClick = mniMainCommandsClick
+      Caption = 'DNT Find in CmdLine Notes'
+      object mniMainFIndCmdLineFind: TMenuItem
+        Caption = 'DNT Find'
+        OnClick = mniMainCommandsClick
+      end
+      object mniMainFIndCmdLineReFind: TMenuItem
+        Caption = 'DNT ReFind'
+        OnClick = mniMainCommandsClick
+      end
     end
     object MenuItem9: TMenuItem
       Caption = '-'
     end
     object mniMainCmdNameEdit: TMenuItem
-      Caption = 'Edit Cmd Name'
+      Caption = 'DNT Edit Cmd Name'
       OnClick = mniMainCommandsClick
     end
     object mniMainCmdNotes: TMenuItem
-      Caption = 'Cmd Notes'
+      Caption = 'DNT Cmd Notes'
       OnClick = mniMainCommandsClick
     end
     object mniMainCmdLineEntry: TMenuItem
-      Caption = 'CmdLine Entry'
+      Caption = 'DNT CmdLine Entry'
       OnClick = mniMainCommandsClick
     end
     object mniMainCmdLineNotes: TMenuItem
-      Caption = 'CmdLine Notes'
+      Caption = 'DNT CmdLine Notes'
       OnClick = mniMainCommandsClick
     end
     object MenuItem15: TMenuItem
@@ -2927,70 +2965,42 @@ object frmMain: TfrmMain
     object mniMainCmdList: TMenuItem
       Caption = 'Cmd list in...'
       object mniMainCmdListFav: TMenuItem
-        Caption = 'Favorites'
+        Caption = 'DNT Favorites'
         OnClick = mniMainCommandsClick
       end
       object mniMainCmdListKey: TMenuItem
-        Caption = 'Keywords'
+        Caption = 'DNT Keywords'
         OnClick = mniMainCommandsClick
       end
       object mniMainCmdListSearch: TMenuItem
-        Caption = 'Search'
+        Caption = 'DNT Search'
         OnClick = mniMainCommandsClick
       end
     end
     object mniMainCmdLineList: TMenuItem
       Caption = 'Cmd Line list in...'
       object mniMainCmdLineFav: TMenuItem
-        Caption = 'Favorites'
+        Caption = 'DNT Favorites'
         OnClick = mniMainCommandsClick
       end
       object mniMainCmdLineKey: TMenuItem
-        Caption = 'Keywords'
+        Caption = 'DNT Keywords'
         OnClick = mniMainCommandsClick
       end
       object mniMainCmdLineSearch: TMenuItem
-        Caption = 'Search'
+        Caption = 'DNT Search'
         OnClick = mniMainCommandsClick
       end
     end
     object mniMainProcs: TMenuItem
-      Caption = 'Detached Processes'
+      Caption = 'DNT Detached Processes'
       OnClick = mniMainCommandsClick
-    end
-    object mniMainTabs: TMenuItem
-      Caption = 'Tabs'
-      object mniMainTabsCommands: TMenuItem
-        Tag = 1
-        Caption = 'Commands'
-        OnClick = mniMainCommandsClick
-      end
-      object mniMainFavTab: TMenuItem
-        Tag = 2
-        Caption = 'Favorites'
-        OnClick = mniMainCommandsClick
-      end
-      object mniMainTabsKeyWords: TMenuItem
-        Tag = 3
-        Caption = 'Keywords'
-        OnClick = mniMainCommandsClick
-      end
-      object mniMaintabsSearch: TMenuItem
-        Tag = 4
-        Caption = 'Search'
-        OnClick = mniMainCommandsClick
-      end
-      object mniMainTabsProcs: TMenuItem
-        Tag = 5
-        Caption = 'Detached Processes'
-        OnClick = mniMainCommandsClick
-      end
     end
     object MenuItem16: TMenuItem
       Caption = '-'
     end
     object mniMainRun: TMenuItem
-      Caption = 'Run / Test'
+      Caption = 'DNT Run / Test'
       OnClick = mniMainCommandsClick
     end
     object mniMainHint: TMenuItem

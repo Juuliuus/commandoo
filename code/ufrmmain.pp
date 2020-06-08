@@ -254,19 +254,21 @@ type
     MenuItem15 : TMenuItem;
     MenuItem16 : TMenuItem;
     MenuItem17 : TMenuItem;
+    mniMainFIndCmdLineReFind : TMenuItem;
     MenuItem2 : TMenuItem;
+    mniMainFIndCmdLineFind : TMenuItem;
+    mniMainFIndCmdReFind : TMenuItem;
+    mniMainFIndCmdFind : TMenuItem;
     MenuItem5 : TMenuItem;
     MenuItem6 : TMenuItem;
     MenuItem7 : TMenuItem;
     MenuItem8 : TMenuItem;
-    mniMainLastCmdLine : TMenuItem;
-    mniMainLastCmd : TMenuItem;
     mniMainHint : TMenuItem;
     mniMainRun : TMenuItem;
     mniMainTabsProcs : TMenuItem;
     mniMaintabsSearch : TMenuItem;
     mniMainTabsKeyWords : TMenuItem;
-    mniMainFavTab : TMenuItem;
+    mniMainTabsFav : TMenuItem;
     mniMainTabsCommands : TMenuItem;
     mniMainTabs : TMenuItem;
     mniMainProcs : TMenuItem;
@@ -491,20 +493,15 @@ type
     procedure lbSearchCmdKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lbSearchCmdLineClick( Sender : TObject );
     procedure lbSearchCmdLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
-    procedure memDetachedProcessesDblClick( Sender : TObject );
     procedure memDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
-    procedure memDispNotesDblClick( Sender : TObject );
     procedure memDispNotesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memEntryKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memNotesChange( Sender : TObject );
-    procedure memNotesDispDblClick( Sender : TObject );
     procedure memNotesDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memNotesEnter( Sender : TObject );
     procedure memNotesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memNotesLineChange( Sender : TObject );
-    procedure memNotesLineDispDblClick( Sender : TObject );
     procedure memNotesLineDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
-    procedure memNotesLineEnter( Sender : TObject );
     procedure memNotesLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure Memo1DblClick( Sender : TObject );
     procedure Memo1KeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -521,6 +518,7 @@ type
     procedure pmCommandsPopup(Sender: TObject);
     procedure popCmdLinePasteClick( Sender : TObject );
     procedure popCmdPasteClick( Sender : TObject );
+    procedure popGotoPopup( Sender : TObject );
     procedure TimerBlinkStartTimer( Sender : TObject );
     procedure TimerBlinkStopTimer( Sender : TObject );
     procedure TimerBlinkTimer( Sender : TObject );
@@ -568,15 +566,6 @@ type
     fInternalComs : boolean;
     fUpdateDisplayOffset : Int64;
     fUpdateDisplayOffsetFlag : boolean;
-
-////edit focusing
-//when editing and you are typing and then click a checkbox or click a button focus is stolen and
-//that is annoying. For now it refocuses to edit memos because refocusing, in QT at least, selects all
-//all the text making it easy to accidentally delete it which is also annoying.
-//if in future I figure out how to suppress that select all in TEdits, then use the fCLFocus / fCMDFocus
-//setup and it will return to the appropriate field one was typing in.
-//    fCLFocus : TWinControl; //do not create, pointer only
-//    fCmdFocus : TWinControl; //do not create, pointer only
 
 //Search handling
     fKeyWordSO : TSearchObj;
@@ -674,6 +663,8 @@ type
     procedure RenameCommand( const InputName : string; InputMode : TSingleInputMode );
     function NotEditing: boolean;
     function Editing: boolean;
+    function EditingCmd: boolean;
+    function EditingCL: boolean;
     procedure RefreshCmdObj( CLOIdx : integer = cUseItemIndexFlag );
     procedure RunCmdDisplayObj( Sender : TListBox );
     function RunCmdLine( RunStr : string; WantsInput : boolean; const UseShell, Detach : boolean ) : string;
@@ -682,6 +673,7 @@ type
     procedure SaveSearch( SO : TSearchObj );
     procedure SelectProfile;
     procedure SetUp_Edit_Structure;
+    procedure SetUp_GotoMenu_Structure;
     procedure ShowKeyWords( const aTarget : string; aListBox : TListbox = nil; DispListBox : TListbox = nil );
     procedure ShowSearch( SO : TSearchObj; Strings : TStrings; DoLoad : boolean = true );
     procedure ShowSearch_List( FIDs : array of TCmdFieldID; SO : TSearchObj;
@@ -845,9 +837,56 @@ const
   cCurrKWFileName = '.CurrKWSearch';
   cCurrSearchFileName = '.CurrSearch';
   cDisplayOutPutMax = 25000;
+  clblCmdPointer = 'Command';
+  clblCmdlinePointer = 'Command Lines';
+  clblPointers = '  ↓';
+  ccapGotoCmdAbbrev = 'Cmd';
+  ccapGotoCmdlineAbbrev = 'CmdLine';
 
+  cmniMainCommands = 120;
+  cmniMainDisplay = 121;
+  cmniMainCommandLines = 122;
+  cmniMainFIndCmdFind = 123;
+  cmniMainFIndCmdReFind = 124;
+  cmniMainFIndCmdLineFind = 125;
+  cmniMainFIndCmdLineReFind = 126;
+  cmniMainCmdNameEdit = 127;
+  cmniMainCmdNotes = 128;
+  cmniMainCmdLineEntry = 129;
+  cmniMainCmdLineNotes = 130;
+  cmniMainRun = 131;
+  //cmniMainCmdList : TMenuItem; HUB
+  //cmniMainCmdLineList : TMenuItem; HUB
+  cmniMainCmdListFav = 221;
+  cmniMainCmdLineFav = 222;
+
+  cmniMainCmdListKey = 321;
+  cmniMainCmdLineKey = 322;
+
+  cmniMainCmdListSearch = 421;
+  cmniMainCmdLineSearch = 422;
+
+  cmniMainProcs = 521;
+//Tabs separated by beginning digit
+//cmniMainTabs : TMenuItem; HUB
+  cmniMainTabsCommands = 180;
+  cmniMainTabsFav = 280;
+  cmniMainTabsKeyWords = 380;
+  cmniMaintabsSearch = 480;
+  cmniMainTabsProcs = 580;
+//tab independent
+  cmniMainHint = 1001;
 
 resourcestring
+  ccapGotoFindIn = 'Find in %s Notes...';
+  ccapGotoEditIn = 'Edit %s %s';
+  ccapGotoEditInName = 'Name';
+  ccapGotoEditInEntry = 'Entry';
+  ccapGotoEditInNotes = 'Notes';
+  ccapGotoProcs = 'Detached Processes';
+  ccapGotoFindConst = 'Find';
+  ccapGotoReFindConst = 'Find again';
+
   cmsgProgramKeyWord = 'The Name "%s" at beginning of name is reserved for the program to use.';
   cmsgCommandNameDuplicate =
     'The Command "%s" is already in the command list, duplicates are not allowed.';
@@ -966,9 +1005,6 @@ var
   i: integer;
   anObj : TObject;
 begin
-
-  //fCLFocus := nil; //do not free, pointer only
-  //fCmdFocus := nil; //do not free, pointer only
 
 //first pleez !!!
 //====================
@@ -1409,6 +1445,9 @@ begin
   fInternalComs := false;
   fUpdateDisplayOffset := 0;
   fUpdateDisplayOffsetFlag := false;
+  lblCmdLinePointer.caption := clblCmdlinePointer + clblPointers;
+  lblCmdPointer.caption := clblCmdPointer + clblPointers;
+
   Randomize;
   application.OnException := @FinalException;
 //this was autocreated, but updating the translation not possible then
@@ -1417,8 +1456,6 @@ begin
   fFirstLocalRun := false;
   fSuperUser := False;
   fDisplayOutPut := TStringlist.Create;
-  //fCLFocus := nil; //do not create, pointer only
-  //fCmdFocus := nil;//do not create, pointer only
 
   ClipCO := nil;
   ClipCLO := nil;
@@ -1548,6 +1585,7 @@ begin
   lblFriendlyNameLineDisp.Caption := '';//I use "..." as caption so I can see it in dev environment, clear that here
 
   SetUp_Edit_Structure;
+  SetUp_GotoMenu_Structure;
 
   RegX := TRegExpr.Create;
 
@@ -1571,9 +1609,11 @@ begin
 
   if ( ssCtrl in Shift ) and not ( ( ssAlt in Shift ) or ( ssShift in Shift ) ) then
   begin
+//The use of VK_G is global, do not use anywhere else.
     if key = VK_G then
     begin
-      PosPt := GetPreciseControlCoords( self.ActiveControl, 30, 30 );
+      PosPt := GetPreciseControlCoords( btnCmdEdit, 30, 30 );
+      //PosPt := GetPreciseControlCoords( self.ActiveControl, 30, 30 );
       popGoto.Popup( PosPt.x, PosPt.y );
     end;
   end;
@@ -1853,13 +1893,45 @@ begin
   InitThreatLevelComboBox( [ cbThreatLevel, cbThreatLevelLine, cbDispThreatLevel ] );
 //  EchoThreatLevelDisplay( pnlThreatLevelDisp, cbThreatLevelDisp, lblThreatLevelDisp, cbThreatLevel.ItemIndex );
 
-//set button captions etc when they are shared and/or used a lot???
   btnRun_Test.Caption := cObjlblRun;
 
 //not static texts so need to be updated also
   UpdateProfileText( BadDB );
   UpdateDetachedProcesses( '', nil );
   RefreshCap;
+
+  mniMainCommands.Caption := clblCmdPointer + 's';
+
+  mniMainTabsCommands.Caption := trim( ccapTabCommands );
+//-----
+  mniMainTabsFav.Caption := trim( ccapTabFavorites );
+  mniMainCmdListFav.Caption := mniMainTabsFav.Caption;
+  mniMainCmdLineFav.Caption := mniMainTabsFav.Caption;
+//-----
+  mniMainTabsKeyWords.Caption := trim( ccapTabKeyWords );
+  mniMainCmdListKey.Caption := mniMainTabsKeyWords.Caption;
+  mniMainCmdLineKey.Caption := mniMainTabsKeyWords.Caption;
+//-----
+  mniMaintabsSearch.Caption := trim( ccapTabSearch );
+  mniMainCmdListSearch.Caption := mniMaintabsSearch.Caption;
+  mniMainCmdLineSearch.Caption := mniMaintabsSearch.Caption;
+//-----
+  mniMainTabsProcs.Caption := ccapGotoProcs;;
+
+  mniMainCommandLines.Caption := clblCmdlinePointer;
+  mniMainCmdNoteDisp.Caption := format( ccapGotoFindIn, [ ccapGotoCmdAbbrev ] );
+  mniMainCmdLineNoteDisp.Caption := format( ccapGotoFindIn, [ ccapGotoCmdlineAbbrev ] );
+  mniMainFIndCmdFind.Caption := ccapGotoFindConst;
+  mniMainFIndCmdReFind.Caption := ccapGotoReFindConst;
+  mniMainFIndCmdLineFind.Caption := ccapGotoFindConst;
+  mniMainFIndCmdLineReFind.Caption := ccapGotoReFindConst;
+
+  mniMainCmdNameEdit.Caption := format( ccapGotoEditIn, [ ccapGotoCmdAbbrev, ccapGotoEditInName ] );
+  mniMainCmdNotes.Caption := format( '%s %s', [ ccapGotoCmdAbbrev, ccapGotoEditInNotes ] );
+  mniMainCmdLineEntry.Caption := format( ccapGotoEditIn, [ ccapGotoCmdlineAbbrev, ccapGotoEditInEntry ] );
+  mniMainCmdLineNotes.Caption := format( '%s %s', [ ccapGotoCmdlineAbbrev, ccapGotoEditInNotes ] );
+
+  mniMainProcs.Caption := ccapGotoProcs;
 
 //were autocreated forms, but now manually created so translations can be updated.
   frmfindtext.UpdateCaptions;
@@ -2373,7 +2445,10 @@ end;
 
 procedure TfrmMain.lbDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  FindItem( lbDetachedProcesses );
+  if ( shift = [ ssCtrl ] )
+     and ( key = VK_F )
+     and ( lbDetachedProcesses.Items.Count > 1 ) then
+    FindItem( lbDetachedProcesses );
 end;
 
 procedure TfrmMain.lbKeywordsDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -2719,9 +2794,9 @@ begin
       VK_F :
         if btnSearchFindCmd.Enabled then
           btnSearchFindCmd.Click;
-      //VK_G :
-      //  if btnSearchGotoCmd.Enabled then
-      //    btnSearchGotoCmd.Click;
+      VK_T :
+        if btnSearchGotoCmd.Enabled then
+          btnSearchGotoCmd.Click;
     end;
     exit;
   end;
@@ -2759,9 +2834,9 @@ begin
       VK_F :
         if btnSearchFindCmdLine.Enabled then
           btnSearchFindCmdLine.Click;
-      //VK_G :
-      //  if btnSearchGotoCmdLine.Enabled then
-      //    btnSearchGotoCmdLine.Click;
+      VK_T :
+        if btnSearchGotoCmdLine.Enabled then
+          btnSearchGotoCmdLine.Click;
       VK_C :
         begin
           mniSearchCmdLineItemClipClick( Self );
@@ -2782,21 +2857,9 @@ begin
     SearchVK_F_Keys( Key );
 end;
 
-procedure TfrmMain.memDetachedProcessesDblClick( Sender : TObject );
-begin
-  MsgDlgMessage( '', memDetachedProcesses.Text );
-  MsgDlgInfo( Self );
-end;
-
 procedure TfrmMain.memDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   UnassMemosKeyDown( memDetachedProcesses, Key, Shift );
-end;
-
-procedure TfrmMain.memDispNotesDblClick( Sender : TObject );
-begin
-  MsgDlgMessage( '', memDispNotes.Text );
-  MsgDlgInfo( Self );
 end;
 
 procedure TfrmMain.memDispNotesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -2831,12 +2894,6 @@ end;
 procedure TfrmMain.memNotesChange( Sender : TObject );
 begin
   memNotesDisp.Lines.Text := memNotes.Lines.Text;
-end;
-
-procedure TfrmMain.memNotesDispDblClick( Sender : TObject );
-begin
-  MsgDlgMessage( '', memNotesDisp.Text );
-  MsgDlgInfo( Self );
 end;
 
 procedure TfrmMain.memNotesDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -2879,20 +2936,9 @@ begin
   memNotesLineDisp.Lines.Text := memNotesLine.Lines.Text;
 end;
 
-procedure TfrmMain.memNotesLineDispDblClick( Sender : TObject );
-begin
-  MsgDlgMessage( '', memNotesLineDisp.Text );
-  MsgDlgInfo( Self );
-end;
-
 procedure TfrmMain.memNotesLineDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   UnassMemosKeyDown( memNotesLineDisp, Key, Shift );
-end;
-
-procedure TfrmMain.memNotesLineEnter( Sender : TObject );
-begin
-  //fCLFocus := memNotesLine;
 end;
 
 procedure TfrmMain.memNotesLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -2928,8 +2974,15 @@ begin
 end;
 
 procedure TfrmMain.Memo1DblClick( Sender : TObject );
+var
+  TheText : string;
 begin
-  MsgDlgMessage( '', Memo1.Text );
+  if not ( Sender is TMemo ) then
+    exit;
+  TheText := trim( TMemo( Sender ).Text );
+  if TheText = '' then
+    exit;
+  MsgDlgMessage( '', TheText );
   MsgDlgInfo( Self );
 end;
 
@@ -2939,8 +2992,6 @@ begin
 end;
 
 procedure TfrmMain.UnassMemosKeyDown( const Sender : TMemo; const Key : Word; const Shift : TShiftState );
-var
-  PosPt : TPoint;
 begin
   if ( ssCtrl in Shift ) and not ( ssAlt in Shift ) then
   begin
@@ -2950,11 +3001,6 @@ begin
         frmFindText.ReFindinMemo( Sender )
       else FindInMemo( Sender );
     end;
-    //if key = VK_G then
-    //begin
-    //  PosPt := GetPreciseControlCoords( Sender, 30, 30 );
-    //  popGoto.Popup( PosPt.x, PosPt.y );
-    //end;
     if key = VK_L then
       frmFindText.ReFindinMemo( Sender );
   end;
@@ -2995,9 +3041,51 @@ begin
   ClipBoard.AsText := lbCommands.Items.Text;
 end;
 
+procedure TfrmMain.SetUp_GotoMenu_Structure;
+begin
+
+  mniMainCommands.tag := cmniMainCommands;
+  mniMainDisplay.tag := cmniMainDisplay;
+
+  //mniMainTabs : TMenuItem; HUB
+  mniMainTabsCommands.Tag := cmniMainTabsCommands;
+  mniMainTabsFav.Tag := cmniMainTabsFav;
+  mniMainTabsKeyWords.Tag := cmniMainTabsKeyWords;
+  mniMaintabsSearch.Tag := cmniMaintabsSearch;
+  mniMainTabsProcs.Tag := cmniMainTabsProcs;
+
+  mniMainCommandLines.tag := cmniMainCommandLines;
+  mniMainFIndCmdFind.tag := cmniMainFIndCmdFind;
+  mniMainFIndCmdReFind.tag := cmniMainFIndCmdReFind;
+  mniMainFIndCmdLineFind.tag := cmniMainFIndCmdLineFind;
+  mniMainFIndCmdLineReFind.tag := cmniMainFIndCmdLineReFind;
+
+  mniMainCmdNameEdit.tag := cmniMainCmdNameEdit;
+  mniMainCmdNotes.tag := cmniMainCmdNotes;
+  mniMainCmdLineEntry.tag := cmniMainCmdLineEntry;
+  mniMainCmdLineNotes.tag := cmniMainCmdLineNotes;
+
+  //mniMainCmdList : TMenuItem; HUB
+  mniMainCmdListFav.tag := cmniMainCmdListFav;
+  mniMainCmdListKey.tag := cmniMainCmdListKey;
+  mniMainCmdListSearch.tag := cmniMainCmdListSearch;
+
+  //mniMainCmdLineList : TMenuItem; HUB
+  mniMainCmdLineFav.tag := cmniMainCmdLineFav;
+  mniMainCmdLineKey.tag := cmniMainCmdLineKey;
+  mniMainCmdLineSearch.tag := cmniMainCmdLineSearch;
+
+  mniMainProcs.tag := cmniMainProcs;
+
+  mniMainRun.tag := cmniMainRun;
+  mniMainHint.tag := cmniMainHint;
+
+end;
+
 procedure TfrmMain.mniMainCommandsClick( Sender : TObject );
 var
   DoTab : boolean;
+  menuIdx, tabIdx : integer;
 
   procedure SetTab( aTab : TTabSheet );
   begin
@@ -3008,14 +3096,35 @@ var
     end;
   end;
 
+  procedure SetTheFocus( cont : TWinControl );
+  begin
+    if cont.CanFocus then
+      cont.SetFocus;
+  end;
+
 begin
+
   DoTab := false;
-  case TControl(Sender).Tag of
+  menuIdx := TControl(Sender).Tag;
+
+  if menuIdx = 0 then
+    exit;
+
+  if menuIdx >= 1000 then
+  begin
+    case menuIdx of
+      cmniMainHint : FrameHint1.cbHints.Checked := not FrameHint1.cbHints.Checked;
+    end;
+    exit;
+  end;
+
+  tabIdx := trunc( menuIdx / 100 );
+  case tabIdx of
     1 : SetTab( tsCommands );
     2,3,4,5 :
       begin
         if Editing then exit;
-        case TControl(Sender).Tag of
+        case tabIdx of
           2 : SetTab( tsFavorites );
           3 : SetTab( tsKeyWords );
           4 : SetTab( tsSearch );
@@ -3027,6 +3136,46 @@ begin
   if DoTab then
     nbCommandsChange( nbCommands );
 
+  case menuIdx of
+    cmniMainCommands : SetTheFocus( lbCommands );//
+    cmniMainDisplay : SetTheFocus( Memo1 );
+    cmniMainCommandLines : SetTheFocus( lbCmdLines );
+
+    cmniMainFIndCmdFind :
+      if EditingCmd then
+        FindInMemo( memNotes )
+      else FindInMemo( memNotesDisp );
+    cmniMainFIndCmdReFind :
+      if EditingCmd then
+        frmFindText.ReFindinMemo( memNotes )
+      else frmFindText.ReFindinMemo( memNotesDisp );
+    cmniMainFindCmdLineFind :
+      if EditingCL then
+        FindInMemo( memNotesLine )
+      else FindInMemo( memNotesLineDisp );
+    cmniMainFIndCmdLineReFind :
+      if EditingCL then
+        frmFindText.ReFindinMemo( memNotesLine )
+      else frmFindText.ReFindinMemo( memNotesLineDisp );
+
+    cmniMainCmdNameEdit : lblCommandNameDblClick( Self );
+    cmniMainCmdNotes : SetTheFocus( memNotes );
+    cmniMainCmdLineEntry : SetTheFocus( memEntry );
+    cmniMainCmdLineNotes : SetTheFocus( memNotesLine );
+    cmniMainCmdListFav, cmniMainCmdListKey, cmniMainCmdListSearch :
+      SetTheFocus( lbSearchCmd );
+    cmniMainCmdLineFav, cmniMainCmdLineKey, cmniMainCmdLineSearch :
+      SetTheFocus( lbSearchCmdLine );
+    cmniMainProcs : SetTheFocus( lbDetachedProcesses );
+    cmniMainRun : if actRun.Enabled then actRun.Execute;
+
+    ////cmniMainTabsCommands : ;
+    ////cmniMainTabsFav : ;
+    ////cmniMainTabsKeyWords : ;
+    ////cmniMaintabsSearch : ;
+    ////cmniMainTabsProcs : ;
+
+  end;
 
 end;
 
@@ -3394,6 +3543,57 @@ end;
 procedure TfrmMain.popCmdPasteClick( Sender : TObject );
 begin
   DuplicateCmd( ClipCO );
+end;
+
+procedure TfrmMain.popGotoPopup( Sender : TObject );
+var
+  HasCommands, IsEditing, CmdEditing, CLEditing : boolean;
+begin
+  mniMainRun.Caption := format( '%s %s', [ trim( copy(btnRun_Test.Caption, 3, maxint ) ), ccapGotoCmdlineAbbrev ] );
+
+  CmdEditing := EditingCmd;
+  CLEditing := EditingCL;
+  IsEditing := CmdEditing or ClEditing;
+  HasCommands := lbCommands.Items.Count > 0;
+
+  mniMainCommands.Enabled := not IsEditing;
+  //mniMainDisplay.Enabled := ;
+
+  mniMainTabs.Enabled := not IsEditing;
+  //mniMainTabsCommands.Enabled := ;
+  //mniMainTabsFav.Enabled := ;
+  //mniMainTabsKeyWords.Enabled := ;
+  //mniMaintabsSearch.Enabled := ;
+  //mniMainTabsProcs.Enabled := ;
+
+  mniMainCommandLines.Enabled := not IsEditing and HasCommands;
+  mniMainCmdNoteDisp.Enabled := HasCommands and
+                                ( ( not CmdEditing and ( trim( memNotesDisp.Text ) <> '' ) )
+                                    or ( CmdEditing and ( trim( memNotes.Text ) <> '' ) ) );
+  mniMainCmdLineNoteDisp.Enabled := HasCommands and
+                                    ( ( not CLEditing and ( trim( memNotesLineDisp.Text ) <> '' ) )
+                                        or  ( CLEditing and ( trim( memNotesLine.Text ) <> '' ) ) );
+
+  mniMainCmdNameEdit.Enabled := CmdEditing;
+  mniMainCmdNotes.Enabled := CmdEditing;
+  mniMainCmdLineEntry.Enabled := CLEditing;
+  mniMainCmdLineNotes.Enabled := CLEditing;
+
+  mniMainCmdList.enabled := not IsEditing;
+  //mniMainCmdListFav.Enabled := ;
+  //mniMainCmdListKey.Enabled := ;
+  //mniMainCmdListSearch.Enabled := ;
+
+  mniMainCmdLineList.enabled := not IsEditing;
+  //mniMainCmdLineFav.Enabled := ;
+  //mniMainCmdLineKey.Enabled := ;
+  //mniMainCmdLineSearch.Enabled := ;
+
+  mniMainProcs.Enabled := not IsEditing;
+
+  mniMainRun.Enabled := actRun.Enabled;
+  //mniMainHint.Enabled := ;
+
 end;
 
 procedure TfrmMain.TimerBlinkStartTimer( Sender : TObject );
@@ -3900,6 +4100,9 @@ begin
   if InvalidCommands_Msg then
     exit;
 
+  if CheckEditing or BadDB then
+    exit;
+
   ShowUnsavedMessage;
 
   SimpleSearchSO := nil;
@@ -4226,10 +4429,21 @@ begin
   Result := not TControl( fCommandButtons[ 0 ] ).Enabled;
 end;
 
+function TfrmMain.EditingCmd: boolean;
+begin
+  result := not TControl( fCommandButtons[ 0 ] ).Enabled;
+end;
+
+function TfrmMain.EditingCL: boolean;
+begin
+  Result := not TControl( fCommandLineButtons[ 0 ] ).Enabled;
+end;
+
 function TfrmMain.Editing: boolean;
 begin
-  Result := not TControl( fCommandButtons[ 0 ] ).Enabled or not
-    TControl( fCommandLineButtons[ 0 ] ).Enabled;
+  Result := EditingCmd or EditingCL;
+  //Result := not TControl( fCommandButtons[ 0 ] ).Enabled
+  //          or not TControl( fCommandLineButtons[ 0 ] ).Enabled;
 end;
 
 procedure TfrmMain.Toggle_pnlCmdLines( const State : boolean );
@@ -6068,8 +6282,6 @@ begin
     if memEntry.Canfocus then
       memEntry.SetFocus;
   end;
-  //if assigned( fCLFocus ) and ( fCLFocus.Canfocus ) then
-  //  fCLFocus.SetFocus;
 end;
 
 
