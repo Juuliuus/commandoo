@@ -254,6 +254,7 @@ type
     MenuItem15 : TMenuItem;
     MenuItem16 : TMenuItem;
     MenuItem17 : TMenuItem;
+    //mniMainMainPopup : TMenuItem;
     mniMainFIndCmdLineReFind : TMenuItem;
     MenuItem2 : TMenuItem;
     mniMainFIndCmdLineFind : TMenuItem;
@@ -1605,16 +1606,30 @@ end;
 procedure TfrmMain.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 var
   PosPt : TPoint;
+
+  procedure ShowMainMenu;
+  begin
+    PosPt := GetPreciseControlCoords( lbCommands, 30, 30 );
+    pmMain.Popup( PosPt.x, PosPt.y );
+  end;
 begin
 
   if ( ssCtrl in Shift ) and not ( ( ssAlt in Shift ) or ( ssShift in Shift ) ) then
   begin
-//The use of VK_G is global, do not use anywhere else.
-    if key = VK_G then
-    begin
-      PosPt := GetPreciseControlCoords( btnCmdEdit, 30, 30 );
-      //PosPt := GetPreciseControlCoords( self.ActiveControl, 30, 30 );
-      popGoto.Popup( PosPt.x, PosPt.y );
+    case key of
+ //The use of ctrl-VK_G is global, do not use anywhere else.
+    VK_G :
+      begin
+        PosPt := GetPreciseControlCoords( btnCmdEdit, 30, 30 );
+        popGoto.Popup( PosPt.x, PosPt.y );
+      end;
+    VK_M : ShowMainMenu;
+    VK_P :
+      if assigned( self.ActiveControl.PopupMenu ) then
+      begin
+        PosPt := GetPreciseControlCoords( self.ActiveControl, 30, 30 );
+        self.ActiveControl.PopupMenu.PopUp( PosPt.x, PosPt.y );
+      end else ShowMainMenu;
     end;
   end;
 
@@ -2612,6 +2627,7 @@ begin
 
     lblDispCommandName.Caption := CDO.CommandName;
     ApplyThreatLevel( pnlS, cbDispThreatLevel );
+    //actSearchRun.Enabled := CDO.IsCommandLine or ( lbSearchCmdline.Items.Count > 0 );
     actSearchRun.Enabled := CDO.IsCommandLine;
 
   finally
@@ -2776,9 +2792,9 @@ procedure TfrmMain.lbSearchCmdClick( Sender : TObject );
 begin
 
   ProcessCmdDisplayObj( lbSearchCmd );
+  FillDisplayObj_Detail;//load its CL's
+  actSearchRun.Enabled := actSearchRun.Enabled or ( lbSearchCmdline.Items.Count > 0 );
   lbSearchCmdLine_ApplyActions( 0 );
-
-  FillDisplayObj_Detail;
   lbSearchCmdLine_ApplyActions( 1 );
 
 //store last viewed indices on the current tabsheet
@@ -3080,6 +3096,7 @@ begin
   mniMainRun.tag := cmniMainRun;
   mniMainHint.tag := cmniMainHint;
 
+
 end;
 
 procedure TfrmMain.mniMainCommandsClick( Sender : TObject );
@@ -3267,7 +3284,7 @@ procedure TfrmMain.nbCommandsChange( Sender : TObject);
       0 :
         begin
           lbSearchCmd.Hint := cSearchHintGeneralCmd + cSearchHintFavorites + cSearchHintEnding;
-          lbSearchCmdLIne.Hint := cSearchHintGeneralCmdLine + cSearchHintEnding;
+          lbSearchCmdLine.Hint := cSearchHintGeneralCmdLine + cSearchHintEnding;
         end;
       1 :
         begin
@@ -3280,13 +3297,20 @@ procedure TfrmMain.nbCommandsChange( Sender : TObject);
           lbSearchCmdLIne.Hint := cSearchHintGeneralCmdLine + cSearchHintKeyWords;
         end;
     end;
+    if lbSearchCmd.CanFocus then
+      lbSearchCmd.Setfocus;
   end;
 
 begin
 
   UpdateNotebookCaptions;
 
-  if nbCommands.ActivePage = tsFavorites then
+  if nbCommands.ActivePage = tsCommands then
+  begin
+    if lbCommands.CanFocus then
+      lbCommands.SetFocus;
+  end
+  else if nbCommands.ActivePage = tsFavorites then
   begin
     DisplaySearchResults( fFavoritesSR, tsFavorites );
     MoveSearchResults( tsFavorites, 0 );
@@ -3302,6 +3326,11 @@ begin
     DisplaySearchResults( fKeyWordSR, tsKeyWords );
     MoveSearchResults( tsKeyWords, 2 );
     CheckSearchChange;
+  end
+  else if nbCommands.ActivePage = tsDetachedProcesses then
+  begin
+    if lbDetachedProcesses.CanFocus then
+      lbDetachedProcesses.SetFocus;
   end;
 
 end;
@@ -3593,6 +3622,7 @@ begin
 
   mniMainRun.Enabled := actRun.Enabled;
   //mniMainHint.Enabled := ;
+  //mniMainMainPopup.Enabled := ;
 
 end;
 
@@ -5445,9 +5475,31 @@ end;
 
 procedure TfrmMain.actSearchRunExecute( Sender : TObject );
 begin
+
   if lbSearchCmdLine.Items.Count = 0 then
-    RunCmdDisplayObj( lbSearchCmd )
-  else RunCmdDisplayObj( lbSearchCmdLine );
+  begin
+    if not lbSearchCmd.Focused then
+      if lbSearchCmd.CanFocus then
+      begin
+        lbSearchCmd.SetFocus;
+        lbSearchCmd.Click;
+      end;
+    RunCmdDisplayObj( lbSearchCmd );
+  end else
+  begin
+    if not lbSearchCmdLine.Focused then
+      if lbSearchCmdLine.CanFocus then
+      begin
+        lbSearchCmdLine.SetFocus;
+        lbSearchCmdLine.Click;
+      end;
+    RunCmdDisplayObj( lbSearchCmdLine );
+  end;
+
+
+  //if lbSearchCmdLine.Items.Count = 0 then
+  //  RunCmdDisplayObj( lbSearchCmd )
+  //else RunCmdDisplayObj( lbSearchCmdLine );
 end;
 
 procedure TfrmMain.actSearchSaveKeyCmdExecute( Sender : TObject );

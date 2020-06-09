@@ -1173,7 +1173,7 @@ end;
 
 function TCmdObjHelper.GetCmdDisplayObj_CmdLineEntry( const Main, Alt : string ) : string;
 begin
-  result :=  strif( Alt = '', Main, '  ' + Alt + '   --[ ' + Main + ' ]' );
+  result :=  strif( Alt = '', Main, '  ' + Alt + '           --[ ' + Main + ' ]' );
 end;
 
 procedure TCmdObjHelper.GetCmdDisplayObjList( Source, Dest : TStringList; IsCmd : boolean = true );

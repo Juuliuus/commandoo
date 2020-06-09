@@ -46,11 +46,12 @@ object frmMain: TfrmMain
     Height = 569
     Top = 40
     Width = 1424
-    ActivePage = tsCommands
+    TabStop = False
+    ActivePage = tsKeyWords
     Anchors = [akTop, akLeft, akRight]
     Font.Height = -16
     ParentFont = False
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     OnChange = nbCommandsChange
     object tsCommands: TTabSheet
@@ -1906,7 +1907,7 @@ object frmMain: TfrmMain
           ParentFont = False
           PopupMenu = popSearchCmdLine
           ScrollWidth = 745
-          TabOrder = 3
+          TabOrder = 4
           TopIndex = -1
         end
         object btnSearchFindCmdLine: TBitBtn
@@ -1918,7 +1919,7 @@ object frmMain: TfrmMain
           Caption = '&F  Find Cmd Line'
           Font.Height = -14
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 5
         end
         object btnSearchGoToCmdLine: TBitBtn
           Left = 381
@@ -1929,12 +1930,12 @@ object frmMain: TfrmMain
           Caption = '&K  Go to Cmd Line'
           Font.Height = -14
           ParentFont = False
-          TabOrder = 5
+          TabOrder = 6
         end
         object shpSRR1: TShape
           Left = 617
-          Height = 32
-          Top = 444
+          Height = 48
+          Top = 238
           Width = 14
           Brush.Color = 160
         end
@@ -1942,7 +1943,7 @@ object frmMain: TfrmMain
           Left = 6
           Height = 7
           Top = 275
-          Width = 757
+          Width = 570
         end
         object Bevel3: TBevel
           Left = 6
@@ -1953,14 +1954,14 @@ object frmMain: TfrmMain
         end
         object btnSearchRun: TBitBtn
           Left = 630
-          Height = 33
-          Top = 443
+          Height = 50
+          Top = 236
           Width = 124
           Action = actSearchRun
           Caption = '&R  Run CL'
           Font.Height = -16
           ParentFont = False
-          TabOrder = 6
+          TabOrder = 3
         end
       end
       object lblTabKeyWords: TLabel
