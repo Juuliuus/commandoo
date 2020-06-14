@@ -107,6 +107,7 @@ type
     btnMainClear : TBitBtn;
     btnMainSave : TBitBtn;
     btnMainCopy : TBitBtn;
+    btnPkexecMain : TBitBtn;
     btnRefreshFavorites : TBitBtn;
     btnSearchRun : TBitBtn;
     btnSimpleSearch : TBitBtn;
@@ -254,7 +255,51 @@ type
     MenuItem15 : TMenuItem;
     MenuItem16 : TMenuItem;
     MenuItem17 : TMenuItem;
-    //mniMainMainPopup : TMenuItem;
+    MenuItem18 : TMenuItem;
+    MenuItem19 : TMenuItem;
+    MenuItem20 : TMenuItem;
+    MenuItem22 : TMenuItem;
+    MenuItem3 : TMenuItem;
+    mniMainRoot : TMenuItem;
+    MenuItem23 : TMenuItem;
+    pmiMainRoot : TMenuItem;
+    MenuItem25 : TMenuItem;
+    mniSearchCmdRoot : TMenuItem;
+    MenuItem27 : TMenuItem;
+    MenuItem28 : TMenuItem;
+    mniSearchCmdLineRoot : TMenuItem;
+    MenuItem30 : TMenuItem;
+    MenuItem31 : TMenuItem;
+    mniTabKeyWordsSearchRoot : TMenuItem;
+    MenuItem33 : TMenuItem;
+    MenuItem34 : TMenuItem;
+    mniTabSearchSearchRoot : TMenuItem;
+    MenuItem36 : TMenuItem;
+    mniCommansRoot : TMenuItem;
+    MenuItem38 : TMenuItem;
+    mniCmdLinesRoot : TMenuItem;
+    mniDblCRoot : TMenuItem;
+    MenuItem21 : TMenuItem;
+    mniDblCSearchKey : TMenuItem;
+    mniDblCCmd : TMenuItem;
+    mniDblCCmdKey : TMenuItem;
+    mniDblCCmdLineFriendly : TMenuItem;
+    mniDblCCmdLineNotes : TMenuItem;
+    mniDblCCmdLines : TMenuItem;
+    mniDblCCmdName : TMenuItem;
+    mniDblCCmdNotes : TMenuItem;
+    mniDblCCmdPath : TMenuItem;
+    mniDblCSearchCmdLine : TMenuItem;
+    mniDblCSearchCmd : TMenuItem;
+    mniDblCDetPProcs : TMenuItem;
+    mniDblCDetPInfo : TMenuItem;
+    mniDblCDetP : TMenuItem;
+    mniDblCSearch : TMenuItem;
+    mniDblCSearchEntry : TMenuItem;
+    mniDblCSearchFriendly : TMenuItem;
+    mniDblCSearchNotes : TMenuItem;
+    mniDblCDisplay : TMenuItem;
+    mniMainMainPopup : TMenuItem;
     mniMainFIndCmdLineReFind : TMenuItem;
     MenuItem2 : TMenuItem;
     mniMainFIndCmdLineFind : TMenuItem;
@@ -299,7 +344,6 @@ type
     mniOutput : TMenuItem;
     mniCmdSendTo : TMenuItem;
     pnlCEdit : TPanel;
-    pnlRefreshFavorites : TPanel;
     pnlS : TPanel;
     popCmdPasteCmdLine : TMenuItem;
     popCmdPaste : TMenuItem;
@@ -354,6 +398,7 @@ type
     pnlcommand: TPanel;
     pnlEdit: TPanel;
     pnlLineControls: TPanel;
+    popDblC : TPopupMenu;
     popSearchCmdLine : TPopupMenu;
     popSearchCmd : TPopupMenu;
     popNewCommandLine: TMenuItem;
@@ -366,9 +411,9 @@ type
     popPlusBrowse: TMenuItem;
     popCommandUnDelete: TMenuItem;
     popCommandDelete: TMenuItem;
-    pmCommands: TPopupMenu;
-    pmCmdLines: TPopupMenu;
-    pmMain : TPopupMenu;
+    popCommands: TPopupMenu;
+    popCmdLines: TPopupMenu;
+    popMain : TPopupMenu;
     popTabKeyWords : TPopupMenu;
     popTabSearch : TPopupMenu;
     popGoto : TPopupMenu;
@@ -384,13 +429,15 @@ type
     shpCmdOut8 : TShape;
     shpCmdOut9 : TShape;
     shpCurrProfile : TShape;
+    shpRefreshFavorites : TShape;
+    shpSave : TShape;
     shpSRL : TShape;
     shpSRR : TShape;
     shpCmdIn : TShape;
     shpCmdLineIn : TShape;
     shpCmdOut : TShape;
     shpRun_Test : TShape;
-    shpSRR1 : TShape;
+    shpSearchRun : TShape;
     tmrCancelRunBlink : TTimer;
     tmrCancelRun : TTimer;
     TimerBlink : TTimer;
@@ -451,6 +498,7 @@ type
     procedure btnKeyWordAddClick(Sender: TObject);
     procedure btnKeyWordDeleteClick(Sender: TObject);
     procedure btnLocationPathClick(Sender: TObject);
+    procedure btnPkexecMainClick( Sender : TObject );
     procedure btnRefreshFavoritesClick( Sender : TObject );
     procedure btnSortDetachedProcessesClick( Sender : TObject );
     procedure btnThreatLevelInfoClick(Sender: TObject);
@@ -479,23 +527,22 @@ type
     procedure lbCommandsKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lbDetachedProcessesClick( Sender : TObject );
     procedure lbDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+    procedure lbDispKeywordsDblClick( Sender : TObject );
     procedure lbKeywordsDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lbKeywordsKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lblCommandNameDblClick( Sender : TObject );
     procedure lblCommandNameDispDblClick( Sender : TObject );
     procedure lblCurrDBDblClick( Sender : TObject );
     procedure lblDispEntryDblClick( Sender : TObject );
-    procedure lblDispFriendlyNameDblClick( Sender : TObject );
-    procedure lblFriendlyNameLineDispDblClick( Sender : TObject );
     procedure lblPathAliasDblClick( Sender : TObject );
     procedure lblPathAliasDispDblClick( Sender : TObject );
-    procedure lblThreatLevelDispDblClick( Sender : TObject );
     procedure lbSearchCmdClick( Sender : TObject );
     procedure lbSearchCmdKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lbSearchCmdLineClick( Sender : TObject );
     procedure lbSearchCmdLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memDispNotesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+    procedure memEntryDblClick( Sender : TObject );
     procedure memEntryKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memNotesChange( Sender : TObject );
     procedure memNotesDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -511,15 +558,18 @@ type
     procedure mniCopyCLListClipClick( Sender : TObject );
     procedure mniCopyCmdListClipClick( Sender : TObject );
     procedure mniMainCommandsClick( Sender : TObject );
+    procedure mniDblCCmdNameClick( Sender : TObject );
     procedure mniSearchCmdLineItemClipClick( Sender : TObject );
     procedure mniSearchCmdLineListClipClick( Sender : TObject );
     procedure mniSearchCmdListClipClick( Sender : TObject );
     procedure nbCommandsChange( Sender : TObject );
-    procedure pmCmdLinesPopup(Sender: TObject);
-    procedure pmCommandsPopup(Sender: TObject);
+    procedure popCmdLinesPopup(Sender: TObject);
+    procedure popCommandsPopup(Sender: TObject);
     procedure popCmdLinePasteClick( Sender : TObject );
     procedure popCmdPasteClick( Sender : TObject );
+    procedure popDblCPopup( Sender : TObject );
     procedure popGotoPopup( Sender : TObject );
+    procedure popSearchCmdLinePopup( Sender : TObject );
     procedure TimerBlinkStartTimer( Sender : TObject );
     procedure TimerBlinkStopTimer( Sender : TObject );
     procedure TimerBlinkTimer( Sender : TObject );
@@ -673,8 +723,9 @@ type
     procedure SaveCurrentSearches;
     procedure SaveSearch( SO : TSearchObj );
     procedure SelectProfile;
+    procedure SetActivePage( Page : TTabSheet );
     procedure SetUp_Edit_Structure;
-    procedure SetUp_GotoMenu_Structure;
+    procedure SetUp_KeyBoardMenu_Structure;
     procedure ShowKeyWords( const aTarget : string; aListBox : TListbox = nil; DispListBox : TListbox = nil );
     procedure ShowSearch( SO : TSearchObj; Strings : TStrings; DoLoad : boolean = true );
     procedure ShowSearch_List( FIDs : array of TCmdFieldID; SO : TSearchObj;
@@ -698,6 +749,7 @@ type
     procedure UpdatePathsInEdit( const ThePath : string );
     procedure UpdateProfileText( const IsBad : boolean );
     procedure UpdateSaveStatus;
+    procedure SetNotificationState( const TurnOn : boolean; Obj : TComponent; Shp : TShape );
   public
     { public declarations }
     RegX: TRegExpr;
@@ -878,15 +930,43 @@ const
 //tab independent
   cmniMainHint = 1001;
 
+
+  cmniDblCCmd = 1;
+  cmniDblCCmdName = 2;
+  cmniDblCCmdPath = 3;
+  cmniDblCCmdNotes = 4;
+  cmniDblCCmdKey = 5;
+  cmniDblCCmdLines = 6;
+  //               = 7; Free to use
+  cmniDblCCmdLineFriendly = 8;
+  cmniDblCCmdLineNotes = 9;
+  cmniDblCSearch = 10;
+  cmniDblCSearchCmd = 11;
+  cmniDblCSearchCmdLine = 12;
+  cmniDblCSearchEntry = 13;
+  cmniDblCSearchFriendly = 14;
+  cmniDblCSearchNotes = 15;
+  cmniDblCSearchKey = 16;
+  cmniDblCDetP = 17;
+  cmniDblCDetPProcs = 18;
+  cmniDblCDetPInfo = 19;
+  cmniDblCDisplay = 20;
+
+
 resourcestring
-  ccapGotoFindIn = 'Find in %s Notes...';
+  ccapGotoFindIn = 'Find in %s %s...';
+  ccapGotoNotesStr = 'Notes';
+  ccapGotoListStr = 'List';
+  ccapDblCProcessStr = 'Process';
   ccapGotoEditIn = 'Edit %s %s';
   ccapGotoEditInName = 'Name';
+  ccapDblCFriendlyName = 'Friendly';
   ccapGotoEditInEntry = 'Entry';
   ccapGotoEditInNotes = 'Notes';
   ccapGotoProcs = 'Detached Processes';
   ccapGotoFindConst = 'Find';
   ccapGotoReFindConst = 'Find again';
+  ccapGotoMainDisplay = 'Output area';
 
   cmsgProgramKeyWord = 'The Name "%s" at beginning of name is reserved for the program to use.';
   cmsgCommandNameDuplicate =
@@ -897,7 +977,10 @@ resourcestring
   ccapRunningDetachedProcesses = 'Running Processes!';
   cmsgRunningDetachedProcesses =
      'You have %d Running child processes (listed below). They '
-     + 'will be automatically halted. Do you still want to close?'
+     + 'will be automatically summarily halted. If they are in an '
+     + 'unsaved state you will lose the changes and/or the data.'
+     + LineEnding + LineEnding
+     + 'Do you still want to close?'
      + LineEnding + LineEnding
      + '%s'
      + LineEnding + LineEnding
@@ -1102,8 +1185,11 @@ begin
     exit;
   if UnSaved then
   begin
-    if MsgDlgMessage( ccapUnsavedData, cmsgUnsavedData, 'cmsgUnsavedData') then
-      CanClose := MsgDlgAttentionConfirm( self ) = mrYes;
+    //if MsgDlgMessage( ccapUnsavedData, cmsgUnsavedData, 'cmsgUnsavedData') then
+    //  if MsgDlgAttentionConfirm( self ) = mrNo then
+    //    exit;
+    MsgDlgMessage( ccapUnsavedData, cmsgUnsavedData);
+    CanClose := MsgDlgAttentionConfirm( self ) = mrYes;
   end
   else
   if lbDetachedProcesses.Items.Count > 0 then
@@ -1583,10 +1669,10 @@ begin
 
   Get_Cmd_Fields_Searchable( fSearchFields );
 
-  lblFriendlyNameLineDisp.Caption := '';//I use "..." as caption so I can see it in dev environment, clear that here
+  //lblFriendlyNameLineDisp.Caption := '';//I use "..." as caption so I can see it in dev environment, clear that here
 
   SetUp_Edit_Structure;
-  SetUp_GotoMenu_Structure;
+  SetUp_KeyBoardMenu_Structure;
 
   RegX := TRegExpr.Create;
 
@@ -1610,26 +1696,31 @@ var
   procedure ShowMainMenu;
   begin
     PosPt := GetPreciseControlCoords( lbCommands, 30, 30 );
-    pmMain.Popup( PosPt.x, PosPt.y );
+    popMain.Popup( PosPt.x, PosPt.y );
   end;
 begin
 
-  if ( ssCtrl in Shift ) and not ( ( ssAlt in Shift ) or ( ssShift in Shift ) ) then
+  if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
   begin
     case key of
- //The use of ctrl-VK_G is global, do not use anywhere else.
-    VK_G :
-      begin
-        PosPt := GetPreciseControlCoords( btnCmdEdit, 30, 30 );
-        popGoto.Popup( PosPt.x, PosPt.y );
-      end;
-    VK_M : ShowMainMenu;
-    VK_P :
-      if assigned( self.ActiveControl.PopupMenu ) then
-      begin
-        PosPt := GetPreciseControlCoords( self.ActiveControl, 30, 30 );
-        self.ActiveControl.PopupMenu.PopUp( PosPt.x, PosPt.y );
-      end else ShowMainMenu;
+ //The use of ctrl-alt-VK_G is global, do not use anywhere else.
+      VK_G :
+        begin
+          PosPt := GetPreciseControlCoords( lbCommands, 30, 30 );
+          popGoto.Popup( PosPt.x, PosPt.y );
+        end;
+      VK_K :
+        begin
+          PosPt := GetPreciseControlCoords( lbCommands, 30, 60 );
+          popDblC.PopUp( PosPt.x, PosPt.y );
+        end;
+      VK_M : ShowMainMenu;
+      VK_P :
+        if assigned( self.ActiveControl ) and assigned( self.ActiveControl.PopupMenu ) then
+        begin
+          PosPt := GetPreciseControlCoords( self.ActiveControl, 30, 30 );
+          self.ActiveControl.PopupMenu.PopUp( PosPt.x, PosPt.y );
+        end else ShowMainMenu;
     end;
   end;
 
@@ -1641,7 +1732,7 @@ begin
     if Shift = [ ssAlt ] then
     begin
       if nbCommands.ActivePage <> tsKeyWords then
-        nbCommands.ActivePage := tsKeyWords;
+        SetActivePage( tsKeyWords );
       case Key of
         VK_1, VK_NUMPAD1 : if actSearchKeyCmd.Enabled then actSearchKeyCmd.Execute;
         VK_2, VK_NUMPAD2 : if actSearchNewKeyCmd.Enabled then actSearchNewKeyCmd.Execute;
@@ -1651,7 +1742,7 @@ begin
     else if Shift = [ ssCtrl ] then
     begin
       if nbCommands.ActivePage <> tsSearch then
-        nbCommands.ActivePage := tsSearch;
+        SetActivePage( tsSearch );
       case Key of
         VK_1, VK_NUMPAD1 : if actSearchSearch.Enabled then actSearchSearch.Execute;
         VK_2, VK_NUMPAD2 : if actSearchNewSearch.Enabled then actSearchNewSearch.Execute;
@@ -1661,13 +1752,6 @@ begin
     exit;
   end;
 
-////too confusing, the shortcut or a good old mouseclick is better I think.
-//  if ( Shift = [ ssCtrl ] ) and ( Key = VK_S ) then
-//  begin
-//      if actSave.Enabled then
-//        actSave.Execute;
-//    exit;
-//  end;
 end;
 
 procedure TfrmMain.UpdateProfileText( const IsBad : boolean );
@@ -1676,8 +1760,6 @@ begin
                                [
                                  fProfileName,
                                  strif( fUseDB,  cDefaultDBProfileIsDBStr, cDefaultDBProfileIsDBStrNot ),
-                                 //ExtraMessage
-//                                 strif( BadDB, cmsgInvalidString )
                                  strif( IsBad, cmsgInvalidString )
                                ] );
 end;
@@ -1916,6 +1998,9 @@ begin
   RefreshCap;
 
   mniMainCommands.Caption := clblCmdPointer + 's';
+  mniDblCCmd.Caption := mniMainCommands.Caption + '...';
+  mniMainDisplay.Caption := ccapGotoMainDisplay;
+  mniDblCDisplay.Caption := mniMainDisplay.Caption;
 
   mniMainTabsCommands.Caption := trim( ccapTabCommands );
 //-----
@@ -1931,28 +2016,60 @@ begin
   mniMainCmdListSearch.Caption := mniMaintabsSearch.Caption;
   mniMainCmdLineSearch.Caption := mniMaintabsSearch.Caption;
 //-----
-  mniMainTabsProcs.Caption := ccapGotoProcs;;
+  mniMainTabsProcs.Caption := ccapGotoProcs;
 
   mniMainCommandLines.Caption := clblCmdlinePointer;
-  mniMainCmdNoteDisp.Caption := format( ccapGotoFindIn, [ ccapGotoCmdAbbrev ] );
-  mniMainCmdLineNoteDisp.Caption := format( ccapGotoFindIn, [ ccapGotoCmdlineAbbrev ] );
+  mniMainCmdNoteDisp.Caption := format( ccapGotoFindIn, [ ccapGotoCmdAbbrev, ccapGotoNotesStr ] );
+  mniMainCmdLineNoteDisp.Caption := format( ccapGotoFindIn, [ ccapGotoCmdlineAbbrev, ccapGotoNotesStr ] );
+
+  mniMainCmdList.Caption := format( cDoubleS, [ clblCmdPointer, ccapGotoListStr ] ) + Dots;
+  mniMainCmdLineList.Caption := format( cDoubleS, [ ccapGotoCmdlineAbbrev, ccapGotoListStr ] ) + Dots;
+
+
+  mniDblCCmdNotes.Caption := format( cDoubleS, [ ccapGotoCmdAbbrev, ccapGotoNotesStr ] );
+  mniDblCCmdLineNotes.Caption := format( cDoubleS, [ ccapGotoCmdlineAbbrev, ccapGotoNotesStr ] );
+  mniDblCCmdKey.Caption := trim( ccapTabKeyWords );
+  mniDblCCmdLines.Caption := clblCmdlinePointer;
+  mniDblCSearchCmd.Caption := format( cDoubleS, [ clblCmdPointer, ccapGotoListStr ] );
+  mniDblCSearchCmdLine.Caption := format( cDoubleS, [ clblCmdlinePointer, ccapGotoListStr ] );
+  mniDblCCmdLineFriendly.Caption := format( cDoubleS, [ ccapDblCFriendlyName, ccapGotoEditInName ] );
+  mniDblCSearchFriendly.Caption := mniDblCCmdLineFriendly.Caption;
+  mniDblCSearchNotes.Caption := ccapGotoEditInNotes;
+  mniDblCSearchKey.Caption := trim( ccapTabKeyWords );
+  mniDblCDetPProcs.Caption := format( cDoubleS, [ ccapDblCProcessStr, ccapGotoListStr ] );
+  mniDblCRoot.Caption := format( ccapPopMenuRootRoot, [ ccapDblCRootName, ccapPopMenuRootMenuStr ] );
+  mniMainRoot.Caption := format( ccapPopMenuRootRoot, [ ccapMainRootName, ccapPopMenuRootMenuStr ] );
+  pmiMainRoot.Caption := format( ccapPopMenuRootRoot, [ ccappmiMainRootName, ccapPopMenuRootMenuStr ] );
+  mniSearchCmdRoot.Caption := format( ccapPopMenuRootRoot, [ clblCmdPointer, ccapGotoListStr ] );
+  mniSearchCmdLineRoot.Caption := format( ccapPopMenuRootRoot, [ ccapGotoCmdlineAbbrev, ccapGotoListStr ] );
+  mniTabKeyWordsSearchRoot.Caption := format( ccapPopMenuRootRoot, [ trim( ccapTabKeyWords ), trim( ccapTabSearch ) ] );
+  mniTabSearchSearchRoot.Caption := format( ccapPopMenuRootRoot, [ trim( ccapTabSearch ), ccapPopMenuRootMenuStr ] );
+  mniCommansRoot.Caption := format( ccapPopMenuRootRoot, [ clblCmdPointer, ccapPopMenuRootMenuStr ] );
+  mniCmdLinesRoot.Caption := format( ccapPopMenuRootRoot, [ clblCmdlinePointer, ccapPopMenuRootMenuStr ] );
+
+
   mniMainFIndCmdFind.Caption := ccapGotoFindConst;
   mniMainFIndCmdReFind.Caption := ccapGotoReFindConst;
   mniMainFIndCmdLineFind.Caption := ccapGotoFindConst;
   mniMainFIndCmdLineReFind.Caption := ccapGotoReFindConst;
 
   mniMainCmdNameEdit.Caption := format( ccapGotoEditIn, [ ccapGotoCmdAbbrev, ccapGotoEditInName ] );
-  mniMainCmdNotes.Caption := format( '%s %s', [ ccapGotoCmdAbbrev, ccapGotoEditInNotes ] );
+  mniDblCCmdName.Caption := format( cDoubleS, [ ccapGotoCmdAbbrev, ccapGotoEditInName ] );
+  mniMainCmdNotes.Caption := format( cDoubleS, [ ccapGotoCmdAbbrev, ccapGotoEditInNotes ] );
   mniMainCmdLineEntry.Caption := format( ccapGotoEditIn, [ ccapGotoCmdlineAbbrev, ccapGotoEditInEntry ] );
-  mniMainCmdLineNotes.Caption := format( '%s %s', [ ccapGotoCmdlineAbbrev, ccapGotoEditInNotes ] );
+  mniDblCSearchEntry.Caption := ccapGotoEditInEntry;
+
+  mniMainCmdLineNotes.Caption := format( cDoubleS, [ ccapGotoCmdlineAbbrev, ccapGotoEditInNotes ] );
 
   mniMainProcs.Caption := ccapGotoProcs;
+  mniDblCDetP.Caption := mniMainProcs.Caption + '...';
 
 //were autocreated forms, but now manually created so translations can be updated.
   frmfindtext.UpdateCaptions;
 
 //so that it doesn't get hidden, I set this manually and permanently
   FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
+  btnPkexecMain.Hint := cPkexecHint;
 
   ResetCommandsToTop;
 
@@ -2125,20 +2242,8 @@ begin
 end;
 
 procedure TfrmMain.lbCmdLinesDblClick( Sender : TObject );
-var
-  LB : TListBox;
-  LBContents : String;
 begin
-  if not ( Sender is TListbox ) then
-    exit;
-  LB := TListBox( Sender );
-  if ( LB.Items.Count = 0 ) or ( LB.ItemIndex < 0 ) then
-    exit;
-  LBContents := trim( LB.Items[ LB.ItemIndex ] );
-  if LBContents = '' then
-    exit;
-  MsgDlgMessage( '', LBContents );
-  MsgDlgInfo( self );
+  btnLineEdit.Click;
 end;
 
 procedure TfrmMain.lbCmdLinesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -2233,8 +2338,8 @@ end;
 
 procedure TfrmMain.UpdateMainActions;
 begin
-  pmCommandsPopup( self );
-  pmCmdLinesPopup( self );
+  popCommandsPopup( self );
+  popCmdLinesPopup( self );
 end;
 
 procedure TfrmMain.LoadDBObjects;
@@ -2466,6 +2571,14 @@ begin
     FindItem( lbDetachedProcesses );
 end;
 
+procedure TfrmMain.lbDispKeywordsDblClick( Sender : TObject );
+begin
+  if not ( Sender is TListbox ) then
+    exit;
+  MsgDlgMessage( ccapOverflow, trim( TListbox( Sender ).Items.Text ) );
+  MsgDlgInfo( self );
+end;
+
 procedure TfrmMain.lbKeywordsDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   if ( shift = [ ssCtrl ] )
@@ -2523,7 +2636,7 @@ var
     lblDispCommandName.Caption := '';
     lblDispEntry.Caption := '';
 
-    actSearchRun.Enabled := false;
+    SetNotificationState( false, actSearchRun, shpSearchRun );
 
   end;
 
@@ -2627,8 +2740,7 @@ begin
 
     lblDispCommandName.Caption := CDO.CommandName;
     ApplyThreatLevel( pnlS, cbDispThreatLevel );
-    //actSearchRun.Enabled := CDO.IsCommandLine or ( lbSearchCmdline.Items.Count > 0 );
-    actSearchRun.Enabled := CDO.IsCommandLine;
+    SetNotificationState( CDO.IsCommandLine, actSearchRun, shpSearchRun );
 
   finally
     if assigned( CO ) then
@@ -2737,25 +2849,13 @@ end;
 procedure TfrmMain.lblCurrDBDblClick( Sender : TObject );
 begin
   btnSwitchDB.Click;
-  //MsgDlgMessage( ccapOverflow, lblCurrDb.Caption );
-  //MsgDlgInfo( self );
 end;
 
 procedure TfrmMain.lblDispEntryDblClick( Sender : TObject );
 begin
-  MsgDlgMessage( ccapOverflow, lblDispEntry.Caption );
-  MsgDlgInfo( self );
-end;
-
-procedure TfrmMain.lblDispFriendlyNameDblClick( Sender : TObject );
-begin
-  MsgDlgMessage( ccapOverflow, lblDispFriendlyName.Caption );
-  MsgDlgInfo( self );
-end;
-
-procedure TfrmMain.lblFriendlyNameLineDispDblClick( Sender : TObject );
-begin
-  MsgDlgMessage( ccapOverflow, lblFriendlyNameLineDisp.Caption );
+  if not ( Sender is TLabel ) then
+    exit;
+  MsgDlgMessage( ccapOverflow, trim( TLabel( Sender ).Caption ) );
   MsgDlgInfo( self );
 end;
 
@@ -2782,18 +2882,12 @@ begin
   MsgDlgInfo( self );
 end;
 
-procedure TfrmMain.lblThreatLevelDispDblClick( Sender : TObject );
-begin
-  MsgDlgMessage( ccapOverflow, lblThreatLevelDisp.Caption );
-  MsgDlgInfo( self );
-end;
-
 procedure TfrmMain.lbSearchCmdClick( Sender : TObject );
 begin
 
   ProcessCmdDisplayObj( lbSearchCmd );
   FillDisplayObj_Detail;//load its CL's
-  actSearchRun.Enabled := actSearchRun.Enabled or ( lbSearchCmdline.Items.Count > 0 );
+  SetNotificationState( actSearchRun.Enabled or ( lbSearchCmdline.Items.Count > 0 ), actSearchRun, shpSearchRun );
   lbSearchCmdLine_ApplyActions( 0 );
   lbSearchCmdLine_ApplyActions( 1 );
 
@@ -2839,7 +2933,7 @@ procedure TfrmMain.lbSearchCmdLineKeyDown( Sender : TObject; var Key : Word; Shi
 begin
   if ( Key = vk_return ) and ( lbSearchCmdLine.ItemIndex > -1 ) then
   begin
-    if btnSearchRun.Enabled then
+    if actSearchRun.Enabled then
       btnSearchRun.Click;
     exit;
   end;
@@ -2883,13 +2977,18 @@ begin
   UnassMemosKeyDown( memDispNotes, Key, Shift );
 end;
 
+procedure TfrmMain.memEntryDblClick( Sender : TObject );
+begin
+  btnBuilder.Click;
+end;
+
 procedure TfrmMain.EditmemEntry;
 var
   InPut, OutPut : string;
 begin
   Input := trim( memEntry.Lines.Text );
   OutPut := '';
-  if not EditCommandLine( format( ccapGenericEdit, [ cNameItem_CommandLine ] ), Input, Output ) then
+  if not EditCommandLine( format( cDoubleS, [ ccapGenericEdit, cNameItem_CommandLine ] ), Input, Output ) then
     exit;
   memEntry.Lines.Text := Output;
 end;
@@ -2990,15 +3089,10 @@ begin
 end;
 
 procedure TfrmMain.Memo1DblClick( Sender : TObject );
-var
-  TheText : string;
 begin
   if not ( Sender is TMemo ) then
     exit;
-  TheText := trim( TMemo( Sender ).Text );
-  if TheText = '' then
-    exit;
-  MsgDlgMessage( '', TheText );
+  MsgDlgMessage( '', trim( TMemo( Sender ).Text ) );
   MsgDlgInfo( Self );
 end;
 
@@ -3057,7 +3151,7 @@ begin
   ClipBoard.AsText := lbCommands.Items.Text;
 end;
 
-procedure TfrmMain.SetUp_GotoMenu_Structure;
+procedure TfrmMain.SetUp_KeyBoardMenu_Structure;
 begin
 
   mniMainCommands.tag := cmniMainCommands;
@@ -3096,21 +3190,85 @@ begin
   mniMainRun.tag := cmniMainRun;
   mniMainHint.tag := cmniMainHint;
 
+  mniDblCCmd.Tag := cmniDblCCmd;
+  mniDblCCmdName.Tag := cmniDblCCmdName;
+  mniDblCCmdPath.Tag := cmniDblCCmdPath;
+  mniDblCCmdNotes.Tag := cmniDblCCmdNotes;
+  mniDblCCmdKey.Tag := cmniDblCCmdKey;
+  mniDblCCmdLines.Tag := cmniDblCCmdLines;
+  mniDblCCmdLineFriendly.Tag := cmniDblCCmdLineFriendly;
+  mniDblCCmdLineNotes.Tag := cmniDblCCmdLineNotes;
+  mniDblCSearch.Tag := cmniDblCSearch;
+  mniDblCSearchCmd.Tag := cmniDblCSearchCmd;
+  mniDblCSearchCmdLine.Tag := cmniDblCSearchCmdLine;
+  mniDblCSearchEntry.Tag := cmniDblCSearchEntry;
+  mniDblCSearchFriendly.Tag := cmniDblCSearchFriendly;
+  mniDblCSearchNotes.Tag := cmniDblCSearchNotes;
+  mniDblCSearchKey.Tag := cmniDblCSearchKey;
+  mniDblCDetP.Tag := cmniDblCDetP;
+  mniDblCDetPProcs.Tag := cmniDblCDetPProcs;
+  mniDblCDetPInfo.Tag := cmniDblCDetPInfo;
+  mniDblCDisplay.Tag := cmniDblCDisplay;
 
+end;
+
+procedure TfrmMain.mniDblCCmdNameClick( Sender : TObject );
+begin
+  case TControl(Sender).Tag of
+    //cmniDblCCmd : ;
+    cmniDblCCmdName :
+      if EditingCmd then
+        lblCommandNameDblClick( lblCommandName )
+      else lblCommandNameDispDblClick( lblCommandNameDisp );
+    cmniDblCCmdPath :
+      if EditingCmd then
+        lblPathAliasDblClick( lblPathAlias )
+      else lblPathAliasDispDblClick( lblPathAliasDisp );
+    cmniDblCCmdNotes :
+      if EditingCmd then
+        Memo1DblClick( memNotes )
+      else Memo1DblClick( MemNotesDisp );
+    cmniDblCCmdKey :
+      if EditingCmd then
+        lbDispKeywordsDblClick( lbKeywords )
+      else lbDispKeywordsDblClick( lbKeywordsDisp );
+    cmniDblCCmdLines :
+      if EditingCL then
+        memEntryDblClick( memEntry )
+      else lbCmdLinesDblClick( lbCmdLines );
+    cmniDblCCmdLineFriendly :
+      if EditingCL then
+      begin
+        if edtFriendlyNameLine.CanFocus then
+          edtFriendlyNameLine.SetFocus;
+      end else lblDispEntryDblClick( lblFriendlyNameLineDisp );
+    cmniDblCCmdLineNotes :
+      if EditingCL then
+        Memo1DblClick( memNotesLine )
+      else Memo1DblClick( memNotesLineDisp );
+    //cmniDblCSearch : ;
+    cmniDblCSearchCmd : lbDispKeywordsDblClick( lbSearchCmd );
+    cmniDblCSearchCmdLine : lbDispKeywordsDblClick( lbSearchCmdLine );
+    cmniDblCSearchEntry : lblDispEntryDblClick( lblDispEntry );
+    cmniDblCSearchFriendly : lblDispEntryDblClick( lblDispFriendlyName );
+    cmniDblCSearchNotes : Memo1DblClick( memDispNotes );
+    cmniDblCSearchKey : lbDispKeywordsDblClick( lbDispKeyWords );
+    //cmniDblCDetP : ;
+    cmniDblCDetPProcs : lbDispKeywordsDblClick( lbDetachedProcesses );
+    cmniDblCDetPInfo : Memo1DblClick( memDetachedProcesses );
+    cmniDblCDisplay : Memo1DblClick( Memo1 );
+  end;
 end;
 
 procedure TfrmMain.mniMainCommandsClick( Sender : TObject );
 var
-  DoTab : boolean;
+  //DoTab : boolean;
   menuIdx, tabIdx : integer;
 
   procedure SetTab( aTab : TTabSheet );
   begin
     if nbCommands.ActivePage <> aTab then
-    begin
-      nbCommands.ActivePage := aTab;
-      DoTab := true;
-    end;
+      SetActivePage( aTab );
   end;
 
   procedure SetTheFocus( cont : TWinControl );
@@ -3121,7 +3279,7 @@ var
 
 begin
 
-  DoTab := false;
+  //DoTab := false;
   menuIdx := TControl(Sender).Tag;
 
   if menuIdx = 0 then
@@ -3149,9 +3307,9 @@ begin
         end;
       end;
   end;
-  //why do I need to do this here and not anywhere else???? puzzling....
-  if DoTab then
-    nbCommandsChange( nbCommands );
+////why do I need to do this here and not anywhere else???? puzzling....
+//  if DoTab then
+//    nbCommandsChange( nbCommands );
 
   case menuIdx of
     cmniMainCommands : SetTheFocus( lbCommands );//
@@ -3185,13 +3343,6 @@ begin
       SetTheFocus( lbSearchCmdLine );
     cmniMainProcs : SetTheFocus( lbDetachedProcesses );
     cmniMainRun : if actRun.Enabled then actRun.Execute;
-
-    ////cmniMainTabsCommands : ;
-    ////cmniMainTabsFav : ;
-    ////cmniMainTabsKeyWords : ;
-    ////cmniMaintabsSearch : ;
-    ////cmniMainTabsProcs : ;
-
   end;
 
 end;
@@ -3465,7 +3616,7 @@ begin
 
 end;
 
-procedure TfrmMain.pmCmdLinesPopup(Sender: TObject);
+procedure TfrmMain.popCmdLinesPopup(Sender: TObject);
 var
   aCmdLineObj: TCmdLIneObj;
   locDoShow, ValidSelection: boolean;
@@ -3491,9 +3642,9 @@ begin
 
   ValidSelection := ( lbCmdLines.Items.Count > 0 ) and ( lbCmdLines.ItemIndex > -1 );
 
-  actRun.Enabled := ValidSelection or pnlCmdLine.Visible;
+  SetNotificationState( ValidSelection or pnlCmdLine.Visible, actRun, shpRun_Test );
 
-  actCopyCmdLine.Enabled := ValidSelection and locDoShow;//actRun.Enabled;
+  actCopyCmdLine.Enabled := ValidSelection and locDoShow;
   actCopyClipCmdLine.Enabled := actCopyCmdLine.Enabled;
 
   actFindCmdLine.Enabled := ( lbCmdLines.Items.Count > 1 ) and locDoShow;
@@ -3529,7 +3680,7 @@ begin
 end;
 
 
-procedure TfrmMain.pmCommandsPopup(Sender: TObject);
+procedure TfrmMain.popCommandsPopup(Sender: TObject);
 var
   NoShow: boolean;
 begin
@@ -3574,6 +3725,32 @@ begin
   DuplicateCmd( ClipCO );
 end;
 
+procedure TfrmMain.popDblCPopup( Sender : TObject );
+begin
+  if nbCommands.ActivePage = tsCommands then
+  begin
+    mniDblCCmd.Visible := true;
+    mniDblCSearch.Visible := false;
+    mniDblCDetP.Visible := false;
+  end else if nbCommands.ActivePage = tsDetachedProcesses then
+  begin
+    mniDblCCmd.Visible := false;
+    mniDblCSearch.Visible := false;
+    mniDblCDetP.Visible := true;
+  end else
+  begin
+    mniDblCCmd.Visible := false;
+    mniDblCSearch.Visible := true;
+    mniDblCDetP.Visible := false;
+    if nbCommands.ActivePage = tsFavorites then
+      mniDblCSearch.Caption := trim( ccapTabFavorites ) + Dots
+    else if nbCommands.ActivePage = tsKeyWords then
+      mniDblCSearch.Caption := trim( ccapTabKeyWords ) + Dots
+    else mniDblCSearch.Caption := trim( ccapTabSearch ) + Dots;
+  end;
+
+end;
+
 procedure TfrmMain.popGotoPopup( Sender : TObject );
 var
   HasCommands, IsEditing, CmdEditing, CLEditing : boolean;
@@ -3586,15 +3763,8 @@ begin
   HasCommands := lbCommands.Items.Count > 0;
 
   mniMainCommands.Enabled := not IsEditing;
-  //mniMainDisplay.Enabled := ;
 
   mniMainTabs.Enabled := not IsEditing;
-  //mniMainTabsCommands.Enabled := ;
-  //mniMainTabsFav.Enabled := ;
-  //mniMainTabsKeyWords.Enabled := ;
-  //mniMaintabsSearch.Enabled := ;
-  //mniMainTabsProcs.Enabled := ;
-
   mniMainCommandLines.Enabled := not IsEditing and HasCommands;
   mniMainCmdNoteDisp.Enabled := HasCommands and
                                 ( ( not CmdEditing and ( trim( memNotesDisp.Text ) <> '' ) )
@@ -3609,21 +3779,19 @@ begin
   mniMainCmdLineNotes.Enabled := CLEditing;
 
   mniMainCmdList.enabled := not IsEditing;
-  //mniMainCmdListFav.Enabled := ;
-  //mniMainCmdListKey.Enabled := ;
-  //mniMainCmdListSearch.Enabled := ;
 
   mniMainCmdLineList.enabled := not IsEditing;
-  //mniMainCmdLineFav.Enabled := ;
-  //mniMainCmdLineKey.Enabled := ;
-  //mniMainCmdLineSearch.Enabled := ;
 
   mniMainProcs.Enabled := not IsEditing;
 
   mniMainRun.Enabled := actRun.Enabled;
-  //mniMainHint.Enabled := ;
-  //mniMainMainPopup.Enabled := ;
 
+end;
+
+procedure TfrmMain.popSearchCmdLinePopup( Sender : TObject );
+begin
+  mniSearchCmdLineListClip.Enabled := mniSearchRun.Enabled;
+  mniSearchCmdLineItemClip.Enabled := mniSearchCmdLineListClip.Enabled;
 end;
 
 procedure TfrmMain.TimerBlinkStartTimer( Sender : TObject );
@@ -3685,7 +3853,7 @@ begin
   edtVersion.Text := '';
   fLastlbCommandsIdx := -1;
   fLastlbCmdLinesIdx := -1;
-  actRun.Enabled := False;
+  SetNotificationState( False, actRun, shpRun_Test );
 
 end;
 
@@ -3737,7 +3905,7 @@ begin
   NilObjects( lbCmdLines.Items );
 
   fLastlbCmdLinesIdx := -1;
-  actRun.Enabled := False;
+  SetNotificationState( False, actRun, shpRun_Test );
 
 end;
 
@@ -3782,7 +3950,7 @@ begin
 
     cbIsFavoriteLine.Checked := IsFavorite;
 
-    edtFriendlyNameLine.Text := FriendlyName;
+    edtFriendlyNameLine.Text := strif( FriendlyName <> '', FriendlyName );
 
     FixedEntry := Entry;
     if pos( cReservedSuperUser, Entry ) = 1 then
@@ -3800,9 +3968,9 @@ begin
   if TheIdx > -1 then
     lbCommands.Items[lbCommands.ItemIndex] := CmdObj.GetDisplayString;
   if DoSave then
-    actSave.Enabled := True
+     SetNotificationState( True, actSave, shpSave )
   else UpdateSaveStatus;
-  pmCommandsPopup( self );
+  popCommandsPopup( self );
 end;
 
 procedure TfrmMain.UpdateNotebookEditingStatus;
@@ -3818,7 +3986,7 @@ end;
 procedure TfrmMain.UpdateLbCmdLines( const Idx : integer; SaveState : boolean = true );
 begin
 
-  actRun.Enabled := False;
+  SetNotificationState( False, actRun, shpRun_Test );
 
   if not Assigned(CmdObj) then
   begin
@@ -3838,8 +4006,9 @@ begin
   if lbCmdLines.ItemIndex > -1 then
   begin
     if SaveState then
-      actSave.Enabled := True;
-    actRun.Enabled := True;
+      SetNotificationState( True, actSave, shpSave );
+
+    SetNotificationState( True, actRun, shpRun_Test );
   end;
 
   UpdateLbCommands( False );
@@ -3861,7 +4030,9 @@ begin
     Entry := strif( cbSuperUserLine.Checked, cReservedSuperUser + memEntry.Lines.Text, memEntry.Lines.Text );
 
     edtFriendlyNameLine.Text := trim( edtFriendlyNameLine.Text );
-    FriendlyName := edtFriendlyNameLine.Text;
+    if edtFriendlyNameLine.Text <> '...' then
+      FriendlyName := edtFriendlyNameLine.Text;
+    //else FriendlName := '';
 
     Notes := memNotesLine.Lines.Text;//assigning text does not fire OnChange Event
     memNotesLineDisp.Lines.Text := memNotesLine.Lines.Text;
@@ -3945,7 +4116,7 @@ begin
 
     UpdateLbCmdLines( CLOIdx, False );
 
-    pmCmdLinesPopup( self );
+    popCmdLinesPopup( self );
 
   end;
 
@@ -4149,7 +4320,7 @@ begin
         SimpleSearchSO.UserTag := Ord( tcsNormal );
         LoadSearchResults( SimpleSearchSO, fSearchSR );
         if nbCommands.ActivePage <> tsSearch then
-          nbCommands.ActivePage := tsSearch;
+          SetActivePage( tsSearch );
       end;
     end;
     OtherChoice := UseAdancedSearch;
@@ -4169,7 +4340,7 @@ begin
     end;
 
     if nbCommands.ActivePage <> tsSearch then
-      nbCommands.ActivePage := tsSearch;
+      SetActivePage( tsSearch );
   end;
 
 
@@ -4244,7 +4415,7 @@ begin
             ShowSearch( fSearchSO, fSearchSR );
 
             if nbCommands.ActivePage <> tsSearch then
-              nbCommands.ActivePage := tsSearch;
+              SetActivePage( tsSearch );
 
           end;
         tcsKeyWordList :
@@ -4254,7 +4425,7 @@ begin
             ShowSearch_List( [ fidKeyWords ], fKeyWordSO, fKeyWordSR );
 
             if nbCommands.ActivePage <> tsKeyWords then
-              nbCommands.ActivePage := tsKeyWords;
+              SetActivePage( tsKeyWords );
           end;
       end;
 
@@ -4387,11 +4558,15 @@ begin
 
 end;
 
+procedure TfrmMain.btnPkexecMainClick( Sender : TObject );
+begin
+  memEntry.Text := TogglePkexec( memEntry.Text );
+end;
+
 procedure TfrmMain.btnRefreshFavoritesClick( Sender : TObject );
 begin
   LoadFavorites;
-  btnRefreshFavorites.enabled := false;
-//  pnlRefreshFavorites.Visible := false;
+  SetNotificationState( false, btnRefreshFavorites, shpRefreshFavorites );
 end;
 
 procedure TfrmMain.btnSortDetachedProcessesClick( Sender : TObject );
@@ -4540,7 +4715,7 @@ begin
         aList := fCommandButtons;
         IsEdit := false;
         FormToCmdObj(CmdObj);
-        actSave.Enabled := True;
+        SetNotificationState( True, actSave, shpSave );
       end;
     cCancelButtonCommandTag:
       begin
@@ -4566,7 +4741,7 @@ begin
         aList := fCommandLineButtons;
         IsEdit := false;
         FormToCmdLine(CmdLineObj);
-        actSave.Enabled := True;
+        SetNotificationState( True, actSave, shpSave );
       end;
     cCancelButtonLineTag:
       begin
@@ -4662,6 +4837,8 @@ begin
   for i := lbDetachedProcesses.Items.Count - 1 downto 0 do
   begin
     aProcess := TAsyncProcess( lbDetachedProcesses.Items.Objects[ i ] );
+    if not assigned( aProcess ) then
+      continue;
     if not aProcess.Running and not aProcess.Active then
       RemoveDetachedProcess( i, -1, aProcess );
   end;
@@ -4940,7 +5117,7 @@ begin
                        lblDispEntry.Caption,
                        lbCommands,
                        lbCmdLines ) then
-    nbCommands.ActivePage := tsCommands
+    SetActivePage( tsCommands )
   else result := false;
 
 end;
@@ -5192,6 +5369,10 @@ begin
   begin
     if IsSwitchMode then
     begin
+      MsgDlgMessage( ccapSwitchDBSave, cmsgSwitchDBSave0 );
+      if MsgDlgConfirmation( self ) = mrNo then
+        exit;
+
       MsgDlgMessage( ccapSwitchDBSave, cmsgSwitchDBSave );
       if MsgDlgConfirmation( self ) = mrYes then
         actSave.Execute;
@@ -5232,13 +5413,19 @@ begin
 
         SwitchDB( fProfileName, fUseDB );
 //SwitchDB( '//g//gll', true/false ); //bad file name testing
-        nbCommands.ActivePage := tsCommands;
+        SetActivePage( tsCommands );
       end;
 
     finally
       Free;
     end;
 
+end;
+
+procedure TfrmMain.SetActivePage( Page : TTabSheet );
+begin
+  nbCommands.ActivePage := Page;
+  nbCommandsChange( nbCommands );
 end;
 
 procedure TfrmMain.SelectProfile;
@@ -5285,7 +5472,7 @@ var
 begin
   Input := memEntry.Text;
   OutPut := '';
-  if not EditCommandLine( format( ccapGenericEdit, [ cNameItem_CommandLine ] ), Input, Output, false ) then
+  if not EditCommandLine( format( cDoubleS, [ ccapGenericEdit, cNameItem_CommandLine ] ), Input, Output, false ) then
     exit;
   memEntry.Text := Output;
 end;
@@ -5405,7 +5592,7 @@ begin
 
     if not fManRefreshFavorites then
       btnRefreshFavorites.Click
-    else btnRefreshFavorites.Enabled := true;
+    else SetNotificationState( true, btnRefreshFavorites, shpRefreshFavorites );
 
     UpdateDisplay( format( cmsgCommandsSaved, [ TimeToStr( now ) ] ), false );
 
@@ -5413,7 +5600,7 @@ begin
 
   finally
     Screen.Cursor := crDefault;
-    actSave.Enabled := False;
+    SetNotificationState( False, actSave, shpSave );
   end;
 
 end;
@@ -5862,7 +6049,7 @@ end;
 
 procedure TfrmMain.edtFriendlyNameLineChange( Sender : TObject );
 begin
-  lblFriendlyNameLineDisp.Caption := StrIf( edtFriendlyNameLine.Text <> '', DoubleQuotedString( edtFriendlyNameLine.Text ) );
+  lblFriendlyNameLineDisp.Caption := StrIf( edtFriendlyNameLine.Text <> '', DoubleQuotedString( edtFriendlyNameLine.Text ), '...' );
 end;
 
 procedure TfrmMain.edtHelpChange( Sender : TObject );
@@ -5899,7 +6086,7 @@ begin
     else Input := trim( lblPathActual.Caption + lblCommandName.Caption ) + ' ';
 
     OutPut := '';
-    if not EditCommandLine( format( ccapGenericAdd, [ cNameItem_CommandLine ] ), Input, Output ) then
+    if not EditCommandLine( format( cDoubleS, [ ccapGenericAdd, cNameItem_CommandLine ] ), Input, Output ) then
       exit;
 
     BlankCmdLine;
@@ -5992,6 +6179,20 @@ begin
   end;
 end;
 
+procedure TfrmMain.SetNotificationState( const TurnOn : boolean; Obj : TComponent; Shp : TShape );
+begin
+  if ( Obj is TAction ) then
+    TAction( Obj ).Enabled := TurnOn
+  else if ( Obj is TBitBtn ) then
+    TBitBtn( Obj ).Enabled := TurnOn
+    else raise exception.Create( 'Developer: bad object in TfrmMain.SetNotificationState' );
+
+  if TurnOn then
+    Shp.Brush.Color := $000000A0
+  else Shp.Brush.Color := $A07300; // #0073A0
+
+end;
+
 procedure TfrmMain.UpdateSaveStatus;
 var
   i: integer;
@@ -6013,7 +6214,7 @@ begin
     end;
   end;
 
-  actSave.Enabled := NeedSave;
+  SetNotificationState( NeedSave, actSave, shpSave );
 
 end;
 
@@ -6295,7 +6496,7 @@ begin
   fLastlbCommandsIdx := -1;
   lbCommands.ItemIndex := 0;
   lbCommandsClick( Self );
-  pmCmdLinesPopup( Self );
+  popCmdLinesPopup( Self );
 
 end;
 

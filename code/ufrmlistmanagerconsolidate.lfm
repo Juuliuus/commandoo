@@ -28,6 +28,7 @@ object frmListManagerConsolidate: TfrmListManagerConsolidate
     ClientHeight = 31
     ClientWidth = 306
     ParentColor = True
+    TabOrder = 3
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
@@ -49,7 +50,7 @@ object frmListManagerConsolidate: TfrmListManagerConsolidate
     Kind = bkOK
     OnClick = bntOKClick
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
   end
   object btnCancel: TBitBtn
     Left = 486
@@ -64,7 +65,7 @@ object frmListManagerConsolidate: TfrmListManagerConsolidate
     Kind = bkCancel
     OnClick = btnCancelClick
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
   end
   object lblInfo: TLabel
     Left = 33
@@ -110,6 +111,6 @@ object frmListManagerConsolidate: TfrmListManagerConsolidate
     ItemHeight = 0
     ParentFont = False
     Style = csDropDownList
-    TabOrder = 1
+    TabOrder = 0
   end
 end

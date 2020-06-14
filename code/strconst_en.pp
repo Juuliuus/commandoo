@@ -43,7 +43,7 @@ resourceString
   ccapTabCommands = '  Commands  ';//'Cmd''s';
   ccapTabFavorites = '  Favorites  ';//'Favs';
   ccapTabKeyWords = '  KeyWords  ';//'KeyW';
-  ccapTabSearch = '  Search  ';//'Search';
+  ccapTabSearch = '  Searches  ';//'Search';
   ccapTabProcesses = '==>  Detached Processes:  ';//'Proc''s';
 
   cstrCmdDisplayObjects = '>>         ↑ Commands   ---   ↓ Command Lines';
@@ -483,7 +483,7 @@ resourceString
   ccapPathCaption = 'Path to: "%s"';
   cmsgNotSpecified = '-???-';
   cmsgInvalidString = '< Invalid >';
-  cmsgProfileString = 'Current DB:   %s%s %s';
+  cmsgProfileString = 'Current Database:   %s%s %s';
 
 
   cmsgProcessSingular = 'Proc';
@@ -498,7 +498,8 @@ resourceString
                          + 'while editing. Apply your editing changes, or cancel them.';
 
   ccapSwitchDBSave = 'Unsaved Data';
-  cmsgSwitchDBSave = 'There is currently unsaved data. Do you want me to save it before switching the Database?';
+  cmsgSwitchDBSave = 'Do you want me to save the unsaved data for you before switching the Database?';
+  cmsgSwitchDBSave0 = 'There is currently unsaved data. Do you still want to switch to another Database?';
   cmsgManageDBSave = 'You have unsaved edited items. You need to save your changes before entering management mode.';
 
   cmsgLimitInfinity = LineEnding + LineEnding
@@ -879,7 +880,7 @@ resourceString
    ccapRevert = 'Revert to DB data';
    cmsgRevert = 'This will revert all changes back to orginal values. Do you still want to Revert??';
    ccapUnsavedData = 'Unsaved Data!';
-   cmsgUnsavedData = 'Either Editing or Unsaved Data, Do you still want to close??';
+   cmsgUnsavedData = 'Editing and/or Unsaved Data. Are you sure you want to close??';
    cmsgFailedSave = 'Failure during save: %s';
    cmsgSQLiteLibNotFound = 'sqlite system library "%s" not found';
    ccapNothingLoaded = 'Nothing Loaded';
@@ -966,6 +967,43 @@ resourceString
      + LineEnding + LineEnding
      + 'You changed the base folder path, commandoo needs to be restarted before the changes can take effect. '
      + 'If you have other copies open best to close them all.';
+
+   cPkexecHint =
+     '"pkexec" is linux program that lets one invoke '
+     + LineEnding
+     + 'a command as another user, often used as '
+     + LineEnding
+     + 'ROOT with elevated privileges, in a secure '
+     + LineEnding
+     + 'way through a GUI.'
+     + LineEnding + LineEnding
+     + 'This is very useful to run brief superuser '
+     + LineEnding
+     + 'commands like "mount" for instance. '
+     + LineEnding + LineEnding
+     + 'Whether it will actually run the program '
+     + LineEnding
+     + 'depends on the setup of your "PolicyKit". '
+     + LineEnding + LineEnding
+     + 'As always with ROOT privileges: be careful '
+     + LineEnding
+     + 'and use it sparingly and briefly. There are '
+     + LineEnding
+     + 'very few good reasons to run something as ROOT.'
+     + LineEnding + LineEnding
+     + '<end>'
+     + LineEnding
+     ;
+
+//popup menus
+   ccapPopMenuRootRoot = '              === %s %s ===';
+   ccapPopMenuRootMenuStr = 'Menu';
+   ccapDblCRootName = 'Dbl-Click';
+   ccapMainRootName = 'GoTo';
+   ccappmiMainRootName = 'Main';
+   //mniCmdRoot.Caption := format( ccapPopMenuRootRoot, [ cfseMenuRoot, ccapPopMenuRootMenuStr ] );
+   //format( ccapPopMenuRootRoot, [ cfseMenuRoot, ccapPopMenuRootMenuStr ] );
+
 
 implementation
 

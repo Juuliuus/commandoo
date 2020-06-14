@@ -27,56 +27,6 @@ interface
 uses
   Classes, SysUtils;
 
-resourcestring
-  cmsgNoCommandSelected = 'No item is selected.';
-  ccapGenericEdit = 'Edit %s';
-  ccapGenericAdd = 'Add %s';
-  ccapGenericDelete = 'Delete %s';
-  ccapGenericImport = 'Import %s';
-  cmsgGenericDelete = 'Are you sure you want to delete the selected items?';
-  ccapGenericChoose = 'Choose %s';
-  ccapGenericFile = 'File';
-  ccapGenericFolder = 'Folder';
-  ccapGenericProfile = 'Profile';
-
-//Re-Used button captions to keep the translating less miserable
-//I've decided to use numbers/letters for shortcuts as they are language independant
-  cObjlblRun = '&R  Run';
-  cObjlblGo = '&G  Go';
-  cObjlblRunTest = '&R  Test';
-  cbtn_Copy = 'Copy';
-  cbtn_Done = '&O  Done';
-  cbtn_Add = 'Add';
-  cbtn_Edit = 'Edit';
-  cbtn_Delete = 'Delete';
-  crg_MatchType = 'Match Type';
-  crg_Value = 'Value';
-  ccapFindTextHint = 'Begin typing...';
-
-
-const  //button captions too BUT should NOT be translated.
-  cbtn_SearchNOT = '± NOT';
-  ccbHintsEnglishOverride = '&H  Show hints on mouse-over';
-  cCommandInPathStr = '$PATH';
-  cLinuxBuiltInStr = '$BUILTIN';
-
-
-type
-  //raise EErrorDatabaseProblem.Create( 'EXCEPTION STRESS TEST' );
-  EErrorSELF_RAISE = class(Exception);
-  EErrorUnknown = class(Exception);
-  EErrorCmdObj = class(Exception);
-  EErrorCOField = class(Exception);
-  EErrorListObj = class(Exception);
-  EErrorDevelopment = class( Exception );//"should" be caught in development
-  EErrorBadHandEdit = class( Exception );//things where hand editing cause problems and/or development
-  EErrorDatabaseProblem = class( Exception );//file structure, sql statements
-  EErrorSystem = class( Exception );//problems with calls to system
-  EErrorSettings = class( Exception );//problems user settings
-  EErrorDisallowed = class( Exception );//things that are not allowed
-
-procedure EErrorRaise( e : exception; const cEError : integer; const Msg : string );
-
 const
   cEErrorDO_NOT_RAISE    = 0;
 
@@ -94,6 +44,69 @@ const
   cNameItem_CommandLine = 'Command Line';
   cNameItem_CommandPlur = 'Commands';
   cNameItem_CommandLinePlur = 'Command Lines';
+//button captions, yes, BUT should NOT be translated.
+  cbtn_SearchNOT = '± NOT';
+  ccbHintsEnglishOverride = '&H  Show hints on mouse-over';
+  cCommandInPathStr = '$PATH';
+  cLinuxBuiltInStr = '$BUILTIN';
+  Dots = '...';
+  cDoubleS = '%s %s';
+  ccapGenericUnderlinedOK = '&OK';
+  ccapGenericOK = 'OK';
+
+resourcestring
+  cmsgNoCommandSelected = 'No item is selected.';
+  //ccapGenericEdit = 'Edit %s';
+  //ccapGenericAdd = 'Add %s';
+  //ccapGenericDelete = 'Delete %s';
+  //ccapGenericImport = 'Import %s';
+  cmsgGenericDelete = 'Are you sure you want to delete the selected items?';
+  ccapGenericChoose = 'Choose %s';
+  ccapGenericFile = 'File';
+  ccapGenericFolder = 'Folder';
+  ccapGenericProfile = 'Profile';
+
+  ccapGenericImport = 'Import';
+  ccapGenericSelect = 'Select';
+  ccapGenericAdd = 'Add';
+  ccapGenericNew = 'New';
+  ccapGenericEdit = 'Edit';
+  ccapGenericCopy = 'Copy';
+  ccapGenericDelete = 'Delete';
+  ccapGenericClose = 'Close';
+  ccapGenericCancel = 'Cancel';
+//Convert
+//Compare To
+//Merge To
+
+
+//Re-Used button captions to keep the translating less miserable
+//I've decided to use numbers/letters for shortcuts as they are language independant
+  cObjlblRun = '&R  Run';
+  cObjlblGo = '&G  Go';
+  cObjlblRunTest = '&R  Test';
+  cbtn_Copy = 'Copy';
+  cbtn_Done = '&O  Done';
+  crg_MatchType = 'Match Type';
+  crg_Value = 'Value';
+  ccapFindTextHint = 'Begin typing...';
+
+type
+  //raise EErrorDatabaseProblem.Create( 'EXCEPTION STRESS TEST' );
+  EErrorSELF_RAISE = class(Exception);
+  EErrorUnknown = class(Exception);
+  EErrorCmdObj = class(Exception);
+  EErrorCOField = class(Exception);
+  EErrorListObj = class(Exception);
+  EErrorDevelopment = class( Exception );//"should" be caught in development
+  EErrorBadHandEdit = class( Exception );//things where hand editing cause problems and/or development
+  EErrorDatabaseProblem = class( Exception );//file structure, sql statements
+  EErrorSystem = class( Exception );//problems with calls to system
+  EErrorSettings = class( Exception );//problems user settings
+  EErrorDisallowed = class( Exception );//things that are not allowed
+
+procedure EErrorRaise( e : exception; const cEError : integer; const Msg : string );
+
 
 
 var

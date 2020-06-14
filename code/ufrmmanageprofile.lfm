@@ -1,7 +1,7 @@
 object frmManageProfile: TfrmManageProfile
-  Left = 1952
+  Left = 1951
   Height = 420
-  Top = 723
+  Top = 597
   Width = 420
   ActiveControl = edtProfileName
   Caption = 'Add Profile'
@@ -28,7 +28,7 @@ object frmManageProfile: TfrmManageProfile
     ClientHeight = 32
     ClientWidth = 309
     ParentColor = True
-    TabOrder = 5
+    TabOrder = 8
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
@@ -61,7 +61,8 @@ object frmManageProfile: TfrmManageProfile
     )
     ParentFont = False
     ParentColor = False
-    TabOrder = 2
+    TabOrder = 7
+    TabStop = True
   end
   object Label1: TLabel
     Left = 23
@@ -99,7 +100,7 @@ object frmManageProfile: TfrmManageProfile
     GlyphShowMode = gsmNever
     OnClick = btnCancelClick
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 6
   end
   object bntOK: TBitBtn
     Left = 281
@@ -112,7 +113,7 @@ object frmManageProfile: TfrmManageProfile
     Font.Height = -16
     OnClick = bntOKClick
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 5
   end
   object edtProfileName: TEdit
     Left = 38
@@ -144,7 +145,7 @@ object frmManageProfile: TfrmManageProfile
     ParentColor = True
     ParentFont = False
     ReadOnly = True
-    TabOrder = 1
+    TabOrder = 2
   end
   object btnChangeName: TBitBtn
     Left = 38
@@ -157,7 +158,7 @@ object frmManageProfile: TfrmManageProfile
     Font.Height = -16
     OnClick = btnChangeNameClick
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 1
     Visible = False
   end
   object btnDefaultPath: TBitBtn
@@ -171,7 +172,7 @@ object frmManageProfile: TfrmManageProfile
     Font.Height = -16
     OnClick = btnDefaultPathClick
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 4
   end
   object btnChangePath: TBitBtn
     Left = 37
@@ -184,6 +185,6 @@ object frmManageProfile: TfrmManageProfile
     Font.Height = -16
     OnClick = btnChangePathClick
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 3
   end
 end

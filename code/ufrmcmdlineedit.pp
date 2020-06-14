@@ -39,6 +39,7 @@ type
     btnCancel : TBitBtn;
     bntOK : TBitBtn;
     btnDefaultHelp : TBitBtn;
+    btnPkexec : TBitBtn;
     btnRefresh : TBitBtn;
     btnVarDecimal : TBitBtn;
     btnVarFilename : TBitBtn;
@@ -55,6 +56,7 @@ type
     procedure btnCancelClick(Sender : TObject);
     procedure btnDefaultHelpClick(Sender : TObject);
     procedure btnPathClick( Sender : TObject );
+    procedure btnPkexecClick( Sender : TObject );
     procedure btnRefreshClick(Sender : TObject);
     procedure btnVarStringClick( Sender : TObject );
     procedure cbWrapTextChange( Sender : TObject );
@@ -104,6 +106,7 @@ uses ufrmMsgDlg
      , ufrmFindText
      , juusgen
      , strconst_en
+     , strconst_prog
      , unitglob
      ;
 
@@ -339,6 +342,17 @@ begin
 
 end;
 
+procedure TfrmCmdLineEdit.btnPkexecClick( Sender : TObject );
+//var
+//  Idx : integer;
+begin
+  memCmdLine.Text := TogglePkexec( memCmdLine.Text );
+  //Idx := pos( cprogPkexecStr + ' ', memCmdLine.Text );
+  //if Idx = 0 then
+  //  memCmdLine.Text := cprogPkexecStr + ' ' + memCmdLine.Text
+  //else memCmdLine.Text := copy( memCmdLine.Text, length( cprogPkexecStr ) + 2, maxint );
+end;
+
 procedure TfrmCmdLineEdit.btnRefreshClick(Sender : TObject);
 begin
   btnDefaultHelp.Enabled := true;
@@ -386,6 +400,7 @@ begin
     memCmdLine.SetFocus;
     ShowInitialHelp;
     FIsInitialized := true;
+    btnPkexec.Hint := cPkexecHint;
   end;
 
 end;

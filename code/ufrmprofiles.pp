@@ -89,21 +89,26 @@ type
     lbList : TListBox;
     lblDefaultDisplay : TLabel;
     MenuItem1 : TMenuItem;
+    mniSRoot : TMenuItem;
+    MenuItem5 : TMenuItem;
+    mniMRoot : TMenuItem;
     MenuItem3 : TMenuItem;
-    mniImport : TMenuItem;
-    mniCompare : TMenuItem;
-    mniConvert : TMenuItem;
-    mniMergeTo : TMenuItem;
-    mniCancelS : TMenuItem;
-    mniSelect : TMenuItem;
-    mniConsolidate : TMenuItem;
-    mniAdd : TMenuItem;
-    mniEdit : TMenuItem;
-    mniDelete : TMenuItem;
-    mniOK : TMenuItem;
+    MenuItem4 : TMenuItem;
+    mniMImport : TMenuItem;
+    mniMCompare : TMenuItem;
+    mniMConvert : TMenuItem;
+    mniMMergeTo : TMenuItem;
+    mniSCancel : TMenuItem;
+    mniSSelect : TMenuItem;
+    mniMCopy : TMenuItem;
+    mniMAdd : TMenuItem;
+    mniMEdit : TMenuItem;
+    mniMDelete : TMenuItem;
+    mniMOK : TMenuItem;
     OpenDialog : TOpenDialog;
     popM : TPopupMenu;
     popS : TPopupMenu;
+    PopupMenu1 : TPopupMenu;
     rgImport : TRadioGroup;
     procedure actAddExecute(Sender : TObject);
     procedure actCancelExecute(Sender : TObject);
@@ -121,6 +126,7 @@ type
     procedure FormCloseQuery(Sender : TObject; var CanClose : boolean);
     procedure FormCreate(Sender : TObject);
     procedure FormDestroy( Sender : TObject );
+    procedure FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure FormShow(Sender : TObject);
     procedure lblDefaultDisplayDblClick( Sender : TObject );
     procedure lbListClick( Sender : TObject );
@@ -234,6 +240,12 @@ uses ufrmMsgDlg
   ;
 
 resourcestring
+  ccapProfConvert = 'Convert';
+  ccapProfCompare = 'Compare To';
+  ccapProfMerge = 'Merge To';
+  ccapProfManage = 'Manage';
+
+  cmsgProNotEditable = 'The "DB" databases are not editable.';
   cmsgProfilesInformation =
     'Just so you know.'
     + LineEnding + LineEnding
@@ -275,8 +287,8 @@ resourcestring
   cmsgProInvalidFolder = 'Folder "%s" does not exist. Probably the drive is not mounted?';
   ccapProSelectDB = 'Select Database Profile';
   ccapProManageDB = 'Manage Database Profiles';
-  ccapVariSelect = '&A  Select Profile:  "%s"';
-  ccapStandardSelect = '&A  Select';
+  ccapVariSelect = 'Select Profile:  "%s"';
+  //ccapStandardSelect = '&A  Select';
   cmsgProfSwitchedOff = ' ( Switched off in Options )';
 
   cmsgProImportNoType = 'You need to indicate in the radiobox above whether you are importing a text-based DB or a sql DB.';
@@ -570,7 +582,7 @@ begin
   begin
     btnOK.Visible := false;
     lblDefaultDisplay.Caption := format( cmsgDefaultDisplaySelect, [ frmMain.btnProfileManagement.Caption ] );
-    lblDefaultDisplay.Top := gbManageList.top + gbManageList.Height + 3;
+    //lblDefaultDisplay.Top := gbManageList.top + gbManageList.Height + 3;
 //    lblDefaultDisplay.Visible := false;
     gbManageList.enabled := false;
 //    gbManageList.Visible := false;
@@ -578,6 +590,8 @@ begin
     btnSelect.Visible := true;
     btnCancel.Visible := true;
     Caption := ccapProSelectDB;
+    if lbList.Items.Count > 0 then
+      lbList.ItemIndex := 0;
     lbList.PopupMenu := PopS;
     PopupMenu := PopS;
     FilterList;
@@ -586,6 +600,11 @@ begin
   begin
     lblDefaultDisplay.Caption := format( cmsgDefaultDisplay, [ ProgDefaultPath ] );
     Caption := ccapProManageDB;
+    if lbList.Items.Count > 0 then
+    begin
+      lbList.ItemIndex := 0;
+      popMPopup( Self );
+    end;
   end;
 
 end;
@@ -608,7 +627,27 @@ begin
   SetupMode;
   actAdd.Enabled := true;
 
+  rgImport.Items.Add( '&S  ' + cmsgProDBsqlStr );
+  rgImport.Items.Add( '&T  ' + cmsgProDBTextStr );
 
+  rgImport.Hint := btnImport.Hint;
+
+  SetCapMenuButton( mniSSelect, btnSelect, ccapGenericSelect, '&S' );
+  SetCapMenuButton( mniSCancel, btnCancel, ccapGenericCancel, '' );
+
+  SetCapMenuButton( mniMAdd, btnAdd, ccapGenericAdd, '&A' );
+  SetCapMenuButton( mniMEdit, btnEdit, ccapGenericEdit, '&B' );
+  SetCapMenuButton( mniMCopy, btnCopy, ccapGenericCopy, '&C' );
+  SetCapMenuButton( mniMDelete, btnDelete, ccapGenericDelete, '&D' );
+  SetCapMenuButton( mniMImport, btnImport, ccapGenericImport, '&I' );
+  SetCapMenuButton( mniMConvert, btnConvert, ccapProfConvert, '&X' );
+  SetCapMenuButton( mniMCompare, btnCompare, ccapProfCompare + Dots, '&Y' );
+  SetCapMenuButton( mniMMergeTo, btnMergeTo, ccapProfMerge + Dots, '&Z' );
+  //SetCap( mniMOk, btnOk, ccapGenericClose, '' );
+  mniMOk.Caption := ccapGenericClose;
+
+  mniMRoot.Caption := format( ccapPopMenuRootRoot, [ format( cDoubleS, [ ccapProfManage, ccapGenericProfile ] ), ccapPopMenuRootMenuStr ] );
+  mniSRoot.Caption := format( ccapPopMenuRootRoot, [ format( cDoubleS, [ ccapGenericSelect, ccapGenericProfile ] ), ccapPopMenuRootMenuStr ] );
 
   FHasShown := true;
 
@@ -658,14 +697,23 @@ end;
 
 procedure TfrmProfiles.lbListDblClick(Sender : TObject);
 begin
+  if lbList.Items.Count = 0 then
+    exit;
   if IsSelectMode then
   begin
     if btnSelect.Enabled then
       btnSelect.Click;
     exit;
   end;
+
   if actEdit.Enabled then
-    actEdit.Execute;
+    actEdit.Execute
+  else
+  begin
+    MsgDlgMessage( '', cmsgProNotEditable );
+    MsgDlgInfo( self );
+  end;
+
 end;
 
 procedure TfrmProfiles.lbListKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -685,14 +733,15 @@ begin
   actDelete.Enabled := actEdit.Enabled;
 
   actCopy.Enabled := ( lbList.ItemIndex > -1 ) and ( lbList.ItemIndex <> fHeaderCount - 1 );
+
   actSelect.Enabled := actCopy.Enabled;
   if lbList.ItemIndex > -1 then
-    actSelect.Caption := format( ccapVariSelect, [ ExtractProfileName( lbList.Items[ lbList.ItemIndex ] ) ] );
-  btnSelect.Caption := ccapStandardSelect;
+    mniSSelect.Caption := format( ccapVariSelect, [ ExtractProfileName( lbList.Items[ lbList.ItemIndex ] ) ] )
+  else mniSSelect.Caption := ccapGenericSelect;
 
   actConvert.Enabled := actCopy.Enabled;
-  actMergeTo.Enabled := actCopy.Enabled;
-  actCompare.Enabled := actCopy.Enabled;
+  actMergeTo.Enabled := actCopy.Enabled and ( lbList.Items.Count > 1 );
+  actCompare.Enabled := actMergeTo.Enabled;
 
 end;
 
@@ -766,7 +815,9 @@ end;
 
 procedure TfrmProfiles.actCompareExecute( Sender : TObject );
 var
-  FromPO, ToPO: TProfileObj; //FromPO just pointer, no free
+  //FromPO just pointer, no free
+  FromPO : TProfileObj;
+  ToPO : TProfileObj;
   FromIS, DestIS : TInfoServer;
   SL : TStringList;
   FromDBSpec , ToDBSpec: String;
@@ -2480,7 +2531,7 @@ var
   AddStr : String;
 begin
 
-  if not NameAccepted( format( ccapGenericAdd, [ ccapGenericProfile ] ), Str ) then
+  if not NameAccepted( format( cDoubleS, [ ccapGenericAdd, ccapGenericProfile ] ), Str ) then
     exit;
 
   with TfrmManageProfile.Create( self ) do
@@ -2575,21 +2626,12 @@ begin
   fTrueCaseSensitive.CaseSensitive := true;
   fIsSelectMode := false;
 
-  actAdd.Caption := '&A  ' + cbtn_Add;
-  actEdit.Caption := '&B  ' + cbtn_Edit;
-  actCopy.Caption := '&C  ' + cbtn_Copy;
-  actDelete.Caption := '&D  ' + cbtn_Delete;
 
   f_DB_Profile := TProfileObj.Create;
   FillProf( f_DB_Profile, true );
 
   f_Text_Profile := TProfileObj.Create;
   FillProf( f_Text_Profile, false );
-
-  rgImport.Items.Add( '&S  ' + cmsgProDBsqlStr );
-  rgImport.Items.Add( '&T  ' + cmsgProDBTextStr );
-
-  rgImport.Hint := btnImport.Hint;
 
 end;
 
@@ -2610,6 +2652,25 @@ begin
   if assigned( f_Text_Profile ) then
     FreeAndNil( f_Text_Profile );
 
+end;
+
+procedure TfrmProfiles.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+var
+  PosPt : TPoint;
+begin
+  if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
+  begin
+    case key of
+      VK_K : if not IsSelectMode then lbListDblClick( lbList );
+      VK_P :
+        begin
+          PosPt := GetPreciseControlCoords( lbList, 200, 30 );
+          if IsSelectMode then
+            PopS.Popup( PosPt.x, PosPt.y )
+          else PopM.PopUp( PosPt.x, PosPt.y );
+        end;
+    end;
+  end;
 end;
 
 end.

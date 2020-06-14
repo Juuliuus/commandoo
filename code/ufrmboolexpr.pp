@@ -72,6 +72,11 @@ type
     MenuItem1 : TMenuItem;
     MenuItem2 : TMenuItem;
     MenuItem3 : TMenuItem;
+    MenuItem4 : TMenuItem;
+    mnibeCmdCompact : TMenuItem;
+    mnibeCmdCopy : TMenuItem;
+    MenuItem6 : TMenuItem;
+    mnifseCmdRoot : TMenuItem;
     mniCmdSelectLeft : TMenuItem;
     mniCmdSelectRight : TMenuItem;
     mniCmd_Paren_L_Move : TMenuItem;
@@ -106,6 +111,7 @@ type
     procedure FormCreate(Sender : TObject);
     procedure FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure FormShow(Sender : TObject);
+    procedure mnibeCmdCompactClick( Sender : TObject );
     procedure TmrStartTimer( Sender : TObject );
     procedure TmrStopTimer( Sender : TObject );
     procedure TmrTimer( Sender : TObject );
@@ -197,6 +203,7 @@ var
 resourcestring
   cfseUseCmd_Caption = 'Use COMMAND search';
   cfseUseCmdLine_Caption = 'Use COMMAND LINE search';
+  cfseMenuRoot = 'Boolean builder';
 
 implementation
 
@@ -206,6 +213,7 @@ uses ufrmSearch
      , juusgen
      , unitGlob
      , ufrmMsgDlg
+     , strconst_en
      ;
 
 {.$DEFINE Numbered_SI_Items}
@@ -324,6 +332,11 @@ begin
     FHasShown := true;
   end;
 
+end;
+
+procedure TfrmBoolExpr.mnibeCmdCompactClick( Sender : TObject );
+begin
+  cbCmdCompactView.Checked := not cbCmdCompactView.Checked;
 end;
 
 procedure TfrmBoolExpr.TmrStartTimer( Sender : TObject );
@@ -1748,10 +1761,14 @@ begin
 
   btnCmdCopy.Caption := cbtn_Copy;
   btnCmd_NOT_Toggle.Caption := cbtn_SearchNOT;
-
+  mnifseCmdRoot.Caption := format( ccapPopMenuRootRoot, [ cfseMenuRoot, ccapPopMenuRootMenuStr ] );
+  mnibeCmdCopy.Caption := cbtn_Copy;
+  mnibeCmdCompact.Caption := cbCmdCompactView.Caption;
 end;
 
 procedure TfrmBoolExpr.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+var
+  PosPt : TPoint;
 begin
   if Key = vk_escape then
   begin
@@ -1764,6 +1781,14 @@ begin
       exit;
     end;
   end;
+
+  if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
+    if key = VK_P then
+    begin
+      PosPt := GetPreciseControlCoords( cbCmdUse, 30, 30 );
+      PopCmd.PopUp( PosPt.x, PosPt.y );
+    end;
+
 end;
 
 procedure TfrmBoolExpr.CopyMode( const DoEnable : boolean );

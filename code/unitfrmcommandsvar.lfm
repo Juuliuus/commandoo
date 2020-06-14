@@ -1,13 +1,13 @@
 object frmCommandsVar: TfrmCommandsVar
-  Left = 2114
-  Height = 320
-  Top = 491
+  Left = 2097
+  Height = 420
+  Top = 481
   Width = 620
   ActiveControl = edtInput
   Caption = 'Input Variables'
-  ClientHeight = 320
+  ClientHeight = 420
   ClientWidth = 620
-  Constraints.MinHeight = 320
+  Constraints.MinHeight = 420
   Constraints.MinWidth = 620
   DesignTimePPI = 128
   Font.Height = -16
@@ -27,7 +27,7 @@ object frmCommandsVar: TfrmCommandsVar
     ClientHeight = 29
     ClientWidth = 352
     ParentColor = True
-    TabOrder = 4
+    TabOrder = 8
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
@@ -49,7 +49,7 @@ object frmCommandsVar: TfrmCommandsVar
     Kind = bkCancel
     OnClick = btnCancelClick
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 7
   end
   object edtCmdLine: TEdit
     Left = 13
@@ -63,11 +63,11 @@ object frmCommandsVar: TfrmCommandsVar
     Font.Height = -16
     ParentFont = False
     TabStop = False
-    TabOrder = 3
+    TabOrder = 5
   end
   object memInfo: TMemo
     Left = 13
-    Height = 149
+    Height = 249
     Hint = 'This displays a hint for you so you know '#10'what you should be typingt: text, an integer,'#10'a decmal, or a filename.'#10#10'<end>'
     Top = 164
     Width = 482
@@ -75,7 +75,7 @@ object frmCommandsVar: TfrmCommandsVar
     Font.Height = -16
     ParentFont = False
     ScrollBars = ssAutoVertical
-    TabOrder = 1
+    TabOrder = 4
   end
   object edtInput: TEdit
     Left = 13
@@ -102,7 +102,7 @@ object frmCommandsVar: TfrmCommandsVar
     Font.Height = -16
     OnClick = btnDoneClick
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 6
   end
   object btnApply: TBitBtn
     Left = 477
@@ -115,7 +115,7 @@ object frmCommandsVar: TfrmCommandsVar
     Font.Height = -16
     OnClick = btnApplyClick
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 3
   end
   object btnFolderName: TBitBtn
     Left = 294
@@ -128,7 +128,7 @@ object frmCommandsVar: TfrmCommandsVar
     Font.Height = -16
     OnClick = btnFolderNameClick
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 2
   end
   object btnFileName: TBitBtn
     Left = 13
@@ -140,7 +140,15 @@ object frmCommandsVar: TfrmCommandsVar
     Font.Height = -16
     OnClick = btnFileNameClick
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 1
+  end
+  object Label1: TLabel
+    Left = 17
+    Height = 21
+    Top = 13
+    Width = 165
+    Caption = 'Results show here:  ↓'
+    ParentColor = False
   end
   object Timer1: TTimer
     Interval = 500

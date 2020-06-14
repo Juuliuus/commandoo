@@ -62,16 +62,18 @@ type
     lbList : TListBox;
     MenuItem1 : TMenuItem;
     MenuItem2 : TMenuItem;
+    mniKeywordsRoot : TMenuItem;
     MenuItem4 : TMenuItem;
-    mniShowUsage : TMenuItem;
-    mniRevert : TMenuItem;
-    mniConsolidate : TMenuItem;
-    mniAdd : TMenuItem;
-    mniEdit : TMenuItem;
-    mniDelete : TMenuItem;
-    mniCancel : TMenuItem;
-    mniOK : TMenuItem;
-    PopupMenu1 : TPopupMenu;
+    MenuItem5 : TMenuItem;
+    mniKeywordsShowUsage : TMenuItem;
+    mniKeywordsRevert : TMenuItem;
+    mniKeywordsConsolidate : TMenuItem;
+    mniKeywordsAdd : TMenuItem;
+    mniKeywordsEdit : TMenuItem;
+    mniKeywordsDelete : TMenuItem;
+    mniKeywordsCancel : TMenuItem;
+    mniKeywordsOK : TMenuItem;
+    popKeywords : TPopupMenu;
     procedure actAddExecute(Sender : TObject);
     procedure actCancelExecute(Sender : TObject);
     procedure actConsolidateExecute(Sender : TObject);
@@ -84,6 +86,7 @@ type
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCloseQuery(Sender : TObject; var CanClose : boolean);
     procedure FormCreate(Sender : TObject);
+    procedure FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure FormShow(Sender : TObject);
     procedure lbListDblClick(Sender : TObject);
     procedure lbListKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -136,10 +139,17 @@ uses ufrmMsgDlg
   , unitDBUtils
   ;
 
+var
+  BypassOK : boolean = false;
+
 const
   ccapListManagerDefaultInit = '!!Dev Error: No Word%s!!';
 
 resourcestring
+  ccapLMConsolidate = 'Consolidate';
+  ccapLMRevert = 'Revert List';
+  ccapLMShowUsage = 'Show Usage';
+
   //ccapListManagerCloseModalForm = 'Closing Modal Form Manually';
   //cmsgListManagerCloseModalForm = 'On a Modal form you need to indicate closing with "OK", "CANCEL", etc.';
   ccapListManagerMultipleItems = 'Multiple Items Selected';
@@ -185,21 +195,41 @@ begin
   FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
 
   if not fManagementMode then
-    Caption := format( cmsgListManagerClue, [ fDisplayWordPlural, ClueTarget ] )
+  begin
+    Caption := format( cmsgListManagerClue, [ fDisplayWordPlural, ClueTarget ] );
+    btnOK.Caption := ccapGenericUnderlinedOK;
+    mniKeywordsOk.Caption := ccapGenericOK;
+  end
   else
   begin
     btnOK.Caption := cbtn_Done;
+    mniKeywordsOk.Caption := trim( copy( btnOK.Caption, 3, maxint ) );
     btnCancel.Visible := false;
     lblInstructions.Caption := '';
     Caption := format( cmsgListManagerMangementMode, [ fDisplayWordPlural ] );
   end;
+
+
+  SetCapMenuButton( mniKeywordsCancel, btnCancel, ccapGenericCancel, '' );
+  SetCapMenuButton( mniKeywordsAdd, btnAdd, ccapGenericAdd, '&A' );
+  SetCapMenuButton( mniKeywordsEdit, btnEdit, ccapGenericEdit, '&B' );
+  SetCapMenuButton( mniKeywordsDelete, btnDelete, ccapGenericDelete, '&C' );
+  SetCapMenuButton( mniKeywordsConsolidate, btnConsolidate, ccapLMConsolidate, '&X' );
+  SetCapMenuButton( mniKeywordsRevert, btnRevert, ccapLMRevert, '&Y' );
+  SetCapMenuButton( mniKeywordsShowUsage, btnShowUsage, ccapLMShowUsage, '&Z' );
+  mniKeywordsRoot.Caption := format( ccapPopMenuRootRoot, [ trim( ccapTabKeyWords ), ccapPopMenuRootMenuStr ] );
+
+
 
 end;
 
 procedure TfrmListManager.lbListDblClick(Sender : TObject);
 begin
   if not fManagementMode then
-    actOK.Execute
+  begin
+    if not BypassOK then
+      actOK.Execute
+  end
   else
   begin
     if actEdit.Enabled then
@@ -356,7 +386,7 @@ begin
   if lbListInvalidChoice( false ) then
     exit;
 
-  if MsgDlgMessage( format( ccapGenericDelete, [ fDisplayWordPlural ] ), cmsgGenericDelete,
+  if MsgDlgMessage( format( cDoubleS, [ ccapGenericDelete, fDisplayWordPlural ] ), cmsgGenericDelete,
                     fDisplayWordSingular + 'cmsgGenericDelete' ) then
     if MsgDlgConfirmation( self ) = mrNo then
       exit;
@@ -437,7 +467,7 @@ begin
     exit;
 
   Str := lbList.Items[ lbList.ItemIndex ];
-  if not DoSingleInput( format( ccapGenericEdit, [ fDisplayWordSingular ] ), Str, simEdit, self )
+  if not DoSingleInput( format( cDoubleS, [ ccapGenericEdit, fDisplayWordSingular ] ), Str, simEdit, self )
      or IsDuplicate( Str ) then
      exit;
 
@@ -466,7 +496,7 @@ procedure TfrmListManager.actAddExecute(Sender : TObject);
 var
   Str : String = '';
 begin
-  if not DoSingleInput( format( ccapGenericAdd, [ fDisplayWordSingular ] ), Str, simEdit, self )
+  if not DoSingleInput( format( cDoubleS, [ ccapGenericAdd, fDisplayWordSingular ] ), Str, simEdit, self )
      or IsDuplicate( Str ) then
      exit;
 
@@ -510,9 +540,28 @@ begin
   fManagementMode := false;
   fClueTarget := '!!<Dev Error>!!';
   fConsolidateMode := false;
-  btnAdd.Caption := '&A  ' + cbtn_Add;
-  btnEdit.Caption := '&B  ' + cbtn_Edit;
-  btnDelete.Caption := '&D  ' + cbtn_Delete;
+end;
+
+procedure TfrmListManager.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+var
+  PosPt : TPoint;
+begin
+  if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
+  begin
+    case key of
+      VK_K :
+        begin
+          BypassOK := true;
+          lbListDblClick( lbList );
+          BypassOK := false;
+        end;
+      VK_P :
+        begin
+          PosPt := GetPreciseControlCoords( lbList, 30, 30 );
+          PopKeywords.PopUp( PosPt.x, PosPt.y );
+        end;
+    end;
+  end;
 end;
 
 end.

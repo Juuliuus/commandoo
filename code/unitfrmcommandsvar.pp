@@ -45,6 +45,7 @@ type
     edtInput : TEdit;
     edtCmdLine : TEdit;
     FrameHint1 : TFrameHint;
+    Label1 : TLabel;
     memInfo : TMemo;
     Timer1 : TTimer;
     procedure btnFileNameClick( Sender : TObject );

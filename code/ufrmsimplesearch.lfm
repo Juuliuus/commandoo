@@ -36,7 +36,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     ClientHeight = 29
     ClientWidth = 336
     ParentColor = True
-    TabOrder = 17
+    TabOrder = 24
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
@@ -58,7 +58,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     GlyphShowMode = gsmNever
     OnClick = btnSSOKClick
     ParentFont = False
-    TabOrder = 15
+    TabOrder = 22
   end
   object btnSSCancel: TBitBtn
     Left = 800
@@ -72,7 +72,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     GlyphShowMode = gsmNever
     OnClick = btnSSCancelClick
     ParentFont = False
-    TabOrder = 16
+    TabOrder = 23
   end
   object memSearchValue: TMemo
     Left = 22
@@ -117,7 +117,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     ChildSizing.ControlsPerLine = 1
     Font.Height = -16
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 12
   end
   object cgCmdLine: TCheckGroup
     Left = 627
@@ -137,7 +137,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     ChildSizing.ControlsPerLine = 1
     Font.Height = -16
     ParentFont = False
-    TabOrder = 12
+    TabOrder = 15
   end
   object cbRE: TCheckBox
     Left = 374
@@ -173,7 +173,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     ParentFont = False
     ScrollBars = ssAutoBoth
-    TabOrder = 3
+    TabOrder = 4
     WantReturns = False
   end
   object cbMatchCase1: TCheckBox
@@ -187,7 +187,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = cbREClick
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 5
   end
   object cbRE1: TCheckBox
     Tag = 1
@@ -200,7 +200,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = cbREClick
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 6
   end
   object lblDesignProf: TLabel
     Left = 627
@@ -236,7 +236,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     ParentFont = False
     ScrollBars = ssAutoBoth
-    TabOrder = 6
+    TabOrder = 8
     WantReturns = False
   end
   object cbMatchCase2: TCheckBox
@@ -250,7 +250,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = cbREClick
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 9
   end
   object cbRE2: TCheckBox
     Tag = 2
@@ -263,7 +263,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = cbREClick
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 10
   end
   object btnChkAllCmd: TBitBtn
     Left = 868
@@ -275,7 +275,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnChkAllCmdClick
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 13
   end
   object btnChkNoneCmd: TBitBtn
     Left = 905
@@ -287,7 +287,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnChkNoneCmdClick
     ParentFont = False
-    TabOrder = 11
+    TabOrder = 14
   end
   object btnChkAllCmdLine: TBitBtn
     Left = 868
@@ -299,7 +299,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnChkAllCmdLineClick
     ParentFont = False
-    TabOrder = 13
+    TabOrder = 16
   end
   object btnChkNoneCmdLine: TBitBtn
     Left = 905
@@ -311,7 +311,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnChkNoneCmdLineClick
     ParentFont = False
-    TabOrder = 14
+    TabOrder = 17
   end
   object Label1: TLabel
     Left = 21
@@ -334,7 +334,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnClearClick
     ParentFont = False
-    TabOrder = 18
+    TabOrder = 3
   end
   object btnClear1: TBitBtn
     Tag = 1
@@ -347,7 +347,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnClearClick
     ParentFont = False
-    TabOrder = 19
+    TabOrder = 7
   end
   object btnClear2: TBitBtn
     Tag = 2
@@ -360,7 +360,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnClearClick
     ParentFont = False
-    TabOrder = 20
+    TabOrder = 11
   end
   object btnSSReset: TBitBtn
     Tag = 2
@@ -374,7 +374,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnSSResetClick
     ParentFont = False
-    TabOrder = 21
+    TabOrder = 18
   end
   object btnAdvSearchLoad: TBitBtn
     Tag = 2
@@ -386,7 +386,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnAdvSearchCurrentClick
     ParentFont = False
-    TabOrder = 22
+    TabOrder = 19
   end
   object btnAdvSearchNew: TBitBtn
     Tag = 1
@@ -398,7 +398,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnAdvSearchCurrentClick
     ParentFont = False
-    TabOrder = 23
+    TabOrder = 20
   end
   object btnAdvSearchCurrent: TBitBtn
     Left = 21
@@ -409,6 +409,6 @@ object frmSimpleSearch: TfrmSimpleSearch
     Font.Height = -16
     OnClick = btnAdvSearchCurrentClick
     ParentFont = False
-    TabOrder = 24
+    TabOrder = 21
   end
 end

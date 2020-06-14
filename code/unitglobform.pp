@@ -25,7 +25,7 @@ unit unitGlobForm;
 interface
 
 uses
-  Classes, SysUtils, Dialogs, StdCtrls, Forms, Controls, graphics, ActnList;
+  Classes, SysUtils, Dialogs, StdCtrls, Forms, Controls, graphics, ActnList, Menus, Buttons;
 
 type
 
@@ -41,6 +41,8 @@ function StandardOutputHeader( const Cmd : string ) : string;
 function CanJumpToCommand( const CmdStr, CmdLineStr : string; LBCmd, LBCmdLIne : TListbox ) : boolean;
 function TryToFindEditedCommand( const CmdSearch : string; LBCmd : TListbox ) : integer;
 procedure ApplyChangeFont( AForm : TForm; AlwaysChange : boolean = false );
+function TogglePkexec( const Value : string ) : string;
+procedure SetCapMenuButton( M : TMenuItem; B : TBitBtn; const Cap, Extra : string );
 
 
 resourcestring
@@ -56,6 +58,28 @@ const
 implementation
 
 uses unitcommands, unitGlob;
+
+procedure SetCapMenuButton( M : TMenuItem; B : TBitBtn; const Cap, Extra : string );
+const
+  HotK = '%s  ';
+begin
+  M.Caption := Cap;
+  if Extra <> '' then
+    B.Caption := format( HotK, [ Extra ] ) + M.Caption
+  else B.Caption := M.Caption;
+end;
+
+function TogglePkexec( const Value : string ) : string;
+var
+  Idx : integer;
+const
+  cprogPkexecStr = 'pkexec ';
+begin
+  Idx := pos( cprogPkexecStr, Value );
+  if Idx = 0 then
+    result := cprogPkexecStr + Value
+  else Result := copy( Value, length( cprogPkexecStr ) + 1, maxint );
+end;
 
 procedure ApplyChangeFont( AForm : TForm; AlwaysChange : boolean = false );
 var

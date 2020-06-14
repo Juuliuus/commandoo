@@ -1,7 +1,7 @@
 object frmSearch: TfrmSearch
-  Left = 2363
+  Left = 1966
   Height = 740
-  Top = 382
+  Top = 385
   Width = 1250
   ActiveControl = edtSearchFileName
   Caption = 'Search KeyWords'
@@ -41,7 +41,7 @@ object frmSearch: TfrmSearch
     Kind = bkOK
     OnClick = btnOKClick
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 4
   end
   object btnCancel: TBitBtn
     Left = 1111
@@ -55,7 +55,7 @@ object frmSearch: TfrmSearch
     Kind = bkCancel
     OnClick = btnCancelClick
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 5
   end
   object edtSearchFileName: TEdit
     Left = 139
@@ -163,7 +163,7 @@ object frmSearch: TfrmSearch
     ClientHeight = 29
     ClientWidth = 569
     ParentColor = True
-    TabOrder = 5
+    TabOrder = 6
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
@@ -220,6 +220,6 @@ object frmSearch: TfrmSearch
     Font.Style = [fsBold]
     OnClick = btnUseSimpleSearchClick
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 3
   end
 end

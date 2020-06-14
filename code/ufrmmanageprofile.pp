@@ -124,7 +124,7 @@ begin
       mpAdd, mpCopy : ;
       mpEdit :
         begin
-          Caption := format( ccapGenericEdit, [ ccapGenericProfile ] );
+          Caption := format( cDoubleS, [ ccapGenericEdit, ccapGenericProfile ] );
           lblName.Caption := cmpNameLabel;
           btnChangeName.Visible := true;
           if IsSqlDb = 1 then
@@ -132,12 +132,7 @@ begin
           else rgType.ItemIndex := 1;
           rgType.Enabled := false;
         end;
-
-      mpImport :
-        begin
-          Caption := format( ccapGenericImport, [ ccapGenericProfile ] );
-
-        end;
+      mpImport : Caption := format( cDoubleS, [ ccapGenericImport, ccapGenericProfile ] );
     end;
   end;
 
@@ -240,7 +235,7 @@ var
   Str : string;
 begin
   Str := edtProfileName.Text;
-  if not TfrmProfiles( Owner ).NameAccepted( format( ccapGenericEdit, [ ccapGenericProfile ] ), Str ) then
+  if not TfrmProfiles( Owner ).NameAccepted( format( cDoubleS, [ ccapGenericEdit, ccapGenericProfile ] ), Str ) then
     exit;
   edtProfileName.Text := Str;
 end;

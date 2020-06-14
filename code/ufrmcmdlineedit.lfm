@@ -1,7 +1,7 @@
 object frmCmdLineEdit: TfrmCmdLineEdit
-  Left = 1995
+  Left = 1957
   Height = 600
-  Top = 470
+  Top = 481
   Width = 700
   ActiveControl = memCmdLine
   Caption = 'Edit Command Line'
@@ -27,7 +27,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     ClientHeight = 30
     ClientWidth = 352
     ParentColor = True
-    TabOrder = 11
+    TabOrder = 14
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
@@ -78,7 +78,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     Font.Name = 'Courier 10 Pitch'
     ParentFont = False
     ScrollBars = ssAutoVertical
-    TabOrder = 9
+    TabOrder = 10
     WordWrap = False
   end
   object edtOutputRefresh: TEdit
@@ -93,7 +93,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     Font.Height = -16
     OnKeyDown = edtOutputRefreshKeyDown
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 8
     TextHint = 'commands with Help flags only'
   end
   object cbWrapText: TCheckBox
@@ -107,7 +107,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     Font.Height = -16
     OnChange = cbWrapTextChange
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 11
   end
   object lblVarHint: TLabel
     Left = 5
@@ -192,7 +192,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     Font.Height = -16
     OnClick = btnDefaultHelpClick
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 9
   end
   object btnRefresh: TBitBtn
     Left = 21
@@ -204,7 +204,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     Font.Height = -16
     OnClick = btnRefreshClick
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 7
   end
   object btnPath: TBitBtn
     Tag = 4
@@ -218,5 +218,17 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     OnClick = btnPathClick
     ParentFont = False
     TabOrder = 5
+  end
+  object btnPkexec: TBitBtn
+    Tag = 4
+    Left = 208
+    Height = 30
+    Top = 164
+    Width = 169
+    Caption = '&I  Toggle pkexec'
+    Font.Height = -14
+    OnClick = btnPkexecClick
+    ParentFont = False
+    TabOrder = 6
   end
 end

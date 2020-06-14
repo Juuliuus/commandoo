@@ -1,7 +1,7 @@
 object frmCommandsInput: TfrmCommandsInput
-  Left = 2065
+  Left = 1964
   Height = 260
-  Top = 631
+  Top = 618
   Width = 600
   ActiveControl = memInput
   Caption = 'Input for Process'
@@ -26,7 +26,7 @@ object frmCommandsInput: TfrmCommandsInput
     ClientHeight = 28
     ClientWidth = 333
     ParentColor = True
-    TabOrder = 3
+    TabOrder = 4
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
@@ -49,7 +49,7 @@ object frmCommandsInput: TfrmCommandsInput
     Kind = bkCancel
     OnClick = btnCancelClick
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 3
   end
   object memInput: TMemo
     Left = 13
@@ -98,6 +98,6 @@ object frmCommandsInput: TfrmCommandsInput
     Font.Height = -16
     OnClick = btnDoneClick
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 2
   end
 end

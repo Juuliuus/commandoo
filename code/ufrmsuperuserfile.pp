@@ -133,6 +133,8 @@ begin
     end;
 
     rgTemplates.ItemIndex := Idx;
+    if rgTemplates.CanFocus then
+      rgTemplates.SetFocus;
 
     FHasShown := true;
 

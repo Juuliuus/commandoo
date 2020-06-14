@@ -1,7 +1,7 @@
 object frmBoolExpr: TfrmBoolExpr
-  Left = 1997
+  Left = 1960
   Height = 225
-  Top = 671
+  Top = 667
   Width = 720
   BorderIcons = []
   BorderStyle = bsNone
@@ -316,6 +316,14 @@ object frmBoolExpr: TfrmBoolExpr
   object popCmd: TPopupMenu
     left = 48
     top = 112
+    object mnifseCmdRoot: TMenuItem
+      Caption = 'DNT title'
+      Enabled = False
+      RightJustify = True
+    end
+    object MenuItem4: TMenuItem
+      Caption = '-'
+    end
     object mniCmdSelectLeft: TMenuItem
       Action = actCmdSelectLeft
     end
@@ -327,12 +335,15 @@ object frmBoolExpr: TfrmBoolExpr
     end
     object mniCmdSI_L_Add: TMenuItem
       Action = actCmdSI_L_Add
+      Caption = 'Add left  ( << + )'
     end
     object mniCmdSI_R_Add: TMenuItem
       Action = actCmdSI_R_Add
+      Caption = 'Add right  ( + >> )'
     end
     object mniCmd_NOT_Toggle: TMenuItem
       Action = actCmd_NOT_Toggle
+      Caption = '± NOT  (toggle)'
     end
     object MenuItem2: TMenuItem
       Caption = '-'
@@ -343,18 +354,33 @@ object frmBoolExpr: TfrmBoolExpr
     end
     object mniCmd_Exchange: TMenuItem
       Action = actCmd_Exchange
+      Caption = '⇄  (exchange)'
     end
     object MenuItem3: TMenuItem
       Caption = '-'
     end
     object mniCmd_Paren_Add: TMenuItem
       Action = actCmd_Paren_Add
+      Caption = 'Add Parens  ( + ( )''s )'
     end
     object mniCmd_Paren_L_Move: TMenuItem
       Action = actCmd_Paren_L_Move
+      Caption = 'move paren left ( ←()  )'
     end
     object mniCmd_Paren_R_Move: TMenuItem
       Action = actCmd_Paren_R_Move
+      Caption = 'move paren right  ( ()→ )'
+    end
+    object MenuItem6: TMenuItem
+      Caption = '-'
+    end
+    object mnibeCmdCopy: TMenuItem
+      Caption = 'DNTCopy'
+      OnClick = btnCmdCopyClick
+    end
+    object mnibeCmdCompact: TMenuItem
+      Caption = 'DNT compact'
+      OnClick = mnibeCmdCompactClick
     end
   end
   object Tmr: TTimer

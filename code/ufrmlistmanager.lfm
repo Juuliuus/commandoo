@@ -1,7 +1,7 @@
 object frmListManager: TfrmListManager
-  Left = 2134
+  Left = 1966
   Height = 640
-  Top = 347
+  Top = 388
   Width = 540
   ActiveControl = lbList
   Caption = 'Key Words'
@@ -16,8 +16,9 @@ object frmListManager: TfrmListManager
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   OnShow = FormShow
-  PopupMenu = PopupMenu1
+  PopupMenu = popKeywords
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
@@ -104,7 +105,7 @@ object frmListManager: TfrmListManager
     }
     Kind = bkOK
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 2
   end
   object btnCancel: TBitBtn
     Left = 395
@@ -172,7 +173,7 @@ object frmListManager: TfrmListManager
     GlyphShowMode = gsmNever
     Kind = bkCancel
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 3
   end
   object lbList: TListBox
     Left = 17
@@ -187,7 +188,7 @@ object frmListManager: TfrmListManager
     OnDblClick = lbListDblClick
     OnKeyDown = lbListKeyDown
     ParentFont = False
-    PopupMenu = PopupMenu1
+    PopupMenu = popKeywords
     ScrollWidth = 352
     TabOrder = 0
     TopIndex = -1
@@ -204,7 +205,7 @@ object frmListManager: TfrmListManager
     Font.Height = -16
     ParentColor = False
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 1
     object btnAdd: TBitBtn
       Left = 20
       Height = 40
@@ -223,7 +224,7 @@ object frmListManager: TfrmListManager
       Action = actConsolidate
       Font.Height = -16
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 3
     end
     object btnEdit: TBitBtn
       Left = 20
@@ -233,7 +234,7 @@ object frmListManager: TfrmListManager
       Action = actEdit
       Font.Height = -16
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
     end
     object btnRevert: TBitBtn
       Left = 277
@@ -243,7 +244,7 @@ object frmListManager: TfrmListManager
       Action = actRevert
       Font.Height = -16
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 4
     end
     object btnDelete: TBitBtn
       Left = 21
@@ -253,7 +254,7 @@ object frmListManager: TfrmListManager
       Action = actDelete
       Font.Height = -16
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 2
     end
     object btnShowUsage: TBitBtn
       Left = 277
@@ -276,40 +277,48 @@ object frmListManager: TfrmListManager
     ParentColor = False
     ParentFont = False
   end
-  object PopupMenu1: TPopupMenu
+  object popKeywords: TPopupMenu
     left = 384
     top = 272
-    object mniOK: TMenuItem
+    object mniKeywordsRoot: TMenuItem
+      Caption = 'DNT Keywords'
+      Enabled = False
+      RightJustify = True
+    end
+    object MenuItem5: TMenuItem
+      Caption = '-'
+    end
+    object mniKeywordsOK: TMenuItem
       Action = actOK
     end
-    object mniCancel: TMenuItem
+    object mniKeywordsCancel: TMenuItem
       Action = actCancel
     end
     object MenuItem4: TMenuItem
       Caption = '-'
     end
-    object mniAdd: TMenuItem
+    object mniKeywordsAdd: TMenuItem
       Action = actAdd
     end
-    object mniEdit: TMenuItem
+    object mniKeywordsEdit: TMenuItem
       Action = actEdit
     end
-    object mniDelete: TMenuItem
+    object mniKeywordsDelete: TMenuItem
       Action = actDelete
     end
-    object mniConsolidate: TMenuItem
+    object mniKeywordsConsolidate: TMenuItem
       Action = actConsolidate
     end
     object MenuItem1: TMenuItem
       Caption = '-'
     end
-    object mniRevert: TMenuItem
+    object mniKeywordsRevert: TMenuItem
       Action = actRevert
     end
     object MenuItem2: TMenuItem
       Caption = '-'
     end
-    object mniShowUsage: TMenuItem
+    object mniKeywordsShowUsage: TMenuItem
       Action = actShowUsage
     end
   end
@@ -317,36 +326,36 @@ object frmListManager: TfrmListManager
     left = 373
     top = 352
     object actOK: TAction
-      Caption = '&OK'
+      Caption = 'DNT OK'
       OnExecute = actOKExecute
     end
     object actCancel: TAction
-      Caption = 'Cancel'
+      Caption = 'DNT Cancel'
       OnExecute = actCancelExecute
     end
     object actAdd: TAction
-      Caption = '&A  Add'
+      Caption = 'DNT Add'
       OnExecute = actAddExecute
     end
     object actEdit: TAction
-      Caption = '&B  Edit'
+      Caption = 'DNT Edit'
       OnExecute = actEditExecute
     end
     object actDelete: TAction
-      Caption = '&D  Delete'
+      Caption = 'DNT Delete'
       OnExecute = actDeleteExecute
     end
     object actConsolidate: TAction
-      Caption = '&X  Consolidate'
+      Caption = 'DNT Consolidate'
       OnExecute = actConsolidateExecute
     end
     object actRevert: TAction
-      Caption = '&Y  Revert List'
+      Caption = 'DNT Revert List'
       Enabled = False
       OnExecute = actRevertExecute
     end
     object actShowUsage: TAction
-      Caption = '&Z  Show Usage'
+      Caption = 'DNT Show Usage'
       OnExecute = actShowUsageExecute
     end
   end

@@ -149,6 +149,7 @@ resourcestring
   cMsgConfirmation = '= Confirm =';
   cUndefined = '== U N D E F I N E D ==';
   cMsgDlgGeneralInformation = 'General Information';
+  cMsgDlgEmpty = '<< no text >>';
 
 {
 
@@ -233,7 +234,10 @@ begin
   //ACaption should be a resourcestring, in this way uniqueness is guaranteed
   //eg.: string msgMyCaption = 'My Caption' is sent in as "msgMyCaption"
   //see example at end of this file
-  MsgDLgParams.fMsg:= AMessage;
+  if trim( Amessage ) = '' then
+    MsgDLgParams.fMsg:= cMsgDlgEmpty
+  else MsgDLgParams.fMsg:= AMessage;
+
   MsgDLgParams.fMsgCaption:= strif( ACaption = '', cMsgDlgInformation, ACaption );
   MsgDLgParams.fTheShowNoMoreKey:= trim( ShowNoMoreKey );
   MsgDLgParams.fShow_NoMoreMsg := MsgDLgParams.fTheShowNoMoreKey <> '';

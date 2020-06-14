@@ -381,6 +381,12 @@ begin
 
   BECmd.Show;
   BECmdLine.Show;
+  if not DoLoad then //its new, add a field for them
+  begin
+    if aMode = semNormal then
+      BECmdLine.btnCmdSI_R_Add.Click;
+    BECmd.btnCmdSI_R_Add.Click;
+  end;
 
 end;
 

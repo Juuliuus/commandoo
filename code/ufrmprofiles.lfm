@@ -17,6 +17,7 @@ object frmProfiles: TfrmProfiles
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
   OnShow = FormShow
   PopupMenu = popM
   Position = poOwnerFormCenter
@@ -45,7 +46,7 @@ object frmProfiles: TfrmProfiles
     Width = 148
     Action = actOK
     Anchors = [akTop, akRight]
-    Caption = 'DNT'
+    Caption = 'DNT Done'
     Font.Height = -16
     GlyphShowMode = gsmNever
     ParentFont = False
@@ -152,6 +153,7 @@ object frmProfiles: TfrmProfiles
       Top = 129
       Width = 163
       Action = actCompare
+      Caption = 'DNT Compare To...'
       Font.Height = -16
       GlyphShowMode = gsmNever
       ParentFont = False
@@ -176,6 +178,7 @@ object frmProfiles: TfrmProfiles
       Top = 129
       Width = 163
       Action = actMergeTo
+      Caption = 'DNT Merge To...'
       Font.Height = -16
       GlyphShowMode = gsmNever
       ParentFont = False
@@ -207,6 +210,7 @@ object frmProfiles: TfrmProfiles
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
       TabOrder = 4
+      TabStop = True
     end
   end
   object lblPathDisplay: TLabel
@@ -256,7 +260,6 @@ object frmProfiles: TfrmProfiles
     Width = 148
     Action = actSelect
     Anchors = [akTop, akRight]
-    Caption = '&Select'
     Default = True
     Font.Height = -16
     GlyphShowMode = gsmNever
@@ -266,102 +269,118 @@ object frmProfiles: TfrmProfiles
   end
   object popM: TPopupMenu
     OnPopup = popMPopup
-    left = 405
-    top = 277
-    object mniAdd: TMenuItem
+    left = 104
+    top = 8
+    object mniMRoot: TMenuItem
+      Caption = 'DNT Root'
+      Enabled = False
+      RightJustify = True
+    end
+    object MenuItem4: TMenuItem
+      Caption = '-'
+    end
+    object mniMAdd: TMenuItem
       Action = actAdd
     end
-    object mniEdit: TMenuItem
+    object mniMEdit: TMenuItem
       Action = actEdit
     end
-    object mniConsolidate: TMenuItem
+    object mniMCopy: TMenuItem
       Action = actCopy
     end
-    object mniDelete: TMenuItem
+    object mniMDelete: TMenuItem
       Action = actDelete
     end
-    object mniImport: TMenuItem
+    object mniMImport: TMenuItem
       Action = actImport
     end
     object MenuItem3: TMenuItem
       Caption = '-'
     end
-    object mniConvert: TMenuItem
+    object mniMConvert: TMenuItem
       Action = actConvert
     end
-    object mniCompare: TMenuItem
+    object mniMCompare: TMenuItem
       Action = actCompare
     end
-    object mniMergeTo: TMenuItem
+    object mniMMergeTo: TMenuItem
       Action = actMergeTo
     end
     object MenuItem1: TMenuItem
       Caption = '-'
     end
-    object mniOK: TMenuItem
+    object mniMOK: TMenuItem
       Action = actOK
-      Caption = 'Close'
+      Caption = 'DNT Close'
     end
   end
   object ActionList1: TActionList
-    left = 395
-    top = 352
+    left = 520
+    top = 328
     object actOK: TAction
-      Caption = '&OK'
+      Caption = 'DNT OK'
       OnExecute = actOKExecute
     end
     object actCancel: TAction
-      Caption = 'Cancel'
+      Caption = 'DNT Cancel'
       OnExecute = actCancelExecute
     end
     object actAdd: TAction
-      Caption = '&A  New'
+      Caption = 'DNT New'
       Enabled = False
       OnExecute = actAddExecute
     end
     object actEdit: TAction
-      Caption = '&B  Edit'
+      Caption = 'DNT Edit'
       OnExecute = actEditExecute
     end
     object actDelete: TAction
-      Caption = '&D  Delete'
+      Caption = 'DNT Delete'
       OnExecute = actDeleteExecute
     end
     object actCopy: TAction
-      Caption = '&C  Copy'
+      Caption = 'DNT Copy'
       OnExecute = actCopyExecute
     end
     object actSelect: TAction
-      Caption = '&S  Select'
+      Caption = 'DNT Select'
       OnExecute = actSelectExecute
     end
     object actConvert: TAction
       Category = 'manipulation'
-      Caption = '&X  Convert'
+      Caption = 'DNT Convert'
       OnExecute = actConvertExecute
     end
     object actMergeTo: TAction
       Category = 'manipulation'
-      Caption = '&Z  Merge To'
+      Caption = 'DNT Merge'
       OnExecute = actMergeToExecute
     end
     object actCompare: TAction
       Category = 'manipulation'
-      Caption = '&Y  Compare'
+      Caption = 'DNT Compare'
       OnExecute = actCompareExecute
     end
     object actImport: TAction
-      Caption = '&I  Import'
+      Caption = 'DNT Import'
       OnExecute = actImportExecute
     end
   end
   object popS: TPopupMenu
-    left = 472
-    top = 328
-    object mniSelect: TMenuItem
+    left = 184
+    top = 8
+    object mniSRoot: TMenuItem
+      Caption = 'DNT Root'
+      Enabled = False
+      RightJustify = True
+    end
+    object MenuItem5: TMenuItem
+      Caption = '-'
+    end
+    object mniSSelect: TMenuItem
       Action = actSelect
     end
-    object mniCancelS: TMenuItem
+    object mniSCancel: TMenuItem
       Action = actCancel
     end
   end
@@ -369,5 +388,9 @@ object frmProfiles: TfrmProfiles
     Options = [ofAllowMultiSelect, ofPathMustExist, ofFileMustExist, ofEnableSizing, ofForceShowHidden, ofViewDetail]
     left = 508
     top = 251
+  end
+  object PopupMenu1: TPopupMenu
+    left = 280
+    top = 14
   end
 end

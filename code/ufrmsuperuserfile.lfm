@@ -27,7 +27,7 @@ object frmSuperUserFile: TfrmSuperUserFile
     ClientHeight = 33
     ClientWidth = 325
     ParentColor = True
-    TabOrder = 5
+    TabOrder = 7
     DesignLeft = 300
     DesignTop = 539
     inherited cbHints: TCheckBox
@@ -47,7 +47,7 @@ object frmSuperUserFile: TfrmSuperUserFile
     GlyphShowMode = gsmNever
     OnClick = bntOKClick
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 5
   end
   object btnCancel: TBitBtn
     Left = 436
@@ -61,7 +61,7 @@ object frmSuperUserFile: TfrmSuperUserFile
     GlyphShowMode = gsmNever
     OnClick = btnCancelClick
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 6
   end
   object edtCustom: TEdit
     Left = 48
@@ -75,7 +75,7 @@ object frmSuperUserFile: TfrmSuperUserFile
     Font.Height = -16
     OnKeyDown = edtCustomKeyDown
     ParentFont = False
-    TabOrder = 0
+    TabOrder = 2
     TextHint = 'Type custom template here...'
   end
   object lblCurr: TLabel
@@ -109,7 +109,7 @@ object frmSuperUserFile: TfrmSuperUserFile
     Font.Height = -16
     OnClick = btnTestClick
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 4
   end
   object btnCustom: TBitBtn
     Left = 16
@@ -122,7 +122,7 @@ object frmSuperUserFile: TfrmSuperUserFile
     Font.Height = -16
     OnClick = btnCustomClick
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 3
   end
   object btnTemplate: TBitBtn
     Left = 16
@@ -135,7 +135,7 @@ object frmSuperUserFile: TfrmSuperUserFile
     Font.Height = -16
     OnClick = btnTemplateClick
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 1
   end
   object rgTemplates: TRadioGroup
     Left = 48
@@ -154,6 +154,6 @@ object frmSuperUserFile: TfrmSuperUserFile
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
     OnClick = rgTemplatesClick
-    TabOrder = 4
+    TabOrder = 0
   end
 end

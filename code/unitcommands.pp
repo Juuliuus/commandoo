@@ -291,7 +291,7 @@ type
     function IsBuiltin : boolean;
     function MergeKeyWords( FromCmdObj : TCmdObj ) : boolean;
     function Merge_CmdLines( FromCmdObj : TCmdObj; const MergeSource : string ) : boolean;
-    function Compare_CmdLines( FromCmdObj : TCmdObj ) : string;
+    function Compare_CmdLines( FromCmdObj : TCmdObj; var Identical : boolean ) : string;
 
 
     procedure SetIniSection(AValue: string); override;
@@ -316,7 +316,7 @@ type
     function RemoveData : boolean;
     procedure Copy(aCmdObj : TCmdObj; const NewName : string );
     function Merge( FromCmdObj : TCmdObj; const MergeSource : string) : boolean;
-    function Compare( FromCmdObj : TCmdObj ) : string;
+    function Compare( FromCmdObj : TCmdObj; var Identical : boolean ) : string;
     //procedure Assign( aCmdObj : TCmdObj );
     function AsText : string;
     function AddCommandLine( const anEntry: string ): integer;
@@ -653,11 +653,11 @@ resourcestring
   cmsgucoError_MergeConvSaving = 'problem saving command. %s halted.';
   cmsgucoError_Merge = 'Merge';
   cmsgucoError_Converting = 'Converting';
-  cmsgInDestNot = '>> Not in Destination: ' + LineEnding;
-  cmsgInDest = '>> Present in Destination: ' + LineEnding;
+  cmsgInDestNot = '>> Not in Destination [%s]: ' + LineEnding;
+  cmsgInDest = '>> Present in Destination [%s]: ' + LineEnding;
   cmsgCompareSummary = '========= Summary of %s: ============';
   cmsgDBStatistics = '%s has %d Commands and %d Command Lines';
-  cmsgPathsDiffer = 'Path is different: %s';
+  cmsgPathsDiffer = 'Path is different: "%s" vs. "%s"';
   cmsgCLIs = '  present:';
   cmsgCLIsNot = '  not present:';
   cmsgCLDest = '  present in destination but not in source:';
@@ -665,6 +665,7 @@ resourcestring
   ccapCompareListSpecific = '"%s" %s List:';
   ccapCompareList = '%s Comparison:';
   cmsgCompareListCnt = 'Count = %d';
+  ccapCompareIdentical = '--Identical';
 
 
 
@@ -883,7 +884,7 @@ begin
     'i','I' : result := cmsgucoVariableInteger;
     'f','F' : result := cmsgucoVariableFilename;
     'n','N' : result := cmsgucoVariableNumber;
-    else result := DefaultResult + cmsgucoVariableInvalidHelp;
+    else result := DefaultResult;
 
   end;
 end;
@@ -2906,7 +2907,8 @@ var
   FromList, ToList : TStringList;
   i, j, Idx, CmdLineCnt : Integer;
   //i, j, Idx, FromCmdCnt, FromCmdLineCnt, ToCmdCnt, ToCmdLineCnt : Integer;
-  FromSummary, InDest, InDestNot : string;
+  FromSummary, InDest, InDestNot, InterimResult : string;
+  IsIdentical : boolean;
 
   procedure InitPointers;
   begin
@@ -2955,6 +2957,7 @@ begin
       InDest := '';
       InDestNot := '';
       FromSummary := '';
+      InterimResult := '';
 
       for i := 0 to FromList.Count - 1 do
       begin
@@ -2971,16 +2974,23 @@ begin
 
           if Idx < 0 then //not present in Destination
           begin
-            InDestNot := InDestNot + cmsgInDestNot + FromCmdObj.CommandName + LineEnding;
+            InDestNot := InDestNot + format( cmsgInDestNot, [ toName ] ) + FromCmdObj.CommandName + LineEnding;
           end
           else
           begin //present in Destination
 
             ToCmdObjHelper.LoadCmdObj( ToCmdObj, ToList[ Idx ] );
-            InDest := InDest + cmsgInDest
+            InDest := InDest + format( cmsgInDest, [ toName ] )
                       + format( NamePath, [ ToCmdObj.CommandName, ToCmdObj.GetLiteralPath( true ) ] )
                       + LineEnding;
-            InDest := InDest + ToCmdObj.Compare( FromCmdObj );
+
+            IsIdentical := false;
+            InterimResult := ToCmdObj.Compare( FromCmdObj, IsIdentical );
+            if IsIdentical then
+              InterimResult := ccapCompareIdentical + LineEnding + LineEnding;
+
+            InDest := InDest + InterimResult;
+            //InDest := InDest + ToCmdObj.Compare( FromCmdObj );
 
           end;
 
@@ -2994,10 +3004,6 @@ begin
 
       if FromSummary <> '' then
         FromSummary := format( cmsgCompareSummary, [ frName ] ) + LineEnding + LineEnding + FromSummary;
-      //if InDestNot <> '' then
-      //  InDestNot := cmsgInDestNot + InDestNot;// + LineEnding;
-      //if InDest <> '' then
-      //  InDest := cmsgInDest + InDest;// + LineEnding;
 
       Strings.Text := Strings.Text + InDest + InDestNot + FromSummary;
 
@@ -3707,7 +3713,7 @@ begin
 
 end;
 
-function TCmdObj.Compare_CmdLines( FromCmdObj : TCmdObj ) : string;
+function TCmdObj.Compare_CmdLines( FromCmdObj : TCmdObj; var Identical : boolean ) : string;
 var
   CLOList : TStringList;
   i , Idx : integer; //, CLOIdx: Integer;
@@ -3762,6 +3768,8 @@ begin
     if InDest <> '' then
       InDest := cmsgCLDest + LineEnding + InDest;
 
+    Identical := ( InListNot = '' ) and ( InDest = '' );
+
     if ( InListNot <> '' ) or ( InList <> '' ) or ( InDest <> '' ) then
       Result := format( CLInfo, [ '' ] ) + Lineending + InList + InListNot + InDest + LineEnding
     else result := format( CLInfo, [ cmsgCLsNone ] ) + LineEnding + LineEnding;
@@ -3813,19 +3821,28 @@ begin
 
 end;
 
-function TCmdObj.Compare( FromCmdObj : TCmdObj ) : string;
+function TCmdObj.Compare( FromCmdObj : TCmdObj; var Identical : boolean ) : string;
 var
-  str : String;
+  FromP, ToP : String;
+  CmdIdentical, CmdLineIdentical : boolean;
 begin
 
     result := '';
+    CmdIdentical := false;
+    CmdLineIdentical := false;
 
-    str := GetLiteralPath( true );
+    ToP := GetLiteralPath( true );
+    FromP := FromCmdObj.GetLiteralPath( true );
 
-    if str <> FromCmdObj.GetLiteralPath( true ) then
-      result := format( cmsgPathsDiffer, [ str ] );
+    if ToP <> FromP then
+      result := format( cmsgPathsDiffer, [ ToP, FromP ] ) + LineEnding
+    else CmdIdentical := true;
 
-    result := Result + Compare_CmdLines( FromCmdObj ) + LineEnding;
+
+    result := Result + Compare_CmdLines( FromCmdObj, CmdLineIdentical ) + LineEnding;
+
+    Identical :=  CmdIdentical and CmdLineIdentical;
+;
 
 end;
 

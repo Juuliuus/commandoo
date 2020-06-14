@@ -25,7 +25,6 @@ object frmMsgDlg: TfrmMsgDlg
     Anchors = [akTop, akLeft, akRight, akBottom]
     Font.Height = -18
     ParentFont = False
-    ReadOnly = True
     ScrollBars = ssAutoVertical
     TabOrder = 0
     TabStop = False
@@ -47,6 +46,7 @@ object frmMsgDlg: TfrmMsgDlg
     Top = 331
     Width = 134
     Anchors = [akRight, akBottom]
+    Cancel = True
     Default = True
     DefaultCaption = True
     Font.Height = -16
@@ -61,7 +61,6 @@ object frmMsgDlg: TfrmMsgDlg
     Top = 331
     Width = 134
     Anchors = [akRight, akBottom]
-    Cancel = True
     Caption = '&X  No'
     Enabled = False
     Font.Height = -16

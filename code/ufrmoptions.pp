@@ -78,6 +78,9 @@ type
     lblSqlLib : TLabel;
     lblThreatLevel : TLabel;
     ShapeLangOK : TShape;
+    ShapeLangOK1 : TShape;
+    ShapeLangOK2 : TShape;
+    ShapeLangOK3 : TShape;
     speDisplayMax : TSpinEdit;
     speMaxOutputWait : TSpinEdit;
     tmrLangOK : TTimer;
@@ -503,7 +506,7 @@ begin
   cbCareful.Caption := '&D  ' + cThreatLevelCareful;
   cbCaution.Caption := '&E  ' + cThreatLevelCaution;
   cbDanger.Caption := '&F  ' + cThreatLevelDanger;
-  btnAddLang.Caption := '&Q  ' + cbtn_Add;
+  btnAddLang.Caption := '&Q  ' + ccapGenericAdd;
 
 end;
 
@@ -520,7 +523,7 @@ end;
 
 procedure TfrmOptions.lblSavePathDblClick( Sender : TObject );
 begin
-  MsgDlgMessage( ccapOverflow, TLabel( Sender ).caption );
+  MsgDlgMessage( ccapOverflow, trim( TLabel( Sender ).caption ) );
   MsgDlgInfo( self );
 end;
 
