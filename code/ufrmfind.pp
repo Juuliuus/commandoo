@@ -100,7 +100,7 @@ begin
   font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
   fItemToFind := '';
-  edtFind.TextHint := ccapFindTextHint;
+  edtFind.TextHint := ccapFindLBHint;
 end;
 
 procedure TfrmFind.FormDeactivate( Sender : TObject );

@@ -660,12 +660,12 @@ resourcestring
   cmsgPathsDiffer = 'Path is different: "%s" vs. "%s"';
   cmsgCLIs = '  present:';
   cmsgCLIsNot = '  not present:';
-  cmsgCLDest = '  present in destination but not in source:';
+  cmsgCLDest = '  present in destination but not in <source:';
   cmsgCLsNone = 'none';
   ccapCompareListSpecific = '"%s" %s List:';
   ccapCompareList = '%s Comparison:';
   cmsgCompareListCnt = 'Count = %d';
-  ccapCompareIdentical = '--Identical';
+  ccapCompareIdentical = LineEnding + '  >> Identical';
 
 
 
@@ -1320,7 +1320,11 @@ begin
   result := CmdObjHelper.VariablesAsClipboardText( Str );
 
   if pos( cReservedSuperUser, Str ) = 1 then
-    result := format( RootFile, [ stringreplace( result, cReservedSuperUser, '', [ rfIgnoreCase ] ) ] );
+  begin
+    result := trim( stringreplace( result, cReservedSuperUser, '', [ rfIgnoreCase ] ) );
+    result := StripPkexec( result );
+    result := format( RootFile, [ result ] );
+  end;
 
 end;
 
@@ -2987,10 +2991,9 @@ begin
             IsIdentical := false;
             InterimResult := ToCmdObj.Compare( FromCmdObj, IsIdentical );
             if IsIdentical then
-              InterimResult := ccapCompareIdentical + LineEnding + LineEnding;
+              InterimResult := format( cCLInfo, [ cNameItem_CommandLinePlur, ccapCompareIdentical ] ) + LineEnding + LineEnding;
 
             InDest := InDest + InterimResult;
-            //InDest := InDest + ToCmdObj.Compare( FromCmdObj );
 
           end;
 
@@ -3719,8 +3722,6 @@ var
   i , Idx : integer; //, CLOIdx: Integer;
   FromCLO : TCmdLineObj;//, ToCLO: TCmdLineObj;
   InList, InListNot, InDest : string;
-const
-  CLInfo = '--Command Lines: %s';
 begin
 
   result := '';
@@ -3771,8 +3772,8 @@ begin
     Identical := ( InListNot = '' ) and ( InDest = '' );
 
     if ( InListNot <> '' ) or ( InList <> '' ) or ( InDest <> '' ) then
-      Result := format( CLInfo, [ '' ] ) + Lineending + InList + InListNot + InDest + LineEnding
-    else result := format( CLInfo, [ cmsgCLsNone ] ) + LineEnding + LineEnding;
+      Result := format( cCLInfo, [ cNameItem_CommandLinePlur, '' ] ) + Lineending + InList + InListNot + InDest + LineEnding
+    else result := format( cCLInfo, [ cNameItem_CommandLinePlur, cmsgCLsNone ] ) + LineEnding + LineEnding;
 
   finally
     if assigned( CLOList ) then
@@ -3842,7 +3843,6 @@ begin
     result := Result + Compare_CmdLines( FromCmdObj, CmdLineIdentical ) + LineEnding;
 
     Identical :=  CmdIdentical and CmdLineIdentical;
-;
 
 end;
 

@@ -112,6 +112,25 @@ resourceString
   cmsgFirstLocalRunAbout = '<this is the message one sees from a First run of the program>'
     + LineEnding + LineEnding
     ;
+  cmsgFormHotKeys =
+    'The UI is large with many controls. To make it as mouse-less as possible for those who like '
+    + 'to use the keyboard try: <ctrl> <alt> g / m / k / p'
+    + LineEnding + LineEnding
+    + 'g : a GoTo popup menu appears so you can easily'
+    + LineEnding
+    + '    move to an important section (Main form only)'
+    + LineEnding
+    + 'm : pops up the Main Menu (Main form only)'
+    + LineEnding
+    + 'k : a Dbl-Click popup menu appears (if applicable'
+    + LineEnding
+    + '    for the form''s controls)'
+    + LineEnding
+    + 'p : pops up any right-click popup menus'
+    + LineEnding
+    + '    (either directly or via menu)'
+    ;
+
   cmsgFirstLocalRun =
     'Hi. This looks like a first run of commandoo.'
     + LineEnding + LineEnding
@@ -119,8 +138,7 @@ resourceString
     + 'every window is a checkbox. Click it, or use alt-h, and then help will be shown as you '
     + 'move your mouse over all the controls. '
     + LineEnding + LineEnding
-    + 'The UI is large with many controls. Use Ctrl-g to bring up a popup menu to easily move '
-    + 'to the most important sections.'
+    + '%s'
     + LineEnding + LineEnding
     + 'Also at the top/right is the ABOUT button, this opens a window where you can view '
     + 'information about commandoo, an Introduction, Tips and Tricks, and more. '
@@ -390,7 +408,10 @@ resourceString
     + 'This is because any command lines you add will "inherit" those settings '
     + 'saving you some work. '
     + LineEnding + LineEnding
-    + 'Ctrl-g anywhere to easily move to important controls.'
+    + '%s'
+    + LineEnding + LineEnding
+    + 'When adding a new command simply type in the name. If it is in the $PATH it will be found automatically. '
+    + 'If the command/file is not in the path you will need to type the path or use the browse button.'
     + LineEnding + LineEnding
     + 'commandoo supports variables in Command Lines. Select the CL you want and go into edit mode. Then use '
     + 'the CL builder/helper button and you will be taken to a edit window that has buttons to allow you to enter various '

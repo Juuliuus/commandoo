@@ -185,7 +185,7 @@ begin
               CurrPos := FindText( 0 )
             else CurrPos := -1;//0;
           end
-          else CurrPos := Idx + NewPos - 1;
+          else CurrPos := Idx + NewPos;// - 1;
         end;
       end;
   end;

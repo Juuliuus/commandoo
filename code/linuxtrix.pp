@@ -73,6 +73,8 @@ procedure StringfromMemStream( var Str : string; MS : TMemoryStream );
 procedure WriteStringToMemoryStream( SourceString : string; MemoryStream : TMemorystream );
 procedure WriteMemoryStreamToString( var SourceString : string; MemoryStream : TMemorystream );
 //function ParsePiping( PipeStr : string; Strings : TStrings ) : integer;
+function StripPkexec( const Value : string ) : string;
+function TogglePkexec( const Value : string ) : string;
 
 
 resourcestring
@@ -137,6 +139,27 @@ var
 
 const
   CheckAdjust = 17;
+  cprogPkexecStr = 'pkexec ';
+
+  function StripPkexec( const Value : string ) : string;
+  var
+    Idx : integer;
+  begin
+    result := Value;
+    Idx := pos( cprogPkexecStr, Value );
+    if Idx = 1 then
+      Result := copy( Value, length( cprogPkexecStr ) + 1, maxint );
+  end;
+
+  function TogglePkexec( const Value : string ) : string;
+  var
+    Idx : integer;
+  begin
+    Idx := pos( cprogPkexecStr, Value );
+    if Idx = 0 then
+      result := cprogPkexecStr + Value
+    else Result := copy( Value, length( cprogPkexecStr ) + 1, maxint );
+  end;
 
 function InterpretExitCodes( aProc : TProcess ) : string;
 begin

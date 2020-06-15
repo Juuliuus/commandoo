@@ -154,8 +154,8 @@ begin
   case btnToggle.Tag mod 6 of
     0 : ShowAbout;
     1 : ShowIntro;
-    2 : memOutput.Text := cmsgTips;
-    3 : memOutput.Text := cmsgFirstLocalRunAbout + cmsgFirstLocalRun;
+    2 : memOutput.Text := format( cmsgTips, [ cmsgFormHotKeys ] );
+    3 : memOutput.Text := cmsgFirstLocalRunAbout + format( cmsgFirstLocalRun, [ cmsgFormHotKeys ] );
     4 : memOutput.Text := cmsgCommandooUpgrade;
     5 : memOutput.Text := cmsgIbus;
   end;

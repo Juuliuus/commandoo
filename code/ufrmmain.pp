@@ -6753,7 +6753,7 @@ begin
   end;
 
   if fFirstLocalRun then
-    UpdateDisplay( cmsgFirstLocalRun
+    UpdateDisplay( format( cmsgFirstLocalRun, [ cmsgFormHotKeys ] )
                    + LineEnding + LineEnding
                    + cmsgOwnRisk,
                    false );

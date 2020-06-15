@@ -41,7 +41,8 @@ function StandardOutputHeader( const Cmd : string ) : string;
 function CanJumpToCommand( const CmdStr, CmdLineStr : string; LBCmd, LBCmdLIne : TListbox ) : boolean;
 function TryToFindEditedCommand( const CmdSearch : string; LBCmd : TListbox ) : integer;
 procedure ApplyChangeFont( AForm : TForm; AlwaysChange : boolean = false );
-function TogglePkexec( const Value : string ) : string;
+//function StripPkexec( const Value : string ) : string;
+//function TogglePkexec( const Value : string ) : string;
 procedure SetCapMenuButton( M : TMenuItem; B : TBitBtn; const Cap, Extra : string );
 
 
@@ -59,6 +60,9 @@ implementation
 
 uses unitcommands, unitGlob;
 
+//const
+//  cprogPkexecStr = 'pkexec ';
+
 procedure SetCapMenuButton( M : TMenuItem; B : TBitBtn; const Cap, Extra : string );
 const
   HotK = '%s  ';
@@ -69,17 +73,25 @@ begin
   else B.Caption := M.Caption;
 end;
 
-function TogglePkexec( const Value : string ) : string;
-var
-  Idx : integer;
-const
-  cprogPkexecStr = 'pkexec ';
-begin
-  Idx := pos( cprogPkexecStr, Value );
-  if Idx = 0 then
-    result := cprogPkexecStr + Value
-  else Result := copy( Value, length( cprogPkexecStr ) + 1, maxint );
-end;
+//function StripPkexec( const Value : string ) : string;
+//var
+//  Idx : integer;
+//begin
+//  result := Value;
+//  Idx := pos( cprogPkexecStr, Value );
+//  if Idx = 1 then
+//    Result := copy( Value, length( cprogPkexecStr ) + 1, maxint );
+//end;
+//
+//function TogglePkexec( const Value : string ) : string;
+//var
+//  Idx : integer;
+//begin
+//  Idx := pos( cprogPkexecStr, Value );
+//  if Idx = 0 then
+//    result := cprogPkexecStr + Value
+//  else Result := copy( Value, length( cprogPkexecStr ) + 1, maxint );
+//end;
 
 procedure ApplyChangeFont( AForm : TForm; AlwaysChange : boolean = false );
 var

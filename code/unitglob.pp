@@ -44,6 +44,8 @@ const
   cNameItem_CommandLine = 'Command Line';
   cNameItem_CommandPlur = 'Commands';
   cNameItem_CommandLinePlur = 'Command Lines';
+  cCLInfo = '--%s: %s';
+
 //button captions, yes, BUT should NOT be translated.
   cbtn_SearchNOT = '± NOT';
   ccbHintsEnglishOverride = '&H  Show hints on mouse-over';
@@ -89,7 +91,8 @@ resourcestring
   cbtn_Done = '&O  Done';
   crg_MatchType = 'Match Type';
   crg_Value = 'Value';
-  ccapFindTextHint = 'Begin typing...';
+  ccapFindLBHint = 'Begin typing...';
+  ccapFindTextHint = 'Type then <enter>...';
 
 type
   //raise EErrorDatabaseProblem.Create( 'EXCEPTION STRESS TEST' );

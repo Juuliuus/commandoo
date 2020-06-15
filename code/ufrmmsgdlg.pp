@@ -29,6 +29,8 @@ uses
   Buttons, ExtCtrls, Clipbrd, unitsharedobj
   , unitGlobForm
   , Jinifiles
+  , ufrmFindText
+  , lcltype //vkey codes
   ;
 
 type
@@ -73,6 +75,7 @@ type
   { TfrmMsgDlg }
 
   TfrmMsgDlg = class(TForm)
+    btnFind : TBitBtn;
     btnOk: TBitBtn;
     btnNo: TBitBtn;
     btnSaveToFile : TBitBtn;
@@ -85,18 +88,21 @@ type
     pnlNoShow : TPanel;
     Timer1: TTimer;
     procedure btnClipClick(Sender : TObject);
+    procedure btnFindClick( Sender : TObject );
     procedure btnNoClick(Sender: TObject);
     procedure btnSaveToFileClick( Sender : TObject );
     procedure btnYesClick(Sender: TObject);
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate( Sender : TObject );
+    procedure FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure FormShow(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
     { private declarations }
     FdoBlink: boolean;
     FCanClose: boolean;
+    fFindText : TfrmFindText;
     procedure HandleFormSettings( const TheType : TSettingsDirective );
     procedure InitForm;
     procedure SetupConfirm( const IsConfirm : boolean );
@@ -499,6 +505,26 @@ begin
   Clipboard.AsText := memMsg.Text;
 end;
 
+procedure TfrmMsgDlg.btnFindClick( Sender : TObject );
+var
+  PosPt : TPoint;
+  MoveLeft , MoveUp: Integer;
+begin
+  if not assigned( fFindText ) then
+  begin
+    fFindText := TfrmFindText.Create( self );
+    fFindText.UpdateCaptions;
+    fFindText.Memo := memMsg;
+  end;
+  MoveLeft := 40;
+  MoveUp := 40;
+  PosPt := GetPreciseControlCoords( memMsg, 5 + MoveLeft, 5 + MoveUp );
+  fFindText.Top := PosPt.y;
+  fFindText.Left := PosPt.x;
+  fFindText.Show;
+
+end;
+
 procedure TfrmMsgDlg.btnYesClick(Sender: TObject);
 begin
   FCanClose := True;
@@ -508,6 +534,12 @@ end;
 procedure TfrmMsgDlg.FormClose( Sender : TObject; var CloseAction : TCloseAction );
 begin
   HandleFormSettings( sdSave );
+  if assigned( fFindText ) then
+  begin
+    fFindText.Close;
+    freeandnil( fFindtext );
+  end;
+
 end;
 
 procedure TfrmMsgDlg.FormCloseQuery(Sender: TObject; var CanClose: boolean);
@@ -519,6 +551,23 @@ procedure TfrmMsgDlg.FormCreate( Sender : TObject );
 begin
   font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
+  btnFind.Enabled := assigned( frmFindText );
+end;
+
+procedure TfrmMsgDlg.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+begin
+  if ( ssCtrl in Shift ) and not ( ssAlt in Shift ) then
+  begin
+    if key = VK_F then
+    begin
+      if ssShift in Shift then
+        fFindText.ReFindinMemo( memMsg )
+      else btnFindClick( btnFind );// FindInMemo( memMsg );
+    end;
+    if key = VK_L then
+      fFindText.ReFindinMemo( memMsg );
+  end;
+
 end;
 
 procedure TfrmMsgDlg.Timer1Timer(Sender: TObject);
