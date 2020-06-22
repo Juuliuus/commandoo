@@ -77,7 +77,7 @@ WantsInput=0
 UseShell=0
 
 [_DB_VersionCount]
-LastVersionUpgrade=5
+LastVersionUpgrade=6
 TextDataType=CmdLine
 
 [df//CmdLineObj]

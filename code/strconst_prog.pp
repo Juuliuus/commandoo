@@ -113,7 +113,7 @@ const
 //=====  PROGRAM   ==============================
   cHandwrittenVersion = '2.0.0';//'1.0.1';//all done. ?
   cSectTab_PROG_VersionCount = '_PROG_VersionCount';
-  cVersionDate = ' (June 2020)';// ReleaseCandidate';
+  cVersionDate = ' (June 2020)';//ReleaseCandidate';
 
 implementation
 

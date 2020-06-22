@@ -100,6 +100,7 @@ type
     Bevel3 : TBevel;
     Bevel4 : TBevel;
     Bevel5 : TBevel;
+    btnEditCmdName : TBitBtn;
     btnBuilder : TBitBtn;
     btnExit : TBitBtn;
     btnCmdLineDelete : TBitBtn;
@@ -108,6 +109,7 @@ type
     btnMainSave : TBitBtn;
     btnMainCopy : TBitBtn;
     btnPkexecMain : TBitBtn;
+    btnInsertPath : TBitBtn;
     btnRefreshFavorites : TBitBtn;
     btnSearchRun : TBitBtn;
     btnSimpleSearch : TBitBtn;
@@ -192,7 +194,9 @@ type
     lblDispDetachProcess : TLabel;
     lblDispWantsInput : TLabel;
     lblPathAlias : TLabel;
+    lblPA : TLabel;
     lblPathAliasDisp : TLabel;
+    lblPADisp : TLabel;
     lblTabSearch : TLabel;
     lblTabKeyWords : TLabel;
     lblTerminalOnlyDisp : TLabel;
@@ -230,7 +234,6 @@ type
     lblDispEntry : TLabel;
     lblDetachedProcesses : TLabel;
     lbDetachedProcesses : TListBox;
-    lblPathActual: TLabel;
     lblHelp: TLabel;
     lblShowButtons: TLabel;
     lblVersion: TLabel;
@@ -420,6 +423,10 @@ type
     shpCmdLineOut1 : TShape;
     shpCmdOut1 : TShape;
     shpCmdOut10 : TShape;
+    shpCmdOut11 : TShape;
+    shpCmdOut12 : TShape;
+    shpCmdOut13 : TShape;
+    shpCmdOut14 : TShape;
     shpCmdOut2 : TShape;
     shpCmdOut3 : TShape;
     shpCmdOut4 : TShape;
@@ -495,6 +502,7 @@ type
     procedure btnCmdEditClick(Sender: TObject);
     procedure btnHaltProcessClick( Sender : TObject );
     procedure btnHelpCommandClick(Sender: TObject);
+    procedure btnInsertPathClick( Sender : TObject );
     procedure btnKeyWordAddClick(Sender: TObject);
     procedure btnKeyWordDeleteClick(Sender: TObject);
     procedure btnLocationPathClick(Sender: TObject);
@@ -535,7 +543,6 @@ type
     procedure lblCurrDBDblClick( Sender : TObject );
     procedure lblDispEntryDblClick( Sender : TObject );
     procedure lblPathAliasDblClick( Sender : TObject );
-    procedure lblPathAliasDispDblClick( Sender : TObject );
     procedure lbSearchCmdClick( Sender : TObject );
     procedure lbSearchCmdKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lbSearchCmdLineClick( Sender : TObject );
@@ -629,7 +636,6 @@ type
     fKeyWordSR : TStringList;
     fFavoritesSR : TStringList;
 
-
     function CheckPathOverride(var ConPath : string ) : boolean;
     procedure WritePathOverride(const ConPath : string );
     function IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
@@ -646,7 +652,6 @@ type
     procedure ClearSearchDisplays;
     procedure CloseDownDB( const NormalClose, DoSave : boolean );
     function CommandAlreadyUsed( const CheckStr : string; const OkIdx : integer) : boolean;
-    function CommandEditing : boolean;
     function CommandNameIsAllowed( const CheckStr : string; const Idx : integer) : boolean;
     procedure DevReleaseSettings;
     function DisallowMisMatch( SO : TSearchObj; const Stamp : string) : boolean;
@@ -665,6 +670,7 @@ type
     procedure CmdObjToForm( aCmdObj : TCmdObj; CLOIdx : integer = cUseItemIndexFlag );
     procedure ForcePaintingrefresh;
     procedure FormToCmdObj( aCmdObj: TCmdObj );
+    procedure ClearCmdLineDisps;
     procedure BlankCmdLine;
     procedure CmdLineToForm( aCmdLineObj: TCmdLineObj );
     procedure FormToCmdLine( aCmdLineObj: TCmdLineObj );
@@ -713,9 +719,6 @@ type
     procedure RemoveDetachedProcess( const Idx, OldIdx : integer; aProcess : TAsyncProcess );
     procedure RenameCommand( const InputName : string; InputMode : TSingleInputMode );
     function NotEditing: boolean;
-    function Editing: boolean;
-    function EditingCmd: boolean;
-    function EditingCL: boolean;
     procedure RefreshCmdObj( CLOIdx : integer = cUseItemIndexFlag );
     procedure RunCmdDisplayObj( Sender : TListBox );
     function RunCmdLine( RunStr : string; WantsInput : boolean; const UseShell, Detach : boolean ) : string;
@@ -746,7 +749,7 @@ type
     procedure UpdateMainActions;
     procedure UpdateNotebookCaptions;
     procedure UpdateNotebookEditingStatus;
-    procedure UpdatePathsInEdit( const ThePath : string );
+    procedure UpdatePathsInEdit( const ThePath : string; const Complete : boolean );
     procedure UpdateProfileText( const IsBad : boolean );
     procedure UpdateSaveStatus;
     procedure SetNotificationState( const TurnOn : boolean; Obj : TComponent; Shp : TShape );
@@ -760,6 +763,13 @@ type
     function RunExternalHelpRequest( SL : TStringList ) : string;
     procedure SavedSearches_Delete( const aGUID : string );
     function GetWidgetString : string;
+    function Editing: boolean;
+    function EditingCmd: boolean;
+    function EditingCL: boolean;
+    function DifferingCommandPaths : boolean;
+    function GetProperCmdNameCaption : string;
+    function GetProperPathLabelCaption( const ForDisplay : boolean = false ) : string;
+    function GetRealPath : string;
 
     property SuperUser: boolean read FSuperUser;
     property WritingToPath: string read fWritingToPath;
@@ -826,6 +836,14 @@ resourcestring
   ccapMainOptionsNotAvailable = 'Options not currently available.';
   cmsgMainMultipleCopiesOpen = 'Multiple copies of commandoo are running, changing options not allowed. '
                                + 'Close all instances, restart, and then change options.';
+  cmsgMainHowToEditCmdName =
+    LineEnding + LineEnding
+    + 'If you want to edit the Command Name and/or path, open the command in EDIT mode and use the button '
+    + 'or Dbl-Click the name. '
+    + LineEnding + LineEnding
+    + 'If the new command is (or should be) in the path simply typing the name is sufficient, '
+    + 'otherwise type in the full path or use the folder search button.'
+    ;
 
 //turned in as bug!!!  https://bugs.freepascal.org/view.php?id=32091
 //Had a couple tough days there where I could not debug the program anymore!!! Turns out it was because I had
@@ -869,7 +887,7 @@ var
   BadDB : boolean;
   RootModeCap : string = '';
   OpenInstancesCap : string = '';
-  CommsFromFormCreate : string = '';
+  SpecialComms : string = '';
 
 
 const
@@ -954,6 +972,17 @@ const
 
 
 resourcestring
+  ccapcleUncertainPath = 'Uncertain Path...';
+  cmsgcleUncertainPath =
+    'You are currently editing a Command and the path of the edited command is not '
+    + LineEnding
+    + 'the same as the path in the saved version. Which would you like to use:'
+    + LineEnding + LineEnding
+    + 'Yes = %s'
+    + LineEnding
+    + 'No  = %s'
+    + LineEnding
+    ;
   ccapGotoFindIn = 'Find in %s %s...';
   ccapGotoNotesStr = 'Notes';
   ccapGotoListStr = 'List';
@@ -1308,7 +1337,7 @@ begin
 //PESTER PESTER PESTER PESTER PESTER PESTER
 //yes you found PESTER, list of reminders BEFORE compiling and releasing a version!!!
 //================
-//before a release version
+//before a releasing a version
 
 //       INCREMENT c_PROG_VersionUpgradeCount = #; to the next upgrade
 //       if prog upgrades (settings-wise) were necessary
@@ -1520,9 +1549,9 @@ var
       end;
 
     if SqlLibChange <> '' then
-      CommsFromFormCreate := CommsFromFormCreate + SqlLibChange;
+      SpecialComms := SpecialComms + SqlLibChange;
     if ( fSqliteLibrary = cSqliteDefaultLibraryLocationUNKNOWN ) and fDoShowSqlMissing then
-      CommsFromFormCreate := CommsFromFormCreate + cmsgSqlLibNotFound;
+      SpecialComms := SpecialComms + cmsgSqlLibNotFound;
   end;
 
 begin
@@ -1532,6 +1561,8 @@ begin
   fInternalComs := false;
   fUpdateDisplayOffset := 0;
   fUpdateDisplayOffsetFlag := false;
+  lblPathAlias.Caption := '';
+  lblPathAliasDisp.Caption := '';
   lblCmdLinePointer.caption := clblCmdlinePointer + clblPointers;
   lblCmdPointer.caption := clblCmdPointer + clblPointers;
 
@@ -1571,7 +1602,6 @@ begin
 //juuus Make a routine that will create a thumbdrive version
 //ask for appimage ask for destFolder: compy appimage and config to appimage.config
 
-//breadcrumb ==> here is writing path decision
   fWritingToPath := GetDefaultWritingToPath;
 
   if not DirectoryExists( fWritingToPath ) then
@@ -1624,8 +1654,6 @@ begin
 //===>>> Applychangefont MUST FOLLOW globFontsLarge reading
   ApplyChangeFont( Self );
 
-//juuus sqlitelibrary stuff
-  //fSqliteLibrary := fIFS.ReadString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, cSqliteDefaultLibraryLocationUNKNOWN );
   fSqliteLibrary := fIFS.ReadString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, '' );//new install
 
 //====== don't move must follow initial ini file read
@@ -1669,8 +1697,6 @@ begin
 
   Get_Cmd_Fields_Searchable( fSearchFields );
 
-  //lblFriendlyNameLineDisp.Caption := '';//I use "..." as caption so I can see it in dev environment, clear that here
-
   SetUp_Edit_Structure;
   SetUp_KeyBoardMenu_Structure;
 
@@ -1692,26 +1718,47 @@ end;
 procedure TfrmMain.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 var
   PosPt : TPoint;
+  MemName : string;
 
   procedure ShowMainMenu;
   begin
-    PosPt := GetPreciseControlCoords( lbCommands, 30, 30 );
+    PosPt := GetPreciseControlCoords( btnPlus, 30, 30 );
     popMain.Popup( PosPt.x, PosPt.y );
   end;
+
+  procedure InsertDate( Memo : TMemo );
+  begin
+    if Memo.Focused then
+    begin
+      Memo.SelLength := 0;
+      Memo.SelText := ':' + DateTimeToStr( now ) + ': ';
+    end;
+ end;
 begin
 
   if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
   begin
     case key of
- //The use of ctrl-alt-VK_G is global, do not use anywhere else.
+ //The use of ctrl-alt- VK_d g k m p  are global, do not use anywhere else.
+      VK_D :
+        if assigned( self.ActiveControl ) and ( self.ActiveControl is TMemo )  then
+        begin
+          //MemName := TMemo( self.ActiveControl ).Name;
+          case TMemo( self.ActiveControl ).Name of
+            'Memo1' : InsertDate( Memo1 );
+            'memNotes' : InsertDate( memNotes );
+            'memNotesLine' : InsertDate( memNotesLine );
+          end;
+          Key := VK_UNKNOWN; //just in case
+        end;
       VK_G :
         begin
-          PosPt := GetPreciseControlCoords( lbCommands, 30, 30 );
+          PosPt := GetPreciseControlCoords( btnPlus, 30, 30 );
           popGoto.Popup( PosPt.x, PosPt.y );
         end;
       VK_K :
         begin
-          PosPt := GetPreciseControlCoords( lbCommands, 30, 60 );
+          PosPt := GetPreciseControlCoords( btnPlus, 30, 60 );
           popDblC.PopUp( PosPt.x, PosPt.y );
         end;
       VK_M : ShowMainMenu;
@@ -1720,7 +1767,7 @@ begin
         begin
           PosPt := GetPreciseControlCoords( self.ActiveControl, 30, 30 );
           self.ActiveControl.PopupMenu.PopUp( PosPt.x, PosPt.y );
-        end else ShowMainMenu;
+        end; // else ShowMainMenu;
     end;
   end;
 
@@ -1809,6 +1856,7 @@ end;
 function TfrmMain.CheckUpdates_DB : boolean;
 var
   i , FromVer, ToVer: integer;
+  Comms : string;
 begin
 
   result := true;
@@ -1825,6 +1873,7 @@ begin
   if FromVer = ToVer then
     exit;
 
+  Comms := '';
 //use literal names for the columns as they were at time, protects against changes to constant names
   for i := FromVer + 1 to ToVer do
     case i of
@@ -1832,20 +1881,37 @@ begin
       2 : Update_DB_Version_0002( 'Entry' );
       3 : Update_DB_Version_0003( 'ThreatLevel' );
       4 : Update_DB_Version_0004( 'ObjID' );
-      5 : Update_DB_Version_0005;
-      //6 : When an update is done on the DB write the needed code here, increase the
+      5 :
+        begin
+          if Update_DB_Version_0005 then
+            Comms := Comms + LineEnding
+                     + 'Text DB''s: Added TableType to better differentiate files on import.'
+                     + LineEnding
+                     + 'Text DB''s: Enforce Shared DB GUID to be accurate with DB imports.';
+        end;
+      6 :
+        begin
+          Update_DB_Version_0006;
+          Comms := Comms + LineEnding
+                    + 'Text and sql DB''s: Commands in $PATH now store $PATH instead of '
+                    + 'literal path, allowing portability to various gun/linux distros.';
+        end;
+
+      //7 : When an update is done on the DB write the needed code here, increase the
       //  c_DB_VersionUpgradeCount const by 1
     end;
 
   InfoServer.UpdateDBVersionCount( ToVer );
 
-  UpdateDisplay(  cAttnBar
-                  + format( cmsgUpdated_DBFiles, [ ccapUpdated_DB, c_DB_HandwrittenVersion, ToVer ] )
-                  + cAttnBar,
-                  false
-                );
-
-  //Showmessage( );//was annoying
+  SpecialComms := cAttnBar
+                   + format( cmsgUpdated_DBFiles, [
+                                   fProfileName + ' ' + trim( strif( fUseDB, cDefaultDBProfileIsDBStr,  cDefaultDBProfileIsDBStrNot ) ),
+                                   c_DB_HandwrittenVersion,
+                                   FromVer,
+                                   ToVer
+                                                        ] )
+                   + strif( Comms <> '', Comms + LineEnding )
+                   + cAttnBar;
 
 end;
 
@@ -1876,6 +1942,12 @@ begin
       begin
         result := false;
         exit;
+      end;
+
+      if FIsInitialized and ( SpecialComms <> '' ) then
+      begin
+        UpdateDisplay( trim( SpecialComms ) + LineEnding, false );
+        SpecialComms := '';
       end;
 
   //Program check
@@ -2070,7 +2142,9 @@ begin
 //so that it doesn't get hidden, I set this manually and permanently
   FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
   btnPkexecMain.Hint := cPkexecHint;
-
+  btnInsertPath.Hint := chintInsertFilePaths;
+  btnInsertPath.Caption := '&J  ' + ccapInsertFilePaths;
+  btnEditCmdName.Caption := ccapGenericEdit;
   ResetCommandsToTop;
 
 end;
@@ -2259,13 +2333,13 @@ begin
   begin
     if ( Shift = [ ssCtrl ] ) then
     begin
-      if btnLineEdit.Enabled then
-        btnLineEdit.Click;
+      if actRun.Enabled then
+        actRun.Execute;
     end
     else
     begin
-      if actRun.Enabled then
-        actRun.Execute;
+      if btnLineEdit.Enabled then
+        btnLineEdit.Click;
     end;
     exit;
   end;
@@ -2834,7 +2908,7 @@ end;
 procedure TfrmMain.lblCommandNameDblClick( Sender : TObject );
 begin
   RenameCommand(
-       CmdObjHelper.GetNormalizedPath( lblPathAlias.Caption, lblPathActual.Caption, lblCommandName.Caption ),
+       CmdObjHelper.GetNormalizedPath( lblPathAlias.Caption, lblCommandName.Caption ),
        simFile
                );
   ReFocus_Edit_Memo( true );
@@ -2842,7 +2916,7 @@ end;
 
 procedure TfrmMain.lblCommandNameDispDblClick( Sender : TObject );
 begin
-  MsgDlgMessage( ccapOverflow, lblCommandNameDisp.Caption );
+  MsgDlgMessage( ccapOverflow, lblCommandNameDisp.Caption + cmsgMainHowToEditCmdName );
   MsgDlgInfo( self );
 end;
 
@@ -2861,25 +2935,21 @@ end;
 
 procedure TfrmMain.lblPathAliasDblClick( Sender : TObject );
 var
-  str : string;
+  str, Desc, Cap : string;
 begin
-  if CmdInPath then
-    str := lblPathAlias.Caption + format( '   (%s)', [ lblPathActual.caption ] )
-  else str := lblPathAlias.Caption;
+  if not assigned(CmdObj) then
+    exit;
+
+  Cap := GetProperPathLabelCaption( true );
+  Desc := Get_Cmd_Field_DisplayCaption( fidLocationPath ) + ': ';
+
+  if Cap = cCommandInPathStr then
+    str := Desc + Cap + format( '   (%s)', [ GetLiteralPath_Generic( Cap, GetProperCmdNameCaption ) ] )
+  else str := Desc + Cap;
+
   MsgDlgMessage( ccapOverflow, str );
   MsgDlgInfo( self );
   ReFocus_Edit_Memo( true );
-end;
-
-procedure TfrmMain.lblPathAliasDispDblClick( Sender : TObject );
-var
-  str : string;
-begin
-  if CmdInPath then
-    str := lblPathAliasDisp.Caption + format( '   (%s)', [ lblPathActual.caption ] )
-  else str := lblPathAliasDisp.Caption;
-  MsgDlgMessage( ccapOverflow, str );
-  MsgDlgInfo( self );
 end;
 
 procedure TfrmMain.lbSearchCmdClick( Sender : TObject );
@@ -3025,7 +3095,7 @@ procedure TfrmMain.memNotesKeyDown( Sender : TObject; var Key : Word; Shift : TS
 begin
   if ( Shift = [ ssCtrl ] ) then
   begin
-    if key = VK_S then
+    if ( key = VK_S ) and btnCmdOk.enabled then
       btnCmdOk.Click;
   end;
 
@@ -3041,7 +3111,7 @@ begin
       frmFindText.ReFindinMemo( memNotes );
   end;
 
-  if Key = vk_escape then
+  if ( Key = vk_escape ) and btnCmdCancel.Enabled then
     btnCmdCancel.Click;
 
 end;
@@ -3066,7 +3136,7 @@ begin
 
   if ( Shift = [ ssCtrl ] ) then
   begin
-    if key = VK_S then
+    if ( key = VK_S ) and btnLineOk.Enabled then
       btnLineOk.Click;
   end;
 
@@ -3082,7 +3152,7 @@ begin
       frmFindText.ReFindinMemo( memNotesLine );
   end;
 
-  if Key = vk_escape then
+  if ( Key = vk_escape ) and btnLineCancel.Enabled then
     btnLineCancel.Click;
 
   //self.FormKeyDown( Sender, Key, Shift ); memo1 dead when editing, hmmmmm.
@@ -3220,10 +3290,10 @@ begin
       if EditingCmd then
         lblCommandNameDblClick( lblCommandName )
       else lblCommandNameDispDblClick( lblCommandNameDisp );
-    cmniDblCCmdPath :
-      if EditingCmd then
-        lblPathAliasDblClick( lblPathAlias )
-      else lblPathAliasDispDblClick( lblPathAliasDisp );
+    cmniDblCCmdPath : lblPathAliasDblClick( self );
+      //if EditingCmd then
+      //  lblPathAliasDblClick( lblPathAlias )
+      //else lblPathAliasDblClick( lblPathAliasDisp );
     cmniDblCCmdNotes :
       if EditingCmd then
         Memo1DblClick( memNotes )
@@ -3497,11 +3567,7 @@ end;
 
 procedure TfrmMain.UpdateDisplay( const Output : string; DoIndicate : boolean = true );
 var
-{$IFDEF Bit32}
-  NumLines : Integer;
-{$ELSE}
   NumLines : Int64;
-{$ENDIF}
   GoToPos : Integer;
   Bad : Boolean;
 begin
@@ -3584,7 +3650,7 @@ begin
   CmdObjHelper.ProcessFileNamePath(ComName, ComFile, ComPath);
 
   lblCommandName.Caption := ComFile;
-  UpdatePathsInEdit( ComPath );
+  UpdatePathsInEdit( ComPath, false );
 
 end;
 
@@ -3831,8 +3897,6 @@ begin
   lblPathAlias.Caption := '';
   lblPathAliasDisp.Caption := lblPathAlias.Caption;
 
-  lblPathActual.Caption := '';
-
   cbSuperUser.Checked := False;
   cbTerminalOnly.Checked := False;
 
@@ -3857,6 +3921,25 @@ begin
 
 end;
 
+procedure TfrmMain.ClearCmdLineDisps;
+begin
+//edge case on new commands, "disp"s aren't cleared
+  memNotesLineDisp.Lines.Text := '';
+  lblSuperUserLineDisp.Visible := false;
+  lblIsFavoriteLineDisp.Visible := false;
+  lblDetachProcessLineDisp.Visible := false;
+  lblWantsInputLineDisp.Visible := false;
+  lblUseShellLineDisp.Visible := false;
+  lblTerminalOnlyLineDisp.Visible := false;
+  lblAlertLineDisp.Visible := false;
+
+  cbThreatLevelLine.ItemIndex := -1;
+  ApplyThreatLevel( pnlCLEdit, cbThreatLevelLine );
+  EchoThreatLevelDisplay( pnlCL, cbThreatLevelLineDisp, lblThreatLevelLineDisp, cbThreatLevelLine.ItemIndex );
+
+  edtFriendlyNameLine.Text := dots;
+
+end;
 
 procedure TfrmMain.BlankCmdLine;
 begin
@@ -4061,13 +4144,13 @@ begin
 
 end;
 
-procedure TfrmMain.UpdatePathsInEdit( const ThePath : string );
+procedure TfrmMain.UpdatePathsInEdit( const ThePath : string; const Complete : boolean );
 begin
-  lblPathAlias.Caption := format( ccapDisplayCaptionAndValue,
-              [ Get_Cmd_Field_DisplayCaption( fidLocationPath ), CmdObjHelper.GetPathAlias( ThePath ) ]
-                                );
-  lblPathAliasDisp.Caption := lblPathAlias.Caption;
-  lblPathActual.Caption := ThePath;
+  if thePath = '' then
+     lblPathAlias.Caption := cmsgcleBadPath
+  else lblPathAlias.Caption := ThePath;
+  if Complete then
+    lblPathAliasDisp.Caption := lblPathAlias.Caption;
 end;
 
 procedure TfrmMain.CmdObjToForm( aCmdObj: TCmdObj; CLOIdx : integer = cUseItemIndexFlag );
@@ -4084,7 +4167,7 @@ begin
     cbSuperUser.Checked := SuperUserMode;
     cbTerminalOnly.Checked := TerminalOnly;
 
-    UpdatePathsInEdit( LocationPath );
+    UpdatePathsInEdit( LocationPath, true );
 
     cbDetachProcess.Checked := DetachProcess;
     cbIsFavorite.Checked := IsFavorite;
@@ -4107,12 +4190,12 @@ begin
     actRevert.Enabled := DoUpdate;
 
     if CLOIdx = cUseItemIndexFlag then
-    case CmdLines.Count of
-      0 : CLOIdx := -1;
-//cancel edit on CmdObj no longer resets lbcmdlines to 0 index.
-      else if lbCmdLines.Count = 0 then
-             CLOIdx := 0;
-    end;
+      case CmdLines.Count of
+        0 : CLOIdx := -1;
+ //cancel edit on CmdObj no longer resets lbcmdlines to 0 index.
+        else if lbCmdLines.Count = 0 then
+               CLOIdx := 0;
+      end;
 
     UpdateLbCmdLines( CLOIdx, False );
 
@@ -4155,7 +4238,8 @@ begin
 
     actRevert.Enabled := DoUpdate;
 
-    LocationPath := lblPathActual.Caption;
+    LocationPath := lblPathAlias.Caption;
+    UpdatePathsInEdit( LocationPath, true );
 
     UpdateLbCommands(False);
 
@@ -4463,6 +4547,18 @@ end;
 
 function TfrmMain.GetHelpOutput( SL : TStringList ) : string;
 begin
+{$IFNDEF Release}
+  if SL.Count < 2 then
+  begin
+    UpdateDisplay( 'TfrmMain.GetHelpOutput: Developer. Malformed Help request.', false );
+    exit;
+  end;
+{$ENDIF}
+  if trim( SL[ 1 ] ) = '' then
+  begin
+    UpdateDisplay( format( cmsgcleNoHelpParam, [ SL[ 0 ] ] ), false );
+    exit;
+  end;
 //needs to be a separate section for help's because of builtin's
   if not fInternalComs then
     //UpdateDisplay( StandardOutputHeader( SL[ 0 ]  + ' ' + SL[ 1 ] ), false );
@@ -4472,13 +4568,17 @@ begin
 end;
 
 function TfrmMain.CmdInPath( CheckForBuiltin : boolean = false ) : boolean;
+var
+  str : string;
 begin
-  Result := ( pos( cCommandInPathStr, lblPathAliasDisp.Caption ) > 0 )
-       or ( pos( cCommandInPathStr, lblPathAlias.Caption ) > 0 );
+  str := GetProperPathLabelCaption;
+
+  Result := str = cCommandInPathStr;
+
   if Result then
     exit;
   if CheckForBuiltin then
-    result := lblPathActual.Caption = cLinuxBuiltInStr;
+    result := str = cLinuxBuiltInStr;
 end;
 
 function TfrmMain.IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
@@ -4494,48 +4594,47 @@ end;
 procedure TfrmMain.btnHelpCommandClick(Sender: TObject);
 var
   SL : TStringList;
-  str : string;
+  Path, Cmd, Help : string;
 begin
 
   if not assigned(CmdObj) then
     exit;
 
-//lblPathActual.Caption (not viisble in running prog ) and edtHelp.text are always correct when
-//editing or not editing In editing the actual cmd obj is "buffered" and so anyone working on a
-//command can change it at will and then correct help will be shown if it exists. This fixes a
-//bug where when using the command object editing changes were not used.
+  //this display the help for the proper command, it differentiates depending if you are
+  //editing or not, and display appropriately for the situation. The actual cmd obj is "buffered"
+  //and so anyone working on a command can change it at will, but correct help will be shown if it exists.
+  //This fixes a bug where when using the command object editing changes were not used.
+  Path := GetProperPathLabelCaption;
+  Cmd := GetProperCmdNameCaption;
+  Help := trim( edtHelp.Text );
 
   SL := TStringList.Create;
   try
 
-    //cCommandInPathStr = '$PATH';
-    //cLinuxBuiltInStr = '$BUILTIN';
-
-    if lblPathActual.Caption <> cLinuxBuiltInStr then
+    if Path <> cLinuxBuiltInStr then
     begin
       if CmdInPath then
       begin
-        SL.Add( lblCommandName.Caption );
-//        SL.Add( lblPathActual.Caption + lblCommandName.Caption );
-        SL.Add( edtHelp.Text )
+        SL.Add( Cmd );
+        if not SystemFileFound( Cmd ) then
+          SL.Add( '' )
+        else SL.Add( Help )
       end else
       begin
-        str := lblPathActual.Caption + lblCommandName.Caption;
-        if not IsFileExist( str, true ) then
+        if Path = cmsgcleBadPath then
+        begin
+          UpdateDisplay( format( cFileNotExist, [ Cmd ] ) );
           exit;
-        //if not FileExists( str ) then
-        //begin
-        //  MsgDlgMessage( ccapError, format( cFileNotExist, [ str ] ) );
-        //  MsgDlgAttention( self );
-        //  exit;
-        //end;
-        SL.Add( str );
-        SL.Add( edtHelp.Text )
+        end;
+        if not IsFileExist( Path + Cmd, true ) then
+          exit;
+        SL.Add( Path + Cmd );
+        SL.Add( Help )
       end;
     end else
     begin
-      SL.Add( lblCommandName.Caption );
-      SL.Add( 'help' );
+      SL.Add( Cmd );
+      SL.Add( 'help' ); //literal for builtin's, don't change
     end;
 
     UpdateDisplay( GetHelpOutput( SL ) );
@@ -4546,16 +4645,19 @@ begin
 
 end;
 
+procedure TfrmMain.btnInsertPathClick( Sender : TObject );
+var
+  str : string;
+begin
+  str := GetRealPath;
+  if str <> '' then
+    memEntry.Text := str + memEntry.Text;
+end;
+
 
 procedure TfrmMain.btnLocationPathClick(Sender: TObject);
 begin
-
-  if not assigned(CmdObj) then
-    exit;
-
-  MsgDlgMessage( format( ccapPathCaption, [ lblCommandName.Caption ] ), CmdObj.GetLiteralPath( true ) );
-  MsgDlgInfo( self );
-
+  lblPathAliasDblClick( self );
 end;
 
 procedure TfrmMain.btnPkexecMainClick( Sender : TObject );
@@ -4588,34 +4690,116 @@ begin
 
 end;
 
+function TfrmMain.DifferingCommandPaths : boolean;
+begin
+  result := lblPathAlias.Caption <> lblPathAliasDisp.Caption;
+end;
+
+
+function TfrmMain.GetProperCmdNameCaption : string;
+begin
+  if EditingCmd then
+    result := lblCommandName.Caption
+  else result := lblCommandNameDisp.Caption;
+end;
+
+function TfrmMain.GetRealPath : string;
+var
+  Pathstr, PathStrDisp : string;
+  PathStrOK, PathStrDispOK : boolean;
+begin
+//this is for inserting a path under editing situations where a decision must be made of which
+//CmdName/pathalias should be used.
+  Result := '';
+  PathStr := lblPathAlias.Caption;
+  PathStrDisp := lblPathAliasDisp.Caption;
+
+  PathStrOK := CmdObjHelper.HasRealPath( PathStr );
+  PathStrDispOK := CmdObjHelper.HasRealPath( PathStrDisp );
+
+  if not PathStrOK and not PathStrDispOK then
+  begin
+    MyShowmessage(
+      cmsgNoPathInsertionTop
+      + strif(
+          EditingCmd,
+          format( cmsgNoPathInsertionEditing, [ lblCommandNameDisp.Caption, PathStrDisp, lblCommandName.Caption, PathStr  ] ),
+          format( cmsgNoPathInsertionNotEditing, [ lblCommandNameDisp.Caption, PathStrDisp ] ) )
+      + cmsgNoPathInsertionBottom,
+      self );
+    exit;
+  end;
+
+  if ( PathStr <> PathStrDisp ) and PathStrOK and PathStrDispOK then
+  begin
+  //if TfrmMain( Owner ).EditingCmd then
+    if DifferingCommandPaths then
+    begin
+      MsgDlgMessage( ccapcleUncertainPath, format( cmsgcleUncertainPath, [ PathStr, PathStrDisp ] ) );
+      if MsgDlgConfirmation( self ) = mrYes then
+        result := PathStr
+      else result := PathStrDisp;
+    end;
+  end else
+  begin
+    if PathStrOK then
+      result := PathStr
+    else result := PathStrDisp;
+  end;
+
+  //memCmdLine.Text := str + memCmdLine.Text;
+
+end;
+
+function TfrmMain.GetProperPathLabelCaption( const ForDisplay : boolean = false ) : string;
+begin
+  if EditingCmd then
+    result := lblPathAlias.Caption
+  else result := lblPathAliasDisp.Caption;
+
+  if ( result = cmsgcleBadPath ) and ForDisplay then
+    result := cmsgNotSpecified;
+end;
+
 procedure TfrmMain.btnVersionCommandClick(Sender: TObject);
 var
-  CmdStr : TCaption;
+  CmdStr, Path, Cmd, Ver : string;
 begin
 
   if not assigned(CmdObj) then
     exit;
 
-  if trim( edtVersion.Text ) = '' then
+  Path := GetProperPathLabelCaption;
+  Cmd := GetProperCmdNameCaption;
+  Ver := trim( edtVersion.Text );
+
+  if Ver = '' then
   begin
-    UpdateDisplay( format( cmsgNoVersionFlagSpecified, [ lblCommandName.Caption, btnVersionCommand.Caption ] ) );
+    UpdateDisplay( format( cmsgNoVersionFlagSpecified, [ GetProperCmdNameCaption, cmsgHelpVersionInfoVersion ] ) );
     exit;
   end;
 
   //see note in btnHelpCommandClick;
-    if lblPathActual.Caption <> cLinuxBuiltInStr then
+  if Path <> cLinuxBuiltInStr then
+  begin
+    if CmdInPath then
     begin
-      if CmdInPath then
+      if not SystemFileFound( Cmd, true ) then
+        exit
+      else CmdStr := trim( Cmd + ' ' + Ver );
+    end else
+    begin
+      if Path = cmsgcleBadPath then
       begin
-        CmdStr := lblCommandName.Caption + ' ' + edtVersion.Text
-      end else
-      begin
-        CmdStr := lblPathActual.Caption + lblCommandName.Caption;
-        if not IsFileExist( CmdStr, true ) then
-          exit;
-        CmdStr := CmdStr + ' ' + edtVersion.Text;
+        UpdateDisplay( format( cFileNotExist, [ Cmd ] ) );
+        exit;
       end;
-    end else CmdStr := lblCommandName.Caption + ' ' + edtVersion.Text;
+      CmdStr := Path + Cmd;
+      if not IsFileExist( CmdStr, true ) then
+        exit
+      else CmdStr := trim( CmdStr + ' ' + Ver );
+    end;
+  end else CmdStr := Cmd + ' ' + Ver;
 
   if not CanRunCmdLine( CmdStr, 0, false ) then
     exit;
@@ -4627,11 +4811,6 @@ end;
 function TfrmMain.NotEditing: boolean;
 begin
   Result := not Editing;
-end;
-
-function TfrmMain.CommandEditing: boolean;
-begin
-  Result := not TControl( fCommandButtons[ 0 ] ).Enabled;
 end;
 
 function TfrmMain.EditingCmd: boolean;
@@ -4695,8 +4874,6 @@ var
 begin
 
   DoContinue := True;
-  //pnlThreatlevel.ParentColor := false;
-  //pnlThreatLevel.Color := clDefault;
 
   case TControl(Sender).Tag of
     //================
@@ -4759,9 +4936,6 @@ begin
 
   if not DoContinue then
     exit;
-
-//  RefreshCmdObj;
-//  ApplyThreatLevel( pnlCEdit, cbThreatLevel );
 
   ToggleEditMode( aList, IsEdit );
   case TControl(Sender).Tag of
@@ -5097,7 +5271,7 @@ begin
   begin
 //punt for now: sql searches don't load commmand name like text searches (main listbox only, sub list is ok)
 //so, for sql, must go ask for CL's Command entry if it wasn't loaded. Only one case: CL is in top search Listbox
-//quick fix for release. Deluxe version (later?) will address this better.
+//quick fix for first version. Deluxe version (later?) will address this better.
     if ( Sender.ItemIndex > -1 ) then
     try
       CDO := TCmdDisplayObj( Sender.Items.Objects[ Sender.ItemIndex ] );
@@ -6026,7 +6200,6 @@ begin
       caption := aCaption + format( ' %s:  ', [ UpperCase( cNameItem_Command ) ] ) + lblCommandName.Caption;
 
     HelpCommand := CmdObjHelper.GetNormalizedPath( lblPathAlias.Caption,
-                                                   lblPathActual.Caption,
                                                    lblCommandName.Caption );
     HelpParameter := edtHelp.Text;
     btnDefaultHelp.Caption := format( cclecapDefaultHelp, [ lblCommandName.Caption ] );
@@ -6049,7 +6222,7 @@ end;
 
 procedure TfrmMain.edtFriendlyNameLineChange( Sender : TObject );
 begin
-  lblFriendlyNameLineDisp.Caption := StrIf( edtFriendlyNameLine.Text <> '', DoubleQuotedString( edtFriendlyNameLine.Text ), '...' );
+  lblFriendlyNameLineDisp.Caption := StrIf( edtFriendlyNameLine.Text <> '', DoubleQuotedString( edtFriendlyNameLine.Text ), dots );
 end;
 
 procedure TfrmMain.edtHelpChange( Sender : TObject );
@@ -6069,7 +6242,7 @@ end;
 procedure TfrmMain.actNewCommandLineExecute(Sender: TObject);
 var
   ObjLineIdx: integer;
-  InPut, OutPut : string;
+  InPut, OutPut, Path : string;
 begin
 
   if InvalidCommands then
@@ -6082,8 +6255,12 @@ begin
     screen.Cursor := crHourglass;
 
     if CmdInPath( true ) then
-      Input := trim( lblCommandName.Caption ) + ' '
-    else Input := trim( lblPathActual.Caption + lblCommandName.Caption ) + ' ';
+      Input := trim( GetProperCmdNameCaption ) + ' '
+    else
+    begin
+      Path := GetProperPathLabelCaption;
+      Input := trim( strif( CmdObjHelper.HasRealPath( Path ), Path ) + GetProperCmdNameCaption ) + ' ';
+    end;
 
     OutPut := '';
     if not EditCommandLine( format( cDoubleS, [ ccapGenericAdd, cNameItem_CommandLine ] ), Input, Output ) then
@@ -6147,6 +6324,7 @@ begin
   lbCommands.ItemIndex := Idx;
 
   RefreshCmdObj;
+  ClearCmdLineDisps;
 
   UpdateLbCommands(True);
 
@@ -6301,7 +6479,6 @@ begin
     exit;
   end;
 
-//juuus here is the place to stop run if TERM or SUPERUSER
   if IsRoot then
   begin
     MsgDlgMessage( ccapRootDisallowed, cmsgRootDisallowed );
@@ -6772,9 +6949,9 @@ begin
 
   UpdateDisplay( OpeningState, false );
 
-  if CommsFromFormCreate <> '' then
-    UpdateDisplay( trim( CommsFromFormCreate) + LineEnding, false );
-
+  if SpecialComms <> '' then
+    UpdateDisplay( trim( SpecialComms) + LineEnding, false );
+  SpecialComms := '';
   memo1.SelStart := 1;
 
   globltHasBASH := SystemFileFound( 'bash' );
@@ -6790,10 +6967,10 @@ function TfrmMain.GetWidgetString : string;
 begin
   result := '';
   {$IFDEF WidgQT}
-    result := '  [QT]';
+    result := '  [QT5]';
   {$ENDIF}
   {$IFDEF WidgGTK}
-    result := '  [GTK]';
+    result := '  [GTK2]';
   {$ENDIF}
   if result = '' then
     result := '  [DEV_ERR]';
@@ -6915,8 +7092,9 @@ end.
 
 
 {
-RUN
-Hints
+cCommandInPathStr = '$PATH';
+cLinuxBuiltInStr = '$BUILTIN';
+cmsgcleBadPath = '$BAD_PATH';
 
         ↑
 since I ALWAYS forget where the vk_ definiations are:
@@ -6924,20 +7102,11 @@ since I ALWAYS forget where the vk_ definiations are:
 
 tags / hints / anchors / events / enabled&visible / modalresults / popup menus
 
-strconst_en
-FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
-
 Cleanup checks and other notes
 end ;      autoformat problem
 ) ;        autoformat problem
-menu lines
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
-use const params
-check constants / resstr to see if they are used (mostly)
-MsgDlgMessage
-edits autosize Off
-Form resize
+
 lit strings
 Shortcuts
 exceptions testing
@@ -6946,15 +7115,7 @@ compiler warnings
 po files
 
 check T O D O 'S
-everybody have a hint???
-Finish DB, clean up favorites / add some premade searches for DB
-test multiple instances
-reset show no mores
-test option and set to don't want either DB sql/text
 Didn't you know a way to send email from a button setting subject??
 fresh install with and without data
-
-
-
 
  }

@@ -40,13 +40,14 @@ const
     //c_DB_VersionUpgradeCount = 2;//oct 26 2016
     //c_DB_VersionUpgradeCount = 3;//Jan 25 2017  Make ThreatLevel intuitive remove 0th useless element
     //c_DB_VersionUpgradeCount = 4;//April 28 2017  ObjId removed
-    c_DB_VersionUpgradeCount = 5;//May 26 2020 overlooked "table" specifier for INI files
+    //c_DB_VersionUpgradeCount = 5;//May 26 2020 overlooked "table" specifier for INI files and mismatched GUID's
+    c_DB_VersionUpgradeCount = 6;//June 21 2020 convert any PATH commands to $PATH instead of literal path for portability
   //=====  DATABASE  ==============================
     //c_DB_HandwrittenVersion = '1.0.2'; //lineiniidx goes from db
     //c_DB_HandwrittenVersion = '1.0.3'; //'<<F>>' fiasco, quotes shouldn't have been there.
     //c_DB_HandwrittenVersion = '1.0.4'; //Make ThreatLevel intuitive remove 0th useless elemnet
-    c_DB_HandwrittenVersion = '2.0.1'; //integration of sql / text, objid goes away, sortorder added to cmdlines
-    c_DB_VersionDate = ' (May 2020)';
+    c_DB_HandwrittenVersion = '2.0.1'; //Upgrade to Deluxe ver. Deluxe Deluxe in a couple years. Maybe.
+    c_DB_VersionDate = ' (July 2020)';
 
 
 type

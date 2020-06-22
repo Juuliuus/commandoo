@@ -40,7 +40,8 @@ const
   procedure Update_DB_Version_0002( const Key : string );
   procedure Update_DB_Version_0003( const Key : string );
   procedure Update_DB_Version_0004( const Key : string );
-  procedure Update_DB_Version_0005;
+  function Update_DB_Version_0005 : boolean;
+  procedure Update_DB_Version_0006;
   procedure Update_PROG_Version_0001( IFile : TJiniFile; const FormSettEntry : string );
   procedure Update_PROG_Version_0002( IFile : TJiniFile );
   procedure Update_PROG_Version_0003( IFile : TJiniFile; const Sect : string );
@@ -276,16 +277,26 @@ begin
   InfoServer.RemoveField_File( Key, dlCmdLine );
 end;
 
-procedure Update_DB_Version_0005;
+function Update_DB_Version_0005 : boolean;
+var
+  Did1, Did2 : boolean;
 begin
 //On implementing a better "import" noticed there was no way to distinguish
 //inifile "tabletype" other than through the filename, which was not good enough.
 //late, should have done this at beginning! Better late than never? Only ini files
-  InfoServer.EnsureTextDataType;
+  Did1 := InfoServer.EnsureTextDataType;
 //Due to a mistake in prior versions using the copy DB Profile function the resulting text DB's
 //will have different GUIDS in each file. Argh. So I need to allow mismatched text GUIDS to import
-//when, and only when, the version coming in is 4 or less.
-  InfoServer.CheckV4GuidMisMatch;
+//when, and only when, the version coming in is 4 or less. Only ini files
+  Did2 := InfoServer.CheckV4GuidMisMatch;
+  result := Did1 or Did2;
+end;
+
+procedure Update_DB_Version_0006;
+begin
+//saw a video on nixOS and realized that storing literal path for $PATH commands was a bad idea.
+//not portable and not future "proof", all PATH commands changed to the $PATH constant.
+  InfoServer.DBUpgrade_Cleanup0006( dlCmd );
 end;
 
 procedure Update_PROG_Version_0001( IFile : TJiniFile; const FormSettEntry : string );

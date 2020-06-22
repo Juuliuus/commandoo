@@ -114,8 +114,10 @@ resourceString
     ;
   cmsgFormHotKeys =
     'The UI is large with many controls. To make it as mouse-less as possible for those who like '
-    + 'to use the keyboard try: <ctrl> <alt> g / m / k / p'
+    + 'to use the keyboard try: <ctrl> <alt> d / g / m / k / p'
     + LineEnding + LineEnding
+    + 'd : inserts date/time in Output or edit Notes sections, if they are focused'
+    + LineEnding
     + 'g : a GoTo popup menu appears so you can easily'
     + LineEnding
     + '    move to an important section (Main form only)'
@@ -413,6 +415,9 @@ resourceString
     + 'When adding a new command simply type in the name. If it is in the $PATH it will be found automatically. '
     + 'If the command/file is not in the path you will need to type the path or use the browse button.'
     + LineEnding + LineEnding
+    + 'If you want to change the Command''s name (or path) then open the Command in edit mode and Dbl-Click '
+    + 'the Command Name. '
+    + LineEnding + LineEnding
     + 'commandoo supports variables in Command Lines. Select the CL you want and go into edit mode. Then use '
     + 'the CL builder/helper button and you will be taken to a edit window that has buttons to allow you to enter various '
     + 'types of variables (strings, integer, real, and file/folder names).  '
@@ -502,7 +507,6 @@ resourceString
   cDisplayUpdating = 'Updating %s';
 
   ccapPathCaption = 'Path to: "%s"';
-  cmsgNotSpecified = '-???-';
   cmsgInvalidString = '< Invalid >';
   cmsgProfileString = 'Current Database:   %s%s %s';
 
@@ -771,7 +775,7 @@ resourceString
   cmsgDisplayOutputTrimmed = '>>> >>> Display Output trimmed to about > %d < characters %s (set in OPTIONS)...'
                              + LineEnding + LineEnding;
 
-  cmsgUpdated_DBFiles = '%s automatically updated to %s, Item %d';
+  cmsgUpdated_DBFiles = 'DB Profile "%s" automatically updated to %s, from Item %d to Item %d';
   ccapUpdated_DB = 'Database';
   ccapUpdated_Prog = 'Program settings ';
 
@@ -943,7 +947,25 @@ resourceString
    ccapSaveFileExists = 'Saving to an existing file';
    cmsgSaveFileExists = 'The file "%s" already exists. Do you want to over-write it?';
 
-   cmsgNoPathInsertion = 'The Command "%s" is a "%s", it has no path.';
+   cmsgNoPathInsertionTop =
+     'Can not insert a path because it doesn''t exist or the CL should NOT have literal path on it.'
+     + LineEnding + LineEnding;
+   cmsgNoPathInsertionNotEditing = 'Cmd: %s  has  path: %s, this is not a useable path. ';
+   cmsgNoPathInsertionEditing =
+     'The base command before editing has:'
+     + LineEnding
+     + 'Cmd: %s  has  path: %s'
+     + LineEnding + LineEnding
+     + 'The currently editing form is:'
+     + LineEnding
+     + 'Cmd: %s  has  path: %s'
+     + LineEnding + LineEnding
+     + 'Neither has a usable path. '
+     ;
+   cmsgNoPathInsertionBottom =
+     'In the case of $PATH commands, it is not allowed to add the actual path '
+     + 'because then it will not be portable to other systems where the actual literal path might be different.'
+     ;
 
    cSaveToFileMsg = 'message';
    cSaveToFileAbout = 'about';
@@ -1024,7 +1046,37 @@ resourceString
    ccappmiMainRootName = 'Main';
    //mniCmdRoot.Caption := format( ccapPopMenuRootRoot, [ cfseMenuRoot, ccapPopMenuRootMenuStr ] );
    //format( ccapPopMenuRootRoot, [ cfseMenuRoot, ccapPopMenuRootMenuStr ] );
+   cmsgcleNoHelpParam = '<The command "%s" has no specified help parameter, can not display help here>';
 
+   ccapInsertFilePaths = 'Insert full path';
+   chintInsertFilePaths =
+     'If you want the full path to the file and it'
+     + LineEnding
+     + 'is currently missing use this to insert it.'
+     + LineEnding + LineEnding
+     + 'This applies only to valid files that are not'
+     + LineEnding
+     + 'in the $PATH.'
+     + LineEnding + LineEnding
+     + 'Commands in the $PATH should not have'
+     + LineEnding
+     + 'a literal path to the command because'
+     + LineEnding
+     + 'it is not portable. Leaving the path out of'
+     + LineEnding
+     + 'CL''s with a $PATH command allows the'
+     + LineEnding
+     + 'system to figure it out because it could be'
+     + LineEnding
+     + 'if commandoo is moved to another system'
+     + LineEnding
+     + 'paths to gnu/linux commands can be different'
+     + LineEnding
+     + 'but they will still work!'
+     + LineEnding + LineEnding
+     + '<end>'
+     + LineEnding
+     ;
 
 implementation
 

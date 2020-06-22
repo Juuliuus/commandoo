@@ -62,13 +62,15 @@
             </Debugging>
           </Linking>
           <Other>
-            <CustomOptions Value="-dheapdebug
+            <CustomOptions Value="-FcUTF8
+-dheapdebug
 -dWidgQT
--FcUTF8"/>
-            <OtherDefines Count="3">
+-dDisableChecks"/>
+            <OtherDefines Count="4">
               <Define0 Value="Release"/>
               <Define1 Value="heapdebug"/>
               <Define2 Value="WidgQT"/>
+              <Define3 Value="DisableChecks"/>
             </OtherDefines>
           </Other>
         </CompilerOptions>
@@ -107,12 +109,11 @@
 -dWidgQT
 -dDisableChecks
 -dplatAppImage"/>
-            <OtherDefines Count="5">
+            <OtherDefines Count="4">
               <Define0 Value="Release"/>
-              <Define1 Value="Bit32"/>
-              <Define2 Value="WidgQT"/>
-              <Define3 Value="DisableChecks"/>
-              <Define4 Value="platAppImage"/>
+              <Define1 Value="WidgQT"/>
+              <Define2 Value="DisableChecks"/>
+              <Define3 Value="platAppImage"/>
             </OtherDefines>
           </Other>
         </CompilerOptions>
@@ -144,12 +145,14 @@
             </Checks>
           </CodeGeneration>
           <Other>
-            <CustomOptions Value="-dWidgGTK
--FcUTF8"/>
-            <OtherDefines Count="3">
+            <CustomOptions Value="-FcUTF8
+-dDisableChecks
+-dWidgGTK"/>
+            <OtherDefines Count="4">
               <Define0 Value="Release"/>
-              <Define1 Value="Bit32"/>
-              <Define2 Value="WidgQT"/>
+              <Define1 Value="WidgQT"/>
+              <Define2 Value="DisableChecks"/>
+              <Define3 Value="WidgGTK"/>
             </OtherDefines>
           </Other>
         </CompilerOptions>
@@ -189,13 +192,15 @@
             </Debugging>
           </Linking>
           <Other>
-            <CustomOptions Value="-dheapdebug
+            <CustomOptions Value="-FcUTF8
+-dheapdebug
 -dWidgGTK
--FcUTF8"/>
-            <OtherDefines Count="3">
+-dDisableChecks"/>
+            <OtherDefines Count="4">
               <Define0 Value="Release"/>
               <Define1 Value="heapdebug"/>
               <Define2 Value="WidgGTK"/>
+              <Define3 Value="DisableChecks"/>
             </OtherDefines>
           </Other>
         </CompilerOptions>
@@ -230,22 +235,21 @@
             <LinkSmart Value="True"/>
           </Linking>
           <Other>
-            <CustomOptions Value="-dRelease
+            <CustomOptions Value="-FcUTF8
+-dRelease
 -dDisableChecks
--dWidgGTK
--FcUTF8"/>
-            <OtherDefines Count="5">
+-dWidgGTK"/>
+            <OtherDefines Count="4">
               <Define0 Value="Release"/>
-              <Define1 Value="Bit32"/>
-              <Define2 Value="WidgQT"/>
-              <Define3 Value="DisableChecks"/>
-              <Define4 Value="WidgGTK"/>
+              <Define1 Value="WidgQT"/>
+              <Define2 Value="DisableChecks"/>
+              <Define3 Value="WidgGTK"/>
             </OtherDefines>
           </Other>
         </CompilerOptions>
       </Item6>
       <SharedMatrixOptions Count="4">
-        <Item1 ID="235737224948" Modes="DebugGTK,HeapMEMGTK,Comm64GTK" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
+        <Item1 ID="235737224948" Modes="HeapMEMGTK,Comm64GTK,DebugGTK" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
         <Item2 ID="442262586579" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
         <Item3 ID="836757244194" Modes="Comm64qt,DebugQT,HeapMEMQT" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
         <Item4 ID="409601829338" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>
@@ -608,11 +612,6 @@
         <OptimizationLevel Value="0"/>
       </Optimizations>
     </CodeGeneration>
-    <Linking>
-      <Debugging>
-        <DebugInfoType Value="dsDwarf2"/>
-      </Debugging>
-    </Linking>
     <Other>
       <CompilerMessages>
         <IgnoredMessages idx5024="True"/>
@@ -620,12 +619,11 @@
       <CustomOptions Value="-dWidgQT
 -dDisableChecks
 -dplatAppImage"/>
-      <OtherDefines Count="5">
+      <OtherDefines Count="4">
         <Define0 Value="Release"/>
-        <Define1 Value="Bit32"/>
-        <Define2 Value="WidgQT"/>
-        <Define3 Value="DisableChecks"/>
-        <Define4 Value="platAppImage"/>
+        <Define1 Value="WidgQT"/>
+        <Define2 Value="DisableChecks"/>
+        <Define3 Value="platAppImage"/>
       </OtherDefines>
     </Other>
   </CompilerOptions>

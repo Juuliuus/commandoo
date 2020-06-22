@@ -162,7 +162,7 @@ object frmProfiles: TfrmProfiles
     object btnConvert: TBitBtn
       Left = 9
       Height = 32
-      Hint = 'This will make a new DB as copy of the original'#10'by converting it''s type.'#10#10'If the DB is sql it will be converted to text, '#10'and vice versa.'#10#10'If you want the new DB to be the same type'#10'use the COPY button.'#10#10'<end>'
+      Hint = 'This will make a new DB as copy of the original'#10'by converting it''s type. The original is not'#10'deleted and remains in place. If you don''t'#10'want it anymore then you can delete it.'#10#10'If the DB is sql it will be converted to text, '#10'and vice versa.'#10#10'If you want the new DB to be the same type'#10'use the COPY button.'#10#10'<end>'
       Top = 129
       Width = 163
       Action = actConvert

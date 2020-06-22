@@ -173,8 +173,9 @@ type
     procedure RemoveField_File( const Key : string; DL : TDataLocation; IgnoreSection : string = '' );
     procedure DBUpgrade_Cleanup0002( const Key : string );
     procedure DBUpgrade_Cleanup0003( const DL : TDataLocation; const Key : string );
-    procedure EnsureTextDataType;
-    procedure CheckV4GuidMisMatch;
+    procedure DBUpgrade_Cleanup0006( const DL : TDataLocation );
+    function EnsureTextDataType : boolean;
+    function CheckV4GuidMisMatch : boolean;
 
     property UseDB : boolean read FUseDB;
     property NeedsCommit : boolean read fNeedsCommit write SetNeedsCommit;
@@ -593,6 +594,97 @@ begin
   end;
 end;
 
+procedure TInfoServer.DBUpgrade_Cleanup0006( const DL : TDataLocation );
+var
+  SL : TStringList;
+  str, NewStr, TableName, ID : string;
+  i : integer;
+
+
+  function NotInterested( const Check : string ) : boolean;
+  begin
+    result := ( str <> '' ) and ( pos( '/', str ) <> 1 );
+  end;
+
+begin
+
+  SL := TStringList.Create;
+  try
+    if fUseDB then
+    begin
+      SL := TStringList.Create;
+      try
+
+        TableName := OpenQuery( DL, cCmdColLocationPath, '' );
+        while not QueryEOF do
+        begin
+          Str := QueryVal( cCmdColLocationPath );
+
+          if NotInterested( str ) then
+          begin
+            QueryNext;
+            continue;
+          end;
+
+          if ( str <> '' ) and not Path_in_EnvironPath( str ) then
+          begin
+            QueryNext;
+            continue;
+          end;
+
+          if Str = '' then
+            NewStr := cmsgcleBadPath
+          else NewStr := cCommandInPathStr;
+
+          ID := QueryVal( csoSqlite_rowid );
+          SL.Add( GetUpdate_Sql( TableName,
+                                 format( '%s = %s', [ cCmdColLocationPath, QuotedStr( NewStr ) ] ),
+                                 format( '%s=', [ csoSqlite_rowid ] ) + ID
+                                )
+                    );
+          QueryNext;
+        end;
+
+      finally
+        CloseQuery;
+      end;
+
+      DoDirect_sql( SL );
+
+    end else
+    begin
+      SetControlSlot( DL );
+      FInifile.GetSectionList( SL );
+      for i := 0 to SL.Count - 1 do
+      begin
+        //is it a actually one of the command entries?
+        str := FIniFile.ReadString( SL[ i ], cCmdColCommandName, '' );
+        if str = '' then
+          continue;
+
+        str := FIniFile.ReadString( SL[ i ], cCmdColLocationPath, '' );
+
+        if NotInterested( str ) then
+          continue;
+
+        if ( str <> '' ) and not Path_in_EnvironPath( str ) then
+          continue;
+
+        if Str = '' then
+          NewStr := cmsgcleBadPath
+        else NewStr := cCommandInPathStr;
+
+        FIniFile.WriteString( SL[ i ], cCmdColLocationPath, NewStr );
+      end;
+      SaveIniFile;
+    end;
+  finally
+    if assigned( SL ) then
+      freeandnil( SL );
+  end;
+
+end;
+
 function TInfoServer.IsValidDB( const FldName, TabName : string ) : boolean;
 begin
   result := false;
@@ -824,15 +916,17 @@ begin
 
 end;
 
-procedure TInfoServer.EnsureTextDataType;
+function TInfoServer.EnsureTextDataType : boolean;
 var
   i, Idx : Integer;
   DBName : string;
   DL : TDataLocation;
 begin
 
+  result := false;
   if fUseDB then
     exit;
+  result := true;
 
   for i := 0 to High( aryTextData ) do
   begin
@@ -850,7 +944,7 @@ begin
 
 end;
 
-procedure TInfoServer.CheckV4GuidMisMatch;
+function TInfoServer.CheckV4GuidMisMatch : boolean;
 var
   i, Idx : Integer;
   //DBName : string;
@@ -858,11 +952,13 @@ var
   DL : TDataLocation;
 begin
 
+  result := false;
   if fUseDB then
     exit;
+  result := true;
 
 //This is coming through DB Upgrade to ver 5
-//at time of ver 4 or less it can only be 0 to 2
+//==> at time of ver 4 or less it can only be 0 to 2
 //  for i := 0 to High( aryTextData ) do
   for i := 0 to 2 do
   begin
@@ -1190,7 +1286,7 @@ end;
 
 procedure TInfoServer.Initiate_Save;
 begin
-//fix for vast slowdown of saving in release vs. IDE, appears to have been too many individual transactions
+//fix for vast slowdown of saving in executable vs. IDE, appears to have been too many individual transactions
 //still wondering why the slowdown, however was NOT apparent in IDE...???!!
 //So here starts a manually managed transaction, so this proc needs to be balanced properly, find in code for examples.
   if not fUseDB then

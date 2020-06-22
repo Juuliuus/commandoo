@@ -132,7 +132,7 @@ type
 
 //First implementation, I also have other ideas but for now this will do
 //Also, due to the design I currently allow searches that are either commands or command lines but not
-//both combined in search logic. I think I have a way to do that but will let that wait until after first off. release
+//both combined in search logic. I think I have a way to do that but will let that wait until after first off. version
   { TBaseSearch }
 
   TBaseSearch = class( TObject )

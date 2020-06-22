@@ -193,7 +193,7 @@ IsFavorite=0
 SuperUserMode=1
 CommandName=mount
 HelpCommand=-h
-LocationPath=/bin/
+LocationPath=$PATH
 VersionCommand=-V
 DetachProcess=0
 ThreatLevel=3
@@ -207,7 +207,7 @@ SuperUserMode=0
 CommandName=konsole
 Keywords=KDEToolUtility
 HelpCommand=--help-all
-LocationPath=/usr/bin/
+LocationPath=$PATH
 VersionCommand=-v
 ThreatLevel=1
 
@@ -231,7 +231,7 @@ SuperUserMode=0
 CommandName=cat
 Keywords=FilesUtility
 HelpCommand=--help
-LocationPath=/bin/
+LocationPath=$PATH
 VersionCommand=--version
 ThreatLevel=2
 
@@ -243,7 +243,7 @@ SuperUserMode=0
 CommandName=cksum
 Keywords=FilesUtility
 HelpCommand=--help
-LocationPath=/usr/bin/
+LocationPath=$PATH
 VersionCommand=--version
 ThreatLevel=1
 
@@ -255,7 +255,7 @@ SuperUserMode=0
 CommandName=date
 Keywords=ToolUtility
 HelpCommand=--help
-LocationPath=/bin/
+LocationPath=$PATH
 VersionCommand=--version
 ThreatLevel=2
 
@@ -267,7 +267,7 @@ SuperUserMode=0
 CommandName=grep
 Keywords=Utility
 HelpCommand=--help
-LocationPath=/bin/
+LocationPath=$PATH
 VersionCommand=--version
 ThreatLevel=1
 
@@ -279,7 +279,7 @@ SuperUserMode=0
 CommandName=ps
 Keywords=ToolUtility
 HelpCommand=--help
-LocationPath=/bin/
+LocationPath=$PATH
 VersionCommand=--version
 ThreatLevel=1
 
@@ -291,7 +291,7 @@ SuperUserMode=0
 CommandName=uname
 Keywords=SystemUtility
 HelpCommand=--help
-LocationPath=/bin/
+LocationPath=$PATH
 VersionCommand=--version
 ThreatLevel=1
 
@@ -303,7 +303,7 @@ SuperUserMode=1
 CommandName=umount
 Keywords=File systemUtility
 HelpCommand=--help
-LocationPath=/bin/
+LocationPath=$PATH
 VersionCommand=--version
 ThreatLevel=4
 
@@ -316,11 +316,11 @@ ThreatLevel=1
 CommandName=df
 Keywords=File systemInformationUtility
 HelpCommand=--help
-LocationPath=/bin/
+LocationPath=$PATH
 VersionCommand=--version
 
 [_DB_VersionCount]
-LastVersionUpgrade=5
+LastVersionUpgrade=6
 TextDataType=Cmd
 
 [_DB_ProfileGUID]
@@ -336,7 +336,7 @@ CommandName=gimp
 Keywords=Graphics
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [gpg2]
 SuperUserMode=0
@@ -349,7 +349,7 @@ CommandName=gpg2
 Keywords=Encryption
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [gpg]
 SuperUserMode=0
@@ -362,7 +362,7 @@ CommandName=gpg
 Keywords=Encryption
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [unalias]
 SuperUserMode=0
@@ -401,7 +401,7 @@ CommandName=apropos
 Keywords=HelperInformation
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [blkid]
 SuperUserMode=1
@@ -414,7 +414,7 @@ CommandName=blkid
 Keywords=File systemHardwareUtility
 HelpCommand=-h
 VersionCommand=-V
-LocationPath=/sbin/
+LocationPath=$PATH
 
 [aptitude]
 SuperUserMode=1
@@ -427,7 +427,7 @@ CommandName=aptitude
 Keywords=installPackageSoftware
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [apt-get]
 SuperUserMode=1
@@ -440,7 +440,7 @@ CommandName=apt-get
 Keywords=installPackageSoftware
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [dpkg]
 SuperUserMode=1
@@ -453,7 +453,7 @@ CommandName=dpkg
 Keywords=installPackageSoftware
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [dd]
 SuperUserMode=1
@@ -466,7 +466,7 @@ CommandName=dd
 Keywords=File systemTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [fsck]
 SuperUserMode=1
@@ -479,7 +479,7 @@ CommandName=fsck
 Keywords=File systemHardware
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/sbin/
+LocationPath=$PATH
 
 [dmidecode]
 SuperUserMode=0
@@ -492,7 +492,7 @@ CommandName=dmidecode
 Keywords=HardwareSystem
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/sbin/
+LocationPath=$PATH
 
 [dmesg]
 SuperUserMode=0
@@ -505,7 +505,7 @@ CommandName=dmesg
 Keywords=SystemUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [find]
 SuperUserMode=0
@@ -518,7 +518,7 @@ CommandName=find
 Keywords=File systemInformationTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [e2fsck]
 SuperUserMode=1
@@ -531,7 +531,7 @@ CommandName=e2fsck
 Keywords=File systemHardware
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/sbin/
+LocationPath=$PATH
 
 [gpasswd]
 SuperUserMode=1
@@ -544,7 +544,7 @@ CommandName=gpasswd
 Keywords=AdministrationSystem
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [printenv]
 SuperUserMode=0
@@ -557,7 +557,7 @@ CommandName=printenv
 Keywords=System
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [awk]
 SuperUserMode=0
@@ -570,7 +570,7 @@ CommandName=awk
 Keywords=FilesTool
 HelpCommand=
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [aspell]
 SuperUserMode=0
@@ -583,7 +583,7 @@ CommandName=aspell
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [fg]
 SuperUserMode=0
@@ -622,7 +622,7 @@ CommandName=tar
 Keywords=ArchiveCompressionFilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [gzip]
 SuperUserMode=0
@@ -635,7 +635,7 @@ CommandName=gzip
 Keywords=ArchiveCompressionFilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [gunzip]
 SuperUserMode=0
@@ -648,7 +648,7 @@ CommandName=gunzip
 Keywords=ArchiveCompressionFilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [bunzip2]
 SuperUserMode=0
@@ -661,7 +661,7 @@ CommandName=bunzip2
 Keywords=ArchiveCompressionFilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [bzip2]
 SuperUserMode=0
@@ -674,7 +674,7 @@ CommandName=bzip2
 Keywords=ArchiveCompressionFilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [bzip2recover]
 SuperUserMode=0
@@ -687,7 +687,7 @@ CommandName=bzip2recover
 Keywords=ArchiveCompressionFilesTool
 HelpCommand=
 VersionCommand=
-LocationPath=/bin/
+LocationPath=$PATH
 
 [bzcat]
 SuperUserMode=0
@@ -700,7 +700,7 @@ CommandName=bzcat
 Keywords=ArchiveCompressionFilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [cal]
 SuperUserMode=0
@@ -713,7 +713,7 @@ CommandName=cal
 Keywords=Information
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [chmod]
 SuperUserMode=1
@@ -726,7 +726,7 @@ CommandName=chmod
 Keywords=AdministrationFilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [chown]
 SuperUserMode=1
@@ -739,7 +739,7 @@ CommandName=chown
 Keywords=AdministrationFilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [chgrp]
 SuperUserMode=1
@@ -752,7 +752,7 @@ CommandName=chgrp
 Keywords=AdministrationFilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [cd]
 SuperUserMode=0
@@ -778,7 +778,7 @@ CommandName=diff
 Keywords=FilesInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [cmp]
 SuperUserMode=0
@@ -791,7 +791,7 @@ CommandName=cmp
 Keywords=FilesInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [comm]
 SuperUserMode=0
@@ -804,7 +804,7 @@ CommandName=comm
 Keywords=FilesInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [command]
 SuperUserMode=0
@@ -843,7 +843,7 @@ CommandName=crontab
 Keywords=AdministrationTool
 HelpCommand=
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [cron]
 SuperUserMode=1
@@ -856,7 +856,7 @@ CommandName=cron
 Keywords=AdministrationTool
 HelpCommand=
 VersionCommand=--version
-LocationPath=/usr/sbin/
+LocationPath=$PATH
 
 [cp]
 SuperUserMode=0
@@ -869,7 +869,7 @@ CommandName=cp
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [cut]
 SuperUserMode=0
@@ -882,7 +882,7 @@ CommandName=cut
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [csplit]
 SuperUserMode=0
@@ -895,7 +895,7 @@ CommandName=csplit
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [curl]
 SuperUserMode=0
@@ -908,7 +908,7 @@ CommandName=curl
 Keywords=FilesInternetTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [dc]
 SuperUserMode=0
@@ -921,7 +921,7 @@ CommandName=dc
 Keywords=Utility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [dig]
 SuperUserMode=0
@@ -934,7 +934,7 @@ CommandName=dig
 Keywords=AdministrationInformationInternetUtility
 HelpCommand=-h
 VersionCommand=-v
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [diff3]
 SuperUserMode=0
@@ -947,7 +947,7 @@ CommandName=diff3
 Keywords=FilesInformationToolUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [du]
 SuperUserMode=0
@@ -960,7 +960,7 @@ CommandName=du
 Keywords=FilesFile systemInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [dir]
 SuperUserMode=0
@@ -973,7 +973,7 @@ CommandName=dir
 Keywords=InformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [egrep]
 SuperUserMode=0
@@ -986,7 +986,7 @@ CommandName=egrep
 Keywords=Utility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [echo]
 SuperUserMode=0
@@ -1012,7 +1012,7 @@ CommandName=fgrep
 Keywords=Utility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [expand]
 SuperUserMode=0
@@ -1025,7 +1025,7 @@ CommandName=expand
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [export]
 SuperUserMode=0
@@ -1051,7 +1051,7 @@ CommandName=file
 Keywords=FilesInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [xargs]
 SuperUserMode=0
@@ -1064,7 +1064,7 @@ CommandName=xargs
 Keywords=HelperTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [free]
 SuperUserMode=0
@@ -1077,7 +1077,7 @@ CommandName=free
 Keywords=MemoryUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [fold]
 SuperUserMode=0
@@ -1090,7 +1090,7 @@ CommandName=fold
 Keywords=Tool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [fmt]
 SuperUserMode=0
@@ -1103,7 +1103,7 @@ CommandName=fmt
 Keywords=Tool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [fuser]
 SuperUserMode=0
@@ -1116,7 +1116,7 @@ CommandName=fuser
 Keywords=FilesInformationToolUtility
 HelpCommand=--help
 VersionCommand=-V
-LocationPath=/bin/
+LocationPath=$PATH
 
 [ftp]
 SuperUserMode=0
@@ -1129,7 +1129,7 @@ CommandName=ftp
 Keywords=Utility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [gawk]
 SuperUserMode=0
@@ -1142,7 +1142,7 @@ CommandName=gawk
 Keywords=FilesTool
 HelpCommand=
 VersionCommand=
-LocationPath=
+LocationPath=$BAD_PATH
 
 [groups]
 SuperUserMode=0
@@ -1155,7 +1155,7 @@ CommandName=groups
 Keywords=AdministrationInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [groupmod]
 SuperUserMode=1
@@ -1168,7 +1168,7 @@ CommandName=groupmod
 Keywords=AdministrationTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/sbin/
+LocationPath=$PATH
 
 [groupdel]
 SuperUserMode=1
@@ -1181,7 +1181,7 @@ CommandName=groupdel
 Keywords=AdministrationTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/sbin/
+LocationPath=$PATH
 
 [groupadd]
 SuperUserMode=1
@@ -1194,7 +1194,7 @@ CommandName=groupadd
 Keywords=AdministrationTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/sbin/
+LocationPath=$PATH
 
 [iconv]
 SuperUserMode=0
@@ -1207,7 +1207,7 @@ CommandName=iconv
 Keywords=AdministrationFilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [history]
 SuperUserMode=0
@@ -1233,7 +1233,7 @@ CommandName=head
 Keywords=FilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [import]
 SuperUserMode=0
@@ -1246,7 +1246,7 @@ CommandName=import
 Keywords=GraphicsUtility
 HelpCommand=-help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [ip]
 SuperUserMode=1
@@ -1259,7 +1259,7 @@ CommandName=ip
 Keywords=AdministrationHardwareInformationInternetNetworkingSystemTool
 HelpCommand=--help
 VersionCommand=
-LocationPath=/bin/
+LocationPath=$PATH
 
 [ifconfig]
 SuperUserMode=1
@@ -1272,7 +1272,7 @@ CommandName=ifconfig
 Keywords=AdministrationHardwareInformationInternetNetworkingSystemTool
 HelpCommand=--help
 VersionCommand=
-LocationPath=/sbin/
+LocationPath=$PATH
 
 [id]
 SuperUserMode=0
@@ -1285,7 +1285,7 @@ CommandName=id
 Keywords=AdministrationInformationSystemUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [killall]
 SuperUserMode=1
@@ -1298,7 +1298,7 @@ CommandName=killall
 Keywords=AdministrationFilesSystemTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [kill]
 SuperUserMode=1
@@ -1311,7 +1311,7 @@ CommandName=kill
 Keywords=AdministrationFilesSystemTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [join]
 SuperUserMode=0
@@ -1324,7 +1324,7 @@ CommandName=join
 Keywords=FilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [install]
 SuperUserMode=0
@@ -1337,7 +1337,7 @@ CommandName=install
 Keywords=FilesSoftwareTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [ln]
 SuperUserMode=0
@@ -1350,7 +1350,7 @@ CommandName=ln
 Keywords=AdministrationFilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [less]
 SuperUserMode=0
@@ -1363,7 +1363,7 @@ CommandName=less
 Keywords=FilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [more]
 SuperUserMode=0
@@ -1376,7 +1376,7 @@ CommandName=more
 Keywords=FilesUtility
 HelpCommand=--help
 VersionCommand=
-LocationPath=/bin/
+LocationPath=$PATH
 
 [ls]
 SuperUserMode=0
@@ -1389,7 +1389,7 @@ CommandName=ls
 Keywords=FilesInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [lsblk]
 SuperUserMode=0
@@ -1402,7 +1402,7 @@ CommandName=lsblk
 Keywords=InformationSystemUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [look]
 SuperUserMode=0
@@ -1415,7 +1415,7 @@ CommandName=look
 Keywords=FilesInformationUtility
 HelpCommand=--help
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [logout]
 SuperUserMode=0
@@ -1441,7 +1441,7 @@ CommandName=logname
 Keywords=InformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [locate]
 SuperUserMode=0
@@ -1454,7 +1454,7 @@ CommandName=locate
 Keywords=FilesInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [lsof]
 SuperUserMode=0
@@ -1467,7 +1467,7 @@ CommandName=lsof
 Keywords=FilesInformationInternetSystemUtility
 HelpCommand=--help
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [mkdir]
 SuperUserMode=0
@@ -1480,7 +1480,7 @@ CommandName=mkdir
 Keywords=AdministrationFilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [man]
 SuperUserMode=0
@@ -1493,7 +1493,7 @@ CommandName=man
 Keywords=AdministrationInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [make]
 SuperUserMode=0
@@ -1506,7 +1506,7 @@ CommandName=make
 Keywords=AdministrationinstallSoftwareSource CodeTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [mv]
 SuperUserMode=0
@@ -1519,7 +1519,7 @@ CommandName=mv
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [nice]
 SuperUserMode=0
@@ -1532,7 +1532,7 @@ CommandName=nice
 Keywords=AdministrationSoftwareSystemTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [netstat]
 SuperUserMode=0
@@ -1545,7 +1545,7 @@ CommandName=netstat
 Keywords=InformationInternetNetworkingUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [netcat]
 SuperUserMode=0
@@ -1558,7 +1558,7 @@ CommandName=netcat
 Keywords=InternetNetworkingUtility
 HelpCommand=-h
 VersionCommand=
-LocationPath=/bin/
+LocationPath=$PATH
 
 [nc]
 SuperUserMode=0
@@ -1571,7 +1571,7 @@ CommandName=nc
 Keywords=InternetNetworkingUtility
 HelpCommand=-h
 VersionCommand=
-LocationPath=/bin/
+LocationPath=$PATH
 
 [xdg-open]
 SuperUserMode=0
@@ -1584,7 +1584,7 @@ CommandName=xdg-open
 Keywords=HelperInternetUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [nohup]
 SuperUserMode=0
@@ -1597,7 +1597,7 @@ CommandName=nohup
 Keywords=AdministrationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [nl]
 SuperUserMode=0
@@ -1610,7 +1610,7 @@ CommandName=nl
 Keywords=FilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [pkill]
 SuperUserMode=0
@@ -1623,7 +1623,7 @@ CommandName=pkill
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [ping]
 SuperUserMode=0
@@ -1636,7 +1636,7 @@ CommandName=ping
 Keywords=InternetNetworkingUtility
 HelpCommand=--help
 VersionCommand=
-LocationPath=/bin/
+LocationPath=$PATH
 
 [paste]
 SuperUserMode=0
@@ -1649,7 +1649,7 @@ CommandName=paste
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [passwd]
 SuperUserMode=1
@@ -1662,7 +1662,7 @@ CommandName=passwd
 Keywords=AdministrationSystemTool
 HelpCommand=--help
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [shutdown]
 SuperUserMode=1
@@ -1675,7 +1675,7 @@ CommandName=shutdown
 Keywords=AdministrationSystemTool
 HelpCommand=--help
 VersionCommand=
-LocationPath=/sbin/
+LocationPath=$PATH
 
 [rename]
 SuperUserMode=0
@@ -1688,7 +1688,7 @@ CommandName=rename
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [reboot]
 SuperUserMode=1
@@ -1701,7 +1701,7 @@ CommandName=reboot
 Keywords=AdministrationSystemTool
 HelpCommand=--help
 VersionCommand=
-LocationPath=/sbin/
+LocationPath=$PATH
 
 [rcp]
 SuperUserMode=0
@@ -1714,7 +1714,7 @@ CommandName=rcp
 Keywords=AdministrationFilesInternetNetworkingTool
 HelpCommand=--help
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [pwd]
 SuperUserMode=0
@@ -1727,7 +1727,7 @@ CommandName=pwd
 Keywords=FilesUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [pv]
 SuperUserMode=0
@@ -1740,7 +1740,7 @@ CommandName=pv
 Keywords=InformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=
+LocationPath=$BAD_PATH
 
 [renice]
 SuperUserMode=1
@@ -1753,7 +1753,7 @@ CommandName=renice
 Keywords=AdministrationSoftwareSystemTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [rmdir]
 SuperUserMode=0
@@ -1766,7 +1766,7 @@ CommandName=rmdir
 Keywords=FilesFile systemTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [rm]
 SuperUserMode=0
@@ -1779,7 +1779,7 @@ CommandName=rm
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [rev]
 SuperUserMode=0
@@ -1792,7 +1792,7 @@ CommandName=rev
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [rsync]
 SuperUserMode=0
@@ -1805,7 +1805,7 @@ CommandName=rsync
 Keywords=AdministrationFilesNetworkingTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [scp]
 SuperUserMode=0
@@ -1818,7 +1818,7 @@ CommandName=scp
 Keywords=AdministrationFilesNetworkingTool
 HelpCommand=--help
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [sdiff]
 SuperUserMode=0
@@ -1831,7 +1831,7 @@ CommandName=sdiff
 Keywords=FilesToolUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [sed]
 SuperUserMode=0
@@ -1844,7 +1844,7 @@ CommandName=sed
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [sort]
 SuperUserMode=0
@@ -1857,7 +1857,7 @@ CommandName=sort
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [sftp]
 SuperUserMode=0
@@ -1870,7 +1870,7 @@ CommandName=sftp
 Keywords=AdministrationInternetNetworkingTool
 HelpCommand=--help
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [seq]
 SuperUserMode=0
@@ -1883,7 +1883,7 @@ CommandName=seq
 Keywords=Utility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [split]
 SuperUserMode=0
@@ -1896,7 +1896,7 @@ CommandName=split
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [su]
 SuperUserMode=0
@@ -1909,7 +1909,7 @@ CommandName=su
 Keywords=AdministrationSystem
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [stat]
 SuperUserMode=0
@@ -1922,7 +1922,7 @@ CommandName=stat
 Keywords=AdministrationFilesFile systemUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [ssh]
 SuperUserMode=0
@@ -1935,7 +1935,7 @@ CommandName=ssh
 Keywords=AdministrationInternetNetworkingToolUtility
 HelpCommand=--help
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [ss]
 SuperUserMode=0
@@ -1948,7 +1948,7 @@ CommandName=ss
 Keywords=AdministrationInternetNetworkingUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [sum]
 SuperUserMode=0
@@ -1961,7 +1961,7 @@ CommandName=sum
 Keywords=InformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [sync]
 SuperUserMode=0
@@ -1974,7 +1974,7 @@ CommandName=sync
 Keywords=AdministrationFile systemMemorySystem
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [sudo]
 SuperUserMode=0
@@ -1987,7 +1987,7 @@ CommandName=sudo
 Keywords=AdministrationSystem
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [tail]
 SuperUserMode=0
@@ -2000,7 +2000,7 @@ CommandName=tail
 Keywords=AdministrationFilesToolUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [times]
 SuperUserMode=0
@@ -2026,7 +2026,7 @@ CommandName=timeout
 Keywords=AdministrationSoftwareTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [time]
 SuperUserMode=0
@@ -2039,7 +2039,7 @@ CommandName=time
 Keywords=InformationSoftwareTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [tee]
 SuperUserMode=0
@@ -2052,7 +2052,7 @@ CommandName=tee
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [tr]
 SuperUserMode=0
@@ -2065,7 +2065,7 @@ CommandName=tr
 Keywords=AdministrationFilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [traceroute]
 SuperUserMode=0
@@ -2078,7 +2078,7 @@ CommandName=traceroute
 Keywords=AdministrationInternetNetworkingUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [top]
 SuperUserMode=0
@@ -2091,7 +2091,7 @@ CommandName=top
 Keywords=AdministrationInformationSystemUtility
 HelpCommand=--help
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [touch]
 SuperUserMode=0
@@ -2104,7 +2104,7 @@ CommandName=touch
 Keywords=AdministrationFilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [type]
 SuperUserMode=0
@@ -2130,7 +2130,7 @@ CommandName=uniq
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [unexpand]
 SuperUserMode=0
@@ -2143,7 +2143,7 @@ CommandName=unexpand
 Keywords=FilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [umask]
 SuperUserMode=0
@@ -2182,7 +2182,7 @@ CommandName=users
 Keywords=AdministrationInformationSystemUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [usermod]
 SuperUserMode=1
@@ -2195,7 +2195,7 @@ CommandName=usermod
 Keywords=AdministrationSystemTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/sbin/
+LocationPath=$PATH
 
 [userdel]
 SuperUserMode=1
@@ -2208,7 +2208,7 @@ CommandName=userdel
 Keywords=AdministrationSystemTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/sbin/
+LocationPath=$PATH
 
 [useradd]
 SuperUserMode=1
@@ -2221,7 +2221,7 @@ CommandName=useradd
 Keywords=AdministrationSystemTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/sbin/
+LocationPath=$PATH
 
 [uptime]
 SuperUserMode=0
@@ -2234,7 +2234,7 @@ CommandName=uptime
 Keywords=AdministrationInformationSystem
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [uudecode]
 SuperUserMode=0
@@ -2247,7 +2247,7 @@ CommandName=uudecode
 Keywords=FilesInternetNetworkingTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [uuencode]
 SuperUserMode=0
@@ -2260,7 +2260,7 @@ CommandName=uuencode
 Keywords=FilesInternetNetworkingTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [whereis]
 SuperUserMode=0
@@ -2273,7 +2273,7 @@ CommandName=whereis
 Keywords=AdministrationFilesHelperInformationUtility
 HelpCommand=--help
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [wc]
 SuperUserMode=0
@@ -2286,7 +2286,7 @@ CommandName=wc
 Keywords=FilesInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [watch]
 SuperUserMode=0
@@ -2299,7 +2299,7 @@ CommandName=watch
 Keywords=Tool
 HelpCommand=--help
 VersionCommand=-v
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [wait]
 SuperUserMode=0
@@ -2325,7 +2325,7 @@ CommandName=vmstat
 Keywords=AdministrationInformationMemorySystemUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [wget]
 SuperUserMode=0
@@ -2338,7 +2338,7 @@ CommandName=wget
 Keywords=FilesInternetTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [whoami]
 SuperUserMode=0
@@ -2351,7 +2351,7 @@ CommandName=whoami
 Keywords=AdministrationInformationSystemUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [who]
 SuperUserMode=0
@@ -2364,7 +2364,7 @@ CommandName=who
 Keywords=AdministrationInformationSystemUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [which]
 SuperUserMode=0
@@ -2377,7 +2377,7 @@ CommandName=which
 Keywords=AdministrationHelperInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [zip]
 SuperUserMode=0
@@ -2390,7 +2390,7 @@ CommandName=zip
 Keywords=ArchiveCompressionFilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [write]
 SuperUserMode=0
@@ -2403,7 +2403,7 @@ CommandName=write
 Keywords=NetworkingUtility
 HelpCommand=--help
 VersionCommand=
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [pgrep]
 SuperUserMode=0
@@ -2416,7 +2416,7 @@ CommandName=pgrep
 Keywords=AdministrationInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [last]
 rowid=-1
@@ -2430,7 +2430,7 @@ CommandName=last
 Keywords=AdministrationInformationTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [hostname]
 rowid=-1
@@ -2444,7 +2444,7 @@ CommandName=hostname
 Keywords=InternetTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/bin/
+LocationPath=$PATH
 
 [w]
 rowid=-1
@@ -2458,7 +2458,7 @@ CommandName=w
 Keywords=AdministrationInformationUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [whatis]
 rowid=-1
@@ -2472,7 +2472,7 @@ CommandName=whatis
 Keywords=Utility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [shred]
 rowid=-1
@@ -2486,7 +2486,7 @@ CommandName=shred
 Keywords=AdministrationFilesTool
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [numfmt]
 rowid=-1
@@ -2500,7 +2500,7 @@ CommandName=numfmt
 Keywords=Utility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH
 
 [mkpasswd]
 rowid=-1
@@ -2514,4 +2514,4 @@ CommandName=mkpasswd
 Keywords=EncryptionHelperInternetUtility
 HelpCommand=--help
 VersionCommand=--version
-LocationPath=/usr/bin/
+LocationPath=$PATH

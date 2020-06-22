@@ -11,6 +11,7 @@ code/*.data
 code/*.sqlite
 code/searches
 download/*
+code/DBBak/*
 
 
 

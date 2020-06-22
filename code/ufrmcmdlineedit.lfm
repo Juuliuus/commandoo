@@ -210,7 +210,6 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     Tag = 4
     Left = 8
     Height = 30
-    Hint = 'If you want the full path to the file and it'#10'is currently missing use this to insert it.'#10#10'Many GNU Linux commands are in your '#10'system''s PATH, and it is normal to simply '#10'call the command; the system will figure '#10'out where it is.'#10#10'If you do put the full path it could be in '#10'the future the file''s folder location will '#10'change but it will still be in the PATH.'#10#10'So, normally, a command that is marked '#10'as $PATH should not specify the folder, this'#10'future proofs the CL.'#10#10'Test the command without a path first, if '#10'it works it is best to leave it without a path.'#10#10'<end>'
     Top = 164
     Width = 169
     Caption = '&A  Insert full path'

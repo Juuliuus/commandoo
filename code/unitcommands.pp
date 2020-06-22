@@ -289,6 +289,7 @@ type
     procedure SaveCmdLineINI;
     procedure SaveCommandLines;
     function IsBuiltin : boolean;
+    function IsSystemPath : boolean;
     function MergeKeyWords( FromCmdObj : TCmdObj ) : boolean;
     function Merge_CmdLines( FromCmdObj : TCmdObj; const MergeSource : string ) : boolean;
     function Compare_CmdLines( FromCmdObj : TCmdObj; var Identical : boolean ) : string;
@@ -326,10 +327,7 @@ type
     procedure UpdateCmdLinesDisplay( aCmdLineObj: TCmdLineObj );
     function GetLoadedName: string;
 
-    function GetRunningPath : string;
-    function GetLiteralPath( ForDisplay : boolean = false ) : string;
-    function GetLocationPathAlias : string;
-    function DesignatedAsBuiltIn : boolean;
+    function GetLiteralPath : string;
 
     function DoUpdate: boolean; override;
     procedure ResetUpdate; override;
@@ -415,8 +413,6 @@ type
     fCmd_ControlColumn_sql : string;
     fCmdLine_ControlColumn_sql : string;
     fDBServer : TInfoServer;//Pointer only
-    fLinuxEnvPath : string;
-    fLinuxEnvPathSep: char;
     ftheRegX : TRegExpr;
     procedure GetCmdDisplayObjList( Source, Dest : TStringList; IsCmd : boolean = true );
     procedure GetCmdDisplayObjList_Cmd( Source, Dest : TStringList; DL : TDataLocation );
@@ -438,13 +434,13 @@ type
     constructor Create;
     destructor Destroy; override;
     procedure GetCmdList( anSL : TStrings );
-    procedure RefreshEnvironmentPath;
-    function GetPathAlias( const ThePath : string; theFormatString : string = '%s' ) : string;
-    function GetNormalizedPath( const PathAlias, PathActual, CommandName : string;
-                             IncludeFinalSlash : boolean = true ) : string;
+    //procedure RefreshEnvironmentPath;
+    function HasRealPath( const PathStr : string ) : boolean;
+    function GetNormalizedPath( const PathAlias, CommandName : string ) : string;
     function CanRunCommand( ExecuteStr : string; var IsBuiltin : boolean ) : boolean;
     function RunCommand( Params : TStrings; UseShell : boolean; ShStr : string = ''; BICommand : string = 'command') : string;
     function RunCommandDetached( var aProc : TAsyncProcess; Params : Tstrings) : string;// overload;
+    //function Path_in_EnvironPath( const literalPath: string ) : boolean;
     procedure ProcessFileNamePath(const aComName: string; var aComFile: string; var aComPath: string);
     function RouteCommand( aString : string; const DoDetach : boolean; var aProcess : TAsyncProcess ) : string;
 
@@ -471,7 +467,6 @@ type
     function GetVariableReplacements( var aString : string) : boolean;
     function GetProcessInput : boolean;
 
-    property LinuxEnvPath: string read fLinuxEnvPath;
     property Cmd_ControlColumn_sql : string read GetCmd_ControlColumn_sql;
     property CmdLine_ControlColumn_sql : string read GetCmdLine_ControlColumn_sql;
     property DBServer : TInfoServer read fDBServer write SetDBServer;
@@ -561,7 +556,6 @@ resourcestring
 
 
   cmsgcleBadCommand = 'Bad command!';
-  cmsgcleBadPath = '$BAD_PATH';
   cmsgcleNoBuiltInDetached = 'Builtin commands may not be run as a detached process';
   cmsgcleNoSUFile = 'No superuser file (kdesudo, gksudo, etc.) has been found.';
   cmsgcleBuiltInInfo =
@@ -1421,71 +1415,41 @@ begin
 
 end;
 
-
 procedure TCmdObjHelper.ProcessFileNamePath(const aComName: string; var aComFile: string; var aComPath: string);
 begin
 
-  aComFile := ExtractFileName(aComName);
-  aComPath := ExtractFilePath(aComName);
+  aComFile := ExtractFileName( aComName );
+  aComPath := ExtractFilePath( aComName );
 
-  if not FileExists(aComName) then
+  if not FileExists( aComName ) then
   begin
 //found that kill, for example, came back as builtin even though there is an executable so check path first, not builtins.
     aComPath := ExtractFilePath( SystemFileLocation( aComFile ) );
     if ( aComPath = '' ) then
+    begin
       if IsLinuxBuiltin( aComFile ) then
         aComPath := cLinuxBuiltInStr //'$BUILTIN';
-  end;
-
+      else aComPath := cmsgcleBadPath; //'$BAD_PATH'
+    end else aComPath := cCommandInPathStr; //'$PATH'
+  end
+//if they type in the /bin/ etc. PATH CHECKING ROUTINE HERE
+  else if Path_in_EnvironPath( aComPath ) then
+       aComPath := cCommandInPathStr; //'$PATH'
 end;
 
-
-procedure TCmdObjHelper.RefreshEnvironmentPath;
+function TCmdObjHelper.HasRealPath( const PathStr : string ) : boolean;
 begin
-  fLinuxEnvPathSep := GetLinuxEnvPathString( fLinuxEnvPath, True );
+  result :=  not ( ( PathStr = cCommandInPathStr ) or ( PathStr = cLinuxBuiltInStr ) or ( PathStr = cmsgcleBadPath ) );
 end;
 
-function TCmdObjHelper.GetPathAlias( const ThePath : string; theFormatString : string  = '%s' ) : string;
-begin
-  if thePath = cLinuxBuiltInStr then
-  begin
-     result := thePath;
-     exit;
-  end;
-
-  if thePath = '' then
-  begin
-     result := cmsgcleBadPath;
-     exit;
-  end;
-
-  result := format( theFormatString,
-                    [ strif( pos( fLinuxEnvPathSep + ThePath + fLinuxEnvPathSep, fLinuxEnvPath ) > 0,
-                                cCommandInPathStr,
-                                ThePath )
-                              ]
-                          );
-
-end;
-
-function TCmdObjHelper.GetNormalizedPath( const PathAlias, PathActual, CommandName : string;
-                                            IncludeFinalSlash : boolean) : string;
+function TCmdObjHelper.GetNormalizedPath( const PathAlias, CommandName : string ) : string;
 var
-  NotIsSpecial: Boolean;
   thePath : String;
 begin
-
-  NotIsSpecial := ( pos( cCommandInPathStr, PathAlias ) = 0 )
-                  and ( pos( cLinuxBuiltInStr, PathAlias ) = 0 );
-
-//I store the path with final slash but...this makes it bulletproof. Right?
-  thePath := StrIf( NotIsSpecial, PathActual );
-
+//returns a path the program can use, not the constants
+  thePath := StrIf( HasRealPath( PathAlias ), PathAlias );
+//I store the path with final slash but...this makes it bulletproof.
   result := strif( thePath <> '', IncludeTrailingPathDelimiter( thePath ) ) + CommandName;
-
-  if not IncludeFinalSlash and ( CommandName = '' ) then
-    result := ExcludeTrailingPathDelimiter( result );
-
 end;
 
 function TCmdObjHelper.CanRunCommand( ExecuteStr : string; var IsBuiltin : boolean ) : boolean;
@@ -2969,7 +2933,7 @@ begin
           FromCmdObjHelper.LoadCmdObj( FromCmdObj, FromList[ i ] );
           inc( CmdLineCnt, FromCmdObj.CmdLines.Count );
 
-          FromSummary := FromSummary + format( NamePath, [ FromCmdObj.CommandName, FromCmdObj.GetLiteralPath( true ) ] );
+          FromSummary := FromSummary + format( NamePath, [ FromCmdObj.CommandName, FromCmdObj.GetLiteralPath ] );
           for j := 0 to FromCmdObj.CmdLines.Count - 1 do
             FromSummary := FromSummary + LineEnding + '  ' + TCmdLineObj( FromCmdObj.CmdLines.Objects[ j ] ).Entry;
           FromSummary := FromSummary + LineEnding;// + LineEnding;
@@ -2985,7 +2949,7 @@ begin
 
             ToCmdObjHelper.LoadCmdObj( ToCmdObj, ToList[ Idx ] );
             InDest := InDest + format( cmsgInDest, [ toName ] )
-                      + format( NamePath, [ ToCmdObj.CommandName, ToCmdObj.GetLiteralPath( true ) ] )
+                      + format( NamePath, [ ToCmdObj.CommandName, ToCmdObj.GetLiteralPath ] )
                       + LineEnding;
 
             IsIdentical := false;
@@ -3029,7 +2993,7 @@ begin
           ToCmdObjHelper.LoadCmdObj( ToCmdObj, ToList[ i ] );
           inc( CmdLineCnt, ToCmdObj.CmdLines.Count );
 
-          Strings.Add( format( NamePath, [ ToCmdObj.CommandName, ToCmdObj.GetLiteralPath( true ) ] ) );
+          Strings.Add( format( NamePath, [ ToCmdObj.CommandName, ToCmdObj.GetLiteralPath ] ) );
 
 
           for j := 0 to ToCmdObj.CmdLines.Count - 1 do
@@ -3832,8 +3796,8 @@ begin
     CmdIdentical := false;
     CmdLineIdentical := false;
 
-    ToP := GetLiteralPath( true );
-    FromP := FromCmdObj.GetLiteralPath( true );
+    ToP := GetLiteralPath;
+    FromP := FromCmdObj.GetLiteralPath;
 
     if ToP <> FromP then
       result := format( cmsgPathsDiffer, [ ToP, FromP ] ) + LineEnding
@@ -4053,35 +4017,15 @@ begin
   result := LocationPath = cLinuxBuiltInStr;
 end;
 
-function TCmdObj.GetRunningPath : string;
+function TCmdObj.IsSystemPath : boolean;
 begin
-//use this to send to process
-  result := fCmdObjHelper.GetNormalizedPath( GetLocationPathAlias, LocationPath, CommandName );
+  result := LocationPath = cCommandInPathStr;
 end;
 
-function TCmdObj.GetLiteralPath( ForDisplay : boolean = false ) : string;
+function TCmdObj.GetLiteralPath : string;
 begin
-
-  if IsBuiltin then
-  begin
-    result := StrIf( ForDisplay, cLinuxBuiltInStr );
-    exit;
-  end;
-
-  result := StrIf( ForDisplay and ( LocationPath = '' ), cmsgNotSpecified, LocationPath );
-
+  result := GetLiteralPath_Generic( LocationPath, CommandName );
 end;
-
-function TCmdObj.GetLocationPathAlias : string;
-begin
-  result := fCmdObjHelper.GetPathAlias( LocationPath );
-end;
-
-function TCmdObj.DesignatedAsBuiltIn : boolean;
-begin
-  result := fCmdObjHelper.GetPathAlias( LocationPath ) = cLinuxBuiltInStr;
-end;
-
 
 function TCmdObj.DoUpdate: boolean;
 var

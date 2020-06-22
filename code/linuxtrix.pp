@@ -28,8 +28,8 @@ uses
 
 function SystemFileLocation( const FName : string ) : string;
 function SystemFileFound( const FName : string; ShowError : boolean = false ) : boolean;
-function DeterminePathSeparatorUsed( const PathEnvirString : string ) : char;
-function GetLinuxEnvPathString( var PathEnvirString : string; AddEndingLinuxSlash : boolean = false  ) : char;
+function Path_in_EnvironPath( const literalPath: string ) : boolean;
+procedure RefreshEnvironmentPath;
 //procedure GetMountedDrives( Strings : TStrings );
 function GetRawGuidString( RaiseExcept : boolean = false ) : string;
 
@@ -63,7 +63,6 @@ function ProcString( Params : TStrings ) : string;
 function ProcInteger( ParamsAndResult : TStrings ) : integer;
 function ProcDetached( var aProc : TProcess; const fullCommand : string ) : string; overload;
 function ProcDetached( aProc : TAsyncProcess; Params : Tstrings ) : string; overload;
-//procedure ReleaseProcess( var aProc : TProcess; ECode : integer = 999 );
 function GetProcessOutputToStream( aProc : TProcess; const IsOutput : boolean;
                            var MemS : TMemoryStream; DoExecute : boolean = true ) : integer;
 function GetProcessOutput( aProc : TProcess; var TheInput : string;
@@ -75,6 +74,7 @@ procedure WriteMemoryStreamToString( var SourceString : string; MemoryStream : T
 //function ParsePiping( PipeStr : string; Strings : TStrings ) : integer;
 function StripPkexec( const Value : string ) : string;
 function TogglePkexec( const Value : string ) : string;
+function GetLiteralPath_Generic( const CheckPath, CmdName : string ) : string;
 
 
 resourcestring
@@ -124,6 +124,7 @@ const
   cltBadGuid = '{}';
   cltProcessStdErrStr = 'stderr';
   cltProcessStdOutStr = 'stdout';
+  cmsgNotSpecified = '-???-';
 
 
 implementation
@@ -136,30 +137,56 @@ uses juusgen
 
 var
   dummystring : string = ''; //special use don't change
+  locLinuxEnvPath : string = '';
+  locLinuxEnvPathSep: char = 'x';
+
 
 const
   CheckAdjust = 17;
   cprogPkexecStr = 'pkexec ';
 
-  function StripPkexec( const Value : string ) : string;
-  var
-    Idx : integer;
+function GetLiteralPath_Generic( const CheckPath, CmdName : string ) : string;
+var
+  aPath : string;
+begin
+//returns either builtin, a $PATH path, a user path, bad path or nothing
+  if CheckPath = cLinuxBuiltInStr then
   begin
-    result := Value;
-    Idx := pos( cprogPkexecStr, Value );
-    if Idx = 1 then
-      Result := copy( Value, length( cprogPkexecStr ) + 1, maxint );
+    result := cLinuxBuiltInStr;
+    exit;
   end;
 
-  function TogglePkexec( const Value : string ) : string;
-  var
-    Idx : integer;
+  if CheckPath = cCommandInPathStr then
   begin
-    Idx := pos( cprogPkexecStr, Value );
-    if Idx = 0 then
-      result := cprogPkexecStr + Value
-    else Result := copy( Value, length( cprogPkexecStr ) + 1, maxint );
+    aPath := ExtractFilePath( SystemFileLocation( CmdName ) );
+    result := StrIf( aPath = '', cmsgNotSpecified, aPath );
+    exit;
   end;
+
+  result := StrIf( CheckPath = '', cmsgNotSpecified, CheckPath );
+
+end;
+
+
+function StripPkexec( const Value : string ) : string;
+var
+  Idx : integer;
+begin
+  result := Value;
+  Idx := pos( cprogPkexecStr, Value );
+  if Idx = 1 then
+    Result := copy( Value, length( cprogPkexecStr ) + 1, maxint );
+end;
+
+function TogglePkexec( const Value : string ) : string;
+var
+  Idx : integer;
+begin
+  Idx := pos( cprogPkexecStr, Value );
+  if Idx = 0 then
+    result := cprogPkexecStr + Value
+  else Result := copy( Value, length( cprogPkexecStr ) + 1, maxint );
+end;
 
 function InterpretExitCodes( aProc : TProcess ) : string;
 begin
@@ -190,6 +217,15 @@ begin
   end else result := GuidToString( GStr );
 end;
 
+function DeterminePathSeparatorUsed( const PathEnvirString : string ) : char;
+const
+  PossibleLinuxEnvPathSeperators = ':;,-. ?';
+begin
+  for result in PossibleLinuxEnvPathSeperators do
+    if pos( result, PathEnvirString ) > 0 then
+      break;
+end;
+
 function GetLinuxEnvPathString( var PathEnvirString : string; AddEndingLinuxSlash : boolean = false ) : char;
 begin
   PathEnvirString := GetEnvironmentVariable( 'PATH' );
@@ -199,16 +235,20 @@ begin
   PathEnvirString := result + PathEnvirString + result;
 end;
 
-function DeterminePathSeparatorUsed( const PathEnvirString : string ) : char;
-const
-  PossibleLinuxEnvPathSeperators = ':;,-. ?';
+function Path_in_EnvironPath( const literalPath: string ) : boolean;
 begin
-//juuus should I be using this instead of the set thing back in the other????
-  for result in PossibleLinuxEnvPathSeperators do
-    if pos( result, PathEnvirString ) > 0 then
-      break;
+//ENVIRONMENT PATH CHECKING ROUTINE HERE
+  if locLinuxEnvPathSep = 'x' then
+  begin
+    raise exception.Create( 'Developer: You need to call RefreshEnvironmentPath first.' );
+  end;
+  result := pos( locLinuxEnvPathSep + literalPath + locLinuxEnvPathSep, locLinuxEnvPath ) > 0;
 end;
 
+procedure RefreshEnvironmentPath;
+begin
+  locLinuxEnvPathSep := GetLinuxEnvPathString( locLinuxEnvPath, True );
+end;
 
 procedure FillProcDefaults( aProc : TProcess; doPipeStdErr : boolean = false );
 var
@@ -614,20 +654,6 @@ begin
   //DoProcessInputSpecial( aProc, globltInputForProcess );
 
 end;
-
-//procedure ReleaseProcess( var aProc : TProcess; ECode : integer = 999 );
-//begin
-//
-//  if assigned( aProc ) then
-//  begin
-////terminate blows up if it's not running, what can I trust? Running? Active?
-////    if aProc.running then  //this does work for detached processes so may be useful in future
-//    aProc.Terminate( ECode );
-//    freeandnil( aProc );
-//  end;
-//
-//end;
-
 
 function RunThroughShell( const aString : string ) : string;
 var

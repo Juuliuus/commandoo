@@ -163,11 +163,7 @@ const
 procedure TfrmCmdLineEdit.UpdateMemOutPut( const ToAdd : string );
 var
   GoToPos : Integer;
-{$IFDEF Bit32}
-  NumLines : Integer;
-{$ELSE}
   NumLines : Int64;
-{$ENDIF}
 begin
 
   GoToPos := length( memOutput.Lines.Text );
@@ -226,6 +222,12 @@ procedure TfrmCmdLineEdit.ShowInitialHelp;
 var
   SL : TStringList;
 begin
+  if trim( HelpParameter ) = '' then
+  begin
+    UpdateMemOutPut( format( cmsgcleNoHelpParam, [ helpCommand ] ) );
+    exit;
+  end;
+
   SL := TStringList.Create;
   try
     SL.Add( helpCommand );
@@ -256,7 +258,10 @@ end;
 procedure TfrmCmdLineEdit.memCmdLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   if key = vk_return then
+  begin
+    bntOK.Click;
     key := vk_unknown;
+  end;
 end;
 
 procedure TfrmCmdLineEdit.HandleFormSettings( const TheType : TSettingsDirective );
@@ -329,17 +334,9 @@ procedure TfrmCmdLineEdit.btnPathClick( Sender : TObject );
 var
   str : string;
 begin
-
-  str := TfrmMain( Owner ).lblPathActual.Caption;
-
-  if str = cLinuxBuiltInStr then
-  begin
-    MyShowmessage( format( cmsgNoPathInsertion, [ TfrmMain( Owner ).lblCommandName.Caption, str ] ), self );
-    exit;
-  end;
-
-  memCmdLine.Text := str + memCmdLine.Text;
-
+  str := TfrmMain( Owner ).GetRealPath;
+  if str <> '' then
+    memCmdLine.Text := str + memCmdLine.Text;
 end;
 
 procedure TfrmCmdLineEdit.btnPkexecClick( Sender : TObject );
@@ -409,6 +406,8 @@ procedure TfrmCmdLineEdit.FormCreate(Sender : TObject);
 begin
   font.size := cDefaultFontSize;
   ApplyChangeFont( Self );
+  btnPath.Hint := chintInsertFilePaths;
+  btnPath.Caption := '&A  ' + ccapInsertFilePaths;
   FHasShown := false;
   FIsInitialized := false;
 end;
