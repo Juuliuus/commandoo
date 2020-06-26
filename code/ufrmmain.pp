@@ -639,7 +639,8 @@ type
     function CheckPathOverride(var ConPath : string ) : boolean;
     procedure WritePathOverride(const ConPath : string );
     function IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
-    function CmdInPath( CheckForBuiltin : boolean = false ) : boolean;
+    //function CmdInPath( CheckForBuiltin : boolean = false ) : boolean;
+    function CmdInPath : boolean;
     function AddCmdDisplayObjects( Dest : TStrings; Strings : TStringlist ) : boolean;
     procedure ApplyListChanges( theList : string; aListBox, DispListBox : TListBox );
     procedure ApplyListChangesDisplayedCmd( SrcList, aListBox, DispListBox : TListBox );
@@ -785,7 +786,6 @@ var
   frmMain: TfrmMain;
 
 resourcestring
-  cmsgMainWorking = 'Working...Check if this causes the timeout';
   ccapMainBadPath = 'Config Problem, Re-set??';
   cmsgMainBasePath = 'Base DB/Settings path: ';
   cmsgMainSavingPath = 'Saving path: ';
@@ -1896,8 +1896,16 @@ begin
                     + 'Text and sql DB''s: Commands in $PATH now store $PATH instead of '
                     + 'literal path, allowing portability to various gun/linux distros.';
         end;
+      7 :
+        begin
+          Update_DB_Version_0007;
+          Comms := Comms + LineEnding
+                    + 'Text and sql DB''s: Mistakenly added bash "builtins" support removed, '
+                    + 'and the path changed to $BAD_PATH ("builtins" should be added to the '
+                    + 'shell command entry like bash, zsh, csh, etc.).';
+        end;
 
-      //7 : When an update is done on the DB write the needed code here, increase the
+      //8 : When an update is done on the DB write the needed code here, increase the
       //  c_DB_VersionUpgradeCount const by 1
     end;
 
@@ -2167,18 +2175,24 @@ end;
 
 function TfrmMain.RunExternalHelpRequest( SL : TStringList ) : string;
 var
-  str : string;
+  str, failed : string;
 begin
-  //help displays special because of BUILTINS
+  failed := format( '"%s %s" failed, invalid command', [ SL[ 0 ], SL[ 1 ] ] );
   str := ExtractFilePath( SL[ 0 ] );
   if str <> '' then
   begin
     if not IsFileExist( SL[ 0 ] ) then
     begin
-      result := format( '"%s %s" failed, invalid command', [ SL[ 0 ], SL[ 1 ] ] );
+      result := failed;
       exit;
     end;
-  end;
+  end
+  else if not SystemFileFound( SL[ 0 ] ) then
+       begin
+         result := failed;
+         exit;
+       end;
+
   result := GetHelpOutput( SL );
 end;
 
@@ -2292,7 +2306,7 @@ begin
     fAllowMultipleOpens := ReadBool( cSectTabFormSettings, cFormSettingsAllowMultipleOpens, false );
     fAllowESCinOutput := ReadBool( cSectTabFormSettings, cFormSettingsAllowESCOutput, false );
 
-    fRootFile := ReadString( cSectTabFormSettings, cFormSettingsRootFile, cFormSettingsRootFileDefault );
+    fRootFile := ReadString( cSectTabFormSettings, cFormSettingsRootFile, cRootFileSudo );
 
     fLastQuickRun := ReadString( cSectTabFormSettings, cFormSettingsLastQuickRun, '' );
     fManRefreshFavorites := ReadBool( cSectTabFormSettings, cFormSettingsManRefreshFav, false );
@@ -4559,15 +4573,15 @@ begin
     UpdateDisplay( format( cmsgcleNoHelpParam, [ SL[ 0 ] ] ), false );
     exit;
   end;
-//needs to be a separate section for help's because of builtin's
+//needs to be a separate section for help's because of remote calls
   if not fInternalComs then
-    //UpdateDisplay( StandardOutputHeader( SL[ 0 ]  + ' ' + SL[ 1 ] ), false );
     UpdateDisplay_Internal( StandardOutputHeader( SL[ 0 ]  + ' ' + SL[ 1 ] ), false );
 
-  Result := CmdObjHelper.RunCommand( SL, false, '', 'help' );
+  Result := CmdObjHelper.RunCommand( SL, false );
+
 end;
 
-function TfrmMain.CmdInPath( CheckForBuiltin : boolean = false ) : boolean;
+function TfrmMain.CmdInPath : boolean;
 var
   str : string;
 begin
@@ -4575,10 +4589,10 @@ begin
 
   Result := str = cCommandInPathStr;
 
-  if Result then
-    exit;
-  if CheckForBuiltin then
-    result := str = cLinuxBuiltInStr;
+  //if Result then
+  //  exit;
+  //if CheckForBuiltin then
+  //  result := str = cLinuxBuiltInStr;
 end;
 
 function TfrmMain.IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
@@ -4611,30 +4625,23 @@ begin
   SL := TStringList.Create;
   try
 
-    if Path <> cLinuxBuiltInStr then
-    begin
-      if CmdInPath then
-      begin
-        SL.Add( Cmd );
-        if not SystemFileFound( Cmd ) then
-          SL.Add( '' )
-        else SL.Add( Help )
-      end else
-      begin
-        if Path = cmsgcleBadPath then
-        begin
-          UpdateDisplay( format( cFileNotExist, [ Cmd ] ) );
-          exit;
-        end;
-        if not IsFileExist( Path + Cmd, true ) then
-          exit;
-        SL.Add( Path + Cmd );
-        SL.Add( Help )
-      end;
-    end else
+    if CmdInPath then
     begin
       SL.Add( Cmd );
-      SL.Add( 'help' ); //literal for builtin's, don't change
+      if not SystemFileFound( Cmd ) then
+        SL.Add( '' ) //flags it to fail
+      else SL.Add( Help )
+    end else
+    begin
+      if Path = cmsgcleBadPath then
+      begin
+        UpdateDisplay( format( cFileNotExist, [ Cmd ] ) );
+        exit;
+      end;
+      if not IsFileExist( Path + Cmd, true ) then
+        exit;
+      SL.Add( Path + Cmd );
+      SL.Add( Help )
     end;
 
     UpdateDisplay( GetHelpOutput( SL ) );
@@ -4769,6 +4776,7 @@ begin
   if not assigned(CmdObj) then
     exit;
 
+//see comment in btnHelpCommandClick
   Path := GetProperPathLabelCaption;
   Cmd := GetProperCmdNameCaption;
   Ver := trim( edtVersion.Text );
@@ -4779,27 +4787,23 @@ begin
     exit;
   end;
 
-  //see note in btnHelpCommandClick;
-  if Path <> cLinuxBuiltInStr then
+  if CmdInPath then
   begin
-    if CmdInPath then
+    if not SystemFileFound( Cmd, true ) then
+      exit
+    else CmdStr := trim( Cmd + ' ' + Ver );
+  end else
+  begin
+    if Path = cmsgcleBadPath then
     begin
-      if not SystemFileFound( Cmd, true ) then
-        exit
-      else CmdStr := trim( Cmd + ' ' + Ver );
-    end else
-    begin
-      if Path = cmsgcleBadPath then
-      begin
-        UpdateDisplay( format( cFileNotExist, [ Cmd ] ) );
-        exit;
-      end;
-      CmdStr := Path + Cmd;
-      if not IsFileExist( CmdStr, true ) then
-        exit
-      else CmdStr := trim( CmdStr + ' ' + Ver );
+      UpdateDisplay( format( cFileNotExist, [ Cmd ] ) );
+      exit;
     end;
-  end else CmdStr := Cmd + ' ' + Ver;
+    CmdStr := Path + Cmd;
+    if not IsFileExist( CmdStr, true ) then
+      exit
+    else CmdStr := trim( CmdStr + ' ' + Ver );
+  end;
 
   if not CanRunCmdLine( CmdStr, 0, false ) then
     exit;
@@ -6254,7 +6258,7 @@ begin
   try
     screen.Cursor := crHourglass;
 
-    if CmdInPath( true ) then
+    if CmdInPath then
       Input := trim( GetProperCmdNameCaption ) + ' '
     else
     begin
@@ -6954,6 +6958,7 @@ begin
   SpecialComms := '';
   memo1.SelStart := 1;
 
+//juuus today
   globltHasBASH := SystemFileFound( 'bash' );
 
   RefreshCap;

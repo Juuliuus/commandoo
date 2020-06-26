@@ -33,33 +33,19 @@ procedure RefreshEnvironmentPath;
 //procedure GetMountedDrives( Strings : TStrings );
 function GetRawGuidString( RaiseExcept : boolean = false ) : string;
 
-function IsLinuxBuiltin( const FName : string ) : boolean;
+//function IsLinuxBuiltin( const FName : string ) : boolean;
 procedure FillProcDefaults( aProc : TProcess; doPipeStdErr : boolean = false );
 procedure HandleProcParams( var aProc : TProcess; var Params : Tstrings );
 
 
-function GetBuiltInOutput( const Command : string; Params : Tstrings ) : string; // overload;
-function BuiltInNotAllowedInShell( const CmdName : string; var ResultStr : string ) : boolean;
+function NotAllowedInShell( const CmdName : string; var ResultStr : string ) : boolean;
 
 //=========do not change!!!! Central to the program for quick finds of environment data
 function QuickProc( const theExec, theParams : string; ThirdParam : string = '' ) : string;
 //==================================================
 function SimpleProc( const CmdLine : string; const DoStdOut, DoStdErr, DoFormat : boolean ) : string;
 function RunThroughShell( const aString : string ) : string;
-
-
-//does this work?
-//OutputLines.LoadFromStream(hprocess.Output);
-
-//reference if sudo ever used, which it will not be...not secure
-//hProcess.Executable := '/bin/sh';
-//// Now we add all the parameters on the command line:
-//hprocess.Parameters.Add('-c');
-//// Here we pipe the password to the sudo command which then executes fdisk -l:
-//hprocess.Parameters.add('echo ' + sPass  + ' | sudo -S fdisk -l');
-
 function ProcString( Params : TStrings ) : string;
-//function ProcInteger( ParamsAndResult : TStrings; SudoPW : string = '' ) : integer;
 function ProcInteger( ParamsAndResult : TStrings ) : integer;
 function ProcDetached( var aProc : TProcess; const fullCommand : string ) : string; overload;
 function ProcDetached( aProc : TAsyncProcess; Params : Tstrings ) : string; overload;
@@ -79,7 +65,6 @@ function GetLiteralPath_Generic( const CheckPath, CmdName : string ) : string;
 
 resourcestring
   cltmsgWhich = '`which` command could not find system file `%s`';
-  cltMissingBash = 'Cannot retrieve output from builtin "%s" on a system that does not support bash';
   cltDetachedProcess = 'running as detached process';
   cltProcessExitCode = 'Process Exit Code: %d';
   cltProcessExitStatus = 'System Status Code: %d';
@@ -96,11 +81,14 @@ resourcestring
   cltProcessRefusesInput = '< The Process would not allow input. >';
   cltProcessNoneStr = '< none >';
   cltProcessThroughShell = '==RUNNING THROUGH SHELL==';
-  cltProcess4thDimension = 'Due to possibility of opening a 4th dimensional rift it is not allowed to run "%s"';
+  cltProcess4thDimension = 'Due to possibility of opening a 4th dimensional rift (or worse: hanging the program)...' +
+    LineEnding
+    + 'it is not allowed to run these commands through the shell: "%s"';
   cltProcessNoParams = 'No Params';
 
 
 var
+  //juuus today
   globltHasBASH : boolean = false;
   globltDoCancelProcess : boolean;
   globltProcessMaxOutput : integer = 500000;
@@ -149,13 +137,7 @@ function GetLiteralPath_Generic( const CheckPath, CmdName : string ) : string;
 var
   aPath : string;
 begin
-//returns either builtin, a $PATH path, a user path, bad path or nothing
-  if CheckPath = cLinuxBuiltInStr then
-  begin
-    result := cLinuxBuiltInStr;
-    exit;
-  end;
-
+//returns either a $PATH path, a user path, bad path or nothing
   if CheckPath = cCommandInPathStr then
   begin
     aPath := ExtractFilePath( SystemFileLocation( CmdName ) );
@@ -666,6 +648,7 @@ begin
   SL := TStringList.Create;
   try
 
+//juuus today SigInt????????? This is also where the new shell string will go
     if not globltHasBASH then
       SL.Add( 'sh' )
     else SL.Add( 'bash' ); //OUCH!!! This fixed a SERIOUS problem where subsequent runs gave SIGTTIN errors
@@ -751,70 +734,33 @@ begin
 end;
 
 
-function IsLinuxBuiltin( const FName : string ) : boolean;
-var
-  ChkStr : String;
-begin
-//finally, after installing german and catalan, it does appear the best way to find builtin
-//is via : or /, is it bulletproof? No idea what non-latin alphabets will do...but assume linux
-//keeps its formats
-  result := false;
-  if not globltHasBASH then
-    ChkStr := SimpleProc( format( 'sh -c "type %s"', [ FName ] ), true, false, false )
-  else ChkStr := SimpleProc( format( 'bash -c "type %s"', [ FName ] ), true, false, false );
-
-  if ChkStr <> '' then
-    result := ( pos( ':', ChkStr ) = 0 ) and ( pos( '/', ChkStr ) = 0 );
-
-end;
-
-
-function BuiltInNotAllowedInShell( const CmdName : string; var ResultStr : string ) : boolean;
+function NotAllowedInShell( const CmdName : string; var ResultStr : string ) : boolean;
 const
   Cmd = 'command';
   Exc = 'exec';
+  T   = 'time';
+  Tout = 'timeout';
 begin
-//Disallowed Builtins
-  result := ( CmdName = Cmd ) or ( CmdName = Exc );
+//Disallowed bash Built-ins, probably needs expanding...!
+  result := ( CmdName = Cmd )
+            or ( CmdName = Exc )
+            or ( CmdName = T )
+            or ( CmdName = Tout );
   if result then
-    ResultStr := format( cltProcess4thDimension, [ Cmd + ', ' + Exc ] )
+    ResultStr := format( cltProcess4thDimension, [ Cmd + ', ' + Exc + ', ' + T + ', ' + Tout ] )
                  + LineEnding + LineEnding
   else ResultStr := '';
-end;
-
-function GetBuiltInOutput( const Command : string; Params : Tstrings ) : string;
-var
-  ParamStr, BuiltInName : String;
-  i : Integer;
-begin
-
-  if not globltHasBASH then
-  begin
-    result := cltMissingBash;
-    exit;
-  end;
-
-  BuiltInName := Params[ 0 ];
-
-  if Command <> 'help' then
-    if BuiltInNotAllowedInShell( BuiltInName, result ) then
-      exit;
-
-  Params.Delete( 0 );
-  ParamStr := '';
-  for i := 0 to Params.Count - 1 do
-  begin
-    ParamStr := ParamStr + ' ' + Params[ i ];
-  end;
-
-//but here the -i param is REQUIRED to get BUILTIN output
-  result := SimpleProc( format( 'bash -i -c "%s %s %s"', [ Command, BuiltInName, ParamStr  ] ), true, true, true );
-
 end;
 
 function SystemFileLocation( const FName : string ) : string;
 begin
   result := QuickProc( 'which', FName );//after superuser bug, trimming takes place in QuickProc
+  //saw that zsh WILL return a string but not necessarily a path.
+  if pos( '/', result ) <> 1 then
+  begin
+    result := '';
+    exit;
+  end;
 
 //DEBIAN fix for where sbin's not in $PATH, even sudo'er
   if ExtractFilePath( result ) = '' then
@@ -905,12 +851,9 @@ begin
 
 end;
 
-//function ProcInteger( ParamsAndResult : TStrings; SudoPW : string = '' ) : integer;
 function ProcInteger( ParamsAndResult : TStrings ) : integer;
 var
   aProc: TProcess;
-  //I : Integer;
-  //SudoPassword : string;
 begin
 
   Result := -1;
@@ -922,53 +865,9 @@ begin
   try
     FillProcDefaults( aProc );
 
-    //=================> pkexec
-
-//    Call a secure program that does it, e.g. gksudo ... or xterm -e sudo ...
-
-//////I leave this here as history, maybe it will come in useful some other day...too convoluted to use right now
-//////aProc.Executable := '/bin/sh'; /bin/bash??!!!
-//////aProc.Parameters.Add( '-c' );
-//////
-//////rsyncStr := ProgRSYNCPath + ' ';
-//////
-//////for i := 0 to CmdParams.Count - 1 do
-//////begin
-//////  rsyncStr := rsyncStr + CmdParams[ i ] + ' ';
-//////
-//////end;
-//////aProc.Parameters.Add( rsyncStr );
-
-//the below are used with sudo if you want to allow that later, password is cleartext though!!!
-//better are the kdesudo or gksudo, but sudo can be implemented if needed / wanted
-    //if fSuperUser then
-    //   aProc.Executable := cSuperUserPath
-    //else
-
-    //      if fSuperUser then
-    //      begin
-    //        if fSuperUser_o then
-    ////the below are used with sudo if you want to allow that later, password is cleartext though!!!
-    ////better are the kdesudo or gksudo, but sudo can be implemented if needed / wanted
-    //        //aProc.Parameters.add( '-S' );//sudo takes password from stdin
-    //      end;
-
-
     HandleProcParams( aProc, ParamsAndResult );
 
     ParamsAndResult.Text := GetProcessOutput( aProc, globltInputForProcess, true, true );
-
-
-//the below are used with sudo if you want to allow that later, password is cleartext though!!!
-//better are the kdesudo or gksudo, but sudo can be implemented if needed / wanted
-//would need to build a password box....
-    //if fSuperUser then
-    //begin
-    //  SudoPassword := 'mypasswordincleartext!!!' + LineEnding;
-    //  aProc.Input.Write(SudoPassword[1], Length(SudoPassword));
-    //  SudoPassword := 'password'; //hope this will scramble memory
-    //  SudoPassword := ''; // and make the program a bit safer from snooping?!?
-    //end;
 
     Result := aProc.ExitCode;
 

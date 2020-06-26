@@ -50,7 +50,7 @@ const
   cbtn_SearchNOT = '± NOT';
   ccbHintsEnglishOverride = '&H  Show hints on mouse-over';
   cCommandInPathStr = '$PATH';
-  cLinuxBuiltInStr = '$BUILTIN';
+  //cLinuxBuiltInStr = '$BUILTIN';
   cmsgcleBadPath = '$BAD_PATH';
   Dots = '...';
   cDoubleS = '%s %s';

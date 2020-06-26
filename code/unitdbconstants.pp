@@ -41,7 +41,8 @@ const
     //c_DB_VersionUpgradeCount = 3;//Jan 25 2017  Make ThreatLevel intuitive remove 0th useless element
     //c_DB_VersionUpgradeCount = 4;//April 28 2017  ObjId removed
     //c_DB_VersionUpgradeCount = 5;//May 26 2020 overlooked "table" specifier for INI files and mismatched GUID's
-    c_DB_VersionUpgradeCount = 6;//June 21 2020 convert any PATH commands to $PATH instead of literal path for portability
+    //c_DB_VersionUpgradeCount = 6;//June 21 2020 convert any PATH commands to $PATH instead of literal path for portability
+    c_DB_VersionUpgradeCount = 7;//June 24 2020 convert any BUILTINs to BadPath
   //=====  DATABASE  ==============================
     //c_DB_HandwrittenVersion = '1.0.2'; //lineiniidx goes from db
     //c_DB_HandwrittenVersion = '1.0.3'; //'<<F>>' fiasco, quotes shouldn't have been there.

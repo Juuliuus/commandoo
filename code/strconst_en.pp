@@ -707,24 +707,6 @@ resourceString
   cmsgRootFileInfo = 'The template requires a single "%s" in it so that the command line can be placed properly. ';
 
 
-  ccapSudoSet = 'ROOT Privileges';
-  cmsgNoGoodSudo = 'I`ve searched for "kdesudo" and "gksudo", the safe and secure '
-                       + 'gnu/Linux methods of launching programs with ROOT privileges '
-                       + 'but didn`t find them.'
-                       + LineEnding + LineEnding
-                       + 'So, if you want to run commands with ROOT privileges you will '
-                       + 'need to set it manually in "OPTIONS".'
-                      ;
-  cmsgSudoSet = 'Your ROOT mode file was not set. I`ve set your ROOT mode privileges file to "%s". '
-                + 'For most users this will be correct.'
-                + LineEnding + LineEnding
-                + 'If you want to change it do so in "OPTIONS".'
-                + LineEnding + LineEnding
-                + 'If running ROOT mode has no effect then you will NEED to change it to the proper file '
-                + 'depending on your Linux distribution (Debian vs. ''Buntu) and the type of administrative '
-                + 'setup (sudo vs sudo''ers vs su) it has.'
-                      ;
-
   ccapRootDisallowed = 'ROOT running Disallowed';
   cmsgRootDisallowed =
     'The ROOT choice for a command line is simply a helper so that when a CL is copied and then pasted  '

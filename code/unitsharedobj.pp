@@ -174,6 +174,7 @@ type
     procedure DBUpgrade_Cleanup0002( const Key : string );
     procedure DBUpgrade_Cleanup0003( const DL : TDataLocation; const Key : string );
     procedure DBUpgrade_Cleanup0006( const DL : TDataLocation );
+    procedure DBUpgrade_Cleanup0007( const DL : TDataLocation );
     function EnsureTextDataType : boolean;
     function CheckV4GuidMisMatch : boolean;
 
@@ -675,6 +676,71 @@ begin
         else NewStr := cCommandInPathStr;
 
         FIniFile.WriteString( SL[ i ], cCmdColLocationPath, NewStr );
+      end;
+      SaveIniFile;
+    end;
+  finally
+    if assigned( SL ) then
+      freeandnil( SL );
+  end;
+
+end;
+
+procedure TInfoServer.DBUpgrade_Cleanup0007( const DL : TDataLocation );
+var
+  SL : TStringList;
+  str, TableName, ID : string;
+  i : integer;
+begin
+
+  SL := TStringList.Create;
+  try
+    if fUseDB then
+    begin
+      SL := TStringList.Create;
+      try
+
+        TableName := OpenQuery( DL, cCmdColLocationPath, '' );
+        while not QueryEOF do
+        begin
+          Str := QueryVal( cCmdColLocationPath );
+          if str <> '$BUILTIN' then
+          begin
+            QueryNext;
+            continue;
+          end;
+
+          ID := QueryVal( csoSqlite_rowid );
+          SL.Add( GetUpdate_Sql( TableName,
+                                 format( '%s = %s', [ cCmdColLocationPath, QuotedStr( cmsgcleBadPath ) ] ),
+                                 format( '%s=', [ csoSqlite_rowid ] ) + ID
+                                )
+                    );
+          QueryNext;
+        end;
+
+      finally
+        CloseQuery;
+      end;
+
+      DoDirect_sql( SL );
+
+    end else
+    begin
+      SetControlSlot( DL );
+      FInifile.GetSectionList( SL );
+      for i := 0 to SL.Count - 1 do
+      begin
+        //is it a actually one of the command entries?
+        str := FIniFile.ReadString( SL[ i ], cCmdColCommandName, '' );
+        if str = '' then
+          continue;
+
+        str := FIniFile.ReadString( SL[ i ], cCmdColLocationPath, '' );
+        if str <> '$BUILTIN' then
+          continue;
+
+        FIniFile.WriteString( SL[ i ], cCmdColLocationPath, cmsgcleBadPath );
       end;
       SaveIniFile;
     end;

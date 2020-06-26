@@ -59,13 +59,6 @@ const
 
 type
 
-  //TSudoFileName = record
-  //  FName : string;
-  //  Param1 : string;//needed for kdesu's -t param so that output comes back from kdesu, otherwise no output.
-  //                  //-tc as a single param fails for some commands (mount for instance), so it must be separate
-  //  Param2 : string;
-  //end;
-
   TCmdObjHelper = class;
 
   { TBaseCmdObj }
@@ -288,7 +281,7 @@ type
     procedure PrepCommandLinesForReWrite;
     procedure SaveCmdLineINI;
     procedure SaveCommandLines;
-    function IsBuiltin : boolean;
+    //function IsBuiltin : boolean;
     function IsSystemPath : boolean;
     function MergeKeyWords( FromCmdObj : TCmdObj ) : boolean;
     function Merge_CmdLines( FromCmdObj : TCmdObj; const MergeSource : string ) : boolean;
@@ -418,10 +411,8 @@ type
     procedure GetCmdDisplayObjList_Cmd( Source, Dest : TStringList; DL : TDataLocation );
     procedure GetCmdDisplayObjList_CmdLine( Source, Dest : TStringList; DL : TDataLocation );
     function GetCmdDisplayObj_CmdLineEntry( const Main, Alt : string ) : string;
-//    procedure ProcessCommandEntry( aString : string; SudoFileName : TSudoFileName; strings : TStrings );
     procedure ProcessCommandEntry( aString : string; strings : TStrings );
     procedure SetDBServer( AValue : TInfoServer );
-    //procedure StringsSudoFormat( Strings : TStrings; SudoFileName : TSudoFileName; const SudoString : string );
 
     function VariablesAsClipboardText( anEntry : string ) : string;
 
@@ -434,13 +425,11 @@ type
     constructor Create;
     destructor Destroy; override;
     procedure GetCmdList( anSL : TStrings );
-    //procedure RefreshEnvironmentPath;
     function HasRealPath( const PathStr : string ) : boolean;
     function GetNormalizedPath( const PathAlias, CommandName : string ) : string;
-    function CanRunCommand( ExecuteStr : string; var IsBuiltin : boolean ) : boolean;
-    function RunCommand( Params : TStrings; UseShell : boolean; ShStr : string = ''; BICommand : string = 'command') : string;
+    function CanRunCommand( ExecuteStr : string ) : boolean;
+    function RunCommand( Params : TStrings; UseShell : boolean; ShStr : string = '' ) : string;
     function RunCommandDetached( var aProc : TAsyncProcess; Params : Tstrings) : string;// overload;
-    //function Path_in_EnvironPath( const literalPath: string ) : boolean;
     procedure ProcessFileNamePath(const aComName: string; var aComFile: string; var aComPath: string);
     function RouteCommand( aString : string; const DoDetach : boolean; var aProcess : TAsyncProcess ) : string;
 
@@ -556,26 +545,6 @@ resourcestring
 
 
   cmsgcleBadCommand = 'Bad command!';
-  cmsgcleNoBuiltInDetached = 'Builtin commands may not be run as a detached process';
-  cmsgcleNoSUFile = 'No superuser file (kdesudo, gksudo, etc.) has been found.';
-  cmsgcleBuiltInInfo =
-      LineEnding + LineEnding
-      + '________NOTE_____________' + LineEnding
-      + 'Linux builtins are special use for shells '
-      + LineEnding
-      + '(terminals, scripting, etc.) and, generally, '
-      + LineEnding
-      + 'should not be run from this program as it '
-      + LineEnding
-      + 'makes no sense to do so. '
-      + LineEnding + LineEnding
-      + 'But use Command lines to store favorite Builtin '
-      + LineEnding
-      + 'commands and use the copy to clipboard feature '
-      + LineEnding
-      + 'and then paste into a terminal. '
-      + LineEnding
-      ;
   cmsgucoVariableString =
       'Put in a string (i.e., AlphaNumeric)'
       + LineEnding + LineEnding
@@ -638,7 +607,8 @@ resourcestring
       + cucoVariableNumber + ' (real number)' + LineEnding
       + cucoVariableFile + ' (file name)' + LineEnding
        ;
-  cmsgcomCommandDisallowed = '%s command disallowed because it could hang the program. Run in Terminal.';
+  cmsgcomCommandDisallowed = '"%s" command disallowed because it could hang the program. Run in Terminal.';
+  cmsgcomCommandDisallowedDetached = '"%s" command can not be run as a detached child process because it could hang the program.';
   cmsgucoDisallowPipe_Detach = 'Can not run piped commands as detached processes.';
   cmsgucoDisallowShell_Detach = 'Can not run commands designated to go through Shell as detached processes.';
   cmsgucoNoCmdOrParams = 'No command / parameters';
@@ -797,44 +767,9 @@ begin
 
 end;
 
-
-
-//procedure TCmdObjHelper.StringsSudoFormat( Strings : TStrings; SudoFileName : TSudoFileName; const SudoString : string );
-//begin
-//  Strings.Add( SudoFileName.FName );
-//  if SudoFileName.Param1 <> '' then
-//    Strings.Add( SudoFileName.Param1 );
-//  if SudoFileName.Param2 <> '' then
-//    Strings.Add( SudoFileName.Param2 );
-//  //-c (cmd) for some progs. or if someday allow 'sudo' it requires '-S' param so it will take pword from stdin
-//  //pretty much decided no SUDO, here for history only
-//  Strings.Add( SudoString );
-////The processes all expect Tstrings, s[ 0 ] is the command to run, the rest are assigned to parameters
-////for sudo'ed this means
-////0 = kdesudo or gksudo or...
-//////1 = if it is sudo or some other sudo'er file it may reguire -S or similar to accept pword from stdin, or -c (cmd)
-////1(2) = The full command to run, it is passed on to the system by sudo'er
-//end;
-
 procedure TCmdObjHelper.ProcessCommandEntry( aString : string; strings : TStrings );
-//procedure TCmdObjHelper.ProcessCommandEntry( aString : string; SudoFileName : TSudoFileName; strings : TStrings );
-//var
-//  SudoString : String;
 begin
-//there used to be more here regarding formatting a "sudo" string.
-//sudo'ing is no longer allowed, but in future if anything does need to be done
-//do it here.
-  //SudoString := '';
-  //
-//This formatted the "sudo" command
-  //if ProcessSudo( SudoFileName, SudoString, aString ) then
-  //begin
-  //  StringsSudoFormat( Strings, SudoFileName, SudoString );
-  //  exit;
-  //end;
-
   CommandToList( aString,  Strings );
-
 end;
 
 procedure TCmdObjHelper.SetDBServer( AValue : TInfoServer );
@@ -1374,8 +1309,9 @@ begin
   // echo ${PIPESTATUS[@]}
   //0 1 0 0
 
-// what if > or < or >> or <<? sudo?? or 2>&1  Then the command should be sent through shell, it may, or may not work.
+// what if > or < or >> or <<? or 2>&1  Then the command should be sent through shell, it may, or may not work.
 //To do that write a #27 as first character of aString (the command string to run)
+//juuus today
   DoThroughShell := pos( csoNonPrintingDelimiter, aString ) = 1;
   if DoThroughShell then
     aString := copy( aString, 2, MAXINT );//length( aString ) );
@@ -1423,23 +1359,19 @@ begin
 
   if not FileExists( aComName ) then
   begin
-//found that kill, for example, came back as builtin even though there is an executable so check path first, not builtins.
     aComPath := ExtractFilePath( SystemFileLocation( aComFile ) );
     if ( aComPath = '' ) then
-    begin
-      if IsLinuxBuiltin( aComFile ) then
-        aComPath := cLinuxBuiltInStr //'$BUILTIN';
-      else aComPath := cmsgcleBadPath; //'$BAD_PATH'
-    end else aComPath := cCommandInPathStr; //'$PATH'
+      aComPath := cmsgcleBadPath //'$BAD_PATH'
+    else aComPath := cCommandInPathStr; //'$PATH'
   end
-//if they type in the /bin/ etc. PATH CHECKING ROUTINE HERE
+//if user types in the /bin/ etc. PATH CHECKING ROUTINE HERE
   else if Path_in_EnvironPath( aComPath ) then
        aComPath := cCommandInPathStr; //'$PATH'
 end;
 
 function TCmdObjHelper.HasRealPath( const PathStr : string ) : boolean;
 begin
-  result :=  not ( ( PathStr = cCommandInPathStr ) or ( PathStr = cLinuxBuiltInStr ) or ( PathStr = cmsgcleBadPath ) );
+  result :=  not ( ( PathStr = cCommandInPathStr ) or ( PathStr = cmsgcleBadPath ) );
 end;
 
 function TCmdObjHelper.GetNormalizedPath( const PathAlias, CommandName : string ) : string;
@@ -1452,22 +1384,16 @@ begin
   result := strif( thePath <> '', IncludeTrailingPathDelimiter( thePath ) ) + CommandName;
 end;
 
-function TCmdObjHelper.CanRunCommand( ExecuteStr : string; var IsBuiltin : boolean ) : boolean;
+function TCmdObjHelper.CanRunCommand( ExecuteStr : string ) : boolean;
 begin
 //Running file HAS TO BE CHECKED again, TProcess makes ==VERY== nasty if it can't execute it.
   result := false;
-  IsBuiltin := false;
 
   if not fileexists( ExecuteStr ) then
   begin
     ExecuteStr := extractfileName( ExecuteStr );
-    IsBuiltIn := IsLinuxBuiltin( ExecuteStr );
-    if not IsBuiltIn then
-    begin
-      if not SystemFileFound( ExecuteStr ) then
-        exit;
-    end;
-
+    if not SystemFileFound( ExecuteStr ) then
+      exit;
   end;
 
   result := true;
@@ -1475,10 +1401,10 @@ begin
 end;
 
 
-function TCmdObjHelper.RunCommand( Params : TStrings; UseShell : boolean; ShStr : string = ''; BICommand : string = 'command' ) : string;
+function TCmdObjHelper.RunCommand( Params : TStrings; UseShell : boolean; ShStr : string = '' ) : string;
 var
-  LinuxBuiltin : Boolean;
-  ResultErr: String;
+  ResultErr, CheckStr: String;
+  Idx : integer;
 
   function DisAllowedCommand( Cmd : string ) : boolean;
   begin
@@ -1488,8 +1414,6 @@ var
 
 begin
 
-  LinuxBuiltin := false;
-
   result := cmsgcleBadCommand;
 
   if UseShell then
@@ -1497,7 +1421,12 @@ begin
 
     ResultErr := '';
 
-    if BuiltInNotAllowedInShell( ShStr, ResultErr ) then
+    Idx := pos( ' ', ShStr );
+    if Idx > 0 then
+      CheckStr := copy( ShStr, 1, Idx - 1 )
+    else CheckStr := ShStr;
+
+    if NotAllowedInShell( trim( CheckStr ), ResultErr ) then
     begin
       result := ResultErr;
       exit;
@@ -1520,22 +1449,33 @@ begin
     exit;
   end;
 
-  if not CanRunCommand( Params[ 0 ], LinuxBuiltin ) then
+  if not CanRunCommand( Params[ 0 ] ) then
     exit;
 
-  if LinuxBuiltIn then
-    result := GetBuiltInOutput( BICommand, Params )
-  else result := ProcString( Params );
-
-  if LinuxBuiltin then
-    result := result + cmsgcleBuiltInInfo;
+  result := ProcString( Params );
 
 end;
 
 
 function TCmdObjHelper.RunCommandDetached( var aProc : TAsyncProcess; Params : Tstrings ) : string;
-var
-  LinuxBuiltin : Boolean;
+
+//juuus today Test this
+  function DetachedNotAllowed( const Cmd : string ) : boolean;
+  begin
+    result := ( Cmd = 'bash' )
+              or ( Cmd = 'sh' )
+              or ( Cmd = 'dash' )
+              or ( Cmd = 'ash' )
+              or ( Cmd = 'tcsh' )
+              or ( Cmd = 'csh' )
+              or ( Cmd = 'zsh' )
+              or ( Cmd = 'ksh' )
+              or ( Cmd = 'pdksh' )
+              or ( Cmd = 'Scsh' )
+              //or....????!!!!!
+              ;
+  end;
+
 begin
 
     result := cmsgucoNoCmdOrParams;
@@ -1543,18 +1483,15 @@ begin
     if Params.Count = 0 then
       exit;
 
-    LinuxBuiltin := false;
-
     result := cmsgcleBadCommand;
 
-    if not CanRunCommand( Params[ 0 ], LinuxBuiltin ) then
+    if not CanRunCommand( Params[ 0 ] ) then
       exit;
 
-    if LinuxBuiltin then
-    begin
-      result := cmsgcleNoBuiltInDetached + LineEnding;
+    result := format( cmsgcomCommandDisallowedDetached, [ Params[ 0 ] ] );
+
+    if DetachedNotAllowed( extractFileName( Params[ 0 ] ) ) then
       exit;
-    end;
 
     aProc := TAsyncProcess.Create( nil );
     result := ProcDetached( aProc, Params );
@@ -4012,10 +3949,10 @@ begin
     Result := CommandName;
 end;
 
-function TCmdObj.IsBuiltin : boolean;
-begin
-  result := LocationPath = cLinuxBuiltInStr;
-end;
+//function TCmdObj.IsBuiltin : boolean;
+//begin
+//  result := LocationPath = cLinuxBuiltInStr;
+//end;
 
 function TCmdObj.IsSystemPath : boolean;
 begin

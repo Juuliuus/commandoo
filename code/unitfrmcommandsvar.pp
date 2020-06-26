@@ -211,6 +211,7 @@ begin
 
   edtInput.Text := trim( edtInput.Text );
   if pos( ' ', edtInput.Text ) > 0 then
+//juuus today
 //I chose QuotedStr here over doublequotedstring. Good decision? I don't know. These will be loaded as params
 //to a process and the process is gonna have to sort it out. You lose either way depending on whether the string
 //contains matched/unmatched " and '  What a pain.

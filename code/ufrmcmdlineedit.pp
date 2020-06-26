@@ -118,7 +118,7 @@ resourcestring
   cmsgCLEVariableFileName = 'a File Name';
 
   cmsgcleNoNaked = 'May not run "naked" commands from here.';
-  cmsgcleOnlyOneParam = 'Only one param / flag is allowed from here.';
+  //cmsgcleOnlyOneParam = 'Only one param / flag is allowed from here.';
   cmsgcleOnlyHelp = LineEnding + LineEnding
                     + 'For safety reason only help commands (CMD --help or CMD -h ) '
                     + LineEnding
@@ -205,14 +205,18 @@ begin
   end else
   begin
     CheckStr := trim( copy( executeStr, Idx + 1, MAXINT ) );
-    if pos( ' ', CheckStr ) > 0  then//More than one param
-    begin
-      updateMemOutPut( cmsgcleOnlyOneParam + cmsgcleOnlyHelp );
-      exit;
-    end;
+//there are some forms of help that require two params
+    //if pos( ' ', CheckStr ) > 0  then//More than one param
+    //begin
+    //  updateMemOutPut( cmsgcleOnlyOneParam + cmsgcleOnlyHelp );
+    //  exit;
+    //end;
   end;
 
-  if ( CheckStr = '-h' ) or ( pos( ' --help', executeStr ) > 0 ) then
+  if ( CheckStr = '-h' )
+     or ( pos( '-h ', CheckStr ) = 1 )
+     or ( pos( 'help ', CheckStr ) = 1 )
+     or ( pos( '--help ', CheckStr ) = 1 ) then
     UpdateMemOutPut( TfrmMain( Owner ).RunCmdLineExternal( executeStr ) )
   else updateMemOutPut( cmsgcleOnlyHelp );
 

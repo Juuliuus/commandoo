@@ -533,7 +533,7 @@ begin
   case IT of
     sqlIPK : ; //"id" INT NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
     sqliPKAlias : ;//"id" INTEGER PRIMARY KEY ASC NOT NULL,'
-                   //ie, overrides builtin rowid and becomes alias
+                   //ie, overrides built in rowid and becomes alias
     sqlIFK : ; //'FOREIGN KEY(Parent) REFERENCES Command(Rowid)'
     sqlIFauxFK : ; //"id" INTEGER PRIMARY KEY ASC NOT NULL,'
                   //not sure if needed, would be unique indexed managed by program, but can just do that normally

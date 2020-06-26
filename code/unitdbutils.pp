@@ -42,6 +42,7 @@ const
   procedure Update_DB_Version_0004( const Key : string );
   function Update_DB_Version_0005 : boolean;
   procedure Update_DB_Version_0006;
+  procedure Update_DB_Version_0007;
   procedure Update_PROG_Version_0001( IFile : TJiniFile; const FormSettEntry : string );
   procedure Update_PROG_Version_0002( IFile : TJiniFile );
   procedure Update_PROG_Version_0003( IFile : TJiniFile; const Sect : string );
@@ -297,6 +298,14 @@ begin
 //saw a video on nixOS and realized that storing literal path for $PATH commands was a bad idea.
 //not portable and not future "proof", all PATH commands changed to the $PATH constant.
   InfoServer.DBUpgrade_Cleanup0006( dlCmd );
+end;
+
+procedure Update_DB_Version_0007;
+begin
+//Studying bash vs sh vs zsh realized I had made a mistake adding all the BUILTIN stuff in. Fixing that now.
+//Existing BUILTINs will be converted to BAD_PATH, all the builtin code is removed. Will be adding bash to
+//default DB's and any builtin will be there under Command Lines instead.
+  InfoServer.DBUpgrade_Cleanup0007( dlCmd );
 end;
 
 procedure Update_PROG_Version_0001( IFile : TJiniFile; const FormSettEntry : string );

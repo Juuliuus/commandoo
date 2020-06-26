@@ -31,6 +31,26 @@ begin
     DeleteFile('/home/juus/Downloads/heap.trc');
   SetHeapTraceOutput('/home/juus/Downloads/heap.trc');
   {$ENDIF}
+
+  if Application.HasOption( 'h', 'help' )
+     or Application.HasOption( 'v', 'version' )
+     or Application.HasOption( 'V', '' ) then
+  begin
+    writeln( LineEnding
+             + 'commandoo: GUI commmand line tester/manager application'
+             + LineEnding
+             + 'Version: ' + cHandwrittenVersion + cVersionDate
+             + LineEnding
+             + 'commandoo takes no parameters, help included in application.'
+             + LineEnding + LineEnding
+             + '  -h, --help : this message'
+             + LineEnding
+             + '  -v, -V, --version : this message'
+             + LineEnding + LineEnding
+             );
+    exit;
+  end;
+
   RequireDerivedFormResource := True;
   Application.Scaled := True;
   Application.Initialize;

@@ -68,7 +68,6 @@ const
   cFormSettingsAllowTextDB = 'AllowTextDB';
   cFormSettingsRootFile = 'RootFile';
   cFormSettingsSavingPath = 'SavingPath';
-  cFormSettingsRootFileDefault = 'sudo %s';
 
   cSectTabFormSettingsExtension = '.settings';
 
@@ -96,10 +95,6 @@ const
   cconstCommandLabel = 'Command';
   cconstCommandLineLabel = 'Command Line';
 
-//not used, because not secure. Maybe later but user must know pword is passed as cleartext
-//cSudoPath = '/usr/bin/sudo';
-
-
 //=================================== IMPORTANT
 //  changes to versions need to have code for them in
 //TfrmMain.CheckUpdates_PROG
@@ -111,9 +106,9 @@ const
 //increment this number for any Program settings cleanup / change, ONLY needs to be done if there is a change
   c_PROG_VersionUpgradeCount = 3;//2;//
 //=====  PROGRAM   ==============================
-  cHandwrittenVersion = '2.0.0';//'1.0.1';//all done. ?
+  cHandwrittenVersion = '2.0.1';//'1.0.1';//all done. ?
   cSectTab_PROG_VersionCount = '_PROG_VersionCount';
-  cVersionDate = ' (June 2020)';//ReleaseCandidate';
+  cVersionDate = ' (July 2020)';//ReleaseCandidate';
 
 implementation
 
