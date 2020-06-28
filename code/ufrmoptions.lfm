@@ -119,8 +119,8 @@ object frmOptions: TfrmOptions
     Height = 25
     Hint = 'Checking this allows <esc> characters in'#10'command output.'#10#10'This is problematic. When escape chars '#10'(for example, from "curl" command or using'#10'/devNul) can cause cursor location in the'#10'output area to become unstable. This can be '#10'fixed by clearing the output area.'#10#10'But there is the question of whether it could'#10'cause other problems. So just be aware of '#10'this.'#10#10'<end>'
     Top = 287
-    Width = 249
-    Caption = '&L  Allow <esc> chars in Output'
+    Width = 130
+    Caption = '&L  Change me!'
     Font.Height = -16
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False

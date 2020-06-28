@@ -955,7 +955,7 @@ begin
 
   ExpandHomeSymbol;
 
-  IsPiped := pos( cLinuxPipeFlag, aString ) > 0;
+  IsPiped := ShouldGoToShell( aString );
 
   Result := trim( aString );
 
@@ -1311,12 +1311,11 @@ begin
 
 // what if > or < or >> or <<? or 2>&1  Then the command should be sent through shell, it may, or may not work.
 //To do that write a #27 as first character of aString (the command string to run)
-//juuus today
   DoThroughShell := pos( csoNonPrintingDelimiter, aString ) = 1;
   if DoThroughShell then
     aString := copy( aString, 2, MAXINT );//length( aString ) );
 
-  IsPiped := pos( cLinuxPipeFlag, aString ) > 0;
+  IsPiped := ShouldGoToShell( aString );
 
   DummyStr := '';
 // !!! fairly important to use TCmdSL! Unless you like memory leaks. The stringlistc can be normal Stringlist or,
@@ -1459,7 +1458,6 @@ end;
 
 function TCmdObjHelper.RunCommandDetached( var aProc : TAsyncProcess; Params : Tstrings ) : string;
 
-//juuus today Test this
   function DetachedNotAllowed( const Cmd : string ) : boolean;
   begin
     result := ( Cmd = 'bash' )

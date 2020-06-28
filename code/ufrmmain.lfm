@@ -2208,24 +2208,6 @@ object frmMain: TfrmMain
       end
     end
   end
-  object Memo1: TMemo
-    Tag = 223322
-    Left = 8
-    Height = 276
-    Hint = 'Don''t be fooled...this is not a terminal '#10'emulator, it is simply the output area '#10'for command line results.'#10#10'You can double click it to save to a file or '#10'send to clipboard.'#10#10'Ctrl-f to find, ctrl-l repeat last find.'#10#10'<end>'
-    Top = 617
-    Width = 1128
-    Anchors = [akTop, akLeft, akRight, akBottom]
-    Color = 2302755
-    Font.Color = clCream
-    Font.Height = -16
-    Font.Name = 'Courier 10 Pitch'
-    OnDblClick = Memo1DblClick
-    OnKeyDown = Memo1KeyDown
-    ParentFont = False
-    ScrollBars = ssAutoBoth
-    TabOrder = 7
-  end
   object lblPestr: TLabel
     Left = 1128
     Height = 32
@@ -2248,7 +2230,7 @@ object frmMain: TfrmMain
     Anchors = [akTop, akRight]
     Checked = True
     State = cbChecked
-    TabOrder = 15
+    TabOrder = 14
   end
   object btnSave: TBitBtn
     Left = 21
@@ -2311,7 +2293,7 @@ object frmMain: TfrmMain
     Width = 232
     Action = actExit
     Anchors = [akRight, akBottom]
-    TabOrder = 16
+    TabOrder = 15
   end
   object btnProfileManagement: TBitBtn
     Left = 1187
@@ -2322,7 +2304,7 @@ object frmMain: TfrmMain
     Action = actProfiles
     Anchors = [akTop, akRight]
     Caption = '&Q  Manage DB Profiles'
-    TabOrder = 8
+    TabOrder = 7
   end
   object btnKeyWords: TBitBtn
     Left = 1187
@@ -2333,7 +2315,7 @@ object frmMain: TfrmMain
     Action = actManageKeyWords
     Anchors = [akTop, akRight]
     Caption = '&L  Manage KeyWords'
-    TabOrder = 9
+    TabOrder = 8
   end
   object btnSimpleSearch: TBitBtn
     Left = 1187
@@ -2344,7 +2326,7 @@ object frmMain: TfrmMain
     Anchors = [akTop, akRight]
     Caption = '&M Simple Search'
     OnClick = btnSimpleSearchClick
-    TabOrder = 10
+    TabOrder = 9
   end
   object btnOptions: TBitBtn
     Left = 1187
@@ -2353,7 +2335,7 @@ object frmMain: TfrmMain
     Width = 232
     Action = actOptions
     Anchors = [akTop, akRight]
-    TabOrder = 11
+    TabOrder = 10
   end
   object btnMainClear: TBitBtn
     Left = 1335
@@ -2362,7 +2344,7 @@ object frmMain: TfrmMain
     Width = 83
     Action = actOutPutClear
     Anchors = [akTop, akRight]
-    TabOrder = 14
+    TabOrder = 13
   end
   object btnQuickRun: TBitBtn
     Left = 1052
@@ -2383,7 +2365,7 @@ object frmMain: TfrmMain
     Width = 83
     Action = actOutPutSave
     Anchors = [akTop, akRight]
-    TabOrder = 13
+    TabOrder = 12
   end
   object btnMainCopy: TBitBtn
     Left = 1153
@@ -2392,7 +2374,7 @@ object frmMain: TfrmMain
     Width = 83
     Action = actOutPutCopy
     Anchors = [akTop, akRight]
-    TabOrder = 12
+    TabOrder = 11
   end
   inline FrameHint1: TFrameHint
     Left = 1056
@@ -2430,6 +2412,24 @@ object frmMain: TfrmMain
     Top = 5
     Width = 14
     Brush.Color = 160
+  end
+  object Memo1: TMemo
+    Tag = 223322
+    Left = 8
+    Height = 276
+    Hint = 'Don''t be fooled...this is not a terminal '#10'emulator, it is simply the output area '#10'for command line results.'#10#10'You can double click it to save to a file or '#10'send to clipboard.'#10#10'Ctrl-f to find, ctrl-l repeat last find.'#10#10'<end>'
+    Top = 616
+    Width = 1128
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = 2302755
+    Font.Color = clCream
+    Font.Height = -16
+    Font.Name = 'Courier 10 Pitch'
+    OnDblClick = Memo1DblClick
+    OnKeyDown = Memo1KeyDown
+    ParentFont = False
+    ScrollBars = ssAutoBoth
+    TabOrder = 16
   end
   object popCommands: TPopupMenu
     OnPopup = popCommandsPopup

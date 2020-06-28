@@ -82,7 +82,7 @@ resourcestring
   cmsgfftNotFound = '"%s" not found.';
 
   ccaprgChoices = '&A  Top' + LineEnding + '&B  Cursor';
-  ccapFindAgain = 'ctrl-shift-F or ctrl-L finds again';
+  ccapFindAgain = '>>  ctrl-shift-f, or ctrl-L, finds again  <<';
 
 { TfrmFindText }
 procedure TfrmFindText.ReSet;
@@ -99,6 +99,9 @@ begin
 
   if ItemToFind = '' then
     exit;
+
+  if aMemo.Canfocus then
+    aMemo.Setfocus;
 
   if ( CurrPos = 0 ) and ( Memo = aMemo ) then
   begin

@@ -892,11 +892,10 @@ resourceString
    cmsgSQLiteLibNotFound = 'sqlite system library "%s" not found';
    ccapNothingLoaded = 'Nothing Loaded';
    cmsgNothingLoaded = 'There is nothing loaded, this Database is empty.';
-   cmsgBadData_ESC = 'Output bad: %s which are not allowed in %s because of possible '
-                     + 'insecure consequences. Run this command in a Terminal (can be changed in OPTIONS).';
-   cmsgBadData_ESC_BASE = 'Output contains ESCAPE characters';
-   cmsgBadData_ESC_OK = LineEnding + LineEnding +
-                        '%s. This can mess up the output display. By default the output is thrown out. This can be changed in OPTIONS. '
+   cmsgBadData_ESC_MSG = LineEnding + LineEnding +
+                        'Output contains <ESCAPE> characters. These can mess up the output display (ie, odd '
+                        + 'behaviour), so they have all been replaced by "%s". This command should really '
+                        + 'be run in a terminal instead. '
                         + LineEnding + LineEnding;
    ccapDBMergeInfo = 'Merging TO sql DB''s:';
    cmsgDBMergeInfo =

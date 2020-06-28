@@ -15,7 +15,6 @@ object frmCommandsVar: TfrmCommandsVar
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
-  OnKeyDown = FormKeyDown
   OnShow = FormShow
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
@@ -42,11 +41,9 @@ object frmCommandsVar: TfrmCommandsVar
     Top = 252
     Width = 105
     Anchors = [akTop, akRight]
-    Cancel = True
-    Caption = 'Cancel'
+    Caption = '&C  Cancel'
     Font.Height = -16
     GlyphShowMode = gsmNever
-    Kind = bkCancel
     OnClick = btnCancelClick
     ParentFont = False
     TabOrder = 7

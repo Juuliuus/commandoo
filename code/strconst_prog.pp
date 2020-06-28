@@ -28,7 +28,7 @@ uses
 
 
 const
-
+  cprogEscapeReplacement = '!';
   cSqliteLocateCommand = 'locate -i -e libsqlite3.so';
   cConfigPathFileName = 'config_path__DoNotDelete';
   cConfigPathSection = 'Working_Config_Path';

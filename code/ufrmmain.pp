@@ -245,10 +245,10 @@ type
     memNotesDisp : TMemo;
     memNotesLine: TMemo;
     memNotesLineDisp : TMemo;
-    Memo1: TMemo;
     memDetachedProcesses : TMemo;
     memDispNotes : TMemo;
     memEntry : TMemo;
+    Memo1 : TMemo;
     MenuItem1 : TMenuItem;
     MenuItem10 : TMenuItem;
     MenuItem11 : TMenuItem;
@@ -614,7 +614,7 @@ type
     fWarnDanger : boolean;
     fAllowSqlDB : boolean;
     fAllowMultipleOpens : boolean;
-    fAllowESCinOutput : boolean;
+    //fAllowESCinOutput : boolean;
     fAllowTextDB : boolean;
     fDoShowSqlMissing : boolean;
     fManRefreshFavorites : boolean;
@@ -740,7 +740,7 @@ type
     procedure ToggleCommandDelete( const TheValue: boolean; DoToggle: boolean = True );
     procedure ToggleEditMode( Sender : TList; const IsEdit : boolean );
     procedure Toggle_pnlCmdLines( const State : boolean );
-    procedure UnassMemosKeyDown( const Sender : TMemo; const Key : Word; const Shift : TShiftState );
+    procedure UnassMemosKeyDown( Sender : TMemo; var Key : Word; const Shift : TShiftState );
     function Unsaved : boolean;
     procedure UpdateDetachedProcesses( const DisplayStr : string; aProcess : TAsyncProcess );
     procedure UpdateDisplay( const Output : string; DoIndicate : boolean = true );
@@ -891,6 +891,7 @@ var
 
 
 const
+  cmsgMainShellPhrase = 'SHELL: ';
   cHarmlessColor = $FF5D12;//#125DFF;
   cCarefulColor = $28D5D5;//#D5D528
   cCautionColor = $218DD5;//#D58D21
@@ -1469,6 +1470,28 @@ procedure TfrmMain.FormCreate(Sender: TObject);
 var
   NeedsWrite : boolean;
 
+  procedure GetShellName;
+  begin
+    //globltShellName := SystemFileLocation( 'bash' );
+    //globltShellName := SystemFileLocation( 'sh' );
+    //exit; //testing
+//since I'm confused as to why there is a /bin/bash and a /usr/bin/bash
+//I try to be complete here but prefer /bin/ variants.
+    globltShellName := trim( GetEnvironmentVariable( 'SHELL' ) );
+    if globltShellName = '' then
+    begin
+      if fileexists( '/bin/bash' ) then
+        globltShellName := '/bin/bash'
+      else globltShellName := SystemFileLocation( 'bash' );
+      if globltShellName = '' then
+      begin
+        if fileexists( '/bin/sh' ) then
+          globltShellName := '/bin/sh'
+        else globltShellName := SystemFileLocation( 'sh' );
+      end;
+    end;
+  end;
+
   procedure killit;
   begin
     fHasShown := true;//set flags to fall through onshow and onactivate
@@ -1636,6 +1659,8 @@ begin
     fFirstLocalRun := true;
   end;
 
+  GetShellName;
+
   fIFS := TJiniFile.Create( fWritingToPath + cReferenceProgramName + cSectTabFormSettingsExtension );
   fIFS.CacheUpdates := true;
   fIFS.CaseSensitive := true;
@@ -1718,7 +1743,6 @@ end;
 procedure TfrmMain.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 var
   PosPt : TPoint;
-  MemName : string;
 
   procedure ShowMainMenu;
   begin
@@ -1736,6 +1760,15 @@ var
  end;
 begin
 
+  //if ( ( ssCtrl in Shift ) and not ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
+  //  if ( key = VK_F ) and ( Memo1.Focused ) then
+  //  begin
+  //    UnassMemosKeyDown( Memo1, Key, Shift );
+  //    key := VK_UNKNOWN;
+  //    exit;
+  //  end;
+
+
   if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
   begin
     case key of
@@ -1743,7 +1776,6 @@ begin
       VK_D :
         if assigned( self.ActiveControl ) and ( self.ActiveControl is TMemo )  then
         begin
-          //MemName := TMemo( self.ActiveControl ).Name;
           case TMemo( self.ActiveControl ).Name of
             'Memo1' : InsertDate( Memo1 );
             'memNotes' : InsertDate( memNotes );
@@ -2304,7 +2336,7 @@ begin
     fWarnCaution := ReadBool( cSectTabFormSettings, cFormSettingsWarnCaution, true );
     fWarnDanger := ReadBool( cSectTabFormSettings, cFormSettingsWarnDanger, true );
     fAllowMultipleOpens := ReadBool( cSectTabFormSettings, cFormSettingsAllowMultipleOpens, false );
-    fAllowESCinOutput := ReadBool( cSectTabFormSettings, cFormSettingsAllowESCOutput, false );
+    //fAllowESCinOutput := ReadBool( cSectTabFormSettings, cFormSettingsAllowESCOutput, false );
 
     fRootFile := ReadString( cSectTabFormSettings, cFormSettingsRootFile, cRootFileSudo );
 
@@ -3185,7 +3217,7 @@ begin
   UnassMemosKeyDown( Memo1, Key, Shift );
 end;
 
-procedure TfrmMain.UnassMemosKeyDown( const Sender : TMemo; const Key : Word; const Shift : TShiftState );
+procedure TfrmMain.UnassMemosKeyDown( Sender : TMemo; var Key : Word; const Shift : TShiftState );
 begin
   if ( ssCtrl in Shift ) and not ( ssAlt in Shift ) then
   begin
@@ -3197,6 +3229,7 @@ begin
     end;
     if key = VK_L then
       frmFindText.ReFindinMemo( Sender );
+    //key := VK_UNKNOWN;
   end;
 end;
 
@@ -3583,16 +3616,13 @@ procedure TfrmMain.UpdateDisplay( const Output : string; DoIndicate : boolean = 
 var
   NumLines : Int64;
   GoToPos : Integer;
-  Bad : Boolean;
 begin
   //fDisplayOutPutMax := 500; //testing
-
-  Bad := false; //fix for curl output that has escape chars in it.
 
   Memo1.SelLength := 0;
   GoToPos := Length( fDisplayOutPut.Text );
 
-  //do the output chopping
+//do the output chopping
   if GoToPos > fDisplayOutPutMax + 5000 then
   begin
     fDisplayOutPut.Text := format( cmsgDisplayOutputTrimmed, [ fDisplayOutPutMax, TimeToStr( now ) ] )
@@ -3601,19 +3631,18 @@ begin
   end;
 
   if pos( char(#27), output ) > 0 then
-    Bad := true;
-
-  if Bad and not fAllowESCinOutput then
+  begin
     fDisplayOutPut.Text := fDisplayOutPut.Text
                            + LineEnding
-                           + format( cmsgBadData_ESC, [ cmsgBadData_ESC_BASE, cReferenceProgramName ] )
-                           + cmsgOutputEndIndicator
+                           + format( cmsgBadData_ESC_MSG, [ cprogEscapeReplacement ] )
+                           + stringreplace( Output, char(#27), cprogEscapeReplacement, [ rfreplaceall ] )
+                           + strif( DoIndicate, cmsgOutputEndIndicator );
+  end
   else
     fDisplayOutPut.Text := fDisplayOutPut.Text
                            + LineEnding
                            + Output
-                           + strif( Bad, format( cmsgBadData_ESC_OK, [ cmsgBadData_ESC_BASE ] ) )
-                           + strif( DoIndicate , cmsgOutputEndIndicator );
+                           + strif( DoIndicate, cmsgOutputEndIndicator );
 
   Memo1.Lines := TStrings( fDisplayOutPut );
 
@@ -3632,8 +3661,8 @@ begin
     Memo1.SetFocus;
 
   NumLines := trunc( memo1.Height / memo1.Font.GetTextHeight( 'X' ) );
-  if Memo1.CaretPos.Y > NumLines div 2 then
-    Memo1.ScrollBy( 0, trunc( Memo1.Height * 0.7 ) * -1 );
+  if Memo1.CaretPos.Y > NumLines - 3 then
+    Memo1.ScrollBy( 0, trunc( Memo1.Height * 0.8 ) * -1 );
 
 end;
 
@@ -5355,7 +5384,7 @@ begin
       cbDanger.Checked := fWarnDanger;
       cbAllowMultipleOpens.Visible := not fSuperUser;
       cbAllowMultipleOpens.Checked := fAllowMultipleOpens;
-      cbAllowESCOutput.Checked := fAllowESCinOutput;
+      //cbAllowESCOutput.Checked := fAllowESCinOutput;
       cbMissingSqlMsg.Checked := fDoShowSqlMissing;
       cbManRefreshFavorites.Checked := fManRefreshFavorites;
 
@@ -5397,7 +5426,7 @@ begin
       fWarnDanger      := cbDanger.Checked;
       fDoShowSqlMissing := cbMissingSqlMsg.Checked;
       fAllowMultipleOpens := cbAllowMultipleOpens.Checked;
-      fAllowESCinOutput := cbAllowESCOutput.Checked;
+      //fAllowESCinOutput := cbAllowESCOutput.Checked;
 
       fManRefreshFavorites := cbManRefreshFavorites.Checked;
 
@@ -5461,7 +5490,7 @@ begin
         WriteBool( cSectTabFormSettings, cFormSettingsWarnCaution, fWarnCaution );
         WriteBool( cSectTabFormSettings, cFormSettingsWarnDanger, fWarnDanger );
         WriteBool( cSectTabFormSettings, cFormSettingsAllowMultipleOpens, fAllowMultipleOpens );
-        WriteBool( cSectTabFormSettings, cFormSettingsAllowESCOutput, fAllowESCinOutput );
+        //WriteBool( cSectTabFormSettings, cFormSettingsAllowESCOutput, fAllowESCinOutput );
 
         UpdateFile;
 
@@ -6581,15 +6610,16 @@ begin
 
   if ( Piped or UseShell ) and ( pos( cReservedSuperUser, RunStr ) = 1 ) then
     MyShowMessage( cmsgROOTUseShell_Pipe, self );
+
+  if not fInternalComs then
+    UpdateDisplay_Internal( StandardOutputHeader( RunStr ), false );
+
 //===>>> this  below MUST follow that above because RunStr is modified.
   if UseShell then
     RunStr := csoNonPrintingDelimiter + RunStr;
 
   try
     Screen.Cursor := crHourglass;
-
-    if not fInternalComs then
-      UpdateDisplay_Internal( StandardOutputHeader( RunStr ), false );
 
     tmrCancelRun.Enabled := true;
 
@@ -6948,6 +6978,8 @@ begin
     + cmsgMainSavingPath + fSavingToPath
     + LineEnding
     + cmsgMainRootTemplate + fRootFile
+    + LineEnding
+    + cmsgMainShellPhrase + globltShellName
     + LineEnding + LineEnding
     ;
 
@@ -6956,10 +6988,6 @@ begin
   if SpecialComms <> '' then
     UpdateDisplay( trim( SpecialComms) + LineEnding, false );
   SpecialComms := '';
-  memo1.SelStart := 1;
-
-//juuus today
-  globltHasBASH := SystemFileFound( 'bash' );
 
   RefreshCap;
 
@@ -7076,6 +7104,8 @@ var
   MoveLeft , MoveUp: Integer;
 begin
 
+  if aMemo.Canfocus then
+    aMemo.Setfocus;
   with frmFindText do
   begin
     Memo := aMemo;
@@ -7100,7 +7130,7 @@ end.
 cCommandInPathStr = '$PATH';
 cLinuxBuiltInStr = '$BUILTIN';
 cmsgcleBadPath = '$BAD_PATH';
-
+  ¿∉∉∀⍫‡
         ↑
 since I ALWAYS forget where the vk_ definiations are:
 , lcltype //THis is needed for key up keyboard constants

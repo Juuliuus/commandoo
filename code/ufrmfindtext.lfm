@@ -1,10 +1,11 @@
 object frmFindText: TfrmFindText
-  Left = 2040
+  Left = 2022
   Height = 350
-  Top = 631
+  Top = 640
   Width = 467
   ActiveControl = edtFindText
   BorderStyle = bsNone
+  Caption = 'Find Text'
   ClientHeight = 350
   ClientWidth = 467
   Constraints.MaxHeight = 350
@@ -55,11 +56,12 @@ object frmFindText: TfrmFindText
   end
   object lblFindNextText: TLabel
     Left = 5
-    Height = 21
+    Height = 24
     Top = 320
-    Width = 55
+    Width = 65
     Caption = 'fntDNT'
-    Font.Height = -16
+    Font.Height = -18
+    Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end

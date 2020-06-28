@@ -28,6 +28,7 @@ uses
 
 function SystemFileLocation( const FName : string ) : string;
 function SystemFileFound( const FName : string; ShowError : boolean = false ) : boolean;
+function ShouldGoToShell( const Value : string ) : boolean;
 function Path_in_EnvironPath( const literalPath: string ) : boolean;
 procedure RefreshEnvironmentPath;
 //procedure GetMountedDrives( Strings : TStrings );
@@ -64,6 +65,7 @@ function GetLiteralPath_Generic( const CheckPath, CmdName : string ) : string;
 
 
 resourcestring
+  cltmsgShellNotFound = 'Can not run through shell, commandoo could not determine which $SHELL can be used.';
   cltmsgWhich = '`which` command could not find system file `%s`';
   cltDetachedProcess = 'running as detached process';
   cltProcessExitCode = 'Process Exit Code: %d';
@@ -80,7 +82,7 @@ resourcestring
   cltProcessResultUnknown = '< process finished with unknown code: %d >';
   cltProcessRefusesInput = '< The Process would not allow input. >';
   cltProcessNoneStr = '< none >';
-  cltProcessThroughShell = '==RUNNING THROUGH SHELL==';
+  cltProcessThroughShell = '== RUNNING THROUGH SHELL: "%s" ==';
   cltProcess4thDimension = 'Due to possibility of opening a 4th dimensional rift (or worse: hanging the program)...' +
     LineEnding
     + 'it is not allowed to run these commands through the shell: "%s"';
@@ -88,8 +90,7 @@ resourcestring
 
 
 var
-  //juuus today
-  globltHasBASH : boolean = false;
+  globltShellName : string = '';
   globltDoCancelProcess : boolean;
   globltProcessMaxOutput : integer = 500000;
   globltMaxOutputWait : int64 = 20; //seconds
@@ -107,7 +108,6 @@ const
   cProcessResultTooMuch = -4;
   cProcessResultTimeOut = -5;
   cProcessResultOK = 0;
-  cLinuxPipeFlag = ' | ';
   cLimitInfinityMaxCnt = 50000;
   cltBadGuid = '{}';
   cltProcessStdErrStr = 'stderr';
@@ -197,6 +197,23 @@ begin
       raise EErrorSystem.Create( 'GUID Generation failure in GetRawGuidString' )
     else result := cltBadGuid;
   end else result := GuidToString( GStr );
+end;
+
+function ShouldGoToShell( const Value : string ) : boolean;
+const
+  Indicators = '|<>&';
+var
+  ch : char;
+begin
+  result := false;
+  if trim( Value ) = '' then
+    exit;
+  for ch in Indicators do
+    if pos( ch, Value ) > 0 then
+    begin
+      result := true;
+      break;
+    end;
 end;
 
 function DeterminePathSeparatorUsed( const PathEnvirString : string ) : char;
@@ -648,16 +665,22 @@ begin
   SL := TStringList.Create;
   try
 
-//juuus today SigInt????????? This is also where the new shell string will go
-    if not globltHasBASH then
-      SL.Add( 'sh' )
-    else SL.Add( 'bash' ); //OUCH!!! This fixed a SERIOUS problem where subsequent runs gave SIGTTIN errors
+    if globltShellName = '' then
+    begin
+      result := cltmsgShellNotFound;
+      exit;
+    end;
+
+//juuus SigInt????????? Test this!
+//OUCH!!! message from old code, where bash over sh saved the day. is this a thing?
+//This fixed a SERIOUS problem where subsequent runs gave SIGTTIN errors
+    SL.Add( globltShellName );
     SL.Add( '-c' );
     SL.add( aString );
 
     tmpResult := ProcString( SL );
 
-    result := cltProcessThroughShell
+    result := format( cltProcessThroughShell, [ globltShellName ] )
               + LineEnding
               + 'Command := ' + aString + LineEnding
               + '=======' + LineEnding;
@@ -668,7 +691,8 @@ begin
     result := result + tmpResult + LineEnding;
 
   finally
-    SL.free;
+    if assigned( SL ) then
+      freeandnil( SL );
   end;
 
 end;
@@ -755,27 +779,27 @@ end;
 function SystemFileLocation( const FName : string ) : string;
 begin
   result := QuickProc( 'which', FName );//after superuser bug, trimming takes place in QuickProc
-  //saw that zsh WILL return a string but not necessarily a path.
-  if pos( '/', result ) <> 1 then
-  begin
-    result := '';
+
+//saw that zsh WILL return a string but not necessarily a path.
+  if ( result <> '' ) and ( pos( '/', result ) = 1 ) then //then it is a path, we're happy
     exit;
-  end;
 
 //DEBIAN fix for where sbin's not in $PATH, even sudo'er
-  if ExtractFilePath( result ) = '' then
-  begin
-    result := '/usr/sbin/' + FName;
-    if FileExists( result ) then
-      exit;
-    result := '/usr/local/sbin/' + FName;
-    if FileExists( result ) then
-      exit;
-    result := '/sbin/' + FName;
-    if FileExists( result ) then
-      exit;
-    result := '';
-  end;
+//I'n not entirely sure I should check these. If in Debian (maybe it's changed now?) if they don't put these
+//in the path, or they are only visible to root user, maybe its not up to me to bypass that and I should only
+//look at path. INet didn't show anything about this. But the way I see it is why hide sudo executables from a normal
+//user? They can't run them anyway. So I'm gonna leave this as a courtesy and help to the user and hope that I'm not
+//somehow doing something insecure...
+  result := '/sbin/' + FName;
+  if FileExists( result ) then
+    exit;
+  result := '/usr/sbin/' + FName;
+  if FileExists( result ) then
+    exit;
+  result := '/usr/local/sbin/' + FName;
+  if FileExists( result ) then
+    exit;
+  result := '';
 end;
 
 

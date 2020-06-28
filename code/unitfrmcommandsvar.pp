@@ -58,7 +58,6 @@ type
     procedure FormActivate(Sender : TObject);
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCreate(Sender : TObject);
-    procedure FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure FormShow(Sender : TObject);
     procedure Timer1Timer( Sender : TObject );
   private
@@ -71,6 +70,7 @@ type
     fLastFile : string;
     fLastFolder : string;
     procedure HandleFormSettings( const TheType : TSettingsDirective );
+    procedure SetInputFocus;
     procedure NextVariable;
   public
     { public declarations }
@@ -80,7 +80,11 @@ var
   frmCommandsVar : TfrmCommandsVar;
 
 resourcestring
-  cmsgufcvDoneVariables = 'Done with Variable replacement.';
+  cmsgufcvDoneVariables = 'Done with Variable replacement. Edit if needed.'
+    + LineEnding + LineEnding
+    + 'Invoking "%s" sends it to processing.'
+    + LineEnding
+    ;
 
 
 implementation
@@ -173,17 +177,23 @@ begin
   Modalresult := mrOK;
 end;
 
+procedure TfrmCommandsVar.SetInputFocus;
+begin
+  if edtInput.Canfocus then
+    edtInput.SetFocus;
+end;
+
 procedure TfrmCommandsVar.btnFileNameClick( Sender : TObject );
 begin
 
   if not DoSingleInput( csiChooseAFile, fLastFile, simFile, self, false ) then
   begin
-    edtInput.SetFocus;
+    SetInputFocus;
     exit;
   end;
 
   edtInput.Text := fLastFile;
-  edtInput.SetFocus;
+  SetInputFocus;
   //btnApply.Click;//makes it automatic but not good, can't read whats going on
 
 end;
@@ -192,12 +202,12 @@ procedure TfrmCommandsVar.btnFolderNameClick( Sender : TObject );
 begin
   if not DoSingleInput( csiChooseAFolder, fLastFolder, simDir, self, false ) then
   begin
-    edtInput.SetFocus;
+    SetInputFocus;
     exit;
   end;
 
   edtInput.Text := fLastFolder;
-  edtInput.SetFocus;
+  SetInputFocus;
 end;
 
 procedure TfrmCommandsVar.btnCancelClick(Sender : TObject);
@@ -207,18 +217,27 @@ begin
 end;
 
 procedure TfrmCommandsVar.btnApplyClick( Sender : TObject );
+var
+  editStr : string;
 begin
 
+  if fIsDone then
+  begin
+    editStr := edtCmdLine.Text;
+    if DoSingleInput( ccapGenericEdit, editStr, simEdit, self, false ) then
+      edtCmdLine.Text := editStr;
+    exit;
+  end;
+
   edtInput.Text := trim( edtInput.Text );
+  //I chose QuotedStr here over doublequotedstring. Good decision? I don't know. These will be loaded as params
+  //to a process and the process is gonna have to sort it out. You lose either way depending on whether the string
+  //contains matched/unmatched " and '  What a pain.
   if pos( ' ', edtInput.Text ) > 0 then
-//juuus today
-//I chose QuotedStr here over doublequotedstring. Good decision? I don't know. These will be loaded as params
-//to a process and the process is gonna have to sort it out. You lose either way depending on whether the string
-//contains matched/unmatched " and '  What a pain.
     edtInput.Text := Quotedstr( edtInput.Text );
   edtCmdLine.Text := stringreplace( edtCmdLine.Text, fTheVariable, edtInput.Text, [] );
   edtInput.Text := '';
-  edtInput.SetFocus;
+  SetInputFocus;
   NextVariable;
 
 end;
@@ -244,8 +263,12 @@ begin
   if Idx = 0 then
   begin
     fIsDone := true;
-    memInfo.Text := CmdObjHelper.GetVariableHelp( fTheVariable, cmsgufcvDoneVariables );
+    memInfo.Text := CmdObjHelper.GetVariableHelp( fTheVariable, format( cmsgufcvDoneVariables, [ trim( copy( btnDone.Caption, 3, maxint ) ) ] ) );
     btnDone.Enabled := true;
+    edtInput.Visible := false;
+    btnFileName.Visible := false;
+    btnFolderName.Visible := false;
+    btnApply.Caption := copy( btnApply.Caption, 1, 4 ) + ccapGenericEdit;
     exit;
   end;
 
@@ -284,14 +307,12 @@ begin
   btnDone.Caption := cbtn_Done;
 end;
 
-procedure TfrmCommandsVar.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
-begin
-  if ( Key = vk_Return ) and fIsDone then
-    btnOkClick( self );
-end;
-
 end.
 {
+
+//if ( Key = vk_Return ) and fIsDone then
+//  btnOkClick( self );
+
 procedure TfrmCommandsVar.FormCloseQuery(Sender : TObject; var CanClose : boolean);
 begin
   CanClose := FCanClose;
