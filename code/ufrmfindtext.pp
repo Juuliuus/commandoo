@@ -82,7 +82,7 @@ resourcestring
   cmsgfftNotFound = '"%s" not found.';
 
   ccaprgChoices = '&A  Top' + LineEnding + '&B  Cursor';
-  ccapFindAgain = '>>  ctrl-shift-f, or ctrl-L, finds again  <<';
+  ccapFindAgain = '>>   ctrl-shift-L, finds again   <<';
 
 { TfrmFindText }
 procedure TfrmFindText.ReSet;
@@ -96,6 +96,8 @@ procedure TfrmFindText.RefindInMemo( aMemo : TMemo );
 var
   Idx : SizeInt;
 begin
+  if not assigned( aMemo ) then
+    exit;
 
   if ItemToFind = '' then
     exit;
@@ -152,6 +154,9 @@ end;
 
 function TfrmFindText.FindText( const FromPos : SizeInt ) : SizeInt;
 begin
+  result := 1;
+  if not assigned( memo ) then
+    exit;
   case FromPos of
     0, -1 : result := Pos( ItemToFind, Uppercase( memo.Text ) );
     else result := Pos( ItemToFind, Uppercase( copy( memo.Text, FromPos + 1, MAXINT ) ) );
@@ -167,7 +172,9 @@ begin
     raise EErrorDevelopment.create( 'TfrmFindText.DoInitialFind: No Memo assigned.' );
 
   if assigned( aMemo ) then
-    Memo := aMemo;
+    Memo := aMemo
+  else if not assigned( memo ) then
+         exit;
 
   case rgTopCursor.ItemIndex of
     0 : CurrPos := FindText( 0 );
@@ -270,7 +277,12 @@ end;
 
 procedure TfrmFindText.FormShow( Sender : TObject );
 begin
-  if assigned( memo ) and ( memo.SelLength > 0 ) then
+  if not assigned( memo ) then
+  begin
+    edtFindText.Text := '< memo not assigned! >';
+    exit;
+  end;
+  if memo.SelLength > 0 then
     edtFindText.Text := Memo.SelText;
 end;
 

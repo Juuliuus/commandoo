@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 1920
+  Left = 1966
   Height = 900
-  Top = 218
+  Top = 171
   Width = 1432
   Caption = 'commandoo'
   ClientHeight = 900
@@ -429,9 +429,9 @@ object frmMain: TfrmMain
             end
           end
           object pnlCmdLine: TPanel
-            Left = 152
+            Left = 184
             Height = 289
-            Top = 64
+            Top = 32
             Width = 950
             Anchors = [akLeft, akRight, akBottom]
             ClientHeight = 289
@@ -1036,9 +1036,9 @@ object frmMain: TfrmMain
           end
         end
         object pnlcommand: TPanel
-          Left = 224
+          Left = 360
           Height = 200
-          Top = 44
+          Top = 16
           Width = 927
           Anchors = [akTop, akLeft, akRight]
           ClientHeight = 200
@@ -1106,7 +1106,6 @@ object frmMain: TfrmMain
           object memNotes: TMemo
             Left = 220
             Height = 103
-            Hint = 'Notes, which are searchable, for this item.'#10#10'If you focus on the Notes area and press'#10'Ctrl-F a text search dialog opens.'#10#10'And Ctrl-Shift-F or Ctrl-L will find the next '#10'find occurence.'#10#10'To read all the notes more conviently'#10'double click the notes.'#10#10'<end>'
             Top = 89
             Width = 411
             Anchors = [akTop, akLeft, akRight]
@@ -2417,7 +2416,7 @@ object frmMain: TfrmMain
     Tag = 223322
     Left = 8
     Height = 276
-    Hint = 'Don''t be fooled...this is not a terminal '#10'emulator, it is simply the output area '#10'for command line results.'#10#10'You can double click it to save to a file or '#10'send to clipboard.'#10#10'Ctrl-f to find, ctrl-l repeat last find.'#10#10'<end>'
+    Hint = 'Don''t be fooled...this is not a terminal '#10'emulator, it is simply the output area '#10'for command line results.'#10#10'You can double click it to save to a file or '#10'send to clipboard.'#10#10'Ctrl-shift-F to find, '#10'ctrl-shift-L to repeat last find.'#10#10'<end>'
     Top = 616
     Width = 1128
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -3049,6 +3048,10 @@ object frmMain: TfrmMain
       Caption = 'DNT Output display'
       OnClick = mniMainCommandsClick
     end
+    object mniMainFindOutput: TMenuItem
+      Caption = 'DNT Output find'
+      OnClick = mniMainCommandsClick
+    end
     object MenuItem4: TMenuItem
       Caption = '-'
     end
@@ -3056,27 +3059,13 @@ object frmMain: TfrmMain
       Caption = 'DNT Command Lines'
       OnClick = mniMainCommandsClick
     end
-    object mniMainCmdNoteDisp: TMenuItem
+    object mniMainFindCmdNotes: TMenuItem
       Caption = 'DNT Find in Cmd Notes'
-      object mniMainFIndCmdFind: TMenuItem
-        Caption = 'DNT Find'
-        OnClick = mniMainCommandsClick
-      end
-      object mniMainFIndCmdReFind: TMenuItem
-        Caption = 'DNT ReFind'
-        OnClick = mniMainCommandsClick
-      end
+      OnClick = mniMainCommandsClick
     end
-    object mniMainCmdLineNoteDisp: TMenuItem
+    object mniMainFindCmdLineNotes: TMenuItem
       Caption = 'DNT Find in CmdLine Notes'
-      object mniMainFIndCmdLineFind: TMenuItem
-        Caption = 'DNT Find'
-        OnClick = mniMainCommandsClick
-      end
-      object mniMainFIndCmdLineReFind: TMenuItem
-        Caption = 'DNT ReFind'
-        OnClick = mniMainCommandsClick
-      end
+      OnClick = mniMainCommandsClick
     end
     object MenuItem9: TMenuItem
       Caption = '-'

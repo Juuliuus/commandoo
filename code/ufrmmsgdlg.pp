@@ -556,18 +556,13 @@ end;
 
 procedure TfrmMsgDlg.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  if ( ssCtrl in Shift ) and not ( ssAlt in Shift ) then
+  if ( ( ssCtrl in Shift ) and ( ssShift in Shift ) ) and not ( ssAlt in Shift ) then
   begin
     if key = VK_F then
-    begin
-      if ssShift in Shift then
-        fFindText.ReFindinMemo( memMsg )
-      else btnFindClick( btnFind );// FindInMemo( memMsg );
-    end;
+      btnFindClick( btnFind );
     if key = VK_L then
       fFindText.ReFindinMemo( memMsg );
   end;
-
 end;
 
 procedure TfrmMsgDlg.Timer1Timer(Sender: TObject);

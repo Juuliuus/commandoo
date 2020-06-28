@@ -262,6 +262,7 @@ type
     MenuItem19 : TMenuItem;
     MenuItem20 : TMenuItem;
     MenuItem22 : TMenuItem;
+    mniMainFindOutput : TMenuItem;
     MenuItem3 : TMenuItem;
     mniMainRoot : TMenuItem;
     MenuItem23 : TMenuItem;
@@ -303,11 +304,7 @@ type
     mniDblCSearchNotes : TMenuItem;
     mniDblCDisplay : TMenuItem;
     mniMainMainPopup : TMenuItem;
-    mniMainFIndCmdLineReFind : TMenuItem;
     MenuItem2 : TMenuItem;
-    mniMainFIndCmdLineFind : TMenuItem;
-    mniMainFIndCmdReFind : TMenuItem;
-    mniMainFIndCmdFind : TMenuItem;
     MenuItem5 : TMenuItem;
     MenuItem6 : TMenuItem;
     MenuItem7 : TMenuItem;
@@ -336,8 +333,8 @@ type
     MenuItem4 : TMenuItem;
     MenuItem9 : TMenuItem;
     mniMainCommandLines : TMenuItem;
-    mniMainCmdLineNoteDisp : TMenuItem;
-    mniMainCmdNoteDisp : TMenuItem;
+    mniMainFindCmdLineNotes : TMenuItem;
+    mniMainFindCmdNotes : TMenuItem;
     mniMainDisplay : TMenuItem;
     mniMainCommands : TMenuItem;
     mniOutPutWrap : TMenuItem;
@@ -553,7 +550,6 @@ type
     procedure memEntryKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memNotesChange( Sender : TObject );
     procedure memNotesDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
-    procedure memNotesEnter( Sender : TObject );
     procedure memNotesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memNotesLineChange( Sender : TObject );
     procedure memNotesLineDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -918,10 +914,10 @@ const
   cmniMainCommands = 120;
   cmniMainDisplay = 121;
   cmniMainCommandLines = 122;
-  cmniMainFIndCmdFind = 123;
-  cmniMainFIndCmdReFind = 124;
-  cmniMainFIndCmdLineFind = 125;
-  cmniMainFIndCmdLineReFind = 126;
+  cmniMainFindCmdLineNotes = 123;
+  cmniMainFindCmdNotes = 124;
+  cmniMainFindOutput = 125;
+  //cXXX = 126;
   cmniMainCmdNameEdit = 127;
   cmniMainCmdNotes = 128;
   cmniMainCmdLineEntry = 129;
@@ -984,7 +980,7 @@ resourcestring
     + 'No  = %s'
     + LineEnding
     ;
-  ccapGotoFindIn = 'Find in %s %s...';
+  ccapGotoFindIn = 'Find in %s %s';
   ccapGotoNotesStr = 'Notes';
   ccapGotoListStr = 'List';
   ccapDblCProcessStr = 'Process';
@@ -1344,7 +1340,7 @@ begin
 //       if prog upgrades (settings-wise) were necessary
 //
 //       cHandwrittenVersion = '#.#.#'; to match readme file
-//       as of Juneish 2020 v. is 2.0.0 //as of March 2018 v. is 1.0.1
+////       as of Juneish 2020 v. is 2.0.0 //as of March 2018 v. is 1.0.1
 
 //       INCREMENT c_DB_VersionUpgradeCount = #;to the next upgrade if DB upgrades were necessary
 //       c_DB_HandwrittenVersion = '1.0.2'; upgrade if DB structure has changed
@@ -1760,15 +1756,6 @@ var
  end;
 begin
 
-  //if ( ( ssCtrl in Shift ) and not ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
-  //  if ( key = VK_F ) and ( Memo1.Focused ) then
-  //  begin
-  //    UnassMemosKeyDown( Memo1, Key, Shift );
-  //    key := VK_UNKNOWN;
-  //    exit;
-  //  end;
-
-
   if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
   begin
     case key of
@@ -2068,8 +2055,8 @@ begin
   btnSearchFindCmdLine.Hint := btnFindCmd.Hint;
   btnSearchGoToCmdLine.Hint := btnSearchGoToCmd.Hint;
 
-  pnlDispCommand.Hint := format( cmsgDisplayPanels, [  cconstCommandLabel ] );
-  pnlDispCmdLine.Hint := format( cmsgDisplayPanels, [ cconstCommandLineLabel ] );
+  pnlDispCommand.Hint := format( cmsgDisplayPanels, [  cconstCommandLabel, cmsgSearchTextHint ] );
+  pnlDispCmdLine.Hint := format( cmsgDisplayPanels, [ cconstCommandLineLabel, cmsgSearchTextHint ] );
 
   btnCmdEdit.Hint := format( cmsgEditButtons, [  cconstCommandLabel, cconstCommandLabel ] );
   btnLineEdit.Hint := format( cmsgEditButtons, [  cconstCommandLineLabel, cconstCommandLineLabel ] );
@@ -2085,7 +2072,8 @@ begin
 
   btnThreatLevelInfoLine.Hint := btnThreatLevelInfo.Hint;
 
-  memNotesLine.Hint := memNotes.Hint;
+  memNotes.Hint := format( cmsgNotesHints, [  cconstCommandLabel, cmsgSearchTextHint ] );
+  memNotesLine.Hint := format( cmsgNotesHints, [ cconstCommandLineLabel, cmsgSearchTextHint ] );
   memNotesLineDisp.Hint := memNotesDisp.Hint;
 
   btnVersionCommand.Hint := format( cmsgHelpVersionInfo, [ cmsgHelpVersionInfoVersion, cmsgHelpVersionInfoVersion, cmsgHelpVersionInfoVersion ] );
@@ -2130,9 +2118,10 @@ begin
 //-----
   mniMainTabsProcs.Caption := ccapGotoProcs;
 
+  mniMainFindOutput.Caption := format( ccapGotoFindIn, [ '', ccapGotoMainDisplay ] );
   mniMainCommandLines.Caption := clblCmdlinePointer;
-  mniMainCmdNoteDisp.Caption := format( ccapGotoFindIn, [ ccapGotoCmdAbbrev, ccapGotoNotesStr ] );
-  mniMainCmdLineNoteDisp.Caption := format( ccapGotoFindIn, [ ccapGotoCmdlineAbbrev, ccapGotoNotesStr ] );
+  mniMainFindCmdNotes.Caption := format( ccapGotoFindIn, [ ccapGotoCmdAbbrev, ccapGotoNotesStr ] );
+  mniMainFindCmdLineNotes.Caption := format( ccapGotoFindIn, [ ccapGotoCmdlineAbbrev, ccapGotoNotesStr ] );
 
   mniMainCmdList.Caption := format( cDoubleS, [ clblCmdPointer, ccapGotoListStr ] ) + Dots;
   mniMainCmdLineList.Caption := format( cDoubleS, [ ccapGotoCmdlineAbbrev, ccapGotoListStr ] ) + Dots;
@@ -2158,12 +2147,6 @@ begin
   mniTabSearchSearchRoot.Caption := format( ccapPopMenuRootRoot, [ trim( ccapTabSearch ), ccapPopMenuRootMenuStr ] );
   mniCommansRoot.Caption := format( ccapPopMenuRootRoot, [ clblCmdPointer, ccapPopMenuRootMenuStr ] );
   mniCmdLinesRoot.Caption := format( ccapPopMenuRootRoot, [ clblCmdlinePointer, ccapPopMenuRootMenuStr ] );
-
-
-  mniMainFIndCmdFind.Caption := ccapGotoFindConst;
-  mniMainFIndCmdReFind.Caption := ccapGotoReFindConst;
-  mniMainFIndCmdLineFind.Caption := ccapGotoFindConst;
-  mniMainFIndCmdLineReFind.Caption := ccapGotoReFindConst;
 
   mniMainCmdNameEdit.Caption := format( ccapGotoEditIn, [ ccapGotoCmdAbbrev, ccapGotoEditInName ] );
   mniDblCCmdName.Caption := format( cDoubleS, [ ccapGotoCmdAbbrev, ccapGotoEditInName ] );
@@ -3132,27 +3115,21 @@ begin
   UnassMemosKeyDown( MemNotesDisp, Key, Shift );
 end;
 
-procedure TfrmMain.memNotesEnter( Sender : TObject );
-begin
-  //fCmdFocus := memNotes;
-end;
-
 procedure TfrmMain.memNotesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   if ( Shift = [ ssCtrl ] ) then
   begin
     if ( key = VK_S ) and btnCmdOk.enabled then
+    begin
       btnCmdOk.Click;
+      exit;
+    end;
   end;
 
-  if ( ssCtrl in Shift ) and not ( ssAlt in Shift ) then
+  if ( ( ssCtrl in Shift ) and ( ssShift in Shift ) ) and not ( ssAlt in Shift ) then
   begin
     if key = VK_F then
-    begin
-      if ssShift in Shift then
-        frmFindText.ReFindinMemo( memNotes )
-      else FindInMemo( memNotes );
-    end;
+      FindInMemo( memNotes );
     if key = VK_L then
       frmFindText.ReFindinMemo( memNotes );
   end;
@@ -3183,17 +3160,16 @@ begin
   if ( Shift = [ ssCtrl ] ) then
   begin
     if ( key = VK_S ) and btnLineOk.Enabled then
+    begin
       btnLineOk.Click;
+      exit;
+    end;
   end;
 
-  if ( ssCtrl in Shift ) and not ( ssAlt in Shift ) then
+  if ( ( ssCtrl in Shift ) and ( ssShift in Shift ) ) and not ( ssAlt in Shift ) then
   begin
     if key = VK_F then
-    begin
-      if ssShift in Shift then
-        frmFindText.ReFindinMemo( memNotesLine )
-      else FindInMemo( memNotesLine );
-    end;
+      FindInMemo( memNotesLine );
     if key = VK_L then
       frmFindText.ReFindinMemo( memNotesLine );
   end;
@@ -3219,17 +3195,12 @@ end;
 
 procedure TfrmMain.UnassMemosKeyDown( Sender : TMemo; var Key : Word; const Shift : TShiftState );
 begin
-  if ( ssCtrl in Shift ) and not ( ssAlt in Shift ) then
+  if ( ( ssCtrl in Shift ) and ( ssShift in Shift ) ) and not ( ssAlt in Shift ) then
   begin
     if key = VK_F then
-    begin
-      if ssShift in Shift then
-        frmFindText.ReFindinMemo( Sender )
-      else FindInMemo( Sender );
-    end;
+      FindInMemo( Sender );
     if key = VK_L then
       frmFindText.ReFindinMemo( Sender );
-    //key := VK_UNKNOWN;
   end;
 end;
 
@@ -3281,11 +3252,10 @@ begin
   mniMaintabsSearch.Tag := cmniMaintabsSearch;
   mniMainTabsProcs.Tag := cmniMainTabsProcs;
 
+  mniMainFindOutput.Tag := cmniMainFindOutput;
   mniMainCommandLines.tag := cmniMainCommandLines;
-  mniMainFIndCmdFind.tag := cmniMainFIndCmdFind;
-  mniMainFIndCmdReFind.tag := cmniMainFIndCmdReFind;
-  mniMainFIndCmdLineFind.tag := cmniMainFIndCmdLineFind;
-  mniMainFIndCmdLineReFind.tag := cmniMainFIndCmdLineReFind;
+  mniMainFindCmdLineNotes.Tag := cmniMainFindCmdLineNotes;
+  mniMainFindCmdNotes.Tag := cmniMainFindCmdNotes;
 
   mniMainCmdNameEdit.tag := cmniMainCmdNameEdit;
   mniMainCmdNotes.tag := cmniMainCmdNotes;
@@ -3379,7 +3349,6 @@ end;
 
 procedure TfrmMain.mniMainCommandsClick( Sender : TObject );
 var
-  //DoTab : boolean;
   menuIdx, tabIdx : integer;
 
   procedure SetTab( aTab : TTabSheet );
@@ -3396,7 +3365,6 @@ var
 
 begin
 
-  //DoTab := false;
   menuIdx := TControl(Sender).Tag;
 
   if menuIdx = 0 then
@@ -3424,32 +3392,20 @@ begin
         end;
       end;
   end;
-////why do I need to do this here and not anywhere else???? puzzling....
-//  if DoTab then
-//    nbCommandsChange( nbCommands );
 
   case menuIdx of
     cmniMainCommands : SetTheFocus( lbCommands );//
     cmniMainDisplay : SetTheFocus( Memo1 );
+    cmniMainFindOutput : FindInMemo( Memo1 );
     cmniMainCommandLines : SetTheFocus( lbCmdLines );
-
-    cmniMainFIndCmdFind :
+    cmniMainFindCmdNotes :
       if EditingCmd then
         FindInMemo( memNotes )
       else FindInMemo( memNotesDisp );
-    cmniMainFIndCmdReFind :
-      if EditingCmd then
-        frmFindText.ReFindinMemo( memNotes )
-      else frmFindText.ReFindinMemo( memNotesDisp );
-    cmniMainFindCmdLineFind :
+    cmniMainFindCmdLineNotes :
       if EditingCL then
         FindInMemo( memNotesLine )
       else FindInMemo( memNotesLineDisp );
-    cmniMainFIndCmdLineReFind :
-      if EditingCL then
-        frmFindText.ReFindinMemo( memNotesLine )
-      else frmFindText.ReFindinMemo( memNotesLineDisp );
-
     cmniMainCmdNameEdit : lblCommandNameDblClick( Self );
     cmniMainCmdNotes : SetTheFocus( memNotes );
     cmniMainCmdLineEntry : SetTheFocus( memEntry );
@@ -3875,10 +3831,11 @@ begin
 
   mniMainTabs.Enabled := not IsEditing;
   mniMainCommandLines.Enabled := not IsEditing and HasCommands;
-  mniMainCmdNoteDisp.Enabled := HasCommands and
+
+  mniMainFindCmdNotes.Enabled := HasCommands and
                                 ( ( not CmdEditing and ( trim( memNotesDisp.Text ) <> '' ) )
                                     or ( CmdEditing and ( trim( memNotes.Text ) <> '' ) ) );
-  mniMainCmdLineNoteDisp.Enabled := HasCommands and
+  mniMainFindCmdLineNotes.Enabled := HasCommands and
                                     ( ( not CLEditing and ( trim( memNotesLineDisp.Text ) <> '' ) )
                                         or  ( CLEditing and ( trim( memNotesLine.Text ) <> '' ) ) );
 
@@ -6969,18 +6926,14 @@ begin
                    + cmsgOwnRisk,
                    false );
 
-  OpeningState := 'Opening State:'
-    + LineEnding
-    + lblCurrDB.Caption
+  OpeningState := DatetoStr( now ) + ' >>  ' + lblCurrDB.Caption
     + LineEnding
     + cmsgMainBasePath + fWritingToPath
     + LineEnding
     + cmsgMainSavingPath + fSavingToPath
     + LineEnding
-    + cmsgMainRootTemplate + fRootFile
+    + cmsgMainShellPhrase + globltShellName + '     ' +  cmsgMainRootTemplate + fRootFile
     + LineEnding
-    + cmsgMainShellPhrase + globltShellName
-    + LineEnding + LineEnding
     ;
 
   UpdateDisplay( OpeningState, false );

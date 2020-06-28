@@ -570,19 +570,37 @@ resourceString
   ccapOverflow = 'Overflow from long line';
 
 //hints
+  cmsgSearchTextHint = 'If you focus on the Notes area and press '
+                    + LineEnding
+                    + 'Ctrl-Shift-F a text search dialog opens. '
+                    + LineEnding + LineEnding
+                    + 'And Ctrl-Shift-L will find the next '
+                    + LineEnding
+                    + 'find occurence.'
+                    ;
+
   cmsgDisplayPanels = 'This shows the current state of the selected '
                       + LineEnding
                       + '%s settings.'
                       + LineEnding + LineEnding
-                      + 'If you focus on the Notes area and press '
-                      + LineEnding
-                      + 'Ctrl-F a text search dialog opens. '
-                      + LineEnding + LineEnding
-                      + 'And Ctrl-Shift-F or Ctrl-L will find the next '
-                      + LineEnding
-                      + 'find occurence. '
+                      + '%s'
                       + LineEnding + LineEnding
                       + '<end>';
+
+  cmsgNotesHints = 'Notes, which are searchable, for this '
+                   + LineEnding
+                   + '%s.'
+                   + LineEnding + LineEnding
+                   + '%s'
+                   + LineEnding + LineEnding
+                   + 'To read all the notes more conviently '
+                   + LineEnding
+                   + 'double click the notes.'
+                   + LineEnding + LineEnding
+                   + '<end>'
+                   + LineEnding
+                   ;
+
   cmsgEditButtons = 'Open the "%s" Edit panel to edit the %s settings.'
                       + LineEnding + LineEnding
                       + '<end>';

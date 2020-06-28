@@ -29,6 +29,7 @@ uses
   , lcltype {THis is needed for key up keyboard constants}
   , unitsharedobj, Buttons, StdCtrls
   , unitGlobForm, ExtCtrls
+  , ufrmFindText
   ;
 
 type
@@ -75,6 +76,7 @@ type
     fhelpCommand : string;
     fHelpParameter : string;
     FIsInitialized : boolean;
+    fFindText : TfrmFindText;
     procedure DoOutput;
     procedure FindInMemo;
     procedure HandleFormSettings( const TheType : TSettingsDirective );
@@ -103,7 +105,6 @@ uses ufrmMsgDlg
      , linuxtrix
      , unitcommands
      , ufrmMain
-     , ufrmFindText
      , juusgen
      , strconst_en
      , strconst_prog
@@ -310,6 +311,11 @@ end;
 procedure TfrmCmdLineEdit.FormClose(Sender : TObject; var CloseAction : TCloseAction);
 begin
   HandleFormSettings( sdSave );
+  if assigned( fFindText ) then
+  begin
+    fFindText.Close;
+    freeandnil( fFindtext );
+  end;
 end;
 
 procedure TfrmCmdLineEdit.bntOKClick(Sender : TObject);
@@ -414,20 +420,17 @@ begin
   btnPath.Caption := '&A  ' + ccapInsertFilePaths;
   FHasShown := false;
   FIsInitialized := false;
+  fFindText := nil;
 end;
 
 procedure TfrmCmdLineEdit.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  if ( ssCtrl in Shift ) and not ( ssAlt in Shift ) then
+  if ( ( ssCtrl in Shift ) and ( ssShift in Shift ) ) and not ( ssAlt in Shift ) then
   begin
     if key = VK_F then
-    begin
-      if ssShift in Shift then
-        frmFindText.ReFindinMemo( memOutput )
-      else FindInMemo;
-    end;
+      FindInMemo;
     if key = VK_L then
-      frmFindText.ReFindinMemo( memOutput );
+      fFindText.ReFindinMemo( memOutput );
   end;
 end;
 
@@ -435,14 +438,16 @@ procedure TfrmCmdLineEdit.FindInMemo;
 var
   PosPt : TPoint;
 begin
-  with frmFindText do
+  if not assigned( fFindText ) then
   begin
-    Memo := memOutput;
-    PosPt := GetPreciseControlCoords( Memo, MemOutput.Width - frmFindText.Width - 50, 25 );
-    Top := PosPt.y;
-    Left := PosPt.x;
-    Show;
+    fFindText := TfrmFindText.Create( self );
+    fFindText.UpdateCaptions;
+    fFindText.Memo := memOutput;
   end;
+  PosPt := GetPreciseControlCoords( MemOutput, MemOutput.Width - fFindText.Width - 50, 25 );
+  fFindText.Top := PosPt.y;
+  fFindText.Left := PosPt.x;
+  fFindText.Show;
 end;
 
 end.
