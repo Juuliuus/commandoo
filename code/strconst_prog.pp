@@ -61,7 +61,7 @@ const
   cFormSettingsWarnCaution = 'WarnCaution';
   cFormSettingsWarnDanger = 'WarnDanger';
   cFormSettingsAllowMultipleOpens = 'AllowMultipleOpens';
-  cFormSettingsAllowESCOutput = 'AllowESC';
+  cFormSettingsAllowPkexec = 'AllowPkexec';
   cFormSettingsLargerFont = 'LargerFont';
   cFormSettingsAllowSqlDB = 'AllowSqlDB';
   cFormSettingsDoShowSqlMissing = 'DoShowSqlMissing';
@@ -104,7 +104,8 @@ const
 
 
 //increment this number for any Program settings cleanup / change, ONLY needs to be done if there is a change
-  c_PROG_VersionUpgradeCount = 3;//2;//
+  //c_PROG_VersionUpgradeCount = 3;
+  c_PROG_VersionUpgradeCount = 4; //29.06.2020 Allow Esc taken out
 //=====  PROGRAM   ==============================
   cHandwrittenVersion = '2.0.1';//'1.0.1';//all done. ?
   cSectTab_PROG_VersionCount = '_PROG_VersionCount';

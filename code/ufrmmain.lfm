@@ -429,9 +429,9 @@ object frmMain: TfrmMain
             end
           end
           object pnlCmdLine: TPanel
-            Left = 184
+            Left = 176
             Height = 289
-            Top = 32
+            Top = 11
             Width = 950
             Anchors = [akLeft, akRight, akBottom]
             ClientHeight = 289

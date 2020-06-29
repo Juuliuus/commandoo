@@ -1010,6 +1010,18 @@ resourceString
      + 'You changed the base folder path, commandoo needs to be restarted before the changes can take effect. '
      + 'If you have other copies open best to close them all.';
 
+   cmsgPkexecNotInstalled =
+     'You enabled "allow pkexec" but pkexec does not appear to be installed on your system.';
+
+   cmsgPkexecNotAllowed =
+     'Either your OPTIONS settings disallow "%s", or it is not installed on your system''s $PATH.';
+
+   cPkexecHintOptions =
+     'This determines whether you will allow'
+     + LineEnding
+     + '"pkexec" to be used in commandoo.'
+     + LineEnding + LineEnding;
+
    cPkexecHint =
      '"pkexec" is linux program that lets one invoke '
      + LineEnding
@@ -1031,7 +1043,9 @@ resourceString
      + LineEnding
      + 'and use it sparingly and briefly. There are '
      + LineEnding
-     + 'very few good reasons to run something as ROOT.'
+     + 'very few good reasons to run something as ROOT '
+     + LineEnding
+     + 'from commandoo.'
      + LineEnding + LineEnding
      + '<end>'
      + LineEnding

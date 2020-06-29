@@ -52,7 +52,7 @@ type
     btnSavePathReset : TBitBtn;
     btnSqlLib : TBitBtn;
     btnSqlLibReset : TBitBtn;
-    cbAllowESCOutput : TCheckBox;
+    cbAllowPkexec : TCheckBox;
     cbAllowMultipleOpens : TCheckBox;
     cbCareful : TCheckBox;
     cbCaution : TCheckBox;
@@ -517,6 +517,7 @@ begin
     HandleFormSettings( sdLoad );
     btnDone.caption := cbtn_Done;
     FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
+    cbAllowPkexec.Hint := cPkexecHintOptions + cPkexecHint;
     fHasShown := true;
   end;
 end;

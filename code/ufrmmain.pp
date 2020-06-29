@@ -610,7 +610,8 @@ type
     fWarnDanger : boolean;
     fAllowSqlDB : boolean;
     fAllowMultipleOpens : boolean;
-    //fAllowESCinOutput : boolean;
+    fAllowPkexec : boolean;
+    fAllowPkexecInstalled : boolean;
     fAllowTextDB : boolean;
     fDoShowSqlMissing : boolean;
     fManRefreshFavorites : boolean;
@@ -1055,7 +1056,8 @@ resourcestring
   cmsgInvalidLinuxFileName = 'The filename is invalid! System does not allow "//" in a filename.';
   ccapFileExists = '%s file exists';
   cmsgFileExistsOverwrite = 'Search File "%s" exists. Do you want to overwrite it?';
-  cmsgROOTUseShell_Pipe = 'Not allowed to run UseShell or piped CL''s as <ROOT>, this will run as normal user, run CL in Terminal if you want to use <ROOT>.';
+  cmsgROOTUseShell_Pipe = 'Not allowed to run UseShell or piped CL''s with elevated privileges '
+    + '(<ROOT> or pkexec), this will run as normal user, run CL in Terminal if you want to use <ROOT>.';
   cmsgInput_Detach = 'Not allowed to send input to a detached (child) process. Input turned off.';
   cmsgSystemProcessesError = 'Problem reading system processes. Halting: ';
 
@@ -1612,6 +1614,8 @@ begin
     exit;
   end;
 
+  //fAllowPkexecInstalled := false; //testing
+  fAllowPkexecInstalled := SystemFileFound( trim( cprogPkexecStr ) );
   fSuperUser := QuickProc( 'id', '-u' ) = '0';
 
 //==================================
@@ -1854,7 +1858,8 @@ begin
       1 : Update_PROG_Version_0001( fIFS, Self.Name );
       2 : Update_PROG_Version_0002( fIFS );
       3 : Update_PROG_Version_0003( fIFS, cSectTabFormSettings );
-      //4 : When an update is done on the Program that needs attention in ini file write the needed code here
+      4 : Update_PROG_Version_0004( fIFS, cSectTabFormSettings );
+      //5 : When an update is done on the Program that needs attention in ini file write the needed code here
       //and set the c_PROG_VersionUpgradeCount const by +1
     end;
 
@@ -2319,7 +2324,8 @@ begin
     fWarnCaution := ReadBool( cSectTabFormSettings, cFormSettingsWarnCaution, true );
     fWarnDanger := ReadBool( cSectTabFormSettings, cFormSettingsWarnDanger, true );
     fAllowMultipleOpens := ReadBool( cSectTabFormSettings, cFormSettingsAllowMultipleOpens, false );
-    //fAllowESCinOutput := ReadBool( cSectTabFormSettings, cFormSettingsAllowESCOutput, false );
+    fAllowPkexec := ReadBool( cSectTabFormSettings, cFormSettingsAllowPkexec, false );
+    btnPkexecMain.Enabled := fAllowPkexec and fAllowPkexecInstalled;
 
     fRootFile := ReadString( cSectTabFormSettings, cFormSettingsRootFile, cRootFileSudo );
 
@@ -3689,7 +3695,9 @@ begin
 
 //strangely, to me, the popupmenu is still enabled even if the lbCmdLines is disabled!!
 //so... locDoShow (DoShow conflicts with LCL)!
-  locDoShow := lbCmdLines.Enabled;//Flag that CL is being edited
+
+  //locDoShow := lbCmdLines.Enabled;//Flag that CL is being edited
+  locDoShow := not EditingCL;
 
   actNewCommandLine.Enabled := locDoShow and not InValidCommands;
 
@@ -5341,7 +5349,7 @@ begin
       cbDanger.Checked := fWarnDanger;
       cbAllowMultipleOpens.Visible := not fSuperUser;
       cbAllowMultipleOpens.Checked := fAllowMultipleOpens;
-      //cbAllowESCOutput.Checked := fAllowESCinOutput;
+      cbAllowPkexec.Checked := fAllowPkexec;// and fAllowPkexecInstalled;
       cbMissingSqlMsg.Checked := fDoShowSqlMissing;
       cbManRefreshFavorites.Checked := fManRefreshFavorites;
 
@@ -5383,7 +5391,14 @@ begin
       fWarnDanger      := cbDanger.Checked;
       fDoShowSqlMissing := cbMissingSqlMsg.Checked;
       fAllowMultipleOpens := cbAllowMultipleOpens.Checked;
-      //fAllowESCinOutput := cbAllowESCOutput.Checked;
+
+      fAllowPkexec := cbAllowPkexec.Checked;
+      if fAllowPkexec and not fAllowPkexecInstalled then
+      begin
+        fAllowPkexec := false;
+        MyShowMessage( cmsgPkexecNotInstalled, self );
+      end;
+      btnPkexecMain.Enabled := fAllowPkexec and fAllowPkexecInstalled;
 
       fManRefreshFavorites := cbManRefreshFavorites.Checked;
 
@@ -5447,7 +5462,7 @@ begin
         WriteBool( cSectTabFormSettings, cFormSettingsWarnCaution, fWarnCaution );
         WriteBool( cSectTabFormSettings, cFormSettingsWarnDanger, fWarnDanger );
         WriteBool( cSectTabFormSettings, cFormSettingsAllowMultipleOpens, fAllowMultipleOpens );
-        //WriteBool( cSectTabFormSettings, cFormSettingsAllowESCOutput, fAllowESCinOutput );
+        WriteBool( cSectTabFormSettings, cFormSettingsAllowPkexec, fAllowPkexec );
 
         UpdateFile;
 
@@ -6193,6 +6208,7 @@ begin
                                                    lblCommandName.Caption );
     HelpParameter := edtHelp.Text;
     btnDefaultHelp.Caption := format( cclecapDefaultHelp, [ lblCommandName.Caption ] );
+    btnPkexec.Enabled := fAllowPkexec and fAllowPkexecInstalled;
 
     memCmdLine.Lines.Text := Instr;
     fInternalComs := true;
@@ -6507,7 +6523,8 @@ var
        then
     begin
       extraInfo := format( cmsgLimitInfinity, [ cLimitInfinityMaxCnt ] );
-      globltProcessMaxOutput := cLimitInfinityMaxCnt;
+      if globltProcessMaxOutput > cLimitInfinityMaxCnt then
+        globltProcessMaxOutput := cLimitInfinityMaxCnt;
     end;
   end;
 
@@ -6563,9 +6580,19 @@ begin
     exit;
   end;
 
+  if IsPkexec( RunStr ) and not ( fAllowPkexec and fAllowPkexecInstalled ) then
+  begin
+    result := RunStr + LineEnding + LineEnding
+              + format( cmsgPkexecNotAllowed, [ trim( cprogPkexecStr ) ] )
+              + LineEnding + LineEnding
+              ;
+    exit;
+  end;
+
   LimitInfinity( RunStr );
 
-  if ( Piped or UseShell ) and ( pos( cReservedSuperUser, RunStr ) = 1 ) then
+  if ( Piped or UseShell )
+     and ( ( pos( cReservedSuperUser, RunStr ) = 1 ) or IsPkexec( RunStr ) ) then
     MyShowMessage( cmsgROOTUseShell_Pipe, self );
 
   if not fInternalComs then
@@ -6616,7 +6643,7 @@ var
   RunStr : string;
 begin
 
-  if lbCmdLines.Enabled then //lbCmdLines is flag when CL is being edited
+  if not EditingCL then
   begin
     if lbCmdLines.ItemIndex < 0 then
       exit;

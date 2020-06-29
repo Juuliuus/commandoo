@@ -59,6 +59,7 @@ procedure StringfromMemStream( var Str : string; MS : TMemoryStream );
 procedure WriteStringToMemoryStream( SourceString : string; MemoryStream : TMemorystream );
 procedure WriteMemoryStreamToString( var SourceString : string; MemoryStream : TMemorystream );
 //function ParsePiping( PipeStr : string; Strings : TStrings ) : integer;
+function IsPkexec( const Value : string ) : boolean;
 function StripPkexec( const Value : string ) : string;
 function TogglePkexec( const Value : string ) : string;
 function GetLiteralPath_Generic( const CheckPath, CmdName : string ) : string;
@@ -107,12 +108,14 @@ const
   cProcessResultCanceled = -3;
   cProcessResultTooMuch = -4;
   cProcessResultTimeOut = -5;
+  cProcessResultEmergencyCord = -6;
   cProcessResultOK = 0;
   cLimitInfinityMaxCnt = 50000;
   cltBadGuid = '{}';
   cltProcessStdErrStr = 'stderr';
   cltProcessStdOutStr = 'stdout';
   cmsgNotSpecified = '-???-';
+  cprogPkexecStr = 'pkexec ';
 
 
 implementation
@@ -131,7 +134,6 @@ var
 
 const
   CheckAdjust = 17;
-  cprogPkexecStr = 'pkexec ';
 
 function GetLiteralPath_Generic( const CheckPath, CmdName : string ) : string;
 var
@@ -149,6 +151,10 @@ begin
 
 end;
 
+function IsPkexec( const Value : string ) : boolean;
+begin
+  result := pos( cprogPkexecStr, trim( Value ) ) = 1;
+end;
 
 function StripPkexec( const Value : string ) : string;
 var
@@ -460,7 +466,7 @@ begin
         inc( EmergencyCordCnt );
         if EmergencyCordCnt > TimedOut then
         begin
-          result := cProcessResultTimeOut;
+          result := cProcessResultEmergencyCord;
           break;
         end;
         continue;
@@ -472,26 +478,11 @@ begin
       // try reading it
       NumByt := theOutput.Read( (MemS.Memory + BytRead)^, theOutput.NumBytesAvailable );
       if NumByt > 0 then// All read() calls will block, except the final one.
-      begin
-
-        //if assigned( globltOutputMemo ) then
-        //begin
-        //was designed for "live" updates, found it to be a pain, maybe later? For reference
-        //
-        //  SStream.size := NumByt;//0;
-        //  SStream.WriteBuffer( ( MemS.Memory + BytRead )^, NumByt );
-        //  globltOutputMemo.SetFocus;
-        //  globltOutputMemo.Lines.Text := globltOutputMemo.Lines.Text + SStream.DataString;
-        //  globltOutputMemo.SelStart := length( globltOutputMemo.Lines.Text );
-        //
-        //end;
-
         Inc( BytRead, NumByt );
 
-      end;
-
 //safety limit, can be set externally
-      if MemS.Size > globltProcessMaxOutput then
+      //if MemS.Size > globltProcessMaxOutput then
+      if BytRead > globltProcessMaxOutput then
       begin
         result := cProcessResultTooMuch;
         break;
@@ -528,6 +519,7 @@ var
         cProcessResultCanceled : aMsg := cltProcessResultCanceled;
         cProcessResultTooMuch : aMsg := format( cltProcessResultTooMuch, [ cltProcessOutput, globltProcessMaxOutput ] );
         cProcessResultTimeOut : aMsg := cltProcessResultTimeOut;
+        cProcessResultEmergencyCord : aMsg := 'Emergency Cord: ' + cltProcessResultTimeOut;
         else aMsg := format( cltProcessResultUnknown, [ ProcStatus ] );
       end;
       result := result + LineEnding + LineEnding + aMsg + LineEnding;

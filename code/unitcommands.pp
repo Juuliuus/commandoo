@@ -610,6 +610,7 @@ resourcestring
   cmsgcomCommandDisallowed = '"%s" command disallowed because it could hang the program. Run in Terminal.';
   cmsgcomCommandDisallowedDetached = '"%s" command can not be run as a detached child process because it could hang the program.';
   cmsgucoDisallowPipe_Detach = 'Can not run piped commands as detached processes.';
+  cmsgucoDisallowPkexec_detached = 'Can not run pkexec commands as detached processes.';
   cmsgucoDisallowShell_Detach = 'Can not run commands designated to go through Shell as detached processes.';
   cmsgucoNoCmdOrParams = 'No command / parameters';
   cmsgucoMerge_Added = '"%s" added to Destination';
@@ -1290,6 +1291,10 @@ var
   function GoodToRun : boolean;
   begin
     result := false;
+
+    if DoDetach and IsPkexec( aString ) then //assigned( CmdSL.SL.Objects[ 0 ] ) then
+      raise EErrorDisallowed.Create( cmsgucoDisallowPkexec_detached );
+
 //if strings.objects is assigned it is a pipe'ing command line, else it is a simple command
     if DoDetach and IsPiped then //assigned( CmdSL.SL.Objects[ 0 ] ) then
       raise EErrorDisallowed.Create( cmsgucoDisallowPipe_Detach );
@@ -1326,19 +1331,22 @@ begin
 
   try
 
+    if not GoodToRun then
+      exit;
+
     if DoThroughShell or IsPiped then
     begin
 
+//strip anything that calls for elevated priveleges
       if pos( cReservedSuperUser, aString ) = 1 then
         aString := stringreplace( aString, cReservedSuperUser, '', [rfIgnorecase] );
+
+      aString := StripPkexec( result );
 
       DoThroughShell := true;//force pipes through shell too.
 
     end
     else ProcessCommandEntry( aString, CmdSL.SL );
-
-    if not GoodToRun then
-      exit;
 
     if DoDetach then
         result := RunCommandDetached( aProcess, CmdSL.SL )
