@@ -1341,7 +1341,7 @@ begin
       if pos( cReservedSuperUser, aString ) = 1 then
         aString := stringreplace( aString, cReservedSuperUser, '', [rfIgnorecase] );
 
-      aString := StripPkexec( result );
+      aString := StripPkexec( aString );
 
       DoThroughShell := true;//force pipes through shell too.
 

@@ -93,7 +93,7 @@ resourcestring
   crg_MatchType = 'Match Type';
   crg_Value = 'Value';
   ccapFindLBHint = 'Begin typing...';
-  ccapFindTextHint = 'Type then <enter>...';
+  ccapFindTextHint = 'Type, then press <enter>...';
 
 type
   //raise EErrorDatabaseProblem.Create( 'EXCEPTION STRESS TEST' );

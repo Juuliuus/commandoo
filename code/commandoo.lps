@@ -22,9 +22,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ufrmMain"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="1341"/>
-        <CursorPos Y="1354"/>
+        <TopLine Value="6593"/>
+        <CursorPos Y="6613"/>
         <UsageCount Value="203"/>
         <Bookmarks Count="2">
           <Item0 Y="7113"/>
@@ -153,9 +152,10 @@
       <Unit13>
         <Filename Value="unitcommands.pp"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="10"/>
-        <TopLine Value="1311"/>
-        <CursorPos Y="1323"/>
+        <TopLine Value="1336"/>
+        <CursorPos X="39" Y="1347"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit13>
@@ -189,8 +189,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitGlobForm"/>
         <EditorIndex Value="6"/>
-        <TopLine Value="48"/>
-        <CursorPos Y="61"/>
+        <TopLine Value="101"/>
+        <CursorPos Y="120"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit16>
@@ -492,8 +492,8 @@
         <Filename Value="unitglob.pp"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="66"/>
-        <CursorPos X="3" Y="76"/>
+        <TopLine Value="82"/>
+        <CursorPos X="18" Y="85"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit43>
@@ -765,123 +765,124 @@
     </OtherDefines>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="jinifiles.pp"/>
-        <Caret Line="1048" TopLine="1030"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1330" TopLine="1314"/>
       </Position1>
       <Position2>
-        <Filename Value="jinifiles.pp"/>
-        <Caret Line="1049" TopLine="1030"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1332" TopLine="1314"/>
       </Position2>
       <Position3>
-        <Filename Value="jinifiles.pp"/>
-        <Caret Line="1051" TopLine="1030"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1334" TopLine="1314"/>
       </Position3>
       <Position4>
-        <Filename Value="jinifiles.pp"/>
-        <Caret Line="1052" TopLine="1030"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1337" TopLine="1320"/>
       </Position4>
       <Position5>
-        <Filename Value="jinifiles.pp"/>
-        <Caret Line="1053" TopLine="1030"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1341" TopLine="1323"/>
       </Position5>
       <Position6>
-        <Filename Value="jinifiles.pp"/>
-        <Caret Line="1048" Column="31" TopLine="1032"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1344" TopLine="1326"/>
       </Position6>
       <Position7>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1861" TopLine="1837"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1342" TopLine="1326"/>
       </Position7>
       <Position8>
-        <Filename Value="strconst_prog.pp"/>
-        <Caret Line="63" Column="16" TopLine="50"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="6598" TopLine="6590"/>
       </Position8>
       <Position9>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5401" TopLine="5388"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1340" Column="21" TopLine="1326"/>
       </Position9>
       <Position10>
         <Filename Value="ufrmmain.pp"/>
+        <Caret Line="6594" Column="110" TopLine="6590"/>
       </Position10>
       <Position11>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="613" Column="17" TopLine="591"/>
+        <Caret Line="6599" TopLine="6590"/>
       </Position11>
       <Position12>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="614" Column="17" TopLine="592"/>
+        <Caret Line="6602" TopLine="6590"/>
       </Position12>
       <Position13>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1617" Column="17" TopLine="1594"/>
+        <Caret Line="6605" TopLine="6593"/>
       </Position13>
       <Position14>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1618" Column="15" TopLine="1595"/>
+        <Caret Line="6606" TopLine="6593"/>
       </Position14>
       <Position15>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2327" Column="77" TopLine="2304"/>
+        <Caret Line="6608" TopLine="6593"/>
       </Position15>
       <Position16>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2328" Column="59" TopLine="2305"/>
+        <Caret Line="6610" TopLine="6593"/>
       </Position16>
       <Position17>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5352" Column="64" TopLine="5329"/>
+        <Caret Line="6611" TopLine="6593"/>
       </Position17>
       <Position18>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5401" Column="61" TopLine="5378"/>
+        <Caret Line="6613" TopLine="6593"/>
       </Position18>
       <Position19>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5465" Column="80" TopLine="5442"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1308" TopLine="1294"/>
       </Position19>
       <Position20>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6211" Column="55" TopLine="6187"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1310" TopLine="1294"/>
       </Position20>
       <Position21>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6569" Column="9" TopLine="6560"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1319" TopLine="1299"/>
       </Position21>
       <Position22>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5401" TopLine="5387"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1320" TopLine="1302"/>
       </Position22>
       <Position23>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="520" Column="3" TopLine="512"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1323" TopLine="1305"/>
       </Position23>
       <Position24>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6211" Column="43" TopLine="6196"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1325" TopLine="1311"/>
       </Position24>
       <Position25>
-        <Filename Value="strconst_prog.pp"/>
-        <Caret Line="64" TopLine="50"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1330" TopLine="1314"/>
       </Position25>
       <Position26>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1860" TopLine="1847"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1332" TopLine="1314"/>
       </Position26>
       <Position27>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6583" Column="35" TopLine="6569"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1334" TopLine="1314"/>
       </Position27>
       <Position28>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6488" Column="3" TopLine="6474"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1337" TopLine="1314"/>
       </Position28>
       <Position29>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6601" TopLine="6574"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1341" TopLine="1321"/>
       </Position29>
       <Position30>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6577" TopLine="6556"/>
+        <Filename Value="unitcommands.pp"/>
+        <Caret Line="1344" TopLine="1327"/>
       </Position30>
     </JumpHistory>
     <RunParams>
@@ -890,19 +891,13 @@
     </RunParams>
   </ProjectSession>
   <Debugging>
-    <Watches Count="4">
+    <Watches Count="2">
       <Item1>
-        <Expression Value="output"/>
+        <Expression Value="astring"/>
       </Item1>
       <Item2>
-        <Expression Value="test1"/>
+        <Expression Value="runstr"/>
       </Item2>
-      <Item3>
-        <Expression Value="test2"/>
-      </Item3>
-      <Item4>
-        <Expression Value="gotopos"/>
-      </Item4>
     </Watches>
   </Debugging>
 </CONFIG>
