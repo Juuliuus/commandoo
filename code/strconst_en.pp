@@ -114,7 +114,7 @@ resourceString
     ;
   cmsgFormHotKeys =
     'The UI is large with many controls. To make it as mouse-less as possible for those who like '
-    + 'to use the keyboard try: <ctrl> <alt> d / g / m / k / p'
+    + 'to use the keyboard try: <CTRL>-<SHIFT> d / g / m / k / p, or left/right arrow keys'
     + LineEnding + LineEnding
     + 'd : inserts date/time in Output or edit Notes sections, if they are focused'
     + LineEnding
@@ -131,6 +131,8 @@ resourceString
     + 'p : pops up any right-click popup menus'
     + LineEnding
     + '    (either directly or via menu)'
+    + LineEnding
+    + 'Arrow Keys : Move between important areas on Commands page'
     ;
 
   cmsgFirstLocalRun =

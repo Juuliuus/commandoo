@@ -507,6 +507,7 @@ object frmOptions: TfrmOptions
   object lblMaxOutputWait: TLabel
     Left = 552
     Height = 21
+    Hint = 'This is the emergency cord for run away '#10'processes. This can happen for example if '#10'one by accident "cat"s a binary file. You will'#10'either wait forever or use the cancel process'#10'button.'#10#10'This checks the time and will cancel the '#10'process if there is no activity. The time is'#10'in seconds, but it is only approximate because'#10'it depends on the system load and more. '#10'For example, a setting of 10 seconds may'#10'actually take 20 seconds to finally fire.'#10#10'<end>'
     Top = 226
     Width = 180
     Anchors = [akTop, akRight]

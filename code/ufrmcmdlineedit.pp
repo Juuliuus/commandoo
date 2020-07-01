@@ -425,7 +425,7 @@ end;
 
 procedure TfrmCmdLineEdit.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  if ( ( ssCtrl in Shift ) and ( ssShift in Shift ) ) and not ( ssAlt in Shift ) then
+  if Shift = [ ssShift, ssCtrl ] then
   begin
     if key = VK_F then
       FindInMemo;

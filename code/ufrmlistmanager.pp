@@ -546,7 +546,7 @@ procedure TfrmListManager.FormKeyDown( Sender : TObject; var Key : Word; Shift :
 var
   PosPt : TPoint;
 begin
-  if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
+  if Shift = [ ssShift, ssCtrl ] then
   begin
     case key of
       VK_K :

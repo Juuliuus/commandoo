@@ -2658,7 +2658,7 @@ procedure TfrmProfiles.FormKeyDown( Sender : TObject; var Key : Word; Shift : TS
 var
   PosPt : TPoint;
 begin
-  if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
+  if Shift = [ ssShift, ssCtrl ] then
   begin
     case key of
       VK_K : if not IsSelectMode then lbListDblClick( lbList );

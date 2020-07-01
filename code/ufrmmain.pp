@@ -633,6 +633,7 @@ type
     fKeyWordSR : TStringList;
     fFavoritesSR : TStringList;
 
+    procedure MoveBetweenMajorAreas( aTag : integer; const Key : Word );
     function CheckPathOverride(var ConPath : string ) : boolean;
     procedure WritePathOverride(const ConPath : string );
     function IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
@@ -902,6 +903,15 @@ const
   cCancelButtonCommandTag = 300004;
   cOKButtonLineTag = 300003;
   cCancelButtonLineTag = 300005;
+
+//500000 special tags
+  cArrowKeyCommands     = 500000;
+  cArrowKeymemNotes     = 500001;
+  cArrowKeyCmdLines     = 500002;
+  cArrowKeymemEntry     = 500003;
+  cArrowKeymemNotesLine = 500004;
+  cArrowKeyMemo1        = 500005;
+
 
   cCurrKWFileName = '.CurrKWSearch';
   cCurrSearchFileName = '.CurrSearch';
@@ -1740,6 +1750,86 @@ begin
 
 end;
 
+procedure TfrmMain.MoveBetweenMajorAreas( aTag : integer; const Key : Word );
+
+  procedure TryFocus( aControl : TWinControl );
+  begin
+    if aControl.Canfocus then
+      aControl.Setfocus;
+  end;
+
+begin
+  case aTag of
+    cArrowKeyCommands :
+      case Key of
+        VK_RIGHT :
+          if EditingCmd then
+            TryFocus( memNotes )
+          else if EditingCL then
+            TryFocus( memEntry )
+          else TryFocus( lbCmdLines );
+        VK_LEFT : TryFocus( Memo1 );
+      end;
+    cArrowKeymemNotes :
+      case Key of
+        VK_RIGHT :
+          if EditingCL then
+            TryFocus( memEntry )
+          else TryFocus( lbCmdLines );
+        VK_LEFT :
+          if lbCommands.Canfocus then
+            TryFocus( lbCommands )
+          else TryFocus( Memo1 );
+      end;
+    cArrowKeyCmdLines :
+      case Key of
+        VK_RIGHT : TryFocus( Memo1 );
+        VK_LEFT :
+          if EditingCmd then
+            TryFocus( memNotes )
+          else if lbCommands.CanFocus then
+            TryFocus( lbCommands )
+          else TryFocus( Memo1 );
+      end;
+    cArrowKeymemEntry :
+      case Key of
+        VK_RIGHT : TryFocus( MemNotesLine );
+        VK_LEFT :
+          if EditingCmd then
+            TryFocus( memNotes )
+          else if lbCommands.Canfocus then
+            TryFocus( lbCommands )
+          else TryFocus( Memo1 );
+      end;
+    cArrowKeymemNotesLine :
+      case Key of
+        VK_RIGHT : TryFocus( Memo1 );
+        VK_LEFT :  TryFocus( memEntry );
+      end;
+    cArrowKeyMemo1 :
+      case Key of
+        VK_RIGHT :
+          if lbCommands.Canfocus then
+            TryFocus( lbCommands )
+          else if EditingCmd then
+            TryFocus( memNotes )
+          else if EditingCL then
+            TryFocus( memEntry )
+          else TryFocus( lbCmdLines );
+        VK_LEFT :
+          if EditingCL then
+            TryFocus( memNotesLine )
+          else TryFocus( lbCmdLines );
+      end;
+    else
+      if lbCommands.CanFocus then
+        TryFocus( lbCommands )
+      else if EditingCL then
+        TryFocus( memEntry )
+      else TryFocus( lbCmdLines );
+  end;
+end;
+
 procedure TfrmMain.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 var
   PosPt : TPoint;
@@ -1757,13 +1847,20 @@ var
       Memo.SelLength := 0;
       Memo.SelText := ':' + DateTimeToStr( now ) + ': ';
     end;
- end;
+  end;
+
 begin
 
-  if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
+  if Shift = [ ssShift, ssCtrl ] then
   begin
     case key of
- //The use of ctrl-alt- VK_d g k m p  are global, do not use anywhere else.
+      VK_LEFT, VK_RIGHT :
+          if assigned( self.ActiveControl ) then
+          begin
+            MoveBetweenMajorAreas( self.ActiveControl.Tag, Key );
+            Key := VK_UNKNOWN;
+          end;
+//The use of ctrl-shift- VK_d g k m p  are global, do not use anywhere else.
       VK_D :
         if assigned( self.ActiveControl ) and ( self.ActiveControl is TMemo )  then
         begin
@@ -3132,7 +3229,7 @@ begin
     end;
   end;
 
-  if ( ( ssCtrl in Shift ) and ( ssShift in Shift ) ) and not ( ssAlt in Shift ) then
+  if Shift = [ ssShift, ssCtrl ] then
   begin
     if key = VK_F then
       FindInMemo( memNotes );
@@ -3172,7 +3269,7 @@ begin
     end;
   end;
 
-  if ( ( ssCtrl in Shift ) and ( ssShift in Shift ) ) and not ( ssAlt in Shift ) then
+  if Shift = [ ssShift, ssCtrl ] then
   begin
     if key = VK_F then
       FindInMemo( memNotesLine );
@@ -3201,7 +3298,7 @@ end;
 
 procedure TfrmMain.UnassMemosKeyDown( Sender : TMemo; var Key : Word; const Shift : TShiftState );
 begin
-  if ( ( ssCtrl in Shift ) and ( ssShift in Shift ) ) and not ( ssAlt in Shift ) then
+  if Shift = [ ssShift, ssCtrl ] then
   begin
     if key = VK_F then
       FindInMemo( Sender );
@@ -3302,6 +3399,13 @@ begin
   mniDblCDetPProcs.Tag := cmniDblCDetPProcs;
   mniDblCDetPInfo.Tag := cmniDblCDetPInfo;
   mniDblCDisplay.Tag := cmniDblCDisplay;
+
+  lbCommands.Tag := cArrowKeyCommands;
+  memNotes.Tag := cArrowKeymemNotes;
+  lbCmdLines.Tag := cArrowKeyCmdLines;
+  memEntry.Tag := cArrowKeymemEntry;
+  memNotesLine.Tag := cArrowKeymemNotesLine;
+  Memo1.Tag := cArrowKeyMemo1;
 
 end;
 

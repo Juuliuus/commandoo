@@ -1782,7 +1782,7 @@ begin
     end;
   end;
 
-  if ( ( ssCtrl in Shift ) and ( ssAlt in Shift ) )  and not ( ssShift in Shift ) then
+  if Shift = [ ssShift, ssCtrl ] then
     if key = VK_P then
     begin
       PosPt := GetPreciseControlCoords( cbCmdUse, 30, 30 );
