@@ -695,7 +695,6 @@ var
   aProc: TProcess;
   SL : TStringList;
 begin
-//  QuickProc( 'sh -c "type alias"' ) for example or "$PWD | grep A"
 //  QuickProc( 'sh -c "cat /home/juus/test.me | grep CW"' ) <---- worked
 
   Result := '';

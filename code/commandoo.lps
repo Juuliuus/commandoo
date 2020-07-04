@@ -23,13 +23,16 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ufrmMain"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="1351"/>
-        <CursorPos Y="1364"/>
+        <TopLine Value="1358"/>
+        <CursorPos Y="1371"/>
         <UsageCount Value="203"/>
-        <Bookmarks Count="3">
-          <Item0 Y="7217"/>
-          <Item1 Y="1854" ID="5"/>
-          <Item2 Y="2117" ID="2"/>
+        <Bookmarks Count="6">
+          <Item0 Y="7288"/>
+          <Item1 Y="4253" ID="9"/>
+          <Item2 Y="2699" ID="7"/>
+          <Item3 Y="1905" ID="5"/>
+          <Item4 Y="1764" ID="6"/>
+          <Item5 X="3" Y="2682" ID="8"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -49,7 +52,7 @@
       <Unit3>
         <Filename Value="unitsharedobj.pp"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="14"/>
         <TopLine Value="1296"/>
         <CursorPos X="3" Y="1313"/>
         <UsageCount Value="200"/>
@@ -58,7 +61,7 @@
       <Unit4>
         <Filename Value="juusgen.pp"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="15"/>
         <TopLine Value="21"/>
         <CursorPos X="10" Y="35"/>
         <UsageCount Value="200"/>
@@ -67,7 +70,7 @@
       <Unit5>
         <Filename Value="strconst_prog.pp"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="18"/>
         <TopLine Value="50"/>
         <CursorPos Y="64"/>
         <UsageCount Value="202"/>
@@ -76,7 +79,7 @@
       <Unit6>
         <Filename Value="strconst_en.pp"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="18"/>
+        <EditorIndex Value="19"/>
         <TopLine Value="111"/>
         <CursorPos X="81" Y="117"/>
         <UsageCount Value="202"/>
@@ -89,7 +92,7 @@
         <Filename Value="jinifiles.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="JiniFiles"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="13"/>
         <TopLine Value="1111"/>
         <CursorPos X="4" Y="1121"/>
         <UsageCount Value="201"/>
@@ -122,7 +125,7 @@
         <Filename Value="unitlanguages.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitLanguages"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="10"/>
         <TopLine Value="183"/>
         <CursorPos X="9" Y="198"/>
         <UsageCount Value="202"/>
@@ -154,13 +157,10 @@
       <Unit13>
         <Filename Value="unitcommands.pp"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="237"/>
         <CursorPos Y="250"/>
         <UsageCount Value="201"/>
-        <Bookmarks Count="1">
-          <Item0 Y="250" ID="6"/>
-        </Bookmarks>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -183,17 +183,17 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ufrmProfiles"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="2650"/>
-        <CursorPos Y="2661"/>
+        <TopLine Value="1913"/>
+        <CursorPos X="32" Y="1920"/>
         <UsageCount Value="200"/>
       </Unit15>
       <Unit16>
         <Filename Value="unitglobform.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitGlobForm"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="101"/>
-        <CursorPos Y="120"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="40"/>
+        <CursorPos Y="46"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit16>
@@ -215,17 +215,19 @@
         <ComponentName Value="frmCmdLineEdit"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="1"/>
         <TopLine Value="425"/>
-        <CursorPos Y="428"/>
+        <CursorPos X="21" Y="430"/>
         <UsageCount Value="202"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit18>
       <Unit19>
         <Filename Value="linuxtrix.pp"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="112"/>
-        <CursorPos X="17" Y="118"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="684"/>
+        <CursorPos X="21" Y="697"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit19>
@@ -255,7 +257,7 @@
       <Unit22>
         <Filename Value="unitfields.pp"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="342"/>
         <CursorPos X="47" Y="356"/>
         <UsageCount Value="205"/>
@@ -276,7 +278,7 @@
         <Filename Value="unitdbutils.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitDBUtils"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="12"/>
         <TopLine Value="335"/>
         <CursorPos Y="345"/>
         <UsageCount Value="200"/>
@@ -310,7 +312,7 @@
         <Filename Value="unitdbstructure.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitDBStructure"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="16"/>
         <TopLine Value="522"/>
         <CursorPos X="42" Y="536"/>
         <UsageCount Value="200"/>
@@ -320,9 +322,9 @@
         <Filename Value="unitsearch.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitSearch"/>
-        <EditorIndex Value="8"/>
-        <TopLine Value="903"/>
-        <CursorPos X="23" Y="916"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="220"/>
+        <CursorPos X="14" Y="232"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit28>
@@ -470,7 +472,7 @@
         <Filename Value="unitdbconstants.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitDBConstants"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="17"/>
         <TopLine Value="36"/>
         <CursorPos Y="51"/>
         <UsageCount Value="201"/>
@@ -490,7 +492,7 @@
       <Unit43>
         <Filename Value="unitglob.pp"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="82"/>
         <CursorPos X="18" Y="85"/>
         <UsageCount Value="200"/>
@@ -503,9 +505,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ufrmOptions"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="49"/>
-        <CursorPos X="16" Y="72"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="476"/>
+        <CursorPos X="64" Y="486"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -531,7 +533,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos X="27" Y="44"/>
-        <UsageCount Value="182"/>
+        <UsageCount Value="181"/>
       </Unit46>
       <Unit47>
         <Filename Value="ufrmcolortest.pp"/>
@@ -542,7 +544,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="37"/>
         <CursorPos X="12" Y="69"/>
-        <UsageCount Value="141"/>
+        <UsageCount Value="140"/>
       </Unit47>
       <Unit48>
         <Filename Value="ucmdbox.pas"/>
@@ -550,26 +552,26 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1822"/>
         <CursorPos X="43" Y="1833"/>
-        <UsageCount Value="120"/>
+        <UsageCount Value="119"/>
       </Unit48>
       <Unit49>
         <Filename Value="/usr/share/fpcsrc/3.0.0/packages/fcl-db/src/sqldb/sqlite/sqlite3conn.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="135"/>
         <CursorPos X="15" Y="156"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="12"/>
       </Unit49>
       <Unit50>
         <Filename Value="/usr/share/fpcsrc/3.0.0/packages/fcl-db/src/base/fields.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="3125"/>
         <CursorPos X="49" Y="3130"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="12"/>
       </Unit50>
       <Unit51>
         <Filename Value="unitjtranslations.pas"/>
         <UnitName Value="unitjTranslations"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="553"/>
         <CursorPos X="26" Y="555"/>
         <UsageCount Value="101"/>
@@ -578,7 +580,7 @@
       <Unit52>
         <Filename Value="unitjlcltranslator.pas"/>
         <UnitName Value="unitjLCLTranslator"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="11"/>
         <CursorPos X="15" Y="2"/>
         <UsageCount Value="101"/>
         <Loaded Value="True"/>
@@ -588,42 +590,42 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="25"/>
         <CursorPos X="18" Y="29"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="20"/>
       </Unit53>
       <Unit54>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/unix/sysutils.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1576"/>
         <CursorPos X="23" Y="1104"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="20"/>
       </Unit54>
       <Unit55>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/objpas/sysutils/fina.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="382"/>
         <CursorPos X="3" Y="386"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="20"/>
       </Unit55>
       <Unit56>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/unix/sysunixh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos X="27" Y="30"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="20"/>
       </Unit56>
       <Unit57>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/objpas/sysutils/finah.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos Y="32"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="21"/>
       </Unit57>
       <Unit58>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/objpas/sysutils/osutil.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="135"/>
         <CursorPos Y="138"/>
-        <UsageCount Value="1"/>
+        <UsageCount Value="0"/>
       </Unit58>
       <Unit59>
         <Filename Value="/usr/lib/lazarus/2.0.6/lcl/dialogs.pp"/>
@@ -631,35 +633,35 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="23"/>
         <CursorPos X="3" Y="37"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
       </Unit59>
       <Unit60>
         <Filename Value="/usr/lib/lazarus/2.0.6/components/lazutils/uitypes.pas"/>
         <UnitName Value="UITypes"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="13"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
       </Unit60>
       <Unit61>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/sqlite/src/sqlite3.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos Y="30"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="46"/>
       </Unit61>
       <Unit62>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/fcl-db/src/base/db.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1950"/>
         <CursorPos X="15" Y="1968"/>
-        <UsageCount Value="45"/>
+        <UsageCount Value="44"/>
       </Unit62>
       <Unit63>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/fcl-db/src/base/database.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="9"/>
         <CursorPos X="3" Y="10"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit63>
       <Unit64>
         <Filename Value="/usr/lib/lazarus/2.0.6/lcl/actnlist.pas"/>
@@ -667,35 +669,35 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
         <CursorPos X="3" Y="32"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit64>
       <Unit65>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/objpas/objpas.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="76"/>
         <CursorPos X="27" Y="34"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit65>
       <Unit66>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/inc/systemh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="340"/>
         <CursorPos X="3" Y="354"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit66>
       <Unit67>
         <Filename Value="/usr/share/fpcsrc/3.0.4/rtl/objpas/classes/classesh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1860"/>
         <CursorPos X="14" Y="1873"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit67>
       <Unit68>
         <Filename Value="/usr/lib/lazarus/2.0.6/lcl/include/buttons.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="150"/>
         <CursorPos Y="169"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit68>
       <Unit69>
         <Filename Value="/usr/lib/lazarus/2.0.6/lcl/forms.pp"/>
@@ -703,14 +705,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="616"/>
         <CursorPos X="15" Y="629"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit69>
       <Unit70>
         <Filename Value="/usr/lib/lazarus/2.0.6/lcl/include/customform.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1908"/>
         <CursorPos X="27" Y="1910"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit70>
       <Unit71>
         <Filename Value="/usr/lib/lazarus/2.0.6/lcl/interfaces/qt5/qtwscontrols.pp"/>
@@ -718,21 +720,21 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="273"/>
         <CursorPos Y="287"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit71>
       <Unit72>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/fcl-db/src/sqldb/sqldb.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2063"/>
         <CursorPos X="3" Y="2067"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
       </Unit72>
       <Unit73>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/fcl-process/src/process.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="152"/>
         <CursorPos X="11" Y="167"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
       </Unit73>
       <Unit74>
         <Filename Value="/usr/lib/lazarus/2.0.6/lcl/stdctrls.pp"/>
@@ -740,7 +742,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="824"/>
         <CursorPos X="14" Y="836"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit74>
       <Unit75>
         <Filename Value="/usr/lib/lazarus/2.0.6/lcl/controls.pp"/>
@@ -748,14 +750,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="2313"/>
         <CursorPos X="15" Y="2327"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit75>
       <Unit76>
         <Filename Value="/usr/lib/lazarus/2.0.6/lcl/include/wincontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="6168"/>
         <CursorPos X="3" Y="6175"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit76>
     </Units>
     <OtherDefines Count="4">
@@ -767,123 +769,122 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1090" Column="18" TopLine="1066"/>
+        <Caret Line="515" Column="30" TopLine="492"/>
       </Position1>
       <Position2>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1107" Column="27" TopLine="1084"/>
+        <Caret Line="6873" TopLine="6846"/>
       </Position2>
       <Position3>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1109" Column="33" TopLine="1086"/>
+        <Caret Line="6874" TopLine="6847"/>
       </Position3>
       <Position4>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1117" Column="13" TopLine="1094"/>
+        <Caret Line="6850" Column="95" TopLine="6848"/>
       </Position4>
       <Position5>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1613" Column="18" TopLine="1590"/>
       </Position5>
       <Position6>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1780" Column="24" TopLine="1757"/>
+        <Caret Line="414" Column="14" TopLine="391"/>
       </Position6>
       <Position7>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1781" Column="33" TopLine="1758"/>
+        <Caret Line="3917" Column="35" TopLine="3912"/>
       </Position7>
       <Position8>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1790" Column="29" TopLine="1767"/>
+        <Caret Line="5840" TopLine="5826"/>
       </Position8>
       <Position9>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1791" Column="33" TopLine="1768"/>
+        <Caret Line="4832" Column="3" TopLine="4818"/>
       </Position9>
       <Position10>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1800" Column="29" TopLine="1777"/>
+        <Caret Line="3779" TopLine="3766"/>
       </Position10>
       <Position11>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1801" Column="33" TopLine="1778"/>
+        <Caret Line="1905" TopLine="1891"/>
       </Position11>
       <Position12>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1812" Column="24" TopLine="1789"/>
+        <Caret Line="1764" TopLine="1749"/>
       </Position12>
       <Position13>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1813" Column="33" TopLine="1790"/>
+        <Caret Line="2703" Column="24" TopLine="2691"/>
       </Position13>
       <Position14>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1825" Column="20" TopLine="1802"/>
+        <Caret Line="4086" TopLine="4073"/>
       </Position14>
       <Position15>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1826" Column="29" TopLine="1803"/>
+        <Caret Line="4253" TopLine="4239"/>
       </Position15>
       <Position16>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2117" TopLine="2098"/>
+        <Caret Line="2699" TopLine="2684"/>
       </Position16>
       <Position17>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="3402" TopLine="3389"/>
+        <Caret Line="2682" Column="3" TopLine="2676"/>
       </Position17>
       <Position18>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="913" TopLine="898"/>
+        <Caret Line="4253" TopLine="4240"/>
       </Position18>
       <Position19>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2117" TopLine="2103"/>
+        <Caret Line="2682" Column="3" TopLine="2667"/>
       </Position19>
       <Position20>
-        <Filename Value="unitcommands.pp"/>
-        <Caret Line="427" Column="15" TopLine="413"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="2699" TopLine="2685"/>
       </Position20>
       <Position21>
-        <Filename Value="unitcommands.pp"/>
-        <Caret Line="767" Column="2" TopLine="754"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="2682" Column="3" TopLine="2668"/>
       </Position21>
       <Position22>
-        <Filename Value="unitsharedobj.pp"/>
-        <Caret Line="143" Column="14" TopLine="131"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="4253" TopLine="4240"/>
       </Position22>
       <Position23>
-        <Filename Value="unitsharedobj.pp"/>
-        <Caret Line="1313" Column="3" TopLine="1296"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="1905" TopLine="1891"/>
       </Position23>
       <Position24>
-        <Filename Value="jinifiles.pp"/>
-        <Caret Line="208" Column="14" TopLine="196"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="1764" TopLine="1749"/>
       </Position24>
       <Position25>
-        <Filename Value="jinifiles.pp"/>
-        <Caret Line="1121" Column="4" TopLine="1111"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="2699" TopLine="2685"/>
       </Position25>
       <Position26>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2123" TopLine="2103"/>
+        <Caret Line="2682" Column="3" TopLine="2668"/>
       </Position26>
       <Position27>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="721" Column="15" TopLine="709"/>
+        <Caret Line="4253" TopLine="4240"/>
       </Position27>
       <Position28>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2610" Column="34" TopLine="2595"/>
+        <Filename Value="ufrmoptions.pp"/>
+        <Caret Line="56" Column="71" TopLine="49"/>
       </Position28>
       <Position29>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="879" Column="4" TopLine="864"/>
+        <Filename Value="ufrmoptions.pp"/>
+        <Caret Line="65" Column="12" TopLine="49"/>
       </Position29>
       <Position30>
-        <Filename Value="unitcommands.pp"/>
-        <Caret Line="250" TopLine="237"/>
+        <Filename Value="ufrmcmdlineedit.pp"/>
+        <Caret Line="430" Column="21" TopLine="425"/>
       </Position30>
     </JumpHistory>
     <RunParams>
@@ -892,6 +893,15 @@
     </RunParams>
   </ProjectSession>
   <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="ufrmmain.pp"/>
+        <Line Value="5799"/>
+      </Item1>
+    </BreakPoints>
     <Watches Count="2">
       <Item1>
         <Expression Value="astring"/>

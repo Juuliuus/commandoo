@@ -1498,6 +1498,18 @@ object frmMain: TfrmMain
           ParentFont = False
           TabOrder = 6
         end
+        object btnReCenter: TBitBtn
+          Left = 147
+          Height = 27
+          Hint = 'If you scroll the Command list and lose '#10'track of where you are, use this to make'#10'the list move to and center the currently '#10'selected Command '#10#10'<end>'
+          Top = 492
+          Width = 130
+          Caption = 'Re-center'
+          Font.Height = -14
+          OnClick = btnReCenterClick
+          ParentFont = False
+          TabOrder = 7
+        end
       end
       object lblCEditing: TLabel
         Left = 341
@@ -2442,7 +2454,7 @@ object frmMain: TfrmMain
     object MenuItem36: TMenuItem
       Caption = '-'
     end
-    object popPlusBrowse: TMenuItem
+    object mniCmdAdd: TMenuItem
       Action = actPlus
       Caption = 'Add : (ctrl-a or ''+'')'
     end
@@ -2450,12 +2462,12 @@ object frmMain: TfrmMain
       Action = actCopyCmd
       Caption = 'Duplicate Copy : (ctrl-shift-alt-c)'
     end
-    object popCmdPaste: TMenuItem
+    object mniCmdPaste: TMenuItem
       Caption = 'Paste Cmd : (menu only)'
       Enabled = False
-      OnClick = popCmdPasteClick
+      OnClick = mniCmdPasteClick
     end
-    object popCmdPasteCmdLine: TMenuItem
+    object mniCmdPasteCmdLine: TMenuItem
       Caption = 'Paste CmdLine : (ctrl-v)'
       Enabled = False
       OnClick = popCmdLinePasteClick
@@ -2478,17 +2490,17 @@ object frmMain: TfrmMain
     object MenuItem5: TMenuItem
       Caption = '-'
     end
-    object popRevert: TMenuItem
+    object mniRevert: TMenuItem
       Action = actRevert
     end
     object MenuItem7: TMenuItem
       Caption = '-'
     end
-    object popCommandDelete: TMenuItem
+    object mniCommandDelete: TMenuItem
       Action = actCommandDelete
       Caption = 'Delete : (<Del> or "-")'
     end
-    object popCommandUnDelete: TMenuItem
+    object mniCommandUnDelete: TMenuItem
       Action = actCommandUndelete
       Caption = 'Undo Delete : (ctrl-  <Del> or -)'
     end
@@ -2501,6 +2513,14 @@ object frmMain: TfrmMain
     end
     object MenuItem22: TMenuItem
       Caption = '-'
+    end
+    object mniCmdSortcommands: TMenuItem
+      Caption = 'DNT Sort'
+      OnClick = btnSortCommandsClick
+    end
+    object mniCmdReCenter: TMenuItem
+      Caption = 'DNT ReCenter'
+      OnClick = btnReCenterClick
     end
     object mniCmdCount: TMenuItem
       Caption = 'Command Count'

@@ -42,6 +42,7 @@ function CanJumpToCommand( const CmdStr, CmdLineStr : string; LBCmd, LBCmdLIne :
 function TryToFindEditedCommand( const CmdSearch : string; LBCmd : TListbox ) : integer;
 procedure ApplyChangeFont( AForm : TForm; AlwaysChange : boolean = false );
 procedure SetCapMenuButton( M : TMenuItem; B : TBitBtn; const Cap, Extra : string );
+procedure TryFocus( aControl : TWinControl );
 
 
 resourcestring
@@ -58,6 +59,11 @@ implementation
 
 uses unitcommands, unitGlob;
 
+procedure TryFocus( aControl : TWinControl );
+begin
+  if aControl.Canfocus then
+    aControl.Setfocus;
+end;
 
 procedure SetCapMenuButton( M : TMenuItem; B : TBitBtn; const Cap, Extra : string );
 const

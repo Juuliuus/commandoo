@@ -520,7 +520,7 @@ object frmOptions: TfrmOptions
   object speMaxOutputWait: TSpinEdit
     Left = 739
     Height = 37
-    Hint = 'This lets you set how much "history" in the'#10'Display Output is kept. The program will'#10'periodically clear history to keep the display'#10'output around this valiue.'#10#10'No worries if this is lower than the max/min'#10'process output above. Process output will'#10'always be shown in its entirety, or up to'#10'the maximum you set above.'#10#10'<end>'
+    Hint = 'This is another safety measure to help'#10'control "run away" processes, or processes'#10'that stop responding. '#10#10'It is set in seconds but this is not a precise'#10'timing because it gets influenced by the'#10'busy-ness of the computer and/or by '#10'a run away process.'#10#10'Just so you know: if you set it to 10 seconds'#10'it is quite possible that the program will take'#10'20 in actual time to finally actually stop the'#10'process. '#10#10'So set this low-ish for a start and see how'#10'things go, or devise a test to see how it '#10'reponds.'#10#10'<end>'
     Top = 216
     Width = 147
     Anchors = [akTop, akRight]

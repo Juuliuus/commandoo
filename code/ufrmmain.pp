@@ -118,6 +118,7 @@ type
     btnAbout : TBitBtn;
     btnKeyWords : TBitBtn;
     btnOptions : TBitBtn;
+    btnReCenter : TBitBtn;
     btnThreatLevelInfo : TButton;
     btnThreatLevelInfoLine : TButton;
     btnVersionCommand : TBitBtn;
@@ -262,6 +263,8 @@ type
     MenuItem19 : TMenuItem;
     MenuItem20 : TMenuItem;
     MenuItem22 : TMenuItem;
+    mniCmdReCenter : TMenuItem;
+    mniCmdSortcommands : TMenuItem;
     mniMainFindOutput : TMenuItem;
     MenuItem3 : TMenuItem;
     mniMainRoot : TMenuItem;
@@ -345,8 +348,8 @@ type
     mniCmdSendTo : TMenuItem;
     pnlCEdit : TPanel;
     pnlS : TPanel;
-    popCmdPasteCmdLine : TMenuItem;
-    popCmdPaste : TMenuItem;
+    mniCmdPasteCmdLine : TMenuItem;
+    mniCmdPaste : TMenuItem;
     popCmdLinePaste : TMenuItem;
     mniSearchFindCmdLine : TMenuItem;
     mniSearchGotoCmdLine : TMenuItem;
@@ -407,10 +410,10 @@ type
     popCmdLineDown: TMenuItem;
     popCmdLineUnDelete: TMenuItem;
     popCmdLIneDelete: TMenuItem;
-    popRevert: TMenuItem;
-    popPlusBrowse: TMenuItem;
-    popCommandUnDelete: TMenuItem;
-    popCommandDelete: TMenuItem;
+    mniRevert: TMenuItem;
+    mniCmdAdd: TMenuItem;
+    mniCommandUnDelete: TMenuItem;
+    mniCommandDelete: TMenuItem;
     popCommands: TPopupMenu;
     popCmdLines: TPopupMenu;
     popMain : TPopupMenu;
@@ -504,6 +507,7 @@ type
     procedure btnKeyWordDeleteClick(Sender: TObject);
     procedure btnLocationPathClick(Sender: TObject);
     procedure btnPkexecMainClick( Sender : TObject );
+    procedure btnReCenterClick( Sender : TObject );
     procedure btnRefreshFavoritesClick( Sender : TObject );
     procedure btnSortDetachedProcessesClick( Sender : TObject );
     procedure btnThreatLevelInfoClick(Sender: TObject);
@@ -569,7 +573,7 @@ type
     procedure popCmdLinesPopup(Sender: TObject);
     procedure popCommandsPopup(Sender: TObject);
     procedure popCmdLinePasteClick( Sender : TObject );
-    procedure popCmdPasteClick( Sender : TObject );
+    procedure mniCmdPasteClick( Sender : TObject );
     procedure popDblCPopup( Sender : TObject );
     procedure popGotoPopup( Sender : TObject );
     procedure popSearchCmdLinePopup( Sender : TObject );
@@ -724,7 +728,7 @@ type
     procedure CloseCancelRun;
     procedure SaveCurrentSearches;
     procedure SaveSearch( SO : TSearchObj );
-    procedure SelectProfile;
+    procedure SelectProfileToMergeTo;
     procedure SetActivePage( Page : TTabSheet );
     procedure SetUp_Edit_Structure;
     procedure SetUp_KeyBoardMenu_Structure;
@@ -741,7 +745,7 @@ type
     procedure UnassMemosKeyDown( Sender : TMemo; var Key : Word; const Shift : TShiftState );
     function Unsaved : boolean;
     procedure UpdateDetachedProcesses( const DisplayStr : string; aProcess : TAsyncProcess );
-    procedure UpdateDisplay( const Output : string; DoIndicate : boolean = true );
+    procedure UpdateDisplay( const Output : string; const DoIndicate, DoSetFocus : boolean );
     procedure UpdateDisplay_Internal( const Output : string; const DoIndicate : boolean );
     procedure UpdateLbCmdLines( const Idx: integer; SaveState: boolean = True );
     procedure UpdateLbCommands( const DoSave: boolean; TheIdx: integer = cUseItemIndexFlag );
@@ -911,7 +915,10 @@ const
   cArrowKeymemEntry     = 500003;
   cArrowKeymemNotesLine = 500004;
   cArrowKeyMemo1        = 500005;
-
+  cArrowKeySearchCmd             = 500006;
+  cArrowKeySearchCmdLine         = 500007;
+  cArrowKeyDetachedProcesses     = 500008;
+  cArrowKeymemDetachedProcesses  = 500009;
 
   cCurrKWFileName = '.CurrKWSearch';
   cCurrSearchFileName = '.CurrSearch';
@@ -1751,14 +1758,9 @@ begin
 end;
 
 procedure TfrmMain.MoveBetweenMajorAreas( aTag : integer; const Key : Word );
-
-  procedure TryFocus( aControl : TWinControl );
-  begin
-    if aControl.Canfocus then
-      aControl.Setfocus;
-  end;
-
 begin
+
+//someday when refactoring probably could be a cool structure that would make this easier.
   case aTag of
     cArrowKeyCommands :
       case Key of
@@ -1807,27 +1809,73 @@ begin
         VK_LEFT :  TryFocus( memEntry );
       end;
     cArrowKeyMemo1 :
+      begin
+        if nbCommands.ActivePage = tsCommands then
+          case Key of
+            VK_RIGHT :
+              if lbCommands.Canfocus then
+                TryFocus( lbCommands )
+              else if EditingCmd then
+                TryFocus( memNotes )
+              else if EditingCL then
+                TryFocus( memEntry )
+              else TryFocus( lbCmdLines );
+            VK_LEFT :
+              if EditingCL then
+                TryFocus( memNotesLine )
+              else TryFocus( lbCmdLines );
+          end
+        else if nbCommands.ActivePage = tsDetachedProcesses then
+          case Key of
+            VK_RIGHT : TryFocus( lbDetachedProcesses );
+            VK_LEFT :  TryFocus( memDetachedProcesses );
+          end
+        else
+          case Key of
+            VK_RIGHT : TryFocus( lbSearchCmd );
+            VK_LEFT :  TryFocus( lbSearchCmdLine );
+          end;
+      end;
+    cArrowKeySearchCmd :
       case Key of
-        VK_RIGHT :
-          if lbCommands.Canfocus then
+        VK_RIGHT : TryFocus( lbSearchCmdLine );
+        VK_LEFT :  TryFocus( Memo1 );
+      end;
+    cArrowKeySearchCmdLine :
+      case Key of
+        VK_RIGHT : TryFocus( Memo1 );
+        VK_LEFT : TryFocus( lbSearchCmd );
+      end;
+    cArrowKeyDetachedProcesses :
+      case Key of
+        VK_RIGHT : TryFocus( memDetachedProcesses );
+        VK_LEFT : TryFocus( Memo1 );
+      end;
+    cArrowKeymemDetachedProcesses :
+      case Key of
+        VK_RIGHT : TryFocus( Memo1 );
+        VK_LEFT : TryFocus( lbDetachedProcesses );
+      end;
+
+    else
+      begin
+        if nbCommands.ActivePage = tsCommands then
+        begin
+          if lbCommands.CanFocus then
             TryFocus( lbCommands )
-          else if EditingCmd then
-            TryFocus( memNotes )
           else if EditingCL then
             TryFocus( memEntry )
           else TryFocus( lbCmdLines );
-        VK_LEFT :
-          if EditingCL then
-            TryFocus( memNotesLine )
-          else TryFocus( lbCmdLines );
+        end
+        else if nbCommands.ActivePage = tsDetachedProcesses then
+        begin
+          TryFocus( lbDetachedProcesses );
+        end
+        else TryFocus( lbSearchCmd );
+
       end;
-    else
-      if lbCommands.CanFocus then
-        TryFocus( lbCommands )
-      else if EditingCL then
-        TryFocus( memEntry )
-      else TryFocus( lbCmdLines );
   end;
+
 end;
 
 procedure TfrmMain.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -2075,7 +2123,7 @@ begin
 
       if FIsInitialized and ( SpecialComms <> '' ) then
       begin
-        UpdateDisplay( trim( SpecialComms ) + LineEnding, false );
+        UpdateDisplay( trim( SpecialComms ) + LineEnding, false, false );
         SpecialComms := '';
       end;
 
@@ -2698,7 +2746,7 @@ begin
         end;
       VK_V :
         if assigned( ClipCLO ) then
-          popCmdPasteCmdLine.Click;
+          mniCmdPasteCmdLine.Click;
       VK_DELETE, VK_OEM_MINUS, VK_SUBTRACT :
         if btnCommandUnDelete.Enabled then
           btnCommandUnDelete.Click;
@@ -3309,12 +3357,12 @@ end;
 
 procedure TfrmMain.mniCmdCountClick( Sender : TObject );
 begin
-  UpdateDisplay( mniCmdCount.Caption + ': ' + inttostr( lbCommands.Items.Count ), false );
+  UpdateDisplay( mniCmdCount.Caption + ': ' + inttostr( lbCommands.Items.Count ), false, false );
 end;
 
 procedure TfrmMain.mniCmdSendToClick( Sender : TObject );
 begin
-  SelectProfile;
+  SelectProfileToMergeTo;
 end;
 
 procedure TfrmMain.mniCopyCLListClipClick( Sender : TObject );
@@ -3400,12 +3448,17 @@ begin
   mniDblCDetPInfo.Tag := cmniDblCDetPInfo;
   mniDblCDisplay.Tag := cmniDblCDisplay;
 
+//arrow movement tags
   lbCommands.Tag := cArrowKeyCommands;
   memNotes.Tag := cArrowKeymemNotes;
   lbCmdLines.Tag := cArrowKeyCmdLines;
   memEntry.Tag := cArrowKeymemEntry;
   memNotesLine.Tag := cArrowKeymemNotesLine;
   Memo1.Tag := cArrowKeyMemo1;
+  lbSearchCmd.Tag := cArrowKeySearchCmd;
+  lbSearchCmdLine.Tag := cArrowKeySearchCmdLine;
+  lbDetachedProcesses.Tag := cArrowKeyDetachedProcesses;
+  memDetachedProcesses.Tag := cArrowKeymemDetachedProcesses;
 
 end;
 
@@ -3672,13 +3725,13 @@ end;
 procedure TfrmMain.UpdateDisplay_Internal( const Output : string; const DoIndicate : boolean );
 begin
   fUpdateDisplayOffsetFlag := true;
-  //needs serious love but not now. There are two very hard to find/manage LineEnding's out from OUTPUT routine
+  //needs love but not now. There are two very hard to find/manage LineEnding's out from OUTPUT routine
   //and that makes the adjustment inexact. Hence, + 2
   fUpdateDisplayOffset := length( Output ) + 2;
-  UpdateDisplay( Output, DoIndicate );
+  UpdateDisplay( Output, DoIndicate, false );
 end;
 
-procedure TfrmMain.UpdateDisplay( const Output : string; DoIndicate : boolean = true );
+procedure TfrmMain.UpdateDisplay( const Output : string; const DoIndicate, DoSetFocus : boolean );
 var
   NumLines : Int64;
   GoToPos : Integer;
@@ -3723,7 +3776,7 @@ begin
     fUpdateDisplayOffset := 0;
   end;
 
-  if FIsInitialized and Memo1.CanFocus then
+  if FIsInitialized and DoSetFocus and Memo1.CanFocus then
     Memo1.SetFocus;
 
   NumLines := trunc( memo1.Height / memo1.Font.GetTextHeight( 'X' ) );
@@ -3738,7 +3791,7 @@ begin
   begin
     fSearchMayHaveChanged := false;
     if ( fKeyWordSR.Count > 0 ) or ( fSearchSR.Count > 0 ) then
-      UpdateDisplay( cAttnBar + cmsgSearchMayBeInvalid + cAttnBar );
+      UpdateDisplay( cAttnBar + cmsgSearchMayBeInvalid + cAttnBar, true, false );
   end;
 end;
 
@@ -3866,9 +3919,11 @@ begin
 
   actPlus.Enabled := NoShow and InfoServer.IsInitialized and not BadDB;
 
-  popCmdPaste.Enabled := assigned( ClipCO );
-  popCmdPasteCmdLine.Enabled := assigned( ClipCLO );
+  mniCmdPaste.Enabled := assigned( ClipCO );
+  mniCmdPasteCmdLine.Enabled := assigned( ClipCLO );
   actFindCmd.Enabled := ( lbCommands.Items.Count > 1 );
+  mniCmdSortcommands.Caption := btnSortCommands.Caption;
+  mniCmdReCenter.Caption := btnReCenter.Caption;
 
   if InvalidCommands then
   begin
@@ -3897,7 +3952,7 @@ begin
   DuplicateCmdLine( ClipCLO );
 end;
 
-procedure TfrmMain.popCmdPasteClick( Sender : TObject );
+procedure TfrmMain.mniCmdPasteClick( Sender : TObject );
 begin
   DuplicateCmd( ClipCO );
 end;
@@ -4662,13 +4717,13 @@ begin
 {$IFNDEF Release}
   if SL.Count < 2 then
   begin
-    UpdateDisplay( 'TfrmMain.GetHelpOutput: Developer. Malformed Help request.', false );
+    UpdateDisplay( 'TfrmMain.GetHelpOutput: Developer. Malformed Help request.', false, false );
     exit;
   end;
 {$ENDIF}
   if trim( SL[ 1 ] ) = '' then
   begin
-    UpdateDisplay( format( cmsgcleNoHelpParam, [ SL[ 0 ] ] ), false );
+    UpdateDisplay( format( cmsgcleNoHelpParam, [ SL[ 0 ] ] ), false, false );
     exit;
   end;
 //needs to be a separate section for help's because of remote calls
@@ -4733,7 +4788,7 @@ begin
     begin
       if Path = cmsgcleBadPath then
       begin
-        UpdateDisplay( format( cFileNotExist, [ Cmd ] ) );
+        UpdateDisplay( format( cFileNotExist, [ Cmd ] ), true, false );
         exit;
       end;
       if not IsFileExist( Path + Cmd, true ) then
@@ -4742,7 +4797,7 @@ begin
       SL.Add( Help )
     end;
 
-    UpdateDisplay( GetHelpOutput( SL ) );
+    UpdateDisplay( GetHelpOutput( SL ), true, true );
 
   finally
     SL.free;
@@ -4768,6 +4823,12 @@ end;
 procedure TfrmMain.btnPkexecMainClick( Sender : TObject );
 begin
   memEntry.Text := TogglePkexec( memEntry.Text );
+end;
+
+procedure TfrmMain.btnReCenterClick( Sender : TObject );
+begin
+  TryFocus( lbCommands );
+  lbCommands.MakeCurrentVisible;
 end;
 
 procedure TfrmMain.btnRefreshFavoritesClick( Sender : TObject );
@@ -4881,7 +4942,7 @@ begin
 
   if Ver = '' then
   begin
-    UpdateDisplay( format( cmsgNoVersionFlagSpecified, [ GetProperCmdNameCaption, cmsgHelpVersionInfoVersion ] ) );
+    UpdateDisplay( format( cmsgNoVersionFlagSpecified, [ GetProperCmdNameCaption, cmsgHelpVersionInfoVersion ] ), true, false );
     exit;
   end;
 
@@ -4894,7 +4955,7 @@ begin
   begin
     if Path = cmsgcleBadPath then
     begin
-      UpdateDisplay( format( cFileNotExist, [ Cmd ] ) );
+      UpdateDisplay( format( cFileNotExist, [ Cmd ] ), true, false );
       exit;
     end;
     CmdStr := Path + Cmd;
@@ -4906,7 +4967,7 @@ begin
   if not CanRunCmdLine( CmdStr, 0, false ) then
     exit;
 
-  UpdateDisplay( RunCmdLine( CmdStr, false, false, false ) );
+  UpdateDisplay( RunCmdLine( CmdStr, false, false, false ), true, true );
 
 end;
 
@@ -5304,6 +5365,7 @@ begin
 
   Idx := lbCommands.Items.AddObject('<>', NewCmdObj);
   lbCommands.ItemIndex := Idx;
+  fLastlbCmdLinesIdx := -1;
 
   RefreshCmdObj;
 
@@ -5535,14 +5597,15 @@ begin
             UpdateDisplay( format( cmsgSQLiteLibNotFound, [ fSqliteLibrary ] )
                            + LineEnding + LineEnding
                            + cmsgSqlLibNotFound,
+                           false,
                            false );
             if MsgStr <> '' then
-              UpdateDisplay( MsgStr, false );
+              UpdateDisplay( MsgStr, false, false );
 
             MsgDlgMessage( ccapOptSqliteSearch, cmsgOptSqliteSearch );
             if MsgDlgConfirmation( self ) = mrYes then
               if CanRunCmdLine( cSqliteLocateCommand, 0, false ) then
-                UpdateDisplay( RunCmdLine( cSqliteLocateCommand, false, false, false ), false );
+                UpdateDisplay( RunCmdLine( cSqliteLocateCommand, false, false, false ), false, true );
             end;
           WriteString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, fSqliteLibrary );
         end;
@@ -5576,7 +5639,7 @@ begin
       begin
         WritePathOverride( lblBaseFolder.Caption );
         MyShowmessage( cOutPutChangedBaseFolder, self );
-        UpdateDisplay( cOutPutChangedBaseFolder, false );
+        UpdateDisplay( cOutPutChangedBaseFolder, false, true );
       end;
 
     finally
@@ -5588,7 +5651,7 @@ end;
 procedure TfrmMain.actOutPutClearExecute( Sender : TObject );
 begin
   fDisplayOutPut.Clear;
-  UpdateDisplay( format( cmsgDisplayOutputCleared, [ TimeToStr( now ) ] ), false );
+  UpdateDisplay( format( cmsgDisplayOutputCleared, [ TimeToStr( now ) ] ), false, false );
 end;
 
 procedure TfrmMain.actOutPutCopyExecute( Sender : TObject );
@@ -5711,7 +5774,7 @@ begin
   nbCommandsChange( nbCommands );
 end;
 
-procedure TfrmMain.SelectProfile;
+procedure TfrmMain.SelectProfileToMergeTo;
 begin
 
   if InvalidCommands then
@@ -5736,6 +5799,7 @@ begin
         UpdateDisplay( MergeOne( CmdObj,
                                  fProfileName
                                  + strif( fUseDB, cDefaultDBProfileIsDBStr, cDefaultDBProfileIsDBStrNot ) ),
+                                 false,
                                  false );
     finally
       Free;
@@ -5777,7 +5841,7 @@ begin
 {$IFNDEF RELEASE}
   if not DoSingleInput( ccapQuickRun, fLastQuickRun, simEdit, self, false ) then
     exit;
-  UpdateDisplay( RunCmdLine( fLastQuickRun, false, false, false ) );
+  UpdateDisplay( RunCmdLine( fLastQuickRun, false, false, false ), true, true );
   fIFS.WriteString( cSectTabFormSettings, cFormSettingsLastQuickRun, fLastQuickRun );
 {$ENDIF}
 end;
@@ -5800,7 +5864,9 @@ begin
                 lblDispEntry.Caption,
                 lblDispWantsInput.Visible,
                 lblDispUseShell.Visible,
-                lblDispDetachProcess.Visible )
+                lblDispDetachProcess.Visible ),
+                true,
+                true
                );
 end;
 
@@ -5866,7 +5932,7 @@ begin
 
     if not InfoServer.SaveAll then
     begin
-      UpdateDisplay( format( cmsgFailedSave, [ TimeToStr( now ) ] ), false );
+      UpdateDisplay( format( cmsgFailedSave, [ TimeToStr( now ) ] ), false, true );
       exit;
     end;
 
@@ -5877,7 +5943,7 @@ begin
       btnRefreshFavorites.Click
     else SetNotificationState( true, btnRefreshFavorites, shpRefreshFavorites );
 
-    UpdateDisplay( format( cmsgCommandsSaved, [ TimeToStr( now ) ] ), false );
+    UpdateDisplay( format( cmsgCommandsSaved, [ TimeToStr( now ) ] ), false, false );
 
     CheckSearchChange;
 
@@ -5890,12 +5956,12 @@ end;
 
 procedure TfrmMain.actSearchDisplayKeyCmdExecute( Sender : TObject );
 begin
-  UpdateDisplay( fKeyWordSO.GetAllExpressions );
+  UpdateDisplay( fKeyWordSO.GetAllExpressions, true, true );
 end;
 
 procedure TfrmMain.actSearchDisplaySearchExecute( Sender : TObject );
 begin
-  UpdateDisplay( fSearchSO.GetAllExpressions );
+  UpdateDisplay( fSearchSO.GetAllExpressions, true, true );
 end;
 
 procedure TfrmMain.actSearchFindCmdExecute( Sender : TObject );
@@ -6773,7 +6839,9 @@ begin
     RunCmdLine( RunStr,
                 cbWantsInputLine.Checked,
                 cbUseShellLine.Checked,
-                cbDetachProcessLine.Checked )
+                cbDetachProcessLine.Checked ),
+                true,
+                true
                );
 
 end;
@@ -7055,6 +7123,7 @@ begin
     UpdateDisplay( format( cmsgFirstLocalRun, [ cmsgFormHotKeys ] )
                    + LineEnding + LineEnding
                    + cmsgOwnRisk,
+                   false,
                    false );
 
   OpeningState := DatetoStr( now ) + ' >>  ' + lblCurrDB.Caption
@@ -7067,13 +7136,15 @@ begin
     + LineEnding
     ;
 
-  UpdateDisplay( OpeningState, false );
+  UpdateDisplay( OpeningState, false, false );
 
   if SpecialComms <> '' then
-    UpdateDisplay( trim( SpecialComms) + LineEnding, false );
+    UpdateDisplay( trim( SpecialComms) + LineEnding, false, false );
   SpecialComms := '';
 
   RefreshCap;
+
+  Memo1.SelStart := 1;
 
   if lbCommands.CanFocus then
     lbCommands.SetFocus;
