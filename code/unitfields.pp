@@ -50,7 +50,7 @@ type
     fColumnName: string;
     fDoUpdate: boolean;
     procedure SetColumnName(AValue: string);
-    procedure SetDoUpdate(AValue: boolean);
+    //procedure SetDoUpdate(AValue: boolean);
     procedure SeTFieldType( AValue : TufFieldType );
     procedure SetIsInternal( AValue : boolean );
 
@@ -67,7 +67,9 @@ type
     procedure LoadSQLValue( const Idx : integer ); virtual; abstract;
 
     //runtime
-    property DoUpdate: boolean read fDoUpdate write SetDoUpdate;
+//CLIndex_Display
+    //property DoUpdate: boolean read fDoUpdate write SetDoUpdate;
+    property DoUpdate: boolean read fDoUpdate write fDoUpdate;
     property ColumnName: string read fColumnName write SetColumnName;
     property FieldType : TufFieldType read fFieldType write SeTFieldType;
     property IsInternal : boolean read fIsInternal write SetIsInternal;
@@ -246,7 +248,7 @@ procedure TCOFieldDouble.SetValue( AValue : Double );
 begin
   if fValue = AValue then Exit;
   fValue := AValue;
-  DoUpdate := True;
+  fDoUpdate := True;
 end;
 
 constructor TCOFieldDouble.Create( aOwner : TObject; const aColumnName : string );
@@ -281,7 +283,7 @@ begin
     fValue := TBaseCmdObj( fBaseCmdObj ).DBServer.QueryVal( ColumnName )
 //external query from search result, inefficient but in theory it's just a single obj load, not a list
   else fValue :=  TBaseCmdObj( fBaseCmdObj ).DBServer.GetFieldValue( ColumnName, inttostr( Idx ) );
-  DoUpdate := false;
+  fDoUpdate := false;
 end;
 
 
@@ -362,7 +364,7 @@ begin
     fValue := DecodeString( TBaseCmdObj( fBaseCmdObj ).DBServer.QueryVal( ColumnName ) )
   //external query from search result, inefficient but in theory it's just a single obj load, not a list
   else fValue := DecodeString( TBaseCmdObj( fBaseCmdObj ).DBServer.GetFieldValue( ColumnName, inttostr( Idx ) ) );
-  DoUpdate := false;
+  fDoUpdate := false;
 end;
 
 function TCOFieldString.SaveINIValue: boolean;
@@ -462,7 +464,7 @@ begin
   if fValue = AValue then
     Exit;
   fValue := AValue;
-  DoUpdate := True;
+  fDoUpdate := True;
 end;
 
 function TCOFieldInteger.GetSQLSaveFieldValuePair: boolean;
@@ -476,7 +478,7 @@ begin
     fValue := TBaseCmdObj( fBaseCmdObj ).DBServer.QueryVal( ColumnName )
 //external query from search result, inefficient but in theory it's just a single obj load, not a list
   else fValue :=  TBaseCmdObj( fBaseCmdObj ).DBServer.GetFieldValue( ColumnName, inttostr( Idx ) );
-  DoUpdate := false;
+  fDoUpdate := false;
 end;
 
 function TCOFieldInteger.SaveINIValue: boolean;
@@ -508,7 +510,7 @@ begin
   if fValue = AValue then
     Exit;
   fValue := AValue;
-  DoUpdate := True;
+  fDoUpdate := True;
 end;
 
 
@@ -523,7 +525,7 @@ begin
     fValue := TBaseCmdObj( fBaseCmdObj ).DBServer.QueryVal( ColumnName )
 //external query from search result, inefficient but in theory it's just a single obj load, not a list
   else fValue :=  TBaseCmdObj( fBaseCmdObj ).DBServer.GetFieldValue( ColumnName, inttostr( Idx ) );
-  DoUpdate := false;
+  fDoUpdate := false;
 end;
 
 function TCOFieldEnum.SaveINIValue: boolean;
@@ -555,7 +557,7 @@ begin
   if fValue = AValue then
     Exit;
   fValue := AValue;
-  DoUpdate := True;
+  fDoUpdate := True;
 end;
 
 function TCOFieldBoolean.GetSQLSaveFieldValuePair: boolean;
@@ -570,7 +572,7 @@ begin
     fValue := TBaseCmdObj( fBaseCmdObj ).DBServer.QueryVal( ColumnName ) <> 0
 //external query from search result, inefficient but in theory it's just a single obj load, not a list
   else fValue :=  TBaseCmdObj( fBaseCmdObj ).DBServer.GetFieldValue( ColumnName, inttostr( Idx ) ) <> 0;
-  DoUpdate := false;
+  fDoUpdate := false;
 end;
 
 function TCOFieldBoolean.SaveINIValue: boolean;
@@ -639,12 +641,12 @@ begin
   fColumnName := AValue;
 end;
 
-procedure TCOField.SetDoUpdate(AValue: boolean);
-begin
-  if FDoUpdate = AValue then
-    Exit;
-  fDoUpdate := AValue;
-end;
+//procedure TCOField.SetDoUpdate(AValue: boolean);
+//begin
+//  if FDoUpdate = AValue then
+//    Exit;
+//  fDoUpdate := AValue;
+//end;
 
 procedure TCOField.SeTFieldType( AValue : TufFieldType );
 begin
@@ -661,13 +663,15 @@ end;
 function TCOField.GetSQLSaveFieldValuePairInternal( const aValue : string ) : boolean;
 begin
   Result := False;
-  if not DoUpdate or IsInternal then
+  if not fDoUpdate or IsInternal then
     exit;
 
   TBaseCmdObj( fBaseCmdObj ).SaveFieldNameSL.Add( fColumnName );
   TBaseCmdObj( fBaseCmdObj ).SaveFieldValueSL.Add( aValue );
 
   Result := True;
+////clIndex_Display
+//  fDoUpdate := false;
 
 end;
 
@@ -676,7 +680,7 @@ begin
 
   Result := False;
 
-  if not DoUpdate then
+  if not fDoUpdate then
     exit;
 
   case fFieldType of
@@ -692,7 +696,7 @@ begin
       raise EErrorCOField.Create('Unknown FieldType in TCOField.SaveINIValueBase');
   end;
 
-  DoUpdate := false;
+  fDoUpdate := false;
   Result := True;
 
 end;
@@ -712,7 +716,7 @@ begin
     else
       raise EErrorCOField.Create('Unknown FieldType in TCOField.LoadINIValueBase');
   end;
-  DoUpdate := false;
+  fDoUpdate := false;
 
 end;
 

@@ -159,6 +159,10 @@ const
    + LineEnding + LineEnding
    ;
 
+  cArrowKeymemCmdLine       = 500000;
+  cArrowKeyedtOutputRefresh = 500001;
+  cArrowKeymemOutput        = 500002;
+
 { TfrmCmdLineEdit }
 
 procedure TfrmCmdLineEdit.UpdateMemOutPut( const ToAdd : string );
@@ -421,16 +425,41 @@ begin
   FHasShown := false;
   FIsInitialized := false;
   fFindText := nil;
+  memCmdLine.Tag := cArrowKeymemCmdLine;
+  edtOutputRefresh.Tag := cArrowKeyedtOutputRefresh;
+  memOutput.Tag := cArrowKeymemOutput;
+
 end;
 
 procedure TfrmCmdLineEdit.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   if Shift = [ ssShift, ssCtrl ] then
-  begin
-    if key = VK_F then
-      FindInMemo;
-    if key = VK_L then
-      fFindText.ReFindinMemo( memOutput );
+  case key of
+    VK_LEFT, VK_RIGHT :
+      if assigned( self.ActiveControl ) then
+      begin
+        case self.ActiveControl.Tag of
+          cArrowKeymemCmdLine :
+            case Key of
+              VK_RIGHT : TryFocus( edtOutputRefresh );
+              VK_LEFT : TryFocus( memOutput );
+            end;
+          cArrowKeyedtOutputRefresh :
+            case Key of
+              VK_RIGHT : TryFocus( memOutput );
+              VK_LEFT : TryFocus( memCmdLine );
+            end;
+          cArrowKeymemOutput :
+            case Key of
+              VK_RIGHT : TryFocus( memCmdLine );
+              VK_LEFT : TryFocus( edtOutputRefresh );
+            end;
+          else TryFocus( memCmdLine );
+        end;
+        Key := VK_UNKNOWN;
+      end;
+    VK_F : FindInMemo;
+    VK_L : fFindText.ReFindinMemo( memOutput );
   end;
 end;
 

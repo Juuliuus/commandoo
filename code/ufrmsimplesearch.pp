@@ -209,7 +209,10 @@ resourcestring
     + '<end>'
     ;
 
-
+const
+  cArrowKeymemSearchValue  = 500000;
+  cArrowKeymemSearchValue1 = 500001;
+  cArrowKeymemSearchValue2 = 500002;
 
 { TfrmSimpleSearch }
 
@@ -223,6 +226,10 @@ begin
     HandleFormSettings( sdLoad );
     btnSSOK.caption := cObjlblGo;
     FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
+
+    memSearchValue.Tag  := cArrowKeymemSearchValue;
+    memSearchValue1.Tag := cArrowKeymemSearchValue1;
+    memSearchValue2.Tag := cArrowKeymemSearchValue2;
 
     FHasShown := true;
   end;
@@ -672,7 +679,38 @@ begin
   //if key = vk_return then
   //  Key := VK_UNKNOWN;
   if key = VK_ESCAPE then
+  begin
     btnSSCancel.Click;
+    exit;
+  end;
+
+  if Shift = [ ssShift, ssCtrl ] then
+  case key of
+    VK_LEFT, VK_RIGHT :
+      if assigned( self.ActiveControl ) then
+      begin
+        case self.ActiveControl.Tag of
+          cArrowKeymemSearchValue :
+            case Key of
+              VK_RIGHT : TryFocus( memSearchValue1 );
+              VK_LEFT : TryFocus( memSearchValue2 );
+            end;
+          cArrowKeymemSearchValue1 :
+            case Key of
+              VK_RIGHT : TryFocus( memSearchValue2 );
+              VK_LEFT : TryFocus( memSearchValue );
+            end;
+          cArrowKeymemSearchValue2 :
+            case Key of
+              VK_RIGHT : TryFocus( memSearchValue );
+              VK_LEFT : TryFocus( memSearchValue1 );
+            end;
+          else TryFocus( memSearchValue );
+        end;
+        Key := VK_UNKNOWN;
+      end;
+  end;
+
 end;
 
 end.

@@ -102,7 +102,7 @@ object frmBoolExpr: TfrmBoolExpr
     Font.Height = -16
     OnChange = cbCmdCompactViewChange
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 9
   end
   object pnlDoCopy: TPanel
     Tag = 1
@@ -166,7 +166,7 @@ object frmBoolExpr: TfrmBoolExpr
     Action = actCmd_NOT_Toggle
     Font.Height = -16
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 3
   end
   object btnCmd_Delete: TButton
     Tag = 1
@@ -178,7 +178,7 @@ object frmBoolExpr: TfrmBoolExpr
     Font.Color = 2697673
     Font.Height = -25
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 4
   end
   object btnCmd_Exchange: TButton
     Tag = 1
@@ -189,7 +189,7 @@ object frmBoolExpr: TfrmBoolExpr
     Action = actCmd_Exchange
     Font.Height = -16
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 5
   end
   object btnCmd_Paren_Add: TButton
     Tag = 1
@@ -200,7 +200,7 @@ object frmBoolExpr: TfrmBoolExpr
     Action = actCmd_Paren_Add
     Font.Height = -16
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 6
   end
   object btnCmd_Paren_L_Move: TButton
     Tag = 1
@@ -211,7 +211,7 @@ object frmBoolExpr: TfrmBoolExpr
     Action = actCmd_Paren_L_Move
     Font.Height = -16
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 7
   end
   object btnCmd_Paren_R_Move: TButton
     Tag = 1
@@ -222,7 +222,7 @@ object frmBoolExpr: TfrmBoolExpr
     Action = actCmd_Paren_R_Move
     Font.Height = -16
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 8
   end
   object btnCmdCopy: TButton
     Tag = 1

@@ -106,7 +106,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Width = 310
     Anchors = [akTop, akRight]
     AutoFill = True
-    Caption = 'cgCmd'
+    Caption = 'DNT cgCmd'
     ChildSizing.LeftRightSpacing = 6
     ChildSizing.TopBottomSpacing = 6
     ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
@@ -126,7 +126,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     Width = 310
     Anchors = [akTop, akRight]
     AutoFill = True
-    Caption = 'cgCmdLine'
+    Caption = 'DNT cgCmdLine'
     ChildSizing.LeftRightSpacing = 6
     ChildSizing.TopBottomSpacing = 6
     ChildSizing.EnlargeHorizontal = crsHomogenousChildResize

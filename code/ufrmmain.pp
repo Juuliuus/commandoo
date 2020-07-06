@@ -43,6 +43,8 @@ uses
 
 const
   cUseItemIndexFlag = -2;
+//CLIndex_Display
+  cUseCmdObjIndexFlag = 1000;
 
 type
 
@@ -671,7 +673,6 @@ type
     procedure FindItem( TheLB : TListBox );
     procedure BlankCommand;
     procedure CmdObjToForm( aCmdObj : TCmdObj; CLOIdx : integer = cUseItemIndexFlag );
-    procedure ForcePaintingrefresh;
     procedure FormToCmdObj( aCmdObj: TCmdObj );
     procedure ClearCmdLineDisps;
     procedure BlankCmdLine;
@@ -2615,8 +2616,7 @@ begin
 
   btnRefreshFavorites.Click;
   LoadCurrentSearches;
-  if lbCommands.CanFocus then
-    lbCommands.SetFocus;
+  TryFocus( lbCommands );
   UpdateMainActions;
 
 end;
@@ -2662,7 +2662,11 @@ begin
     end
     else CmdObj := TCmdObj( lbCommands.Items.Objects[ anIdx ] );
 
+    //if CLOIdx = cUseCmdObjIndexFlag then
+    //  CmdObjToForm( CmdObj, CmdObj.CLIndex_Display )
+    //else
     CmdObjToForm( CmdObj, CLOIdx );
+
     UpdateLbCommands( False, AnIdx );
 
   finally
@@ -2680,6 +2684,9 @@ begin
 //Clicked same entry
     exit;
 
+  //if assigned( CmdObj ) then
+  //  CmdObj.CLIndex_Display := lbCmdLines.ItemIndex;
+
   BlankCmdLine;
   BlankCommand;
   CmdObj := nil;
@@ -2687,6 +2694,7 @@ begin
   if InvalidCommands( False ) then
     exit;
 
+  //RefreshCmdObj( cUseCmdObjIndexFlag );
   RefreshCmdObj;
 
   fLastlbCommandsIdx := lbCommands.ItemIndex;
@@ -3488,10 +3496,8 @@ begin
       else lbCmdLinesDblClick( lbCmdLines );
     cmniDblCCmdLineFriendly :
       if EditingCL then
-      begin
-        if edtFriendlyNameLine.CanFocus then
-          edtFriendlyNameLine.SetFocus;
-      end else lblDispEntryDblClick( lblFriendlyNameLineDisp );
+        TryFocus( edtFriendlyNameLine )
+      else lblDispEntryDblClick( lblFriendlyNameLineDisp );
     cmniDblCCmdLineNotes :
       if EditingCL then
         Memo1DblClick( memNotesLine )
@@ -3518,12 +3524,6 @@ var
   begin
     if nbCommands.ActivePage <> aTab then
       SetActivePage( aTab );
-  end;
-
-  procedure SetTheFocus( cont : TWinControl );
-  begin
-    if cont.CanFocus then
-      cont.SetFocus;
   end;
 
 begin
@@ -3557,10 +3557,10 @@ begin
   end;
 
   case menuIdx of
-    cmniMainCommands : SetTheFocus( lbCommands );//
-    cmniMainDisplay : SetTheFocus( Memo1 );
+    cmniMainCommands : TryFocus( lbCommands );//
+    cmniMainDisplay : TryFocus( Memo1 );
     cmniMainFindOutput : FindInMemo( Memo1 );
-    cmniMainCommandLines : SetTheFocus( lbCmdLines );
+    cmniMainCommandLines : TryFocus( lbCmdLines );
     cmniMainFindCmdNotes :
       if EditingCmd then
         FindInMemo( memNotes )
@@ -3570,14 +3570,14 @@ begin
         FindInMemo( memNotesLine )
       else FindInMemo( memNotesLineDisp );
     cmniMainCmdNameEdit : lblCommandNameDblClick( Self );
-    cmniMainCmdNotes : SetTheFocus( memNotes );
-    cmniMainCmdLineEntry : SetTheFocus( memEntry );
-    cmniMainCmdLineNotes : SetTheFocus( memNotesLine );
+    cmniMainCmdNotes : TryFocus( memNotes );
+    cmniMainCmdLineEntry : TryFocus( memEntry );
+    cmniMainCmdLineNotes : TryFocus( memNotesLine );
     cmniMainCmdListFav, cmniMainCmdListKey, cmniMainCmdListSearch :
-      SetTheFocus( lbSearchCmd );
+      TryFocus( lbSearchCmd );
     cmniMainCmdLineFav, cmniMainCmdLineKey, cmniMainCmdLineSearch :
-      SetTheFocus( lbSearchCmdLine );
-    cmniMainProcs : SetTheFocus( lbDetachedProcesses );
+      TryFocus( lbSearchCmdLine );
+    cmniMainProcs : TryFocus( lbDetachedProcesses );
     cmniMainRun : if actRun.Enabled then actRun.Execute;
   end;
 
@@ -3684,8 +3684,7 @@ procedure TfrmMain.nbCommandsChange( Sender : TObject);
           lbSearchCmdLIne.Hint := cSearchHintGeneralCmdLine + cSearchHintKeyWords;
         end;
     end;
-    if lbSearchCmd.CanFocus then
-      lbSearchCmd.Setfocus;
+    TryFocus( lbSearchCmd );
   end;
 
 begin
@@ -3693,10 +3692,7 @@ begin
   UpdateNotebookCaptions;
 
   if nbCommands.ActivePage = tsCommands then
-  begin
-    if lbCommands.CanFocus then
-      lbCommands.SetFocus;
-  end
+    TryFocus( lbCommands )
   else if nbCommands.ActivePage = tsFavorites then
   begin
     DisplaySearchResults( fFavoritesSR, tsFavorites );
@@ -3715,10 +3711,7 @@ begin
     CheckSearchChange;
   end
   else if nbCommands.ActivePage = tsDetachedProcesses then
-  begin
-    if lbDetachedProcesses.CanFocus then
-      lbDetachedProcesses.SetFocus;
-  end;
+    TryFocus( lbDetachedProcesses );
 
 end;
 
@@ -3776,8 +3769,8 @@ begin
     fUpdateDisplayOffset := 0;
   end;
 
-  if FIsInitialized and DoSetFocus and Memo1.CanFocus then
-    Memo1.SetFocus;
+  if FIsInitialized and DoSetFocus then
+    TryFocus( Memo1 );
 
   NumLines := trunc( memo1.Height / memo1.Font.GetTextHeight( 'X' ) );
   if Memo1.CaretPos.Y > NumLines - 3 then
@@ -5102,18 +5095,15 @@ begin
 
   ToggleEditMode( aList, IsEdit );
   case TControl(Sender).Tag of
-    cEditButtonsCommandTag:
-      if memNotes.CanFocus then memNotes.SetFocus;
+    cEditButtonsCommandTag: TryFocus( MemNotes );
     cEditButtonsLineTag:
       if memEntry.Canfocus then
       begin
         memEntry.SelStart := length( memEntry.Lines.Text );
         memEntry.SetFocus;
       end;
-    cOKButtonCommandTag, cCancelButtonCommandTag :
-      if lbCommands.CanFocus then lbCommands.SetFocus;
-    cOKButtonLineTag, cCancelButtonLineTag :
-      if lbCmdLines.Canfocus then lbCmdLines.SetFocus;
+    cOKButtonCommandTag, cCancelButtonCommandTag : TryFocus( lbCommands );
+    cOKButtonLineTag, cCancelButtonLineTag : TryFocus( lbCmdLines );
   end;
 
   UpdateMainActions;
@@ -5465,12 +5455,6 @@ begin
   result := false;
   if ( Sender.ItemIndex > -1 ) and assigned( Sender.Items.Objects[ Sender.ItemIndex ] ) then
     Result := GoTo_Command( Sender );
-end;
-
-procedure TfrmMain.ForcePaintingrefresh;
-begin
-  fLastlbCommandsIdx := cUseItemIndexFlag;//-2;
-  lbCommandsClick( self );
 end;
 
 procedure TfrmMain.actOptionsExecute( Sender : TObject );
@@ -6894,14 +6878,8 @@ end;
 procedure TfrmMain.ReFocus_Edit_Memo( const IsCmd : boolean );
 begin
   if IsCmd then
-  begin
-    if memNotes.Canfocus then
-      memNotes.SetFocus;
-  end else
-  begin
-    if memEntry.Canfocus then
-      memEntry.SetFocus;
-  end;
+    TryFocus( memNotes )
+  else TryFocus( memEntry );
 end;
 
 
@@ -7146,8 +7124,7 @@ begin
 
   Memo1.SelStart := 1;
 
-  if lbCommands.CanFocus then
-    lbCommands.SetFocus;
+  TryFocus( lbCommands );
 
 end;
 
@@ -7259,8 +7236,7 @@ var
   MoveLeft , MoveUp: Integer;
 begin
 
-  if aMemo.Canfocus then
-    aMemo.Setfocus;
+  TryFocus( aMemo );
   with frmFindText do
   begin
     Memo := aMemo;

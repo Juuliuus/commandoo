@@ -58,6 +58,7 @@ type
     procedure FormActivate(Sender : TObject);
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCreate(Sender : TObject);
+    procedure FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure FormShow(Sender : TObject);
     procedure Timer1Timer( Sender : TObject );
   private
@@ -112,6 +113,10 @@ resourcestring
     + LineEnding + LineEnding
     + '<end> '
     ;
+
+const
+  cArrowKeyedtInput = 500000;
+  cArrowKeymemInfo  = 500001;
 
 
 procedure TfrmCommandsVar.FormShow(Sender : TObject);
@@ -305,6 +310,27 @@ begin
   fLastFile := '';
   fLastFolder := '';
   btnDone.Caption := cbtn_Done;
+  edtInput.Tag := cArrowKeyedtInput;
+  memInfo.Tag := cArrowKeymemInfo;
+end;
+
+procedure TfrmCommandsVar.FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+begin
+  //edtInput.Tag := cArrowKeyedtInput;
+  //memInfo.Tag := cArrowKeymemInfo;
+  if Shift = [ ssShift, ssCtrl ] then
+  case key of
+    VK_LEFT, VK_RIGHT :
+      if assigned( self.ActiveControl ) then
+      begin
+        case self.ActiveControl.Tag of
+          cArrowKeyedtInput : TryFocus( memInfo );
+          //cArrowKeymemInfo : TryFocus( edtInput );
+          else TryFocus( edtInput );
+        end;
+        Key := VK_UNKNOWN;
+      end;
+  end;
 end;
 
 end.
