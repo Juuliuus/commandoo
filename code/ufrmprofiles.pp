@@ -240,6 +240,24 @@ uses ufrmMsgDlg
   ;
 
 resourcestring
+
+  cmsgProfDB_MismatchConvertStr = 'convert';
+  cmsgProfDB_MismatchCompareStr = 'compare';
+  cmsgProfDB_MismatchMergeStr = 'merge';
+  ccapProfDB_Mismatch = 'DB Mismatch';
+  cmsgProfDB_MismatchConvert =
+    'Can not %s %s because it is DB version %d while the current commandoo version is %d.'
+    + LineEnding + LineEnding;
+  cmsgProfDB_MismatchCompare =
+    'Can not %s "%s" to "%s" because its version is %d and the other is %d (commandoo current DB version is %d).'
+    + LineEnding + LineEnding;
+  cmsgProfDB_MismatchSolution =
+    'commandoo only updates DB files when they are opened. It could be you''ve recently updated commandoo, '
+    + 'or have recieved an older DB from a colleague and imported it? Simply open (ie. switch to) '
+    + 'the DB in question first, which will automatically update it if needed. Then switch to '
+    + 'another DB and try the "%s" again. '
+    + LineEnding;
+
   ccapProfConvert = 'Convert';
   ccapProfCompare = 'Compare To';
   ccapProfMerge = 'Merge To';
@@ -821,6 +839,7 @@ var
   FromIS, DestIS : TInfoServer;
   SL : TStringList;
   FromDBSpec , ToDBSpec: String;
+  FromVer, ToVer : integer;
 
   function ServerInit( var anIS : TInfoServer; aPO : TProfileObj ) : boolean;
   begin
@@ -867,6 +886,28 @@ begin
       if not ServerInit( DestIS, ToPO ) then
         exit;
 
+      FromVer := FromIs.GetDBVersionUpgradeCount;
+      ToVer := DestIs.GetDBVersionUpgradeCount;
+
+      if ( FromVer <> c_DB_VersionUpgradeCount )
+         or ( ToVer <> c_DB_VersionUpgradeCount ) then
+      begin
+        msgdlgMessage( ccapProfDB_Mismatch,
+                       format( cmsgProfDB_MismatchCompare, [ cmsgProfDB_MismatchCompareStr,
+                                                             FromPO.fName,
+                                                             ToPO.fName,
+                                                             FromVer,
+                                                             ToVer,
+                                                             c_DB_VersionUpgradeCount
+                                                           ]
+                             )
+                       + format( cmsgProfDB_MismatchSolution, [ cmsgProfDB_MismatchCompareStr ] )
+                      );
+
+        msgdlgAttention( self );
+        exit;
+      end;
+
       FromDBSpec := format( DBSpecification, [ FromPO.Name, FromPO.Get_DBType ] );
       ToDBSpec := format( DBSpecification, [ ToPO.Name, ToPO.Get_DBType ] );
       SL.Add( format( cmsgComparing, [ FromDBSpec, ToDBSpec ] ) );
@@ -910,6 +951,7 @@ var
   FromPO : TProfileObj; //just pointer, no free
   ToPO : TProfileObj; //just poiner, no free;
   Str : String;
+  DBVer : integer;
 
   function ServerInit( var anIS : TInfoServer; Path, Name : string; DBType : boolean ) : boolean;
   begin
@@ -953,6 +995,23 @@ begin
 
     if not ServerInit( FromIS, FromPO.GetExpandedPath( ProgDefaultPath ), FromPO.fName, FromPO.fIsDB ) then
       exit;
+
+    DBVer := FromIs.GetDBVersionUpgradeCount;
+    if DBVer  <> c_DB_VersionUpgradeCount then
+    begin
+      msgdlgMessage( ccapProfDB_Mismatch,
+                     format( cmsgProfDB_MismatchConvert, [ cmsgProfDB_MismatchConvertStr,
+                                                           FromPO.fName,
+                                                           DBVer,
+                                                           c_DB_VersionUpgradeCount
+                                                         ]
+                           )
+                     + format( cmsgProfDB_MismatchSolution, [ cmsgProfDB_MismatchConvertStr ] )
+                    );
+
+      msgdlgAttention( self );
+      exit;
+    end;
 
     if not ServerInit( DestIS, FromPO.GetExpandedPath( ProgDefaultPath ), Str, not FromPO.fIsDB ) then
       exit;
@@ -1411,6 +1470,7 @@ var
   VerCmd, VerCmdLine, VerMisc : integer;
   Ini : TJinifile;
 
+
   procedure BuildTextDBSuccessMessage;
   var
     j : integer;
@@ -1677,7 +1737,7 @@ begin
         if not FixProfName( ProfName, cIniFileNameCommandLines ) then
           FixProfName( ProfName, cIniFileNameMisc );
 
-    end;
+    end; //else of: if isSql
 
     fLastPath := extractfilepath( aFile );
     TargetFolder := TfrmMain( Owner ).WritingToPath;
@@ -1793,6 +1853,7 @@ procedure TfrmProfiles.actMergeToExecute( Sender : TObject );
 var
   FromPO, ToPO: TProfileObj; //FromPO just pointer, no free
   FromIS, DestIS : TInfoServer;
+  FromVer, ToVer : integer;
 
   function ServerInit( var anIS : TInfoServer; aPO : TProfileObj ) : boolean;
   begin
@@ -1842,6 +1903,28 @@ begin
     if not ServerInit( DestIS, ToPO ) then
       exit;
 
+    FromVer := FromIs.GetDBVersionUpgradeCount;
+    ToVer := DestIs.GetDBVersionUpgradeCount;
+
+    if ( FromVer <> c_DB_VersionUpgradeCount )
+       or ( ToVer <> c_DB_VersionUpgradeCount ) then
+    begin
+      msgdlgMessage( ccapProfDB_Mismatch,
+                     format( cmsgProfDB_MismatchCompare, [ cmsgProfDB_MismatchMergeStr,
+                                                           FromPO.fName,
+                                                           ToPO.fName,
+                                                           FromVer,
+                                                           ToVer,
+                                                           c_DB_VersionUpgradeCount
+                                                         ]
+                           )
+                     + format( cmsgProfDB_MismatchSolution, [ cmsgProfDB_MismatchMergeStr ] )
+                    );
+
+      msgdlgAttention( self );
+      exit;
+    end;
+
 //======================================
 //command objects
 //======================================
@@ -1881,6 +1964,7 @@ function TfrmProfiles.MergeOne( CO : TCmdObj; Mergesource : string ) : string;
 var
   DestPO: TProfileObj; //just pointer, no free
   DestIS : TInfoServer;
+  DBVer : integer;
 
   function ServerInit( var anIS : TInfoServer ) : boolean;
   begin
@@ -1927,6 +2011,24 @@ begin
 
     if not ServerInit( DestIS ) then
       exit;
+
+    DBVer := DestIs.GetDBVersionUpgradeCount;
+
+    if ( DBVer <> c_DB_VersionUpgradeCount ) then
+    begin
+      msgdlgMessage( ccapProfDB_Mismatch,
+                     format( cmsgProfDB_MismatchConvert, [ cmsgProfDB_MismatchMergeStr + ' to',
+                                                           DestPO.fName,
+                                                           DBVer,
+                                                           c_DB_VersionUpgradeCount
+                                                         ]
+                           )
+                     + format( cmsgProfDB_MismatchSolution, [ cmsgProfDB_MismatchMergeStr ] )
+                    );
+
+      msgdlgAttention( self );
+      exit;
+    end;
 
     result := TCmdObj.MergeCommand( DestIS, CO, MergeSource );
 

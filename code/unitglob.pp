@@ -78,9 +78,6 @@ resourcestring
   ccapGenericDelete = 'Delete';
   ccapGenericClose = 'Close';
   ccapGenericCancel = 'Cancel';
-//Convert
-//Compare To
-//Merge To
 
 
 //Re-Used button captions to keep the translating less miserable
