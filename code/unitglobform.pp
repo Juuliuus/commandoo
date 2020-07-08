@@ -38,8 +38,6 @@ type
   TSettingsDirective = (sdSave, sdLoad );
 
 function StandardOutputHeader( const Cmd : string ) : string;
-function CanJumpToCommand( const CmdStr, CmdLineStr : string; LBCmd, LBCmdLIne : TListbox ) : boolean;
-function TryToFindEditedCommand( const CmdSearch : string; LBCmd : TListbox ) : integer;
 procedure ApplyChangeFont( AForm : TForm; AlwaysChange : boolean = false );
 procedure SetCapMenuButton( M : TMenuItem; B : TBitBtn; const Cap, Extra : string );
 procedure TryFocus( aControl : TWinControl );
@@ -125,74 +123,6 @@ begin
     + '______________________';
 end;
 
-procedure JumpToCommand( anIdx : integer; CmdLineStr : string; LBCmd, LBCmdLIne : TListbox );
-begin
-  LBCmd.ItemIndex := anIdx;
-  LBCmd.Click;
-  if not assigned( LBCmdLine ) then
-    exit;
-  anIdx := LBCmdLine.Items.IndexOf( CmdLineStr );
-  if anIdx > -1 then
-  begin
-    LBCmdLine.ItemIndex := anIdx;
-    LBCmdLine.Click;
-  end;
-
-end;
-
-function TryToFindEditedCommand( const CmdSearch : string; LBCmd : TListbox ) : integer;
-var
-  i : Integer;
-  aCmdObj : TCmdObj;
-begin
-  result := -1;
-  for i := LBCmd.Items.Count - 1 downto 0 do
-  begin
-    aCmdObj := TCmdObj( LBCmd.Items.Objects[ i ] );
-    if not Assigned(aCmdObj) then
-      continue;
-    if aCmdObj.DoUpdate then
-    begin
- //find entries like "<UPDATE> gimp'
-      if pos(' ' + CmdSearch, LBCmd.Items[ i ] ) > 0 then
-      begin
-        result := i;
-        break;
-      end;
-    end;
-  end;
-end;
-
-
-function CanJumpToCommand( const CmdStr, CmdLineStr : string; LBCmd, LBCmdLIne : TListbox ) : boolean;
-var
-  Idx : Integer;
-begin
-  result := false;
-  if not assigned( LBCmd ) then
-    exit;
-
-  if CmdStr <> '' then
-  begin
-
-    Idx := LBCmd.Items.IndexOf( CmdStr );
-
-    if Idx = -1 then
-    begin
-      Idx := TryToFindEditedCommand( CmdStr, LBCmd );
-      if Idx = -1 then
-      begin
-        MessageDlg( format( cmsggfCommandNotFound, [ CmdStr ] ), mtInformation, [mbOK], 0);
-        exit;
-      end;
-    end;
-
-    JumpToCommand( Idx, CmdLineStr, LBCmd, LBCmdLIne );
-    result := true;
-
-  end;
-
-end;
 
 //{ TListBoxHelper2 }
 //

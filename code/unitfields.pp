@@ -50,7 +50,7 @@ type
     fColumnName: string;
     fDoUpdate: boolean;
     procedure SetColumnName(AValue: string);
-    //procedure SetDoUpdate(AValue: boolean);
+    procedure SetDoUpdate(AValue: boolean);
     procedure SeTFieldType( AValue : TufFieldType );
     procedure SetIsInternal( AValue : boolean );
 
@@ -67,9 +67,7 @@ type
     procedure LoadSQLValue( const Idx : integer ); virtual; abstract;
 
     //runtime
-//CLIndex_Display
-    //property DoUpdate: boolean read fDoUpdate write SetDoUpdate;
-    property DoUpdate: boolean read fDoUpdate write fDoUpdate;
+    property DoUpdate: boolean read fDoUpdate write SetDoUpdate;
     property ColumnName: string read fColumnName write SetColumnName;
     property FieldType : TufFieldType read fFieldType write SeTFieldType;
     property IsInternal : boolean read fIsInternal write SetIsInternal;
@@ -641,12 +639,10 @@ begin
   fColumnName := AValue;
 end;
 
-//procedure TCOField.SetDoUpdate(AValue: boolean);
-//begin
-//  if FDoUpdate = AValue then
-//    Exit;
-//  fDoUpdate := AValue;
-//end;
+procedure TCOField.SetDoUpdate(AValue: boolean);
+begin
+  fDoUpdate := AValue;
+end;
 
 procedure TCOField.SeTFieldType( AValue : TufFieldType );
 begin
@@ -670,7 +666,10 @@ begin
   TBaseCmdObj( fBaseCmdObj ).SaveFieldValueSL.Add( aValue );
 
   Result := True;
-////clIndex_Display
+////On reviewing code I found that the below was not set. In this future that I live in, I'm not sure
+////if that was done purposely? Or I forgot to do it? I leave it as it is, but knowing that ResetUpdate
+////does not function properly, at least at the frmMain level (but that might have been due to looking at wrong
+////pointer???
 //  fDoUpdate := false;
 
 end;

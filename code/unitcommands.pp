@@ -37,6 +37,7 @@ uses
   , unitsharedobj
   , unitSearch
   , unitGlob
+  //, StdCtrls
   ;
 
 
@@ -510,6 +511,21 @@ type
 
   end;
 
+  { TCmdRec }
+
+  TCmdRec = class( TObject )
+  private
+    fCmd : TCmdObj;
+    fCLIndex : integer;
+    procedure SetCLIndex( AValue : integer );
+    procedure SetCmd( AValue : TCmdObj );
+  public
+    constructor Create;
+    destructor Destroy; override;
+    property Cmd : TCmdObj read fCmd write SetCmd;
+    property CLIndex : integer read fCLIndex write SetCLIndex;
+  end;
+
 
 var
   CmdObjHelper : TCmdObjHelper;
@@ -644,7 +660,6 @@ uses
   , controls
   , unitDBUtils
   ;
-
 
 { TCmdDisplayObj }
 
@@ -1747,7 +1762,7 @@ begin
       for i := 0 to CmdSL.Count - 1 do
       begin
         //process current list of displayed and EditState commands
-        aCmdObj := TCmdObj( CmdSL.Objects[ i ] );
+        aCmdObj := TCmdRec( CmdSL.Objects[ i ] ).Cmd;
 
         if not Assigned(aCmdObj) then
           continue;
@@ -1822,6 +1837,7 @@ end;
 
 destructor TCmdListObj.Destroy;
 begin
+
   if assigned(fListItemsSL) then
     FreeAndNil(fListItemsSL);
 
@@ -4387,6 +4403,35 @@ begin
 
   result := result or ( Info <> '' );
 
+end;
+
+{ TCmdRec }
+
+procedure TCmdRec.SetCLIndex( AValue : integer );
+begin
+  if fCLIndex = AValue then Exit;
+  fCLIndex := AValue;
+end;
+
+procedure TCmdRec.SetCmd( AValue : TCmdObj );
+begin
+  if fCmd = AValue then Exit;
+  fCmd := AValue;
+end;
+
+constructor TCmdRec.Create;
+begin
+  inherited;
+  fCmd := nil;
+  fCLIndex := -1;
+end;
+
+destructor TCmdRec.Destroy;
+begin
+  //if assigned( fCmd ) then
+  //  FreeAndNil( fCmd );
+  fCmd := nil;
+  inherited Destroy;
 end;
 
 

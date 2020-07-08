@@ -48,8 +48,6 @@ const
 
 type
 
-
-
   { TfrmMain }
 
   TfrmMain = class(TForm)
@@ -639,6 +637,10 @@ type
     fKeyWordSR : TStringList;
     fFavoritesSR : TStringList;
 
+    function GetCmdRec( const anIdx : integer = -1 ) : TCmdRec;
+    procedure JumpToCommand( anIdx : integer; CmdLineStr : string );
+    function CanJumpToCommand( const CmdStr, CmdLineStr : string ) : boolean;
+    function TryToFindEditedCommand( const CmdSearch : string ) : integer;
     procedure MoveBetweenMajorAreas( aTag : integer; const Key : Word );
     function CheckPathOverride(var ConPath : string ) : boolean;
     procedure WritePathOverride(const ConPath : string );
@@ -682,7 +684,7 @@ type
     function CheckUpdates_DB : boolean;
 
     procedure FreeCmdDisplayObjects( Strings : TStrings );
-    procedure FreeCommand( const ItemIdx : integer; DoBlank : boolean = true; NewIdx : integer = - 1 );
+    procedure FreeCommand( const ItemIdx : integer; const DoBlank, DoFullClear : boolean );
     procedure GetClipBoardItemVersion( LB : TListbox );
     procedure GetClipBoardListVersion( LB : TListbox );
     function GetNewCommand( const PreString : string; var ResultStr : string;
@@ -1086,10 +1088,17 @@ resourcestring
 
 { TfrmMain }
 
+function TfrmMain.GetCmdRec( const anIdx : integer = -1 ) : TCmdRec;
+begin
+  if anIdx = -1 then
+    Result := TCmdRec( lbCommands.Items.Objects[ lbCommands.ItemIndex ] )
+  else Result := TCmdRec( lbCommands.Items.Objects[ anIdx ] );
+end;
 
 procedure TfrmMain.ClearDBObjects( const IsNormal : boolean );
 var
   i : Integer;
+  CmdRec : TCmdRec;
 begin
 
   if IsNormal then
@@ -1114,10 +1123,15 @@ begin
 
   for i := 0 to lbCommands.Items.Count - 1 do
   begin
-    CmdObj := TCmdObj(lbCommands.Items.Objects[i]);
-    if not assigned(CmdObj) then
-      continue;
-    FreeAndNil(CmdObj);
+    CmdRec := TCmdRec( lbCommands.Items.Objects[ i ] );
+    if assigned( CmdRec.Cmd ) then
+    begin
+      CmdRec.Cmd.Free;
+      CmdRec.Cmd := nil;
+    end;
+    CmdRec := nil;
+    TCmdRec( lbCommands.Items.Objects[ i ] ).Free;
+    lbCommands.Items.Objects[ i ] := nil;
   end;
 
   BlankCommand;
@@ -1170,7 +1184,7 @@ begin
   end;
 
   TimerDetachedProcesses.Enabled := false;
-  //  lbCmdLines.Items := CmdLinesStringsPtr;
+
   for i := 0 to lbDetachedProcesses.Items.Count - 1 do
   begin
     if not assigned( lbDetachedProcesses.Items.Objects[ i ] ) then
@@ -2158,6 +2172,7 @@ end;
 procedure TfrmMain.LoadData;
 var
   SL: TStringList;
+  i : integer;
 begin
 
   SL := TStringList.Create;
@@ -2170,6 +2185,8 @@ begin
       SL.Sort;
       lbCommands.Items.Assign(SL);
       lbCommands.ItemIndex := 0;
+      for i := 0 to lbCommands.Items.Count - 1 do
+        lbCommands.Items.Objects[ i ] := TCmdRec.Create;
       RefreshCmdObj;
     end;
 
@@ -2652,20 +2669,17 @@ begin
 
     AnIdx := lbCommands.ItemIndex;
 
-    if not assigned( lbCommands.Items.Objects[ anIdx ] ) then
+    if not assigned( GetCmdRec( anIdx ).Cmd ) then
     begin
 //load on-demand
       CmdObjHelper.LoadCmdObj( CmdObj, lbCommands.Items[ anIdx ] );
-
-      lbCommands.Items.Objects[ anIdx ] := CmdObj;
-
+      GetCmdRec( anIdx ).Cmd := CmdObj;
     end
-    else CmdObj := TCmdObj( lbCommands.Items.Objects[ anIdx ] );
+    else CmdObj := GetCmdRec( anIdx ).Cmd;
 
-    //if CLOIdx = cUseCmdObjIndexFlag then
-    //  CmdObjToForm( CmdObj, CmdObj.CLIndex_Display )
-    //else
-    CmdObjToForm( CmdObj, CLOIdx );
+    if CLOIdx = cUseCmdObjIndexFlag then
+      CmdObjToForm( CmdObj, GetCmdRec.CLIndex )
+    else CmdObjToForm( CmdObj, CLOIdx );
 
     UpdateLbCommands( False, AnIdx );
 
@@ -2684,9 +2698,6 @@ begin
 //Clicked same entry
     exit;
 
-  //if assigned( CmdObj ) then
-  //  CmdObj.CLIndex_Display := lbCmdLines.ItemIndex;
-
   BlankCmdLine;
   BlankCommand;
   CmdObj := nil;
@@ -2694,8 +2705,8 @@ begin
   if InvalidCommands( False ) then
     exit;
 
-  //RefreshCmdObj( cUseCmdObjIndexFlag );
-  RefreshCmdObj;
+  RefreshCmdObj( cUseCmdObjIndexFlag );
+  //RefreshCmdObj;
 
   fLastlbCommandsIdx := lbCommands.ItemIndex;
 
@@ -2719,6 +2730,8 @@ begin
   ToggleCmdLineDelete(not CmdLineObj.DoDelete);
 
   fLastlbCmdLinesIdx := lbCmdLines.ItemIndex;
+
+  GetCmdRec.CLIndex := lbCmdLines.ItemIndex;
 
 end;
 
@@ -3799,6 +3812,7 @@ begin
   if InvalidCommands(False) then
     exit;
 
+//this just goes to the OKidx of checking if command name exists
   if not GetNewCommand( InputName, ComName, InputMode, lbCommands.ItemIndex ) then
     exit;
 
@@ -5353,7 +5367,12 @@ begin
   NewCmdObj.CommandName := ComFile;
   NewCmdObj.LocationPath := ComPath;
 
-  Idx := lbCommands.Items.AddObject('<>', NewCmdObj);
+  //Idx := lbCommands.Items.AddObject('<>', NewCmdObj);
+  Idx := lbCommands.Items.Add( '<>' );
+  lbCommands.Items.Objects[ Idx ] := TCmdRec.Create;
+  TCmdRec( lbCommands.Items.Objects[ Idx ] ).Cmd := NewCmdObj;
+  NewCmdObj := nil;
+
   lbCommands.ItemIndex := Idx;
   fLastlbCmdLinesIdx := -1;
 
@@ -5441,10 +5460,7 @@ begin
     end;
   end;
 
-  if CanJumpToCommand( sqlFix, //lblDispCommandName.Caption,
-                       lblDispEntry.Caption,
-                       lbCommands,
-                       lbCmdLines ) then
+  if CanJumpToCommand( sqlFix, lblDispEntry.Caption ) then
     SetActivePage( tsCommands )
   else result := false;
 
@@ -5877,7 +5893,7 @@ begin
 
       for i := lbCommands.Items.Count - 1 downto 0 do
       begin
-        aCmdObj := TCmdObj(lbCommands.Items.Objects[i]);
+        aCmdObj := GetCmdRec( i ).Cmd;
         if not Assigned(aCmdObj) then
           continue;
         if aCmdObj.DoUpdate then
@@ -5885,7 +5901,7 @@ begin
           if aCmdObj.DoDelete then
           begin
             aCmdObj.RemoveData;
-            FreeCommand( i );
+            FreeCommand( i, true, true );
             lbCommands.Items.Delete( i );
             if OldIndex >= i then
               Dec( OldIndex );
@@ -5896,7 +5912,7 @@ begin
             fSearchMayHaveChanged := true;
           lbCommands.Items[i] := aCmdObj.CommandName;
         end;
-        FreeCommand(i);
+        FreeCommand(i, true, false);
       end;
 
       //raise exception.create( 'boo!' );//testing
@@ -6064,6 +6080,7 @@ end;
 procedure TfrmMain.ApplyListChanges( theList: string; aListBox, DispListBox : TListBox );
 var
   i : Integer;
+  CmdRec : TCmdRec;
 begin
 //List changes made either from Master List handler or from within a command.
 //either way all commands must be updated as appropriate
@@ -6073,11 +6090,12 @@ begin
 //to load from the database again and/or refreshed appropriately based on their update status.
     for i := 0 to lbCommands.Items.Count - 1 do
     begin
-      if not Assigned( lbCommands.Items.Objects[ i ] )
+      CmdRec := TCmdRec( lbCommands.Items.Objects[ i ] );
+      if not Assigned( CmdRec.Cmd )
          or ( i = lbCommands.ItemIndex ) //the currently displayed command
-         or TCmdObj( lbCommands.Items.Objects[ i ] ).DoUpdate then
+         or CmdRec.Cmd.DoUpdate then
         continue;
-      FreeCommand( i, false );
+      FreeCommand( i, false, false );
     end;
     if not assigned( aListBox ) or not assigned( DisplistBox ) then
       exit;
@@ -6479,7 +6497,11 @@ begin
   aCmdObj.VersionCommand := '--version';
   aCmdObj.IsNew := True;
 
-  Idx := lbCommands.Items.AddObject('<newXcmd>', aCmdObj);
+  //Idx := lbCommands.Items.AddObject('<newXcmd>', aCmdObj);
+  Idx := lbCommands.Items.Add( '<newXcmd>' );
+  lbCommands.Items.Objects[ Idx ] := TCmdRec.Create;
+  TCmdRec( lbCommands.Items.Objects[ Idx ] ).Cmd := aCmdObj;
+  aCmdObj := nil;
 
   lbCommands.ItemIndex := Idx;
 
@@ -6493,9 +6515,9 @@ begin
 end;
 
 
-procedure TfrmMain.FreeCommand( const ItemIdx : integer; DoBlank : boolean; NewIdx : integer );
+procedure TfrmMain.FreeCommand( const ItemIdx : integer; const DoBlank, DoFullClear : boolean );
 var
-  aCmdObj : TCmdObj;
+  CmdRec : TCmdRec;
 begin
 
   if DoBlank then
@@ -6504,17 +6526,23 @@ begin
     BlankCommand;
   end;
 
-  aCmdObj := TCmdObj( lbCommands.Items.Objects[ ItemIdx ] );
-  if assigned( aCmdObj ) then
+  CmdRec := TCmdRec( lbCommands.Items.Objects[ ItemIdx ] );
+  if assigned( CmdRec.Cmd ) then
   begin
-    FreeAndNil( aCmdObj );
+    CmdRec.Cmd.Free;
+    CmdRec.Cmd := nil;
+  end;
+  CmdRec := nil;
+
+  if DoFullClear then
+  begin
+    TCmdRec( lbCommands.Items.Objects[ ItemIdx ] ).Free;
     lbCommands.Items.Objects[ ItemIdx ] := nil;
+////was in old NewIdx part
+    //lbCommands.ItemIndex := NewIdx;
+    //RefreshCmdObj;
   end;
-  if NewIdx > -1 then
-  begin
-    lbCommands.ItemIndex := NewIdx;
-    RefreshCmdObj;
-  end;
+
 end;
 
 procedure TfrmMain.SetNotificationState( const TurnOn : boolean; Obj : TComponent; Shp : TShape );
@@ -6536,16 +6564,17 @@ var
   i: integer;
   aCmdObj: TCmdObj;
   NeedSave: boolean;
+  CmdRec : TCmdRec;
 begin
 
   NeedSave := False;
 
   for i := 0 to lbCommands.Items.Count - 1 do
   begin
-    aCmdObj := TCmdObj(lbCommands.Items.Objects[i]);
-    if not Assigned(aCmdObj) then
+    CmdRec := TCmdRec( lbCommands.Items.Objects[ i ] );
+    if not Assigned( CmdRec.Cmd ) then
       continue;
-    if aCmdObj.DoUpdate then
+    if CmdRec.Cmd.DoUpdate then
     begin
       NeedSave := True;
       break;
@@ -6573,7 +6602,7 @@ begin
   end;
 
   lbCommands.Items[lbCommands.ItemIndex] := CmdObj.GetLoadedName;
-  FreeCommand(lbCommands.ItemIndex);
+  FreeCommand( lbCommands.ItemIndex, true, false );
   RefreshCmdObj;
   UpdateSaveStatus;
 end;
@@ -7086,8 +7115,8 @@ begin
 
   Application.HintHidePause := 600000;
 
-  pnlCmdLine.top := shpCmdOut9.top;//lbCmdLines.top;
-  pnlCmdLine.Left := pnlDispCmdLine.Left;//lbCmdLines.Left;
+  pnlCmdLine.top := shpCmdOut9.top;
+  pnlCmdLine.Left := pnlDispCmdLine.Left;
   pnlCommand.top := pnlDispCommand.top;
   pnlCommand.Left := pnlDispCommand.Left;
 
@@ -7251,6 +7280,72 @@ begin
     Show;
   end;
 
+end;
+
+procedure TfrmMain.JumpToCommand( anIdx : integer; CmdLineStr : string );
+begin
+  lbCommands.ItemIndex := anIdx;
+  lbCommands.Click;
+  if lbCmdLines.Items.Count = 0 then
+    exit;
+  anIdx := lbCmdLines.Items.IndexOf( CmdLineStr );
+  if anIdx > -1 then
+  begin
+    lbCmdLines.ItemIndex := anIdx;
+    lbCmdLines.Click;
+  end;
+
+end;
+
+function TfrmMain.CanJumpToCommand( const CmdStr, CmdLineStr : string ) : boolean;
+var
+  Idx : Integer;
+begin
+  result := false;
+
+  if CmdStr <> '' then
+  begin
+
+    Idx := lbCommands.Items.IndexOf( CmdStr );
+
+    if Idx = -1 then
+    begin
+      Idx := TryToFindEditedCommand( CmdStr );
+      if Idx = -1 then
+      begin
+        MessageDlg( format( cmsggfCommandNotFound, [ CmdStr ] ), mtInformation, [mbOK], 0);
+        exit;
+      end;
+    end;
+
+    JumpToCommand( Idx, CmdLineStr );
+    result := true;
+
+  end;
+
+end;
+
+function TfrmMain.TryToFindEditedCommand( const CmdSearch : string ) : integer;
+var
+  i : Integer;
+  CmdRec : TCmdRec;
+begin
+  result := -1;
+  for i := lbCommands.Items.Count - 1 downto 0 do
+  begin
+    CmdRec := TCmdRec( lbCommands.Items.Objects[ i ] );
+    if not Assigned( CmdRec.Cmd ) then
+      continue;
+    if CmdRec.Cmd.DoUpdate then
+    begin
+ //find entries like "<UPDATE> gimp'
+      if pos(' ' + CmdSearch, lbCommands.Items[ i ] ) > 0 then
+      begin
+        result := i;
+        break;
+      end;
+    end;
+  end;
 end;
 
 
