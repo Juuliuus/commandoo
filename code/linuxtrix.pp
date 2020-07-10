@@ -207,7 +207,7 @@ end;
 
 function ShouldGoToShell( const Value : string ) : boolean;
 const
-  Indicators = '|<>&';
+  Indicators = '|<>&;';
 var
   ch : char;
 begin

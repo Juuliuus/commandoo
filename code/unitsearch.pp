@@ -914,7 +914,8 @@ begin
     aValue := SI.SearchValue_ForDisplay;
     if SI.SIT = sitString then
       aValue := DoubleQuotedString( aValue );
-    result := result + SI.siDisplayCaption + Cond + aValue + ' ';
+    result := result + SI.siDisplayCaption + Cond + aValue
+              + strif( SI.CaseSensitive, ' (case sensitive) ', ' ' );
 
   end;
 

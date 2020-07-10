@@ -78,7 +78,7 @@ type
   public
     { public declarations }
     procedure Initialize( theFields : TStrings );
-    procedure FillSearchObj( var SO : TSearchObj );
+    procedure FillSearchObj( SO : TSearchObj );
     property UseAdancedSearch : integer read fUseAdancedSearch write SetUseAdancedSearch;
   end;
 
@@ -405,7 +405,7 @@ begin
     if CG.Checked[ i ] then
     begin
 
-      if SO.Searches[ CG.Tag ].SIList.Count > 1 then
+      if SO.Searches[ CG.Tag ].SIList.Count > 0 then
         SO.Searches[ CG.Tag ].AddOperator( sotOR );
       SO.Searches[ CG.Tag ].AddSearchItem(
               TSearchFieldRef( CG.Items.Objects[ i ] ).sfrCmdFieldID,
@@ -419,7 +419,7 @@ begin
 
 end;
 
-procedure TfrmSimpleSearch.FillSearchObj( var SO : TSearchObj );
+procedure TfrmSimpleSearch.FillSearchObj( SO : TSearchObj );
 
   procedure Add_SO_Items( const SearchValue : string; const IsRE : boolean; const MatchCase : boolean );
   var
@@ -439,16 +439,9 @@ procedure TfrmSimpleSearch.FillSearchObj( var SO : TSearchObj );
   end;
 
 begin
-
-  if assigned( SO ) then
-    raise EErrorDevelopment.create( 'TfrmSimpleSearch.FillSearchObj: Assigned SearchObj sent in. Dont do, want it fresh.' );
-
-  SO := TSearchObj.Create( 'SimSearch', InfoServer );
-
   Add_SO_Items( memSearchValue.Text, cbRE.Checked, cbMatchCase.Checked );
   Add_SO_Items( memSearchValue1.Text, cbRE1.Checked, cbMatchCase1.Checked );
   Add_SO_Items( memSearchValue2.Text, cbRE2.Checked, cbMatchCase2.Checked );
-
 end;
 
 procedure TfrmSimpleSearch.FormClose(Sender : TObject; var CloseAction : TCloseAction);

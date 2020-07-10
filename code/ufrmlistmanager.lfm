@@ -37,6 +37,7 @@ object frmListManager: TfrmListManager
       Height = 24
       Top = 3
       Width = 223
+      OnChange = cbHintsChange
     end
   end
   object btnOK: TBitBtn

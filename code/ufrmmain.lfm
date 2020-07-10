@@ -20,13 +20,6 @@ object frmMain: TfrmMain
   PopupMenu = popMain
   Position = poScreenCenter
   LCLVersion = '2.0.6.0'
-  object shpCurrProfile: TShape
-    Left = 573
-    Height = 4
-    Top = 28
-    Width = 271
-    Brush.Color = 12966215
-  end
   object Bevel5: TBevel
     Left = 1130
     Height = 4
@@ -128,7 +121,7 @@ object frmMain: TfrmMain
               Caption = '↑'
               Font.Height = -17
               ParentFont = False
-              TabOrder = 6
+              TabOrder = 7
               TabStop = False
             end
             object btnCmdLineDown: TButton
@@ -142,7 +135,7 @@ object frmMain: TfrmMain
               Caption = '↓'
               Font.Height = -17
               ParentFont = False
-              TabOrder = 7
+              TabOrder = 8
               TabStop = False
             end
             object btnRun_Test: TBitBtn
@@ -216,6 +209,21 @@ object frmMain: TfrmMain
               Width = 134
               Brush.Color = 16095077
               Pen.Style = psClear
+            end
+            object btnCmdLineReCenter: TButton
+              Tag = 999
+              Left = 1037
+              Height = 27
+              Hint = 'If you scrolled the Command Lines too far'#10'up or down, use this to re-center the currently'#10'selected Command Line.'#10#10'<end>'
+              Top = 17
+              Width = 27
+              Anchors = [akTop, akRight]
+              Caption = '*'
+              Font.Height = -17
+              OnClick = btnCmdLineReCenterClick
+              ParentFont = False
+              TabOrder = 6
+              TabStop = False
             end
           end
           object btnLineOk: TBitBtn
@@ -429,9 +437,9 @@ object frmMain: TfrmMain
             end
           end
           object pnlCmdLine: TPanel
-            Left = 176
+            Left = 216
             Height = 289
-            Top = 11
+            Top = 32
             Width = 950
             Anchors = [akLeft, akRight, akBottom]
             ClientHeight = 289
@@ -1036,9 +1044,9 @@ object frmMain: TfrmMain
           end
         end
         object pnlcommand: TPanel
-          Left = 360
+          Left = 191
           Height = 200
-          Top = 16
+          Top = 40
           Width = 927
           Anchors = [akTop, akLeft, akRight]
           ClientHeight = 200
@@ -1196,6 +1204,7 @@ object frmMain: TfrmMain
             OnDblClick = btnKeyWordAddClick
             OnKeyDown = lbKeywordsKeyDown
             ParentFont = False
+            PopupMenu = popKeyWords
             ScrollWidth = 274
             TabOrder = 12
             TopIndex = -1
@@ -2222,7 +2231,7 @@ object frmMain: TfrmMain
   object lblPestr: TLabel
     Left = 1128
     Height = 32
-    Top = 824
+    Top = 744
     Width = 347
     Caption = 'Search for PESTER in ufrmMain'
     Color = 1710618
@@ -2241,7 +2250,7 @@ object frmMain: TfrmMain
     Anchors = [akTop, akRight]
     Checked = True
     State = cbChecked
-    TabOrder = 14
+    TabOrder = 15
   end
   object btnSave: TBitBtn
     Left = 21
@@ -2283,18 +2292,21 @@ object frmMain: TfrmMain
     Height = 29
     Hint = 'Open the Database Profile Window in '#10'"Select" mode. That is, here is where you'#10'can switch databases.'#10#10'The current database will not be listed.'#10#10'In addition, the default database profiles '#10'for "DB" may, or may not, be optioons'#10'depending on the settings in Options.'#10#10'<end>'
     Top = 4
-    Width = 172
+    Width = 179
     Action = actSwitchDB
-    Caption = '&P  Switch DB'
+    Caption = '&P  Switch DB   =>'
     TabOrder = 3
   end
   object lblCurrDB: TLabel
-    Left = 594
-    Height = 21
-    Top = 2
-    Width = 74
+    Left = 598
+    Height = 24
+    Top = 5
+    Width = 85
     Caption = 'lblCurrDB'
+    Font.Height = -18
+    Font.Style = [fsBold]
     ParentColor = False
+    ParentFont = False
     OnDblClick = lblCurrDBDblClick
   end
   object btnExit: TBitBtn
@@ -2304,7 +2316,7 @@ object frmMain: TfrmMain
     Width = 232
     Action = actExit
     Anchors = [akRight, akBottom]
-    TabOrder = 15
+    TabOrder = 16
   end
   object btnProfileManagement: TBitBtn
     Left = 1187
@@ -2440,7 +2452,21 @@ object frmMain: TfrmMain
     OnKeyDown = Memo1KeyDown
     ParentFont = False
     ScrollBars = ssAutoBoth
-    TabOrder = 16
+    TabOrder = 17
+  end
+  object btnMainInfo: TBitBtn
+    Left = 1157
+    Height = 29
+    Hint = 'Output the current state of commandoo.'#10#10'<end>'
+    Top = 808
+    Width = 25
+    Anchors = [akTop, akRight]
+    Caption = '?'
+    Font.Height = -18
+    Font.Style = [fsBold]
+    OnClick = btnMainInfoClick
+    ParentFont = False
+    TabOrder = 14
   end
   object popCommands: TPopupMenu
     OnPopup = popCommandsPopup
@@ -2827,6 +2853,13 @@ object frmMain: TfrmMain
       Action = actCmdLineUnDelete
       Caption = 'Undo Delete:  (ctrl-  <Del> or -)'
     end
+    object MenuItem26: TMenuItem
+      Caption = '-'
+    end
+    object popCmdLineReCenter: TMenuItem
+      Caption = 'DNT ReCenter'
+      OnClick = popCmdLineReCenterClick
+    end
   end
   object TimerDetachedProcesses: TTimer
     Interval = 3000
@@ -2887,6 +2920,10 @@ object frmMain: TfrmMain
       object mniOutPutWrap: TMenuItem
         Action = actOutputWrap
       end
+    end
+    object mniOutputCommandooInfo: TMenuItem
+      Caption = 'Commandoo Info'
+      OnClick = mniOutputCommandooInfoClick
     end
     object MenuItem1: TMenuItem
       Caption = '-'
@@ -3271,6 +3308,26 @@ object frmMain: TfrmMain
     object mniDblCDisplay: TMenuItem
       Caption = 'DNT Output display'
       OnClick = mniDblCCmdNameClick
+    end
+  end
+  object popKeyWords: TPopupMenu
+    left = 1024
+    top = 792
+    object mniKeyWordsRoot: TMenuItem
+      Caption = 'DNT KeyWords'
+      Enabled = False
+      RightJustify = True
+    end
+    object MenuItem29: TMenuItem
+      Caption = '-'
+    end
+    object mniKeyWordsAdd: TMenuItem
+      Caption = 'Add'
+      OnClick = mniKeyWordsAddClick
+    end
+    object mniKeyWordsDelete: TMenuItem
+      Caption = 'Delete'
+      OnClick = mniKeyWordsDeleteClick
     end
   end
 end

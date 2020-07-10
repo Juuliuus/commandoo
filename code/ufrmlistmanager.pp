@@ -82,6 +82,7 @@ type
     procedure actOKExecute(Sender : TObject);
     procedure actRevertExecute(Sender : TObject);
     procedure actShowUsageExecute( Sender : TObject );
+    procedure cbHintsChange( Sender : TObject );
     procedure FormActivate(Sender : TObject);
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCloseQuery(Sender : TObject; var CanClose : boolean);
@@ -240,11 +241,18 @@ end;
 
 procedure TfrmListManager.lbListKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  if Key = vk_Return then
+  if not fManagementMode then
   begin
-    if actEdit.Enabled then
-      actEdit.Execute
-    else actConsolidate.Execute;
+    if Key = vk_Return then
+      actOK.Execute;
+  end else
+  begin
+    if Key = vk_Return then
+    begin
+      if actEdit.Enabled then
+        actEdit.Execute
+      else actConsolidate.Execute;
+    end;
   end;
 end;
 
@@ -320,6 +328,11 @@ begin
                 );
   MsgDlgInfo( self );
 
+end;
+
+procedure TfrmListManager.cbHintsChange( Sender : TObject );
+begin
+  TryFocus( lbList );
 end;
 
 procedure TfrmListManager.actCancelExecute(Sender : TObject);
@@ -489,6 +502,7 @@ begin
   actConsolidate.Enabled := ( fConsolidateMode or not Revertable ) and ( lbList.Items.Count > 1 );
 
   actRevert.Enabled := Revertable or fConsolidateMode;
+  TryFocus( lbList );
 
 end;
 

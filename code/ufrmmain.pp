@@ -100,12 +100,14 @@ type
     Bevel3 : TBevel;
     Bevel4 : TBevel;
     Bevel5 : TBevel;
+    btnCmdLineReCenter : TButton;
     btnEditCmdName : TBitBtn;
     btnBuilder : TBitBtn;
     btnExit : TBitBtn;
     btnCmdLineDelete : TBitBtn;
     btnCmdLineUnDelete : TBitBtn;
     btnMainClear : TBitBtn;
+    btnMainInfo : TBitBtn;
     btnMainSave : TBitBtn;
     btnMainCopy : TBitBtn;
     btnPkexecMain : TBitBtn;
@@ -263,6 +265,13 @@ type
     MenuItem19 : TMenuItem;
     MenuItem20 : TMenuItem;
     MenuItem22 : TMenuItem;
+    MenuItem29 : TMenuItem;
+    mniKeyWordsRoot : TMenuItem;
+    mniKeyWordsAdd : TMenuItem;
+    mniKeyWordsDelete : TMenuItem;
+    popCmdLineReCenter : TMenuItem;
+    MenuItem26 : TMenuItem;
+    mniOutputCommandooInfo : TMenuItem;
     mniCmdReCenter : TMenuItem;
     mniCmdSortcommands : TMenuItem;
     mniMainFindOutput : TMenuItem;
@@ -402,6 +411,7 @@ type
     pnlEdit: TPanel;
     pnlLineControls: TPanel;
     popDblC : TPopupMenu;
+    popKeyWords : TPopupMenu;
     popSearchCmdLine : TPopupMenu;
     popSearchCmd : TPopupMenu;
     popNewCommandLine: TMenuItem;
@@ -435,7 +445,6 @@ type
     shpCmdOut7 : TShape;
     shpCmdOut8 : TShape;
     shpCmdOut9 : TShape;
-    shpCurrProfile : TShape;
     shpRefreshFavorites : TShape;
     shpSave : TShape;
     shpSRL : TShape;
@@ -500,12 +509,14 @@ type
     procedure btnBuilderClick( Sender : TObject );
     procedure btnCancelRunClick( Sender : TObject );
     procedure btnCmdEditClick(Sender: TObject);
+    procedure btnCmdLineReCenterClick( Sender : TObject );
     procedure btnHaltProcessClick( Sender : TObject );
     procedure btnHelpCommandClick(Sender: TObject);
     procedure btnInsertPathClick( Sender : TObject );
     procedure btnKeyWordAddClick(Sender: TObject);
     procedure btnKeyWordDeleteClick(Sender: TObject);
     procedure btnLocationPathClick(Sender: TObject);
+    procedure btnMainInfoClick( Sender : TObject );
     procedure btnPkexecMainClick( Sender : TObject );
     procedure btnReCenterClick( Sender : TObject );
     procedure btnRefreshFavoritesClick( Sender : TObject );
@@ -564,12 +575,16 @@ type
     procedure mniCmdSendToClick( Sender : TObject );
     procedure mniCopyCLListClipClick( Sender : TObject );
     procedure mniCopyCmdListClipClick( Sender : TObject );
+    procedure mniKeyWordsAddClick( Sender : TObject );
+    procedure mniKeyWordsDeleteClick( Sender : TObject );
     procedure mniMainCommandsClick( Sender : TObject );
     procedure mniDblCCmdNameClick( Sender : TObject );
+    procedure mniOutputCommandooInfoClick( Sender : TObject );
     procedure mniSearchCmdLineItemClipClick( Sender : TObject );
     procedure mniSearchCmdLineListClipClick( Sender : TObject );
     procedure mniSearchCmdListClipClick( Sender : TObject );
     procedure nbCommandsChange( Sender : TObject );
+    procedure popCmdLineReCenterClick( Sender : TObject );
     procedure popCmdLinesPopup(Sender: TObject);
     procedure popCommandsPopup(Sender: TObject);
     procedure popCmdLinePasteClick( Sender : TObject );
@@ -627,9 +642,11 @@ type
     fUpdateDisplayOffsetFlag : boolean;
 
 //Search handling
+    fIsSimpleSearch : boolean;
     fKeyWordSO : TSearchObj;
     fFavoritesSO : TSearchObj;
     fSearchSO : TSearchObj;
+    fSimpleSearchSO : TSearchObj;
     fSearchFields : TStringlist;
     fSearchMayHaveChanged : boolean;
 //Search Results
@@ -714,6 +731,7 @@ type
     procedure LoadDBObjects;
     procedure LoadFavorites;
     procedure LoadSearchObject;
+    procedure LoadSearchResults_Internal( aSearch : TSearchObj; Strings : TStrings; const IsSimple : boolean );
     procedure LoadSearchResults( aSearch : TSearchObj; Strings : TStrings );
     procedure LoadLanguages;
     procedure MoveCmdLine( const aFactor: integer );
@@ -768,6 +786,7 @@ type
     function RunCmdLineExternal( const RunStr : string ) : string;
     function RunExternalHelpRequest( SL : TStringList ) : string;
     procedure SavedSearches_Delete( const aGUID : string );
+    function GetCurrentState : string;
     function GetWidgetString : string;
     function Editing: boolean;
     function EditingCmd: boolean;
@@ -922,6 +941,8 @@ const
   cArrowKeySearchCmdLine         = 500007;
   cArrowKeyDetachedProcesses     = 500008;
   cArrowKeymemDetachedProcesses  = 500009;
+  cArrowKeylbKeywords            = 500010;
+
 
   cCurrKWFileName = '.CurrKWSearch';
   cCurrSearchFileName = '.CurrSearch';
@@ -1083,6 +1104,9 @@ resourcestring
 
   //cNameItem_Problem = 'Problem';
   cNameItem_Search = 'Search';
+  cNameItem_SearchSimple = 'Simple';
+  cNameItem_SearchNormal = 'Normal';
+
   cNameItem_ThreatLevel = 'Threat Level';
 
 
@@ -1220,6 +1244,7 @@ begin
   FreeAndNil( fKeyWordSO );
   FreeAndNil( fFavoritesSO );
   FreeAndNil( fSearchSO );
+  FreeAndNil( fSimpleSearchSO );
   FreeAndNil( fDisplayOutPut );
 
   if assigned(RegX) then
@@ -1612,6 +1637,7 @@ begin
   font.size := cDefaultFontSize;
   NeedsWrite := false;
   fInternalComs := false;
+  fIsSimpleSearch := false;
   fUpdateDisplayOffset := 0;
   fUpdateDisplayOffsetFlag := false;
   lblPathAlias.Caption := '';
@@ -1744,6 +1770,9 @@ begin
   fSearchSO := TSearchObj.Create( GetProfileStamp, InfoServer );
   fSearchSO.UserTag := Ord( tcsNormal );
 
+  fSimpleSearchSO := TSearchObj.Create( 'SimSearch', InfoServer );
+  fSimpleSearchSO.UserTag := Ord( tcsNormal );
+
   fFavoritesSO := TSearchObj.Create( 'FavS', InfoServer );
   fFavoritesSO.Searches[ cIdxCmd ].AddSearchItem( fidIsFavorite, dbsTrueStr, coEqual, false );
   fFavoritesSO.Searches[ cIdxCmdLine ].AddSearchItem( fidIsFavorite, dbsTrueStr, coEqual, false );
@@ -1789,21 +1818,30 @@ begin
       end;
     cArrowKeymemNotes :
       case Key of
-        VK_RIGHT :
-          if EditingCL then
-            TryFocus( memEntry )
-          else TryFocus( lbCmdLines );
+        VK_RIGHT : TryFocus( lbKeywords );
+          //if EditingCL then
+          //  TryFocus( memEntry )
+          //else TryFocus( lbCmdLines );
         VK_LEFT :
           if lbCommands.Canfocus then
             TryFocus( lbCommands )
           else TryFocus( Memo1 );
+      end;
+    cArrowKeylbKeywords :
+      case Key of
+        VK_RIGHT :
+          if EditingCL then
+            TryFocus( memEntry )
+          else TryFocus( lbCmdLines );
+        VK_LEFT : TryFocus( memNotes );
       end;
     cArrowKeyCmdLines :
       case Key of
         VK_RIGHT : TryFocus( Memo1 );
         VK_LEFT :
           if EditingCmd then
-            TryFocus( memNotes )
+            //TryFocus( memNotes )
+            TryFocus( lbKeyWords )
           else if lbCommands.CanFocus then
             TryFocus( lbCommands )
           else TryFocus( Memo1 );
@@ -1813,7 +1851,7 @@ begin
         VK_RIGHT : TryFocus( MemNotesLine );
         VK_LEFT :
           if EditingCmd then
-            TryFocus( memNotes )
+            TryFocus( lbKeyWords )
           else if lbCommands.Canfocus then
             TryFocus( lbCommands )
           else TryFocus( Memo1 );
@@ -2306,6 +2344,10 @@ begin
   mniDblCSearchNotes.Caption := ccapGotoEditInNotes;
   mniDblCSearchKey.Caption := trim( ccapTabKeyWords );
   mniDblCDetPProcs.Caption := format( cDoubleS, [ ccapDblCProcessStr, ccapGotoListStr ] );
+  mniKeyWordsRoot.Caption := format( ccapPopMenuRootRoot, [ trim( ccapTabKeyWords ), ccapPopMenuRootMenuStr ] );
+  mniKeyWordsAdd.Caption := format( cDoubleS, [ ccapGenericAdd, trim( ccapTabKeyWords ) ] );
+  mniKeyWordsDelete.Caption := format( cDoubleS, [ ccapGenericDelete, trim( ccapTabKeyWords ) ] );
+
   mniDblCRoot.Caption := format( ccapPopMenuRootRoot, [ ccapDblCRootName, ccapPopMenuRootMenuStr ] );
   mniMainRoot.Caption := format( ccapPopMenuRootRoot, [ ccapMainRootName, ccapPopMenuRootMenuStr ] );
   pmiMainRoot.Caption := format( ccapPopMenuRootRoot, [ ccappmiMainRootName, ccapPopMenuRootMenuStr ] );
@@ -2452,8 +2494,6 @@ begin
 
   if fHasShown then
     Exit;
-
-  shpCurrProfile.Brush.Color := btnSwitchDB.Color;
 
   RegisterDisplayCaptions;
   UpdateSharedHintsAndCaptions;
@@ -2856,22 +2896,42 @@ end;
 
 procedure TfrmMain.lbKeywordsDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  if ( shift = [ ssCtrl ] )
-     and ( key = VK_F )
-     and ( lbKeywordsDisp.Items.Count > 1 ) then
+  if ( Shift = [ ssCtrl ] ) then
+  begin
+    if ( key = VK_S ) and btnCmdOk.enabled then
+    begin
+      btnCmdOk.Click;
+      exit;
+    end;
+    if ( key = VK_F ) and ( lbKeywordsDisp.Items.Count > 1 ) then
+    begin
+      FindItem( lbKeywordsDisp );
+      exit;
+    end;
+  end;
+  if ( Shift = [ ssCtrl, ssShift ] ) and ( key = VK_F ) and ( lbKeywordsDisp.Items.Count > 1 ) then
     FindItem( lbKeywordsDisp );
 end;
 
 procedure TfrmMain.lbKeywordsKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  if ( shift = [ ssCtrl ] )
-     and ( key = VK_F )
-     and ( lbKeywords.Items.Count > 1 ) then
-  begin
-    FindItem( lbKeywords );
-    exit;
+  case key of
+    VK_OEM_PLUS, VK_ADD :
+      begin
+        btnKeyWordAdd.Click;
+        exit;
+      end;
+    VK_DELETE, VK_OEM_MINUS, VK_SUBTRACT :
+      begin
+        btnKeyWordDelete.Click;
+        exit;
+      end;
   end;
-  memNotesKeyDown( Sender, Key, Shift );
+
+  if ( Shift = [ ssCtrl ] ) or ( Shift = [ ssCtrl, ssShift ] ) then
+    if ( key = VK_F ) and ( lbKeywords.Items.Count > 1 ) then
+      FindItem( lbKeywords );
+
 end;
 
 procedure TfrmMain.ProcessCmdDisplayObj( Sender : TListBox );
@@ -3411,6 +3471,16 @@ begin
   ClipBoard.AsText := lbCommands.Items.Text;
 end;
 
+procedure TfrmMain.mniKeyWordsAddClick( Sender : TObject );
+begin
+  btnKeywordAdd.Click;
+end;
+
+procedure TfrmMain.mniKeyWordsDeleteClick( Sender : TObject );
+begin
+  btnKeywordDelete.Click;
+end;
+
 procedure TfrmMain.SetUp_KeyBoardMenu_Structure;
 begin
 
@@ -3475,6 +3545,7 @@ begin
   lbCmdLines.Tag := cArrowKeyCmdLines;
   memEntry.Tag := cArrowKeymemEntry;
   memNotesLine.Tag := cArrowKeymemNotesLine;
+  lbKeyWords.Tag := cArrowKeylbKeywords;
   Memo1.Tag := cArrowKeyMemo1;
   lbSearchCmd.Tag := cArrowKeySearchCmd;
   lbSearchCmdLine.Tag := cArrowKeySearchCmdLine;
@@ -3527,6 +3598,11 @@ begin
     cmniDblCDetPInfo : Memo1DblClick( memDetachedProcesses );
     cmniDblCDisplay : Memo1DblClick( Memo1 );
   end;
+end;
+
+procedure TfrmMain.mniOutputCommandooInfoClick( Sender : TObject );
+begin
+  btnMainInfo.Click;
 end;
 
 procedure TfrmMain.mniMainCommandsClick( Sender : TObject );
@@ -3728,6 +3804,11 @@ begin
 
 end;
 
+procedure TfrmMain.popCmdLineReCenterClick( Sender : TObject );
+begin
+  btnCmdLineReCenter.Click;
+end;
+
 procedure TfrmMain.UpdateDisplay_Internal( const Output : string; const DoIndicate : boolean );
 begin
   fUpdateDisplayOffsetFlag := true;
@@ -3862,6 +3943,7 @@ begin
 
   //locDoShow := lbCmdLines.Enabled;//Flag that CL is being edited
   locDoShow := not EditingCL;
+  popCmdLineReCenter.Caption := btnReCenter.Caption + ' ' + ccapGotoCmdlineAbbrev;
 
   actNewCommandLine.Enabled := locDoShow and not InValidCommands;
 
@@ -4490,13 +4572,18 @@ begin
 
 end;
 
+procedure TfrmMain.LoadSearchResults_Internal( aSearch : TSearchObj; Strings : TStrings; const IsSimple : boolean );
+begin
+  fIsSimpleSearch := IsSimple;
+  LoadSearchResults( aSearch, Strings );
+end;
+
 
 procedure TfrmMain.LoadSearchResults( aSearch : TSearchObj; Strings : TStrings );
 var
   SL : TStringList;
   Idx : Integer;
 begin
-
   FreeCmdDisplayObjects( Strings );
 
   SL := TStringlist.Create;
@@ -4552,7 +4639,6 @@ end;
 
 procedure TfrmMain.btnSimpleSearchClick(Sender: TObject);
 var
- SimpleSearchSO : TSearchObj;
  OtherChoice : integer;
 begin
 
@@ -4564,7 +4650,7 @@ begin
 
   ShowUnsavedMessage;
 
-  SimpleSearchSO := nil;
+  fSimpleSearchSO.Clear( '' );
 
   with TfrmSimpleSearch.Create( self ) do
   try
@@ -4572,21 +4658,15 @@ begin
     Showmodal;
     if ModalResult = mrOK then
     begin
-      FillSearchObj( SimpleSearchSO );//will be created there
-      if assigned( SimpleSearchSO ) then
-      begin
-        SimpleSearchSO.UserTag := Ord( tcsNormal );
-        LoadSearchResults( SimpleSearchSO, fSearchSR );
-        if nbCommands.ActivePage <> tsSearch then
-          SetActivePage( tsSearch );
-      end;
+      FillSearchObj( fSimpleSearchSO );
+      LoadSearchResults_Internal( fSimpleSearchSO, fSearchSR, true );
+      if nbCommands.ActivePage <> tsSearch then
+        SetActivePage( tsSearch );
     end;
     OtherChoice := UseAdancedSearch;
 
   finally
     free;
-    if assigned( SimpleSearchSO ) then
-      FreeAndNil( SimpleSearchSO );
   end;
 
   if OtherChoice > -1 then
@@ -4600,7 +4680,6 @@ begin
     if nbCommands.ActivePage <> tsSearch then
       SetActivePage( tsSearch );
   end;
-
 
 end;
 
@@ -4787,10 +4866,13 @@ begin
 
     if CmdInPath then
     begin
-      SL.Add( Cmd );
       if not SystemFileFound( Cmd ) then
-        SL.Add( '' ) //flags it to fail
-      else SL.Add( Help )
+      begin
+        UpdateDisplay( format( cFileNotExist, [ Cmd + ' (' + Path + ')' ] ), true, false );
+        exit;
+      end;
+      SL.Add( Cmd );
+      SL.Add( Help )
     end else
     begin
       if Path = cmsgcleBadPath then
@@ -4825,6 +4907,11 @@ end;
 procedure TfrmMain.btnLocationPathClick(Sender: TObject);
 begin
   lblPathAliasDblClick( self );
+end;
+
+procedure TfrmMain.btnMainInfoClick( Sender : TObject );
+begin
+  UpdateDisplay( GetCurrentState, false, false );
 end;
 
 procedure TfrmMain.btnPkexecMainClick( Sender : TObject );
@@ -5125,6 +5212,12 @@ begin
 
 end;
 
+procedure TfrmMain.btnCmdLineReCenterClick( Sender : TObject );
+begin
+  TryFocus( lbCmdLines );
+  lbCmdLines.MakeCurrentVisible;
+end;
+
 procedure TfrmMain.RemoveDetachedProcess( const Idx, OldIdx : integer; aProcess : TAsyncProcess );
 begin
 
@@ -5245,6 +5338,8 @@ begin
 
   ToggleCmdLineDelete( False );
 
+  TryFocus( lbCmdLines );
+
 end;
 
 procedure TfrmMain.actAboutExecute( Sender : TObject );
@@ -5282,6 +5377,8 @@ begin
   UpdateLbCmdLines( Idx );
 
   ToggleCmdLineDelete( True );
+
+  TryFocus( lbCmdLines );
 
 end;
 
@@ -5760,6 +5857,7 @@ begin
         SwitchDB( fProfileName, fUseDB );
 //SwitchDB( '//g//gll', true/false ); //bad file name testing
         SetActivePage( tsCommands );
+        UpdateDisplay( format( cmsgSwitchProfileString, [ DateTimeToStr( now ), lblCurrDB.Caption ] ), false, false );
       end;
 
     finally
@@ -5798,9 +5896,15 @@ begin
       if ModalResult = mrOK then
         UpdateDisplay( MergeOne( CmdObj,
                                  fProfileName
-                                 + strif( fUseDB, cDefaultDBProfileIsDBStr, cDefaultDBProfileIsDBStrNot ) ),
+                                 + strif( fUseDB, cDefaultDBProfileIsDBStr, cDefaultDBProfileIsDBStrNot ) )
+                                 + ':  "'
+                                 + CurrProfileName + ' '
+                                 + trim( strif( CurrProfileIsDB, cDefaultDBProfileIsDBStr, cDefaultDBProfileIsDBStrNot ) )
+                                 + '"'
+                                 ,
                                  false,
-                                 false );
+                                 false )
+                       ;
     finally
       Free;
     end;
@@ -5943,7 +6047,7 @@ begin
       btnRefreshFavorites.Click
     else SetNotificationState( true, btnRefreshFavorites, shpRefreshFavorites );
 
-    UpdateDisplay( format( cmsgCommandsSaved, [ TimeToStr( now ) ] ), false, false );
+    UpdateDisplay( format( cmsgCommandsSaved, [ lblCurrDB.Caption, TimeToStr( now ) ] ), false, false );
 
     CheckSearchChange;
 
@@ -5961,7 +6065,11 @@ end;
 
 procedure TfrmMain.actSearchDisplaySearchExecute( Sender : TObject );
 begin
-  UpdateDisplay( fSearchSO.GetAllExpressions, true, true );
+  if fIsSimpleSearch then
+    UpdateDisplay( format( cDoubleS + ':', [ cNameItem_SearchSimple, cNameItem_Search ] )
+                   + LineEnding + fSimpleSearchSO.GetAllExpressions, true, true )
+  else UpdateDisplay( format( cDoubleS + ':', [ cNameItem_SearchNormal, cNameItem_Search ] )
+                      + LineEnding + fSearchSO.GetAllExpressions, true, true );
 end;
 
 procedure TfrmMain.actSearchFindCmdExecute( Sender : TObject );
@@ -6151,7 +6259,8 @@ end;
 procedure TfrmMain.btnKeyWordAddClick(Sender: TObject);
 begin
   ShowKeyWords( lblCommandName.Caption, lbKeywords, lbKeyWordsDisp );
-  ReFocus_Edit_Memo( true );
+  TryFocus( lbKeyWords );
+//no more since easy to focus  ReFocus_Edit_Memo( true );
 end;
 
 procedure TfrmMain.btnKeyWordDeleteClick(Sender: TObject);
@@ -6168,7 +6277,9 @@ begin
     if lbKeywords.Selected[ i ] then
       lbKeywords.Items.Delete( i );
   lbKeywordsDisp.Items.Text := lbKeywords.Items.Text;
-  ReFocus_Edit_Memo( true );
+  TryFocus( lbKeyWords );
+
+//no more since easy to focus  ReFocus_Edit_Memo( true );
 
 end;
 
@@ -6206,7 +6317,7 @@ begin
         exit;
       end;
 
-      LoadSearchResults( SO, Strings );
+      LoadSearchResults_Internal( SO, Strings, false );
 
     end;
     OtherChoice := UseSimpleSearch;
@@ -6623,7 +6734,7 @@ begin
                                                   cmsgProcessSingular
                                                  )
                                          ] );
-  tsDetachedProcesses.Caption := ccapTabProcesses + lblDetachedProcesses.Caption + '  <==';
+  tsDetachedProcesses.Caption := ccapTabProcesses + lblDetachedProcesses.Caption + '  --|  ';
 end;
 
 
@@ -7083,8 +7194,6 @@ end;
 
 
 procedure TfrmMain.FormActivate(Sender: TObject);
-var
-  OpeningState : string;
 
   function GetSpecialMode : boolean;
   begin
@@ -7133,17 +7242,7 @@ begin
                    false,
                    false );
 
-  OpeningState := DatetoStr( now ) + ' >>  ' + lblCurrDB.Caption
-    + LineEnding
-    + cmsgMainBasePath + fWritingToPath
-    + LineEnding
-    + cmsgMainSavingPath + fSavingToPath
-    + LineEnding
-    + cmsgMainShellPhrase + globltShellName + '     ' +  cmsgMainRootTemplate + fRootFile
-    + LineEnding
-    ;
-
-  UpdateDisplay( OpeningState, false, false );
+  UpdateDisplay( GetCurrentState, false, false );
 
   if SpecialComms <> '' then
     UpdateDisplay( trim( SpecialComms) + LineEnding, false, false );
@@ -7155,6 +7254,19 @@ begin
 
   TryFocus( lbCommands );
 
+end;
+
+function TfrmMain.GetCurrentState : string;
+begin
+  Result := DatetoStr( now ) + ' >>  ' + cmsgProfileStringCurrDB + lblCurrDB.Caption
+    + LineEnding
+    + cmsgMainBasePath + fWritingToPath
+    + LineEnding
+    + cmsgMainSavingPath + fSavingToPath
+    + LineEnding
+    + cmsgMainShellPhrase + globltShellName + '     ' +  cmsgMainRootTemplate + fRootFile
+    + LineEnding
+    ;
 end;
 
 function TfrmMain.GetWidgetString : string;

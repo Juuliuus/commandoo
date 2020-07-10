@@ -214,17 +214,14 @@ begin
 end;
 
 procedure TfrmFindText.UpdateCaptions;
-var
-  Idx : Integer;
 begin
   lblFindNextText.Caption := ccapFindAgain;
-
-  Idx := rgTopCursor.ItemIndex;
   rgTopCursor.ItemIndex := -1;
   rgTopCursor.Items.Text := ccaprgChoices;
   if rgTopCursor.Items.Count < 2 then
     raise EErrorDevelopment.Create( 'TfrmManageProfile.FormShow: Bad Translation, not enough items.' );
-  rgTopCursor.ItemIndex := Idx;
+//Default to: From Cursor
+  rgTopCursor.ItemIndex := 1;
 end;
 
 procedure TfrmFindText.UpdateLB( const Idx : integer; const Value : string );

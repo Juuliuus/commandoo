@@ -44,7 +44,7 @@ resourceString
   ccapTabFavorites = '  Favorites  ';//'Favs';
   ccapTabKeyWords = '  KeyWords  ';//'KeyW';
   ccapTabSearch = '  Searches  ';//'Search';
-  ccapTabProcesses = '==>  Detached Processes:  ';//'Proc''s';
+  ccapTabProcesses = '  |--  Detached Processes:  ';//'Proc''s';
 
   cstrCmdDisplayObjects = '>>         ↑ Commands   ---   ↓ Command Lines';
 
@@ -510,7 +510,9 @@ resourceString
 
   ccapPathCaption = 'Path to: "%s"';
   cmsgInvalidString = '< Invalid >';
-  cmsgProfileString = 'Current Database:   %s%s %s';
+  cmsgProfileString = '%s%s %s';
+  cmsgProfileStringCurrDB = 'Current Database:   ';
+  cmsgSwitchProfileString = '%s : Switched to "%s" Database';
 
 
   cmsgProcessSingular = 'Proc';
@@ -770,7 +772,7 @@ resourceString
     + LineEnding + LineEnding
     ;
 
-  cmsgCommandsSaved = 'Saved by user at %s...'
+  cmsgCommandsSaved = '"%s" saved by user at %s...'
                              + LineEnding + LineEnding;
   cmsgDisplayOutputCleared = 'Display Output Cleared by user at %s...'
                              + LineEnding + LineEnding;

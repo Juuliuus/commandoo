@@ -3046,7 +3046,8 @@ begin
                               + ToCmdObj.Notes;
           Failure := not ToCmdObj.Save;
           //DestDB.FIX_MERGE;
-          result := strif( not Failure, format( cmsgucoMerge_Added, [ ToCmdObj.CommandName ] ) );
+          result := strif( not Failure, format( cmsgucoMerge_Added, [ ToCmdObj.CommandName ] ) )
+                    + ': ' + MergeSource;
         end
         else
         begin //present in Destination
