@@ -709,7 +709,6 @@ type
     function GetNewCommandLine( const PreString : string; var ResultStr : string ) : boolean;
     function GetOpenInstances : boolean;
     function GetProfileStamp : string;
-    function GetSearchesDirectory : string;
     procedure ShowUnsavedMessage;
     function GoTo_Command( Sender : TListBox ) : boolean;
     function GotoCommand( Sender : TListBox ) : boolean;
@@ -781,6 +780,7 @@ type
     { public declarations }
     RegX: TRegExpr;
 
+    function GetSearchesDirectory : string;
     function GetPODirectory: string;
     procedure UpdateSharedHintsAndCaptions;
     function RunCmdLineExternal( const RunStr : string ) : string;
@@ -813,6 +813,7 @@ resourcestring
   ccapMainBadPath = 'Config Problem, Re-set??';
   cmsgMainBasePath = 'Base DB/Settings path: ';
   cmsgMainSavingPath = 'Saving path: ';
+  cmsgMainSavingPathSearch = 'Searches %s';
   cmsgMainRootTemplate = 'ROOT template: ';
   cmsgMainBadPath =
       'This custom config path can not'
@@ -2582,7 +2583,7 @@ begin
     exit;
   end;
 
-  if Shift = [ ssCtrl ] then
+  if ( Shift = [ ssCtrl ] ) or ( Shift = [ ssShift, ssCtrl ] ) then
   begin
     case Key of
       VK_F :
@@ -2590,42 +2591,62 @@ begin
           if actFindCmdLine.Enabled then
             actFindCmdLine.Execute;
           Key := VK_UNKNOWN;
+          exit;
         end;
       VK_A :
-        if actNewCommandLine.Enabled then
-          actNewCommandLine.Execute;
-      VK_C :
         begin
-          if actCopyClipCmdLine.Enabled then
-            actCopyClipCmdLine.Execute;
-          Key := VK_UNKNOWN;//listbox was overriding my ctrl-c;
+          if actNewCommandLine.Enabled then
+            actNewCommandLine.Execute;
+          exit;
         end;
       VK_V :
-        if assigned( ClipCLO ) then //popCmdLinePaste.Enabled then
-          popCmdLinePaste.Click;
+        begin
+          if assigned( ClipCLO ) then //popCmdLinePaste.Enabled then
+            popCmdLinePaste.Click;
+          exit;
+        end;
       VK_DELETE, VK_OEM_MINUS, VK_SUBTRACT :
-        if actCmdLineUnDelete.Enabled then
-          actCmdLineUnDelete.Execute;
+        begin
+          if actCmdLineUnDelete.Enabled then
+            actCmdLineUnDelete.Execute;
+          exit;
+        end;
     end;
-    exit;
   end;
 
   if Key = VK_C then
   begin
+    if Shift = [ ssCtrl ] then
+    begin
+      if actCopyClipCmdLine.Enabled then
+        actCopyClipCmdLine.Execute;
+      Key := VK_UNKNOWN;//listbox was overriding my ctrl-c;
+      exit;
+    end;
+
 //order, apparently, doesn't matter, both work
     //if Shift = [ ssCtrl, ssShift ] then
     if Shift = [ ssShift, ssCtrl ] then
+    begin
       mniCopyCLListClipClick( Self );
-    //if ( ssCtrl in Shift ) and ( ssShift in Shift ) and ( ssAlt in Shift ) then
+      exit;
+    end;
+
     if Shift = [ ssCtrl, ssShift, ssAlt ] then
+    begin
       if actCopyCmdLine.Enabled then
         actCopyCmdLine.Execute;
+      exit;
+    end;
     exit;
   end;
 
   if ( Key = VK_DELETE ) or ( Key = VK_OEM_MINUS ) or ( Key = VK_SUBTRACT ) then
+  begin
     if actCmdLineDelete.Enabled then
       actCmdLineDelete.Execute;
+    Key := VK_UNKNOWN;
+  end;
 end;
 
 procedure TfrmMain.UpdateNotebookCaptions;
@@ -2790,38 +2811,56 @@ begin
     exit;
   end;
 
-  if Shift = [ ssCtrl ] then
+  if ( Shift = [ ssCtrl ] ) or ( Shift = [ ssShift, ssCtrl ] ) then
   begin
     case Key of
       VK_F :
-        if btnFindCmd.Enabled then
-          btnFindCmd.Click;
-      VK_A :
-        if btnPlus.Enabled then
-          btnPlus.Click;
-      VK_C :
         begin
-          if actCopyClipCmd.Enabled then
-            actCopyClipCmd.Execute;
-          Key := VK_UNKNOWN; //listbox was overriding my ctrl-c;
+          if btnFindCmd.Enabled then
+            btnFindCmd.Click;
+          exit;
+        end;
+      VK_A :
+        begin
+          if btnPlus.Enabled then
+            btnPlus.Click;
+          exit;
         end;
       VK_V :
-        if assigned( ClipCLO ) then
-          mniCmdPasteCmdLine.Click;
+        begin
+          if assigned( ClipCLO ) then
+            mniCmdPasteCmdLine.Click;
+          exit;
+        end;
       VK_DELETE, VK_OEM_MINUS, VK_SUBTRACT :
-        if btnCommandUnDelete.Enabled then
-          btnCommandUnDelete.Click;
+        begin
+          if btnCommandUnDelete.Enabled then
+            btnCommandUnDelete.Click;
+          exit;
+        end;
     end;
-    exit;
   end;
 
   if Key = VK_C then
   begin
+    if Shift = [ ssCtrl ] then
+    begin
+      if actCopyClipCmd.Enabled then
+        actCopyClipCmd.Execute;
+      Key := VK_UNKNOWN; //listbox was overriding my ctrl-c;
+      exit;
+    end;
     if Shift = [ ssShift, ssCtrl ] then
+    begin
       mniCopyCmdListClipClick( Self );
+      exit;
+    end;
     if Shift = [ ssCtrl, ssShift, ssAlt ] then
+    begin
       if actCopyCmd.Enabled then
         actCopyCmd.Execute;
+      exit;
+    end;
     exit;
   end;
 
@@ -2880,7 +2919,7 @@ end;
 
 procedure TfrmMain.lbDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  if ( shift = [ ssCtrl ] )
+  if ( ( shift = [ ssCtrl ] ) or ( shift = [ ssshift, ssCtrl ] ) )
      and ( key = VK_F )
      and ( lbDetachedProcesses.Items.Count > 1 ) then
     FindItem( lbDetachedProcesses );
@@ -2896,21 +2935,13 @@ end;
 
 procedure TfrmMain.lbKeywordsDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  if ( Shift = [ ssCtrl ] ) then
+
+  if ( Shift = [ ssCtrl ] ) or ( Shift = [ ssCtrl, ssShift ] ) then
   begin
-    if ( key = VK_S ) and btnCmdOk.enabled then
-    begin
-      btnCmdOk.Click;
-      exit;
-    end;
-    if ( key = VK_F ) and ( lbKeywordsDisp.Items.Count > 1 ) then
-    begin
+    if ( key = VK_F ) and ( lbKeywords.Items.Count > 1 ) then
       FindItem( lbKeywordsDisp );
-      exit;
-    end;
   end;
-  if ( Shift = [ ssCtrl, ssShift ] ) and ( key = VK_F ) and ( lbKeywordsDisp.Items.Count > 1 ) then
-    FindItem( lbKeywordsDisp );
+
 end;
 
 procedure TfrmMain.lbKeywordsKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -2929,8 +2960,12 @@ begin
   end;
 
   if ( Shift = [ ssCtrl ] ) or ( Shift = [ ssCtrl, ssShift ] ) then
+  begin
     if ( key = VK_F ) and ( lbKeywords.Items.Count > 1 ) then
-      FindItem( lbKeywords );
+      FindItem( lbKeywords )
+    else if ( key = VK_S ) and btnCmdOk.enabled then
+           btnCmdOk.Click;
+  end;
 
 end;
 
@@ -3229,17 +3264,22 @@ end;
 
 procedure TfrmMain.lbSearchCmdKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
-  if Shift = [ ssCtrl ] then
+  if ( Shift = [ ssCtrl ] ) or ( Shift = [ ssShift, ssCtrl ] ) then
   begin
     case Key of
       VK_F :
-        if btnSearchFindCmd.Enabled then
-          btnSearchFindCmd.Click;
+        begin
+          if btnSearchFindCmd.Enabled then
+            btnSearchFindCmd.Click;
+          exit;
+        end;
       VK_T :
-        if btnSearchGotoCmd.Enabled then
-          btnSearchGotoCmd.Click;
+        begin
+          if btnSearchGotoCmd.Enabled then
+            btnSearchGotoCmd.Click;
+          exit;
+        end;
     end;
-    exit;
   end;
 
   if Shift = [ ssShift, ssCtrl ] then
@@ -3269,29 +3309,34 @@ begin
     exit;
   end;
 
-  if Shift = [ ssCtrl ] then
+  if ( Shift = [ ssCtrl ] ) or ( Shift = [ ssShift, ssCtrl ] ) then
   begin
     case Key of
       VK_F :
-        if btnSearchFindCmdLine.Enabled then
-          btnSearchFindCmdLine.Click;
+        begin
+          if btnSearchFindCmdLine.Enabled then
+            btnSearchFindCmdLine.Click;
+          exit;
+        end;
       VK_T :
-        if btnSearchGotoCmdLine.Enabled then
-          btnSearchGotoCmdLine.Click;
+        begin
+          if btnSearchGotoCmdLine.Enabled then
+            btnSearchGotoCmdLine.Click;
+          exit;
+        end;
       VK_C :
+        if ( Shift = [ ssShift, ssCtrl ] ) then
+        begin
+          mniSearchCmdLineListClipClick( Self );
+          exit;
+        end
+        else
         begin
           mniSearchCmdLineItemClipClick( Self );
           Key := VK_UNKNOWN; //listbox was overriding my ctrl-c;
+          exit;
         end;
     end;
-    exit;
-  end;
-
-  if Shift = [ ssShift, ssCtrl ] then
-  begin
-    if Key = VK_C then
-      mniSearchCmdLineListClipClick( Self );
-    exit;
   end;
 
   if Key in [ VK_4, VK_5 ] then
@@ -4492,10 +4537,10 @@ begin
 
     ThreatLevel := CmdObjHelper.ListIdxToThreatLevel( cbThreatLevel.ItemIndex );
 
-    actRevert.Enabled := DoUpdate;
-
     LocationPath := lblPathAlias.Caption;
     UpdatePathsInEdit( LocationPath, true );
+
+    actRevert.Enabled := DoUpdate;
 
     UpdateLbCommands(False);
 
@@ -4716,7 +4761,7 @@ begin
 
     Title := ccapSearchLoad;
     InitialDir := GetSearchesDirectory;
-    Options := Options + [ ofNoChangeDir, ofPathMustExist, ofForceShowHidden, ofFileMustExist ];
+    Options := Options + [ ofPathMustExist, ofFileMustExist ];
 
     if Execute then
     begin
@@ -4901,6 +4946,7 @@ begin
   str := GetRealPath;
   if str <> '' then
     memEntry.Text := str + memEntry.Text;
+  TryFocus( memEntry );
 end;
 
 
@@ -4917,6 +4963,7 @@ end;
 procedure TfrmMain.btnPkexecMainClick( Sender : TObject );
 begin
   memEntry.Text := TogglePkexec( memEntry.Text );
+  TryFocus( memEntry );
 end;
 
 procedure TfrmMain.btnReCenterClick( Sender : TObject );
@@ -5149,7 +5196,7 @@ begin
         aList := fCommandButtons;
         IsEdit := false;
         FormToCmdObj(CmdObj);
-        SetNotificationState( True, actSave, shpSave );
+        SetNotificationState( CmdObj.DoUpdate, actSave, shpSave );
       end;
     cCancelButtonCommandTag:
       begin
@@ -5175,7 +5222,7 @@ begin
         aList := fCommandLineButtons;
         IsEdit := false;
         FormToCmdLine(CmdLineObj);
-        SetNotificationState( True, actSave, shpSave );
+        SetNotificationState( CmdLineObj.DoUpdate, actSave, shpSave );
       end;
     cCancelButtonLineTag:
       begin
@@ -5924,8 +5971,12 @@ begin
   Input := memEntry.Text;
   OutPut := '';
   if not EditCommandLine( format( cDoubleS, [ ccapGenericEdit, cNameItem_CommandLine ] ), Input, Output, false ) then
+  begin
+    TryFocus( memEntry );
     exit;
+  end;
   memEntry.Text := Output;
+  TryFocus( memEntry );
 end;
 
 procedure TfrmMain.btnCancelRunClick( Sender : TObject );
@@ -7224,10 +7275,17 @@ begin
 
   Application.HintHidePause := 600000;
 
+//if commandoo is opened, form re-sized, then closed, there was bug where the
+//editing panels had not obeyed their anchor settings and everything was off.
+//a full settings of sizes seems to fix this.
   pnlCmdLine.top := shpCmdOut9.top;
   pnlCmdLine.Left := pnlDispCmdLine.Left;
+  pnlCmdLine.Width :=  pnlDispCmdLine.Width;
+  pnlCmdLine.Height :=  pnlCmdLines.Height;
   pnlCommand.top := pnlDispCommand.top;
   pnlCommand.Left := pnlDispCommand.Left;
+  pnlCommand.Width := pnlDispCommand.Width;
+  pnlCommand.Height := pnlDispCommand.Height;
 
   if not GetSpecialMode then
   begin
@@ -7263,6 +7321,8 @@ begin
     + cmsgMainBasePath + fWritingToPath
     + LineEnding
     + cmsgMainSavingPath + fSavingToPath
+    + LineEnding
+    + format( cmsgMainSavingPathSearch, [ cmsgMainSavingPath ] ) + GetSearchesDirectory
     + LineEnding
     + cmsgMainShellPhrase + globltShellName + '     ' +  cmsgMainRootTemplate + fRootFile
     + LineEnding
@@ -7381,6 +7441,10 @@ begin
   with frmFindText do
   begin
     Memo := aMemo;
+//Realized that a from cursor search in read only memos was very confusing so if its RO
+//Alwasys start from the top, disabling the rgroup is a nicety.
+    rgTopCursor.Enabled := not memo.ReadOnly;
+
     MoveLeft := 0;
     MoveUp := 0;
     if Memo = Memo1 then

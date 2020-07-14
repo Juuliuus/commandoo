@@ -40,11 +40,11 @@ object frmMain: TfrmMain
     Top = 40
     Width = 1424
     TabStop = False
-    ActivePage = tsCommands
+    ActivePage = tsKeyWords
     Anchors = [akTop, akLeft, akRight]
     Font.Height = -16
     ParentFont = False
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     OnChange = nbCommandsChange
     object tsCommands: TTabSheet
@@ -242,7 +242,7 @@ object frmMain: TfrmMain
             Height = 34
             Top = 209
             Width = 119
-            Caption = '&T  Cancel'
+            Caption = '&S  Cancel'
             GlyphShowMode = gsmNever
             OnClick = btnCmdEditClick
             TabOrder = 4
@@ -437,9 +437,9 @@ object frmMain: TfrmMain
             end
           end
           object pnlCmdLine: TPanel
-            Left = 216
+            Left = 424
             Height = 289
-            Top = 32
+            Top = 4
             Width = 950
             Anchors = [akLeft, akRight, akBottom]
             ClientHeight = 289
@@ -692,7 +692,7 @@ object frmMain: TfrmMain
               Height = 31
               Top = 4
               Width = 169
-              Caption = '&I  Toggle pkexec'
+              Caption = '&T  Toggle pkexec'
               Font.Height = -14
               OnClick = btnPkexecMainClick
               ParentFont = False
@@ -704,7 +704,7 @@ object frmMain: TfrmMain
               Height = 31
               Top = 4
               Width = 169
-              Caption = '&J  Insert Full Path'
+              Caption = '&S  Insert Full Path'
               Font.Height = -14
               OnClick = btnInsertPathClick
               ParentFont = False
@@ -1044,9 +1044,9 @@ object frmMain: TfrmMain
           end
         end
         object pnlcommand: TPanel
-          Left = 191
+          Left = 448
           Height = 200
-          Top = 40
+          Top = 8
           Width = 927
           Anchors = [akTop, akLeft, akRight]
           ClientHeight = 200
@@ -1990,7 +1990,7 @@ object frmMain: TfrmMain
         object lbSearchCmdLine: TListBox
           Left = 11
           Height = 151
-          Hint = 'This will show any Command Lines belonging'#10'to the item selected in the list above if'#10'it is a Command.'#10#10'Click on a Command Line to enable the'#10'RUN button.'#10#10'It will be automatically cleared in some cases'#10'like when you edit the Master Keywords'#10'or maybe in some other cases.'#10#10'<Enter> runs the command line.'#10#10'For the ClipBoard:'#10#10'Ctrl-c copies the selected command, '#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'ctrl-t goes to the Command Line'#10#10'These are global:'#10'<alt-1> Search Keywords'#10'<alt-2> New Search KeyWords'#10'<alt-3> Load Search'#10#10'Local:'#10'<alt-4> save  search KeyWords'#10'<alt-5> display search KeyWords'#10#10'<end>'
+          Hint = 'This will show any Command Lines belonging'#10'to the item selected in the list above if'#10'it is a Command.'#10#10'Click on a Command Line to enable the'#10'RUN button.'#10#10'<Enter> runs the command line.'#10#10'For the ClipBoard:'#10#10'Ctrl-c copies the selected command, '#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'ctrl-t goes to the Command Line'#10#10'These are global:'#10'<alt-1> Search Keywords'#10'<alt-2> New Search KeyWords'#10'<alt-3> Load Search'#10#10'Local:'#10'<alt-4> save  search KeyWords'#10'<alt-5> display search KeyWords'#10#10'<end>'
           Top = 288
           Width = 747
           HelpContext = 1
@@ -2012,7 +2012,7 @@ object frmMain: TfrmMain
           Top = 443
           Width = 185
           Action = actSearchFindCmdLine
-          Caption = '&F  Find Cmd Line'
+          Caption = '&G  Find Cmd Line'
           Font.Height = -14
           ParentFont = False
           TabOrder = 5

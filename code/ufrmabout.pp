@@ -289,6 +289,8 @@ begin
 
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( format( cAboutLanguage, [ Frm.GetPODirectory ] ) );
+
+  memOutput.Lines.Add( format( cAboutSearches, [ Frm.GetSearchesDirectory ] ) );
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( format( cAboutFormSettings,
                                [ Frm.WritingToPath + cReferenceProgramName + cSectTabFormSettingsExtension ]

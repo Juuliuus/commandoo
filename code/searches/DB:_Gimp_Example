@@ -1,0 +1,72 @@
+[WARNING]
+README1==================================
+README2=
+README3=This is an automatically generated and maintained Data file.
+README4=   --- Edit this file by hand AT YOUR OWN RISK! ---
+README5=
+README6==================================
+
+[Search]
+DBInfo=DB  (text)
+Name=DB:_Gimp_Example
+UserTag=0
+
+[0Search]
+IsUsed=1
+UserTag=0
+SICount=0
+
+[1Search]
+IsUsed=1
+UserTag=0
+SICount=7
+
+[1SI0]
+FieldType=UD
+SOT=(
+UserTag=0
+
+[1SI1]
+FieldType=Bool
+SOT=None
+UserTag=0
+UID=403489349
+CaseSensitive=0
+Condition==
+SearchValue=t
+OrigField=Child Proc : DetachProcess
+
+[1SI2]
+FieldType=UD
+SOT=And
+UserTag=0
+
+[1SI3]
+FieldType=Bool
+SOT=None
+UserTag=0
+UID=54495245
+CaseSensitive=0
+Condition==
+SearchValue=t
+OrigField=Is Favorite : IsFavorite
+
+[1SI4]
+FieldType=UD
+SOT=)
+UserTag=0
+
+[1SI5]
+FieldType=UD
+SOT=And
+UserTag=0
+
+[1SI6]
+FieldType=Str
+SOT=None
+UserTag=0
+UID=101507315
+CaseSensitive=0
+Condition=*
+SearchValue=gimp
+OrigField=CmdLine : Entry

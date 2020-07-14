@@ -1,7 +1,7 @@
 object frmCmdLineEdit: TfrmCmdLineEdit
-  Left = 1957
+  Left = 2330
   Height = 600
-  Top = 481
+  Top = 466
   Width = 700
   ActiveControl = memCmdLine
   Caption = 'Edit Command Line'
@@ -224,7 +224,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     Height = 30
     Top = 164
     Width = 169
-    Caption = '&I  Toggle pkexec'
+    Caption = '&T  Toggle pkexec'
     Font.Height = -14
     OnClick = btnPkexecClick
     ParentFont = False

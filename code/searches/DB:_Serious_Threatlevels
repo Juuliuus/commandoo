@@ -1,0 +1,42 @@
+[WARNING]
+README1==================================
+README2=
+README3=This is an automatically generated and maintained Data file.
+README4=   --- Edit this file by hand AT YOUR OWN RISK! ---
+README5=
+README6==================================
+
+[Search]
+DBInfo=DB  (text)
+Name=DB:_Serious_Threatlevels
+UserTag=0
+
+[0Search]
+IsUsed=1
+UserTag=0
+SICount=1
+
+[0SI0]
+FieldType=Enum
+SOT=None
+UserTag=0
+UID=559326324
+CaseSensitive=0
+Condition=GTE
+SearchValue=3
+OrigField=ThreatLevel : ThreatLevel
+
+[1Search]
+IsUsed=1
+UserTag=0
+SICount=1
+
+[1SI0]
+FieldType=Enum
+SOT=None
+UserTag=0
+UID=559326324
+CaseSensitive=0
+Condition=GTE
+SearchValue=2
+OrigField=ThreatLevel : ThreatLevel

@@ -1,0 +1,32 @@
+[WARNING]
+README1==================================
+README2=
+README3=This is an automatically generated and maintained Data file.
+README4=   --- Edit this file by hand AT YOUR OWN RISK! ---
+README5=
+README6==================================
+
+[Search]
+DBInfo=DB  (text)
+Name=DB:_CmdLines_NotTerminalOnly
+UserTag=0
+
+[0Search]
+IsUsed=1
+UserTag=0
+SICount=0
+
+[1Search]
+IsUsed=1
+UserTag=0
+SICount=1
+
+[1SI0]
+FieldType=Bool
+SOT=None
+UserTag=0
+UID=35133422
+CaseSensitive=0
+Condition==
+SearchValue=f
+OrigField=Term. Only : TerminalOnly

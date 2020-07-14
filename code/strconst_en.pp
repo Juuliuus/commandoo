@@ -61,6 +61,7 @@ resourceString
   cAboutInstalled = 'Program installed in:   %s';
   cAboutIni = 'Settings files (%s, %s & %s) in:   %s';
   cAboutLanguage = 'Language (.po) files in:   %s';
+  cAboutSearches = 'Saved Searches in:   %s';
   cAboutFormSettings = 'Program Settings located in: %s';
   cAboutGitHub = 'This is open source software, the source code can be found on GitHub at: '
                  + LineEnding
@@ -941,7 +942,7 @@ resourceString
      + 'the edited entries.'
      ;
 
-   cmsgEmptySearchResults = '< No Search Results >';
+   cmsgEmptySearchResults = '< Search found no matches >';
 
    ccapHaltProcess = 'Halt detached process';
    cmsgHaltProcess = 'This will halt the selected process. Careful. The process may need '

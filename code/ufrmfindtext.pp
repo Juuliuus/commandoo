@@ -166,6 +166,7 @@ end;
 procedure TfrmFindText.DoInitialFind( FromTop : boolean = false; aMemo : TMemo = nil );
 var
   Idx, NewPos : SizeInt;
+  ContextualIdx : integer;
 begin
 
   if not assigned( Memo ) and not assigned( aMemo ) then
@@ -176,7 +177,15 @@ begin
   else if not assigned( memo ) then
          exit;
 
-  case rgTopCursor.ItemIndex of
+//well, I'm flummoxed. Tested thouroughly, but for some reason I CAN NOT disable the rgTopCursor from
+//here!! WFT!!!!
+  //rgTopCursor.Enabled := false;//not memo.ReadOnly;
+  if memo.ReadOnly then
+    ContextualIdx := 0
+  else ContextualIdx := rgTopCursor.ItemIndex;
+
+  case ContextualIdx of
+  //case rgTopCursor.ItemIndex of
     0 : CurrPos := FindText( 0 );
     1 :
       begin
@@ -220,7 +229,7 @@ begin
   rgTopCursor.Items.Text := ccaprgChoices;
   if rgTopCursor.Items.Count < 2 then
     raise EErrorDevelopment.Create( 'TfrmManageProfile.FormShow: Bad Translation, not enough items.' );
-//Default to: From Cursor
+//Default to --> From Cursor
   rgTopCursor.ItemIndex := 1;
 end;
 
@@ -274,6 +283,7 @@ end;
 
 procedure TfrmFindText.FormShow( Sender : TObject );
 begin
+
   if not assigned( memo ) then
   begin
     edtFindText.Text := '< memo not assigned! >';

@@ -1,0 +1,32 @@
+[WARNING]
+README1==================================
+README2=
+README3=This is an automatically generated and maintained Data file.
+README4=   --- Edit this file by hand AT YOUR OWN RISK! ---
+README5=
+README6==================================
+
+[Search]
+DBInfo=DB  (text)
+Name=DB_KEY:_System_Info
+UserTag=1
+
+[0Search]
+IsUsed=1
+UserTag=0
+SICount=1
+
+[0SI0]
+FieldType=List
+SOT=None
+UserTag=0
+UID=379104383
+CaseSensitive=0
+Condition=M=
+SearchValue=Information
+OrigField=Keywords : Keywords
+
+[1Search]
+IsUsed=0
+UserTag=0
+SICount=0
