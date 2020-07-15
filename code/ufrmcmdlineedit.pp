@@ -107,7 +107,6 @@ uses ufrmMsgDlg
      , ufrmMain
      , juusgen
      , strconst_en
-     , strconst_prog
      , unitglob
      ;
 

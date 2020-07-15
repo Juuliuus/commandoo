@@ -655,6 +655,9 @@ type
     fFavoritesSR : TStringList;
 
     function GetCmdRec( const anIdx : integer = -1 ) : TCmdRec;
+    function GetPathFromResName( const ResName : string ) : string;
+    procedure InstallFile( const FullPath, ResourceName : string );
+    procedure InstallSupportFiles;
     procedure JumpToCommand( anIdx : integer; CmdLineStr : string );
     function CanJumpToCommand( const CmdStr, CmdLineStr : string ) : boolean;
     function TryToFindEditedCommand( const CmdSearch : string ) : integer;
@@ -780,6 +783,7 @@ type
     { public declarations }
     RegX: TRegExpr;
 
+    function GetDefaultWritingToPath : string;
     function GetSearchesDirectory : string;
     function GetPODirectory: string;
     procedure UpdateSharedHintsAndCaptions;
@@ -879,6 +883,8 @@ resourcestring
 implementation
 
 {$R *.lfm}
+//R commandoofiles.res
+
 
 uses strconst_prog, strconst_en, ufrmMsgDlg
   , unitLanguages
@@ -1033,8 +1039,6 @@ resourcestring
   ccapGotoEditInEntry = 'Entry';
   ccapGotoEditInNotes = 'Notes';
   ccapGotoProcs = 'Detached Processes';
-  ccapGotoFindConst = 'Find';
-  ccapGotoReFindConst = 'Find again';
   ccapGotoMainDisplay = 'Output area';
 
   cmsgProgramKeyWord = 'The Name "%s" at beginning of name is reserved for the program to use.';
@@ -1512,7 +1516,7 @@ var
   Ini : TJinifile;
 begin
   try
-    Ini := TJiniFile.Create( GetAppConfigDir( False ) + cConfigPathFileName );
+    Ini := TJiniFile.Create( GetDefaultWritingToPath + cConfigPathFileName );
     Ini.CacheUpdates := true;
     Ini.CaseSensitive := true;
     Ini.WriteString( cConfigPathSection, cConfigPathWritingPath, ConPath );
@@ -1521,6 +1525,18 @@ begin
     freeandnil( Ini );
   end;
 end;
+
+function TfrmMain.GetDefaultWritingToPath : string;
+begin
+  {$IFNDEF Release}
+    result := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
+  {$ELSE}
+    if fSuperUser then
+      result := '/root/.config/commandoo_root/'
+    else result := GetAppConfigDir( False );//gets home "." location false is xdg .config, true is system /etc
+  {$ENDIF}
+end;
+
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 var
@@ -1553,17 +1569,6 @@ var
     fHasShown := true;//set flags to fall through onshow and onactivate
     FIsInitialized := true;
     Application.Terminate;
-  end;
-
-  function GetDefaultWritingToPath : string;
-  begin
-    {$IFNDEF Release}
-      result := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
-    {$ELSE}
-      if fSuperUser then
-        result := '/root/.config/commandoo_root/'
-      else result := GetAppConfigDir( False );//gets home "." location false is xdg .config, true is system /etc
-    {$ENDIF}
   end;
 
   function DoResetConfig( const Extra : string ) : boolean;
@@ -1717,6 +1722,10 @@ begin
     CreateDir( fWritingToPath + cSearchFolderName );
     fFirstLocalRun := true;
   end;
+
+  if fFirstLocalRun then
+    InstallSupportFiles;
+//failure??
 
   GetShellName;
 
@@ -4756,6 +4765,7 @@ begin
   if InvalidCommands_Msg then
     exit;
 
+  LoadedUT := -1;
   with TOpenDialog.Create( self ) do
   try
 
@@ -5990,8 +6000,57 @@ begin
   OpenProfiles( false );
 end;
 
+function TfrmMain.GetPathFromResName( const ResName : string ) : string;
+begin
+  case ResName of
+    'DB' : result := fWritingToPath + cDefaultDBProfileName + cSqlDBExtension;
+    'DBCMD' : result := fWritingToPath + cDefaultDBProfileName + cIniFileNameCommands + cIniDBExtension;
+    'DBCMDLINE' : result := fWritingToPath + cDefaultDBProfileName + cIniFileNameCommandLines + cIniDBExtension;
+    'DBMISC' : result := fWritingToPath + cDefaultDBProfileName + cIniFileNameMisc + cIniDBExtension;
+    'PO.EN' : result := GetPODirectory + 'commandoo.en.po';
+    'PO.PYRXXX' : result := GetPODirectory + 'commandoo.pyrxxx.po';
+    'PO.WOOKIEXXX' : result := GetPODirectory + 'commandoo.wookiexxx.po';
+    'SEARCH.1' : result := GetSearchesDirectory + 'DB:_CmdLines_NotTerminalOnly';
+    'SEARCH.2' : result := GetSearchesDirectory + 'DB:_Commands_for_copy.move.rename.delete_files';
+    'SEARCH.3' : result := GetSearchesDirectory + 'DB:_Gimp_Example';
+    'SEARCH.4' : result := GetSearchesDirectory + 'DB_KEY:_Encryption';
+    'SEARCH.5' : result := GetSearchesDirectory + 'DB_KEY:_SysAdmin';
+    'SEARCH.6' : result := GetSearchesDirectory + 'DB_KEY:_System_Info';
+    'SEARCH.7' : result := GetSearchesDirectory + 'DB:_Require_ROOT';
+    'SEARCH.8' : result := GetSearchesDirectory + 'DB:_Serious_Threatlevels';
+    'SEARCH.9' : result := GetSearchesDirectory + 'DB:_Serious_Threatlevels_2';
+    'SEARCH.0' : result := GetSearchesDirectory + 'DB:_Unassigned_Threatlevels';
+  end;
+
+end;
+
+procedure TfrmMain.InstallSupportFiles;
+begin
+  InstallFile( GetPathFromResName( 'DB' ), 'DB' );
+  InstallFile( GetPathFromResName( 'DBCMD' ), 'DBCMD' );
+  InstallFile( GetPathFromResName( 'DBCMDLINE' ), 'DBCMDLINE' );
+  InstallFile( GetPathFromResName( 'DBMISC' ), 'DBMISC' );
+  InstallFile( GetPathFromResName( 'PO.EN' ), 'PO.EN' );
+  InstallFile( GetPathFromResName( 'PO.PYRXXX' ), 'PO.PYRXXX' );
+  InstallFile( GetPathFromResName( 'PO.WOOKIEXXX' ), 'PO.WOOKIEXXX' );
+  InstallFile( GetPathFromResName( 'SEARCH.1' ), 'SEARCH.1' );
+  InstallFile( GetPathFromResName( 'SEARCH.2' ), 'SEARCH.2' );
+  InstallFile( GetPathFromResName( 'SEARCH.3' ), 'SEARCH.3' );
+  InstallFile( GetPathFromResName( 'SEARCH.4' ), 'SEARCH.4' );
+  InstallFile( GetPathFromResName( 'SEARCH.5' ), 'SEARCH.5' );
+  InstallFile( GetPathFromResName( 'SEARCH.6' ), 'SEARCH.6' );
+  InstallFile( GetPathFromResName( 'SEARCH.7' ), 'SEARCH.7' );
+  InstallFile( GetPathFromResName( 'SEARCH.8' ), 'SEARCH.8' );
+  InstallFile( GetPathFromResName( 'SEARCH.9' ), 'SEARCH.9' );
+  InstallFile( GetPathFromResName( 'SEARCH.0' ), 'SEARCH.0' );
+end;
+
+
 procedure TfrmMain.actQuickRunExecute( Sender : TObject );
 begin
+  InstallFile( GetPODirectory + 'testdb' + cSqlDBExtension, 'TEST' );
+  InstallFile( GetPODirectory + 'Lincoln.jpg', 'LINC' );
+
 //only shown in developer mode, decided too dangerous (no checks) to have it as a general option
 {$IFNDEF RELEASE}
   if not DoSingleInput( ccapQuickRun, fLastQuickRun, simEdit, self, false ) then
@@ -5999,6 +6058,22 @@ begin
   UpdateDisplay( RunCmdLine( fLastQuickRun, false, false, false ), true, true );
   fIFS.WriteString( cSectTabFormSettings, cFormSettingsLastQuickRun, fLastQuickRun );
 {$ENDIF}
+end;
+
+procedure TfrmMain.InstallFile( const FullPath, ResourceName : string );
+var
+  S: TResourceStream;
+begin
+//juus option to re-install???
+  if fileexists( FullPath ) then
+    exit;
+  S := TResourceStream.Create( HInstance, ResourceName, RT_RCDATA );
+  try
+    S.SaveToFile( FullPath );
+  finally
+    S.Free;
+  end;
+  UpdateDisplay( 'installed ' + FullPath, false, false );
 end;
 
 procedure TfrmMain.RunCmdDisplayObj( Sender : TListBox );
@@ -6724,7 +6799,6 @@ end;
 procedure TfrmMain.UpdateSaveStatus;
 var
   i: integer;
-  aCmdObj: TCmdObj;
   NeedSave: boolean;
   CmdRec : TCmdRec;
 begin

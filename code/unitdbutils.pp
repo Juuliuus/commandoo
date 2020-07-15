@@ -383,40 +383,17 @@ function GetIniDBFileFromToListImport( Strings : TStrings; const NewPath, NewPro
 var
   i, Idx : Integer;
   ToF, CalcName: String;
-
-  tempstr : string;
 begin
   result := false;
-//  Strings.Clear;
-
-//  for i := 0 to High( aryTextData ) do
   for i := 0 to Strings.Count - 1 do
   begin
     Idx := strtoint( copy( Strings[ i ], 1, 1 ) ) - 1;
     calcName := format( GetIniDBNameTemplate( aryTextData[ Idx ] ), [ NewProfileName ] );
     Strings[ i ] := copy( strings[ i ], 2, maxint );
-    tempstr := strings[ i ];
-
-    //case Idx of
-    //  1 : format( GetIniDBNameTemplate( aryTextData[ 1 ] ), [ NewProfileName ] );
-    //  2 : ;
-    //  3 : ;
-    //  else
-    //    begin
-    //
-    //    end;
-    //end;
-    //FromF := GenerateDBFilePath( OldPath, format( GetIniDBNameTemplate( aryTextData[ i ] ), [ OldProfileName ] ), cIniDBExtension );
-    //if not FileExists( FromF ) then
-    //begin
-    //  result := false;
-    //  exit;
-    //end;
     ToF := GenerateDBFilePath( NewPath, CalcName, cIniDBExtension );
     Strings[ i ] := Strings[ i ]
                     + SeparatorChar
                     + ToF;
-    //Strings.Add( FromF + SeparatorChar + ToF );
   end;
 
   result := true;

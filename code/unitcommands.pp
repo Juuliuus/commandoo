@@ -653,8 +653,7 @@ resourcestring
 implementation
 
 uses
-   Strconst_EN
-  , juusgen
+   juusgen
   , unitfrmCommandsVar
   , unitfrmCommandsInput
   , controls

@@ -55,7 +55,7 @@ const
 
 implementation
 
-uses unitcommands, unitGlob;
+uses unitGlob;
 
 procedure TryFocus( aControl : TWinControl );
 begin

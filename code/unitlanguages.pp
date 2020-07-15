@@ -148,8 +148,9 @@ implementation
 
 uses
   ufrmnolanguage
-  , unitjLCLTranslator
-  //, LCLTranslator
+//juus
+  //, unitjLCLTranslator
+  , LCLTranslator
   , ufrmMsgDlg
   , ufrmAddLanguage
   , strconst_prog
@@ -341,11 +342,12 @@ begin
 //YOU HAVE TO UPDATE LCLTranslator too! Don't forget!!!   //note to self (and anyone else compiling program)
 //===============================================================
   if fileexists ( POFileName ) then
-    unitjLCLTranslator.setdefaultlang( fProgramLang,
-                                       fLanguageFilesFolder,
-                                       true,
-                                       POFileName
-                                       )
+    LCLTranslator.setdefaultlang( fProgramLang, fLanguageFilesFolder, true )
+    //unitjLCLTranslator.setdefaultlang( fProgramLang,
+    //                                   fLanguageFilesFolder,
+    //                                   true,
+    //                                   POFileName
+    //                                   )
   else
   begin
     if pos( '.en.po', POFileName ) > 0 then

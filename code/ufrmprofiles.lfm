@@ -174,7 +174,7 @@ object frmProfiles: TfrmProfiles
     object btnMergeTo: TBitBtn
       Left = 387
       Height = 32
-      Hint = 'This will merge the entires in the selected '#10'DB to another DB of your choice.'#10#10'If entries are identical nothing is done.'#10#10'If entries are similar it will make the best'#10'choice and describe the differences in the '#10'"notes" field of the affected Command and/or'#10'Command Line.'#10#10'<end>'
+      Hint = 'This will merge the entires in the selected '#10'DB to another DB of your choice. Nothing '#10'is lost, only things missing will be imported.'#10#10'If entries are identical nothing is done.'#10#10'If entries are similar it will make the best'#10'choice and describe the differences in the '#10'"notes" field of the affected Command and/or'#10'Command Line.'#10#10'<end>'
       Top = 129
       Width = 163
       Action = actMergeTo

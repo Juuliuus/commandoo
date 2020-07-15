@@ -259,7 +259,6 @@ const
   csoUseAddSetting = 'Hey Programmer! You didnt call AddSetting before calling SaveFormSettings';
   //csoFontKey = 'font';
   cso_SavingServerFormSettings = 'SavingServerFormSettings';
-  csoTestingDBFileName = 'xxx.xxx';
 
 { T_IS_SearchControl }
 
@@ -1012,10 +1011,8 @@ end;
 
 function TInfoServer.CheckV4GuidMisMatch : boolean;
 var
-  i, Idx : Integer;
-  //DBName : string;
+  i : Integer;
   Guid, GuidCmd, GuidCmdLine, GuidMisc : string;
-  DL : TDataLocation;
 begin
 
   result := false;

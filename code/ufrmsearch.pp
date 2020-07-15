@@ -176,7 +176,6 @@ implementation
 uses ufrmMsgDlg
      , unitfields
      , unitGlob
-     , strconst_en
      ;
 
 resourcestring

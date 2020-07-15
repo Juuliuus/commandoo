@@ -663,9 +663,6 @@ begin
       exit;
     end;
 
-//juuus SigInt????????? Test this!
-//OUCH!!! message from old code, where bash over sh saved the day. is this a thing?
-//This fixed a SERIOUS problem where subsequent runs gave SIGTTIN errors
     SL.Add( globltShellName );
     SL.Add( '-c' );
     SL.add( aString );

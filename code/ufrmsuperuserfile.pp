@@ -96,7 +96,6 @@ uses ufrmMsgDlg
      , strconst_prog
      , unitcommands
      , linuxtrix
-     , uSingleInput
      , unitglob
      ;
 

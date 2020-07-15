@@ -373,7 +373,7 @@ begin
     exit;
   end;
 
-  str := GetAppConfigDir( False );
+  str := TfrmMain( Owner ).GetDefaultWritingToPath;
   if str = lblBaseFolder.Caption then
     exit;
   MsgDlgMessage( ccapOptDefSavePath, format( cmsgOptDefSavePath, [ cmsgOptDefWritePathStr, Str ] ) );
