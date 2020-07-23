@@ -94,6 +94,7 @@ end;
 procedure Tfrm_Search_Operator.FormCreate( Sender : TObject );
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
 end;
 

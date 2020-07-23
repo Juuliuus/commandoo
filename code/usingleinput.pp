@@ -221,6 +221,7 @@ end;
 procedure TfrmSingleInput.FormCreate(Sender: TObject);
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   fNewFolder := '';
   fOriginalFolder := '';

@@ -74,6 +74,7 @@ end;
 procedure TfrmNoLanguage.FormCreate(Sender : TObject);
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   fCanClose := false;
   lblProgDesc.Caption := ccapProgram;

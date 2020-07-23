@@ -10,7 +10,7 @@
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
-      <Resources Count="17">
+      <Resources Count="21">
         <Resource_0 FileName="DB.sqlite" Type="RCDATA" ResourceName="DB"/>
         <Resource_1 FileName="DBCmd.data" Type="RCDATA" ResourceName="DBCMD"/>
         <Resource_2 FileName="DBCmdLine.data" Type="RCDATA" ResourceName="DBCMDLINE"/>
@@ -28,6 +28,10 @@
         <Resource_14 FileName="searches/DB:_Serious_Threatlevels" Type="RCDATA" ResourceName="SEARCH.8"/>
         <Resource_15 FileName="searches/DB:_Serious_Threatlevels_2" Type="RCDATA" ResourceName="SEARCH.9"/>
         <Resource_16 FileName="searches/DB:_Unassigned_Threatlevels" Type="RCDATA" ResourceName="SEARCH.0"/>
+        <Resource_17 FileName="searches/.CurrKWSearch{6719E184-7C35-4D81-B5BF-16D4BF36ECC8}" Type="RCDATA" ResourceName="DOTSEARCH1"/>
+        <Resource_18 FileName="searches/.CurrKWSearch{88732DB1-398D-4281-B36F-9A17810FFC32}" Type="RCDATA" ResourceName="DOTSEARCH2"/>
+        <Resource_19 FileName="searches/.CurrSearch{6719E184-7C35-4D81-B5BF-16D4BF36ECC8}" Type="RCDATA" ResourceName="DOTSEARCH3"/>
+        <Resource_20 FileName="searches/.CurrSearch{88732DB1-398D-4281-B36F-9A17810FFC32}" Type="RCDATA" ResourceName="DOTSEARCH4"/>
       </Resources>
     </General>
     <i18n>

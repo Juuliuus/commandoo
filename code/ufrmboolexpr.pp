@@ -1745,6 +1745,7 @@ end;
 procedure TfrmBoolExpr.FormCreate(Sender : TObject);
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   FHasShown := false;
   fListSearchItems := TList.Create;

@@ -9,7 +9,7 @@ code/commandoo64*
 code/commandoo.settings
 code/*.data
 code/*.sqlite
-code/searches/.*
+code/searchesXXX/.*
 download/*
 code/DBBak/*
 

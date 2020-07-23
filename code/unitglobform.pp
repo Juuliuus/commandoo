@@ -38,6 +38,7 @@ type
   TSettingsDirective = (sdSave, sdLoad );
 
 function StandardOutputHeader( const Cmd : string ) : string;
+procedure FormAutoAdjustLayout( AForm : TForm );
 procedure ApplyChangeFont( AForm : TForm; AlwaysChange : boolean = false );
 procedure SetCapMenuButton( M : TMenuItem; B : TBitBtn; const Cap, Extra : string );
 procedure TryFocus( aControl : TWinControl );
@@ -73,6 +74,15 @@ begin
   else B.Caption := M.Caption;
 end;
 
+procedure FormAutoAdjustLayout( AForm : TForm );
+begin
+  {$IFNDEF Release}
+    if not assigned( aForm ) then
+      raise EErrorDevelopment.Create( 'FormAutoAdjustLayout: incoming object is nil' );
+  {$ENDIF}
+  aForm.AutoAdjustLayout( lapAutoAdjustForDPI, aForm.DesignTimePPI, Screen.PixelsPerInch, aForm.Width, ScaleX( aForm.Width, aForm.DesignTimePPI ) );
+end;
+
 procedure ApplyChangeFont( AForm : TForm; AlwaysChange : boolean = false );
 var
   i , NewSize : Integer;
@@ -95,10 +105,10 @@ var
 
 begin
 
+{$IFNDEF Release}
   if not assigned( aForm ) then
-    raise EErrorDevelopment.Create( 'ApplyChangeFont: incoming objects are nil' );
-
-  aForm.AutoAdjustLayout( lapAutoAdjustForDPI, aForm.DesignTimePPI, Screen.PixelsPerInch, aForm.Width, ScaleX( aForm.Width, aForm.DesignTimePPI ) );
+    raise EErrorDevelopment.Create( 'ApplyChangeFont: incoming object is nil' );
+{$ENDIF}
 
 //form creates don't need to change if false, but Options setting and result always need it
   if not globFontsLarge and not AlwaysChange then

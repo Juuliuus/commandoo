@@ -58,7 +58,7 @@ resourceString
 
   cAboutLine = 'commandoo   Version: %s';
   cAboutBDLine = 'DB Version: %s';
-  cAboutInstalled = 'Program installed in:   %s';
+  cAboutInstalled = 'Program running as:   %s';
   cAboutIni = 'Settings files (%s, %s & %s) in:   %s';
   cAboutLanguage = 'Language (.po) files in:   %s';
   cAboutSearches = 'Saved Searches in:   %s';
@@ -69,7 +69,7 @@ resourceString
                  + LineEnding + LineEnding
                  + 'Release Notes and download instructions can be seen in the '
                  + 'README file there.';
-  cEmail = 'Comments etc. to email:     Commandoo@TimePirate.org';
+  cEmail = 'Comments:     Commandoo@TimePirate.org';
   cContribute = 'Contributions of any amount you want can be given to Juuliuus@me.com on PayPal. '
                  + 'Another way to contribute, if you are bi-lingual, is to do a translation for commandoo. '
                  + 'It''s easy-ish...email me if you are interested. ';
@@ -1095,6 +1095,13 @@ resourceString
      + '<end>'
      + LineEnding
      ;
+
+   cmsgHelpVer_BLACKLIST =
+     'Help/Version problem: '
+     + LineEnding
+     + '     < The command "%s" does not support help or version parameters >'
+     + LineEnding;
+
 
 implementation
 

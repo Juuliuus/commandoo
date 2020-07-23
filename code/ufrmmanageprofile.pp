@@ -294,6 +294,7 @@ end;
 procedure TfrmManageProfile.FormCreate(Sender : TObject);
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   FHasShown := false;
   FIsInitialized := false;

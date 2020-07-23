@@ -600,6 +600,10 @@ type
     procedure tmrCancelRunTimer( Sender : TObject );
     { private declarations }
   private
+{$IFDEF platAppImage}
+    fAppImagePath : string;
+    fAppImageRunningPath : string;
+{$ENDIF}
     fDisplayOutPut : TStringList;
     fDisplayOutPutMax : integer;
     fKeyWordList: TcmdListObj;
@@ -657,7 +661,7 @@ type
     function GetCmdRec( const anIdx : integer = -1 ) : TCmdRec;
     function GetPathFromResName( const ResName : string ) : string;
     procedure InstallFile( const FullPath, ResourceName : string );
-    procedure InstallSupportFiles;
+    procedure InstallSupportFiles( const OnlyLanguages : boolean = false );
     procedure JumpToCommand( anIdx : integer; CmdLineStr : string );
     function CanJumpToCommand( const CmdStr, CmdLineStr : string ) : boolean;
     function TryToFindEditedCommand( const CmdSearch : string ) : integer;
@@ -800,6 +804,11 @@ type
     function GetProperPathLabelCaption( const ForDisplay : boolean = false ) : string;
     function GetRealPath : string;
 
+{$IFDEF platAppImage}
+    property AppImagePath : string read fAppImagePath;
+    property AppImageRunningPath : string read fAppImageRunningPath;
+{$ENDIF}
+    property ProfileGUID : string read fProfileGUID;
     property SuperUser: boolean read FSuperUser;
     property WritingToPath: string read fWritingToPath;
     property SavingToPath: string read fSavingToPath;
@@ -1130,9 +1139,6 @@ var
   CmdRec : TCmdRec;
 begin
 
-  if IsNormal then
-    SaveCurrentSearches;
-
   fLastlbCommandsIdx := cUseItemIndexFlag;
   fLastlbCmdLinesIdx := cUseItemIndexFlag;
 
@@ -1179,9 +1185,9 @@ var
   anObj : TObject;
 begin
 
-//first pleez !!!
 //====================
- CloseDownDB( not BadDB, not BadDB );
+  SaveCurrentSearches; //BEFORE closedown
+  CloseDownDB( not BadDB, not BadDB );
 //====================
 
   if assigned( frmfindtext ) then
@@ -1407,7 +1413,7 @@ begin
 ////       as of Juneish 2020 v. is 2.0.0 //as of March 2018 v. is 1.0.1
 
 //       INCREMENT c_DB_VersionUpgradeCount = #;to the next upgrade if DB upgrades were necessary
-//       c_DB_HandwrittenVersion = '1.0.2'; upgrade if DB structure has changed
+//       c_DB_HandwrittenVersion = upgrade if DB structure has changed
 
 //       TfrmMain.CheckUpdates_PROG any code needed for prog updates, just follow the pattern
 //       TfrmMain.CheckUpdates_DB   any code needed for  DB  updates
@@ -1544,9 +1550,6 @@ var
 
   procedure GetShellName;
   begin
-    //globltShellName := SystemFileLocation( 'bash' );
-    //globltShellName := SystemFileLocation( 'sh' );
-    //exit; //testing
 //since I'm confused as to why there is a /bin/bash and a /usr/bin/bash
 //I try to be complete here but prefer /bin/ variants.
     globltShellName := trim( GetEnvironmentVariable( 'SHELL' ) );
@@ -1686,9 +1689,6 @@ begin
   DevReleaseSettings;
 //==================================
 
-//juuus Make a routine that will create a thumbdrive version
-//ask for appimage ask for destFolder: compy appimage and config to appimage.config
-
   fWritingToPath := GetDefaultWritingToPath;
 
   if not DirectoryExists( fWritingToPath ) then
@@ -1727,6 +1727,15 @@ begin
     InstallSupportFiles;
 //failure??
 
+{$IFDEF platAppImage}
+  fAppImagePath := trim( GetEnvironmentVariable( 'APPIMAGE' ) );
+  if fAppImagePath = '' then
+    fAppImagePath := '<Development. Not running in the AppImageEnvironment>';
+  fAppImageRunningPath := trim( GetEnvironmentVariable( 'APPDIR' ) );
+{$ENDIF}
+//do I want or need a HOME? Better maybe to be full paths, then beginners aren't confused.
+//fUserHome := trim( GetEnvironmentVariable( 'HOME' ) )
+
   GetShellName;
 
   fIFS := TJiniFile.Create( fWritingToPath + cReferenceProgramName + cSectTabFormSettingsExtension );
@@ -1745,6 +1754,7 @@ begin
 
   globFontsLarge := fIFS.ReadBool( cSectTabFormSettings, cFormSettingsLargerFont, false );
 //===>>> Applychangefont MUST FOLLOW globFontsLarge reading
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
 
   fSqliteLibrary := fIFS.ReadString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, '' );//new install
@@ -2059,7 +2069,10 @@ begin
   //exit;
 
   if FromVer = ToVer then
+  begin
+    updateDisplay( 'This is waiting for finish to be upgraded to ===> 5', false, false );
     exit;
+  end;
 
   for i := FromVer + 1 to ToVer do
     case i of
@@ -2067,7 +2080,9 @@ begin
       2 : Update_PROG_Version_0002( fIFS );
       3 : Update_PROG_Version_0003( fIFS, cSectTabFormSettings );
       4 : Update_PROG_Version_0004( fIFS, cSectTabFormSettings );
-      //5 : When an update is done on the Program that needs attention in ini file write the needed code here
+//TODO change your prog ver!
+      5 : InstallSupportFiles( true );
+      //6 : When an update is done on the Program that needs attention in ini file write the needed code here
       //and set the c_PROG_VersionUpgradeCount const by +1
     end;
 
@@ -2489,6 +2504,8 @@ end;
 
 procedure TfrmMain.SaveCurrentSearches;
 begin
+  if BadDB then
+    exit;
   fKeyWordSO.Save( GetSearchesDirectory + cCurrKWFileName + fProfileGUID, GetProfileStamp );
   fSearchSO.Save( GetSearchesDirectory + cCurrSearchFileName + fProfileGUID, GetProfileStamp )
 end;
@@ -4862,6 +4879,13 @@ begin
     exit;
   end;
 {$ENDIF}
+
+  if pos( '::' + trim( SL[ 0 ] ) + '::', cHelpVer_BLACKLIST ) > 0 then
+  begin
+    Result := format( cmsgHelpVer_BLACKLIST, [ SL[ 0 ] ] );
+    exit;
+  end;
+
   if trim( SL[ 1 ] ) = '' then
   begin
     UpdateDisplay( format( cmsgcleNoHelpParam, [ SL[ 0 ] ] ), false, false );
@@ -5087,8 +5111,13 @@ begin
     exit;
 
 //see comment in btnHelpCommandClick
-  Path := GetProperPathLabelCaption;
   Cmd := GetProperCmdNameCaption;
+  if pos( '::' + Cmd + '::', cHelpVer_BLACKLIST ) > 0 then
+  begin
+    UpdateDisplay( format( cmsgHelpVer_BLACKLIST, [ Cmd ] ), true, false );
+    exit;
+  end;
+  Path := GetProperPathLabelCaption;
   Ver := trim( edtVersion.Text );
 
   if Ver = '' then
@@ -5901,6 +5930,7 @@ begin
 
       if IsSelectMode and ( ModalResult = mrOK ) then
       begin
+        SaveCurrentSearches; //before fProfileName is changed!!
 
         fProfileName := CurrProfileName;
         fUseDB := CurrProfileIsDB;
@@ -6020,19 +6050,25 @@ begin
     'SEARCH.8' : result := GetSearchesDirectory + 'DB:_Serious_Threatlevels';
     'SEARCH.9' : result := GetSearchesDirectory + 'DB:_Serious_Threatlevels_2';
     'SEARCH.0' : result := GetSearchesDirectory + 'DB:_Unassigned_Threatlevels';
+    'DOTSEARCH1' : result := GetSearchesDirectory + '.CurrKWSearch{6719E184-7C35-4D81-B5BF-16D4BF36ECC8}';
+    'DOTSEARCH2' : result := GetSearchesDirectory + '.CurrKWSearch{88732DB1-398D-4281-B36F-9A17810FFC32}';
+    'DOTSEARCH3' : result := GetSearchesDirectory + '.CurrSearch{6719E184-7C35-4D81-B5BF-16D4BF36ECC8}';
+    'DOTSEARCH4' : result := GetSearchesDirectory + '.CurrSearch{88732DB1-398D-4281-B36F-9A17810FFC32}';
   end;
 
 end;
 
-procedure TfrmMain.InstallSupportFiles;
+procedure TfrmMain.InstallSupportFiles( const OnlyLanguages : boolean = false );
 begin
+  InstallFile( GetPathFromResName( 'PO.EN' ), 'PO.EN' );
+  InstallFile( GetPathFromResName( 'PO.PYRXXX' ), 'PO.PYRXXX' );
+  InstallFile( GetPathFromResName( 'PO.WOOKIEXXX' ), 'PO.WOOKIEXXX' );
+  if OnlyLanguages then
+    exit;
   InstallFile( GetPathFromResName( 'DB' ), 'DB' );
   InstallFile( GetPathFromResName( 'DBCMD' ), 'DBCMD' );
   InstallFile( GetPathFromResName( 'DBCMDLINE' ), 'DBCMDLINE' );
   InstallFile( GetPathFromResName( 'DBMISC' ), 'DBMISC' );
-  InstallFile( GetPathFromResName( 'PO.EN' ), 'PO.EN' );
-  InstallFile( GetPathFromResName( 'PO.PYRXXX' ), 'PO.PYRXXX' );
-  InstallFile( GetPathFromResName( 'PO.WOOKIEXXX' ), 'PO.WOOKIEXXX' );
   InstallFile( GetPathFromResName( 'SEARCH.1' ), 'SEARCH.1' );
   InstallFile( GetPathFromResName( 'SEARCH.2' ), 'SEARCH.2' );
   InstallFile( GetPathFromResName( 'SEARCH.3' ), 'SEARCH.3' );
@@ -6043,6 +6079,14 @@ begin
   InstallFile( GetPathFromResName( 'SEARCH.8' ), 'SEARCH.8' );
   InstallFile( GetPathFromResName( 'SEARCH.9' ), 'SEARCH.9' );
   InstallFile( GetPathFromResName( 'SEARCH.0' ), 'SEARCH.0' );
+
+  InstallFile( GetPathFromResName( 'DOTSEARCH1' ), 'DOTSEARCH1' );
+  InstallFile( GetPathFromResName( 'DOTSEARCH2' ), 'DOTSEARCH2' );
+  InstallFile( GetPathFromResName( 'DOTSEARCH3' ), 'DOTSEARCH3' );
+  InstallFile( GetPathFromResName( 'DOTSEARCH4' ), 'DOTSEARCH4' );
+//juuus a message?
+  //UpdateDisplay( 'installed ' + FullPath, false, false );
+
 end;
 
 
@@ -6064,7 +6108,7 @@ procedure TfrmMain.InstallFile( const FullPath, ResourceName : string );
 var
   S: TResourceStream;
 begin
-//juus option to re-install???
+//juuus option to re-install???
   if fileexists( FullPath ) then
     exit;
   S := TResourceStream.Create( HInstance, ResourceName, RT_RCDATA );
@@ -6073,7 +6117,6 @@ begin
   finally
     S.Free;
   end;
-  UpdateDisplay( 'installed ' + FullPath, false, false );
 end;
 
 procedure TfrmMain.RunCmdDisplayObj( Sender : TListBox );
@@ -7405,15 +7448,13 @@ end;
 
 function TfrmMain.GetWidgetString : string;
 begin
-  result := '';
+  result := '  [DEV_ERR]';
   {$IFDEF WidgQT}
     result := '  [QT5]';
   {$ENDIF}
   {$IFDEF WidgGTK}
-    result := '  [GTK2]';
+    result := '  [GTK2???]';
   {$ENDIF}
-  if result = '' then
-    result := '  [DEV_ERR]';
 end;
 
 

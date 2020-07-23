@@ -550,6 +550,7 @@ end;
 procedure TfrmMsgDlg.FormCreate( Sender : TObject );
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   btnFind.Enabled := assigned( frmFindText );
 end;

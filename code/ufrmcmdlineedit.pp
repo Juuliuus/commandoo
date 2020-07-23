@@ -418,6 +418,7 @@ end;
 procedure TfrmCmdLineEdit.FormCreate(Sender : TObject);
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   btnPath.Hint := chintInsertFilePaths;
   btnPath.Caption := '&A  ' + ccapInsertFilePaths;

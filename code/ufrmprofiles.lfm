@@ -1,7 +1,7 @@
 object frmProfiles: TfrmProfiles
-  Left = 1955
+  Left = 2172
   Height = 693
-  Top = 419
+  Top = 319
   Width = 590
   ActiveControl = lbList
   Caption = 'Manage Database Profiles'

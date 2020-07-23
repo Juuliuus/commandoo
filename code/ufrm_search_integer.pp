@@ -101,6 +101,7 @@ procedure Tfrm_Search_Integer.FormCreate( Sender : TObject );
 begin
 
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   fIsLoading := false;
   rgSeList.Caption := crg_MatchType;

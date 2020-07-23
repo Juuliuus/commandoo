@@ -1,0 +1,57 @@
+[WARNING]
+README1==================================
+README2=
+README3=This is an automatically generated and maintained Data file.
+README4=   --- Edit this file by hand AT YOUR OWN RISK! ---
+README5=
+README6==================================
+
+[Search]
+DBInfo=DB  (text)
+Name=NewSearch
+UserTag=0
+
+[0Search]
+IsUsed=1
+UserTag=0
+SICount=3
+
+[0SI0]
+FieldType=StrKey
+SOT=None
+UserTag=0
+UID=238227321
+CaseSensitive=0
+Condition=*
+SearchValue=zip
+OrigField=Command Name : CommandName
+
+[0SI1]
+FieldType=UD
+SOT=Or
+UserTag=0
+
+[0SI2]
+FieldType=StrKey
+SOT=None
+UserTag=0
+UID=238227321
+CaseSensitive=0
+Condition=*
+SearchValue=id
+OrigField=Command Name : CommandName
+
+[1Search]
+IsUsed=1
+UserTag=0
+SICount=1
+
+[1SI0]
+FieldType=Str
+SOT=None
+UserTag=0
+UID=101507315
+CaseSensitive=0
+Condition=*
+SearchValue=grep
+OrigField=CmdLine : Entry

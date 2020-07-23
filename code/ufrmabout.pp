@@ -166,6 +166,7 @@ end;
 procedure TfrmAbout.FormCreate( Sender : TObject );
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
 end;
 
@@ -191,9 +192,9 @@ begin
                              )
                       );
 
+  memOutput.Lines.Add( 'GUID: ' + Frm.ProfileGUID );
   memOutput.Lines.Add( constSeparator );
   memOutput.Lines.Add( GetDBNameList( Frm.ProfileName, Frm.ProfilePath, not Frm.UseDB ) );
-  memOutput.Lines.Add( '' );
   memOutput.Lines.Add( '' );
 
 end;
@@ -278,33 +279,35 @@ begin
 
   memOutput.Lines.Add( format( cAboutLine, [ cHandwrittenVersion + cVersionDate ] ) + Frm.GetWidgetString );
   memOutput.Lines.Add( '' );
-  memOutput.Lines.Add( format( cAboutBDLine, [ c_DB_HandwrittenVersion + c_DB_VersionDate ] ) );
+  memOutput.Lines.Add( format( cAboutBDLine, [ c_DB_HandwrittenVersion + '.' + inttostr( c_DB_VersionUpgradeCount ) + c_DB_VersionDate ] ) );
   memOutput.Lines.Add( '' );
+  GetCurrentDBInfo;
 {$IFDEF platAppImage}
-//anyway to get the location of the AppImage?
-  memOutput.Lines.Add( 'AppImage Version (https://appimage.org/): commandoo[XXX].AppImage' );
+  memOutput.Lines.Add( 'Using commandoo AppImage Version (https://appimage.org/) installed in:' );
+  memOutput.Lines.Add(  Frm.AppImagePath );
+  memOutput.Lines.Add( '' );
   memOutput.Lines.Add( 'Extracted to and running in:' );
+  memOutput.Lines.Add(  Frm.AppImageRunningPath );
 {$ENDIF}
   memOutput.Lines.Add( format( cAboutInstalled, [ extractfilePath( Application.Exename ) ] ) );
 
-  memOutput.Lines.Add( '' );
-  memOutput.Lines.Add( format( cAboutLanguage, [ Frm.GetPODirectory ] ) );
-
-  memOutput.Lines.Add( format( cAboutSearches, [ Frm.GetSearchesDirectory ] ) );
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( format( cAboutFormSettings,
                                [ Frm.WritingToPath + cReferenceProgramName + cSectTabFormSettingsExtension ]
                               )
                      );
-
+  memOutput.Lines.Add( format( cAboutLanguage, [ Frm.GetPODirectory ] ) );
+  memOutput.Lines.Add( format( cAboutSearches, [ Frm.GetSearchesDirectory ] ) );
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( '' );
 
-  GetCurrentDBInfo;
   GetDefaultDBInfo;
   GetCustomDBInfo;
 
   memOutput.Lines.Add( cEmail );
+  memOutput.Lines.Add( 'WebSite:     ' + cWebSite );
+  //memOutput.Lines.Add( 'Public pgp/gpg keys can be found at: ' + cWebSite + cWebSiteDownloads );
+
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( cAboutGitHub );
   memOutput.Lines.Add( '' );

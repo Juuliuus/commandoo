@@ -94,6 +94,15 @@ const
 
   cconstCommandLabel = 'Command';
   cconstCommandLineLabel = 'Command Line';
+  cWebSite = 'https://timepirate.org';
+  cWebSiteDownloads = '/downloads.html';
+
+//beginning of a blacklist for programs that do not take --help or -V, etc commands.
+//This is bad because when adding a CL entry the help is supposed to be shown but the program runs
+//instead as a child process, locking commandoo until the child is halted.
+//I ran accress speedcrunch, there may be more! Who knows. For now this simple thing will do
+//but if the list that I'm aware of grows then will need a structure of some sort.
+  cHelpVer_BLACKLIST = '::speedcrunch::';
 
 //=================================== IMPORTANT
 //  changes to versions need to have code for them in
@@ -104,12 +113,13 @@ const
 
 
 //increment this number for any Program settings cleanup / change, ONLY needs to be done if there is a change
+//that needs to be programatically handled.
   //c_PROG_VersionUpgradeCount = 3;
-  c_PROG_VersionUpgradeCount = 4; //29.06.2020 Allow Esc taken out
+  c_PROG_VersionUpgradeCount = 4; //29.06.2020 Allow Escape chars taken out
 //=====  PROGRAM   ==============================
   cHandwrittenVersion = '2.0.1';//'1.0.1';//all done. ?
   cSectTab_PROG_VersionCount = '_PROG_VersionCount';
-  cVersionDate = ' (July 2020)';//ReleaseCandidate';
+  cVersionDate = ' (August 2020)';//ReleaseCandidate';
 
 implementation
 

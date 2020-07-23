@@ -266,6 +266,7 @@ end;
 procedure TfrmAddLanguage.FormCreate(Sender : TObject);
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   FLastFolder := '';
   SymbolList := TStringlist.Create;

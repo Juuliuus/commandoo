@@ -259,6 +259,7 @@ end;
 procedure TfrmFindText.FormCreate( Sender : TObject );
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   fItemToFind := '';
   edtFindText.TextHint := ccapFindTextHint;

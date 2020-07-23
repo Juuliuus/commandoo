@@ -115,6 +115,7 @@ procedure Tfrm_Search_List.FormCreate( Sender : TObject );
 begin
 
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   fIsLoading := false;
 

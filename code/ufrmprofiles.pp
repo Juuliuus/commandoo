@@ -2715,6 +2715,7 @@ procedure TfrmProfiles.FormCreate(Sender : TObject);
 
 begin
   font.size := cDefaultFontSize;
+  FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
 
   FHasShown := false;
