@@ -161,6 +161,12 @@ resourcestring
     + LineEnding
     + '%s'
     + LineEnding + LineEnding
+    + 'Similarly you can check what the update entails at this link:'
+    + LineEnding
+    + '%s'
+    + LineEnding + LineEnding
+    + '...where "#" is the number you find for the upgrade Version SEQUENCE number.'
+    + LineEnding + LineEnding
     ;
   coptmsgCheckForUpgradeHowTo2 =
     'If the number from the website is greater than your current number then an upgrade is available. '
@@ -173,6 +179,12 @@ resourcestring
     + '%s'
     + LineEnding + LineEnding
     + 'The download is there (marked by the NEW sequence number) as well as instructions.'
+    + LineEnding + LineEnding;
+
+  coptmsgCheckForUpgradeUpgradeNotes =
+    'The upgrade notes are:'
+    + LineEnding
+    + '-------------------------'
     + LineEnding;
   coptcapCheckForUpgradeWget = 'Required file "wget" missing';
   coptmsgCheckForUpgradeWget =
@@ -330,12 +342,14 @@ end;
 
 procedure TfrmOptions.btnUpdateClick( Sender : TObject );
 var
-  DefVerFile, WgetCmd : string;
+  DefSitefolder, DefVerFile, WgetCmd, ReadmeFile : string;
   FetchedVer : integer;
+  UpdateInfo : string;
 begin
-
-  DefVerFile := cWebSiteBase + format( cWebSiteDownloads, [ Upgrade_GetUpgradeVersionFileName ] );
+  DefSitefolder := cWebSiteBase + cWebSiteDownloads;
+  DefVerFile := format( DefSitefolder, [ Upgrade_GetUpgradeVersionFileName ] );
   WgetCmd := format( cWgetCommandLineUpgradeCheck, [ DefVerFile ] );
+  ReadMeFile := format( DefSitefolder, [ Upgrade_GetUpgradeInfoFileName( '#' ) ] );
 
   MsgDlgMessage( coptcapCheckForUpgrade, coptmsgCheckForUpgrade );
   if MsgDlgConfirmation( self ) = mrNo then
@@ -343,7 +357,7 @@ begin
     MsgDlgMessage( coptcapCheckForUpgradeHowTo,
                    format( coptmsgCheckForUpgradeHowTo, [ c_PROG_VersionUpgradeCount ] )
                    + DefVerFile
-                   + format( coptmsgCheckForUpgradeDetails, [ WgetCmd ] )
+                   + format( coptmsgCheckForUpgradeDetails, [ WgetCmd, ReadMeFile ] )
                    + coptmsgCheckForUpgradeHowTo2
                    + format( coptmsgCheckForUpgradeHowToFinal, [ cWebSiteBase + cWebSiteCommando ] )
                  );
@@ -358,7 +372,8 @@ begin
     exit;
   end;
 
-  FetchedVer := TfrmMain( Owner ).WgetUpgradeVer( DefVerFile );
+  UpdateInfo := '';
+  FetchedVer := TfrmMain( Owner ).WgetUpgradeVer( DefVerFile, UpdateInfo );
 
   case FetchedVer of
     0  : exit; //canceled
@@ -374,7 +389,11 @@ begin
   begin
     MsgDlgMessage( coptcapCheckForUpgradeUpgradeAvailable, coptcapCheckForUpgradeUpgradeAvailable
                                                            + LineEnding + LineEnding
-                                                           + format( coptmsgCheckForUpgradeHowToFinal, [ cWebSiteBase + cWebSiteCommando ] ) );
+                                                           + format( coptmsgCheckForUpgradeHowToFinal, [ cWebSiteBase + cWebSiteCommando ] )
+                                                           + coptmsgCheckForUpgradeUpgradeNotes
+                                                           + UpdateInfo
+                                                           )
+                                                           ;
     MsgDlgInfo( self );
   end
   else if FetchedVer = c_PROG_VersionUpgradeCount then

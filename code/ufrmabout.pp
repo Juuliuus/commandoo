@@ -38,6 +38,7 @@ type
     btnToggle : TButton;
     Image1 : TImage;
     lblTopic : TLabel;
+    memToggle : TMemo;
     memOutput : TMemo;
     procedure btnSaveToFileClick( Sender : TObject );
     procedure btnOKClick(Sender : TObject);
@@ -52,7 +53,8 @@ type
     function GetIsCurrent( const SettingsStr : string ) : string;
     procedure ShowAbout;
     procedure ShowIntro;
-    function GetNamebtnToggle : string;
+    function GetNamebtnToggle( Idx : integer ) : string;
+    procedure ShowTogglePath;
     { private declarations }
   public
     { public declarations }
@@ -93,7 +95,8 @@ resourcestring
   cmsgAboutCustomProfileHeader = 'Custom Database Profile(s):';
   cmsgCurrentDB = '          <== ( CURRENT )';
 
-  ccapAboutToggle = '&A  Toggle: About  =>  Introduction  =>  Tips  =>  FreshStart  =>  upgrade  =>  ibus';
+  ccapAboutToggle = '&A  Toggle Display...';
+  ccapAboutToggleThru = 'Toggles Thru: ';
 
 
 const
@@ -112,7 +115,6 @@ procedure TfrmAbout.btnSaveToFileClick( Sender : TObject );
 var
   aFile : string;
 begin
-  //aFile := Frm.SavingToPath + format( cSaveToFileTemplate, [ GetNamebtnToggle ] );
   aFile := Frm.SavingToPath + format( cSaveToFileTemplate, [ lblTopic.Caption ] );
 
 
@@ -135,10 +137,23 @@ begin
   memOutput.SelStart := 0;
 end;
 
-function TfrmAbout.GetNamebtnToggle : string;
+procedure TfrmAbout.ShowTogglePath;
+var
+  i : integer;
+  Str : string;
+begin
+  str := ccapAboutToggleThru;
+  for i := 0 to 4 do
+    Str := Str + GetNamebtnToggle( i ) + ' ==> ';
+  Str := Str + GetNamebtnToggle( 5 );
+  memToggle.Lines.Text := Str;
+end;
+
+function TfrmAbout.GetNamebtnToggle( Idx : integer ) : string;
 begin
   result := 'info';
-  case btnToggle.Tag mod 6 of
+  //case btnToggle.Tag mod 6 of
+  case Idx of
     0 : result := cSaveToFileAbout;
     1 : result := cSaveToFileIntro;
     2 : result := cSaveToFileTips;
@@ -149,9 +164,12 @@ begin
 end;
 
 procedure TfrmAbout.btnToggleClick( Sender : TObject );
+var
+  Idx : integer;
 begin
   btnToggle.Tag := btnToggle.Tag + 1;
-  case btnToggle.Tag mod 6 of
+  Idx := btnToggle.Tag mod 6;
+  case Idx of
     0 : ShowAbout;
     1 : ShowIntro;
     2 : memOutput.Text := format( cmsgTips, [ cmsgFormHotKeys ] );
@@ -159,7 +177,7 @@ begin
     4 : memOutput.Text := cmsgCommandooUpgrade;
     5 : memOutput.Text := cmsgIbus;
   end;
-  lblTopic.Caption := GetNamebtnToggle;
+  lblTopic.Caption := GetNamebtnToggle( Idx );
   btnSaveToFile.enabled := true;
 end;
 
@@ -337,7 +355,8 @@ procedure TfrmAbout.FormShow( Sender : TObject );
 begin
   Frm := TfrmMain( Owner );
   btnToggle.Caption := ccapAboutToggle;
-  lblTopic.Caption := GetNamebtnToggle;
+  lblTopic.Caption := cSaveToFileAbout;//GetNamebtnToggle;
+  ShowTogglePath;
   ShowAbout;
 end;
 

@@ -22,6 +22,8 @@ object frmAbout: TfrmAbout
     Top = 36
     Width = 780
     Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = 3092271
+    Font.Color = clCream
     Font.Height = -16
     ParentFont = False
     ScrollBars = ssAutoVertical
@@ -2007,7 +2009,7 @@ object frmAbout: TfrmAbout
     Left = 54
     Height = 57
     Top = 411
-    Width = 760
+    Width = 258
     Anchors = [akLeft, akRight, akBottom]
     Caption = '...'
     Font.Height = -17
@@ -2037,5 +2039,17 @@ object frmAbout: TfrmAbout
     Font.Height = -18
     ParentColor = False
     ParentFont = False
+  end
+  object memToggle: TMemo
+    Left = 319
+    Height = 88
+    Top = 411
+    Width = 322
+    Color = 3092271
+    Font.Color = clCream
+    Font.Height = -14
+    ParentFont = False
+    ScrollBars = ssAutoBoth
+    TabOrder = 4
   end
 end

@@ -161,7 +161,7 @@ implementation
 
   function Upgrade_GetAppImageFileName( const Sequence : string ) : string;
   begin
-    result := Upgrade_GetFileName + Sequence + cUpgradeExtAppImage;
+    result := Upgrade_GetFileName + '_' + Sequence + cUpgradeExtAppImage;
   end;
 
   function Upgrade_GetGPGSignatureFileName( const Sequence : string ) : string;

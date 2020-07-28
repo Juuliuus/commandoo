@@ -789,7 +789,7 @@ type
     { public declarations }
     RegX: TRegExpr;
 
-    function WgetUpgradeVer( const URL : string) : integer;
+    function WgetUpgradeVer( const URL : string; var UpdateText : string ) : integer;
     function GetDefaultWritingToPath : string;
     function GetSearchesDirectory : string;
     function GetPODirectory: string;
@@ -885,6 +885,9 @@ resourcestring
     + 'If the new command is (or should be) in the path simply typing the name is sufficient, '
     + 'otherwise type in the full path or use the folder search button.'
     ;
+
+  cmsgmainLanguageFilesUpdated = '< Language files updated >';
+  //cmsgmainNewInstall = '< support files installed in config folder >';
 
 //turned in as bug!!!  https://bugs.freepascal.org/view.php?id=32091
 //Had a couple tough days there where I could not debug the program anymore!!! Turns out it was because I had
@@ -5338,8 +5341,8 @@ begin
     //+ cUpgradeFileName + cUpgradeExtUpgradeVersion;
     SL.Add( ProgVer );
     SL.SaveToFile( Path + Upgrade_GetUpgradeVersionFileName );
-//adjust for the file naming
-    ProgVer := '_' + ProgVer;
+//out...adjust for the file naming
+    //ProgVer := '_' + ProgVer;
 
     SL.Clear;
     SL.Add( 'This file generated from button on main form in DEV mode.' );
@@ -6132,7 +6135,10 @@ begin
   InstallFile( GetPathFromResName( 'PO.PYRXXX' ), 'PO.PYRXXX' );
   InstallFile( GetPathFromResName( 'PO.WOOKIEXXX' ), 'PO.WOOKIEXXX' );
   if OnlyLanguages then
+  begin
+    UpdateDisplay( cmsgmainLanguageFilesUpdated, false, false );
     exit;
+  end;
   InstallFile( GetPathFromResName( 'DB' ), 'DB' );
   InstallFile( GetPathFromResName( 'DBCMD' ), 'DBCMD' );
   InstallFile( GetPathFromResName( 'DBCMDLINE' ), 'DBCMDLINE' );
@@ -6152,16 +6158,17 @@ begin
   InstallFile( GetPathFromResName( 'DOTSEARCH2' ), 'DOTSEARCH2' );
   InstallFile( GetPathFromResName( 'DOTSEARCH3' ), 'DOTSEARCH3' );
   InstallFile( GetPathFromResName( 'DOTSEARCH4' ), 'DOTSEARCH4' );
-//juuus a message?
-  //UpdateDisplay( 'installed ' + FullPath, false, false );
+
+  //UpdateDisplay( cmsgmainNewInstall, false, false );
 
 end;
 
-function TfrmMain.WgetUpgradeVer( const URL : string ) : integer;
+function TfrmMain.WgetUpgradeVer( const URL : string; var UpdateText : string ) : integer;
 var
   theURL, Fetched : string;
   SL : TStringlist;
 begin
+
   result := 0;
 
   TheURL := URL;
@@ -6176,21 +6183,26 @@ begin
     SL.Add( '-' );
     SL.Add( TheURL );
     Fetched := QuickProc( SL );
+
+    try
+      Result := strtoint( Fetched );
+
+      SL.Delete( 4 ); //now get the upgrade info
+      SL.Add( extractfilepath( TheURL ) + Upgrade_GetUpgradeInfoFileName( Fetched ) );
+      UpdateText := QuickProc( SL );
+
+    except
+      Result := -1;
+    end;
+
   finally
     SL.free;
-  end;
-
-  try
-    Result := strtoint( Fetched );
-  except
-    Result := -1;
   end;
 
 end;
 
 procedure TfrmMain.actQuickRunExecute( Sender : TObject );
 begin
-
 //only shown in developer mode, decided too dangerous (no checks) to have it as a general option
 {$IFNDEF RELEASE}
   if not DoSingleInput( ccapQuickRun, fLastQuickRun, simEdit, self, false ) then
@@ -6204,7 +6216,7 @@ procedure TfrmMain.InstallFile( const FullPath, ResourceName : string );
 var
   S: TResourceStream;
 begin
-//juuus option to re-install???
+//TODO next version maybe. option to re-install???
   if fileexists( FullPath ) then
     exit;
   S := TResourceStream.Create( HInstance, ResourceName, RT_RCDATA );

@@ -1,3 +1,5 @@
+This file generated from button on main form in DEV mode.
+
 Fill in this file with fixes/features.
 The .ver.txt file is ready, the other files have stubs for the naming convention.
 Replace stubs and deploy the files to website.
@@ -10,7 +12,7 @@ that must be put back in place!!!
 Depending on user wishes: I check, or the User, checks:
 https://timepirate.org/downloads/commandoo-x86_64.AppImage.ver.txt
 
-The other support files:
+The number in that file serves as basis for the other support files:
 commandoo-x86_64_4.AppImage.readme.txt   (this file)
 commandoo-x86_64_4.AppImage
 commandoo-x86_64_4.AppImage.sig

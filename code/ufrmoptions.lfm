@@ -94,7 +94,7 @@ object frmOptions: TfrmOptions
     Left = 12
     Height = 25
     Hint = 'Check this to force manually refreshed'#10'favorites list.'#10#10'By default favorites refresh automatically'#10'on saving. But perhaps you want to work'#10'with the current list and save your cursor'#10'locations. In this case check this box but '#10'then you will have to manually refresh '#10'favorites when you want using the '#10'provided button.'#10#10'<end>'
-    Top = 256
+    Top = 267
     Width = 246
     Caption = '&K  Manually Refresh Favorites'
     Font.Height = -16
@@ -106,7 +106,7 @@ object frmOptions: TfrmOptions
     Left = 12
     Height = 25
     Hint = 'It is strongly recommended that you have'#10'only one copy of commandoo open at a '#10'time.'#10#10'This is because multiple copies could easily'#10'interfere with each other if you are not '#10'careful and understand what you are doing.'#10#10'However, I''m not your Mother. If you want to'#10'be able to use multiple copies do so at your '#10'own risk and be aware of which copy is '#10'using which database.'#10#10'Unchecked and commandoo will not allow'#10'another copy to be opened.'#10#10'Checked it will allow it and give you a '#10'optionally disabled confirmation message.'#10#10'<end>'
-    Top = 327
+    Top = 338
     Width = 325
     Caption = '&M  Allow multiple commandoo windows'
     Font.Height = -16
@@ -118,7 +118,7 @@ object frmOptions: TfrmOptions
     Left = 12
     Height = 25
     Hint = 'This determines whether you will allow '#10'''pkexec'' to be used in commandoo.'#10#10'<end>'
-    Top = 291
+    Top = 302
     Width = 137
     Caption = '&L  Allow pkexec'
     Font.Height = -16
@@ -144,7 +144,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnSavePathClick
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 8
   end
   object btnSqlLib: TBitBtn
     Left = 17
@@ -156,7 +156,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnSqlLibClick
     ParentFont = False
-    TabOrder = 13
+    TabOrder = 12
   end
   object btnRootFile: TBitBtn
     Left = 17
@@ -168,19 +168,19 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnRootFileClick
     ParentFont = False
-    TabOrder = 16
+    TabOrder = 15
   end
   object btnResetDlgs: TBitBtn
     Left = 12
     Height = 31
     Hint = 'Many of the messages in this program'#10'give the option to not show it again.'#10#10'This will reset all those messages'#10'you''ve chosen not to show. This'#10'means, of course, that you will have'#10'to go through all those again and '#10're-check them if you don''t want to see '#10'them anymore.'#10#10'<end>'
     Top = 13
-    Width = 369
+    Width = 322
     Caption = '&A  Reset "Show no more" Dialogs'
     Font.Height = -17
     OnClick = btnResetDlgsClick
     ParentFont = False
-    TabOrder = 26
+    TabOrder = 25
   end
   object btnSavePathReset: TBitBtn
     Left = 346
@@ -192,7 +192,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnSavePathResetClick
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 9
   end
   object btnSqlLibReset: TBitBtn
     Left = 346
@@ -204,7 +204,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnSqlLibResetClick
     ParentFont = False
-    TabOrder = 14
+    TabOrder = 13
   end
   object btnBaseFolder: TBitBtn
     Left = 17
@@ -216,7 +216,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnBaseFolderClick
     ParentFont = False
-    TabOrder = 11
+    TabOrder = 10
   end
   object btnBaseFolderReset: TBitBtn
     Left = 346
@@ -228,21 +228,21 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnClick = btnBaseFolderResetClick
     ParentFont = False
-    TabOrder = 12
+    TabOrder = 11
   end
   inline FrameHint1: TFrameHint
-    Left = 564
+    Left = 644
     Height = 35
     Top = -1
-    Width = 351
+    Width = 274
     ClientHeight = 35
-    ClientWidth = 351
+    ClientWidth = 274
     ParentColor = True
     TabOrder = 28
     DesignLeft = 42
     DesignTop = 314
     inherited cbHints: TCheckBox
-      Left = 105
+      Left = 28
       Height = 24
       Top = 6
       Width = 223
@@ -350,7 +350,7 @@ object frmOptions: TfrmOptions
     OnChange = cbLanguageChange
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 17
+    TabOrder = 16
   end
   object lblLanguage: TLabel
     Left = 442
@@ -374,7 +374,7 @@ object frmOptions: TfrmOptions
     GlyphShowMode = gsmNever
     OnClick = btnAddLangClick
     ParentFont = False
-    TabOrder = 19
+    TabOrder = 18
   end
   object lblMaxOutput: TLabel
     Left = 485
@@ -424,7 +424,7 @@ object frmOptions: TfrmOptions
     )
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 20
+    TabOrder = 19
   end
   object cbSqlDB: TCheckBox
     Left = 681
@@ -436,7 +436,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 24
+    TabOrder = 23
   end
   object cbTextDB: TCheckBox
     Left = 674
@@ -448,7 +448,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 25
+    TabOrder = 24
   end
   object lblDisplayMax: TLabel
     Left = 533
@@ -476,7 +476,7 @@ object frmOptions: TfrmOptions
     MinValue = 10000
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 22
+    TabOrder = 21
     Value = 10000
   end
   object btnAddLangOK: TBitBtn
@@ -490,7 +490,7 @@ object frmOptions: TfrmOptions
     GlyphShowMode = gsmNever
     OnClick = btnAddLangOKClick
     ParentFont = False
-    TabOrder = 18
+    TabOrder = 17
     Visible = False
   end
   object cbLargerFont: TCheckBox
@@ -504,7 +504,7 @@ object frmOptions: TfrmOptions
     Font.Height = -16
     OnChange = cbLargerFontChange
     ParentFont = False
-    TabOrder = 23
+    TabOrder = 22
   end
   object lblMaxOutputWait: TLabel
     Left = 563
@@ -531,7 +531,7 @@ object frmOptions: TfrmOptions
     MaxValue = 0
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 21
+    TabOrder = 20
   end
   object cbMissingSqlMsg: TCheckBox
     Left = 23
@@ -542,7 +542,7 @@ object frmOptions: TfrmOptions
     Caption = 'Warn when sql library is missing'
     Font.Height = -16
     ParentFont = False
-    TabOrder = 15
+    TabOrder = 14
   end
   object ShapeLangOK1: TShape
     Left = 12
@@ -569,16 +569,16 @@ object frmOptions: TfrmOptions
     Visible = False
   end
   object btnUpdate: TBitBtn
-    Left = 12
+    Left = 344
     Height = 31
     Hint = 'Many of the messages in this program'#10'give the option to not show it again.'#10#10'This will reset all those messages'#10'you''ve chosen not to show. This'#10'means, of course, that you will have'#10'to go through all those again and '#10're-check them if you don''t want to see '#10'them anymore.'#10#10'<end>'
-    Top = 359
+    Top = 13
     Width = 279
     Caption = '&N  Check for Update'
     Font.Height = -17
     OnClick = btnUpdateClick
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 26
   end
   object tmrLangOK: TTimer
     Enabled = False
