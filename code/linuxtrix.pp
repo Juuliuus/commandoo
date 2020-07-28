@@ -42,8 +42,9 @@ procedure HandleProcParams( var aProc : TProcess; var Params : Tstrings );
 function NotAllowedInShell( const CmdName : string; var ResultStr : string ) : boolean;
 
 //=========do not change!!!! Central to the program for quick finds of environment data
-function QuickProc( const theExec, theParams : string; ThirdParam : string = '' ) : string;
+function QuickProc( const theExec, theParams : string; ThirdParam : string = '' ) : string; overload;
 //==================================================
+function QuickProc( Strings : TStrings ) : string; overload;
 function SimpleProc( const CmdLine : string; const DoStdOut, DoStdErr, DoFormat : boolean ) : string;
 function RunThroughShell( const aString : string ) : string;
 function ProcString( Params : TStrings ) : string;
@@ -717,12 +718,38 @@ begin
 
 end;
 
+function QuickProc( Strings : TStrings ) : string;
+var
+  aProc: TProcess;
+  i : integer;
+begin
+//generally do not use this! There are no checks. INTERNAL USE ONLY.
+  Result := '';
+
+  aProc := TProcess.Create(nil);
+  try
+    FillProcDefaults( aProc );
+    aProc.Executable := Strings[ 0 ];
+
+    for i := 1 to Strings.Count - 1 do
+      aProc.Parameters.Add( Strings[ i ] );
+
+    Result := Trim( GetProcessOutput( aProc, DummyString, true, false, false ) );
+
+  finally
+    aProc.Terminate( 0 );
+    FreeandNil( aProc );
+  end;
+
+end;
+
 
 function QuickProc( const theExec, theParams : string; ThirdParam : string = '' ) : string;
 var
   aProc: TProcess;
 begin
 //=========do not change!!!! Central to the program for quick finds of environment data
+//generally do not use this! There are no checks. INTERNAL USE ONLY.
 
   Result := '';
 

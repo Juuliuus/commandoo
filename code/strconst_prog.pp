@@ -94,8 +94,9 @@ const
 
   cconstCommandLabel = 'Command';
   cconstCommandLineLabel = 'Command Line';
-  cWebSite = 'https://timepirate.org';
-  cWebSiteDownloads = '/downloads.html';
+  cWebSiteBase = 'https://timepirate.org/';
+  cWebSiteCommando = 'downloads.html';
+  cWebSiteDownloads = 'downloads/%s';
 
 //beginning of a blacklist for programs that do not take --help or -V, etc commands.
 //This is bad because when adding a CL entry the help is supposed to be shown but the program runs
@@ -110,18 +111,72 @@ const
 //TfrmMain.CheckUpdates_DB
 //see also c_DB_VersionUpgradeCount
 //===================================
-
-
 //increment this number for any Program settings cleanup / change, ONLY needs to be done if there is a change
 //that needs to be programatically handled.
   //c_PROG_VersionUpgradeCount = 3;
   c_PROG_VersionUpgradeCount = 4; //29.06.2020 Allow Escape chars taken out
 //=====  PROGRAM   ==============================
+
+//==> NOTE: only change MAJOR VERSION when it is INCOMPATIBLE (ie. DB schema change) with previous MAJOR VERSION
+
   cHandwrittenVersion = '2.0.1';//'1.0.1';//all done. ?
   cSectTab_PROG_VersionCount = '_PROG_VersionCount';
+  cStandardProgramSequence = 'PROGRAM SEQUENCE #:    %d';
   cVersionDate = ' (August 2020)';//ReleaseCandidate';
+{$IFDEF platAppImage}
+  cUpgradeDir = 'upgrades';
+  cUpgradeFileName = 'commandoo-x86_64';
+  cUpgradeExtUpgradeVersion = '.ver.txt'; //No number
+  cUpgradeExtUpgradeInfo = '.readme.txt';
+  cUpgradeExtAppImage = '.AppImage';
+  cUpgradeExtGPGSignature = '.sig';
+  cUpgradeExtZsync = '.zsync';
+  //commandoo-x86_64.4.(appimage).zsync [FUTURE have them get appimageupdate]
+  function Upgrade_GetUpgradeVersionFileName : string;
+  function Upgrade_GetUpgradeInfoFileName( const Sequence : string ) : string;
+  function Upgrade_GetAppImageFileName( const Sequence : string ) : string;
+  function Upgrade_GetGPGSignatureFileName( const Sequence : string ) : string;
+  function Upgrade_GetZsyncFileName( const Sequence : string ) : string;
+{$ENDIF}
+
+
 
 implementation
+
+{$IFDEF platAppImage}
+  function Upgrade_GetFileName : string;
+  begin
+    result := cUpgradeFileName;
+  end;
+
+  function Upgrade_GetUpgradeVersionFileName : string;
+  begin
+    result := Upgrade_GetFileName + cUpgradeExtAppImage + cUpgradeExtUpgradeVersion;
+  end;
+
+  function Upgrade_GetUpgradeInfoFileName( const Sequence : string ) : string;
+  begin
+    result := Upgrade_GetAppImageFileName( Sequence ) + cUpgradeExtUpgradeInfo;
+  end;
+
+  function Upgrade_GetAppImageFileName( const Sequence : string ) : string;
+  begin
+    result := Upgrade_GetFileName + Sequence + cUpgradeExtAppImage;
+  end;
+
+  function Upgrade_GetGPGSignatureFileName( const Sequence : string ) : string;
+  begin
+    result := Upgrade_GetAppImageFileName( Sequence ) + cUpgradeExtGPGSignature;
+    //result := Upgrade_GetFileName + Sequence + cUpgradeExtAppImage + cUpgradeExtGPGSignature;
+  end;
+
+  function Upgrade_GetZsyncFileName( const Sequence : string ) : string;
+  begin
+    result := Upgrade_GetAppImageFileName( Sequence ) + cUpgradeExtZsync;
+    //result := Upgrade_GetFileName + Sequence + cUpgradeExtAppImage + cUpgradeExtZsync;
+  end;
+
+{$ENDIF}
 
 end.
 

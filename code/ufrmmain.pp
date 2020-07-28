@@ -112,6 +112,7 @@ type
     btnMainCopy : TBitBtn;
     btnPkexecMain : TBitBtn;
     btnInsertPath : TBitBtn;
+    btnFinalNeeds : TBitBtn;
     btnRefreshFavorites : TBitBtn;
     btnSearchRun : TBitBtn;
     btnSimpleSearch : TBitBtn;
@@ -510,6 +511,7 @@ type
     procedure btnCancelRunClick( Sender : TObject );
     procedure btnCmdEditClick(Sender: TObject);
     procedure btnCmdLineReCenterClick( Sender : TObject );
+    procedure btnFinalNeedsClick( Sender : TObject );
     procedure btnHaltProcessClick( Sender : TObject );
     procedure btnHelpCommandClick(Sender: TObject);
     procedure btnInsertPathClick( Sender : TObject );
@@ -787,6 +789,7 @@ type
     { public declarations }
     RegX: TRegExpr;
 
+    function WgetUpgradeVer( const URL : string) : integer;
     function GetDefaultWritingToPath : string;
     function GetSearchesDirectory : string;
     function GetPODirectory: string;
@@ -1419,11 +1422,14 @@ begin
 //       TfrmMain.CheckUpdates_DB   any code needed for  DB  updates
 
 {$IFDEF Release}
-Be sure to uncomment this after building release so it shows up next build
-//Did you read "pester" reminders?
-//Did you, IF NECESSARY, change version number(s)?
+Be sure to uncomment this after building release, READ THE COMMENTED LINES!
+//===>>>  Did you generate the updates files using the button visible in the dev environment?
+//===>>>  Did you read "pester" reminders?
+//===>>>  Did you, IF NECESSARY, change version number(s)?
+
   btnQuickRun.Visible := false;
   actQuickRun.Enabled := false;
+  btnFinalNeeds.Visible := false;
 {$ENDIF}
 end;
 
@@ -2080,6 +2086,9 @@ begin
       2 : Update_PROG_Version_0002( fIFS );
       3 : Update_PROG_Version_0003( fIFS, cSectTabFormSettings );
       4 : Update_PROG_Version_0004( fIFS, cSectTabFormSettings );
+//==>> NOTE!! Do not remove settings sections anymore! To support updates, AND the ability to go back to
+//the older version, the settings file must keep the old setting just in case. INI files are good this
+//way, if you don't use it no problem. If the program starts calling it again, it simply doesn't mind.
 //TODO change your prog ver!
       5 : InstallSupportFiles( true );
       //6 : When an update is done on the Program that needs attention in ini file write the needed code here
@@ -5304,6 +5313,65 @@ begin
   lbCmdLines.MakeCurrentVisible;
 end;
 
+procedure TfrmMain.btnFinalNeedsClick( Sender : TObject );
+var
+  SL : TStringlist;
+  ProgVer, Path : string;
+
+  procedure DoStubFile( const Contents, Filename : string );
+  begin
+    SL.Clear;
+    SL.Add( Contents );
+    SL.SaveToFile( Path + FileName );
+  end;
+begin
+{$IFnDEF Release}
+  if not DirectoryExists( fWritingToPath + cUpgradeDir ) then
+    CreateDir( fWritingToPath + cUpgradeDir );
+{$ENDIF}
+{$IFDEF platAppImage}
+
+  SL := TStringlist.create;
+  try
+    ProgVer := inttostr( c_PROG_VersionUpgradeCount );
+    Path := IncludeTrailingPathDelimiter( fWritingToPath + cUpgradeDir );
+    //+ cUpgradeFileName + cUpgradeExtUpgradeVersion;
+    SL.Add( ProgVer );
+    SL.SaveToFile( Path + Upgrade_GetUpgradeVersionFileName );
+//adjust for the file naming
+    ProgVer := '_' + ProgVer;
+
+    SL.Clear;
+    SL.Add( 'This file generated from button on main form in DEV mode.' );
+    SL.Add( '' );
+    SL.Add( 'Fill in this file with fixes/features.' );
+    SL.Add( 'The .ver.txt file is ready, the other files have stubs for the naming convention.' );
+    SL.Add( 'Replace stubs and deploy the files to website.' );
+    SL.Add( '' );
+    SL.Add( 'If the update is a NEW VERSION (ie. changes DB Schema) PUT A WARNING!!!...' );
+    SL.Add( '...that the update is NOT compatible with what they have and if they want to go ' );
+    SL.Add( 'back to the old version they MUST have a backup of their config folder and ' );
+    SL.Add( 'that must be put back in place!!!' );
+    SL.Add( '' );
+    SL.Add( 'Depending on user wishes: I check, or the User, checks:' );
+    SL.Add( cWebSiteBase + format( cWebSiteDownloads, [ Upgrade_GetUpgradeVersionFileName ] ) );
+    SL.Add( '' );
+    SL.Add( 'The number in that file serves as basis for the other support files:' );
+    SL.Add( Upgrade_GetUpgradeInfoFileName( ProgVer ) + '   (this file)' );
+    SL.Add( Upgrade_GetAppImageFileName( ProgVer ) );
+    SL.Add( Upgrade_GetGPGSignatureFileName( ProgVer ) );
+    SL.Add( Upgrade_GetZsyncFileName( ProgVer ) + '    (if applicable)' );
+    SL.SaveToFile( Path + Upgrade_GetUpgradeInfoFileName( ProgVer ) );
+
+    DoStubFile( 'AppImage executable', Upgrade_GetAppImageFileName( ProgVer ) );
+    DoStubFile( 'generate with gpg2/gpg', Upgrade_GetGPGSignatureFileName( ProgVer ) );
+    DoStubFile( 'generate zsync file if applicable', Upgrade_GetZsyncFileName( ProgVer ) );
+  finally
+    SL.free;
+  end;
+{$ENDIF}
+end;
+
 procedure TfrmMain.RemoveDetachedProcess( const Idx, OldIdx : integer; aProcess : TAsyncProcess );
 begin
 
@@ -6089,11 +6157,39 @@ begin
 
 end;
 
+function TfrmMain.WgetUpgradeVer( const URL : string ) : integer;
+var
+  theURL, Fetched : string;
+  SL : TStringlist;
+begin
+  result := 0;
+
+  TheURL := URL;
+  if not DoSingleInput( ccapWgetUpgradeVer, TheURL, simEdit, self, false ) then
+    exit;
+
+  SL := TStringlist.create;
+  try
+    SL.Add( 'wget' );
+    SL.Add( '-q' );
+    SL.Add( '-O' );
+    SL.Add( '-' );
+    SL.Add( TheURL );
+    Fetched := QuickProc( SL );
+  finally
+    SL.free;
+  end;
+
+  try
+    Result := strtoint( Fetched );
+  except
+    Result := -1;
+  end;
+
+end;
 
 procedure TfrmMain.actQuickRunExecute( Sender : TObject );
 begin
-  InstallFile( GetPODirectory + 'testdb' + cSqlDBExtension, 'TEST' );
-  InstallFile( GetPODirectory + 'Lincoln.jpg', 'LINC' );
 
 //only shown in developer mode, decided too dangerous (no checks) to have it as a general option
 {$IFNDEF RELEASE}

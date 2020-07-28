@@ -1,15 +1,15 @@
 object frmOptions: TfrmOptions
-  Left = 1964
-  Height = 720
-  Top = 334
-  Width = 913
+  Left = 86
+  Height = 731
+  Top = 381
+  Width = 927
   Caption = 'DDNT AO'
-  ClientHeight = 720
-  ClientWidth = 913
-  Constraints.MaxHeight = 720
-  Constraints.MinHeight = 720
-  Constraints.MinWidth = 913
-  DesignTimePPI = 128
+  ClientHeight = 731
+  ClientWidth = 927
+  Constraints.MaxHeight = 731
+  Constraints.MinHeight = 731
+  Constraints.MinWidth = 927
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnClose = FormClose
@@ -18,17 +18,17 @@ object frmOptions: TfrmOptions
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   object Bevel1: TBevel
-    Left = 419
-    Height = 95
-    Top = 67
-    Width = 341
+    Left = 426
+    Height = 96
+    Top = 68
+    Width = 346
     Anchors = [akTop, akLeft, akRight]
     Shape = bsFrame
   end
   object lblThreatLevel: TLabel
     Left = 17
     Height = 21
-    Top = 70
+    Top = 71
     Width = 184
     Caption = 'Warn on Threat Level of:'
     Font.Height = -16
@@ -36,9 +36,9 @@ object frmOptions: TfrmOptions
     ParentFont = False
   end
   object cbUnspecified: TCheckBox
-    Left = 48
+    Left = 49
     Height = 25
-    Top = 99
+    Top = 101
     Width = 132
     Caption = '&B  Unspecified'
     Font.Height = -16
@@ -47,9 +47,9 @@ object frmOptions: TfrmOptions
     TabOrder = 0
   end
   object cbHarmless: TCheckBox
-    Left = 48
+    Left = 49
     Height = 25
-    Top = 126
+    Top = 128
     Width = 63
     Caption = '&C  NT'
     Font.Height = -16
@@ -58,9 +58,9 @@ object frmOptions: TfrmOptions
     TabOrder = 1
   end
   object cbCareful: TCheckBox
-    Left = 48
+    Left = 49
     Height = 25
-    Top = 153
+    Top = 155
     Width = 65
     Caption = '&D  NT'
     Font.Height = -16
@@ -69,9 +69,9 @@ object frmOptions: TfrmOptions
     TabOrder = 2
   end
   object cbCaution: TCheckBox
-    Left = 48
+    Left = 49
     Height = 25
-    Top = 180
+    Top = 183
     Width = 62
     Caption = '&E  NT'
     Font.Height = -16
@@ -80,9 +80,9 @@ object frmOptions: TfrmOptions
     TabOrder = 3
   end
   object cbDanger: TCheckBox
-    Left = 48
+    Left = 49
     Height = 25
-    Top = 207
+    Top = 210
     Width = 61
     Caption = '&F  NT'
     Font.Height = -16
@@ -94,7 +94,7 @@ object frmOptions: TfrmOptions
     Left = 12
     Height = 25
     Hint = 'Check this to force manually refreshed'#10'favorites list.'#10#10'By default favorites refresh automatically'#10'on saving. But perhaps you want to work'#10'with the current list and save your cursor'#10'locations. In this case check this box but '#10'then you will have to manually refresh '#10'favorites when you want using the '#10'provided button.'#10#10'<end>'
-    Top = 252
+    Top = 256
     Width = 246
     Caption = '&K  Manually Refresh Favorites'
     Font.Height = -16
@@ -106,7 +106,7 @@ object frmOptions: TfrmOptions
     Left = 12
     Height = 25
     Hint = 'It is strongly recommended that you have'#10'only one copy of commandoo open at a '#10'time.'#10#10'This is because multiple copies could easily'#10'interfere with each other if you are not '#10'careful and understand what you are doing.'#10#10'However, I''m not your Mother. If you want to'#10'be able to use multiple copies do so at your '#10'own risk and be aware of which copy is '#10'using which database.'#10#10'Unchecked and commandoo will not allow'#10'another copy to be opened.'#10#10'Checked it will allow it and give you a '#10'optionally disabled confirmation message.'#10#10'<end>'
-    Top = 322
+    Top = 327
     Width = 325
     Caption = '&M  Allow multiple commandoo windows'
     Font.Height = -16
@@ -118,7 +118,7 @@ object frmOptions: TfrmOptions
     Left = 12
     Height = 25
     Hint = 'This determines whether you will allow '#10'''pkexec'' to be used in commandoo.'#10#10'<end>'
-    Top = 287
+    Top = 291
     Width = 137
     Caption = '&L  Allow pkexec'
     Font.Height = -16
@@ -127,122 +127,122 @@ object frmOptions: TfrmOptions
     TabOrder = 6
   end
   object ShapeLangOK: TShape
-    Left = 404
+    Left = 410
     Height = 24
-    Top = 127
-    Width = 33
+    Top = 129
+    Width = 34
     Brush.Color = clGreen
     Visible = False
   end
   object btnSavePath: TBitBtn
     Left = 17
-    Height = 34
+    Height = 35
     Hint = 'You have the ability to save certain outputs'#10'to a file in various areas of the program.'#10#10'This path is the default path to where '#10'they will be saved.'#10#10'<end>'
-    Top = 417
-    Width = 324
+    Top = 424
+    Width = 329
     Caption = '&W  Saving Path'
     Font.Height = -16
     OnClick = btnSavePathClick
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 9
   end
   object btnSqlLib: TBitBtn
     Left = 17
-    Height = 34
+    Height = 35
     Hint = 'commandoo uses sqlite 3 for its sql DB''s.'#10#10'If the program can''t find your sqlite 3 '#10'library location you can specify it here. '#10'Blank means it will use the default location.'#10#10'If you can''t find it first make sure sqlite is'#10'installed on your system. Then use the '#10'locate command in a terminal with:'#10#10'locate libsqlite3.so.0'#10#10'To reset your program to the default '#10'location use the reset button next to this'#10'button.'#10#10'<end>'
-    Top = 562
-    Width = 324
+    Top = 571
+    Width = 329
     Caption = '&Y  sqlite 3 Library'
     Font.Height = -16
     OnClick = btnSqlLibClick
     ParentFont = False
-    TabOrder = 12
+    TabOrder = 13
   end
   object btnRootFile: TBitBtn
     Left = 17
-    Height = 34
+    Height = 35
     Hint = 'This is the ROOT paste template that will'#10'be used.'#10#10'A ROOT indicator on a command is '#10'generic.'#10#10'When you copy a ROOT command and then'#10'paste it into a terminal, or wherever, this'#10'template is used on the pasted text so that'#10'it will work in the terminal.'#10#10'For example, given >su -c "%s"< as the'#10'template, and copying (from within'#10'commandoo)  the command:'#10'<ROOT> /sbin/blkid sda1'#10#10'will be pasted:'#10'su -c "/sbin/blkid sda1"'#10#10'<end>'
-    Top = 668
-    Width = 324
+    Top = 678
+    Width = 329
     Caption = '&Z  ROOT Paste Template'
     Font.Height = -16
     OnClick = btnRootFileClick
     ParentFont = False
-    TabOrder = 15
+    TabOrder = 16
   end
   object btnResetDlgs: TBitBtn
     Left = 12
-    Height = 40
+    Height = 31
     Hint = 'Many of the messages in this program'#10'give the option to not show it again.'#10#10'This will reset all those messages'#10'you''ve chosen not to show. This'#10'means, of course, that you will have'#10'to go through all those again and '#10're-check them if you don''t want to see '#10'them anymore.'#10#10'<end>'
     Top = 13
-    Width = 363
+    Width = 369
     Caption = '&A  Reset "Show no more" Dialogs'
     Font.Height = -17
     OnClick = btnResetDlgsClick
     ParentFont = False
-    TabOrder = 25
+    TabOrder = 26
   end
   object btnSavePathReset: TBitBtn
-    Left = 341
-    Height = 34
+    Left = 346
+    Height = 35
     Hint = 'Reset the Save Path to point to '#10'commandoo''s Base/DB folder (config '#10'folder, usually ~/.config/...'#10#10'<end>'
-    Top = 417
-    Width = 55
+    Top = 424
+    Width = 56
     Caption = '♻'
     Font.Height = -16
     OnClick = btnSavePathResetClick
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 10
   end
   object btnSqlLibReset: TBitBtn
-    Left = 341
-    Height = 34
+    Left = 346
+    Height = 35
     Hint = 'Have commandoo try to find the location'#10'of the default sqlite 3 library file.'#10#10'<end>'
-    Top = 562
-    Width = 55
+    Top = 571
+    Width = 56
     Caption = '♻'
     Font.Height = -16
     OnClick = btnSqlLibResetClick
     ParentFont = False
-    TabOrder = 13
+    TabOrder = 14
   end
   object btnBaseFolder: TBitBtn
     Left = 17
-    Height = 34
+    Height = 35
     Hint = 'The path where DB''s and settings are '#10'located.'#10#10'This option is basically meant for people'#10'upgrading from older versions so they can'#10'point back to their original folder and not '#10'have to import all the old DB''s into the '#10'new version.'#10#10'Outside of this case, in general, there is'#10'no need to change this from the default.'#10#10'If it has been changed use the button to'#10'the right to set it back to default if needed.'#10#10'If you change the path you will need to '#10'close commandoo and re-start it.'#10#10'<end>'
-    Top = 492
-    Width = 324
+    Top = 500
+    Width = 329
     Caption = '&X  Base/DB Folder'
     Font.Height = -16
     OnClick = btnBaseFolderClick
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 11
   end
   object btnBaseFolderReset: TBitBtn
-    Left = 341
-    Height = 34
+    Left = 346
+    Height = 35
     Hint = 'Reset the program so it uses the system'#10'determined user config location (usually'#10'~/.config/...).'#10#10'If you change this location you will need to'#10'close commandoo and re-start it.'#10#10'<end>'
-    Top = 492
-    Width = 55
+    Top = 500
+    Width = 56
     Caption = '♻'
     Font.Height = -16
     OnClick = btnBaseFolderResetClick
     ParentFont = False
-    TabOrder = 11
+    TabOrder = 12
   end
   inline FrameHint1: TFrameHint
-    Left = 555
-    Height = 34
+    Left = 564
+    Height = 35
     Top = -1
-    Width = 346
-    ClientHeight = 34
-    ClientWidth = 346
+    Width = 351
+    ClientHeight = 35
+    ClientWidth = 351
     ParentColor = True
-    TabOrder = 27
-    DesignLeft = 41
-    DesignTop = 309
+    TabOrder = 28
+    DesignLeft = 42
+    DesignTop = 314
     inherited cbHints: TCheckBox
-      Left = 100
+      Left = 105
       Height = 24
       Top = 6
       Width = 223
@@ -252,7 +252,7 @@ object frmOptions: TfrmOptions
   object lblSqlLib: TLabel
     Left = 23
     Height = 21
-    Top = 601
+    Top = 610
     Width = 12
     Caption = '...'
     Font.Height = -16
@@ -263,7 +263,7 @@ object frmOptions: TfrmOptions
   object lblBaseFolder: TLabel
     Left = 23
     Height = 21
-    Top = 530
+    Top = 538
     Width = 12
     Caption = '...'
     Font.Height = -16
@@ -274,7 +274,7 @@ object frmOptions: TfrmOptions
   object lblSavePath: TLabel
     Left = 23
     Height = 21
-    Top = 455
+    Top = 462
     Width = 12
     Caption = '...'
     Font.Height = -16
@@ -283,10 +283,10 @@ object frmOptions: TfrmOptions
     OnDblClick = lblSavePathDblClick
   end
   object lblRootFile: TLabel
-    Left = 353
+    Left = 359
     Height = 21
     Hint = 'This template is used when pasting a copied'#10'"root" command into a terminal, or wherever.'#10#10'Use button to the right or Dbl-click to edit.'#10#10'<end>'
-    Top = 675
+    Top = 686
     Width = 12
     Caption = '...'
     Font.Height = -16
@@ -295,10 +295,10 @@ object frmOptions: TfrmOptions
     OnDblClick = btnRootFileClick
   end
   object btnDone: TBitBtn
-    Left = 773
-    Height = 79
-    Top = 41
-    Width = 121
+    Left = 785
+    Height = 80
+    Top = 42
+    Width = 123
     Anchors = [akTop, akRight]
     Cancel = True
     Caption = '&OK'
@@ -307,14 +307,14 @@ object frmOptions: TfrmOptions
     GlyphShowMode = gsmNever
     ModalResult = 11
     ParentFont = False
-    TabOrder = 26
+    TabOrder = 27
   end
   object cbLanguage: TComboBox
-    Left = 500
-    Height = 37
+    Left = 508
+    Height = 38
     Hint = 'Select between installed language files.'#10#10'<end>'
-    Top = 120
-    Width = 248
+    Top = 122
+    Width = 251
     Anchors = [akTop, akLeft, akRight]
     AutoSelect = False
     AutoSize = False
@@ -350,12 +350,12 @@ object frmOptions: TfrmOptions
     OnChange = cbLanguageChange
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 16
+    TabOrder = 17
   end
   object lblLanguage: TLabel
-    Left = 435
+    Left = 442
     Height = 21
-    Top = 85
+    Top = 86
     Width = 93
     Caption = '&P  Language'
     FocusControl = cbLanguage
@@ -364,22 +364,22 @@ object frmOptions: TfrmOptions
     ParentFont = False
   end
   object btnAddLang: TBitBtn
-    Left = 595
-    Height = 40
-    Top = 76
-    Width = 153
+    Left = 604
+    Height = 41
+    Top = 77
+    Width = 155
     Anchors = [akTop, akRight]
     Caption = '&Q  NT'
     Font.Height = -16
     GlyphShowMode = gsmNever
     OnClick = btnAddLangClick
     ParentFont = False
-    TabOrder = 18
+    TabOrder = 19
   end
   object lblMaxOutput: TLabel
-    Left = 474
+    Left = 485
     Height = 21
-    Top = 184
+    Top = 187
     Width = 258
     Anchors = [akTop, akRight]
     Caption = '&R  Maximum input/output allowed'
@@ -389,11 +389,11 @@ object frmOptions: TfrmOptions
     ParentFont = False
   end
   object cbMaxOutput: TComboBox
-    Left = 739
-    Height = 37
+    Left = 751
+    Height = 38
     Hint = 'This is a safety measure for processes '#10'that could produce too much output.'#10#10'The program will wait until the process is '#10'finished -OR- stop after this many '#10'characters are recieved.'#10#10'This is obviously useful if you by accident'#10'output an infinite amount of information by '#10'calling, say, cat /dev/zero.'#10#10'So, be careful that this is not too high, or'#10'you will be waiting some time for the '#10'process to finish maybe.'#10#10'<end>'
-    Top = 176
-    Width = 147
+    Top = 179
+    Width = 149
     Anchors = [akTop, akRight]
     AutoSelect = False
     AutoSize = False
@@ -424,36 +424,36 @@ object frmOptions: TfrmOptions
     )
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 19
+    TabOrder = 20
   end
   object cbSqlDB: TCheckBox
-    Left = 667
+    Left = 681
     Height = 25
-    Top = 342
+    Top = 347
     Width = 214
     Anchors = [akTop, akRight]
     Caption = '&U  Default sql DB allowed'
     Font.Height = -16
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 23
+    TabOrder = 24
   end
   object cbTextDB: TCheckBox
-    Left = 661
+    Left = 674
     Height = 25
-    Top = 378
+    Top = 384
     Width = 219
     Anchors = [akTop, akRight]
     Caption = '&V  Default text DB allowed'
     Font.Height = -16
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 24
+    TabOrder = 25
   end
   object lblDisplayMax: TLabel
-    Left = 522
+    Left = 533
     Height = 21
-    Top = 267
+    Top = 271
     Width = 210
     Anchors = [akTop, akRight]
     Caption = '&S  Maximum Display Output'
@@ -463,11 +463,11 @@ object frmOptions: TfrmOptions
     ParentFont = False
   end
   object speDisplayMax: TSpinEdit
-    Left = 739
-    Height = 37
+    Left = 751
+    Height = 38
     Hint = 'This lets you set how much "history" in the'#10'Display Output is kept. The program will'#10'periodically clear history to keep the display'#10'output around this valiue.'#10#10'No worries if this is lower than the max/min'#10'process output above. Process output will'#10'always be shown in its entirety, or up to'#10'the maximum you set above.'#10#10'<end>'
-    Top = 257
-    Width = 147
+    Top = 261
+    Width = 149
     Anchors = [akTop, akRight]
     AutoSize = False
     Font.Height = -16
@@ -476,39 +476,41 @@ object frmOptions: TfrmOptions
     MinValue = 10000
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 21
+    TabOrder = 22
     Value = 10000
   end
   object btnAddLangOK: TBitBtn
-    Left = 433
-    Height = 40
-    Top = 117
-    Width = 67
+    Left = 440
+    Height = 41
+    Top = 119
+    Width = 68
     Anchors = [akTop, akRight]
     Caption = 'ok'
     Font.Height = -16
     GlyphShowMode = gsmNever
     OnClick = btnAddLangOKClick
     ParentFont = False
-    TabOrder = 17
+    TabOrder = 18
     Visible = False
   end
   object cbLargerFont: TCheckBox
-    Left = 699
+    Left = 712
     Height = 25
     Hint = 'Make the font size in all windows a bit '#10'larger.'#10#10'<end>'
-    Top = 306
+    Top = 311
     Width = 181
     Anchors = [akTop, akRight]
     Caption = '&T  Slightly larger font'
+    Font.Height = -16
     OnChange = cbLargerFontChange
-    TabOrder = 22
+    ParentFont = False
+    TabOrder = 23
   end
   object lblMaxOutputWait: TLabel
-    Left = 552
+    Left = 563
     Height = 21
     Hint = 'This is the emergency cord for run away '#10'processes. This can happen for example if '#10'one by accident "cat"s a binary file. You will'#10'either wait forever or use the cancel process'#10'button.'#10#10'This checks the time and will cancel the '#10'process if there is no activity. The time is'#10'in seconds, but it is only approximate because'#10'it depends on the system load and more. '#10'For example, a setting of 10 seconds may'#10'actually take 20 seconds to finally fire.'#10#10'<end>'
-    Top = 226
+    Top = 230
     Width = 180
     Anchors = [akTop, akRight]
     Caption = '&N  Output Timeout (sec)'
@@ -518,62 +520,76 @@ object frmOptions: TfrmOptions
     ParentFont = False
   end
   object speMaxOutputWait: TSpinEdit
-    Left = 739
-    Height = 37
+    Left = 751
+    Height = 38
     Hint = 'This is another safety measure to help'#10'control "run away" processes, or processes'#10'that stop responding. '#10#10'It is set in seconds but this is not a precise'#10'timing because it gets influenced by the'#10'busy-ness of the computer and/or by '#10'a run away process.'#10#10'Just so you know: if you set it to 10 seconds'#10'it is quite possible that the program will take'#10'20 in actual time to finally actually stop the'#10'process. '#10#10'So set this low-ish for a start and see how'#10'things go, or devise a test to see how it '#10'reponds.'#10#10'<end>'
-    Top = 216
-    Width = 147
+    Top = 219
+    Width = 149
     Anchors = [akTop, akRight]
     AutoSize = False
     Font.Height = -16
     MaxValue = 0
     OnKeyDown = speDisplayMaxKeyDown
     ParentFont = False
-    TabOrder = 20
+    TabOrder = 21
   end
   object cbMissingSqlMsg: TCheckBox
     Left = 23
     Height = 25
     Hint = 'The program will, at start up, warn you if it '#10'can not find the sqlite 3 library.'#10#10'But perhaps you don''t want to use sql, so '#10'you don''t need the warning. Check this to '#10'suppress the warning.'#10#10'<end>'
-    Top = 625
+    Top = 635
     Width = 268
     Caption = 'Warn when sql library is missing'
-    TabOrder = 14
+    Font.Height = -16
+    ParentFont = False
+    TabOrder = 15
   end
   object ShapeLangOK1: TShape
     Left = 12
-    Height = 60
-    Top = 419
+    Height = 61
+    Top = 426
     Width = 5
     Brush.Color = clBtnShadow
     Visible = False
   end
   object ShapeLangOK2: TShape
     Left = 12
-    Height = 60
-    Top = 492
+    Height = 61
+    Top = 500
     Width = 5
     Brush.Color = clBtnShadow
     Visible = False
   end
   object ShapeLangOK3: TShape
     Left = 12
-    Height = 90
-    Top = 562
+    Height = 91
+    Top = 571
     Width = 5
     Brush.Color = clBtnShadow
     Visible = False
+  end
+  object btnUpdate: TBitBtn
+    Left = 12
+    Height = 31
+    Hint = 'Many of the messages in this program'#10'give the option to not show it again.'#10#10'This will reset all those messages'#10'you''ve chosen not to show. This'#10'means, of course, that you will have'#10'to go through all those again and '#10're-check them if you don''t want to see '#10'them anymore.'#10#10'<end>'
+    Top = 359
+    Width = 279
+    Caption = '&N  Check for Update'
+    Font.Height = -17
+    OnClick = btnUpdateClick
+    ParentFont = False
+    TabOrder = 8
   end
   object tmrLangOK: TTimer
     Enabled = False
     Interval = 750
     OnTimer = tmrLangOKTimer
-    left = 784
-    top = 528
+    left = 796
+    top = 536
   end
   object DirectoryDialog: TSelectDirectoryDialog
     Options = [ofPathMustExist, ofCreatePrompt, ofShareAware, ofEnableSizing, ofViewDetail]
-    left = 768
-    top = 432
+    left = 780
+    top = 439
   end
 end

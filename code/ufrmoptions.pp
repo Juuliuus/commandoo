@@ -47,6 +47,7 @@ type
     btnBaseFolderReset : TBitBtn;
     btnDone : TBitBtn;
     btnResetDlgs : TBitBtn;
+    btnUpdate : TBitBtn;
     btnRootFile : TBitBtn;
     btnSavePath : TBitBtn;
     btnSavePathReset : TBitBtn;
@@ -94,6 +95,7 @@ type
     procedure btnSavePathClick(Sender : TObject);
     procedure btnResetDlgsClick(Sender : TObject);
     procedure btnSavePathResetClick( Sender : TObject );
+    procedure btnUpdateClick( Sender : TObject );
     procedure cbLanguageChange(Sender : TObject);
     procedure cbLargerFontChange( Sender : TObject );
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
@@ -133,6 +135,53 @@ uses ufrmMsgDlg, unitLanguages
 
 resourcestring
 
+  coptcapCheckForUpgrade = 'Need to retrieve update Version';
+  coptmsgCheckForUpgrade =
+    'The website needs to be checked for any upgrade Version. Should commandoo check, or do you want to do it?'
+    + LineEnding + LineEnding
+    + 'YES = commandoo will check'
+    + LineEnding
+    + 'NO = you will check'
+    + LineEnding
+    ;
+  coptcapCheckForUpgradeHowTo = 'Check for Update Instructions';
+  coptmsgCheckForUpgradeHowTo =
+    'The upgrade Version SEQUENCE number is stored in a file on the website, you need compare your '
+    + 'current program SEQUENCE number (also found in ABOUT) to that number.'
+    + LineEnding + LineEnding
+    + 'Your current PROGRAM SEQUENCE number is:   %d'
+    + LineEnding + LineEnding
+    + 'The default location to check is (if be you have newer information use that site):'
+    + LineEnding;
+  coptmsgCheckForUpgradeDetails =
+    LineEnding + LineEnding
+    + 'You can check using your browser which will either display the number or download the file '
+    + 'which you can then open and inspect. Or, using the terminal (or an entry in commandoo), use the '
+    + 'following Command Line:'
+    + LineEnding
+    + '%s'
+    + LineEnding + LineEnding
+    ;
+  coptmsgCheckForUpgradeHowTo2 =
+    'If the number from the website is greater than your current number then an upgrade is available. '
+    +'In that case...'
+    + LineEnding + LineEnding
+    ;
+  coptmsgCheckForUpgradeHowToFinal =
+    'Go to:'
+    + LineEnding
+    + '%s'
+    + LineEnding + LineEnding
+    + 'The download is there (marked by the NEW sequence number) as well as instructions.'
+    + LineEnding;
+  coptcapCheckForUpgradeWget = 'Required file "wget" missing';
+  coptmsgCheckForUpgradeWget =
+    'To check for upgrade commandoo needs "wget", but it could not be found. Install it and re-try, or '
+    + 'use answer NO answer on first option and use the instructions.';
+  coptcapCheckForUpgradeBadFile = 'The link''s contents were bad.';
+  coptmsgCheckForUpgradeBadFile = '%s  It should have been a single number, check the link you used!';
+  coptcapCheckForUpgradeUpgradeAvailable = 'Upgrade Available';
+  coptmsgCheckForUpgradeLatest = 'You have the latest version of commandoo.';
   cOptLabelHints =
     'If this line is too long, Dbl-click it to see the '
     + LineEnding
@@ -244,6 +293,9 @@ resourcestring
   ccapOptResetShowNos = 'Reset Show No More?';
   cmsgOptResetShowNos = 'Are you sure you want to re-enable Optional Messages / Information?';
 
+const
+  cWgetCommandLineUpgradeCheck = 'wget -q -O - %s';
+
 
 {$R *.lfm}
 
@@ -273,6 +325,67 @@ begin
   if MsgDlgConfirmation( self ) = mrNo then
     exit;
   lblSavePath.Caption := Str;
+
+end;
+
+procedure TfrmOptions.btnUpdateClick( Sender : TObject );
+var
+  DefVerFile, WgetCmd : string;
+  FetchedVer : integer;
+begin
+
+  DefVerFile := cWebSiteBase + format( cWebSiteDownloads, [ Upgrade_GetUpgradeVersionFileName ] );
+  WgetCmd := format( cWgetCommandLineUpgradeCheck, [ DefVerFile ] );
+
+  MsgDlgMessage( coptcapCheckForUpgrade, coptmsgCheckForUpgrade );
+  if MsgDlgConfirmation( self ) = mrNo then
+  begin
+    MsgDlgMessage( coptcapCheckForUpgradeHowTo,
+                   format( coptmsgCheckForUpgradeHowTo, [ c_PROG_VersionUpgradeCount ] )
+                   + DefVerFile
+                   + format( coptmsgCheckForUpgradeDetails, [ WgetCmd ] )
+                   + coptmsgCheckForUpgradeHowTo2
+                   + format( coptmsgCheckForUpgradeHowToFinal, [ cWebSiteBase + cWebSiteCommando ] )
+                 );
+    MsgDlgInfo( self );
+    exit;
+  end;
+
+  if not SystemFileFound( 'wget' ) then
+  begin
+    MsgDlgMessage( coptcapCheckForUpgradeWget, coptmsgCheckForUpgradeWget );
+    MsgDlgInfo( self );
+    exit;
+  end;
+
+  FetchedVer := TfrmMain( Owner ).WgetUpgradeVer( DefVerFile );
+
+  case FetchedVer of
+    0  : exit; //canceled
+    -1 :
+      begin
+        MsgDlgMessage( coptcapCheckForUpgradeBadFile, format( coptmsgCheckForUpgradeBadFile, [ coptcapCheckForUpgradeBadFile ] ) );
+        MsgDlgInfo( self );
+        exit;
+      end;
+  end;
+
+  if FetchedVer > c_PROG_VersionUpgradeCount then
+  begin
+    MsgDlgMessage( coptcapCheckForUpgradeUpgradeAvailable, coptcapCheckForUpgradeUpgradeAvailable
+                                                           + LineEnding + LineEnding
+                                                           + format( coptmsgCheckForUpgradeHowToFinal, [ cWebSiteBase + cWebSiteCommando ] ) );
+    MsgDlgInfo( self );
+  end
+  else if FetchedVer = c_PROG_VersionUpgradeCount then
+  begin
+    MsgDlgMessage( '', coptmsgCheckForUpgradeLatest );
+    MsgDlgInfo( self );
+  end
+  else begin
+    MsgDlgMessage( '', 'Your version is newer!! The developer has forgotten to put upgrade files on the specified URL!' );
+    MsgDlgInfo( self );
+  end;
 
 end;
 
@@ -493,6 +606,9 @@ begin
   lblSqlLib.Hint := cOptLabelHints;
   lblBaseFolder.Hint := cOptLabelHints;
   lblSavePath.Hint := cOptLabelHints;
+{$IFnDEF platAppImage}
+  btnUpdate.Visible := false;
+{$ENDIF}
 end;
 
 procedure TfrmOptions.UpdateShared;

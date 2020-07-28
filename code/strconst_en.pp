@@ -520,6 +520,7 @@ resourceString
   cmsgProcessPlural = 'Procs';
   ccapDetachedProcesses = '%d  Running%s';
 
+  ccapWgetUpgradeVer = 'Will check this URL...';
   ccapQuickRun = 'Command to Run';
   ccapSwitchDBNotAllowed = 'Can not Switch or Manage Database';
   cmsgSwitchDBNotAllowed = 'Can not Switch or Manage Database Profiles while editing.';

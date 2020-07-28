@@ -48,6 +48,7 @@ const
     //c_DB_HandwrittenVersion = '1.0.3'; //'<<F>>' fiasco, quotes shouldn't have been there.
     //c_DB_HandwrittenVersion = '1.0.4'; //Make ThreatLevel intuitive remove 0th useless elemnet
     c_DB_HandwrittenVersion = '2.0.1'; //Upgrade to Deluxe ver. Deluxe Deluxe in a couple years. Maybe.
+    cStandardDBSequence = 'DB SEQUENCE #:    %d';
     c_DB_VersionDate = ' (August 2020)';
 
 

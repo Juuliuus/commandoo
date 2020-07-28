@@ -277,11 +277,21 @@ begin
   memOutput.Lines.Add( '======' );
   memOutput.Lines.Add( '' );
 
-  memOutput.Lines.Add( format( cAboutLine, [ cHandwrittenVersion + cVersionDate ] ) + Frm.GetWidgetString );
+  memOutput.Lines.Add( format( cAboutLine, [ cHandwrittenVersion
+                                            + '.'
+                                            + inttostr( c_PROG_VersionUpgradeCount )
+                                            + cVersionDate
+                                            ]
+                      )
+                      + Frm.GetWidgetString );
+  memOutput.Lines.Add( format( cStandardProgramSequence, [ c_PROG_VersionUpgradeCount ] ) );
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( format( cAboutBDLine, [ c_DB_HandwrittenVersion + '.' + inttostr( c_DB_VersionUpgradeCount ) + c_DB_VersionDate ] ) );
+  memOutput.Lines.Add( format( cStandardDBSequence, [ c_DB_VersionUpgradeCount ] ) );
   memOutput.Lines.Add( '' );
   GetCurrentDBInfo;
+  memOutput.Lines.Add( 'commandoo WebSite:     ' + cWebSiteBase + cWebSiteCommando );
+  memOutput.Lines.Add( '' );
 {$IFDEF platAppImage}
   memOutput.Lines.Add( 'Using commandoo AppImage Version (https://appimage.org/) installed in:' );
   memOutput.Lines.Add(  Frm.AppImagePath );
@@ -305,8 +315,7 @@ begin
   GetCustomDBInfo;
 
   memOutput.Lines.Add( cEmail );
-  memOutput.Lines.Add( 'WebSite:     ' + cWebSite );
-  //memOutput.Lines.Add( 'Public pgp/gpg keys can be found at: ' + cWebSite + cWebSiteDownloads );
+  memOutput.Lines.Add( 'commandoo WebSite:     ' + cWebSiteBase + cWebSiteCommando );
 
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( cAboutGitHub );

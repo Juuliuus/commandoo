@@ -1,26 +1,26 @@
 object frmAbout: TfrmAbout
-  Left = 2374
-  Height = 515
-  Top = 386
-  Width = 985
+  Left = 190
+  Height = 523
+  Top = 491
+  Width = 1000
   ActiveControl = memOutput
   Caption = 'Commandoo About'
-  ClientHeight = 515
-  ClientWidth = 985
+  ClientHeight = 523
+  ClientWidth = 1000
   Color = clBlack
-  Constraints.MinHeight = 515
-  Constraints.MinWidth = 985
-  DesignTimePPI = 128
+  Constraints.MinHeight = 523
+  Constraints.MinWidth = 1000
+  DesignTimePPI = 130
   Font.Height = -16
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poMainFormCenter
   LCLVersion = '2.0.6.0'
   object memOutput: TMemo
-    Left = 43
-    Height = 366
-    Top = 35
-    Width = 769
+    Left = 44
+    Height = 371
+    Top = 36
+    Width = 780
     Anchors = [akTop, akLeft, akRight, akBottom]
     Font.Height = -16
     ParentFont = False
@@ -28,10 +28,10 @@ object frmAbout: TfrmAbout
     TabOrder = 0
   end
   object btnOK: TBitBtn
-    Left = 844
-    Height = 40
-    Top = 53
-    Width = 100
+    Left = 856
+    Height = 41
+    Top = 54
+    Width = 102
     Anchors = [akTop, akRight]
     Cancel = True
     Default = True
@@ -44,14 +44,14 @@ object frmAbout: TfrmAbout
     TabOrder = 3
   end
   object Image1: TImage
-    Left = 702
-    Height = 227
-    Top = 211
-    Width = 267
+    Left = 713
+    Height = 231
+    Top = 214
+    Width = 271
     Anchors = [akRight, akBottom]
     AutoSize = True
-    Constraints.MinHeight = 227
-    Constraints.MinWidth = 267
+    Constraints.MinHeight = 231
+    Constraints.MinWidth = 271
     Picture.Data = {
       1754506F727461626C654E6574776F726B4772617068696344F3000089504E47
       0D0A1A0A0000000D49484452000000C8000000AB0806000001543FE3FC000001
@@ -2004,10 +2004,10 @@ object frmAbout: TfrmAbout
     Transparent = True
   end
   object btnToggle: TBitBtn
-    Left = 53
-    Height = 56
-    Top = 405
-    Width = 749
+    Left = 54
+    Height = 57
+    Top = 411
+    Width = 760
     Anchors = [akLeft, akRight, akBottom]
     Caption = '...'
     Font.Height = -17
@@ -2016,17 +2016,19 @@ object frmAbout: TfrmAbout
     TabOrder = 1
   end
   object btnSaveToFile: TBitBtn
-    Left = 730
-    Height = 40
-    Top = 467
-    Width = 240
+    Left = 741
+    Height = 41
+    Top = 474
+    Width = 244
     Anchors = [akLeft, akRight, akBottom]
     Caption = '&F Save to file'
+    Font.Height = -16
     OnClick = btnSaveToFileClick
+    ParentFont = False
     TabOrder = 2
   end
   object lblTopic: TLabel
-    Left = 42
+    Left = 43
     Height = 24
     Top = 5
     Width = 66
