@@ -1299,8 +1299,6 @@ function TCmdObjHelper.RouteCommand( aString : string; const DoDetach : boolean;
 var
   CmdSL : TCmdSL;
   DoThroughShell , IsPiped: Boolean;
-  DummyStr : String;
-
 
   function GoodToRun : boolean;
   begin
@@ -1336,7 +1334,6 @@ begin
 
   IsPiped := ShouldGoToShell( aString );
 
-  DummyStr := '';
 // !!! fairly important to use TCmdSL! Unless you like memory leaks. The stringlistc can be normal Stringlist or,
   //  if a piped command, a stringlist of stringlists. This object takes care of that and frees the memory.
   // Not so true anymore, since it was only used for my local piped CL's routines which are currently dead,

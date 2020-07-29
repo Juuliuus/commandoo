@@ -1456,7 +1456,7 @@ begin
       msg.Add( cmsgFinExFatal );
 {$ELSE}
     if not IsContinuable then
-      msg.Add( 'fatal error: Strongly consider stopping the program.' );
+      msg.Add( 'fatal error: Strongly consider stopping the program. (user will see: ' + cmsgFinExFatal + ')' );
     GlobFatalException := false;
 {$ENDIF}
     msg.Add( '' );
@@ -6187,7 +6187,7 @@ begin
     try
       Result := strtoint( Fetched );
 
-      SL.Delete( 4 ); //now get the upgrade info
+      SL.Delete( SL.Count - 1 ); //now get the upgrade info
       SL.Add( extractfilepath( TheURL ) + Upgrade_GetUpgradeInfoFileName( Fetched ) );
       UpdateText := QuickProc( SL );
 

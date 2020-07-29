@@ -172,6 +172,64 @@ resourceString
     + LineEnding + LineEnding + LineEnding //I want space here
     ;
 
+{$IFDEF platAppImage}
+  cmsgCommandooThumbDrives =
+    'commandoo and ThumbDrives / USB drives:'
+    + LineEnding + LineEnding
+    + 'If you are working away from your main computer, you can take commandoo with you. '
+    + 'It is a simple matter to set up commandoo on a USB drive AND force it to use a "config" '
+    + 'folder on that USB drive.'
+    + LineEnding + LineEnding
+    + 'The first step is to copy the commandoo AppImage file you use to the USB drive in an appropriate '
+    + 'folder (the file you are using now is "%s"). '
+    + LineEnding + LineEnding
+    + 'Then, in the same folder you copied the AppImage to make a new folder with the same name as the AppImage file '
+    + 'but with ".config" added to the end of it. For example, say you copy the AppImage to:'
+    + LineEnding
+    + '/myusb/commandoo/commandoo.AppImage'
+    + LineEnding + LineEnding
+    + 'Then simply make the following empty folder:'
+    + LineEnding
+    + '/myusb/commandoo/commandoo.AppImage.config/'
+    + LineEnding + LineEnding
+    + 'Done. Now run the AppImage from the USB drive. commandoo will automatically use the AppImage.config '
+    + 'folder for its settings and DB''s. Since the first run will be a "new" run, the default "DB" databases '
+    + 'will be created. You can now use the ''Profile management import function'' to grab any DB''s you want '
+    + 'from your normal config folder. If you have worked only from the original default "DB" database, import '
+    + 'it in with a new name and use that, or merge it with the default "DB" that was created.'
+    + LineEnding + LineEnding
+    + '==> NOTE: The location of the sqlite3 library file varies from Distro to Distro. It can be that you '
+    + 'are moving to a machine where that library is in a different path! This means you WILL NOT be able '
+    + 'to use a sql database because commandoo won''t know where sqlite is! You can fix this each time in options, yes. '
+    + 'But I would recommend that the safest and easiest solution is to convert any sql databases you have on '
+    + 'the USB drive to text based databases using the supplied ''Profile management convert function''. '
+    + 'Then there is no sqlite3 library issues and the databases can be used on any distro.'
+    + LineEnding + LineEnding
+    + 'CONSIDERATIONS ========='
+    + LineEnding + LineEnding
+    + 'It can be that you have commands in your database that are not installed on the other machine. '
+    + 'commandoo can''t immediately know that and the command will fail even though it says it is on a '
+    + '"good" path. It is either on a different path, or not installed. It is easy to test if it should be '
+    + 'in the path on the other machine: edit the command, double-click its name, then just accept that name. '
+    + 'commandoo will always try to find out if it is in $PATH. It could be that it is not in $PATH but in a '
+    + 'non-PATH folder. Use the same procedure but point to its path on the other machine, if it is installed. '
+    + 'Finally, if it not corrected by these standard steps then it is not installed and either must be installed '
+    + 'or simply not used.'
+    + LineEnding + LineEnding
+    + 'Considerations when you run a GUI program as a child process:  let''s take "gimp" for example. '
+    + 'If you run gimp through commandoo as a child process, gimp will use commandoo''s ENVIRONMENT and '
+    + 'save its config settings to the AppImage.config folder you created! This is actually a good thing, '
+    + 'in that the other machines gimp settings will not be changed. You will notice, as you use the USB '
+    + 'drive, that other files will be written into the AppImage.config folder.'
+    + LineEnding + LineEnding
+    + 'There may be other things that will arise when using the USB AppImage that I haven''t run into yet. '
+    + 'So best practice is to make your USB AppImage and then test it yourself under a variety of circumstances '
+    + 'and Distros as possible.'
+    + LineEnding
+    ;
+{$ENDIF}
+
+
   cmsgCommandooUpgrade =
     'If you upgraded commandoo from the original version 1.0.1...'
     + LineEnding + LineEnding
@@ -979,6 +1037,10 @@ resourceString
    cSaveToFileFreshStart = 'freshstart';
    cSaveToFileUpgrade = 'upgrade';
    cSaveToFileIbus = 'ibus';
+{$IFDEF platAppImage}
+   cSaveToFileUSBDrive = 'USB_Drive';
+{$ENDIF}
+
    cSaveToFileOutput = 'OutPut_%s';
 
    cOutPutCopy1 = 'Copy';

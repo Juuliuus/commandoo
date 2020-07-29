@@ -20,7 +20,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ufrmMain"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="1416"/>
+        <TopLine Value="1417"/>
         <CursorPos Y="1428"/>
         <UsageCount Value="203"/>
         <Bookmarks Count="4">
@@ -75,11 +75,12 @@
         <Filename Value="strconst_en.pp"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="17"/>
-        <TopLine Value="510"/>
-        <CursorPos Y="524"/>
+        <TopLine Value="1026"/>
+        <CursorPos Y="1041"/>
         <UsageCount Value="202"/>
-        <Bookmarks Count="1">
-          <Item0 Y="1106" ID="1"/>
+        <Bookmarks Count="2">
+          <Item0 Y="1168" ID="1"/>
+          <Item1 Y="232" ID="9"/>
         </Bookmarks>
         <Loaded Value="True"/>
       </Unit6>
@@ -101,11 +102,13 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ufrmAbout"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="139"/>
-        <CursorPos X="3" Y="145"/>
+        <TopLine Value="200"/>
+        <CursorPos X="2" Y="203"/>
         <UsageCount Value="201"/>
-        <Bookmarks Count="1">
-          <Item0 X="3" Y="145" ID="2"/>
+        <Bookmarks Count="3">
+          <Item0 X="3" Y="151" ID="2"/>
+          <Item1 X="4" Y="172" ID="6"/>
+          <Item2 Y="322" ID="7"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -158,8 +161,8 @@
         <Filename Value="unitcommands.pp"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="8"/>
-        <TopLine Value="1355"/>
-        <CursorPos X="24" Y="1367"/>
+        <TopLine Value="1300"/>
+        <CursorPos Y="1302"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit13>
@@ -509,7 +512,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ufrmOptions"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="341"/>
+        <TopLine Value="365"/>
         <CursorPos X="27" Y="346"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
@@ -734,123 +737,124 @@
     </OtherDefines>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5345" Column="26" TopLine="5350"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="179" TopLine="155"/>
       </Position1>
       <Position2>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="370" TopLine="359"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="316" Column="41" TopLine="304"/>
       </Position2>
       <Position3>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="792" Column="14" TopLine="781"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="179" TopLine="162"/>
       </Position3>
       <Position4>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6185" Column="5" TopLine="6165"/>
+        <Filename Value="ufrmoptions.pp"/>
+        <Caret Line="346" Column="27" TopLine="365"/>
       </Position4>
       <Position5>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6202" Column="44" TopLine="6198"/>
+        <Caret Line="792" Column="14" TopLine="779"/>
       </Position5>
       <Position6>
-        <Filename Value="ufrmabout.pp"/>
-        <Caret Line="145" Column="3" TopLine="139"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="6190" TopLine="6178"/>
       </Position6>
       <Position7>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="370" TopLine="359"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="166" Column="4" TopLine="161"/>
       </Position7>
       <Position8>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="792" Column="14" TopLine="781"/>
+        <Filename Value="strconst_en.pp"/>
+        <Caret Line="181" Column="5" TopLine="165"/>
       </Position8>
       <Position9>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6175" TopLine="6165"/>
+        <Filename Value="strconst_en.pp"/>
+        <Caret Line="186" Column="27" TopLine="178"/>
       </Position9>
       <Position10>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6205" Column="35" TopLine="6189"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="152" TopLine="145"/>
       </Position10>
       <Position11>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="347" Column="3" TopLine="335"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="608" TopLine="593"/>
       </Position11>
       <Position12>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="339" TopLine="337"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="359" Column="11" TopLine="348"/>
       </Position12>
       <Position13>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="369" Column="26" TopLine="357"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="56" Column="15" TopLine="39"/>
       </Position13>
       <Position14>
         <Filename Value="ufrmabout.pp"/>
-        <Caret Line="145" Column="3" TopLine="139"/>
+        <Caret Line="170" Column="3" TopLine="151"/>
       </Position14>
       <Position15>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="369" Column="26" TopLine="357"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="45" Column="15" TopLine="32"/>
       </Position15>
       <Position16>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="792" Column="14" TopLine="781"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="141" Column="3" TopLine="140"/>
       </Position16>
       <Position17>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6166" Column="52" TopLine="6165"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="57" Column="15" TopLine="45"/>
       </Position17>
       <Position18>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="792" Column="73" TopLine="792"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="145" Column="20" TopLine="140"/>
       </Position18>
       <Position19>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="387" Column="77" TopLine="367"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="99" Column="24" TopLine="86"/>
       </Position19>
       <Position20>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="176" Column="22" TopLine="163"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="157" Column="23" TopLine="139"/>
       </Position20>
       <Position21>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="361" Column="62" TopLine="340"/>
+        <Filename Value="strconst_en.pp"/>
+        <Caret Line="1040" TopLine="1021"/>
       </Position21>
       <Position22>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="379" TopLine="359"/>
+        <Filename Value="strconst_en.pp"/>
+        <Caret Line="1041" TopLine="1021"/>
       </Position22>
       <Position23>
-        <Filename Value="ufrmoptions.pp"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="110" TopLine="98"/>
       </Position23>
       <Position24>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="184" Column="37" TopLine="163"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="105" TopLine="97"/>
       </Position24>
       <Position25>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="363" Column="62" TopLine="342"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="1467" Column="17" TopLine="1445"/>
       </Position25>
       <Position26>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="393" TopLine="373"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="109" TopLine="98"/>
       </Position26>
       <Position27>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="186" TopLine="173"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="168" TopLine="149"/>
       </Position27>
       <Position28>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="185" Column="29" TopLine="172"/>
+        <Filename Value="strconst_en.pp"/>
+        <Caret Line="1041" TopLine="1026"/>
       </Position28>
       <Position29>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="352" TopLine="340"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="106" Column="17" TopLine="100"/>
       </Position29>
       <Position30>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="346" Column="27" TopLine="341"/>
+        <Filename Value="ufrmabout.pp"/>
+        <Caret Line="203" Column="2" TopLine="200"/>
       </Position30>
     </JumpHistory>
     <RunParams>

@@ -96,11 +96,17 @@ resourcestring
   cmsgCurrentDB = '          <== ( CURRENT )';
 
   ccapAboutToggle = '&A  Toggle Display...';
-  ccapAboutToggleThru = 'Toggles Thru: ';
+  //ccapAboutToggleThru = 'Toggles Thru: ';
 
 
 const
   constSeparator = '-----------------------------------';
+{$IFDEF platAppImage}
+  cDokumentCount = 7;
+{$ELSE}
+  cDokumentCount = 6;
+{$ENDIF}
+
 var
   Frm : TfrmMain;
 
@@ -142,17 +148,16 @@ var
   i : integer;
   Str : string;
 begin
-  str := ccapAboutToggleThru;
-  for i := 0 to 4 do
-    Str := Str + GetNamebtnToggle( i ) + ' ==> ';
-  Str := Str + GetNamebtnToggle( 5 );
+  str := '';
+  for i := 0 to cDokumentCount - 2 do
+    Str := Str + GetNamebtnToggle( i ) + '  ==>  ';
+  Str := Str + GetNamebtnToggle( cDokumentCount - 1 );
   memToggle.Lines.Text := Str;
 end;
 
 function TfrmAbout.GetNamebtnToggle( Idx : integer ) : string;
 begin
   result := 'info';
-  //case btnToggle.Tag mod 6 of
   case Idx of
     0 : result := cSaveToFileAbout;
     1 : result := cSaveToFileIntro;
@@ -160,6 +165,7 @@ begin
     3 : result := cSaveToFileFreshStart;
     4 : result := cSaveToFileUpgrade;
     5 : result := cSaveToFileIbus;
+    6 : result := cSaveToFileUSBDrive;
   end;
 end;
 
@@ -168,7 +174,7 @@ var
   Idx : integer;
 begin
   btnToggle.Tag := btnToggle.Tag + 1;
-  Idx := btnToggle.Tag mod 6;
+  Idx := btnToggle.Tag mod cDokumentCount;
   case Idx of
     0 : ShowAbout;
     1 : ShowIntro;
@@ -176,6 +182,7 @@ begin
     3 : memOutput.Text := cmsgFirstLocalRunAbout + format( cmsgFirstLocalRun, [ cmsgFormHotKeys ] );
     4 : memOutput.Text := cmsgCommandooUpgrade;
     5 : memOutput.Text := cmsgIbus;
+    6 : memOutput.Text := format( cmsgCommandooThumbDrives, [ Frm.AppImagePath ] );
   end;
   lblTopic.Caption := GetNamebtnToggle( Idx );
   btnSaveToFile.enabled := true;
