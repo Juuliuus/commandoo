@@ -7776,30 +7776,20 @@ end.
 
 
 {
-cCommandInPathStr = '$PATH';
-cLinuxBuiltInStr = '$BUILTIN';
-cmsgcleBadPath = '$BAD_PATH';
-  ¿∉∉∀⍫‡
-        ↑
-since I ALWAYS forget where the vk_ definiations are:
-, lcltype //THis is needed for key up keyboard constants
 
-tags / hints / anchors / events / enabled&visible / modalresults / popup menus
+
+↑
+since I ALWAYS forget where the vk_ definitions are:
+, lcltype //THis is needed for key up keyboard constants
 
 Cleanup checks and other notes
 end ;      autoformat problem
 ) ;        autoformat problem
 
 
-lit strings
-Shortcuts
-exceptions testing
-
 compiler warnings
 po files
 
 check T O D O 'S
-Didn't you know a way to send email from a button setting subject??
-fresh install with and without data
 
  }

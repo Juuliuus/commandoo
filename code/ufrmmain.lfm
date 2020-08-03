@@ -1,15 +1,14 @@
 object frmMain: TfrmMain
   Left = 69
-  Height = 914
+  Height = 760
   Top = 224
-  Width = 1454
+  Width = 1074
   Caption = 'commandoo'
-  ClientHeight = 914
-  ClientWidth = 1454
-  Constraints.MinHeight = 914
-  Constraints.MinWidth = 1454
-  DesignTimePPI = 130
-  Font.Height = -16
+  ClientHeight = 760
+  ClientWidth = 1074
+  Constraints.MinHeight = 760
+  Constraints.MinWidth = 1074
+  Font.Height = -12
   KeyPreview = True
   OnActivate = FormActivate
   OnClose = FormClose
@@ -21,83 +20,83 @@ object frmMain: TfrmMain
   Position = poScreenCenter
   LCLVersion = '2.0.6.0'
   object Bevel5: TBevel
-    Left = 1148
-    Height = 4
-    Top = 851
-    Width = 295
+    Left = 848
+    Height = 3
+    Top = 683
+    Width = 218
     Anchors = [akTop, akLeft, akRight]
   end
   object Bevel4: TBevel
-    Left = 1148
-    Height = 4
-    Top = 781
-    Width = 295
+    Left = 848
+    Height = 3
+    Top = 623
+    Width = 218
     Anchors = [akTop, akLeft, akRight]
   end
   object nbCommands: TExtendedNotebook
-    Left = 8
-    Height = 578
-    Top = 41
-    Width = 1446
+    Left = 6
+    Height = 459
+    Top = 38
+    Width = 1068
     TabStop = False
     ActivePage = tsCommands
     Anchors = [akTop, akLeft, akRight]
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabIndex = 0
     TabOrder = 0
     OnChange = nbCommandsChange
     object tsCommands: TTabSheet
       Caption = '  Commands  '
-      ClientHeight = 543
-      ClientWidth = 1436
-      Font.Height = -16
+      ClientHeight = 430
+      ClientWidth = 1058
+      Font.Height = -12
       ParentFont = False
       object pnlEdit: TPanel
         Tag = 223322
-        Left = 306
-        Height = 501
-        Top = 38
-        Width = 1119
+        Left = 226
+        Height = 385
+        Top = 29
+        Width = 824
         Anchors = [akTop, akLeft, akRight]
-        ClientHeight = 501
-        ClientWidth = 1119
-        Font.Height = -16
+        ClientHeight = 385
+        ClientWidth = 824
+        Font.Height = -12
         ParentColor = False
         ParentFont = False
         TabOrder = 1
         object pnlCmdLines: TPanel
-          Left = 9
-          Height = 294
-          Top = 202
-          Width = 1101
+          Left = 7
+          Height = 221
+          Top = 161
+          Width = 810
           Anchors = [akTop, akLeft, akRight]
-          ClientHeight = 294
-          ClientWidth = 1101
-          Font.Height = -16
+          ClientHeight = 221
+          ClientWidth = 810
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           TabOrder = 5
           object pnlLineControls: TPanel
-            Left = 8
-            Height = 165
-            Top = 4
-            Width = 1082
+            Left = 5
+            Height = 122
+            Top = 3
+            Width = 796
             Anchors = [akTop, akLeft, akRight]
             BevelOuter = bvNone
-            ClientHeight = 165
-            ClientWidth = 1082
-            Font.Height = -16
+            ClientHeight = 122
+            ClientWidth = 796
+            Font.Height = -12
             ParentFont = False
             TabOrder = 1
             object lbCmdLines: TListBox
-              Left = 123
-              Height = 156
+              Left = 91
+              Height = 116
               Hint = 'The list of Command Lines that belong to'#10'the Command above.'#10#10'Since Commands can not be run, only'#10'Command Lines, every Command MUST'#10'have at least one Command Line if you '#10'intend to actually run it.'#10#10'For instance, you add gimp as a command.'#10#10'You must then add a Command Line'#10'for it to actually run gimp.'#10#10'So this box will contain all the run-able '#10'Command Lines under this Command.'#10#10'ctrl-a or + adds a new Command Line.'#10#10'<Enter> edits the command line, while'#10'<Ctrl>-<Enter> runs the command line'#10#10'Ctrl-Shift-Alt-C makes another copy of '#10'the object.'#10#10'For the ClipBoard:'#10#10'Ctrl-c copies the selected command, '#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'Delete or "-" marks the item for deletion.'#10'To undo that use ctrl-Delete/"-"'#10#10'<end>'
-              Top = 7
-              Width = 927
+              Top = 5
+              Width = 681
               Anchors = [akTop, akLeft, akRight, akBottom]
-              Font.Height = -16
+              Font.Height = -12
               ItemHeight = 0
               OnClick = lbCmdLinesClick
               OnDblClick = lbCmdLinesDblClick
@@ -105,131 +104,131 @@ object frmMain: TfrmMain
               OnSelectionChange = lbCmdLinesSelectionChange
               ParentFont = False
               PopupMenu = popCmdLines
-              ScrollWidth = 925
+              ScrollWidth = 679
               TabOrder = 0
               TopIndex = -1
             end
             object btnCmdLineUp: TButton
               Tag = 999
-              Left = 1052
-              Height = 46
+              Left = 774
+              Height = 34
               Hint = 'These buttons move the selected '#10'Command Line up or down in the list.'#10#10'<end>'
-              Top = 62
-              Width = 31
+              Top = 46
+              Width = 23
               Action = actCmdLineUp
               Anchors = [akTop, akRight]
               Caption = '↑'
-              Font.Height = -17
+              Font.Height = -13
               ParentFont = False
               TabOrder = 7
               TabStop = False
             end
             object btnCmdLineDown: TButton
               Tag = 999
-              Left = 1052
-              Height = 46
-              Top = 107
-              Width = 31
+              Left = 774
+              Height = 34
+              Top = 79
+              Width = 23
               Action = actCmdLineDown
               Anchors = [akTop, akRight]
               Caption = '↓'
-              Font.Height = -17
+              Font.Height = -13
               ParentFont = False
               TabOrder = 8
               TabStop = False
             end
             object btnRun_Test: TBitBtn
-              Left = 14
-              Height = 37
-              Top = 6
-              Width = 95
+              Left = 10
+              Height = 27
+              Top = 4
+              Width = 70
               Action = actRun
-              Font.Height = -16
+              Font.Height = -12
               ParentFont = False
               TabOrder = 1
             end
             object shpRun_Test: TShape
               Left = 0
-              Height = 34
-              Top = 8
-              Width = 14
+              Height = 25
+              Top = 6
+              Width = 10
               Brush.Color = 160
             end
             object btnNewCommandLine: TBitBtn
-              Left = 3
-              Height = 29
+              Left = 2
+              Height = 22
               Hint = 'This will add a new Command Line for the'#10'Command above.'#10#10'As a small help the Command name is'#10'filled in for you. It is up to you to fill in the '#10'parameters / flags after that.'#10#10'When adding a new Command Line it is not'#10'sent into edit mode. You will need to edit it'#10'after adding if you want to add notes, check'#10'checkboxes, etc.'#10#10'<end>'
-              Top = 46
-              Width = 107
+              Top = 32
+              Width = 79
               Action = actNewCommandLine
               Caption = '&S  CL+'
-              Font.Height = -16
+              Font.Height = -12
               ParentFont = False
               TabOrder = 2
             end
             object btnCmdLineDelete: TBitBtn
-              Left = 3
-              Height = 29
+              Left = 2
+              Height = 22
               Hint = 'This marks the selected Command Line '#10'for deletion.'#10#10'<end>'
-              Top = 76
-              Width = 107
+              Top = 55
+              Width = 79
               Action = actCmdLineDelete
               Caption = '&T  CL-'
-              Font.Height = -16
+              Font.Height = -12
               ParentFont = False
               TabOrder = 3
             end
             object btnCmdLineUnDelete: TBitBtn
-              Left = 3
-              Height = 29
+              Left = 2
+              Height = 22
               Hint = 'This will undelete the currently selected'#10'Command Line.'#10#10'<end>'
-              Top = 107
-              Width = 107
+              Top = 78
+              Width = 79
               Action = actCmdLineUnDelete
               Caption = '&U Undo -'
-              Font.Height = -16
+              Font.Height = -12
               ParentFont = False
               TabOrder = 4
             end
             object btnFindCmdLine: TBitBtn
-              Left = 3
-              Height = 29
+              Left = 2
+              Height = 22
               Hint = 'This brings up a small find dialog to help'#10'you search in a long list of Command '#10'Lines.'#10#10'<end>'
-              Top = 137
-              Width = 107
+              Top = 101
+              Width = 79
               Action = actFindCmdLine
               Caption = '&V  Find'
-              Font.Height = -16
+              Font.Height = -12
               ParentFont = False
               TabOrder = 5
             end
             object shpCmdOut9: TShape
-              Left = 123
-              Height = 3
-              Top = 3
-              Width = 964
+              Left = 91
+              Height = 2
+              Top = 2
+              Width = 709
               Anchors = [akTop, akLeft, akRight]
               Brush.Color = 16095077
               Pen.Style = psClear
             end
             object shpCmdOut10: TShape
               Left = -1
-              Height = 3
-              Top = 3
-              Width = 136
+              Height = 2
+              Top = 2
+              Width = 100
               Brush.Color = 16095077
               Pen.Style = psClear
             end
             object btnCmdLineReCenter: TButton
               Tag = 999
-              Left = 1054
-              Height = 27
+              Left = 775
+              Height = 20
               Hint = 'If you scrolled the Command Lines too far'#10'up or down, use this to re-center the currently'#10'selected Command Line.'#10#10'<end>'
-              Top = 17
-              Width = 27
+              Top = 13
+              Width = 20
               Anchors = [akTop, akRight]
               Caption = '*'
-              Font.Height = -17
+              Font.Height = -13
               OnClick = btnCmdLineReCenterClick
               ParentFont = False
               TabOrder = 6
@@ -237,12 +236,12 @@ object frmMain: TfrmMain
             end
           end
           object btnLineOk: TBitBtn
-            Left = 8
-            Height = 35
-            Top = 177
-            Width = 121
+            Left = 6
+            Height = 26
+            Top = 132
+            Width = 89
             Caption = '&B  Ok'
-            Font.Height = -16
+            Font.Height = -12
             GlyphShowMode = gsmNever
             OnClick = btnCmdEditClick
             ParentFont = False
@@ -250,12 +249,12 @@ object frmMain: TfrmMain
             Visible = False
           end
           object btnLineCancel: TBitBtn
-            Left = 8
-            Height = 35
-            Top = 212
-            Width = 121
+            Left = 6
+            Height = 26
+            Top = 158
+            Width = 89
             Caption = '&S  Cancel'
-            Font.Height = -16
+            Font.Height = -12
             GlyphShowMode = gsmNever
             OnClick = btnCmdEditClick
             ParentFont = False
@@ -263,36 +262,36 @@ object frmMain: TfrmMain
             Visible = False
           end
           object btnLineEdit: TBitBtn
-            Left = 8
-            Height = 35
-            Top = 252
-            Width = 121
+            Left = 6
+            Height = 26
+            Top = 190
+            Width = 89
             Caption = '&B  Edit CL'
-            Font.Height = -16
+            Font.Height = -12
             OnClick = btnCmdEditClick
             ParentFont = False
             TabOrder = 0
           end
           object pnlDispCmdLine: TPanel
-            Left = 133
-            Height = 119
-            Top = 170
-            Width = 964
+            Left = 98
+            Height = 88
+            Top = 129
+            Width = 709
             Anchors = [akLeft, akRight, akBottom]
-            ClientHeight = 119
-            ClientWidth = 964
-            Font.Height = -16
+            ClientHeight = 88
+            ClientWidth = 709
+            Font.Height = -12
             ParentColor = False
             ParentFont = False
             TabOrder = 5
             object memNotesLineDisp: TMemo
-              Left = 237
-              Height = 110
-              Top = 3
-              Width = 485
+              Left = 175
+              Height = 81
+              Top = 2
+              Width = 355
               Anchors = [akTop, akLeft, akRight]
               BorderStyle = bsNone
-              Font.Height = -16
+              Font.Height = -12
               OnDblClick = Memo1DblClick
               OnKeyDown = memNotesLineDispKeyDown
               ParentFont = False
@@ -302,116 +301,116 @@ object frmMain: TfrmMain
             end
             object pnlCL: TPanel
               Tag = 123321
-              Left = 728
-              Height = 8
-              Top = 104
-              Width = 224
+              Left = 535
+              Height = 6
+              Top = 77
+              Width = 165
               Anchors = [akTop, akRight]
               Color = clBlack
-              Font.Height = -16
+              Font.Height = -12
               ParentColor = False
               ParentFont = False
               TabOrder = 2
             end
             object lblFriendlyNameLineDisp: TLabel
-              Left = 935
-              Height = 21
-              Top = 27
-              Width = 12
+              Left = 687
+              Height = 15
+              Top = 20
+              Width = 9
               Alignment = taRightJustify
               Anchors = [akTop, akRight]
               Caption = '...'
-              Font.Height = -16
+              Font.Height = -12
               ParentColor = False
               ParentFont = False
               OnDblClick = lblDispEntryDblClick
             end
             object lblSuperUserLineDisp: TLabel
-              Left = 11
-              Height = 18
+              Left = 8
+              Height = 12
               Top = 1
-              Width = 41
+              Width = 29
               Caption = 'NT SU'
-              Font.Height = -14
+              Font.Height = -10
               ParentColor = False
               ParentFont = False
               Visible = False
             end
             object lblWantsInputLineDisp: TLabel
-              Left = 11
-              Height = 18
-              Top = 66
-              Width = 41
+              Left = 8
+              Height = 12
+              Top = 49
+              Width = 29
               Caption = 'NT WI'
-              Font.Height = -14
+              Font.Height = -10
               ParentColor = False
               ParentFont = False
               Visible = False
             end
             object lblIsFavoriteLineDisp: TLabel
-              Left = 11
-              Height = 18
-              Top = 17
-              Width = 46
+              Left = 8
+              Height = 12
+              Top = 13
+              Width = 34
               Caption = 'NT FAV'
-              Font.Height = -14
+              Font.Height = -10
               ParentColor = False
               ParentFont = False
               Visible = False
             end
             object lblDetachProcessLineDisp: TLabel
-              Left = 11
-              Height = 18
-              Top = 34
-              Width = 41
+              Left = 8
+              Height = 12
+              Top = 25
+              Width = 30
               Caption = 'NT DP'
-              Font.Height = -14
+              Font.Height = -10
               ParentColor = False
               ParentFont = False
               Visible = False
             end
             object lblUseShellLineDisp: TLabel
-              Left = 11
-              Height = 18
-              Top = 50
-              Width = 41
+              Left = 8
+              Height = 12
+              Top = 37
+              Width = 29
               Caption = 'NT US'
-              Font.Height = -14
+              Font.Height = -10
               ParentColor = False
               ParentFont = False
               Visible = False
             end
             object lblAlertLineDisp: TLabel
-              Left = 11
-              Height = 18
-              Top = 82
-              Width = 39
+              Left = 8
+              Height = 12
+              Top = 61
+              Width = 28
               Caption = 'NT AL'
-              Font.Height = -14
+              Font.Height = -10
               ParentColor = False
               ParentFont = False
               Visible = False
             end
             object lblTerminalOnlyLineDisp: TLabel
-              Left = 11
-              Height = 18
-              Top = 99
-              Width = 42
+              Left = 8
+              Height = 12
+              Top = 73
+              Width = 30
               Caption = 'NT TO'
-              Font.Height = -14
+              Font.Height = -10
               ParentColor = False
               ParentFont = False
               Visible = False
             end
             object cbThreatLevelLineDisp: TComboBox
               Tag = 123321
-              Left = 691
-              Height = 34
-              Top = 41
-              Width = 64
+              Left = 510
+              Height = 28
+              Top = 30
+              Width = 47
               AutoSelect = False
               Font.Color = clBlack
-              Font.Height = -16
+              Font.Height = -12
               Font.Style = [fsBold]
               ItemHeight = 0
               Items.Strings = (
@@ -428,50 +427,50 @@ object frmMain: TfrmMain
               Visible = False
             end
             object lblThreatLevelLineDisp: TLabel
-              Left = 717
-              Height = 23
-              Top = 77
-              Width = 235
+              Left = 526
+              Height = 17
+              Top = 57
+              Width = 174
               Alignment = taCenter
               Anchors = [akTop, akRight]
               AutoSize = False
               Caption = '...'
-              Font.Height = -16
+              Font.Height = -12
               ParentColor = False
               ParentFont = False
             end
             object lblcapFriendlyName: TLabel
-              Left = 897
-              Height = 22
+              Left = 658
+              Height = 16
               Top = -1
-              Width = 48
+              Width = 37
               Anchors = [akTop, akRight]
               Caption = 'NT FN'
-              Font.Height = -17
+              Font.Height = -13
               ParentColor = False
               ParentFont = False
             end
           end
           object pnlCmdLine: TPanel
-            Left = 431
-            Height = 294
-            Top = 4
-            Width = 965
+            Left = 56
+            Height = 221
+            Top = -8
+            Width = 710
             Anchors = [akLeft, akRight, akBottom]
-            ClientHeight = 294
-            ClientWidth = 965
-            Font.Height = -16
+            ClientHeight = 221
+            ClientWidth = 710
+            Font.Height = -12
             ParentColor = False
             ParentFont = False
             TabOrder = 2
             Visible = False
             object memNotesLine: TMemo
-              Left = 240
-              Height = 157
-              Top = 127
-              Width = 483
+              Left = 177
+              Height = 116
+              Top = 94
+              Width = 354
               Anchors = [akTop, akLeft, akRight]
-              Font.Height = -16
+              Font.Height = -12
               OnChange = memNotesLineChange
               OnDblClick = Memo1DblClick
               OnKeyDown = memNotesLineKeyDown
@@ -480,76 +479,76 @@ object frmMain: TfrmMain
               TabOrder = 4
             end
             object cbSuperUserLine: TCheckBox
-              Left = 9
-              Height = 25
+              Left = 7
+              Height = 21
               Hint = 'Checking this indicates that this Command'#10'LIne will be run as ROOT. This uses the'#10'Linux program that your system has '#10'(kdesudo, gksudo, etc. to ensure it is '#10'secure).'#10#10'It uses a special prefix to indicate this,'#10'don''t change that.'#10#10'AS ALWAYS be circumspect in the use of '#10'SuperUser, it isquite powerful and at'#10'times quite dangerous. Know what you are'#10'doing.'#10#10'<end>'
-              Top = 104
-              Width = 70
+              Top = 77
+              Width = 59
               Caption = 'NT SU'
-              Font.Height = -16
+              Font.Height = -12
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
               TabOrder = 5
             end
             object cbIsFavoriteLine: TCheckBox
-              Left = 9
-              Height = 25
+              Left = 7
+              Height = 21
               Hint = 'Checking this box marks the Command Line'#10'as a "favorite" and it will show up in the '#10'Favorites list.'#10#10'It will be listed by the specified Command '#10'Line...'#10#10'...or you can give it a "friendly name" that '#10'is easier to read in the list.'#10#10'If you give it a friendly name the entry will'#10'be indented a couple of spaces and '#10'followed by the Command line for '#10'reference.'#10#10'<end>'
-              Top = 129
-              Width = 77
+              Top = 97
+              Width = 63
               Caption = 'NT FAV'
-              Font.Height = -16
+              Font.Height = -12
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
               TabOrder = 6
             end
             object cbDetachProcessLine: TCheckBox
-              Left = 9
-              Height = 25
+              Left = 7
+              Height = 21
               Hint = 'Checking this indicates that this Command'#10'LIne will be run as a DETACHED PROCESS.'#10#10'Detached processes run separately and'#10'independently from this program (that is,'#10'you can launch programs from here like'#10'gimp or firefox or whatever, with flags). '#10#10'Detached processes live only while this'#10'program lives. When this program closes'#10'any detahced processes it "owns" are'#10'also closed.'#10#10'You can manage Detached Processes on'#10'the "Proc''s" tab.'#10#10'<end>'
-              Top = 154
-              Width = 71
+              Top = 117
+              Width = 59
               Caption = 'NT DP'
-              Font.Height = -16
+              Font.Height = -12
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
               TabOrder = 7
             end
             object lblcapEntryLine: TLabel
-              Left = 621
-              Height = 18
-              Top = 8
-              Width = 35
+              Left = 459
+              Height = 12
+              Top = 6
+              Width = 25
               Caption = 'NT LI'
-              Font.Height = -14
+              Font.Height = -10
               ParentColor = False
               ParentFont = False
               Visible = False
             end
             object cbWantsInputLine: TCheckBox
-              Left = 9
-              Height = 25
+              Left = 7
+              Height = 21
               Hint = 'Another feature for you. If this is checked'#10'you will be allowed to specify some input '#10'before the command is run.'#10#10'This input is given to the command '#10'immediately and, if the command pays'#10'attention to input to its stdin at runtime,'#10'it will use it.'#10#10'Not all commands will, or can, use the '#10'Input. A good example of one that can is'#10'"grep". So you can use Input to pass text '#10'to grep to search. Kinda cool.'#10#10'<end>'
-              Top = 205
-              Width = 69
+              Top = 157
+              Width = 58
               Caption = 'NT WI'
-              Font.Height = -16
+              Font.Height = -12
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
               TabOrder = 9
             end
             object cbUseShellLine: TCheckBox
-              Left = 9
-              Height = 25
+              Left = 7
+              Height = 21
               Hint = 'I''ve gone to great effort to make this program'#10'run commands, including piped commands.'#10#10'But there are certain cases where it just'#10'got too complicated to go any further.'#10#10'If my program can''t run the Command Line'#10'it will tell you so. In this case you can use'#10'this setting to pass it to the shell and see if it'#10'will run it. Most of the time it will.'#10#10'But I can''t test everything (too ginormous)'#10'so I can''t promise it will run.'#10#10'Another alternative is to siimply copy the'#10'command line (right click menu) and '#10'run it in a terminal.'#10#10'Examples of stuff that I don''t process:'#10#10'semicolons (;)'#10'redirects ( < > >> << )'#10'and so on.'#10#10'Everything I''ve tested here works through'#10'shell. Maybe it will for you too!'#10#10'Of course, as always, be cautious with'#10'commands. For example, redirects, with'#10'some commands, wipe out files and so on.'#10' '#10'You need to know what you''re doing so'#10'be sure to study commands you don''t '#10'know.'#10#10'<end>'
-              Top = 180
-              Width = 70
+              Top = 137
+              Width = 59
               Caption = 'NT US'
-              Font.Height = -16
+              Font.Height = -12
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
@@ -557,27 +556,27 @@ object frmMain: TfrmMain
             end
             object pnlCLEdit: TPanel
               Tag = 123321
-              Left = 727
-              Height = 8
-              Top = 277
-              Width = 229
+              Left = 534
+              Height = 6
+              Top = 205
+              Width = 169
               Anchors = [akTop, akRight]
               Color = clBlack
-              Font.Height = -16
+              Font.Height = -12
               ParentColor = False
               ParentFont = False
               TabOrder = 14
             end
             object edtFriendlyNameLine: TEdit
-              Left = 729
-              Height = 37
+              Left = 536
+              Height = 27
               Hint = 'A "friendly name" is a simple name you'#10'specify that is easy to remember and/or'#10'find.'#10#10'Command Lines can get quite long, and'#10'complicated. Many look similiar to each'#10'other. Others have long paths in front of'#10'the command name.'#10#10'This makes it extremely hard to find in the'#10'favorites list or in search results.'#10#10'But...if you take that monstrous Command'#10'Line and give it a friendly name of '#10'"fuzzy bunny" then it is easy to find!'#10#10'You''re welcome.'#10#10'<end> '
-              Top = 127
-              Width = 226
+              Top = 97
+              Width = 167
               Anchors = [akTop, akRight]
               AutoSize = False
               AutoSelect = False
-              Font.Height = -16
+              Font.Height = -12
               OnChange = edtFriendlyNameLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
@@ -585,67 +584,67 @@ object frmMain: TfrmMain
               TextHint = 'Alias for Favorites List'
             end
             object lblCapNotesLine: TLabel
-              Left = 245
-              Height = 21
-              Top = 104
-              Width = 58
+              Left = 181
+              Height = 15
+              Top = 77
+              Width = 44
               Caption = 'NT NOT'
-              Font.Height = -16
+              Font.Height = -12
               ParentColor = False
               ParentFont = False
             end
             object lblcapFriendlyNameLine: TLabel
-              Left = 906
-              Height = 21
-              Top = 104
-              Width = 45
+              Left = 666
+              Height = 15
+              Top = 78
+              Width = 34
               Anchors = [akTop, akRight]
               Caption = 'NT FN'
-              Font.Height = -16
+              Font.Height = -12
               ParentColor = False
               ParentFont = False
             end
             object cbTerminalOnlyLine: TCheckBox
-              Left = 9
-              Height = 25
+              Left = 7
+              Height = 21
               Hint = 'Some commands should not be run from '#10'commandoo. Some may not work through'#10'commandoo...'#10#10'...but you still want them in your database.'#10#10'Check this box and the command line can'#10'-NOT- be run through commandoo, a'#10'further level of safety for you.'#10#10'TIP: Don''t forget to use this checkbox when'#10'necessary!'#10#10'<end>'
-              Top = 256
-              Width = 70
+              Top = 197
+              Width = 58
               Caption = 'NT TO'
-              Font.Height = -16
+              Font.Height = -12
               OnChange = cbSuperUserLineChange
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
               TabOrder = 11
             end
             object cbAlertLine: TCheckBox
-              Left = 9
-              Height = 25
+              Left = 7
+              Height = 21
               Hint = 'Ever run a command line in a terminal and'#10'then have that ooops moment where you'#10'realize you needed to do something else'#10'first?'#10#10'Well, no more! If this checkbox is checked'#10'commandoo will display the NOTES for this'#10'command line before running it and giving'#10'you a chance to change your mind.'#10#10'TIP: If you use this checkbox then put '#10'your concerns, reminders in the NOTES'#10'field so that you can decide if you want'#10'to run the command line at that time or'#10'not.'#10#10'<end>'
-              Top = 231
-              Width = 67
+              Top = 177
+              Width = 57
               Caption = 'NT AL'
-              Font.Height = -16
+              Font.Height = -12
               OnChange = cbSuperUserLineChange
               ParentFont = False
               TabOrder = 10
             end
             object shpCmdLineIn: TShape
               Left = 0
-              Height = 287
+              Height = 221
               Top = 1
-              Width = 5
+              Width = 4
               Brush.Color = 16095077
               Pen.Style = psClear
             end
             object memEntry: TMemo
-              Left = 11
-              Height = 65
+              Left = 8
+              Height = 48
               Hint = 'The Command Line you are editing.'#10#10'Press ENTER to open a helper window '#10'that will show help for this command line, '#10'for reference while you edit, and some '#10'helper buttons to insert "variables" into '#10'the command line.'#10#10'The variables are used to fill in values at'#10'running time. You can add a variable for '#10'any text, an integer, a real number, or a '#10'filename.'#10#10'Press ctrl-alt-enter to test run the '#10'Command Line, or click the Run/Test '#10'button.'#10#10'<end>'
-              Top = 35
-              Width = 944
+              Top = 26
+              Width = 695
               Anchors = [akTop, akLeft, akRight]
-              Font.Height = -16
+              Font.Height = -12
               OnDblClick = memEntryDblClick
               OnKeyDown = memEntryKeyDown
               ParentFont = False
@@ -655,14 +654,14 @@ object frmMain: TfrmMain
             end
             object cbThreatLevelLine: TComboBox
               Tag = 123321
-              Left = 725
-              Height = 41
-              Top = 238
-              Width = 188
+              Left = 533
+              Height = 30
+              Top = 176
+              Width = 139
               Anchors = [akTop, akRight]
               AutoSelect = False
               AutoSize = False
-              Font.Height = -16
+              Font.Height = -12
               Font.Style = [fsBold]
               ItemHeight = 0
               Items.Strings = (
@@ -678,13 +677,13 @@ object frmMain: TfrmMain
               Text = '< Not Specified >'
             end
             object btnThreatLevelInfoLine: TButton
-              Left = 920
-              Height = 32
-              Top = 243
-              Width = 37
+              Left = 677
+              Height = 24
+              Top = 179
+              Width = 27
               Anchors = [akTop, akRight]
               Caption = '?'
-              Font.Height = -17
+              Font.Height = -13
               Font.Style = [fsBold]
               OnClick = btnThreatLevelInfoLineClick
               ParentFont = False
@@ -692,45 +691,45 @@ object frmMain: TfrmMain
               TabStop = False
             end
             object btnBuilder: TBitBtn
-              Left = 11
-              Height = 31
-              Top = 4
-              Width = 310
+              Left = 8
+              Height = 23
+              Top = 3
+              Width = 229
               Caption = '&N  Command Line Builder / Helper'
-              Font.Height = -14
+              Font.Height = -10
               OnClick = btnBuilderClick
               ParentFont = False
               TabOrder = 1
             end
             object btnPkexecMain: TBitBtn
               Tag = 4
-              Left = 544
-              Height = 31
-              Top = 4
-              Width = 172
+              Left = 402
+              Height = 23
+              Top = 3
+              Width = 127
               Caption = '&T  Toggle pkexec'
-              Font.Height = -14
+              Font.Height = -10
               OnClick = btnPkexecMainClick
               ParentFont = False
               TabOrder = 3
             end
             object btnInsertPath: TBitBtn
               Tag = 4
-              Left = 346
-              Height = 31
-              Top = 4
-              Width = 172
+              Left = 256
+              Height = 23
+              Top = 3
+              Width = 127
               Caption = '&S  Insert Full Path'
-              Font.Height = -14
+              Font.Height = -10
               OnClick = btnInsertPathClick
               ParentFont = False
               TabOrder = 2
             end
             object shpCmdOut13: TShape
               Left = 1
-              Height = 3
+              Height = 2
               Top = 1
-              Width = 964
+              Width = 709
               Anchors = [akTop, akLeft, akRight]
               Brush.Color = 16095077
               Pen.Style = psClear
@@ -738,8 +737,8 @@ object frmMain: TfrmMain
             object shpCmdOut14: TShape
               Left = 1
               Height = 3
-              Top = 286
-              Width = 964
+              Top = 218
+              Width = 709
               Anchors = [akTop, akLeft, akRight]
               Brush.Color = 16095077
               Pen.Style = psClear
@@ -747,45 +746,45 @@ object frmMain: TfrmMain
           end
           object shpCmdLineOut1: TShape
             Left = 1
-            Height = 284
-            Top = 7
-            Width = 5
+            Height = 216
+            Top = 5
+            Width = 4
             Brush.Color = 16095077
             Pen.Style = psClear
           end
           object shpCmdOut3: TShape
-            Left = 7
-            Height = 3
-            Top = 288
-            Width = 1083
+            Left = 5
+            Height = 2
+            Top = 219
+            Width = 797
             Anchors = [akTop, akLeft, akRight]
             Brush.Color = 16095077
             Pen.Style = psClear
           end
           object shpCmdOut4: TShape
-            Left = 7
+            Left = 5
             Height = 3
-            Top = 249
-            Width = 119
+            Top = 185
+            Width = 88
             Brush.Color = 16095077
             Pen.Style = psClear
           end
           object shpCmdOut6: TShape
-            Left = 7
+            Left = 5
             Height = 3
-            Top = 173
-            Width = 119
+            Top = 129
+            Width = 88
             Brush.Color = 16095077
             Pen.Style = psClear
           end
         end
         object btnCmdOk: TBitBtn
-          Left = 29
-          Height = 36
-          Top = 96
-          Width = 125
+          Left = 21
+          Height = 27
+          Top = 71
+          Width = 92
           Caption = '&A  OK'
-          Font.Height = -16
+          Font.Height = -12
           GlyphShowMode = gsmNever
           OnClick = btnCmdEditClick
           ParentFont = False
@@ -793,12 +792,12 @@ object frmMain: TfrmMain
           Visible = False
         end
         object btnCmdCancel: TBitBtn
-          Left = 29
-          Height = 36
-          Top = 135
-          Width = 124
+          Left = 21
+          Height = 27
+          Top = 100
+          Width = 92
           Caption = '&K  Cancel'
-          Font.Height = -16
+          Font.Height = -12
           GlyphShowMode = gsmNever
           OnClick = btnCmdEditClick
           ParentFont = False
@@ -806,84 +805,84 @@ object frmMain: TfrmMain
           Visible = False
         end
         object btnCmdEdit: TBitBtn
-          Left = 28
-          Height = 36
-          Top = 45
-          Width = 126
+          Left = 21
+          Height = 27
+          Top = 33
+          Width = 93
           Caption = '&A  Edit CMD'
-          Font.Height = -16
+          Font.Height = -12
           OnClick = btnCmdEditClick
           ParentFont = False
           TabOrder = 0
         end
         object lblCmdPointer: TLabel
           Left = 0
-          Height = 18
-          Top = 5
-          Width = 123
+          Height = 12
+          Top = 4
+          Width = 92
           Alignment = taRightJustify
           Caption = 'Command  ↓DNT'
-          Font.Height = -14
+          Font.Height = -10
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object lblCmdLinePointer: TLabel
           Left = 0
-          Height = 18
-          Top = 181
-          Width = 163
+          Height = 12
+          Top = 140
+          Width = 122
           Alignment = taRightJustify
           Caption = 'Command Lines  ↓DNT'
-          Font.Height = -14
+          Font.Height = -10
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object pnlDispCommand: TPanel
-          Left = 168
-          Height = 203
+          Left = 124
+          Height = 158
           Top = 0
-          Width = 942
+          Width = 693
           Anchors = [akTop, akLeft, akRight]
-          ClientHeight = 203
-          ClientWidth = 942
+          ClientHeight = 158
+          ClientWidth = 693
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           TabOrder = 4
           object lblPathAliasDisp: TLabel
-            Left = 55
-            Height = 18
+            Left = 41
+            Height = 12
             Hint = 'If the path is too long to see just '#10'DoubleClick it.'#10#10'<end>'
-            Top = 37
-            Width = 12
+            Top = 27
+            Width = 9
             Caption = '...'
-            Font.Height = -14
+            Font.Height = -10
             ParentColor = False
             ParentFont = False
             OnDblClick = lblPathAliasDblClick
           end
           object lblHelpDisp: TLabel
-            Left = 11
-            Height = 18
-            Top = 64
-            Width = 29
+            Left = 8
+            Height = 12
+            Top = 47
+            Width = 21
             Caption = 'NTH'
-            Font.Height = -14
+            Font.Height = -10
             ParentColor = False
             ParentFont = False
           end
           object memNotesDisp: TMemo
-            Left = 247
-            Height = 131
+            Left = 182
+            Height = 97
             Hint = 'To read all the notes more conviently'#10'double click this area.'#10#10'<end>'
-            Top = 65
-            Width = 394
+            Top = 48
+            Width = 289
             Anchors = [akTop, akLeft, akRight]
             BorderStyle = bsNone
-            Font.Height = -16
+            Font.Height = -12
             OnDblClick = Memo1DblClick
             OnKeyDown = memNotesDispKeyDown
             ParentFont = False
@@ -892,101 +891,101 @@ object frmMain: TfrmMain
             TabOrder = 0
           end
           object lblVersionDisp: TLabel
-            Left = 11
-            Height = 18
-            Top = 85
-            Width = 27
+            Left = 8
+            Height = 12
+            Top = 63
+            Width = 20
             Caption = 'NTV'
-            Font.Height = -14
+            Font.Height = -10
             ParentColor = False
             ParentFont = False
           end
           object lbKeywordsDisp: TListBox
-            Left = 657
-            Height = 186
-            Top = 9
-            Width = 280
+            Left = 482
+            Height = 137
+            Top = 7
+            Width = 207
             Anchors = [akTop, akRight]
             BorderStyle = bsNone
-            Font.Height = -16
+            Font.Height = -12
             ItemHeight = 0
             MultiSelect = True
             OnDblClick = lbDispKeywordsDblClick
             OnKeyDown = lbKeywordsDispKeyDown
             ParentFont = False
-            ScrollWidth = 280
+            ScrollWidth = 207
             TabOrder = 3
             TabStop = False
             TopIndex = -1
           end
           object lblSuperUserDisp: TLabel
-            Left = 11
-            Height = 18
-            Top = 119
-            Width = 51
+            Left = 8
+            Height = 12
+            Top = 88
+            Width = 36
             Caption = 'DNT SU'
-            Font.Height = -14
+            Font.Height = -10
             ParentColor = False
             ParentFont = False
             Visible = False
           end
           object lblIsFavoriteDisp: TLabel
-            Left = 11
-            Height = 18
-            Top = 139
-            Width = 56
+            Left = 8
+            Height = 12
+            Top = 104
+            Width = 41
             Caption = 'DNT FAV'
-            Font.Height = -14
+            Font.Height = -10
             ParentColor = False
             ParentFont = False
             Visible = False
           end
           object lblDetachProcessDisp: TLabel
-            Left = 11
-            Height = 18
-            Top = 159
-            Width = 51
+            Left = 8
+            Height = 12
+            Top = 120
+            Width = 37
             Caption = 'DNT DP'
-            Font.Height = -14
+            Font.Height = -10
             ParentColor = False
             ParentFont = False
             Visible = False
           end
           object lblTerminalOnlyDisp: TLabel
-            Left = 11
-            Height = 18
-            Top = 180
-            Width = 52
+            Left = 8
+            Height = 12
+            Top = 136
+            Width = 37
             Caption = 'DNT TO'
-            Font.Height = -14
+            Font.Height = -10
             ParentColor = False
             ParentFont = False
             Visible = False
           end
           object pnlC: TPanel
             Tag = 123321
-            Left = 476
-            Height = 8
-            Top = 28
-            Width = 162
+            Left = 349
+            Height = 6
+            Top = 21
+            Width = 120
             Anchors = [akTop, akRight]
             Color = clBlack
             Font.Color = clCream
-            Font.Height = -16
+            Font.Height = -12
             ParentColor = False
             ParentFont = False
             TabOrder = 2
           end
           object lblCommandNameDisp: TLabel
-            Left = 9
-            Height = 31
-            Top = 3
-            Width = 459
+            Left = 7
+            Height = 23
+            Top = 2
+            Width = 336
             Alignment = taCenter
             Anchors = [akTop, akLeft, akRight]
             AutoSize = False
             Caption = '...'
-            Font.Height = -20
+            Font.Height = -15
             Font.Style = [fsBold]
             ParentColor = False
             ParentFont = False
@@ -994,14 +993,14 @@ object frmMain: TfrmMain
           end
           object cbThreatLevelDisp: TComboBox
             Tag = 123321
-            Left = 706
-            Height = 31
-            Top = 24
-            Width = 192
+            Left = 519
+            Height = 23
+            Top = 18
+            Width = 142
             Anchors = [akTop, akRight]
             AutoSelect = False
             AutoSize = False
-            Font.Height = -16
+            Font.Height = -12
             Font.Style = [fsBold]
             ItemHeight = 0
             Items.Strings = (
@@ -1018,30 +1017,30 @@ object frmMain: TfrmMain
             Visible = False
           end
           object lblThreatLevelDisp: TLabel
-            Left = 476
-            Height = 28
-            Top = 3
-            Width = 162
+            Left = 349
+            Height = 21
+            Top = 2
+            Width = 120
             Alignment = taCenter
             Anchors = [akTop, akRight]
             AutoSize = False
             Caption = '...'
-            Font.Height = -14
+            Font.Height = -10
             ParentColor = False
             ParentFont = False
           end
           object Bevel1: TBevel
             Left = 0
-            Height = 3
-            Top = 60
-            Width = 635
+            Height = 2
+            Top = 44
+            Width = 466
             Anchors = [akTop, akLeft, akRight]
           end
           object shpCmdOut7: TShape
             Left = 0
-            Height = 3
-            Top = 2
-            Width = 929
+            Height = 2
+            Top = 1
+            Width = 683
             Anchors = [akTop, akLeft, akRight]
             Brush.Color = 9617159
             Pen.Style = psClear
@@ -1049,100 +1048,100 @@ object frmMain: TfrmMain
           object shpCmdOut8: TShape
             Left = 0
             Height = 3
-            Top = 200
-            Width = 929
+            Top = 155
+            Width = 683
             Anchors = [akTop, akLeft, akRight]
             Brush.Color = 9617159
             Pen.Style = psClear
           end
           object lblPADisp: TLabel
-            Left = 9
-            Height = 18
+            Left = 7
+            Height = 12
             Hint = 'If the path is too long to see just '#10'DoubleClick it.'#10#10'<end>'
-            Top = 37
-            Width = 42
+            Top = 27
+            Width = 31
             Caption = 'Path:  '
-            Font.Height = -14
+            Font.Height = -10
             ParentColor = False
             ParentFont = False
             OnDblClick = lblPathAliasDblClick
           end
         end
         object pnlcommand: TPanel
-          Left = 455
-          Height = 203
-          Top = 8
-          Width = 941
+          Left = 120
+          Height = 158
+          Top = 16
+          Width = 693
           Anchors = [akTop, akLeft, akRight]
-          ClientHeight = 203
-          ClientWidth = 941
+          ClientHeight = 158
+          ClientWidth = 693
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           TabOrder = 1
           Visible = False
           object lblPathAlias: TLabel
-            Left = 64
-            Height = 21
+            Left = 47
+            Height = 15
             Hint = 'This displays information about the path'#10'to the command''s folder.'#10#10'If the command is in the path it says only'#10'that it is in the path. If you want to see the'#10'full path in this case use the "Path" button'#10'above.'#10#10'If the command is a builtin (i.e, has no path)'#10'this says so.'#10#10'If neither of the above is the case then'#10'the full path is shown. '#10#10'If the path is so long you can''t see it all'#10'just DoubleClick it to see it all.'#10#10'<end>'
-            Top = 37
-            Width = 12
+            Top = 27
+            Width = 9
             Caption = '...'
-            Font.Height = -16
+            Font.Height = -12
             ParentColor = False
             ParentFont = False
             OnDblClick = lblPathAliasDblClick
           end
           object cbSuperUser: TCheckBox
-            Left = 11
-            Height = 25
+            Left = 8
+            Height = 21
             Hint = 'Checking this indicates that the preferred'#10'mode for this Command is to be run as'#10'ROOT.'#10#10'Commands can not be run, only Command'#10'Lines. But checking this is a convience. Any '#10'Command Lines you add will inherit this'#10'setting.'#10#10'AS ALWAYS be circumspect in the use of '#10'SuperUser, it isquite powerful and at'#10'times quite dangerous. Know what you are'#10'doing.'#10#10'<end>'
-            Top = 90
-            Width = 70
+            Top = 66
+            Width = 59
             Alignment = taLeftJustify
             Caption = 'NT SU'
-            Font.Height = -16
+            Font.Height = -12
             OnChange = cbSuperUserChange
             OnKeyDown = memNotesKeyDown
             ParentFont = False
             TabOrder = 6
           end
           object cbDetachProcess: TCheckBox
-            Left = 11
-            Height = 25
+            Left = 8
+            Height = 21
             Hint = 'Checking this indicates that the preferred'#10'mode for this Command is to be run as'#10'a DETACHED PROCESS.'#10#10'Detached processes run separately and'#10'independently from this program (that is,'#10'you can launch programs from here like'#10'gimp or firefox or whatever, with flags). '#10#10'Detached processes live only while this'#10'program lives. When this program closes'#10'any detahced processes it "owns" are'#10'also closed.'#10#10'You can manage Detached Processes on'#10'the "Proc''s" tab.'#10#10'Commands can not be run, only Command'#10'Lines. But checking this is a convience. Any '#10'Command Lines you add will inherit this'#10'setting.'#10#10'<end>'
-            Top = 142
-            Width = 71
+            Top = 108
+            Width = 59
             Alignment = taLeftJustify
             Caption = 'NT DP'
-            Font.Height = -16
+            Font.Height = -12
             OnChange = cbSuperUserChange
             OnKeyDown = memNotesKeyDown
             ParentFont = False
             TabOrder = 8
           end
           object cbIsFavorite: TCheckBox
-            Left = 11
-            Height = 25
+            Left = 8
+            Height = 21
             Hint = 'Checking this box marks the Command as'#10'a "favorite" and it will show up in the '#10'Favorites list.'#10#10'<end>'
-            Top = 117
-            Width = 77
+            Top = 87
+            Width = 63
             Alignment = taLeftJustify
             Caption = 'NT FAV'
-            Font.Height = -16
+            Font.Height = -12
             OnChange = cbSuperUserChange
             OnKeyDown = memNotesKeyDown
             ParentFont = False
             TabOrder = 7
           end
           object memNotes: TMemo
-            Left = 223
-            Height = 105
-            Top = 90
-            Width = 417
+            Left = 165
+            Height = 78
+            Top = 66
+            Width = 306
             Anchors = [akTop, akLeft, akRight]
-            Font.Height = -16
+            Font.Height = -12
             OnDblClick = Memo1DblClick
             OnKeyDown = memNotesKeyDown
             ParentFont = False
@@ -1150,54 +1149,49 @@ object frmMain: TfrmMain
             TabOrder = 0
           end
           object lblHelp: TLabel
-            Left = 98
-            Height = 21
-            Top = 66
-            Width = 33
+            Left = 153
+            Height = 15
+            Top = 48
+            Width = 25
             Alignment = taRightJustify
-            Anchors = [akTop, akRight]
             Caption = 'NTH'
-            Font.Height = -16
+            Font.Height = -12
             ParentColor = False
             ParentFont = False
           end
           object edtHelp: TEdit
-            Left = 134
-            Height = 30
+            Left = 73
+            Height = 22
             Hint = 'This is a HUGE feature (so I think).'#10#10'You''re Welcome!'#10#10'Despite the assurances that all Linux '#10'Commands will supprt -h and --help it is'#10'simply not the truth. '#10#10'I don''t know how many times I''ve typed -h to'#10'find it should be --help, or typed --help to '#10'find it should be -h or --help-all.'#10#10'No more!'#10#10'Once it is tested and written here you'#10'no longer need to go through this torture.'#10#10'What is assigned here is used by the "Help"'#10'button above to display help for this'#10'Command.'#10#10'It defaults to --help. This may, or may not,'#10'be correct. You may need to mess around'#10'and test to find the correct flag.'#10#10'Yes, yes, you''re welcome!!'#10#10'<end>'
-            Top = 60
-            Width = 103
-            Anchors = [akTop, akRight]
+            Top = 44
+            Width = 76
             AutoSize = False
             AutoSelect = False
-            Font.Height = -16
+            Font.Height = -12
             OnChange = edtHelpChange
             OnKeyDown = memNotesKeyDown
             ParentFont = False
             TabOrder = 4
           end
           object lblVersion: TLabel
-            Left = 373
-            Height = 21
-            Top = 66
-            Width = 31
-            Alignment = taRightJustify
-            Anchors = [akTop, akRight]
+            Left = 359
+            Height = 15
+            Top = 48
+            Width = 23
             Caption = 'NTV'
-            Font.Height = -16
+            Font.Height = -12
             ParentColor = False
             ParentFont = False
           end
           object edtVersion: TEdit
-            Left = 414
-            Height = 30
+            Left = 264
+            Height = 22
             Hint = 'Type the Command''s version flag here.'#10#10'When you use the "Version" button above'#10'the contents here will be used to print the'#10'Command''s version information.'#10#10'It defaults to --version, which may or may'#10'not be right. You may need to test it and/or'#10'find it in help to find the correct flag.'#10#10'<end>'
-            Top = 60
-            Width = 121
-            Anchors = [akTop, akRight]
+            Top = 44
+            Width = 89
             AutoSize = False
             AutoSelect = False
-            Font.Height = -16
+            Font.Height = -12
             OnChange = edtVersionChange
             OnKeyDown = memNotesKeyDown
             ParentFont = False
@@ -1205,44 +1199,44 @@ object frmMain: TfrmMain
             Text = 'TESTY'
           end
           object lblKeyWords: TLabel
-            Left = 781
-            Height = 21
-            Top = 12
-            Width = 53
+            Left = 574
+            Height = 15
+            Top = 8
+            Width = 40
             Alignment = taRightJustify
             Anchors = [akTop, akRight]
             Caption = 'NT KEY'
-            Font.Height = -16
+            Font.Height = -12
             ParentColor = False
             ParentFont = False
           end
           object lbKeywords: TListBox
-            Left = 656
-            Height = 158
+            Left = 482
+            Height = 117
             Hint = 'This shows the assigned KeyWords for this'#10'Command.'#10#10'<end>'
-            Top = 36
-            Width = 280
+            Top = 27
+            Width = 207
             Anchors = [akTop, akRight]
-            Font.Height = -16
+            Font.Height = -12
             ItemHeight = 0
             MultiSelect = True
             OnDblClick = btnKeyWordAddClick
             OnKeyDown = lbKeywordsKeyDown
             ParentFont = False
             PopupMenu = popKeyWords
-            ScrollWidth = 278
+            ScrollWidth = 205
             TabOrder = 12
             TopIndex = -1
           end
           object btnKeyWordAdd: TButton
-            Left = 895
-            Height = 25
+            Left = 659
+            Height = 18
             Hint = 'Add KeyWords for this Command.'#10#10'In the ensuing dialog you can also manage'#10'the Master Key|Word List.'#10#10'<end>'
-            Top = 6
-            Width = 41
+            Top = 4
+            Width = 30
             Anchors = [akTop, akRight]
             Caption = '+'
-            Font.Height = -17
+            Font.Height = -13
             Font.Style = [fsBold]
             OnClick = btnKeyWordAddClick
             OnKeyDown = memNotesKeyDown
@@ -1250,14 +1244,14 @@ object frmMain: TfrmMain
             TabOrder = 11
           end
           object btnKeyWordDelete: TButton
-            Left = 848
-            Height = 25
+            Left = 625
+            Height = 18
             Hint = 'Remove selected KeyWord(s) for this '#10'Command.'#10#10'<end>'
-            Top = 6
-            Width = 41
+            Top = 4
+            Width = 30
             Anchors = [akTop, akRight]
             Caption = '-'
-            Font.Height = -17
+            Font.Height = -13
             Font.Style = [fsBold]
             OnClick = btnKeyWordDeleteClick
             OnKeyDown = memNotesKeyDown
@@ -1265,13 +1259,13 @@ object frmMain: TfrmMain
             TabOrder = 10
           end
           object cbTerminalOnly: TCheckBox
-            Left = 11
-            Height = 25
+            Left = 8
+            Height = 21
             Hint = 'Checking this indicates that the preferred'#10'mode for this Command is to be run only'#10'through the Terminal.'#10#10'This setting only has an actual affect on'#10'Command Lines of course because Commands'#10'can not be run, only Command Lines can'#10'be run. If checked in a Command Line then'#10'the Command Line will NOT run through '#10'commandoo.'#10#10'Checking this here will copy this'#10'setting to any new Command Lines you'#10'create for this Command.'#10#10'This is an added safety measure for '#10'commands that CAN NOT and/or SHOULD NOT'#10'be run through commandoo.'#10#10'<end>'
-            Top = 169
-            Width = 70
+            Top = 129
+            Width = 58
             Caption = 'NT TO'
-            Font.Height = -16
+            Font.Height = -12
             OnChange = cbSuperUserChange
             OnKeyDown = memNotesKeyDown
             ParentFont = False
@@ -1279,36 +1273,36 @@ object frmMain: TfrmMain
           end
           object shpCmdIn: TShape
             Left = 0
-            Height = 193
-            Top = 4
-            Width = 4
+            Height = 153
+            Top = 2
+            Width = 3
             Brush.Color = 9617159
             Pen.Style = psClear
           end
           object pnlCEdit: TPanel
             Tag = 123321
-            Left = 418
-            Height = 8
-            Top = 32
-            Width = 201
+            Left = 307
+            Height = 6
+            Top = 24
+            Width = 148
             Anchors = [akTop, akRight]
             Color = clBlack
             Font.Color = clCream
-            Font.Height = -16
+            Font.Height = -12
             ParentColor = False
             ParentFont = False
             TabOrder = 13
           end
           object cbThreatLevel: TComboBox
             Tag = 123321
-            Left = 422
-            Height = 30
-            Top = 4
-            Width = 192
+            Left = 310
+            Height = 22
+            Top = 3
+            Width = 142
             Anchors = [akTop, akRight]
             AutoSelect = False
             AutoSize = False
-            Font.Height = -14
+            Font.Height = -10
             Font.Style = [fsBold]
             ItemHeight = 0
             Items.Strings = (
@@ -1324,29 +1318,29 @@ object frmMain: TfrmMain
             Text = '< Not Specified >'
           end
           object lblCommandName: TLabel
-            Left = 98
-            Height = 28
+            Left = 72
+            Height = 21
             Hint = 'The command name.'#10#10'Double Click to re-name the command. '#10#10'The same rules apply as for adding. If the'#10'name is in the path you don''t need to type'#10'the path or find the file.'#10#10'The way the system is set up now the '#10'command names in the list MUST be unique.'#10'So you cannot use the name if it already '#10'exists in the list.'#10#10'<end>'
-            Top = 6
-            Width = 320
+            Top = 4
+            Width = 235
             Alignment = taCenter
             Anchors = [akTop, akLeft, akRight]
             AutoSize = False
-            Font.Height = -20
+            Font.Height = -15
             Font.Style = [fsBold]
             ParentColor = False
             ParentFont = False
             OnDblClick = lblCommandNameDblClick
           end
           object btnThreatLevelInfo: TButton
-            Left = 624
-            Height = 29
+            Left = 459
+            Height = 21
             Hint = 'Display information about this Threat Level.'#10#10'<end>'
-            Top = 5
-            Width = 35
+            Top = 12
+            Width = 26
             Anchors = [akRight, akBottom]
             Caption = '?'
-            Font.Height = -16
+            Font.Height = -12
             Font.Style = [fsBold]
             OnClick = btnThreatLevelInfoClick
             OnKeyDown = memNotesKeyDown
@@ -1355,264 +1349,261 @@ object frmMain: TfrmMain
             TabStop = False
           end
           object lblPA: TLabel
-            Left = 11
-            Height = 21
+            Left = 8
+            Height = 15
             Hint = 'This displays information about the path'#10'to the command''s folder.'#10#10'If the command is in the path it says only'#10'that it is in the path. If you want to see the'#10'full path in this case use the "Path" button'#10'above.'#10#10'If the command is a builtin (i.e, has no path)'#10'this says so.'#10#10'If neither of the above is the case then'#10'the full path is shown. '#10#10'If the path is so long you can''t see it all'#10'just DoubleClick it to see it all.'#10#10'<end>'
-            Top = 37
-            Width = 47
+            Top = 27
+            Width = 34
             Caption = 'Path:  '
-            Font.Height = -16
+            Font.Height = -12
             ParentColor = False
             ParentFont = False
             OnDblClick = lblPathAliasDblClick
           end
           object shpCmdOut11: TShape
             Left = 0
-            Height = 3
-            Top = 2
-            Width = 929
+            Height = 2
+            Top = 1
+            Width = 684
             Anchors = [akTop, akLeft, akRight]
             Brush.Color = 9617159
             Pen.Style = psClear
           end
           object shpCmdOut12: TShape
             Left = 0
-            Height = 3
-            Top = 197
-            Width = 929
+            Height = 2
+            Top = 153
+            Width = 684
             Anchors = [akTop, akLeft, akRight]
             Brush.Color = 9617159
             Pen.Style = psClear
           end
           object btnEditCmdName: TBitBtn
-            Left = 11
-            Height = 29
+            Left = 8
+            Height = 21
             Hint = 'Edit the Command Name and/or the path.'#10#10'You can also Dbl-Click the Command Name.'#10#10'<end>'
-            Top = 7
-            Width = 82
+            Top = 5
+            Width = 61
             Caption = 'NT Edit'
-            Font.Height = -16
+            Font.Height = -12
             OnClick = lblCommandNameDblClick
             ParentFont = False
             TabOrder = 1
           end
         end
         object shpCmdOut: TShape
-          Left = 20
-          Height = 149
-          Top = 30
-          Width = 4
+          Left = 15
+          Height = 110
+          Top = 22
+          Width = 3
           Brush.Color = 9617159
           Pen.Style = psClear
         end
         object shpCmdOut1: TShape
-          Left = 27
-          Height = 3
-          Top = 176
-          Width = 138
+          Left = 17
+          Height = 2
+          Top = 130
+          Width = 105
           Brush.Color = 9617159
           Pen.Style = psClear
         end
         object shpCmdOut2: TShape
-          Left = 27
-          Height = 3
-          Top = 31
-          Width = 138
+          Left = 17
+          Height = 2
+          Top = 23
+          Width = 105
           Brush.Color = 9617159
           Pen.Style = psClear
         end
         object shpCmdOut5: TShape
-          Left = 27
-          Height = 3
-          Top = 89
-          Width = 138
+          Left = 20
+          Height = 2
+          Top = 66
+          Width = 102
           Brush.Color = 9617159
           Pen.Style = psClear
         end
       end
       object lblShowButtons: TLabel
-        Left = 935
-        Height = 21
-        Top = 8
-        Width = 49
+        Left = 689
+        Height = 15
+        Top = 6
+        Width = 35
         Alignment = taRightJustify
         Anchors = [akTop, akRight]
         Caption = 'Show:'
-        Font.Height = -16
+        Font.Height = -12
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
       end
       object pnlCommandList: TPanel
-        Left = 8
-        Height = 534
-        Top = 5
-        Width = 291
-        Anchors = [akTop, akLeft, akBottom]
-        ClientHeight = 534
-        ClientWidth = 291
-        Font.Height = -16
+        Left = 6
+        Height = 410
+        Top = 4
+        Width = 215
+        ClientHeight = 410
+        ClientWidth = 215
+        Font.Height = -12
         ParentFont = False
         TabOrder = 0
         object lbCommands: TListBox
           Left = 0
-          Height = 390
+          Height = 291
           Hint = 'The list of Linux Commands!'#10#10'The entries do not need to be Commands,'#10'you can use the command name field to '#10'make a "command" entry that you can '#10'add a variety of command lines that you'#10'find and want to use.'#10#10'ctrl-a or + adds a new command.'#10#10'<Enter> edits the command.'#10#10'Ctrl-Shift-Alt-C makes another copy of '#10'the object.'#10#10'For the ClipBoard:'#10#10'Ctrl-c copies the selected command, '#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'Delete or "-" marks the item for deletion.'#10'To undo that use ctrl-Delete/"-"'#10#10'<end>'
-          Top = 99
-          Width = 283
+          Top = 81
+          Width = 209
           HelpContext = 1
-          Anchors = [akTop, akLeft, akBottom]
           ExtendedSelect = False
-          Font.Height = -16
+          Font.Height = -12
           ItemHeight = 0
           OnClick = lbCommandsClick
           OnKeyDown = lbCommandsKeyDown
           ParentFont = False
           PopupMenu = popCommands
-          ScrollWidth = 281
+          ScrollWidth = 207
           TabOrder = 0
           TopIndex = -1
         end
         object btnCommandUnDelete: TBitBtn
-          Left = 5
-          Height = 29
+          Left = 4
+          Height = 22
           Hint = 'If the currently selected command is in a'#10'''delete'' state this will reverse that state. '#10'You can also use the <ctrl-delete> key.'#10#10'If when you selected delete the item was'#10'in an edited state the undo delete button'#10'will bring the command back to that state.'#10#10'If you use the ''Revert'' button, however, the'#10'deletion state --AND-- any edits will be'#10'removed. For this reason it is generally'#10'safer to use the undelete button rather than'#10'the revert button in these cases.'#10#10'<end>'
-          Top = 12
-          Width = 132
+          Top = 13
+          Width = 97
           Action = actCommandUndelete
           Caption = '&E  Undo Del'
-          Font.Height = -16
+          Font.Height = -12
           ParentFont = False
           TabOrder = 1
         end
         object btnCommandDelete: TBitBtn
-          Left = 5
-          Height = 29
+          Left = 4
+          Height = 22
           Hint = 'This marks the currently selected item'#10'for deletion. You can also use the <delete>'#10'key.'#10#10'The Undo Delete button reverses this'#10'state. '#10#10'If when you selected delete the item was'#10'in an edited state the undo delete button'#10'will bring the command back to that state.'#10#10'If you use the ''Revert'' button, however, the'#10'deletion state --AND-- any edits will be'#10'removed. For this reason it is generally'#10'safer to use the undelete button rather than'#10'the revert button in these cases.'#10#10'<end>'
-          Top = 47
-          Width = 132
+          Top = 40
+          Width = 97
           Action = actCommandDelete
           Caption = '&D  Delete'
-          Font.Height = -16
+          Font.Height = -12
           ParentFont = False
           TabOrder = 2
         end
         object btnRevert: TBitBtn
-          Left = 149
-          Height = 29
+          Left = 110
+          Height = 22
           Hint = 'This button is enabled if the selected command'#10'has been edited in some way.'#10#10'Clicking it will revert the selected command'#10'back to the current values stored in the'#10'database. '#10#10'Careful! Reversion is not undoable.'#10#10'<end>'
-          Top = -2
-          Width = 132
+          Top = 2
+          Width = 97
           Action = actRevert
           Caption = '&G  Revert'
-          Font.Height = -16
+          Font.Height = -12
           ParentFont = False
           TabOrder = 3
         end
         object btnFindCmd: TBitBtn
-          Left = 149
-          Height = 29
+          Left = 110
+          Height = 22
           Hint = 'This opens a small find dialog so you can'#10'find any matching text in the list.'#10#10'The find dialog can be used to select the'#10'List item you want, <enter> will select the'#10'current item, and <esc> closes the find'#10'window.'#10#10'<end>'
-          Top = 32
-          Width = 132
+          Top = 28
+          Width = 97
           Action = actFindCmd
           Caption = '&F  Find'
-          Font.Height = -16
+          Font.Height = -12
           ParentFont = False
           TabOrder = 4
         end
         object btnPlus: TBitBtn
-          Left = 149
-          Height = 29
+          Left = 110
+          Height = 22
           Hint = 'Add a new command.'#10#10'Newly added Commands are added to the '#10'bottom of the list so they are easy to find'#10'during the process of filling in your database.'#10#10'The next time the the database is freshly'#10'loaded, or if you use the ''Sort'' button,'#10'the Commands are all sorted by name.'#10#10'<end>'
-          Top = 65
-          Width = 132
+          Top = 54
+          Width = 97
           Action = actPlus
           Caption = '&C  Add'
-          Font.Height = -16
+          Font.Height = -12
           ParentFont = False
           TabOrder = 5
         end
         object btnSortCommands: TBitBtn
-          Left = 5
-          Height = 27
+          Left = 4
+          Height = 24
           Hint = 'New commands are added at the bottom'#10'of the list.'#10#10'Also when things are edited they get a '#10'prefix added.'#10#10'If it becomes hard to find something use'#10'this to sort the list.'#10#10'<end>'
-          Top = 494
-          Width = 132
+          Top = 382
+          Width = 97
           Caption = 'Sort'
-          Font.Height = -14
+          Font.Height = -10
           OnClick = btnSortCommandsClick
           ParentFont = False
           TabOrder = 6
         end
         object btnReCenter: TBitBtn
-          Left = 149
-          Height = 27
+          Left = 110
+          Height = 24
           Hint = 'If you scroll the Command list and lose '#10'track of where you are, use this to make'#10'the list move to and center the currently '#10'selected Command '#10#10'<end>'
-          Top = 494
-          Width = 132
+          Top = 382
+          Width = 97
           Caption = 'Re-center'
-          Font.Height = -14
+          Font.Height = -10
           OnClick = btnReCenterClick
           ParentFont = False
           TabOrder = 7
         end
       end
       object lblCEditing: TLabel
-        Left = 346
-        Height = 21
-        Top = 8
-        Width = 72
+        Left = 256
+        Height = 15
+        Top = 6
+        Width = 53
         Caption = 'Editing...'
-        Font.Height = -16
+        Font.Height = -12
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
         Visible = False
       end
       object btnHelpCommand: TBitBtn
-        Left = 998
-        Height = 29
-        Top = 3
-        Width = 135
+        Left = 734
+        Height = 25
+        Top = 1
+        Width = 100
         Anchors = [akTop, akRight]
         Caption = '&X  Help'
-        Font.Height = -16
+        Font.Height = -12
         OnClick = btnHelpCommandClick
         ParentFont = False
         TabOrder = 2
       end
       object btnVersionCommand: TBitBtn
-        Left = 1144
-        Height = 29
-        Top = 3
-        Width = 135
+        Left = 842
+        Height = 25
+        Top = 1
+        Width = 100
         Anchors = [akTop, akRight]
         Caption = '&Y  Version'
-        Font.Height = -16
+        Font.Height = -12
         OnClick = btnVersionCommandClick
         ParentFont = False
         TabOrder = 3
       end
       object btnLocationPath: TBitBtn
-        Left = 1290
-        Height = 29
+        Left = 950
+        Height = 25
         Hint = 'This always shows the actual file location'#10'path to the folder for this command, '#10'if it has one.'#10#10'<end>'
-        Top = 3
-        Width = 135
+        Top = 1
+        Width = 100
         Anchors = [akTop, akRight]
         Caption = '&Z  Path'
-        Font.Height = -16
+        Font.Height = -12
         OnClick = btnLocationPathClick
         ParentFont = False
         TabOrder = 4
       end
       object btnFinalNeeds: TBitBtn
-        Left = 641
-        Height = 34
-        Top = 3
-        Width = 228
-        Anchors = [akTop, akRight]
+        Left = 471
+        Height = 25
+        Top = 2
+        Width = 168
         Caption = 'Dev: GenUpgradeFiles'
         Color = 4737096
         OnClick = btnFinalNeedsClick
@@ -1624,64 +1615,64 @@ object frmMain: TfrmMain
       Tag = -1
       HelpContext = -1
       Caption = ' Favorites '
-      ClientHeight = 543
-      ClientWidth = 1436
-      Font.Height = -16
+      ClientHeight = 430
+      ClientWidth = 1058
+      Font.Height = -12
       ParentFont = False
       object lblTabFavorites: TLabel
         Tag = -1
-        Left = 850
-        Height = 21
-        Top = 3
-        Width = 15
+        Left = 628
+        Height = 15
+        Top = 6
+        Width = 9
         Caption = '...'
-        Font.Height = -16
+        Font.Height = -12
         Font.Style = [fsBold, fsItalic]
         ParentColor = False
         ParentFont = False
       end
       object pnlDisplayObj: TPanel
         Tag = 223322
-        Left = 845
-        Height = 510
-        Top = 28
-        Width = 561
-        ClientHeight = 510
-        ClientWidth = 561
+        Left = 624
+        Height = 377
+        Top = 29
+        Width = 414
+        ClientHeight = 377
+        ClientWidth = 414
         Color = clBlack
-        Font.Height = -16
+        Font.Height = -12
         ParentColor = False
         ParentFont = False
         TabOrder = 0
         object lbDispKeywords: TListBox
-          Left = 297
-          Height = 224
-          Top = 265
-          Width = 231
+          Left = 219
+          Height = 165
+          Top = 196
+          Width = 171
           Anchors = [akLeft, akRight, akBottom]
           BorderStyle = bsNone
           Color = clBlack
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ItemHeight = 0
           OnDblClick = lbDispKeywordsDblClick
           ParentFont = False
-          ScrollWidth = 231
+          ScrollWidth = 171
           TabOrder = 2
           TabStop = False
           TopIndex = -1
         end
         object memDispNotes: TMemo
-          Left = 13
-          Height = 116
+          Left = 10
+          Height = 86
           Hint = 'This shows the current settings for the '#10'selected Command or Command Line.'#10#10'If you focus on the Notes area and press'#10'Ctrl-F a text search dialog opens.'#10#10'And Ctrl-Shift-F or Ctrl-L will find the next '#10'find occurence.'#10#10'<end>'
-          Top = 134
-          Width = 515
+          Top = 99
+          Width = 380
           Anchors = [akTop, akLeft, akRight]
           BorderStyle = bsNone
           Color = clBlack
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           Lines.Strings = (
             'memDispNotes'
           )
@@ -1693,181 +1684,181 @@ object frmMain: TfrmMain
           TabOrder = 1
         end
         object lblDispCommandName: TLabel
-          Left = 366
-          Height = 23
-          Top = 24
-          Width = 146
+          Left = 270
+          Height = 17
+          Top = 18
+          Width = 108
           AutoSize = False
           Color = clBlue
           Font.Color = clCream
-          Font.Height = -17
+          Font.Height = -13
           ParentColor = False
           ParentFont = False
           Transparent = False
           Visible = False
         end
         object lblDispFriendlyName: TLabel
-          Left = 9
-          Height = 21
+          Left = 7
+          Height = 15
           Hint = 'If you can''t see all of the name DoubleClick'#10'it.'#10#10'This works on any line that is too long to '#10'be completely displayed.'#10#10'<end>'
-          Top = 96
-          Width = 157
+          Top = 71
+          Width = 116
           Caption = 'lblDispFriendlyName'
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           OnDblClick = lblDispEntryDblClick
         end
         object lblDispEntry: TLabel
-          Left = 9
-          Height = 29
+          Left = 7
+          Height = 21
           Hint = 'This is the Command / Command Line that '#10'is selected. '#10#10'If it is too long to see DoubleClick to display'#10'the entire line.'#10#10'This works on any line that is too long to '#10'be completely displayed.'#10#10'<end>'
-          Top = 7
-          Width = 533
+          Top = 5
+          Width = 393
           Anchors = [akTop, akLeft, akRight]
           AutoSize = False
           Caption = 'lblDispEntry'
           Font.Color = clCream
-          Font.Height = -20
+          Font.Height = -15
           ParentColor = False
           ParentFont = False
           OnDblClick = lblDispEntryDblClick
         end
         object pnlS: TPanel
-          Left = 8
-          Height = 49
-          Top = 44
-          Width = 154
+          Left = 6
+          Height = 36
+          Top = 32
+          Width = 114
           Caption = 'Command Line'
           Color = 8155251
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -12
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
           TabOrder = 3
         end
         object lblDispSuperUser: TLabel
-          Left = 13
-          Height = 21
-          Top = 296
-          Width = 54
+          Left = 10
+          Height = 15
+          Top = 219
+          Width = 41
           Caption = 'DNTSU'
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           Visible = False
         end
         object lblDispWantsInput: TLabel
-          Left = 13
-          Height = 21
-          Top = 325
-          Width = 53
+          Left = 10
+          Height = 15
+          Top = 240
+          Width = 40
           Caption = 'DNTWI'
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           Visible = False
         end
         object lblDispIsFavorite: TLabel
-          Left = 13
-          Height = 21
-          Top = 354
-          Width = 61
+          Left = 10
+          Height = 15
+          Top = 261
+          Width = 45
           Caption = 'DNTFAV'
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           Visible = False
         end
         object lblDispUseShell: TLabel
-          Left = 13
-          Height = 21
-          Top = 386
-          Width = 54
+          Left = 10
+          Height = 15
+          Top = 285
+          Width = 41
           Caption = 'DNTUS'
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           Visible = False
         end
         object lblDispDetachProcess: TLabel
-          Left = 13
-          Height = 21
-          Top = 415
-          Width = 55
+          Left = 10
+          Height = 15
+          Top = 306
+          Width = 41
           Caption = 'DNTDP'
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           Visible = False
         end
         object lblDispAlert: TLabel
-          Left = 13
-          Height = 21
-          Top = 447
-          Width = 50
+          Left = 10
+          Height = 15
+          Top = 330
+          Width = 38
           Caption = 'DNTAL'
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           Visible = False
         end
         object lblDispTerminalOnly: TLabel
-          Left = 13
-          Height = 21
-          Top = 475
-          Width = 54
+          Left = 10
+          Height = 15
+          Top = 351
+          Width = 40
           Caption = 'DNTTO'
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           Visible = False
         end
         object lblNoOptions: TLabel
-          Left = 13
-          Height = 21
-          Top = 268
-          Width = 108
+          Left = 10
+          Height = 15
+          Top = 198
+          Width = 78
           Caption = '< no options >'
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           ParentColor = False
           ParentFont = False
           Visible = False
         end
         object lblDispThreatLevel: TLabel
-          Left = 169
-          Height = 23
-          Top = 58
-          Width = 290
+          Left = 125
+          Height = 17
+          Top = 43
+          Width = 214
           Anchors = [akTop, akLeft, akRight]
           AutoSize = False
           Caption = '...'
           Font.Color = clCream
-          Font.Height = -16
+          Font.Height = -12
           Font.Style = [fsBold, fsItalic]
           ParentColor = False
           ParentFont = False
         end
         object cbDispThreatLevel: TComboBox
           Tag = 123321
-          Left = 341
-          Height = 31
-          Top = 16
-          Width = 237
+          Left = 252
+          Height = 23
+          Top = 12
+          Width = 175
           AutoSelect = False
           AutoSize = False
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -12
           Font.Style = [fsBold]
           ItemHeight = 0
           Items.Strings = (
@@ -1885,23 +1876,23 @@ object frmMain: TfrmMain
         end
       end
       object btnRefreshFavorites: TBitBtn
-        Left = 21
-        Height = 35
+        Left = 16
+        Height = 28
         Hint = 'This button only shows up if you''ve changed'#10'options to be ''Favorites manually refreshed''.'#10#10'Otherwise, Favorites are refreshed whenever'#10'changes are saved.'#10#10'The difference is that when Favorites are'#10'refreshed the indexes for selected Command'#10'LInes of the Commands are reset to the'#10'first CL and are no longer remembered.'#10#10'<end>'
-        Top = 3
-        Width = 297
+        Top = 1
+        Width = 219
         Caption = '&K  Refresh Favorites'
         Enabled = False
-        Font.Height = -16
+        Font.Height = -12
         OnClick = btnRefreshFavoritesClick
         ParentFont = False
         TabOrder = 1
       end
       object shpRefreshFavorites: TShape
-        Left = 7
-        Height = 31
-        Top = 5
-        Width = 14
+        Left = 5
+        Height = 23
+        Top = 4
+        Width = 10
         Brush.Color = 160
       end
     end
@@ -1909,221 +1900,221 @@ object frmMain: TfrmMain
       Tag = -1
       HelpContext = -1
       Caption = '  KeyWords  '
-      ClientHeight = 543
-      ClientWidth = 1436
-      Font.Height = -16
+      ClientHeight = 430
+      ClientWidth = 1058
+      Font.Height = -12
       ParentFont = False
       PopupMenu = popTabKeyWords
       object btnKeyWordSearch: TBitBtn
-        Left = 5
-        Height = 34
-        Top = 11
-        Width = 150
+        Left = 4
+        Height = 27
+        Top = 4
+        Width = 111
         Action = actSearchKeyCmd
         Caption = '&A  Search'
-        Font.Height = -16
+        Font.Height = -12
         ParentFont = False
         TabOrder = 0
       end
       object btnKeyWordLoad: TBitBtn
-        Left = 330
-        Height = 34
-        Top = 12
-        Width = 150
+        Left = 244
+        Height = 27
+        Top = 5
+        Width = 111
         Action = actSearchLoadKeyCmd
         Caption = '&C  Load'
-        Font.Height = -16
+        Font.Height = -12
         ParentFont = False
         TabOrder = 2
       end
       object btnKeyWordSave: TBitBtn
-        Left = 545
-        Height = 34
-        Top = 12
-        Width = 112
+        Left = 402
+        Height = 27
+        Top = 5
+        Width = 83
         Action = actSearchSaveKeyCmd
         Caption = '&S  Save'
-        Font.Height = -16
+        Font.Height = -12
         ParentFont = False
         TabOrder = 3
       end
       object btnKeyWordDisplay: TBitBtn
-        Left = 674
-        Height = 34
-        Top = 12
-        Width = 121
+        Left = 498
+        Height = 27
+        Top = 5
+        Width = 89
         Action = actSearchDisplayKeyCmd
         Caption = '&I  Display'
-        Font.Height = -16
+        Font.Height = -12
         ParentFont = False
         TabOrder = 4
       end
       object btnKeyWordNewSearch: TBitBtn
-        Left = 168
-        Height = 34
-        Top = 12
-        Width = 150
+        Left = 124
+        Height = 27
+        Top = 5
+        Width = 111
         Action = actSearchNewKeyCmd
         Caption = '&B  New'
-        Font.Height = -16
+        Font.Height = -12
         ParentFont = False
         TabOrder = 1
       end
       object pnlSearchResults: TPanel
-        Left = 10
-        Height = 490
-        Top = 49
-        Width = 790
-        ClientHeight = 490
-        ClientWidth = 790
-        Font.Height = -16
+        Left = 7
+        Height = 377
+        Top = 36
+        Width = 583
+        ClientHeight = 377
+        ClientWidth = 583
+        Font.Height = -12
         ParentFont = False
         TabOrder = 5
         object lblSRCmds: TLabel
           Left = 1
-          Height = 21
-          Top = 246
-          Width = 115
+          Height = 15
+          Top = 182
+          Width = 88
           Caption = 'Commands  ↑'
-          Font.Height = -16
+          Font.Height = -12
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object lbSearchCmd: TListBox
-          Left = 8
-          Height = 225
+          Left = 6
+          Height = 166
           Hint = 'This presents search results for the various '#10'Favorites, KeyWords, and General Searches.'#10#10'The list can consist of both Commands '#10'(listed first if any) and Command Lines '#10'(listed second). If so there will be a '#10'''seperator'' section between them.'#10#10'Clicking on an item shows it''s details to '#10'the right. If the selected item is a Command'#10'it''s Command Lines will be listed in'#10'the listbox below.'#10#10'Keep in mind that Commands / Command'#10'Lines that are in an edited state (i.e., not'#10'saved) will NOT be included in the filtering.'#10'To see an accurate list be sure everything'#10'is saved.'#10#10'For the ClipBoard:'#10#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'ctrl-t goes to the Cmd'#10#10'These are global:'#10'<alt-1> Search Keywords'#10'<alt-2> New Search KeyWords'#10'<alt-3> Load Search'#10#10'Local:'#10'<alt-4> save  search KeyWords'#10'<alt-5> display search KeyWords'#10#10'<end>'
-          Top = 12
-          Width = 759
+          Top = 9
+          Width = 560
           HelpContext = 1
           ExtendedSelect = False
-          Font.Height = -16
+          Font.Height = -12
           ItemHeight = 0
           OnClick = lbSearchCmdClick
           OnDblClick = lbDispKeywordsDblClick
           OnKeyDown = lbSearchCmdKeyDown
           ParentFont = False
           PopupMenu = popSearchCmd
-          ScrollWidth = 757
+          ScrollWidth = 558
           TabOrder = 0
           TopIndex = -1
         end
         object btnSearchFindCmd: TBitBtn
-          Left = 191
-          Height = 34
-          Top = 242
-          Width = 188
+          Left = 141
+          Height = 29
+          Top = 179
+          Width = 139
           Action = actSearchFindCmd
           Caption = '&D  Find Command'
-          Font.Height = -14
+          Font.Height = -10
           ParentFont = False
           TabOrder = 1
         end
         object btnSearchGoToCmd: TBitBtn
-          Left = 387
-          Height = 34
+          Left = 286
+          Height = 29
           Hint = 'This will attempt to find the main entry'#10'for the selected item in the list and'#10'switch to it in the Commands List or '#10'Command Line list, depending.'#10#10'This will almost always work unless the '#10'name of the Command or Command Line'#10'Entry is in an edited state.'#10#10'<end>'
-          Top = 242
-          Width = 188
+          Top = 179
+          Width = 139
           Action = actSearchGoToCmd
           Caption = '&E  Go to Command'
-          Font.Height = -14
+          Font.Height = -10
           ParentFont = False
           TabOrder = 2
         end
         object lblSRCmdLines: TLabel
           Left = 1
-          Height = 21
-          Top = 458
-          Width = 153
+          Height = 15
+          Top = 348
+          Width = 117
           Caption = 'Command Lines  ↑'
-          Font.Height = -16
+          Font.Height = -12
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object lbSearchCmdLine: TListBox
-          Left = 11
-          Height = 153
+          Left = 8
+          Height = 113
           Hint = 'This will show any Command Lines belonging'#10'to the item selected in the list above if'#10'it is a Command.'#10#10'Click on a Command Line to enable the'#10'RUN button.'#10#10'<Enter> runs the command line.'#10#10'For the ClipBoard:'#10#10'Ctrl-c copies the selected command, '#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'ctrl-t goes to the Command Line'#10#10'These are global:'#10'<alt-1> Search Keywords'#10'<alt-2> New Search KeyWords'#10'<alt-3> Load Search'#10#10'Local:'#10'<alt-4> save  search KeyWords'#10'<alt-5> display search KeyWords'#10#10'<end>'
-          Top = 292
-          Width = 759
+          Top = 226
+          Width = 560
           HelpContext = 1
           ExtendedSelect = False
-          Font.Height = -16
+          Font.Height = -12
           ItemHeight = 0
           OnClick = lbSearchCmdLineClick
           OnDblClick = lbDispKeywordsDblClick
           OnKeyDown = lbSearchCmdLineKeyDown
           ParentFont = False
           PopupMenu = popSearchCmdLine
-          ScrollWidth = 757
+          ScrollWidth = 558
           TabOrder = 4
           TopIndex = -1
         end
         object btnSearchFindCmdLine: TBitBtn
-          Left = 191
-          Height = 34
-          Top = 450
-          Width = 188
+          Left = 165
+          Height = 29
+          Top = 342
+          Width = 139
           Action = actSearchFindCmdLine
           Caption = '&G  Find Cmd Line'
-          Font.Height = -14
+          Font.Height = -10
           ParentFont = False
           TabOrder = 5
         end
         object btnSearchGoToCmdLine: TBitBtn
-          Left = 387
-          Height = 34
-          Top = 450
-          Width = 188
+          Left = 310
+          Height = 29
+          Top = 342
+          Width = 139
           Action = actSearchGoToCmdLine
           Caption = '&K  Go to Cmd Line'
-          Font.Height = -14
+          Font.Height = -10
           ParentFont = False
           TabOrder = 6
         end
         object shpSearchRun: TShape
-          Left = 627
-          Height = 48
-          Top = 242
-          Width = 14
+          Left = 463
+          Height = 35
+          Top = 181
+          Width = 10
           Brush.Color = 160
         end
         object Bevel2: TBevel
-          Left = 6
-          Height = 7
-          Top = 279
-          Width = 579
+          Left = -6
+          Height = 4
+          Top = 219
+          Width = 584
         end
         object Bevel3: TBevel
-          Left = 6
-          Height = 5
-          Top = 3
-          Width = 757
+          Left = 4
+          Height = 4
+          Top = 2
+          Width = 559
           Anchors = [akTop, akLeft, akRight]
         end
         object btnSearchRun: TBitBtn
-          Left = 640
-          Height = 51
-          Top = 240
-          Width = 126
+          Left = 473
+          Height = 38
+          Top = 179
+          Width = 93
           Action = actSearchRun
           Caption = '&R  Run CL'
-          Font.Height = -16
+          Font.Height = -12
           ParentFont = False
           TabOrder = 3
         end
       end
       object lblTabKeyWords: TLabel
         Tag = -1
-        Left = 850
-        Height = 21
-        Top = 3
-        Width = 15
+        Left = 628
+        Height = 15
+        Top = 6
+        Width = 9
         Caption = '...'
-        Font.Height = -16
+        Font.Height = -12
         Font.Style = [fsBold, fsItalic]
         ParentColor = False
         ParentFont = False
@@ -2133,74 +2124,74 @@ object frmMain: TfrmMain
       Tag = -1
       HelpContext = -1
       Caption = '  Search  '
-      ClientHeight = 543
-      ClientWidth = 1436
-      Font.Height = -16
+      ClientHeight = 430
+      ClientWidth = 1058
+      Font.Height = -12
       ParentFont = False
       PopupMenu = popTabSearch
       object btnSearchSearch: TBitBtn
-        Left = 5
-        Height = 34
-        Top = 11
-        Width = 150
+        Left = 4
+        Height = 27
+        Top = 4
+        Width = 111
         Action = actSearchSearch
         Caption = '&A  Search'
-        Font.Height = -17
+        Font.Height = -12
         ParentFont = False
         TabOrder = 0
       end
       object btnSearchNewSearch: TBitBtn
-        Left = 168
-        Height = 34
-        Top = 12
-        Width = 150
+        Left = 124
+        Height = 27
+        Top = 5
+        Width = 111
         Action = actSearchNewSearch
         Caption = '&B  New'
-        Font.Height = -17
+        Font.Height = -12
         ParentFont = False
         TabOrder = 1
       end
       object btnSearchSaveSearch: TBitBtn
-        Left = 537
-        Height = 34
-        Top = 12
-        Width = 112
+        Left = 397
+        Height = 27
+        Top = 5
+        Width = 83
         Action = actSearchSaveSearch
         Caption = '&S  Save'
-        Font.Height = -17
+        Font.Height = -12
         ParentFont = False
         TabOrder = 3
       end
       object btnSearchLoadSearch: TBitBtn
-        Left = 330
-        Height = 34
-        Top = 12
-        Width = 150
+        Left = 244
+        Height = 27
+        Top = 5
+        Width = 111
         Action = actSearchLoadSearch
         Caption = '&C  Load'
-        Font.Height = -17
+        Font.Height = -12
         ParentFont = False
         TabOrder = 2
       end
       object btnSearchDisplaySearch: TBitBtn
-        Left = 666
-        Height = 34
-        Top = 12
-        Width = 121
+        Left = 492
+        Height = 27
+        Top = 5
+        Width = 89
         Action = actSearchDisplaySearch
         Caption = '&I  Display'
-        Font.Height = -17
+        Font.Height = -12
         ParentFont = False
         TabOrder = 4
       end
       object lblTabSearch: TLabel
         Tag = -1
-        Left = 850
-        Height = 21
-        Top = 3
-        Width = 15
+        Left = 628
+        Height = 15
+        Top = 6
+        Width = 9
         Caption = '...'
-        Font.Height = -16
+        Font.Height = -12
         Font.Style = [fsBold, fsItalic]
         ParentColor = False
         ParentFont = False
@@ -2208,76 +2199,74 @@ object frmMain: TfrmMain
     end
     object tsDetachedProcesses: TTabSheet
       Caption = '  Proc''s  '
-      ClientHeight = 543
-      ClientWidth = 1436
-      Font.Height = -16
+      ClientHeight = 430
+      ClientWidth = 1058
+      Font.Height = -12
       ParentFont = False
       object lbDetachedProcesses: TListBox
-        Left = 11
-        Height = 425
+        Left = 8
+        Height = 347
         Hint = 'You have the ability to "detach" command'#10'line processes. This means it runs alongside'#10'this program separately and independently.'#10#10'Detached processes are listed here. Clicking'#10'on them shows information, and you can '#10'halt the process with the button.'#10#10'ctrl-f opens a search window.'#10#10'<end>'
-        Top = 45
-        Width = 618
+        Top = 28
+        Width = 454
         HelpContext = 1
-        Anchors = [akTop, akLeft, akRight, akBottom]
         ExtendedSelect = False
-        Font.Height = -16
+        Font.Height = -12
         ItemHeight = 0
         OnClick = lbDetachedProcessesClick
         OnDblClick = lbDispKeywordsDblClick
         OnKeyDown = lbDetachedProcessesKeyDown
         ParentFont = False
-        ScrollWidth = 616
+        ScrollWidth = 452
         TabOrder = 0
         TopIndex = -1
       end
       object lblDetachedProcesses: TLabel
-        Left = 11
-        Height = 22
-        Top = 7
-        Width = 112
+        Left = 8
+        Height = 16
+        Top = 5
+        Width = 88
         Caption = 'Running Procs'
-        Font.Height = -17
+        Font.Height = -13
         Font.Style = [fsBold, fsItalic]
         ParentColor = False
         ParentFont = False
       end
       object btnHaltProcess: TBitBtn
-        Left = 661
-        Height = 46
+        Left = 486
+        Height = 34
         Hint = 'This will halt the selected detached process.'#10#10'<end>'
-        Top = 49
-        Width = 206
-        Anchors = [akTop, akRight]
+        Top = 28
+        Width = 152
         Caption = '&X  Halt Process'
-        Font.Height = -16
+        Font.Height = -12
         OnClick = btnHaltProcessClick
         ParentFont = False
         TabOrder = 1
       end
       object memDetachedProcesses: TMemo
-        Left = 660
-        Height = 371
+        Left = 485
+        Height = 309
         Hint = 'This shows the process information about'#10'the selected detached process.'#10#10'Ctrl-F opens a text search dialog.'#10#10'Ctrl-Shift-F or Ctrl-L will find the next '#10'occurence.'#10#10'<end>'
-        Top = 98
-        Width = 637
-        Anchors = [akTop, akRight, akBottom]
-        Font.Height = -16
+        Top = 66
+        Width = 564
+        Anchors = [akTop, akLeft, akRight]
+        Font.Height = -12
         OnDblClick = Memo1DblClick
         OnKeyDown = memDetachedProcessesKeyDown
         ParentFont = False
         ScrollBars = ssAutoBoth
         TabOrder = 3
+        WordWrap = False
       end
       object btnSortDetachedProcesses: TBitBtn
-        Left = 11
-        Height = 46
+        Left = 8
+        Height = 29
         Hint = 'Processes are added to the list in the order'#10'they are run, this can make it hard to find.'#10#10'Use this to sort the list to make it a bit easier.'#10#10'<end>'
-        Top = 471
-        Width = 232
-        Anchors = [akLeft, akBottom]
+        Top = 381
+        Width = 171
         Caption = '&N  Sort Processes'
-        Font.Height = -16
+        Font.Height = -12
         OnClick = btnSortDetachedProcessesClick
         ParentFont = False
         TabOrder = 2
@@ -2285,172 +2274,172 @@ object frmMain: TfrmMain
     end
   end
   object lblPestr: TLabel
-    Left = 1146
-    Height = 32
-    Top = 756
-    Width = 347
+    Left = 846
+    Height = 24
+    Top = 694
+    Width = 262
     Caption = 'Search for PESTER in ufrmMain'
     Color = 1710618
     Font.Color = clCream
-    Font.Height = -24
+    Font.Height = -18
     ParentColor = False
     ParentFont = False
     Transparent = False
   end
   object cbWordWrapMain: TCheckBox
-    Left = 1293
-    Height = 25
-    Top = 822
-    Width = 148
+    Left = 950
+    Height = 21
+    Top = 658
+    Width = 114
     Action = actOutputWrap
     Anchors = [akTop, akRight]
     Checked = True
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     State = cbChecked
     TabOrder = 15
   end
   object btnSave: TBitBtn
-    Left = 21
-    Height = 29
-    Top = 4
-    Width = 153
+    Left = 16
+    Height = 25
+    Top = 3
+    Width = 113
     Action = actSave
     Caption = '&O  Save'
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabOrder = 1
   end
   object btnCancelRun: TBitBtn
-    Left = 218
-    Height = 29
-    Top = 4
-    Width = 154
+    Left = 161
+    Height = 25
+    Top = 3
+    Width = 114
     Caption = '&W  Stop Run'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnCancelRunClick
     ParentFont = False
     TabOrder = 2
     Visible = False
   end
   object shpSRL: TShape
-    Left = 201
-    Height = 23
-    Top = 7
-    Width = 14
+    Left = 148
+    Height = 17
+    Top = 5
+    Width = 10
     Brush.Color = 2914506
     Visible = False
   end
   object shpSRR: TShape
-    Left = 377
-    Height = 23
-    Top = 7
-    Width = 14
+    Left = 278
+    Height = 17
+    Top = 5
+    Width = 10
     Brush.Color = 160
     Visible = False
   end
   object btnSwitchDB: TBitBtn
-    Left = 409
-    Height = 29
+    Left = 302
+    Height = 25
     Hint = 'Open the Database Profile Window in '#10'"Select" mode. That is, here is where you'#10'can switch databases.'#10#10'The current database will not be listed.'#10#10'In addition, the default database profiles '#10'for "DB" may, or may not, be optioons'#10'depending on the settings in Options.'#10#10'<end>'
-    Top = 4
-    Width = 193
+    Top = 3
+    Width = 143
     Action = actSwitchDB
     Caption = '&P  Switch DB   =>'
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabOrder = 3
   end
   object lblCurrDB: TLabel
-    Left = 607
-    Height = 24
-    Top = 5
-    Width = 85
+    Left = 448
+    Height = 16
+    Top = 4
+    Width = 64
     Caption = 'lblCurrDB'
-    Font.Height = -18
+    Font.Height = -13
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
     OnDblClick = lblCurrDBDblClick
   end
   object btnExit: TBitBtn
-    Left = 1240
-    Height = 36
-    Top = 867
-    Width = 201
+    Left = 916
+    Height = 27
+    Top = 726
+    Width = 148
     Action = actExit
     Anchors = [akRight, akBottom]
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabOrder = 16
   end
   object btnProfileManagement: TBitBtn
-    Left = 1181
-    Height = 29
+    Left = 872
+    Height = 22
     Hint = 'Open the Database Profile Window in '#10'"Management" mode where you can add,'#10'edit, delete, or copy them. '#10#10'The list will ALWAYS include the default'#10'databases, even if you have disallowed them'#10'in Options. This is done so that original '#10'databases can be copied if you want.'#10#10'<end>'
-    Top = 620
-    Width = 260
+    Top = 502
+    Width = 192
     Action = actProfiles
     Anchors = [akTop, akRight]
     Caption = '&Q  Manage DB Profiles'
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabOrder = 7
   end
   object btnKeyWords: TBitBtn
-    Left = 1181
-    Height = 29
+    Left = 872
+    Height = 22
     Hint = 'Manage the Master KeyWork List. '#10#10'<end>'
-    Top = 656
-    Width = 260
+    Top = 529
+    Width = 192
     Action = actManageKeyWords
     Anchors = [akTop, akRight]
     Caption = '&L  Manage KeyWords'
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabOrder = 8
   end
   object btnSimpleSearch: TBitBtn
-    Left = 1181
-    Height = 29
+    Left = 872
+    Height = 22
     Hint = 'Performs a simple text search '#10'through all text fields in Commands'#10'and Command Lines (choosable).'#10#10'Advanced searches can be found '#10'in the "Search" tab. '#10#10'You can also choose to run an'#10'advanced search from the Simple'#10'Search Window. '#10#10'<end>'
-    Top = 693
-    Width = 260
+    Top = 556
+    Width = 192
     Anchors = [akTop, akRight]
     Caption = '&M Simple Search'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnSimpleSearchClick
     ParentFont = False
     TabOrder = 9
   end
   object btnOptions: TBitBtn
-    Left = 1181
-    Height = 29
-    Top = 739
-    Width = 260
+    Left = 872
+    Height = 22
+    Top = 590
+    Width = 192
     Action = actOptions
     Anchors = [akTop, akRight]
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabOrder = 10
   end
   object btnMainClear: TBitBtn
-    Left = 1356
-    Height = 29
-    Top = 789
-    Width = 84
+    Left = 1002
+    Height = 25
+    Top = 628
+    Width = 62
     Action = actOutPutClear
     Anchors = [akTop, akRight]
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabOrder = 13
   end
   object btnQuickRun: TBitBtn
-    Left = 1061
-    Height = 34
+    Left = 784
+    Height = 25
     Hint = 'This will run whatever command you put'#10'in it. It is for convenience, for instance you'#10'may need to see the output from another'#10'command while editing a command line.'#10#10'But...BE AWARE there are no safety catches'#10'like threat levels and so on. '#10#10'USE THIS AT OWN RISK.'#10#10'At this time it only remembers the last'#10'command line you entered. In future it '#10'would be nice that it has a list of '#10'remembered commands.'#10#10'<end>'
-    Top = 608
-    Width = 130
+    Top = 495
+    Width = 96
     Action = actQuickRun
     Anchors = [akTop, akRight]
     Color = 4737096
@@ -2458,77 +2447,75 @@ object frmMain: TfrmMain
     TabOrder = 6
   end
   object btnMainSave: TBitBtn
-    Left = 1263
-    Height = 29
-    Top = 789
-    Width = 84
+    Left = 933
+    Height = 25
+    Top = 628
+    Width = 62
     Action = actOutPutSave
     Anchors = [akTop, akRight]
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabOrder = 12
   end
   object btnMainCopy: TBitBtn
-    Left = 1171
-    Height = 29
-    Top = 789
-    Width = 84
+    Left = 865
+    Height = 25
+    Top = 628
+    Width = 62
     Action = actOutPutCopy
     Anchors = [akTop, akRight]
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabOrder = 11
   end
   inline FrameHint1: TFrameHint
-    Left = 1045
-    Height = 22
-    Top = 9
-    Width = 303
-    ClientHeight = 22
-    ClientWidth = 303
+    Left = 772
+    Height = 20
+    Top = 7
+    Width = 224
+    ClientHeight = 20
+    ClientWidth = 224
     ParentColor = True
     TabOrder = 4
-    DesignLeft = 42
-    DesignTop = 314
+    DesignLeft = 31
+    DesignTop = 232
     inherited cbHints: TCheckBox
-      Left = 76
-      Height = 24
+      Left = 48
       Hint = 'Help HInts now Showing'#10#10'<end>'
-      Top = -2
-      Width = 223
+      Top = -1
       OnKeyDown = nil
     end
   end
   object btnAbout: TBitBtn
-    Left = 1358
-    Height = 29
+    Left = 1003
+    Height = 28
     Hint = 'Show about form which lists all the paths'#10'to program, database files, etc. and '#10'license information. It also has Tips for '#10'use and you can re-read the introduction.'#10#10'<end>'
-    Top = 4
-    Width = 83
+    Top = 2
+    Width = 61
     Action = actAbout
     Anchors = [akTop, akRight]
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     TabOrder = 5
   end
   object shpSave: TShape
-    Left = 8
-    Height = 27
-    Top = 5
-    Width = 14
+    Left = 6
+    Height = 20
+    Top = 4
+    Width = 10
     Brush.Color = 160
   end
   object Memo1: TMemo
     Tag = 223322
-    Left = 8
-    Height = 280
+    Left = 6
+    Height = 253
     Hint = 'Don''t be fooled...this is not a terminal '#10'emulator, it is simply the output area '#10'for command line results.'#10#10'You can double click it to save to a file or '#10'send to clipboard.'#10#10'Ctrl-shift-F to find, '#10'ctrl-shift-L to repeat last find.'#10#10'<end>'
-    Top = 626
-    Width = 1145
+    Top = 502
+    Width = 846
     Anchors = [akTop, akLeft, akRight, akBottom]
     Color = 2302755
     Font.Color = clCream
-    Font.Height = -16
+    Font.Height = -12
     Font.Name = 'Courier 10 Pitch'
     OnDblClick = Memo1DblClick
     OnKeyDown = Memo1KeyDown
@@ -2537,14 +2524,14 @@ object frmMain: TfrmMain
     TabOrder = 17
   end
   object btnMainInfo: TBitBtn
-    Left = 1175
-    Height = 29
+    Left = 868
+    Height = 21
     Hint = 'Output the current state of commandoo.'#10#10'<end>'
-    Top = 821
-    Width = 25
+    Top = 657
+    Width = 18
     Anchors = [akTop, akRight]
     Caption = '?'
-    Font.Height = -18
+    Font.Height = -13
     Font.Style = [fsBold]
     OnClick = btnMainInfoClick
     ParentFont = False
@@ -2552,8 +2539,8 @@ object frmMain: TfrmMain
   end
   object popCommands: TPopupMenu
     OnPopup = popCommandsPopup
-    left = 195
-    top = 674
+    left = 144
+    top = 682
     object mniCommansRoot: TMenuItem
       Caption = 'DNT Cmds Menu'
       Enabled = False
@@ -2636,7 +2623,7 @@ object frmMain: TfrmMain
     end
   end
   object ActionList1: TActionList
-    left = 861
+    left = 636
     object actCommandDelete: TAction
       Category = 'Commands'
       Caption = '- Del'
@@ -2870,8 +2857,8 @@ object frmMain: TfrmMain
   end
   object popCmdLines: TPopupMenu
     OnPopup = popCmdLinesPopup
-    left = 106
-    top = 780
+    left = 78
+    top = 576
     object mniCmdLinesRoot: TMenuItem
       Caption = 'DNT CL''s Menu'
       Enabled = False
@@ -2946,12 +2933,12 @@ object frmMain: TfrmMain
   object TimerDetachedProcesses: TTimer
     Interval = 3000
     OnTimer = TimerDetachedProcessesTimer
-    left = 845
-    top = 748
+    left = 624
+    top = 552
   end
   object popMain: TPopupMenu
-    left = 577
-    top = 780
+    left = 426
+    top = 576
     object pmiMainRoot: TMenuItem
       Caption = 'DNT popMain'
       Enabled = False
@@ -3020,12 +3007,12 @@ object frmMain: TfrmMain
     OnTimer = TimerBlinkTimer
     OnStartTimer = TimerBlinkStartTimer
     OnStopTimer = TimerBlinkStopTimer
-    left = 723
-    top = 715
+    left = 512
+    top = 632
   end
   object popTabKeyWords: TPopupMenu
-    left = 349
-    top = 666
+    left = 258
+    top = 676
     object mniTabKeyWordsSearchRoot: TMenuItem
       Caption = 'DNT keyW Search'
       Enabled = False
@@ -3059,8 +3046,8 @@ object frmMain: TfrmMain
     end
   end
   object popTabSearch: TPopupMenu
-    left = 244
-    top = 780
+    left = 180
+    top = 576
     object mniTabSearchSearchRoot: TMenuItem
       Caption = 'DNT Searches'
       Enabled = False
@@ -3094,8 +3081,8 @@ object frmMain: TfrmMain
     end
   end
   object popSearchCmd: TPopupMenu
-    left = 496
-    top = 666
+    left = 366
+    top = 676
     object mniSearchCmdRoot: TMenuItem
       Caption = 'DNT search Command List'
       Enabled = False
@@ -3119,8 +3106,8 @@ object frmMain: TfrmMain
   end
   object popSearchCmdLine: TPopupMenu
     OnPopup = popSearchCmdLinePopup
-    left = 414
-    top = 780
+    left = 306
+    top = 576
     object mniSearchCmdLineRoot: TMenuItem
       Caption = 'DNT searc CmdLine List'
       Enabled = False
@@ -3157,20 +3144,20 @@ object frmMain: TfrmMain
     Enabled = False
     Interval = 5000
     OnTimer = tmrCancelRunTimer
-    left = 723
-    top = 642
+    left = 504
+    top = 568
   end
   object tmrCancelRunBlink: TTimer
     Enabled = False
     Interval = 2300
     OnTimer = tmrCancelRunBlinkTimer
-    left = 845
-    top = 658
+    left = 624
+    top = 670
   end
   object popGoto: TPopupMenu
     OnPopup = popGotoPopup
-    left = 1048
-    top = 650
+    left = 774
+    top = 664
     object mniMainRoot: TMenuItem
       Caption = 'DNT goto'
       Enabled = False
@@ -3299,8 +3286,8 @@ object frmMain: TfrmMain
   end
   object popDblC: TPopupMenu
     OnPopup = popDblCPopup
-    left = 1068
-    top = 727
+    left = 760
+    top = 560
     object mniDblCRoot: TMenuItem
       Caption = 'DNT DblC'
       Enabled = False
@@ -3393,8 +3380,8 @@ object frmMain: TfrmMain
     end
   end
   object popKeyWords: TPopupMenu
-    left = 1040
-    top = 804
+    left = 744
+    top = 624
     object mniKeyWordsRoot: TMenuItem
       Caption = 'DNT KeyWords'
       Enabled = False

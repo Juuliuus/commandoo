@@ -1,16 +1,15 @@
 object frmMsgDlg: TfrmMsgDlg
   Left = 383
-  Height = 406
+  Height = 300
   Top = 453
-  Width = 889
+  Width = 656
   ActiveControl = memMsg
   Caption = 'frmMsgDlg'
-  ClientHeight = 406
-  ClientWidth = 889
-  Constraints.MinHeight = 406
-  Constraints.MinWidth = 889
-  DesignTimePPI = 130
-  Font.Height = -16
+  ClientHeight = 300
+  ClientWidth = 656
+  Constraints.MinHeight = 300
+  Constraints.MinWidth = 656
+  Font.Height = -12
   KeyPreview = True
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
@@ -20,51 +19,51 @@ object frmMsgDlg: TfrmMsgDlg
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   object lblType: TLabel
-    Left = 36
-    Height = 28
-    Top = 12
-    Width = 70
+    Left = 27
+    Height = 21
+    Top = 9
+    Width = 54
     Caption = 'not set'
-    Font.Height = -21
+    Font.Height = -16
     Font.Style = [fsBold, fsItalic]
     ParentColor = False
     ParentFont = False
   end
   object memMsg: TMemo
-    Left = 34
-    Height = 274
-    Top = 56
-    Width = 840
+    Left = 25
+    Height = 203
+    Top = 41
+    Width = 620
     Anchors = [akTop, akLeft, akRight, akBottom]
-    Font.Height = -18
+    Font.Height = -13
     ParentFont = False
     ScrollBars = ssAutoVertical
     TabOrder = 0
   end
   object btnOk: TBitBtn
-    Left = 738
-    Height = 62
-    Top = 336
-    Width = 136
+    Left = 545
+    Height = 46
+    Top = 248
+    Width = 100
     Anchors = [akRight, akBottom]
     Cancel = True
     Default = True
     DefaultCaption = True
-    Font.Height = -16
+    Font.Height = -12
     Kind = bkOK
     ModalResult = 1
     ParentFont = False
     TabOrder = 5
   end
   object btnNo: TBitBtn
-    Left = 584
-    Height = 62
-    Top = 336
-    Width = 136
+    Left = 431
+    Height = 46
+    Top = 248
+    Width = 100
     Anchors = [akRight, akBottom]
     Caption = '&X  No'
     Enabled = False
-    Font.Height = -16
+    Font.Height = -12
     Kind = bkNo
     OnClick = btnNoClick
     ParentFont = False
@@ -72,14 +71,14 @@ object frmMsgDlg: TfrmMsgDlg
     Visible = False
   end
   object btnYes: TBitBtn
-    Left = 748
-    Height = 44
-    Top = 346
-    Width = 119
+    Left = 551
+    Height = 32
+    Top = 256
+    Width = 88
     Anchors = [akRight, akBottom]
     Caption = '&A  Yes'
     Enabled = False
-    Font.Height = -16
+    Font.Height = -12
     Kind = bkYes
     OnClick = btnYesClick
     ParentFont = False
@@ -87,53 +86,53 @@ object frmMsgDlg: TfrmMsgDlg
     Visible = False
   end
   object btnClip: TBitBtn
-    Left = 542
-    Height = 41
-    Top = 4
-    Width = 160
+    Left = 400
+    Height = 30
+    Top = 3
+    Width = 118
     Anchors = [akTop, akRight]
     Caption = '&K  Copy'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnClipClick
     ParentFont = False
     TabOrder = 2
   end
   object pnlNoShow: TPanel
-    Left = 4
-    Height = 58
-    Top = 339
-    Width = 520
+    Left = 3
+    Height = 43
+    Top = 250
+    Width = 384
     Anchors = [akLeft, akBottom]
-    ClientHeight = 58
-    ClientWidth = 520
+    ClientHeight = 43
+    ClientWidth = 384
     Color = 13259833
     Font.Color = clCream
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
     TabOrder = 4
     Visible = False
     object pnlGTK: TPanel
-      Left = 19
-      Height = 41
-      Top = 9
-      Width = 482
-      ClientHeight = 41
-      ClientWidth = 482
+      Left = 14
+      Height = 30
+      Top = 7
+      Width = 356
+      ClientHeight = 30
+      ClientWidth = 356
       Color = clForm
-      Font.Height = -16
+      Font.Height = -12
       ParentColor = False
       ParentFont = False
       TabOrder = 0
       object cbDoNotShow: TCheckBox
-        Left = 11
-        Height = 25
-        Top = 9
-        Width = 299
+        Left = 8
+        Height = 21
+        Top = 4
+        Width = 226
         Anchors = [akLeft, akBottom]
         Caption = '&Z  Do not show this message again   '
         Color = clDefault
-        Font.Height = -16
+        Font.Height = -12
         ParentColor = False
         ParentFont = False
         TabOrder = 0
@@ -141,26 +140,26 @@ object frmMsgDlg: TfrmMsgDlg
     end
   end
   object btnSaveToFile: TBitBtn
-    Left = 714
-    Height = 41
-    Top = 4
-    Width = 160
+    Left = 527
+    Height = 30
+    Top = 3
+    Width = 118
     Anchors = [akTop, akRight]
     Caption = '&S Save'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnSaveToFileClick
     ParentFont = False
     TabOrder = 3
   end
   object btnFind: TBitBtn
-    Left = 370
-    Height = 41
-    Top = 4
-    Width = 160
+    Left = 273
+    Height = 30
+    Top = 3
+    Width = 118
     Anchors = [akTop, akRight]
     Caption = '&F  Find'
     Enabled = False
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnFindClick
     ParentFont = False
     TabOrder = 1
@@ -169,7 +168,7 @@ object frmMsgDlg: TfrmMsgDlg
     Enabled = False
     Interval = 700
     OnTimer = Timer1Timer
-    left = 260
-    top = 19
+    left = 192
+    top = 14
   end
 end

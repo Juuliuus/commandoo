@@ -1,68 +1,67 @@
 object frmNoLanguage: TfrmNoLanguage
   Left = 607
-  Height = 295
+  Height = 218
   Top = 454
-  Width = 660
+  Width = 487
   ActiveControl = cbLanguage
   Caption = 'Language / Sprache / Idioma / Langue'
-  ClientHeight = 295
-  ClientWidth = 660
-  Constraints.MinHeight = 295
-  Constraints.MinWidth = 660
-  DesignTimePPI = 130
-  Font.Height = -16
+  ClientHeight = 218
+  ClientWidth = 487
+  Constraints.MinHeight = 218
+  Constraints.MinWidth = 487
+  Font.Height = -12
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.0.6.0'
   object cbLanguage: TComboBox
-    Left = 26
-    Height = 38
-    Top = 54
-    Width = 613
+    Left = 19
+    Height = 28
+    Top = 40
+    Width = 452
     Anchors = [akTop, akLeft, akRight]
     AutoSelect = False
     AutoSize = False
-    Font.Height = -16
+    Font.Height = -12
     ItemHeight = 0
     ParentFont = False
     TabOrder = 0
   end
   object lblProgDesc: TLabel
-    Left = 26
-    Height = 37
-    Top = 11
-    Width = 613
+    Left = 19
+    Height = 27
+    Top = 8
+    Width = 452
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'NT'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 27
-    Height = 95
-    Top = 192
-    Width = 595
+    Left = 20
+    Height = 70
+    Top = 142
+    Width = 439
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoSize = False
     Caption = 'If you like this program, and you want to contribute, and you are bi-lingual consider writing a translation for it. It''s actually pretty easy-ish .. .email me (in "about" section) and I''ll tell you how.'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
     WordWrap = True
   end
   object btnOK: TBitBtn
-    Left = 488
-    Height = 76
-    Top = 104
-    Width = 151
+    Left = 359
+    Height = 55
+    Top = 77
+    Width = 112
     Anchors = [akTop, akRight]
     Default = True
     DefaultCaption = True
-    Font.Height = -16
+    Font.Height = -12
     Kind = bkOK
     ModalResult = 1
     OnClick = btnOKClick

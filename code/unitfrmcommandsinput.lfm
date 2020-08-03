@@ -1,16 +1,15 @@
 object frmCommandsInput: TfrmCommandsInput
   Left = 391
-  Height = 264
+  Height = 215
   Top = 458
-  Width = 609
+  Width = 450
   ActiveControl = memInput
   Caption = 'Input for Process'
-  ClientHeight = 264
-  ClientWidth = 609
-  Constraints.MinHeight = 264
-  Constraints.MinWidth = 609
-  DesignTimePPI = 130
-  Font.Height = -16
+  ClientHeight = 215
+  ClientWidth = 450
+  Constraints.MinHeight = 215
+  Constraints.MinWidth = 450
+  Font.Height = -12
   KeyPreview = True
   OnActivate = FormActivate
   OnClose = FormClose
@@ -19,32 +18,30 @@ object frmCommandsInput: TfrmCommandsInput
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 267
-    Height = 28
+    Left = 197
+    Height = 27
     Top = -1
-    Width = 338
-    ClientHeight = 28
-    ClientWidth = 338
+    Width = 250
+    ClientHeight = 27
+    ClientWidth = 250
     ParentColor = True
     TabOrder = 4
-    DesignLeft = 305
-    DesignTop = 547
     inherited cbHints: TCheckBox
-      Left = 101
-      Height = 24
-      Top = 3
-      Width = 223
+      Left = 67
+      Height = 21
+      Top = 2
+      Width = 173
     end
   end
   object btnCancel: TBitBtn
-    Left = 470
-    Height = 61
-    Top = 157
-    Width = 129
+    Left = 348
+    Height = 45
+    Top = 116
+    Width = 95
     Anchors = [akTop, akRight]
     Cancel = True
     Caption = 'Cancel'
-    Font.Height = -16
+    Font.Height = -12
     GlyphShowMode = gsmNever
     Kind = bkCancel
     OnClick = btnCancelClick
@@ -52,13 +49,13 @@ object frmCommandsInput: TfrmCommandsInput
     TabOrder = 3
   end
   object memInput: TMemo
-    Left = 13
-    Height = 163
+    Left = 10
+    Height = 127
     Hint = 'This is the INPUT window which means'#10'the Command Line you are running has'#10'the "Wants Input" checked.'#10#10'Whatever text you paste here will be fed into'#10'the process immediately before it is allowed '#10'to run.'#10#10'Very useful in some cases for some Commands,'#10'if the command accepts AND reacts to stdin '#10'(standard input).'#10#10'Try it with grep command for example.'#10#10'<end>'
-    Top = 62
-    Width = 445
+    Top = 54
+    Width = 328
     Anchors = [akTop, akLeft, akRight, akBottom]
-    Font.Height = -16
+    Font.Height = -12
     ParentFont = False
     ScrollBars = ssAutoBoth
     TabOrder = 0
@@ -66,36 +63,36 @@ object frmCommandsInput: TfrmCommandsInput
     WordWrap = False
   end
   object lblProcessInputMsg: TLabel
-    Left = 14
-    Height = 21
+    Left = 10
+    Height = 15
     Top = 32
-    Width = 303
+    Width = 222
     Caption = 'Process wants input, type or paste here:'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object cbWordwrap: TCheckBox
-    Left = 15
-    Height = 25
+    Left = 11
+    Height = 21
     Hint = 'Checked and the output above uses '#10'wordwrap. Not, and not.'#10#10'<end>'
-    Top = 231
-    Width = 120
+    Top = 187
+    Width = 95
     Anchors = [akLeft, akBottom]
     Caption = '&Z  Wordwrap'
-    Font.Height = -16
+    Font.Height = -12
     OnChange = cbWordwrapChange
     ParentFont = False
     TabOrder = 1
   end
   object btnDone: TBitBtn
-    Left = 470
-    Height = 48
-    Top = 71
-    Width = 129
+    Left = 348
+    Height = 35
+    Top = 52
+    Width = 95
     Anchors = [akTop, akRight]
     Caption = 'NT'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnDoneClick
     ParentFont = False
     TabOrder = 2

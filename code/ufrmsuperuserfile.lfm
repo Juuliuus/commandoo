@@ -1,16 +1,15 @@
 object frmSuperUserFile: TfrmSuperUserFile
-  Left = 811
-  Height = 406
-  Top = 499
-  Width = 594
+  Left = 356
+  Height = 330
+  Top = 494
+  Width = 439
   Caption = 'SuperUser Pasting Template'
-  ClientHeight = 406
-  ClientWidth = 594
-  Constraints.MaxHeight = 406
-  Constraints.MinHeight = 406
-  Constraints.MinWidth = 594
-  DesignTimePPI = 130
-  Font.Height = -16
+  ClientHeight = 330
+  ClientWidth = 439
+  Constraints.MaxHeight = 330
+  Constraints.MinHeight = 330
+  Constraints.MinWidth = 439
+  Font.Height = -12
   KeyPreview = True
   OnActivate = FormActivate
   OnClose = FormClose
@@ -20,129 +19,128 @@ object frmSuperUserFile: TfrmSuperUserFile
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 258
-    Height = 34
-    Top = -2
-    Width = 330
-    ClientHeight = 34
-    ClientWidth = 330
+    Left = 191
+    Height = 25
+    Top = -1
+    Width = 239
+    ClientHeight = 25
+    ClientWidth = 239
     ParentColor = True
     TabOrder = 7
-    DesignLeft = 305
-    DesignTop = 547
     inherited cbHints: TCheckBox
-      Left = 94
-      Height = 24
-      Width = 223
+      Left = 56
+      Height = 21
+      Top = 2
+      Width = 173
     end
   end
   object bntOK: TBitBtn
-    Left = 453
-    Height = 52
-    Top = 130
-    Width = 102
+    Left = 335
+    Height = 38
+    Top = 96
+    Width = 75
     Anchors = [akTop, akRight]
     Caption = '&OK'
-    Font.Height = -16
+    Font.Height = -12
     GlyphShowMode = gsmNever
     OnClick = bntOKClick
     ParentFont = False
     TabOrder = 5
   end
   object btnCancel: TBitBtn
-    Left = 443
-    Height = 48
-    Top = 188
-    Width = 122
+    Left = 328
+    Height = 35
+    Top = 139
+    Width = 90
     Anchors = [akTop, akRight]
     Cancel = True
     Caption = 'Cancel'
-    Font.Height = -16
+    Font.Height = -12
     GlyphShowMode = gsmNever
     OnClick = btnCancelClick
     ParentFont = False
     TabOrder = 6
   end
   object edtCustom: TEdit
-    Left = 49
-    Height = 37
+    Left = 36
+    Height = 27
     Hint = 'Type the template as you need.'#10#10'It requires at least one, and only one, "%s" '#10'in it. '#10#10'Wherever the %s is is where the Command'#10'Line will be placed.'#10#10'<end>'
-    Top = 350
-    Width = 306
+    Top = 282
+    Width = 227
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
-    Font.Height = -16
+    Font.Height = -12
     OnKeyDown = edtCustomKeyDown
     ParentFont = False
     TabOrder = 2
     TextHint = 'Type custom template here...'
   end
   object lblCurr: TLabel
-    Left = 21
-    Height = 24
-    Top = 44
-    Width = 161
+    Left = 16
+    Height = 16
+    Top = 48
+    Width = 113
     Caption = 'Current Template:  '
-    Font.Height = -18
+    Font.Height = -13
     ParentColor = False
     ParentFont = False
   end
   object lblCurrFile: TLabel
-    Left = 195
-    Height = 24
+    Left = 144
+    Height = 16
     Hint = 'This is the template you want to use.'#10#10'Test it with the button above.'#10#10'<end>'
-    Top = 44
-    Width = 15
+    Top = 48
+    Width = 9
     Caption = '...'
-    Font.Height = -18
+    Font.Height = -13
     ParentColor = False
     ParentFont = False
   end
   object btnTest: TBitBtn
-    Left = 21
-    Height = 29
+    Left = 16
+    Height = 25
     Hint = 'Show how the template will look when '#10'pasted into a terminal.'#10#10'<end>'
-    Top = 13
-    Width = 157
+    Top = 20
+    Width = 116
     Caption = '&T  Test'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnTestClick
     ParentFont = False
     TabOrder = 4
   end
   object btnCustom: TBitBtn
-    Left = 16
-    Height = 36
+    Left = 12
+    Height = 27
     Hint = 'Use the custom template you specify in'#10'the edit below...'#10#10'<end>'
-    Top = 315
-    Width = 313
+    Top = 257
+    Width = 231
     Anchors = [akTop, akLeft, akRight]
     Caption = '&B  Use Custom Template'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnCustomClick
     ParentFont = False
     TabOrder = 3
   end
   object btnTemplate: TBitBtn
-    Left = 16
-    Height = 34
+    Left = 12
+    Height = 25
     Hint = 'Apply the template from the checked radio'#10'button below.'#10#10'<end>'
-    Top = 101
-    Width = 313
+    Top = 91
+    Width = 231
     Anchors = [akTop, akLeft, akRight]
     Caption = '&A  Use Common Template'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnTemplateClick
     ParentFont = False
     TabOrder = 1
   end
   object rgTemplates: TRadioGroup
-    Left = 49
-    Height = 142
+    Left = 36
+    Height = 111
     Hint = 'List of the most common ROOT templates,'#10'select the one you want.'#10#10'<end>'
-    Top = 139
-    Width = 306
+    Top = 119
+    Width = 227
     Anchors = [akTop, akLeft, akRight]
     AutoFill = True
     Caption = ' Common Templates '
@@ -153,7 +151,7 @@ object frmSuperUserFile: TfrmSuperUserFile
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    Font.Height = -16
+    Font.Height = -12
     OnClick = rgTemplatesClick
     ParentFont = False
     TabOrder = 0

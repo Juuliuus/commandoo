@@ -1,19 +1,18 @@
 object frmFindText: TfrmFindText
   Left = 587
-  Height = 355
+  Height = 262
   Top = 478
-  Width = 474
+  Width = 350
   ActiveControl = edtFindText
   BorderStyle = bsNone
   Caption = 'Find Text'
-  ClientHeight = 355
-  ClientWidth = 474
-  Constraints.MaxHeight = 355
-  Constraints.MaxWidth = 474
-  Constraints.MinHeight = 355
-  Constraints.MinWidth = 474
-  DesignTimePPI = 130
-  Font.Height = -16
+  ClientHeight = 262
+  ClientWidth = 350
+  Constraints.MaxHeight = 262
+  Constraints.MaxWidth = 350
+  Constraints.MinHeight = 262
+  Constraints.MinWidth = 350
+  Font.Height = -12
   FormStyle = fsStayOnTop
   KeyPreview = True
   OnCreate = FormCreate
@@ -23,15 +22,15 @@ object frmFindText: TfrmFindText
   LCLVersion = '2.0.6.0'
   object edtFindText: TEdit
     Left = 1
-    Height = 49
+    Height = 36
     Top = 0
-    Width = 472
+    Width = 348
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
     Color = 3810335
     Font.Color = clCream
-    Font.Height = -18
+    Font.Height = -13
     OnKeyDown = edtFindTextKeyDown
     ParentFont = False
     TabOrder = 0
@@ -39,37 +38,37 @@ object frmFindText: TfrmFindText
   end
   object lbOldFinds: TListBox
     Left = 1
-    Height = 215
-    Top = 46
-    Width = 472
+    Height = 159
+    Top = 34
+    Width = 348
     Anchors = [akTop, akLeft, akRight]
     Color = 3810335
     Font.Color = clCream
-    Font.Height = -18
+    Font.Height = -13
     ItemHeight = 0
     OnDblClick = lbOldFindsDblClick
     OnKeyDown = lbOldFindsKeyDown
     ParentFont = False
-    ScrollWidth = 470
+    ScrollWidth = 346
     TabOrder = 1
     TopIndex = -1
   end
   object lblFindNextText: TLabel
-    Left = 6
-    Height = 24
-    Top = 325
-    Width = 65
+    Left = 4
+    Height = 16
+    Top = 241
+    Width = 49
     Caption = 'fntDNT'
-    Font.Height = -18
+    Font.Height = -13
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object rgTopCursor: TRadioGroup
     Left = 0
-    Height = 60
-    Top = 261
-    Width = 469
+    Height = 44
+    Top = 193
+    Width = 346
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     ChildSizing.LeftRightSpacing = 6
@@ -77,10 +76,10 @@ object frmFindText: TfrmFindText
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclTopToBottomThenLeftToRight
     ChildSizing.ControlsPerLine = 2
-    ClientHeight = 58
-    ClientWidth = 467
+    ClientHeight = 42
+    ClientWidth = 344
     ColumnLayout = clVerticalThenHorizontal
-    Font.Height = -16
+    Font.Height = -12
     ItemIndex = 0
     Items.Strings = (
       '&DNT'

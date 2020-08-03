@@ -1,40 +1,39 @@
 object frm_Search_List: Tfrm_Search_List
   Left = 770
-  Height = 515
+  Height = 380
   Top = 435
-  Width = 495
+  Width = 366
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'frm_Search_List'
-  ClientHeight = 515
-  ClientWidth = 495
-  Constraints.MaxHeight = 515
-  Constraints.MaxWidth = 495
-  Constraints.MinHeight = 515
-  Constraints.MinWidth = 495
-  DesignTimePPI = 130
-  Font.Height = -16
+  ClientHeight = 380
+  ClientWidth = 366
+  Constraints.MaxHeight = 380
+  Constraints.MaxWidth = 366
+  Constraints.MinHeight = 380
+  Constraints.MinWidth = 366
+  Font.Height = -12
   KeyPreview = True
   OnCreate = FormCreate
   OnHide = FormHide
   OnKeyDown = FormKeyDown
   LCLVersion = '2.0.6.0'
   object lblFreeText: TLabel
-    Left = 17
-    Height = 21
-    Top = 332
-    Width = 12
+    Left = 13
+    Height = 15
+    Top = 245
+    Width = 9
     Caption = '...'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object rgSeList: TRadioGroup
-    Left = 12
-    Height = 219
+    Left = 9
+    Height = 162
     Hint = 'Select the "match" type you want for the '#10'List Search.'#10#10'It is "match", not "equal", because it will try'#10'to find out whether the exact List Item is in'#10'(or not in) the Command''s assigned List '#10'Items.'#10#10'The selections you make here determine'#10'the enabling of the fields below. "match" '#10'means it must be in the List, so you are'#10'limited to only items which currently exist '#10'in the Master List.'#10#10'Otherwise you can specify search text.'#10#10'Be aware that if select "match" and you '#10'previously typed in something under '#10'another condition it will be replaced with'#10'the first item in the current Master List.'#10#10'Also be aware, this search can later '#10'become invalid if you delete that item'#10'from the Master List. You will be told when'#10'this has happened.'#10#10'<end>'
-    Top = 44
-    Width = 474
+    Top = 32
+    Width = 350
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     Caption = 'NT'
@@ -43,74 +42,74 @@ object frm_Search_List: Tfrm_Search_List
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    Font.Height = -17
+    Font.Height = -13
     OnSelectionChanged = rgSeListSelectionChanged
     ParentFont = False
     TabOrder = 0
   end
   object lblSeType: TLabel
-    Left = 12
-    Height = 31
-    Top = 7
-    Width = 476
+    Left = 9
+    Height = 23
+    Top = 5
+    Width = 352
     Alignment = taRightJustify
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'List'
-    Font.Height = -21
+    Font.Height = -16
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object lblListChoice: TLabel
-    Left = 158
-    Height = 21
-    Top = 375
-    Width = 84
+    Left = 116
+    Height = 15
+    Top = 277
+    Width = 63
     Anchors = [akTop, akRight]
     Caption = 'Select One:'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
     Visible = False
   end
   object cbMatchCase: TCheckBox
-    Left = 370
-    Height = 25
-    Top = 345
-    Width = 112
+    Left = 266
+    Height = 21
+    Top = 255
+    Width = 90
     Anchors = [akTop, akRight]
     Caption = 'Match Case'
-    Font.Height = -16
+    Font.Height = -12
     OnChange = cbMatchCaseChange
     ParentFont = False
     TabOrder = 2
   end
   object lbList: TListBox
-    Left = 244
-    Height = 138
+    Left = 180
+    Height = 102
     Hint = 'The current Master List of the field you are '#10'editing.'#10#10'If you edit the Master List this will be reflected'#10'the next time you create or edit a Search.'#10#10'Items in old saved Searches may become'#10'invalid if you remove or change the entry in '#10'the Master List.'#10#10'<end>'
-    Top = 375
-    Width = 239
-    Font.Height = -16
+    Top = 277
+    Width = 176
+    Font.Height = -12
     Items.Strings = (
       'sanitycheck'
     )
-    ItemHeight = 27
+    ItemHeight = 21
     OnClick = lbListClick
     ParentColor = True
     ParentFont = False
     PopupMenu = popList
-    ScrollWidth = 237
+    ScrollWidth = 174
     TabOrder = 3
   end
   object memSearchValue: TMemo
-    Left = 12
-    Height = 66
+    Left = 9
+    Height = 49
     Hint = 'The text being searched for.'#10#10'This is disabled when you select "match" '#10'Match Type above. In those cases you must'#10'select from the Master List.'#10#10'<end>'
-    Top = 263
-    Width = 470
-    Font.Height = -16
+    Top = 194
+    Width = 347
+    Font.Height = -12
     OnChange = memSearchValueChange
     ParentFont = False
     ScrollBars = ssAutoBoth
@@ -118,19 +117,19 @@ object frm_Search_List: Tfrm_Search_List
     WantReturns = False
   end
   object lblKeywords: TLabel
-    Left = 156
-    Height = 21
-    Top = 451
-    Width = 83
+    Left = 115
+    Height = 15
+    Top = 333
+    Width = 62
     Anchors = [akTop, akRight]
     Caption = 'Current %s'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object popList: TPopupMenu
-    left = 76
-    top = 17
+    left = 56
+    top = 13
     object mniCopy: TMenuItem
       Caption = 'Copy Item'
       OnClick = mniCopyClick

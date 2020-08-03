@@ -1,29 +1,28 @@
 object frm_Search_Text: Tfrm_Search_Text
   Left = 748
-  Height = 515
+  Height = 380
   Top = 398
-  Width = 495
+  Width = 366
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'frm_Search_Text'
-  ClientHeight = 515
-  ClientWidth = 495
-  Constraints.MaxHeight = 515
-  Constraints.MaxWidth = 495
-  Constraints.MinHeight = 515
-  Constraints.MinWidth = 495
-  DesignTimePPI = 130
-  Font.Height = -16
+  ClientHeight = 380
+  ClientWidth = 366
+  Constraints.MaxHeight = 380
+  Constraints.MaxWidth = 366
+  Constraints.MinHeight = 380
+  Constraints.MinWidth = 366
+  Font.Height = -12
   KeyPreview = True
   OnCreate = FormCreate
   OnHide = FormHide
   OnKeyDown = FormKeyDown
   LCLVersion = '2.0.6.0'
   object rgSeList: TRadioGroup
-    Left = 11
-    Height = 241
-    Top = 44
-    Width = 473
+    Left = 8
+    Height = 178
+    Top = 32
+    Width = 350
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     Caption = 'NT'
@@ -32,53 +31,53 @@ object frm_Search_Text: Tfrm_Search_Text
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    Font.Height = -16
+    Font.Height = -12
     OnSelectionChanged = rgSeListSelectionChanged
     ParentFont = False
     TabOrder = 0
   end
   object lblSeType: TLabel
-    Left = 12
-    Height = 31
-    Top = 7
-    Width = 476
+    Left = 9
+    Height = 23
+    Top = 5
+    Width = 352
     Alignment = taRightJustify
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'Text'
-    Font.Height = -21
+    Font.Height = -16
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object cbMatchCase: TCheckBox
-    Left = 358
-    Height = 25
-    Top = 428
-    Width = 112
+    Left = 258
+    Height = 21
+    Top = 317
+    Width = 90
     Anchors = [akTop, akRight]
     Caption = 'Match Case'
-    Font.Height = -16
+    Font.Height = -12
     OnChange = cbMatchCaseChange
     ParentFont = False
     TabOrder = 2
   end
   object lblFreeText: TLabel
-    Left = 17
-    Height = 21
-    Top = 403
-    Width = 94
+    Left = 13
+    Height = 15
+    Top = 298
+    Width = 70
     Caption = 'DNT S_text...'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object memSearchValue: TMemo
-    Left = 12
-    Height = 111
-    Top = 288
-    Width = 470
-    Font.Height = -16
+    Left = 9
+    Height = 82
+    Top = 213
+    Width = 347
+    Font.Height = -12
     OnChange = memSearchValueChange
     ParentFont = False
     ScrollBars = ssAutoBoth

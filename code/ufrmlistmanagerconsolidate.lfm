@@ -1,17 +1,16 @@
 object frmListManagerConsolidate: TfrmListManagerConsolidate
   Left = 556
-  Height = 223
+  Height = 180
   Top = 436
-  Width = 630
+  Width = 465
   ActiveControl = cbChoose
   Caption = 'DNT'
-  ClientHeight = 223
-  ClientWidth = 630
-  Constraints.MaxHeight = 223
-  Constraints.MinHeight = 223
-  Constraints.MinWidth = 630
-  DesignTimePPI = 130
-  Font.Height = -16
+  ClientHeight = 180
+  ClientWidth = 465
+  Constraints.MaxHeight = 180
+  Constraints.MinHeight = 180
+  Constraints.MinWidth = 465
+  Font.Height = -12
   KeyPreview = True
   OnActivate = FormActivate
   OnClose = FormClose
@@ -21,46 +20,44 @@ object frmListManagerConsolidate: TfrmListManagerConsolidate
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 299
-    Height = 31
-    Top = -2
-    Width = 311
-    ClientHeight = 31
-    ClientWidth = 311
+    Left = 212
+    Height = 24
+    Top = 3
+    Width = 242
+    ClientHeight = 24
+    ClientWidth = 242
     ParentColor = True
     TabOrder = 3
-    DesignLeft = 305
-    DesignTop = 547
     inherited cbHints: TCheckBox
-      Left = 85
-      Height = 24
-      Top = 5
-      Width = 223
+      Left = 67
+      Height = 21
+      Top = 1
+      Width = 173
     end
   end
   object bntOK: TBitBtn
-    Left = 491
-    Height = 52
-    Top = 117
-    Width = 128
+    Left = 362
+    Height = 38
+    Top = 86
+    Width = 95
     Anchors = [akTop, akRight]
     Default = True
     DefaultCaption = True
-    Font.Height = -16
+    Font.Height = -12
     Kind = bkOK
     OnClick = bntOKClick
     ParentFont = False
     TabOrder = 1
   end
   object btnCancel: TBitBtn
-    Left = 504
-    Height = 31
-    Top = 181
-    Width = 108
+    Left = 372
+    Height = 23
+    Top = 134
+    Width = 80
     Anchors = [akTop, akRight]
     Cancel = True
     DefaultCaption = True
-    Font.Height = -16
+    Font.Height = -12
     GlyphShowMode = gsmNever
     Kind = bkCancel
     OnClick = btnCancelClick
@@ -68,46 +65,46 @@ object frmListManagerConsolidate: TfrmListManagerConsolidate
     TabOrder = 2
   end
   object lblInfo: TLabel
-    Left = 34
-    Height = 21
-    Top = 23
-    Width = 86
+    Left = 25
+    Height = 15
+    Top = 26
+    Width = 63
     Caption = 'DNT lblInfo'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object lblItem: TLabel
-    Left = 54
-    Height = 21
+    Left = 40
+    Height = 15
     Hint = 'This is the List Item you want to consolidate'#10'(combine into) another List Item.'#10#10'You choose the List Item to consolidate too'#10'below from the combobox.'#10#10'When you press OK the old Item disappears'#10'and all instances of it are changed to the newly'#10'chosen Item.'#10#10'<end.>'
-    Top = 61
-    Width = 90
+    Top = 54
+    Width = 67
     Caption = 'DNT lblItem'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 34
-    Height = 21
-    Top = 133
-    Width = 155
+    Left = 25
+    Height = 15
+    Top = 107
+    Width = 113
     Caption = 'with (choose below):'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object cbChoose: TComboBox
-    Left = 54
-    Height = 38
+    Left = 40
+    Height = 28
     Hint = 'This is the List Item you want to consolidate'#10'TO.'#10#10'The List Item shown above will beconsolidated'#10'to this List Item.'#10#10'When you press OK the old Item disappears'#10'and all instances of it are changed to the newly'#10'chosen Item.'#10#10'<end.>'
-    Top = 176
-    Width = 382
+    Top = 139
+    Width = 282
     Anchors = [akTop, akLeft, akRight]
     AutoSelect = False
     AutoSize = False
-    Font.Height = -16
+    Font.Height = -12
     ItemHeight = 0
     ParentFont = False
     Style = csDropDownList

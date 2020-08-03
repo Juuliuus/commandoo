@@ -1,17 +1,16 @@
 object frmManageProfile: TfrmManageProfile
   Left = 685
-  Height = 427
+  Height = 315
   Top = 393
-  Width = 427
+  Width = 315
   ActiveControl = edtProfileName
   Caption = 'Add Profile'
-  ClientHeight = 427
-  ClientWidth = 427
-  Constraints.MaxHeight = 427
-  Constraints.MinHeight = 427
-  Constraints.MinWidth = 427
-  DesignTimePPI = 130
-  Font.Height = -16
+  ClientHeight = 315
+  ClientWidth = 315
+  Constraints.MaxHeight = 315
+  Constraints.MinHeight = 315
+  Constraints.MinWidth = 315
+  Font.Height = -12
   KeyPreview = True
   OnActivate = FormActivate
   OnClose = FormClose
@@ -21,29 +20,27 @@ object frmManageProfile: TfrmManageProfile
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 109
-    Height = 32
+    Left = 80
+    Height = 29
     Top = -1
-    Width = 314
-    ClientHeight = 32
-    ClientWidth = 314
+    Width = 232
+    ClientHeight = 29
+    ClientWidth = 232
     ParentColor = True
     TabOrder = 8
-    DesignLeft = 305
-    DesignTop = 547
     inherited cbHints: TCheckBox
-      Left = 84
-      Height = 24
-      Top = 5
-      Width = 223
+      Left = 54
+      Height = 21
+      Top = 4
+      Width = 173
     end
   end
   object rgType: TRadioGroup
-    Left = 16
-    Height = 89
+    Left = 12
+    Height = 66
     Hint = 'Choose whether the Database will be '#10'text based or sqlite sql DB based.'#10#10'Once assigned a DB type that Profile '#10'can not be changed from that type.'#10#10'However, you may use the same Profile '#10'Name as long as it''s DB type is different.'#10#10'Under those circumstances this radio box'#10'will automatically collapse to that type and'#10'check it.'#10#10'<end>'
-    Top = 308
-    Width = 252
+    Top = 227
+    Width = 186
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     Caption = 'DB Type'
@@ -52,9 +49,9 @@ object frmManageProfile: TfrmManageProfile
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 65
-    ClientWidth = 250
-    Font.Height = -16
+    ClientHeight = 48
+    ClientWidth = 184
+    Font.Height = -12
     Items.Strings = (
       '&S  sqlite DB'
       '&T  Text File Based'
@@ -65,66 +62,66 @@ object frmManageProfile: TfrmManageProfile
     TabStop = True
   end
   object Label1: TLabel
-    Left = 23
-    Height = 23
-    Top = 172
-    Width = 381
+    Left = 17
+    Height = 17
+    Top = 127
+    Width = 281
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'Path:'
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object lblName: TLabel
-    Left = 23
-    Height = 23
-    Top = 48
-    Width = 381
+    Left = 17
+    Height = 17
+    Top = 35
+    Width = 281
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'Name:  '
-    Font.Height = -16
+    Font.Height = -12
     ParentColor = False
     ParentFont = False
   end
   object btnCancel: TBitBtn
-    Left = 305
-    Height = 38
-    Top = 373
-    Width = 102
+    Left = 225
+    Height = 28
+    Top = 275
+    Width = 75
     Anchors = [akTop, akRight]
     Cancel = True
     Caption = 'Cancel'
-    Font.Height = -16
+    Font.Height = -12
     GlyphShowMode = gsmNever
     OnClick = btnCancelClick
     ParentFont = False
     TabOrder = 6
   end
   object bntOK: TBitBtn
-    Left = 295
-    Height = 47
-    Top = 310
-    Width = 123
+    Left = 217
+    Height = 35
+    Top = 229
+    Width = 91
     Anchors = [akTop, akRight]
     Caption = '&OK'
     Default = True
-    Font.Height = -16
+    Font.Height = -12
     OnClick = bntOKClick
     ParentFont = False
     TabOrder = 5
   end
   object edtProfileName: TEdit
-    Left = 39
-    Height = 31
-    Top = 74
-    Width = 365
+    Left = 29
+    Height = 23
+    Top = 55
+    Width = 269
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
     BorderStyle = bsNone
-    Font.Height = -16
+    Font.Height = -12
     OnDblClick = btnChangeNameClick
     ParentColor = True
     ParentFont = False
@@ -132,15 +129,15 @@ object frmManageProfile: TfrmManageProfile
     TabOrder = 0
   end
   object edtProfilePath: TEdit
-    Left = 39
-    Height = 31
-    Top = 202
-    Width = 365
+    Left = 29
+    Height = 23
+    Top = 149
+    Width = 269
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
     BorderStyle = bsNone
-    Font.Height = -16
+    Font.Height = -12
     OnDblClick = btnChangePathClick
     ParentColor = True
     ParentFont = False
@@ -148,41 +145,41 @@ object frmManageProfile: TfrmManageProfile
     TabOrder = 2
   end
   object btnChangeName: TBitBtn
-    Left = 39
-    Height = 34
+    Left = 29
+    Height = 25
     Hint = 'Yes. Change the name.'#10#10'<end>'
-    Top = 107
-    Width = 365
+    Top = 79
+    Width = 269
     Anchors = [akTop, akLeft, akRight]
     Caption = '&N  Change Name'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnChangeNameClick
     ParentFont = False
     TabOrder = 1
     Visible = False
   end
   object btnDefaultPath: TBitBtn
-    Left = 258
-    Height = 34
+    Left = 190
+    Height = 25
     Hint = 'This resets the Path to "Default".'#10#10'Default is the program''s default data location.'#10#10'This is usually the folder where the commandoo'#10'program is run from.'#10#10'<end>'
-    Top = 236
-    Width = 146
+    Top = 174
+    Width = 108
     Anchors = [akTop, akRight]
     Caption = '&R   default'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnDefaultPathClick
     ParentFont = False
     TabOrder = 4
   end
   object btnChangePath: TBitBtn
-    Left = 38
-    Height = 34
+    Left = 28
+    Height = 25
     Hint = 'Yes. Change the Path (Folder).'#10#10'<end>'
-    Top = 236
-    Width = 183
+    Top = 174
+    Width = 135
     Anchors = [akTop, akLeft, akRight]
     Caption = '&P  Change Path'
-    Font.Height = -16
+    Font.Height = -12
     OnClick = btnChangePathClick
     ParentFont = False
     TabOrder = 3
