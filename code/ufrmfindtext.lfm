@@ -1,18 +1,18 @@
 object frmFindText: TfrmFindText
-  Left = 2022
-  Height = 350
-  Top = 640
-  Width = 467
+  Left = 587
+  Height = 355
+  Top = 478
+  Width = 474
   ActiveControl = edtFindText
   BorderStyle = bsNone
   Caption = 'Find Text'
-  ClientHeight = 350
-  ClientWidth = 467
-  Constraints.MaxHeight = 350
-  Constraints.MaxWidth = 467
-  Constraints.MinHeight = 350
-  Constraints.MinWidth = 467
-  DesignTimePPI = 128
+  ClientHeight = 355
+  ClientWidth = 474
+  Constraints.MaxHeight = 355
+  Constraints.MaxWidth = 474
+  Constraints.MinHeight = 355
+  Constraints.MinWidth = 474
+  DesignTimePPI = 130
   Font.Height = -16
   FormStyle = fsStayOnTop
   KeyPreview = True
@@ -23,9 +23,9 @@ object frmFindText: TfrmFindText
   LCLVersion = '2.0.6.0'
   object edtFindText: TEdit
     Left = 1
-    Height = 48
+    Height = 49
     Top = 0
-    Width = 465
+    Width = 472
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
@@ -39,9 +39,9 @@ object frmFindText: TfrmFindText
   end
   object lbOldFinds: TListBox
     Left = 1
-    Height = 212
-    Top = 45
-    Width = 465
+    Height = 215
+    Top = 46
+    Width = 472
     Anchors = [akTop, akLeft, akRight]
     Color = 3810335
     Font.Color = clCream
@@ -50,14 +50,14 @@ object frmFindText: TfrmFindText
     OnDblClick = lbOldFindsDblClick
     OnKeyDown = lbOldFindsKeyDown
     ParentFont = False
-    ScrollWidth = 463
+    ScrollWidth = 470
     TabOrder = 1
     TopIndex = -1
   end
   object lblFindNextText: TLabel
-    Left = 5
+    Left = 6
     Height = 24
-    Top = 320
+    Top = 325
     Width = 65
     Caption = 'fntDNT'
     Font.Height = -18
@@ -67,9 +67,9 @@ object frmFindText: TfrmFindText
   end
   object rgTopCursor: TRadioGroup
     Left = 0
-    Height = 59
-    Top = 257
-    Width = 462
+    Height = 60
+    Top = 261
+    Width = 469
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     ChildSizing.LeftRightSpacing = 6
@@ -77,8 +77,8 @@ object frmFindText: TfrmFindText
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclTopToBottomThenLeftToRight
     ChildSizing.ControlsPerLine = 2
-    ClientHeight = 57
-    ClientWidth = 460
+    ClientHeight = 58
+    ClientWidth = 467
     ColumnLayout = clVerticalThenHorizontal
     Font.Height = -16
     ItemIndex = 0

@@ -1,15 +1,15 @@
 object frmCommandsVar: TfrmCommandsVar
-  Left = 2097
-  Height = 420
-  Top = 481
-  Width = 620
+  Left = 454
+  Height = 427
+  Top = 446
+  Width = 630
   ActiveControl = edtInput
   Caption = 'Input Variables'
-  ClientHeight = 420
-  ClientWidth = 620
-  Constraints.MinHeight = 420
-  Constraints.MinWidth = 620
-  DesignTimePPI = 128
+  ClientHeight = 427
+  ClientWidth = 630
+  Constraints.MinHeight = 427
+  Constraints.MinWidth = 630
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnActivate = FormActivate
@@ -20,27 +20,27 @@ object frmCommandsVar: TfrmCommandsVar
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 263
+    Left = 267
     Height = 29
     Top = -1
-    Width = 352
+    Width = 358
     ClientHeight = 29
-    ClientWidth = 352
+    ClientWidth = 358
     ParentColor = True
     TabOrder = 8
-    DesignLeft = 300
-    DesignTop = 539
+    DesignLeft = 305
+    DesignTop = 547
     inherited cbHints: TCheckBox
-      Left = 111
+      Left = 117
       Height = 24
       Width = 223
     end
   end
   object btnCancel: TBitBtn
-    Left = 503
-    Height = 39
-    Top = 252
-    Width = 105
+    Left = 511
+    Height = 40
+    Top = 256
+    Width = 107
     Anchors = [akTop, akRight]
     Caption = '&C  Cancel'
     Font.Height = -16
@@ -53,8 +53,8 @@ object frmCommandsVar: TfrmCommandsVar
     Left = 13
     Height = 26
     Hint = 'The Command Line that will be run with'#10'variables to be filled in.'#10#10'<end>'
-    Top = 39
-    Width = 587
+    Top = 57
+    Width = 597
     Anchors = [akTop, akLeft, akRight]
     BorderStyle = bsNone
     Color = clForm
@@ -65,10 +65,10 @@ object frmCommandsVar: TfrmCommandsVar
   end
   object memInfo: TMemo
     Left = 13
-    Height = 249
+    Height = 234
     Hint = 'This displays a hint for you so you know '#10'what you should be typingt: text, an integer,'#10'a decmal, or a filename.'#10#10'<end>'
-    Top = 164
-    Width = 482
+    Top = 187
+    Width = 490
     Anchors = [akTop, akLeft, akRight, akBottom]
     Font.Height = -16
     ParentFont = False
@@ -77,10 +77,10 @@ object frmCommandsVar: TfrmCommandsVar
   end
   object edtInput: TEdit
     Left = 13
-    Height = 39
+    Height = 40
     Hint = 'What is typed here replaces the highlighted'#10'variable above.'#10#10'You can use <ENTER> after typing to move '#10'to the next variable (if there is one). You can '#10'also use <ENTER> after the last variable'#10'to apply the variables and continue with'#10'the running of the command line.'#10#10'If the variable is for a filename two buttons'#10'will appear allowing you to choose either in'#10'file mode or folder mode. '#10#10'You can use these buttons or type in the '#10'file name in that case.'#10#10'<end>'
-    Top = 74
-    Width = 457
+    Top = 92
+    Width = 465
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
@@ -90,10 +90,10 @@ object frmCommandsVar: TfrmCommandsVar
     TabOrder = 0
   end
   object btnDone: TBitBtn
-    Left = 503
-    Height = 55
-    Top = 182
-    Width = 105
+    Left = 511
+    Height = 56
+    Top = 185
+    Width = 107
     Anchors = [akTop, akRight]
     Caption = 'NT'
     Enabled = False
@@ -103,11 +103,11 @@ object frmCommandsVar: TfrmCommandsVar
     TabOrder = 6
   end
   object btnApply: TBitBtn
-    Left = 477
-    Height = 36
+    Left = 485
+    Height = 37
     Hint = 'This applies any text you have typed to the'#10'current variable.'#10#10'It is far easier to simply press <ENTER> after'#10'typing everything in. '#10#10'Once all variables have been applied a final'#10'<ENTER> or clicking this button will'#10'proceed with the running of the '#10'command line.'#10#10'<end>'
-    Top = 75
-    Width = 131
+    Top = 92
+    Width = 133
     Anchors = [akTop, akRight]
     Caption = '&A  Apply'
     Font.Height = -16
@@ -116,10 +116,10 @@ object frmCommandsVar: TfrmCommandsVar
     TabOrder = 3
   end
   object btnFolderName: TBitBtn
-    Left = 294
-    Height = 33
-    Top = 115
-    Width = 176
+    Left = 267
+    Height = 34
+    Top = 134
+    Width = 211
     Anchors = [akTop, akRight]
     Caption = '&F  Folder Name'
     Enabled = False
@@ -130,9 +130,9 @@ object frmCommandsVar: TfrmCommandsVar
   end
   object btnFileName: TBitBtn
     Left = 13
-    Height = 33
-    Top = 115
-    Width = 176
+    Height = 34
+    Top = 134
+    Width = 211
     Caption = '&N  File Name'
     Enabled = False
     Font.Height = -16
@@ -143,15 +143,17 @@ object frmCommandsVar: TfrmCommandsVar
   object Label1: TLabel
     Left = 17
     Height = 21
-    Top = 13
+    Top = 23
     Width = 165
     Caption = 'Results show here:  ↓'
+    Font.Height = -16
     ParentColor = False
+    ParentFont = False
   end
   object Timer1: TTimer
     Interval = 500
     OnTimer = Timer1Timer
-    left = 215
+    left = 218
     top = 11
   end
 end

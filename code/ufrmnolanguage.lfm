@@ -1,15 +1,15 @@
 object frmNoLanguage: TfrmNoLanguage
-  Left = 2325
-  Height = 290
-  Top = 523
-  Width = 650
+  Left = 607
+  Height = 295
+  Top = 454
+  Width = 660
   ActiveControl = cbLanguage
   Caption = 'Language / Sprache / Idioma / Langue'
-  ClientHeight = 290
-  ClientWidth = 650
-  Constraints.MinHeight = 290
-  Constraints.MinWidth = 650
-  DesignTimePPI = 128
+  ClientHeight = 295
+  ClientWidth = 660
+  Constraints.MinHeight = 295
+  Constraints.MinWidth = 660
+  DesignTimePPI = 130
   Font.Height = -16
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -17,9 +17,9 @@ object frmNoLanguage: TfrmNoLanguage
   LCLVersion = '2.0.6.0'
   object cbLanguage: TComboBox
     Left = 26
-    Height = 37
-    Top = 53
-    Width = 603
+    Height = 38
+    Top = 54
+    Width = 613
     Anchors = [akTop, akLeft, akRight]
     AutoSelect = False
     AutoSize = False
@@ -30,9 +30,9 @@ object frmNoLanguage: TfrmNoLanguage
   end
   object lblProgDesc: TLabel
     Left = 26
-    Height = 36
+    Height = 37
     Top = 11
-    Width = 603
+    Width = 613
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
@@ -43,9 +43,9 @@ object frmNoLanguage: TfrmNoLanguage
   end
   object Label2: TLabel
     Left = 27
-    Height = 93
-    Top = 189
-    Width = 586
+    Height = 95
+    Top = 192
+    Width = 595
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoSize = False
     Caption = 'If you like this program, and you want to contribute, and you are bi-lingual consider writing a translation for it. It''s actually pretty easy-ish .. .email me (in "about" section) and I''ll tell you how.'
@@ -55,10 +55,10 @@ object frmNoLanguage: TfrmNoLanguage
     WordWrap = True
   end
   object btnOK: TBitBtn
-    Left = 480
-    Height = 75
-    Top = 103
-    Width = 149
+    Left = 488
+    Height = 76
+    Top = 104
+    Width = 151
     Anchors = [akTop, akRight]
     Default = True
     DefaultCaption = True

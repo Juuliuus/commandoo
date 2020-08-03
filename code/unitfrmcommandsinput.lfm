@@ -1,15 +1,15 @@
 object frmCommandsInput: TfrmCommandsInput
-  Left = 1964
-  Height = 260
-  Top = 618
-  Width = 600
+  Left = 391
+  Height = 264
+  Top = 458
+  Width = 609
   ActiveControl = memInput
   Caption = 'Input for Process'
-  ClientHeight = 260
-  ClientWidth = 600
-  Constraints.MinHeight = 260
-  Constraints.MinWidth = 600
-  DesignTimePPI = 128
+  ClientHeight = 264
+  ClientWidth = 609
+  Constraints.MinHeight = 264
+  Constraints.MinWidth = 609
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnActivate = FormActivate
@@ -19,28 +19,28 @@ object frmCommandsInput: TfrmCommandsInput
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 263
+    Left = 267
     Height = 28
     Top = -1
-    Width = 333
+    Width = 338
     ClientHeight = 28
-    ClientWidth = 333
+    ClientWidth = 338
     ParentColor = True
     TabOrder = 4
-    DesignLeft = 300
-    DesignTop = 539
+    DesignLeft = 305
+    DesignTop = 547
     inherited cbHints: TCheckBox
-      Left = 96
+      Left = 101
       Height = 24
       Top = 3
       Width = 223
     end
   end
   object btnCancel: TBitBtn
-    Left = 463
-    Height = 60
-    Top = 153
-    Width = 127
+    Left = 470
+    Height = 61
+    Top = 157
+    Width = 129
     Anchors = [akTop, akRight]
     Cancel = True
     Caption = 'Cancel'
@@ -53,10 +53,10 @@ object frmCommandsInput: TfrmCommandsInput
   end
   object memInput: TMemo
     Left = 13
-    Height = 161
+    Height = 163
     Hint = 'This is the INPUT window which means'#10'the Command Line you are running has'#10'the "Wants Input" checked.'#10#10'Whatever text you paste here will be fed into'#10'the process immediately before it is allowed '#10'to run.'#10#10'Very useful in some cases for some Commands,'#10'if the command accepts AND reacts to stdin '#10'(standard input).'#10#10'Try it with grep command for example.'#10#10'<end>'
-    Top = 61
-    Width = 438
+    Top = 62
+    Width = 445
     Anchors = [akTop, akLeft, akRight, akBottom]
     Font.Height = -16
     ParentFont = False
@@ -79,7 +79,7 @@ object frmCommandsInput: TfrmCommandsInput
     Left = 15
     Height = 25
     Hint = 'Checked and the output above uses '#10'wordwrap. Not, and not.'#10#10'<end>'
-    Top = 227
+    Top = 231
     Width = 120
     Anchors = [akLeft, akBottom]
     Caption = '&Z  Wordwrap'
@@ -89,10 +89,10 @@ object frmCommandsInput: TfrmCommandsInput
     TabOrder = 1
   end
   object btnDone: TBitBtn
-    Left = 463
-    Height = 47
-    Top = 70
-    Width = 127
+    Left = 470
+    Height = 48
+    Top = 71
+    Width = 129
     Anchors = [akTop, akRight]
     Caption = 'NT'
     Font.Height = -16

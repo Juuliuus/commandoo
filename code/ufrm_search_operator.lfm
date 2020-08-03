@@ -1,29 +1,29 @@
 object frm_Search_Operator: Tfrm_Search_Operator
-  Left = 2155
-  Height = 507
-  Top = 646
-  Width = 487
+  Left = 787
+  Height = 515
+  Top = 421
+  Width = 495
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'frm_Search_Operator'
-  ClientHeight = 507
-  ClientWidth = 487
-  Constraints.MaxHeight = 507
-  Constraints.MaxWidth = 487
-  Constraints.MinHeight = 507
-  Constraints.MinWidth = 487
-  DesignTimePPI = 128
+  ClientHeight = 515
+  ClientWidth = 495
+  Constraints.MaxHeight = 515
+  Constraints.MaxWidth = 495
+  Constraints.MinHeight = 515
+  Constraints.MinWidth = 495
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   LCLVersion = '2.0.6.0'
   object rgSeOpOperator: TRadioGroup
-    Left = 104
-    Height = 144
+    Left = 106
+    Height = 127
     Hint = 'Select the kind of operator you want for the'#10'currently selected item.'#10#10'<end>'
-    Top = 75
-    Width = 263
+    Top = 76
+    Width = 267
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     Caption = 'Operator Kind'
@@ -32,8 +32,8 @@ object frm_Search_Operator: Tfrm_Search_Operator
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 120
-    ClientWidth = 261
+    ClientHeight = 103
+    ClientWidth = 265
     Font.Height = -16
     Items.Strings = (
       'OR'
@@ -48,7 +48,7 @@ object frm_Search_Operator: Tfrm_Search_Operator
     Left = 12
     Height = 31
     Top = 7
-    Width = 468
+    Width = 476
     Alignment = taRightJustify
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False

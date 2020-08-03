@@ -1,7 +1,7 @@
 object frmAbout: TfrmAbout
-  Left = 190
+  Left = 210
   Height = 523
-  Top = 491
+  Top = 438
   Width = 1000
   ActiveControl = memOutput
   Caption = 'Commandoo About'
@@ -2006,7 +2006,7 @@ object frmAbout: TfrmAbout
     Transparent = True
   end
   object btnToggle: TBitBtn
-    Left = 54
+    Left = 44
     Height = 57
     Top = 411
     Width = 258

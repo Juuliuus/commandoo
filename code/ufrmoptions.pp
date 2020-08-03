@@ -109,6 +109,9 @@ type
     fHasShown : boolean;
     procedure HandleFormSettings(TheType : TSettingsDirective);
     procedure UpdateShared;
+{$IFDEF platAppImage}
+    procedure AppImageUpdate;
+{$ENDIF}
     { private declarations }
   public
     { public declarations }
@@ -135,6 +138,7 @@ uses ufrmMsgDlg, unitLanguages
 
 resourcestring
 
+{$IFDEF platAppImage}
   coptcapCheckForUpgrade = 'Need to retrieve update Version';
   coptmsgCheckForUpgrade =
     'The website needs to be checked for any upgrade Version. Should commandoo check, or do you want to do it?'
@@ -194,6 +198,8 @@ resourcestring
   coptmsgCheckForUpgradeBadFile = '%s  It should have been a single number, check the link you used!';
   coptcapCheckForUpgradeUpgradeAvailable = 'Upgrade Available';
   coptmsgCheckForUpgradeLatest = 'You have the latest version of commandoo.';
+{$ENDIF}
+
   cOptLabelHints =
     'If this line is too long, Dbl-click it to see the '
     + LineEnding
@@ -305,8 +311,10 @@ resourcestring
   ccapOptResetShowNos = 'Reset Show No More?';
   cmsgOptResetShowNos = 'Are you sure you want to re-enable Optional Messages / Information?';
 
+{$IFDEF platAppImage}
 const
   cWgetCommandLineUpgradeCheck = 'wget -q -O - %s';
+{$ENDIF}
 
 
 {$R *.lfm}
@@ -340,7 +348,8 @@ begin
 
 end;
 
-procedure TfrmOptions.btnUpdateClick( Sender : TObject );
+{$IFDEF platAppImage}
+procedure TfrmOptions.AppImageUpdate;
 var
   DefSitefolder, DefVerFile, WgetCmd, ReadmeFile : string;
   FetchedVer : integer;
@@ -407,6 +416,14 @@ begin
   end;
 
 end;
+{$ENDIF}
+
+procedure TfrmOptions.btnUpdateClick( Sender : TObject );
+begin
+{$IFDEF platAppImage}
+  AppImageUpdate;
+{$ENDIF}
+end;
 
 procedure TfrmOptions.btnSavePathClick(Sender : TObject);
 var
@@ -453,9 +470,21 @@ procedure TfrmOptions.btnAddLangOKClick( Sender : TObject );
 var
   IdxMO : Integer;
   LangId : String;
+//Since I want translations immediately the label captions get translated back to the defatul "..."
+//This causes the program to think the the user changed settings and makes for some serious errors.
+//these are problems only (?) on the Options form. As one can see this was also a problem for the
+//cbMaxOutput combobox, I had forgotten about this.
+  TripleDotProtectorSavePath : string;
+  TripleDotProtectorBaseFolder : string;
+  TripleDotProtectorSqlLib : string;
+  TripleDotProtectorRootFile : string;
 begin
   //changing languages is messing with the "translated" combobox items
     IdxMO := cbMaxOutput.ItemIndex;
+    TripleDotProtectorSavePath := lblSavePath.Caption;
+    TripleDotProtectorBaseFolder := lblBaseFolder.Caption;
+    TripleDotProtectorSqlLib := lblSqlLib.Caption;
+    TripleDotProtectorRootFile := lblRootFile.Caption;
 
     try
 
@@ -479,6 +508,10 @@ begin
       shapeLangOK.Visible := false;
       tmrLangOK.Enabled := false;
       cbMaxOutput.ItemIndex := IdxMO;
+      lblSavePath.Caption   := TripleDotProtectorSavePath;
+      lblBaseFolder.Caption := TripleDotProtectorBaseFolder;
+      lblSqlLib.Caption     := TripleDotProtectorSqlLib;
+      lblRootFile.Caption   := TripleDotProtectorRootFile;
     end;
 end;
 

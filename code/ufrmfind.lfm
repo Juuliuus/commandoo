@@ -1,19 +1,19 @@
 object frmFind: TfrmFind
-  Left = 1978
-  Height = 250
-  Top = 866
-  Width = 300
+  Left = 672
+  Height = 254
+  Top = 682
+  Width = 305
   ActiveControl = edtFind
   BorderStyle = bsNone
   Caption = 'frmFind'
-  ClientHeight = 250
-  ClientWidth = 300
+  ClientHeight = 254
+  ClientWidth = 305
   Color = clBlack
-  Constraints.MaxHeight = 250
-  Constraints.MaxWidth = 300
-  Constraints.MinHeight = 250
-  Constraints.MinWidth = 300
-  DesignTimePPI = 128
+  Constraints.MaxHeight = 254
+  Constraints.MaxWidth = 305
+  Constraints.MinHeight = 254
+  Constraints.MinWidth = 305
+  DesignTimePPI = 130
   Font.Color = clCream
   Font.Height = -18
   KeyPreview = True
@@ -23,9 +23,9 @@ object frmFind: TfrmFind
   LCLVersion = '2.0.6.0'
   object edtFind: TEdit
     Left = 1
-    Height = 45
+    Height = 46
     Top = 0
-    Width = 298
+    Width = 303
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
@@ -40,9 +40,9 @@ object frmFind: TfrmFind
   end
   object lbFindResult: TListBox
     Left = 1
-    Height = 208
+    Height = 211
     Top = 43
-    Width = 298
+    Width = 303
     Anchors = [akTop, akLeft, akRight]
     Font.Color = clCream
     Font.Height = -18
@@ -51,7 +51,7 @@ object frmFind: TfrmFind
     OnKeyDown = lbFindResultKeyDown
     ParentColor = True
     ParentFont = False
-    ScrollWidth = 296
+    ScrollWidth = 301
     TabOrder = 1
     TopIndex = -1
   end

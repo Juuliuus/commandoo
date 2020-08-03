@@ -1,18 +1,18 @@
 object frm_Search_Text: Tfrm_Search_Text
-  Left = 2130
-  Height = 507
-  Top = 518
-  Width = 487
+  Left = 748
+  Height = 515
+  Top = 398
+  Width = 495
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'frm_Search_Text'
-  ClientHeight = 507
-  ClientWidth = 487
-  Constraints.MaxHeight = 507
-  Constraints.MaxWidth = 487
-  Constraints.MinHeight = 507
-  Constraints.MinWidth = 487
-  DesignTimePPI = 128
+  ClientHeight = 515
+  ClientWidth = 495
+  Constraints.MaxHeight = 515
+  Constraints.MaxWidth = 495
+  Constraints.MinHeight = 515
+  Constraints.MinWidth = 495
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnCreate = FormCreate
@@ -21,9 +21,9 @@ object frm_Search_Text: Tfrm_Search_Text
   LCLVersion = '2.0.6.0'
   object rgSeList: TRadioGroup
     Left = 11
-    Height = 237
-    Top = 43
-    Width = 465
+    Height = 241
+    Top = 44
+    Width = 473
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     Caption = 'NT'
@@ -41,7 +41,7 @@ object frm_Search_Text: Tfrm_Search_Text
     Left = 12
     Height = 31
     Top = 7
-    Width = 468
+    Width = 476
     Alignment = taRightJustify
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
@@ -52,9 +52,9 @@ object frm_Search_Text: Tfrm_Search_Text
     ParentFont = False
   end
   object cbMatchCase: TCheckBox
-    Left = 350
+    Left = 358
     Height = 25
-    Top = 420
+    Top = 428
     Width = 112
     Anchors = [akTop, akRight]
     Caption = 'Match Case'
@@ -66,7 +66,7 @@ object frm_Search_Text: Tfrm_Search_Text
   object lblFreeText: TLabel
     Left = 17
     Height = 21
-    Top = 397
+    Top = 403
     Width = 94
     Caption = 'DNT S_text...'
     Font.Height = -16
@@ -75,9 +75,9 @@ object frm_Search_Text: Tfrm_Search_Text
   end
   object memSearchValue: TMemo
     Left = 12
-    Height = 109
-    Top = 284
-    Width = 463
+    Height = 111
+    Top = 288
+    Width = 470
     Font.Height = -16
     OnChange = memSearchValueChange
     ParentFont = False

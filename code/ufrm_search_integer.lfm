@@ -1,18 +1,18 @@
 object frm_Search_Integer: Tfrm_Search_Integer
-  Left = 2094
-  Height = 507
-  Top = 652
-  Width = 420
+  Left = 824
+  Height = 515
+  Top = 463
+  Width = 427
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'frm_Search_Integer'
-  ClientHeight = 507
-  ClientWidth = 420
-  Constraints.MaxHeight = 507
-  Constraints.MaxWidth = 420
-  Constraints.MinHeight = 507
-  Constraints.MinWidth = 420
-  DesignTimePPI = 128
+  ClientHeight = 515
+  ClientWidth = 427
+  Constraints.MaxHeight = 515
+  Constraints.MaxWidth = 427
+  Constraints.MinHeight = 515
+  Constraints.MinWidth = 427
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnCreate = FormCreate
@@ -21,9 +21,9 @@ object frm_Search_Integer: Tfrm_Search_Integer
   LCLVersion = '2.0.6.0'
   object rgSeList: TRadioGroup
     Left = 12
-    Height = 278
-    Top = 43
-    Width = 399
+    Height = 282
+    Top = 44
+    Width = 406
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     Caption = 'NT'
@@ -41,7 +41,7 @@ object frm_Search_Integer: Tfrm_Search_Integer
     Left = 12
     Height = 31
     Top = 7
-    Width = 401
+    Width = 408
     Alignment = taRightJustify
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
@@ -52,10 +52,10 @@ object frm_Search_Integer: Tfrm_Search_Integer
     ParentFont = False
   end
   object spnIntValue: TSpinEdit
-    Left = 127
-    Height = 37
-    Top = 363
-    Width = 248
+    Left = 129
+    Height = 38
+    Top = 369
+    Width = 252
     Anchors = [akTop, akRight]
     AutoSelect = False
     AutoSize = False
@@ -67,9 +67,9 @@ object frm_Search_Integer: Tfrm_Search_Integer
     Visible = False
   end
   object lblFreeTextInt: TLabel
-    Left = 200
+    Left = 203
     Height = 21
-    Top = 405
+    Top = 413
     Width = 12
     Caption = '...'
     Font.Height = -16
@@ -77,9 +77,9 @@ object frm_Search_Integer: Tfrm_Search_Integer
     ParentFont = False
   end
   object lblValueInt: TLabel
-    Left = 200
+    Left = 203
     Height = 21
-    Top = 333
+    Top = 338
     Width = 21
     Caption = 'NT'
     Font.Height = -16

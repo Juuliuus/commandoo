@@ -1,15 +1,15 @@
 object frmProfilesMerge: TfrmProfilesMerge
-  Left = 2327
-  Height = 453
-  Top = 493
-  Width = 480
+  Left = 748
+  Height = 460
+  Top = 344
+  Width = 488
   ActiveControl = lbMergeList
   Caption = 'Select Profile to Merge TO'
-  ClientHeight = 453
-  ClientWidth = 480
-  Constraints.MinHeight = 453
-  Constraints.MinWidth = 480
-  DesignTimePPI = 128
+  ClientHeight = 460
+  ClientWidth = 488
+  Constraints.MinHeight = 460
+  Constraints.MinWidth = 488
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnActivate = FormActivate
@@ -20,10 +20,10 @@ object frmProfilesMerge: TfrmProfilesMerge
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   object bntOK: TBitBtn
-    Left = 349
-    Height = 40
-    Top = 53
-    Width = 107
+    Left = 355
+    Height = 41
+    Top = 54
+    Width = 109
     Anchors = [akTop, akRight]
     Caption = '&OK'
     Default = True
@@ -34,10 +34,10 @@ object frmProfilesMerge: TfrmProfilesMerge
     TabOrder = 1
   end
   object btnCancel: TBitBtn
-    Left = 357
-    Height = 40
-    Top = 113
-    Width = 89
+    Left = 363
+    Height = 41
+    Top = 116
+    Width = 90
     Anchors = [akTop, akRight]
     Cancel = True
     Caption = 'Cancel'
@@ -49,25 +49,25 @@ object frmProfilesMerge: TfrmProfilesMerge
   end
   object lbMergeList: TListBox
     Left = 17
-    Height = 331
+    Height = 336
     Hint = 'List of Program managed and custom '#10'Database Profiles. '#10#10'The first two ("DB") are managed by the '#10'Program and are always displayed, you'#10'can not delete or edit them. They are'#10'Profiles for the pre-collected database in'#10'text and sql format.'#10#10'You may add custom profiles at any time'#10'and those will be listed here.'#10#10'Profiles can have the same name as long'#10'as they use a different DB type.'#10#10'<end>'
     Top = 21
-    Width = 312
+    Width = 318
     Anchors = [akTop, akLeft, akRight, akBottom]
     ExtendedSelect = False
     Font.Height = -16
     ItemHeight = 0
     OnDblClick = lbMergeListDblClick
     ParentFont = False
-    ScrollWidth = 310
+    ScrollWidth = 316
     TabOrder = 0
     TopIndex = -1
   end
   object lblspInfo: TLabel
     Left = 17
-    Height = 79
-    Top = 365
-    Width = 428
+    Height = 80
+    Top = 371
+    Width = 435
     Anchors = [akLeft, akRight, akBottom]
     AutoSize = False
     Caption = 'Current DB and selected "From" DB are excluded from this list.'

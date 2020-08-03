@@ -123,8 +123,8 @@ const
   cSectTab_PROG_VersionCount = '_PROG_VersionCount';
   cStandardProgramSequence = 'PROGRAM SEQUENCE #:    %d';
   cVersionDate = ' (August 2020)';//ReleaseCandidate';
-{$IFDEF platAppImage}
   cUpgradeDir = 'upgrades';
+{$IFDEF platAppImage}
   cUpgradeFileName = 'commandoo-x86_64';
   cUpgradeExtUpgradeVersion = '.ver.txt'; //No number
   cUpgradeExtUpgradeInfo = '.readme.txt';

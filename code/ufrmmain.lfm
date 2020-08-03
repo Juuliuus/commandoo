@@ -1431,7 +1431,7 @@ object frmMain: TfrmMain
         end
       end
       object lblShowButtons: TLabel
-        Left = 971
+        Left = 935
         Height = 21
         Top = 8
         Width = 49
@@ -1456,7 +1456,7 @@ object frmMain: TfrmMain
         TabOrder = 0
         object lbCommands: TListBox
           Left = 0
-          Height = 397
+          Height = 390
           Hint = 'The list of Linux Commands!'#10#10'The entries do not need to be Commands,'#10'you can use the command name field to '#10'make a "command" entry that you can '#10'add a variety of command lines that you'#10'find and want to use.'#10#10'ctrl-a or + adds a new command.'#10#10'<Enter> edits the command.'#10#10'Ctrl-Shift-Alt-C makes another copy of '#10'the object.'#10#10'For the ClipBoard:'#10#10'Ctrl-c copies the selected command, '#10'Ctrl-Shift-C copies the entire list.'#10#10'Ctrl-f opens the find dialog.'#10#10'Delete or "-" marks the item for deletion.'#10'To undo that use ctrl-Delete/"-"'#10#10'<end>'
           Top = 99
           Width = 283
@@ -1537,7 +1537,7 @@ object frmMain: TfrmMain
           Left = 5
           Height = 27
           Hint = 'New commands are added at the bottom'#10'of the list.'#10#10'Also when things are edited they get a '#10'prefix added.'#10#10'If it becomes hard to find something use'#10'this to sort the list.'#10#10'<end>'
-          Top = 500
+          Top = 494
           Width = 132
           Caption = 'Sort'
           Font.Height = -14
@@ -1549,7 +1549,7 @@ object frmMain: TfrmMain
           Left = 149
           Height = 27
           Hint = 'If you scroll the Command list and lose '#10'track of where you are, use this to make'#10'the list move to and center the currently '#10'selected Command '#10#10'<end>'
-          Top = 500
+          Top = 494
           Width = 132
           Caption = 'Re-center'
           Font.Height = -14
@@ -1571,10 +1571,10 @@ object frmMain: TfrmMain
         Visible = False
       end
       object btnHelpCommand: TBitBtn
-        Left = 1034
+        Left = 998
         Height = 29
         Top = 3
-        Width = 125
+        Width = 135
         Anchors = [akTop, akRight]
         Caption = '&X  Help'
         Font.Height = -16
@@ -1583,10 +1583,10 @@ object frmMain: TfrmMain
         TabOrder = 2
       end
       object btnVersionCommand: TBitBtn
-        Left = 1168
+        Left = 1144
         Height = 29
         Top = 3
-        Width = 125
+        Width = 135
         Anchors = [akTop, akRight]
         Caption = '&Y  Version'
         Font.Height = -16
@@ -1595,11 +1595,11 @@ object frmMain: TfrmMain
         TabOrder = 3
       end
       object btnLocationPath: TBitBtn
-        Left = 1300
+        Left = 1290
         Height = 29
         Hint = 'This always shows the actual file location'#10'path to the folder for this command, '#10'if it has one.'#10#10'<end>'
         Top = 3
-        Width = 125
+        Width = 135
         Anchors = [akTop, akRight]
         Caption = '&Z  Path'
         Font.Height = -16
@@ -2350,11 +2350,11 @@ object frmMain: TfrmMain
     Visible = False
   end
   object btnSwitchDB: TBitBtn
-    Left = 418
+    Left = 409
     Height = 29
     Hint = 'Open the Database Profile Window in '#10'"Select" mode. That is, here is where you'#10'can switch databases.'#10#10'The current database will not be listed.'#10#10'In addition, the default database profiles '#10'for "DB" may, or may not, be optioons'#10'depending on the settings in Options.'#10#10'<end>'
     Top = 4
-    Width = 182
+    Width = 193
     Action = actSwitchDB
     Caption = '&P  Switch DB   =>'
     Font.Height = -16
@@ -2374,10 +2374,10 @@ object frmMain: TfrmMain
     OnDblClick = lblCurrDBDblClick
   end
   object btnExit: TBitBtn
-    Left = 1205
-    Height = 41
-    Top = 864
-    Width = 236
+    Left = 1240
+    Height = 36
+    Top = 867
+    Width = 201
     Action = actExit
     Anchors = [akRight, akBottom]
     Font.Height = -16
@@ -2385,11 +2385,11 @@ object frmMain: TfrmMain
     TabOrder = 16
   end
   object btnProfileManagement: TBitBtn
-    Left = 1205
+    Left = 1181
     Height = 29
     Hint = 'Open the Database Profile Window in '#10'"Management" mode where you can add,'#10'edit, delete, or copy them. '#10#10'The list will ALWAYS include the default'#10'databases, even if you have disallowed them'#10'in Options. This is done so that original '#10'databases can be copied if you want.'#10#10'<end>'
     Top = 620
-    Width = 236
+    Width = 260
     Action = actProfiles
     Anchors = [akTop, akRight]
     Caption = '&Q  Manage DB Profiles'
@@ -2398,11 +2398,11 @@ object frmMain: TfrmMain
     TabOrder = 7
   end
   object btnKeyWords: TBitBtn
-    Left = 1205
+    Left = 1181
     Height = 29
     Hint = 'Manage the Master KeyWork List. '#10#10'<end>'
     Top = 656
-    Width = 236
+    Width = 260
     Action = actManageKeyWords
     Anchors = [akTop, akRight]
     Caption = '&L  Manage KeyWords'
@@ -2411,11 +2411,11 @@ object frmMain: TfrmMain
     TabOrder = 8
   end
   object btnSimpleSearch: TBitBtn
-    Left = 1205
+    Left = 1181
     Height = 29
     Hint = 'Performs a simple text search '#10'through all text fields in Commands'#10'and Command Lines (choosable).'#10#10'Advanced searches can be found '#10'in the "Search" tab. '#10#10'You can also choose to run an'#10'advanced search from the Simple'#10'Search Window. '#10#10'<end>'
     Top = 693
-    Width = 236
+    Width = 260
     Anchors = [akTop, akRight]
     Caption = '&M Simple Search'
     Font.Height = -16
@@ -2424,10 +2424,10 @@ object frmMain: TfrmMain
     TabOrder = 9
   end
   object btnOptions: TBitBtn
-    Left = 1205
+    Left = 1181
     Height = 29
     Top = 739
-    Width = 236
+    Width = 260
     Action = actOptions
     Anchors = [akTop, akRight]
     Font.Height = -16
@@ -2446,10 +2446,10 @@ object frmMain: TfrmMain
     TabOrder = 13
   end
   object btnQuickRun: TBitBtn
-    Left = 1068
+    Left = 1061
     Height = 34
     Hint = 'This will run whatever command you put'#10'in it. It is for convenience, for instance you'#10'may need to see the output from another'#10'command while editing a command line.'#10#10'But...BE AWARE there are no safety catches'#10'like threat levels and so on. '#10#10'USE THIS AT OWN RISK.'#10#10'At this time it only remembers the last'#10'command line you entered. In future it '#10'would be nice that it has a list of '#10'remembered commands.'#10#10'<end>'
-    Top = 620
+    Top = 608
     Width = 130
     Action = actQuickRun
     Anchors = [akTop, akRight]
@@ -2480,18 +2480,18 @@ object frmMain: TfrmMain
     TabOrder = 11
   end
   inline FrameHint1: TFrameHint
-    Left = 1072
+    Left = 1045
     Height = 22
     Top = 9
-    Width = 279
+    Width = 303
     ClientHeight = 22
-    ClientWidth = 279
+    ClientWidth = 303
     ParentColor = True
     TabOrder = 4
     DesignLeft = 42
     DesignTop = 314
     inherited cbHints: TCheckBox
-      Left = 28
+      Left = 76
       Height = 24
       Hint = 'Help HInts now Showing'#10#10'<end>'
       Top = -2
@@ -2500,11 +2500,11 @@ object frmMain: TfrmMain
     end
   end
   object btnAbout: TBitBtn
-    Left = 1362
+    Left = 1358
     Height = 29
     Hint = 'Show about form which lists all the paths'#10'to program, database files, etc. and '#10'license information. It also has Tips for '#10'use and you can re-read the introduction.'#10#10'<end>'
     Top = 4
-    Width = 79
+    Width = 83
     Action = actAbout
     Anchors = [akTop, akRight]
     Font.Height = -16

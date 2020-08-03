@@ -1,15 +1,15 @@
 object frmListManager: TfrmListManager
-  Left = 2053
-  Height = 640
-  Top = 389
-  Width = 540
+  Left = 356
+  Height = 650
+  Top = 395
+  Width = 548
   ActiveControl = lbList
   Caption = 'Key Words'
-  ClientHeight = 640
-  ClientWidth = 540
-  Constraints.MinHeight = 640
-  Constraints.MinWidth = 540
-  DesignTimePPI = 128
+  ClientHeight = 650
+  ClientWidth = 548
+  Constraints.MinHeight = 650
+  Constraints.MinWidth = 548
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnActivate = FormActivate
@@ -22,18 +22,18 @@ object frmListManager: TfrmListManager
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 233
+    Left = 220
     Height = 30
     Top = 1
-    Width = 302
+    Width = 317
     ClientHeight = 30
-    ClientWidth = 302
+    ClientWidth = 317
     ParentColor = True
     TabOrder = 4
-    DesignLeft = 300
-    DesignTop = 539
+    DesignLeft = 305
+    DesignTop = 547
     inherited cbHints: TCheckBox
-      Left = 71
+      Left = 86
       Height = 24
       Top = 3
       Width = 223
@@ -41,11 +41,11 @@ object frmListManager: TfrmListManager
     end
   end
   object btnOK: TBitBtn
-    Left = 379
-    Height = 52
+    Left = 385
+    Height = 53
     Hint = 'Depending on Mode:'#10#10'If displaying this list from a Command this'#10'button adds the selected Items to the '#10'Command''s List.'#10#10'If in Manage Items mode this simply closes'#10'the form, you use the Manage buttons to'#10'manipulate the list.'#10#10'<end>'
-    Top = 75
-    Width = 148
+    Top = 76
+    Width = 150
     Action = actOK
     Anchors = [akTop, akRight]
     Default = True
@@ -54,10 +54,10 @@ object frmListManager: TfrmListManager
     TabOrder = 2
   end
   object btnCancel: TBitBtn
-    Left = 395
-    Height = 40
-    Top = 136
-    Width = 120
+    Left = 401
+    Height = 41
+    Top = 138
+    Width = 122
     Action = actCancel
     Anchors = [akTop, akRight]
     Cancel = True
@@ -68,10 +68,10 @@ object frmListManager: TfrmListManager
   end
   object lbList: TListBox
     Left = 17
-    Height = 371
+    Height = 377
     Hint = 'Contents of the List you are currently'#10'editing.'#10#10'From a Command you can choose mulitple'#10'List items to add, then use OK button.'#10#10'You can manage the Master List in either '#10'Command Edit mode or Manage List Mode.'#10#10'<end>'
-    Top = 53
-    Width = 354
+    Top = 54
+    Width = 359
     Anchors = [akTop, akLeft, akRight, akBottom]
     Font.Height = -16
     ItemHeight = 0
@@ -80,38 +80,38 @@ object frmListManager: TfrmListManager
     OnKeyDown = lbListKeyDown
     ParentFont = False
     PopupMenu = popKeywords
-    ScrollWidth = 352
+    ScrollWidth = 357
     TabOrder = 0
     TopIndex = -1
   end
   object gbManageList: TGroupBox
     Left = 21
-    Height = 207
-    Top = 426
-    Width = 505
+    Height = 206
+    Top = 436
+    Width = 513
     Anchors = [akLeft, akBottom]
     Caption = 'Manage Master List'
-    ClientHeight = 183
-    ClientWidth = 503
+    ClientHeight = 182
+    ClientWidth = 511
     Font.Height = -16
     ParentColor = False
     ParentFont = False
     TabOrder = 1
     object btnAdd: TBitBtn
       Left = 20
-      Height = 40
+      Height = 41
       Top = 11
-      Width = 164
+      Width = 182
       Action = actAdd
       Font.Height = -16
       ParentFont = False
       TabOrder = 0
     end
     object btnConsolidate: TBitBtn
-      Left = 277
-      Height = 40
+      Left = 265
+      Height = 41
       Top = 11
-      Width = 191
+      Width = 231
       Action = actConsolidate
       Font.Height = -16
       ParentFont = False
@@ -119,19 +119,19 @@ object frmListManager: TfrmListManager
     end
     object btnEdit: TBitBtn
       Left = 20
-      Height = 40
-      Top = 57
-      Width = 164
+      Height = 41
+      Top = 58
+      Width = 182
       Action = actEdit
       Font.Height = -16
       ParentFont = False
       TabOrder = 1
     end
     object btnRevert: TBitBtn
-      Left = 277
-      Height = 40
-      Top = 72
-      Width = 191
+      Left = 265
+      Height = 41
+      Top = 73
+      Width = 231
       Action = actRevert
       Font.Height = -16
       ParentFont = False
@@ -139,19 +139,19 @@ object frmListManager: TfrmListManager
     end
     object btnDelete: TBitBtn
       Left = 21
-      Height = 40
-      Top = 131
-      Width = 164
+      Height = 41
+      Top = 133
+      Width = 182
       Action = actDelete
       Font.Height = -16
       ParentFont = False
       TabOrder = 2
     end
     object btnShowUsage: TBitBtn
-      Left = 277
-      Height = 40
-      Top = 131
-      Width = 191
+      Left = 265
+      Height = 41
+      Top = 133
+      Width = 231
       Action = actShowUsage
       Font.Height = -16
       ParentFont = False
@@ -161,7 +161,7 @@ object frmListManager: TfrmListManager
   object lblInstructions: TLabel
     Left = 21
     Height = 21
-    Top = 32
+    Top = 30
     Width = 247
     Caption = 'Add Selected items to Command'
     Font.Height = -16
@@ -169,8 +169,8 @@ object frmListManager: TfrmListManager
     ParentFont = False
   end
   object popKeywords: TPopupMenu
-    left = 384
-    top = 272
+    left = 390
+    top = 276
     object mniKeywordsRoot: TMenuItem
       Caption = 'DNT Keywords'
       Enabled = False
@@ -214,8 +214,8 @@ object frmListManager: TfrmListManager
     end
   end
   object ActionList1: TActionList
-    left = 373
-    top = 352
+    left = 379
+    top = 358
     object actOK: TAction
       Caption = 'DNT OK'
       OnExecute = actOKExecute

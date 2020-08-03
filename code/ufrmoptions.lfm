@@ -1,7 +1,7 @@
 object frmOptions: TfrmOptions
-  Left = 86
+  Left = 88
   Height = 731
-  Top = 381
+  Top = 334
   Width = 927
   Caption = 'DDNT AO'
   ClientHeight = 731
@@ -20,7 +20,7 @@ object frmOptions: TfrmOptions
   object Bevel1: TBevel
     Left = 426
     Height = 96
-    Top = 68
+    Top = 62
     Width = 346
     Anchors = [akTop, akLeft, akRight]
     Shape = bsFrame
@@ -28,7 +28,7 @@ object frmOptions: TfrmOptions
   object lblThreatLevel: TLabel
     Left = 17
     Height = 21
-    Top = 71
+    Top = 90
     Width = 184
     Caption = 'Warn on Threat Level of:'
     Font.Height = -16
@@ -38,7 +38,7 @@ object frmOptions: TfrmOptions
   object cbUnspecified: TCheckBox
     Left = 49
     Height = 25
-    Top = 101
+    Top = 120
     Width = 132
     Caption = '&B  Unspecified'
     Font.Height = -16
@@ -49,7 +49,7 @@ object frmOptions: TfrmOptions
   object cbHarmless: TCheckBox
     Left = 49
     Height = 25
-    Top = 128
+    Top = 147
     Width = 63
     Caption = '&C  NT'
     Font.Height = -16
@@ -60,7 +60,7 @@ object frmOptions: TfrmOptions
   object cbCareful: TCheckBox
     Left = 49
     Height = 25
-    Top = 155
+    Top = 174
     Width = 65
     Caption = '&D  NT'
     Font.Height = -16
@@ -71,7 +71,7 @@ object frmOptions: TfrmOptions
   object cbCaution: TCheckBox
     Left = 49
     Height = 25
-    Top = 183
+    Top = 202
     Width = 62
     Caption = '&E  NT'
     Font.Height = -16
@@ -82,7 +82,7 @@ object frmOptions: TfrmOptions
   object cbDanger: TCheckBox
     Left = 49
     Height = 25
-    Top = 210
+    Top = 229
     Width = 61
     Caption = '&F  NT'
     Font.Height = -16
@@ -129,7 +129,7 @@ object frmOptions: TfrmOptions
   object ShapeLangOK: TShape
     Left = 410
     Height = 24
-    Top = 129
+    Top = 123
     Width = 34
     Brush.Color = clGreen
     Visible = False
@@ -174,8 +174,8 @@ object frmOptions: TfrmOptions
     Left = 12
     Height = 31
     Hint = 'Many of the messages in this program'#10'give the option to not show it again.'#10#10'This will reset all those messages'#10'you''ve chosen not to show. This'#10'means, of course, that you will have'#10'to go through all those again and '#10're-check them if you don''t want to see '#10'them anymore.'#10#10'<end>'
-    Top = 13
-    Width = 322
+    Top = 4
+    Width = 353
     Caption = '&A  Reset "Show no more" Dialogs'
     Font.Height = -17
     OnClick = btnResetDlgsClick
@@ -231,18 +231,18 @@ object frmOptions: TfrmOptions
     TabOrder = 11
   end
   inline FrameHint1: TFrameHint
-    Left = 644
+    Left = 588
     Height = 35
     Top = -1
-    Width = 274
+    Width = 321
     ClientHeight = 35
-    ClientWidth = 274
+    ClientWidth = 321
     ParentColor = True
     TabOrder = 28
     DesignLeft = 42
     DesignTop = 314
     inherited cbHints: TCheckBox
-      Left = 28
+      Left = 87
       Height = 24
       Top = 6
       Width = 223
@@ -313,7 +313,7 @@ object frmOptions: TfrmOptions
     Left = 508
     Height = 38
     Hint = 'Select between installed language files.'#10#10'<end>'
-    Top = 122
+    Top = 116
     Width = 251
     Anchors = [akTop, akLeft, akRight]
     AutoSelect = False
@@ -355,7 +355,7 @@ object frmOptions: TfrmOptions
   object lblLanguage: TLabel
     Left = 442
     Height = 21
-    Top = 86
+    Top = 80
     Width = 93
     Caption = '&P  Language'
     FocusControl = cbLanguage
@@ -366,7 +366,7 @@ object frmOptions: TfrmOptions
   object btnAddLang: TBitBtn
     Left = 604
     Height = 41
-    Top = 77
+    Top = 71
     Width = 155
     Anchors = [akTop, akRight]
     Caption = '&Q  NT'
@@ -482,7 +482,7 @@ object frmOptions: TfrmOptions
   object btnAddLangOK: TBitBtn
     Left = 440
     Height = 41
-    Top = 119
+    Top = 113
     Width = 68
     Anchors = [akTop, akRight]
     Caption = 'ok'
@@ -569,11 +569,11 @@ object frmOptions: TfrmOptions
     Visible = False
   end
   object btnUpdate: TBitBtn
-    Left = 344
+    Left = 12
     Height = 31
     Hint = 'Many of the messages in this program'#10'give the option to not show it again.'#10#10'This will reset all those messages'#10'you''ve chosen not to show. This'#10'means, of course, that you will have'#10'to go through all those again and '#10're-check them if you don''t want to see '#10'them anymore.'#10#10'<end>'
-    Top = 13
-    Width = 279
+    Top = 43
+    Width = 278
     Caption = '&N  Check for Update'
     Font.Height = -17
     OnClick = btnUpdateClick

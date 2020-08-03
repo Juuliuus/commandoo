@@ -1,15 +1,15 @@
 object frmCmdLineEdit: TfrmCmdLineEdit
-  Left = 2330
-  Height = 600
-  Top = 466
-  Width = 700
+  Left = 445
+  Height = 609
+  Top = 451
+  Width = 711
   ActiveControl = memCmdLine
   Caption = 'Edit Command Line'
-  ClientHeight = 600
-  ClientWidth = 700
-  Constraints.MinHeight = 600
-  Constraints.MinWidth = 700
-  DesignTimePPI = 128
+  ClientHeight = 609
+  ClientWidth = 711
+  Constraints.MinHeight = 609
+  Constraints.MinWidth = 711
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnActivate = FormActivate
@@ -20,27 +20,27 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
   inline FrameHint1: TFrameHint
-    Left = 342
+    Left = 347
     Height = 30
     Top = -2
-    Width = 352
+    Width = 358
     ClientHeight = 30
-    ClientWidth = 352
+    ClientWidth = 358
     ParentColor = True
     TabOrder = 14
-    DesignLeft = 300
-    DesignTop = 539
+    DesignLeft = 305
+    DesignTop = 547
     inherited cbHints: TCheckBox
-      Left = 114
+      Left = 120
       Height = 24
       Width = 223
     end
   end
   object bntOK: TBitBtn
-    Left = 415
-    Height = 56
-    Top = 168
-    Width = 119
+    Left = 432
+    Height = 57
+    Top = 171
+    Width = 121
     Anchors = [akTop, akRight]
     Default = True
     DefaultCaption = True
@@ -51,10 +51,10 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     TabOrder = 12
   end
   object btnCancel: TBitBtn
-    Left = 551
-    Height = 40
-    Top = 176
-    Width = 119
+    Left = 571
+    Height = 41
+    Top = 179
+    Width = 121
     Anchors = [akTop, akRight]
     Cancel = True
     DefaultCaption = True
@@ -67,10 +67,10 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   end
   object memOutput: TMemo
     Left = 3
-    Height = 216
+    Height = 219
     Hint = 'The output of the command''s default help '#10'or of the refresh and default help buttons '#10'above.'#10#10'Experimental right now, it is intended to '#10'display help for the command so you can'#10'see what flags / parameters you want to add'#10'to the Command Line.'#10#10'<end>'
-    Top = 349
-    Width = 694
+    Top = 354
+    Width = 705
     Anchors = [akTop, akLeft, akRight, akBottom]
     Color = clBlack
     Font.Color = clCream
@@ -83,10 +83,10 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   end
   object edtOutputRefresh: TEdit
     Left = 21
-    Height = 39
+    Height = 40
     Hint = 'Type in a command line you want to run'#10'while you are editing. Then press return or '#10'click the button above.'#10#10'<end>'
-    Top = 265
-    Width = 663
+    Top = 269
+    Width = 674
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
@@ -100,7 +100,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     Left = 5
     Height = 25
     Hint = 'Checked and the output above uses '#10'wordwrap. Not, and not.'#10#10'<end>'
-    Top = 569
+    Top = 578
     Width = 172
     Anchors = [akLeft, akBottom]
     Caption = '&Z  Wrap Output text'
@@ -112,7 +112,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   object lblVarHint: TLabel
     Left = 5
     Height = 21
-    Top = 27
+    Top = 25
     Width = 297
     Caption = 'Add a variable at cursor / selection for: '
     Font.Height = -16
@@ -121,10 +121,10 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   end
   object memCmdLine: TMemo
     Left = 4
-    Height = 77
+    Height = 78
     Hint = 'The Command Line you are editing.'#10#10'You can place the cursor at a position, or'#10'select text, and then use one of the '#10'variable buttons below to use run time'#10'variables on this command line.'#10#10'<end>'
-    Top = 84
-    Width = 680
+    Top = 85
+    Width = 691
     Anchors = [akTop, akLeft, akRight]
     Font.Height = -18
     OnKeyDown = memCmdLineKeyDown
@@ -137,8 +137,8 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     Tag = 1
     Left = 4
     Height = 30
-    Top = 51
-    Width = 153
+    Top = 52
+    Width = 155
     Caption = '&S  AlphaNum'
     Font.Height = -14
     OnClick = btnVarStringClick
@@ -147,10 +147,10 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   end
   object btnVarInteger: TBitBtn
     Tag = 2
-    Left = 179
+    Left = 182
     Height = 30
-    Top = 51
-    Width = 153
+    Top = 52
+    Width = 155
     Caption = '&I  Integer'
     Font.Height = -14
     OnClick = btnVarStringClick
@@ -159,10 +159,10 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   end
   object btnVarDecimal: TBitBtn
     Tag = 3
-    Left = 354
+    Left = 360
     Height = 30
-    Top = 51
-    Width = 153
+    Top = 52
+    Width = 155
     Caption = '&N  Decimal'
     Font.Height = -14
     OnClick = btnVarStringClick
@@ -171,10 +171,10 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   end
   object btnVarFilename: TBitBtn
     Tag = 4
-    Left = 529
+    Left = 537
     Height = 30
-    Top = 51
-    Width = 153
+    Top = 52
+    Width = 155
     Caption = '&F  File Name'
     Font.Height = -14
     OnClick = btnVarStringClick
@@ -183,10 +183,10 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   end
   object btnDefaultHelp: TBitBtn
     Left = 21
-    Height = 33
+    Height = 34
     Hint = 'The help for the command is always displayed'#10'when you first open this form.'#10#10'But maybe later you do some other commands'#10'and then need to reference the command'#10'help quickly, then use this button.'#10#10'<end>'
-    Top = 311
-    Width = 347
+    Top = 316
+    Width = 393
     Caption = '&Y  Default Help'
     Enabled = False
     Font.Height = -16
@@ -196,10 +196,10 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   end
   object btnRefresh: TBitBtn
     Left = 21
-    Height = 33
+    Height = 34
     Hint = 'Sometimes when editing a command line'#10'you may need to reference other commands.'#10#10'You can type in a command line below and'#10'run it by pressing this button or pressing '#10'return in the edit.'#10#10'The output will be added below.'#10#10'<end>'
-    Top = 231
-    Width = 347
+    Top = 235
+    Width = 393
     Caption = '&X  Run Command Line below:'
     Font.Height = -16
     OnClick = btnRefreshClick
@@ -210,8 +210,8 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     Tag = 4
     Left = 8
     Height = 30
-    Top = 164
-    Width = 169
+    Top = 167
+    Width = 172
     Caption = '&A  Insert full path'
     Font.Height = -14
     OnClick = btnPathClick
@@ -220,10 +220,10 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   end
   object btnPkexec: TBitBtn
     Tag = 4
-    Left = 208
+    Left = 211
     Height = 30
-    Top = 164
-    Width = 169
+    Top = 167
+    Width = 172
     Caption = '&T  Toggle pkexec'
     Font.Height = -14
     OnClick = btnPkexecClick

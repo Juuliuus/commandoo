@@ -1,18 +1,18 @@
 object frm_Search_String: Tfrm_Search_String
-  Left = 2111
-  Height = 507
-  Top = 640
-  Width = 487
+  Left = 734
+  Height = 515
+  Top = 432
+  Width = 495
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'frm_Search_String'
-  ClientHeight = 507
-  ClientWidth = 487
-  Constraints.MaxHeight = 507
-  Constraints.MaxWidth = 487
-  Constraints.MinHeight = 507
-  Constraints.MinWidth = 487
-  DesignTimePPI = 128
+  ClientHeight = 515
+  ClientWidth = 495
+  Constraints.MaxHeight = 515
+  Constraints.MaxWidth = 495
+  Constraints.MinHeight = 515
+  Constraints.MinWidth = 495
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnCreate = FormCreate
@@ -21,9 +21,9 @@ object frm_Search_String: Tfrm_Search_String
   LCLVersion = '2.0.6.0'
   object rgSeList: TRadioGroup
     Left = 12
-    Height = 289
-    Top = 43
-    Width = 466
+    Height = 294
+    Top = 44
+    Width = 474
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False
     Caption = 'NT'
@@ -41,7 +41,7 @@ object frm_Search_String: Tfrm_Search_String
     Left = 12
     Height = 31
     Top = 7
-    Width = 468
+    Width = 476
     Alignment = taRightJustify
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
@@ -52,9 +52,9 @@ object frm_Search_String: Tfrm_Search_String
     ParentFont = False
   end
   object cbMatchCase: TCheckBox
-    Left = 350
+    Left = 358
     Height = 25
-    Top = 438
+    Top = 446
     Width = 112
     Anchors = [akTop, akRight]
     Caption = 'Match Case'
@@ -66,7 +66,7 @@ object frm_Search_String: Tfrm_Search_String
   object lblFreeText: TLabel
     Left = 17
     Height = 21
-    Top = 420
+    Top = 427
     Width = 12
     Caption = '...'
     Font.Height = -16
@@ -75,10 +75,10 @@ object frm_Search_String: Tfrm_Search_String
   end
   object memSearchValue: TMemo
     Left = 12
-    Height = 72
+    Height = 73
     Hint = 'The text being searched for.'#10#10'<end>'
-    Top = 344
-    Width = 463
+    Top = 349
+    Width = 470
     Font.Height = -16
     OnChange = memSearchValueChange
     ParentFont = False

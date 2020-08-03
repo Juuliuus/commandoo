@@ -789,7 +789,9 @@ type
     { public declarations }
     RegX: TRegExpr;
 
+{$IFDEF platAppImage}
     function WgetUpgradeVer( const URL : string; var UpdateText : string ) : integer;
+{$ENDIF}
     function GetDefaultWritingToPath : string;
     function GetSearchesDirectory : string;
     function GetPODirectory: string;
@@ -1542,14 +1544,32 @@ begin
 end;
 
 function TfrmMain.GetDefaultWritingToPath : string;
+
+  Function GetTheHomeDir : String;
+  begin
+    Result := GetEnvironmentVariable( 'HOME' );
+    If ( Result <> '' ) then
+      Result := IncludeTrailingPathDelimiter( Result );
+  end;
+
 begin
-  {$IFNDEF Release}
-    result := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
-  {$ELSE}
-    if fSuperUser then
+{$IFNDEF Release}
+  result := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
+{$ELSE}
+  Result := GetEnvironmentVariable( 'XDG_CONFIG_HOME' );
+  if ( Result = '' ) then
+    Result := GetTheHomeDir + '.config/' + cReferenceProgramName
+  else Result := IncludeTrailingPathDelimiter( Result );
+
+  if fSuperUser then
+  begin
+    if DirectoryExists( '/root' ) then
       result := '/root/.config/commandoo_root/'
-    else result := GetAppConfigDir( False );//gets home "." location false is xdg .config, true is system /etc
-  {$ENDIF}
+    else result := result + '_root';
+  end;
+
+  Result := IncludeTrailingPathDelimiter( Result );
+{$ENDIF}
 end;
 
 
@@ -5317,6 +5337,7 @@ begin
 end;
 
 procedure TfrmMain.btnFinalNeedsClick( Sender : TObject );
+{$IFDEF platAppImage}
 var
   SL : TStringlist;
   ProgVer, Path : string;
@@ -5327,6 +5348,7 @@ var
     SL.Add( Contents );
     SL.SaveToFile( Path + FileName );
   end;
+{$ENDIF}
 begin
 {$IFnDEF Release}
   if not DirectoryExists( fWritingToPath + cUpgradeDir ) then
@@ -6163,6 +6185,7 @@ begin
 
 end;
 
+{$IFDEF platAppImage}
 function TfrmMain.WgetUpgradeVer( const URL : string; var UpdateText : string ) : integer;
 var
   theURL, Fetched : string;
@@ -6200,6 +6223,7 @@ begin
   end;
 
 end;
+{$ENDIF}
 
 procedure TfrmMain.actQuickRunExecute( Sender : TObject );
 begin

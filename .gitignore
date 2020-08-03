@@ -12,6 +12,6 @@ code/*.sqlite
 code/searchesXXX/.*
 download/*
 code/DBBak/*
-
+code/*.lrj
 
 

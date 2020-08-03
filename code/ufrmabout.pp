@@ -165,7 +165,9 @@ begin
     3 : result := cSaveToFileFreshStart;
     4 : result := cSaveToFileUpgrade;
     5 : result := cSaveToFileIbus;
+{$IFDEF platAppImage}
     6 : result := cSaveToFileUSBDrive;
+{$ENDIF}
   end;
 end;
 
@@ -182,7 +184,9 @@ begin
     3 : memOutput.Text := cmsgFirstLocalRunAbout + format( cmsgFirstLocalRun, [ cmsgFormHotKeys ] );
     4 : memOutput.Text := cmsgCommandooUpgrade;
     5 : memOutput.Text := cmsgIbus;
+{$IFDEF platAppImage}
     6 : memOutput.Text := format( cmsgCommandooThumbDrives, [ Frm.AppImagePath ] );
+{$ENDIF}
   end;
   lblTopic.Caption := GetNamebtnToggle( Idx );
   btnSaveToFile.enabled := true;

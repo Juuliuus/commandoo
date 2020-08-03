@@ -1,15 +1,15 @@
 object frmSingleInput: TfrmSingleInput
-  Left = 1973
-  Height = 187
-  Top = 607
-  Width = 913
+  Left = 572
+  Height = 190
+  Top = 608
+  Width = 927
   Caption = 'Input'
-  ClientHeight = 187
-  ClientWidth = 913
-  Constraints.MaxHeight = 187
-  Constraints.MinHeight = 187
-  Constraints.MinWidth = 913
-  DesignTimePPI = 128
+  ClientHeight = 190
+  ClientWidth = 927
+  Constraints.MaxHeight = 190
+  Constraints.MinHeight = 190
+  Constraints.MinWidth = 927
+  DesignTimePPI = 130
   Font.Height = -16
   KeyPreview = True
   OnActivate = FormActivate
@@ -21,9 +21,9 @@ object frmSingleInput: TfrmSingleInput
   LCLVersion = '2.0.6.0'
   object deDir: TDirectoryEdit
     Left = 32
-    Height = 37
-    Top = 44
-    Width = 849
+    Height = 38
+    Top = 45
+    Width = 863
     ShowHidden = False
     ButtonWidth = 31
     NumGlyphs = 1
@@ -39,9 +39,9 @@ object frmSingleInput: TfrmSingleInput
   end
   object feFile: TFileNameEdit
     Left = 32
-    Height = 37
+    Height = 38
     Top = 7
-    Width = 849
+    Width = 863
     FilterIndex = 0
     HideDirectories = False
     ButtonWidth = 31
@@ -58,9 +58,9 @@ object frmSingleInput: TfrmSingleInput
   end
   object edtInput: TEdit
     Left = 32
-    Height = 37
-    Top = 83
-    Width = 849
+    Height = 38
+    Top = 84
+    Width = 863
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     AutoSelect = False
@@ -71,10 +71,10 @@ object frmSingleInput: TfrmSingleInput
     Visible = False
   end
   object btnOk: TBitBtn
-    Left = 773
-    Height = 53
-    Top = 125
-    Width = 108
+    Left = 785
+    Height = 54
+    Top = 127
+    Width = 110
     Anchors = [akTop, akRight]
     Caption = '&OK'
     Font.Height = -16
@@ -84,10 +84,10 @@ object frmSingleInput: TfrmSingleInput
     TabOrder = 4
   end
   object btnCancel: TBitBtn
-    Left = 609
-    Height = 44
-    Top = 129
-    Width = 151
+    Left = 618
+    Height = 45
+    Top = 131
+    Width = 153
     Anchors = [akTop, akRight]
     Cancel = True
     Caption = 'Cancel'
@@ -98,9 +98,9 @@ object frmSingleInput: TfrmSingleInput
     TabOrder = 3
   end
   object lblHint: TLabel
-    Left = 610
+    Left = 623
     Height = 21
-    Top = 85
+    Top = 86
     Width = 259
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
