@@ -119,7 +119,6 @@ const
   cLangAbbrev_uk = 'uk';
   //cLangAbbrev_calif = 'califxxx';
   cLangAbbrev_pyr = 'pyrxxx';
-  cLangAbbrev_wookie = 'wookiexxx';
 
   cLangStr_ar = 'Arabic / عربي (ar)';
   cLangStr_ca = 'Catalan / Català (ca)';
@@ -140,7 +139,6 @@ const
   cLangStr_uk = 'Ukrainian / Український (uk)';
   //cLangStr_calif = 'California (califxxx)';
   cLangStr_pyr = 'Pyrate (pyrxxx)';
-  cLangStr_wookie = 'Wookie (wookiexxx)';
   //you can add whatever you want just need a po file that matches
   //some other language stuff is at the bottom after the end
 
@@ -259,7 +257,6 @@ begin
     WriteString( fSectTabLanguages, cLangAbbrev_uk, cLangStr_uk );
 //    WriteString( fSectTabLanguages, cLangAbbrev_calif, cLangStr_calif );
     WriteString( fSectTabLanguages, cLangAbbrev_pyr, cLangStr_pyr );
-    WriteString( fSectTabLanguages, cLangAbbrev_wookie, cLangStr_wookie );
 
     UpdateFile;
 
@@ -337,17 +334,8 @@ begin
 //executable name. Just sayin'.
 
   POFileName := fLanguageFilesFolder + format( cLanguageFileNamePO, [ cReferenceProgramName, fProgramLang ] );
-//===============================================================
-//juuus this may all be fixed in Laz 1.8??!!
-//YOU HAVE TO UPDATE LCLTranslator too! Don't forget!!!   //note to self (and anyone else compiling program)
-//===============================================================
   if fileexists ( POFileName ) then
     LCLTranslator.setdefaultlang( fProgramLang, fLanguageFilesFolder, true )
-    //unitjLCLTranslator.setdefaultlang( fProgramLang,
-    //                                   fLanguageFilesFolder,
-    //                                   true,
-    //                                   POFileName
-    //                                   )
   else
   begin
     if pos( '.en.po', POFileName ) > 0 then

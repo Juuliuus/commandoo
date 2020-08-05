@@ -242,9 +242,7 @@ object frmOptions: TfrmOptions
     DesignTop = 232
     inherited cbHints: TCheckBox
       Left = 56
-      Height = 21
       Top = 4
-      Width = 173
       OnKeyDown = nil
     end
   end

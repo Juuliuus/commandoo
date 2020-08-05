@@ -29,9 +29,7 @@ object frmCommandsVar: TfrmCommandsVar
     TabOrder = 8
     inherited cbHints: TCheckBox
       Left = 78
-      Height = 21
       Top = 2
-      Width = 173
     end
   end
   object btnCancel: TBitBtn
@@ -50,7 +48,7 @@ object frmCommandsVar: TfrmCommandsVar
   object edtCmdLine: TEdit
     Left = 10
     Height = 20
-    Hint = 'The Command Line that will be run with'#10'variables to be filled in.'#10#10'<end>'
+    Hint = 'The Command Line that will be run with'#10'variables to be filled in. It will update the values '#10'each time you APPLY them.'#10#10'<end>'
     Top = 50
     Width = 440
     Anchors = [akTop, akLeft, akRight]
@@ -76,7 +74,7 @@ object frmCommandsVar: TfrmCommandsVar
   object edtInput: TEdit
     Left = 10
     Height = 30
-    Hint = 'What is typed here replaces the highlighted'#10'variable above.'#10#10'You can use <ENTER> after typing to move '#10'to the next variable (if there is one). You can '#10'also use <ENTER> after the last variable'#10'to apply the variables and continue with'#10'the running of the command line.'#10#10'If the variable is for a filename two buttons'#10'will appear allowing you to choose either in'#10'file mode or folder mode. '#10#10'You can use these buttons or type in the '#10'file name in that case.'#10#10'<end>'
+    Hint = 'What is typed here replaces the highlighted'#10'variable above.'#10#10'You can use <ENTER> after typing to move '#10'to the next variable (if there is one). You can '#10'also use <ENTER> after the last variable'#10'to edit the entire filled in line if needed. When'#10'done use the DONE button to continue with'#10'the running of the command line.'#10#10'If the variable is for a filename two buttons'#10'will appear allowing you to choose either in'#10'file mode or folder mode. '#10#10'You can use these buttons or type in the '#10'file name in that case.'#10#10'<end>'
     Top = 76
     Width = 343
     Anchors = [akTop, akLeft, akRight]
@@ -103,7 +101,7 @@ object frmCommandsVar: TfrmCommandsVar
   object btnApply: TBitBtn
     Left = 358
     Height = 27
-    Hint = 'This applies any text you have typed to the'#10'current variable.'#10#10'It is far easier to simply press <ENTER> after'#10'typing everything in. '#10#10'Once all variables have been applied a final'#10'<ENTER> or clicking this button will'#10'proceed with the running of the '#10'command line.'#10#10'<end>'
+    Hint = 'This applies any text you have typed to the'#10'current variable.'#10#10'It is far easier to simply press <ENTER> after'#10'typing everything in. '#10#10'Once all variables have been applied '#10'<ENTER> allows you to edit the entire line if'#10'needed. When happy with the final form'#10'use the button below to run the Command'#10'Line.'#10#10'<end>'
     Top = 76
     Width = 98
     Anchors = [akTop, akRight]

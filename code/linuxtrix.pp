@@ -34,7 +34,6 @@ procedure RefreshEnvironmentPath;
 //procedure GetMountedDrives( Strings : TStrings );
 function GetRawGuidString( RaiseExcept : boolean = false ) : string;
 
-//function IsLinuxBuiltin( const FName : string ) : boolean;
 procedure FillProcDefaults( aProc : TProcess; doPipeStdErr : boolean = false );
 procedure HandleProcParams( var aProc : TProcess; var Params : Tstrings );
 

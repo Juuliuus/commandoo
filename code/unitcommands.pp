@@ -282,7 +282,6 @@ type
     procedure PrepCommandLinesForReWrite;
     procedure SaveCmdLineINI;
     procedure SaveCommandLines;
-    //function IsBuiltin : boolean;
     function IsSystemPath : boolean;
     function MergeKeyWords( FromCmdObj : TCmdObj ) : boolean;
     function Merge_CmdLines( FromCmdObj : TCmdObj; const MergeSource : string ) : boolean;
@@ -3967,11 +3966,6 @@ begin
   else
     Result := CommandName;
 end;
-
-//function TCmdObj.IsBuiltin : boolean;
-//begin
-//  result := LocationPath = cLinuxBuiltInStr;
-//end;
 
 function TCmdObj.IsSystemPath : boolean;
 begin

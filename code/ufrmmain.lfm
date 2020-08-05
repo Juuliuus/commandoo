@@ -855,7 +855,6 @@ object frmMain: TfrmMain
           object lblPathAliasDisp: TLabel
             Left = 41
             Height = 12
-            Hint = 'If the path is too long to see just '#10'DoubleClick it.'#10#10'<end>'
             Top = 27
             Width = 9
             Caption = '...'
@@ -1057,7 +1056,6 @@ object frmMain: TfrmMain
           object lblPADisp: TLabel
             Left = 7
             Height = 12
-            Hint = 'If the path is too long to see just '#10'DoubleClick it.'#10#10'<end>'
             Top = 27
             Width = 31
             Caption = 'Path:  '
@@ -1068,7 +1066,7 @@ object frmMain: TfrmMain
           end
         end
         object pnlcommand: TPanel
-          Left = 120
+          Left = 184
           Height = 158
           Top = 16
           Width = 693
@@ -1084,7 +1082,6 @@ object frmMain: TfrmMain
           object lblPathAlias: TLabel
             Left = 47
             Height = 15
-            Hint = 'This displays information about the path'#10'to the command''s folder.'#10#10'If the command is in the path it says only'#10'that it is in the path. If you want to see the'#10'full path in this case use the "Path" button'#10'above.'#10#10'If the command is a builtin (i.e, has no path)'#10'this says so.'#10#10'If neither of the above is the case then'#10'the full path is shown. '#10#10'If the path is so long you can''t see it all'#10'just DoubleClick it to see it all.'#10#10'<end>'
             Top = 27
             Width = 9
             Caption = '...'
@@ -1351,7 +1348,6 @@ object frmMain: TfrmMain
           object lblPA: TLabel
             Left = 8
             Height = 15
-            Hint = 'This displays information about the path'#10'to the command''s folder.'#10#10'If the command is in the path it says only'#10'that it is in the path. If you want to see the'#10'full path in this case use the "Path" button'#10'above.'#10#10'If the command is a builtin (i.e, has no path)'#10'this says so.'#10#10'If neither of the above is the case then'#10'the full path is shown. '#10#10'If the path is so long you can''t see it all'#10'just DoubleClick it to see it all.'#10#10'<end>'
             Top = 27
             Width = 34
             Caption = 'Path:  '

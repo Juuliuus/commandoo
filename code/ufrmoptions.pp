@@ -213,7 +213,7 @@ resourcestring
     + LineEnding + LineEnding
     + 'Unfortunately at this time there is only '
     + LineEnding
-    + 'English and Wookie (haha) and Pyrate! '
+    + 'English and...Pyrate! '
     + LineEnding + LineEnding
     + 'If you are so kind as to provide a translation '
     + LineEnding
@@ -226,12 +226,6 @@ resourcestring
     + 'file and select it. It will be added into the '
     + LineEnding
     + 'system automatically. '
-    + LineEnding + LineEnding
-    + '(Wookie is for fun but unintelligable! If you try it, '
-    + LineEnding
-    + 'take note of how to change the language back to something '
-    + LineEnding
-    + 'readable!)'
     + LineEnding + LineEnding
     + '<end> ';
 

@@ -671,7 +671,6 @@ type
     function CheckPathOverride(var ConPath : string ) : boolean;
     procedure WritePathOverride(const ConPath : string );
     function IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
-    //function CmdInPath( CheckForBuiltin : boolean = false ) : boolean;
     function CmdInPath : boolean;
     function AddCmdDisplayObjects( Dest : TStrings; Strings : TStringlist ) : boolean;
     procedure ApplyListChanges( theList : string; aListBox, DispListBox : TListBox );
@@ -1035,6 +1034,37 @@ const
 
 
 resourcestring
+
+  cmsgmainPathAliasHint =
+    'This displays information about the path'
+    + LineEnding
+    + 'to the command''s folder.'
+    + LineEnding + LineEnding
+    + 'If the command is in the path it says only'
+    + LineEnding
+    + 'that it is in the path. If you want to see the'
+    + LineEnding
+    + 'full path in this case use the "Path" button'
+    + LineEnding
+    + 'above.'
+    + LineEnding + LineEnding
+    + 'If the Command is not in $PATH then the full'
+    + LineEnding
+    + 'path is shown.'
+    + LineEnding + LineEnding
+    + 'If the path is so long you can''t see it all'
+    + LineEnding
+    + 'just DblClick it display it.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding;
+  cmsgmainPathAliasDispHint =
+    'If the path is too long to see just'
+    + LineEnding
+    + 'DoubleClick it.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding;
   ccapcleUncertainPath = 'Uncertain Path...';
   cmsgcleUncertainPath =
     'You are currently editing a Command and the path of the edited command is not '
@@ -2113,7 +2143,11 @@ begin
 //the older version, the settings file must keep the old setting just in case. INI files are good this
 //way, if you don't use it no problem. If the program starts calling it again, it simply doesn't mind.
 //TODO change your prog ver!
-      5 : InstallSupportFiles( true );
+      5 :
+        begin
+          FormSettings.ClearAllFormSettings( fIFS );
+          InstallSupportFiles( true );
+        end;
       //6 : When an update is done on the Program that needs attention in ini file write the needed code here
       //and set the c_PROG_VersionUpgradeCount const by +1
     end;
@@ -2435,6 +2469,12 @@ begin
   btnInsertPath.Hint := chintInsertFilePaths;
   btnInsertPath.Caption := '&J  ' + ccapInsertFilePaths;
   btnEditCmdName.Caption := ccapGenericEdit;
+
+  lblPADisp.Hint := cmsgmainPathAliasDispHint;
+  lblPathAliasDisp.Hint := lblPADisp.Hint;
+  lblPA.Hint := cmsgmainPathAliasHint;
+  lblPathAlias.Hint := lblPA.Hint;
+
   ResetCommandsToTop;
 
 end;
@@ -4938,11 +4978,6 @@ begin
   str := GetProperPathLabelCaption;
 
   Result := str = cCommandInPathStr;
-
-  //if Result then
-  //  exit;
-  //if CheckForBuiltin then
-  //  result := str = cLinuxBuiltInStr;
 end;
 
 function TfrmMain.IsFileExist( const FName : string; WithNotify : boolean = false ) : boolean;
@@ -6132,7 +6167,6 @@ begin
     'DBMISC' : result := fWritingToPath + cDefaultDBProfileName + cIniFileNameMisc + cIniDBExtension;
     'PO.EN' : result := GetPODirectory + 'commandoo.en.po';
     'PO.PYRXXX' : result := GetPODirectory + 'commandoo.pyrxxx.po';
-    'PO.WOOKIEXXX' : result := GetPODirectory + 'commandoo.wookiexxx.po';
     'SEARCH.1' : result := GetSearchesDirectory + 'DB:_CmdLines_NotTerminalOnly';
     'SEARCH.2' : result := GetSearchesDirectory + 'DB:_Commands_for_copy.move.rename.delete_files';
     'SEARCH.3' : result := GetSearchesDirectory + 'DB:_Gimp_Example';
@@ -6155,10 +6189,9 @@ procedure TfrmMain.InstallSupportFiles( const OnlyLanguages : boolean = false );
 begin
   InstallFile( GetPathFromResName( 'PO.EN' ), 'PO.EN' );
   InstallFile( GetPathFromResName( 'PO.PYRXXX' ), 'PO.PYRXXX' );
-  InstallFile( GetPathFromResName( 'PO.WOOKIEXXX' ), 'PO.WOOKIEXXX' );
   if OnlyLanguages then
   begin
-    UpdateDisplay( cmsgmainLanguageFilesUpdated, false, false );
+    //UpdateDisplay( cmsgmainLanguageFilesUpdated, false, false );
     exit;
   end;
   InstallFile( GetPathFromResName( 'DB' ), 'DB' );

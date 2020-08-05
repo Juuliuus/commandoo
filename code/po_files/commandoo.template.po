@@ -8,7 +8,7 @@ msgstr ""
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.3\n"
 "Language: af\n"
 
 #: jinifiles.serrcouldnotcreatepath
@@ -19,8 +19,8 @@ msgstr ""
 msgid "running as detached process"
 msgstr ""
 
-#: linuxtrix.cltmissingbash
-msgid "Cannot retrieve output from builtin \"%s\" on a system that does not support bash"
+#: linuxtrix.cltmsgshellnotfound
+msgid "Can not run through shell, commandoo could not determine which $SHELL can be used."
 msgstr ""
 
 #: linuxtrix.cltmsgwhich
@@ -36,7 +36,9 @@ msgid "< no output >"
 msgstr ""
 
 #: linuxtrix.cltprocess4thdimension
-msgid "Due to possibility of opening a 4th dimensional rift it is not allowed to run \"%s\""
+msgid ""
+"Due to possibility of opening a 4th dimensional rift (or worse: hanging the program)...\n"
+"it is not allowed to run these commands through the shell: \"%s\"\n"
 msgstr ""
 
 #: linuxtrix.cltprocessexitcode
@@ -73,11 +75,11 @@ msgid "< process canceled >"
 msgstr ""
 
 #: linuxtrix.cltprocessresulttimeout
-msgid "< timeout waiting for process output >"
+msgid "< your timeout limit (OPTIONS) was reached while waiting for process output >"
 msgstr ""
 
 #: linuxtrix.cltprocessresulttoomuch
-msgid "< %s exceeded internal maximum of %d characters, use a terminal or change maximium >"
+msgid "< %s exceeded internal maximum of %d characters (OPTIONS), use a terminal or change maximium >"
 msgstr ""
 
 #: linuxtrix.cltprocessresultundefined
@@ -89,7 +91,7 @@ msgid "< process finished with unknown code: %d >"
 msgstr ""
 
 #: linuxtrix.cltprocessthroughshell
-msgid "==RUNNING THROUGH SHELL=="
+msgid "== RUNNING THROUGH SHELL: \"%s\" =="
 msgstr ""
 
 #: strconst_en.caboutbdline
@@ -113,7 +115,7 @@ msgid "Settings files (%s, %s & %s) in:   %s"
 msgstr ""
 
 #: strconst_en.caboutinstalled
-msgid "Program installed in:   %s"
+msgid "Program running as:   %s"
 msgstr ""
 
 #: strconst_en.caboutlanguage
@@ -124,12 +126,12 @@ msgstr ""
 msgid "commandoo   Version: %s"
 msgstr "commandoo   Version: %s"
 
-#: strconst_en.ccantcopy
-msgid "Could not copy \"%s\" to \"%s\"."
+#: strconst_en.caboutsearches
+msgid "Saved Searches in:   %s"
 msgstr ""
 
-#: strconst_en.ccapapology
-msgid "Merging TO sql DB's:  My Apologies!!!"
+#: strconst_en.ccantcopy
+msgid "Could not copy \"%s\" to \"%s\"."
 msgstr ""
 
 #: strconst_en.ccapchangelangdoreset
@@ -144,6 +146,14 @@ msgstr ""
 msgid "Currently Editing"
 msgstr ""
 
+#: strconst_en.ccapdblcrootname
+msgid "Dbl-Click"
+msgstr ""
+
+#: strconst_en.ccapdbmergeinfo
+msgid "Merging TO sql DB's:"
+msgstr ""
+
 #: strconst_en.ccapdetachedprocesses
 msgid "%d  Running%s"
 msgstr ""
@@ -152,12 +162,24 @@ msgstr ""
 msgid "%s:  %s"
 msgstr "%s:  %s"
 
+#: strconst_en.ccaperror
+msgid "Error"
+msgstr ""
+
 #: strconst_en.ccapgeneralinformation
 msgid "Information you may want to know"
 msgstr ""
 
-#: strconst_en.ccapibus
-msgid "Possible \"ibus\" problem and solution if it affects you"
+#: strconst_en.ccaphaltprocess
+msgid "Halt detached process"
+msgstr ""
+
+#: strconst_en.ccapinsertfilepaths
+msgid "Insert full path"
+msgstr ""
+
+#: strconst_en.ccapinstructions
+msgid "Instructions"
 msgstr ""
 
 #: strconst_en.ccapintro
@@ -172,12 +194,16 @@ msgstr ""
 msgid "Nothing Selected"
 msgstr ""
 
+#: strconst_en.ccapmainrootname
+msgid "GoTo"
+msgstr ""
+
 #: strconst_en.ccapmasterlistempty
 msgid "Master List is empty"
 msgstr ""
 
 #: strconst_en.ccapmulipleinstances
-msgid "  >>>>>  %d or More COPIES OPEN!! Careful!!"
+msgid "  >>>>> %d COPIES OPEN!! Careful!!"
 msgstr ""
 
 #: strconst_en.ccapmultipledisallowed
@@ -188,6 +214,10 @@ msgstr ""
 msgid "Nothing Loaded"
 msgstr ""
 
+#: strconst_en.ccapoptsqlitesearch
+msgid "Attempt to re-set sqlib"
+msgstr ""
+
 #: strconst_en.ccapoverflow
 msgid "Overflow from long line"
 msgstr ""
@@ -196,9 +226,17 @@ msgstr ""
 msgid "Path to: \"%s\""
 msgstr ""
 
-#: strconst_en.ccapprogram
-msgid "COMMANDOO : GUI for Linux Commands / CLI"
+#: strconst_en.ccappmimainrootname
+msgid "Main"
 msgstr ""
+
+#: strconst_en.ccappopmenurootmenustr
+msgid "Menu"
+msgstr ""
+
+#: strconst_en.ccappopmenurootroot
+msgid "              === %s %s ==="
+msgstr "              === %s %s ==="
 
 #: strconst_en.ccapquickrun
 msgid "Command to Run"
@@ -208,12 +246,28 @@ msgstr ""
 msgid "REQUIRED READING"
 msgstr ""
 
+#: strconst_en.ccaprevert
+msgid "Revert to DB data"
+msgstr ""
+
 #: strconst_en.ccaprootdisallowed
 msgid "ROOT running Disallowed"
 msgstr ""
 
+#: strconst_en.ccaprootfileinfo
+msgid "ROOT Copy/Paste template"
+msgstr ""
+
+#: strconst_en.ccaprootfiletest
+msgid "ROOT template test..."
+msgstr ""
+
 #: strconst_en.ccaprootmodeconfirmation
 msgid "Confirm <ROOT> Mode"
+msgstr ""
+
+#: strconst_en.ccapsavefileexists
+msgid "Saving to an existing file"
 msgstr ""
 
 #: strconst_en.ccapsearchdesignedindiffdatabase
@@ -224,12 +278,8 @@ msgstr ""
 msgid "Search Scope"
 msgstr ""
 
-#: strconst_en.ccapsudoset
-msgid "ROOT Privileges"
-msgstr ""
-
-#: strconst_en.ccapsufileinfo
-msgid "ROOT authentication files"
+#: strconst_en.ccapsuccess
+msgid "Success"
 msgstr ""
 
 #: strconst_en.ccapswitchdbnotallowed
@@ -242,26 +292,27 @@ msgstr ""
 
 #: strconst_en.ccaptabcommands
 msgctxt "strconst_en.ccaptabcommands"
-msgid "Commands"
+msgid "  Commands  "
 msgstr ""
 
 #: strconst_en.ccaptabfavorites
 msgctxt "strconst_en.ccaptabfavorites"
-msgid "Favorites"
+msgid "  Favorites  "
 msgstr ""
 
 #: strconst_en.ccaptabkeywords
-msgid "KeyWords"
+msgctxt "strconst_en.ccaptabkeywords"
+msgid "  KeyWords  "
 msgstr ""
 
 #: strconst_en.ccaptabprocesses
 msgctxt "strconst_en.ccaptabprocesses"
-msgid "Det. Processes"
+msgid "  |--  Detached Processes:  "
 msgstr ""
 
 #: strconst_en.ccaptabsearch
 msgctxt "strconst_en.ccaptabsearch"
-msgid "Search"
+msgid "  Searches  "
 msgstr ""
 
 #: strconst_en.ccapthreatlevelwarning
@@ -280,6 +331,10 @@ msgstr ""
 msgid "Program settings "
 msgstr ""
 
+#: strconst_en.ccapwgetupgradever
+msgid "Will check this URL..."
+msgstr ""
+
 #: strconst_en.ccontribute
 msgid "Contributions of any amount you want can be given to Juuliuus@me.com on PayPal. Another way to contribute, if you are bi-lingual, is to do a translation for commandoo. It's easy-ish...email me if you are interested. "
 msgstr ""
@@ -289,7 +344,7 @@ msgid "Updating %s"
 msgstr ""
 
 #: strconst_en.cemail
-msgid "Comments etc. to email:     Commandoo@TimePirate.org"
+msgid "Comments:     Commandoo@TimePirate.org"
 msgstr ""
 
 #: strconst_en.cfilenotexist
@@ -332,40 +387,39 @@ msgstr ""
 "You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>. \n"
 "\n"
 
+#: strconst_en.chintinsertfilepaths
+msgid ""
+"If you want the full path to the file and it\n"
+"is currently missing use this to insert it.\n"
+"\n"
+"This applies only to valid files that are not\n"
+"in the $PATH.\n"
+"\n"
+"Commands in the $PATH should not have\n"
+"a literal path to the command because\n"
+"it is not portable. Leaving the path out of\n"
+"CL's with a $PATH command allows the\n"
+"system to figure it out because it could be\n"
+"if commandoo is moved to another system\n"
+"paths to gnu/linux commands can be different\n"
+"but they will still work!\n"
+"\n"
+"<end>\n"
+msgstr ""
+
 #: strconst_en.cinputcantbeblank
 msgid "Text cannot be blank"
 msgstr ""
 
 #: strconst_en.cmsgadvancedoptions
-msgid "< All changes are saved immediately on \"OK\" >"
-msgstr ""
+msgid "< %s >"
+msgstr "< %s >"
 
-#: strconst_en.cmsgapology
-msgid ""
-"PLEASE READ: (!!!!) \n"
-"\n"
-"There is some, very very very subtle issue, when merging INTO a sql database. Depending on circumstances it can take a VERY long time. I've done what I can to make it as fast as I can but it can be terribly, terribly slow. Best circumstances are small merges of course. And where the merging items are not already present in the database. Those will be fast-ish. \n"
-"\n"
-"The worst case is where many of the incoming commands already exist in the destination. It's really really bad slooowwww. So I truly apologize for this issue which I am trying to figure out. \n"
-"\n"
-"You can, of course, merge commands one at a time from the right click popup on the commands list which then copy instantly to the destination. \n"
-"\n"
-"So do you still want to merge to a sql destination?? \n"
-msgstr ""
-
-#: strconst_en.cmsgbaddata_esc
-msgid "Output bad: %s which are not allowed in %s because of possible insecure consequences. Run this command in a Terminal (can be changed in OPTIONS)."
-msgstr ""
-
-#: strconst_en.cmsgbaddata_esc_base
-msgid "Output contains ESCAPE characters"
-msgstr ""
-
-#: strconst_en.cmsgbaddata_esc_ok
+#: strconst_en.cmsgbaddata_esc_msg
 msgid ""
 "\n"
 "\n"
-"%s. This can mess up the output display. By default the output is thrown out. This can be changed in OPTIONS. \n"
+"Output contains <ESCAPE> characters. These can mess up the output display (ie, odd behaviour), so they have all been replaced by \"%s\". This command should really be run in a terminal instead. \n"
 "\n"
 msgstr ""
 
@@ -381,15 +435,67 @@ msgstr ""
 msgid "Do you want to reset all the \"show no more\" dialogs so you can read them in the new language?"
 msgstr ""
 
+#: strconst_en.cmsgclenohelpparam
+msgid "<The command \"%s\" has no specified help parameter, can not display help here>"
+msgstr ""
+
 #: strconst_en.cmsgcommandlinedisallowed
 msgid ""
 "This Command Line has been set to be DISALLOWED (Terminal Only). If you really want to run this command you need to change that setting or run it in a Terminal.\n"
 "\n"
 msgstr ""
 
+#: strconst_en.cmsgcommandoothumbdrives
+msgid ""
+"commandoo and ThumbDrives / USB drives:\n"
+"\n"
+"If you are working away from your main computer, you can take commandoo with you. It is a simple matter to set up commandoo on a USB drive AND force it to use a \"config\" folder on that USB drive.\n"
+"\n"
+"The first step is to copy the commandoo AppImage file you use to the USB drive in an appropriate folder (the file you are using now is \"%s\"). \n"
+"\n"
+"Then, in the same folder you copied the AppImage to make a new folder with the same name as the AppImage file but with \".config\" added to the end of it. For example, say you copy the AppImage to:\n"
+"/myusb/commandoo/commandoo.AppImage\n"
+"\n"
+"Then simply make the following empty folder:\n"
+"/myusb/commandoo/commandoo.AppImage.config/\n"
+"\n"
+"Done. Now run the AppImage from the USB drive. commandoo will automatically use the AppImage.config folder for its settings and DB's. Since the first run will be a \"new\" run, the default \"DB\" databases will be created. You can now use the 'Profile management import function' to grab any DB's you want from your normal config folder. If you have worked only from the original default \"DB\" database, import it in with a new name and use that, or merge it with the default \"DB\" that was created.\n"
+"\n"
+"==> NOTE: The location of the sqlite3 library file varies from Distro to Distro. It can be that you are moving to a machine where that library is in a different path! This means you WILL NOT be able to use a sql database because commandoo won't know where sqlite is! You can fix this each time in options, yes. But I would recommend that the safest and easiest solution is to convert any sql databases you have on the USB drive to text based databases using the supplied 'Profile management convert function'. Then there is no sqlite3 library issues and the databases can be used on any distro.\n"
+"\n"
+"CONSIDERATIONS =========\n"
+"\n"
+"It can be that you have commands in your database that are not installed on the other machine. commandoo can't immediately know that and the command will fail even though it says it is on a \"good\" path. It is either on a different path, or not installed. It is easy to test if it should be in the path on the other machine: edit the command, double-click its name, then just accept that name. commandoo will always try to find out if it is in $PATH. It could be that it is not in $PATH but in a non-PATH folder. Use the same procedure but point to its path on the other machine, if it is installed. Finally, if it not corrected by these standard steps then it is not installed and either must be installed or simply not used.\n"
+"\n"
+"Considerations when you run a GUI program as a child process:  let's take \"gimp\" for example. If you run gimp through commandoo as a child process, gimp will use commandoo's ENVIRONMENT and save its config settings to the AppImage.config folder you created! This is actually a good thing, in that the other machines gimp settings will not be changed. You will notice, as you use the USB drive, that other files will be written into the AppImage.config folder.\n"
+"\n"
+"There may be other things that will arise when using the USB AppImage that I haven't run into yet. So best practice is to make your USB AppImage and then test it yourself under a variety of circumstances and Distros as possible.\n"
+msgstr ""
+
+#: strconst_en.cmsgcommandooupgrade
+msgid ""
+"If you upgraded commandoo from the original version 1.0.1...\n"
+"\n"
+"...you will notice your customized databases aren't shown! But it is easy to point to them in just a few clicks.\n"
+"\n"
+"This new commandoo is future-proofed (!?), but the old one was not. \n"
+"\n"
+"The easiest way is to go to options and use the \"Base/DB folder\" button to choose the folder where your old databases are. Confirm, close commandoo, and re-start. Voila, all is right with the world. \n"
+"\n"
+"The other easy way, only a bit more work, is to use the \"Manage DB Profiles\" button, and then use the new IMPORT function. You can then import your custom DB's one at a time into the new config area. \n"
+"\n"
+"What, exactly, has changed? The old commandoo simply looked in the same folder where it was installed. The new commandoo queries the system for the system determined user config folder (usually .config). But, as you now know, this can be over-ridden as described. \n"
+"\n"
+"Would it be better to import which moves everything to the new config folder? It is entirely up to you, commandoo doesn't =care= where they are, it just needs to =know= where they are. If there is any advantage to importing it would be that the final structure is in line with gnu/linux quidelines and, in that way, \"future-proofed\".\n"
+"\n"
+"By the way, if you import your DB's, it does not destroy the original files, they will still be in their original location. This is true of any imported DB.\n"
+"\n"
+"By this time you probably have thought that this would be a neat way of keeping separate folders of DB's for different purposes and simply using this DB path to move between them. Yeah, you can do that now. The only reason I don't recommend this method is that you could start getting confused as to what is where, and start making edits in one folder that you meant to make in another.\n"
+msgstr ""
+
 #: strconst_en.cmsgcommandssaved
 msgid ""
-"Saved by user at %s...\n"
+"\"%s\" saved by user at %s...\n"
 "\n"
 msgstr ""
 
@@ -399,6 +505,15 @@ msgstr ""
 
 #: strconst_en.cmsgdanger
 msgid "Can trash your system, research before use!!!"
+msgstr ""
+
+#: strconst_en.cmsgdbmergeinfo
+msgid ""
+"Depending on the amount of data you are merging, and how much of that data already exists in the Target DB, and the speed of your hard drives, the process of merging to a sql DB can take time. \n"
+"\n"
+"Please be patient, it will finish. \n"
+"\n"
+"According to the hompage of the sqlite3 team, speed is limited because DB transactions must be ensured to be accurate and definitely written to disk for the safey of your data.\n"
 msgstr ""
 
 #: strconst_en.cmsgdisallowedphrase
@@ -422,11 +537,7 @@ msgid ""
 "This shows the current state of the selected \n"
 "%s settings.\n"
 "\n"
-"If you focus on the Notes area and press \n"
-"Ctrl-F a text search dialog opens. \n"
-"\n"
-"And Ctrl-Shift-F or Ctrl-L will find the next \n"
-"find occurence. \n"
+"%s\n"
 "\n"
 "<end>\n"
 msgstr ""
@@ -461,7 +572,7 @@ msgid ""
 msgstr ""
 
 #: strconst_en.cmsgemptysearchresults
-msgid "< No Search Results >"
+msgid "< Search found no matches >"
 msgstr ""
 
 #: strconst_en.cmsgemptystring
@@ -470,6 +581,58 @@ msgstr ""
 
 #: strconst_en.cmsgfailedsave
 msgid "Failure during save: %s"
+msgstr ""
+
+#: strconst_en.cmsgfirstlocalrun
+msgid ""
+"Hi. This looks like a first run of commandoo.\n"
+"\n"
+"First, some orientation. HELP is written into commandoo. At the top/right of almost every window is a checkbox. Click it, or use alt-h, and then help will be shown as you move your mouse over all the controls. \n"
+"\n"
+"%s\n"
+"\n"
+"Also at the top/right is the ABOUT button, this opens a window where you can view information about commandoo, an Introduction, Tips and Tricks, and more. \n"
+"\n"
+"Other \"Language / Sprache / Idioma / Langue\" can be installed in OPTIONS if you have a language (.po) file for it.\n"
+"\n"
+"If you are upgrading from commandoo v1.0.1, see the ABOUT window for instructions.\n"
+"\n"
+"Most all windows are re-sizeable in width, height, or both. And they remember their positions and sizes. \n"
+"\n"
+"Use the copy/save buttons to the right to store any text in this memo, if nothing is selected it will take the entire text, otherwise just what is selected. \n"
+"\n"
+"You may wonder why the shortcut keys are seemingly random...This is done so that they remain the same if you change languages. \n"
+"\n"
+"Be sure to check out the OPTIONS button, don't forget to use the alt-h help there. \n"
+"\n"
+"A note about \"ibus\", the linux system used, principally, for asian character entry. In earlier linux versions a problem would crop up where when you typed the characters \"the\" one would get \"tthhee\", ie., doubled, or just a \"t\". And there were other systemic problems. This is an ibus problem, not a commandoo problem. If it affects you check out the ibus solution in the ABOUT window.\n"
+"\n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgfirstlocalrunabout
+msgid ""
+"<this is the message one sees from a First run of the program>\n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgformhotkeys
+msgid ""
+"The UI is large with many controls. To make it as mouse-less as possible for those who like to use the keyboard try: <CTRL>-<SHIFT> d / g / m / k / p, or left/right arrow keys\n"
+"\n"
+"d : inserts date/time in Output or edit Notes sections, if they are focused\n"
+"g : a GoTo popup menu appears so you can easily\n"
+"    move to an important section (Main form only)\n"
+"m : pops up the Main Menu (Main form only)\n"
+"k : a Dbl-Click popup menu appears (if applicable\n"
+"    for the form's controls)\n"
+"p : pops up any right-click popup menus\n"
+"    (either directly or via menu)\n"
+"Arrow Keys : Move between important areas on Commands page\n"
+msgstr ""
+
+#: strconst_en.cmsghaltprocess
+msgid "This will halt the selected process. Careful. The process may need to save data, best to find the program and close it normally. Do you still want to halt it??"
 msgstr ""
 
 #: strconst_en.cmsgharmless
@@ -500,13 +663,19 @@ msgctxt "strconst_en.cmsghelpversioninfoversion"
 msgid "Version"
 msgstr ""
 
+#: strconst_en.cmsghelpver_blacklist
+msgid ""
+"Help/Version problem: \n"
+"     < The command \"%s\" does not support help or version parameters >\n"
+msgstr ""
+
 #: strconst_en.cmsgibus
 msgid ""
-"IMPORTANT <===========\n"
+"Possible \"ibus\" problem and solution if it affects you\n"
 "\n"
-"commandoo has found that the program \"ibus\" is installed on your system. \n"
+"\"ibus\" is a gnu/linux input method (ie., keyboard entries) that is installed in many linux's by default.\n"
 "\n"
-"THIS CAN CAUSE PROGRAM MISBEHAVIOR, making commandoo unusable. The problem and solution are outlined below, but first use the copy to clipboard button above so that you can save this information and read it when commandoo is not running. \n"
+"In some older versions of gnu/linux ibus CAN CAUSE PROGRAM MISBEHAVIOR, making commandoo unusable. The problem and solution are outlined below. You may want to use the save to file button below, so that you can open it separately from this window.\n"
 "\n"
 "==================== \n"
 "The Problem: \n"
@@ -523,9 +692,9 @@ msgid ""
 "\n"
 "After finally testing (and researching) this thoroughly I found that the problem is rooted in ibus, or at least it's implementation. I can say this with confidence because while Lazarus programs have this problem it is ALSO A PROBLEM in KDE desktop environment (at least at this time, maybe it will be fixed??). \n"
 "\n"
-"On the fresh KDE install not only was commandoo affected but KDE windows (like kdesudo) failed, one can not type into the input fields. It also affects typing in the KDE kicker when trying to find some installed program, only the first typed character was displayed. Web research showed that many people are having this problem with KDE and Debian 9 and ibus. \n"
+"On the fresh KDE install not only was commandoo affected but KDE windows (like kdesudo) failed, one can not type into the input fields. It also affects typing in the KDE kicker when trying to find some installed program, only the first typed character was displayed. Web research showed that many people were having this problem with KDE and Debian 9 and ibus. \n"
 "\n"
-"You will see immediately if you are affected by this problem. Simply close this window and continue on into commandoo. First thing type alt-F to open the find dialog and type \"dog\" if \"dog\" is the result then you do not have this problem. If it comes out only \"d\" or as \"ddoogg\" then you do have the problem and should apply the solution. \n"
+"You can see immediately if you are affected by this problem. Simply close this window and continue on into commandoo. Focus the command list and type alt-F to open the find dialog and type \"dog\". If \"dog\" is the result then you do not have this problem. If it comes out only \"d\" or as \"ddoogg\" then you do have the problem and should apply the solution. \n"
 "\n"
 "When I discovered this back in August I recommended either removing ibus (if you are not typing asian characters) or a \"Fix\" I had found on the internet that seemed to work (setting some environment variables in .bashrc). Further testing in October with KDE showed the .bashrc \"solution\" was not effective though it had worked for me in August with GTK. That turned out to be due to how GTK enironment variable is set deep in the IM (input method) configuration files. So the solution DID NOT work with QT. At the time I had intended to try QT also but then the problem of not being able to use the GUI sudo commands (see above) convinced me that the KDE debian 9 install was flawed and I didn't bother. \n"
 "\n"
@@ -570,7 +739,7 @@ msgid ""
 "Introduction:\n"
 "============ \n"
 "\n"
-"Welcome to commandoo the Graphical User Interface (GUI) for the Linux Command Line Interface (CLI), perhaps better known as the \"Terminal\". You can read this introduction again later in the \"About\" window. Also available in the \"About\" window are some == TIPS == for use, recommended reading... \n"
+"Welcome to commandoo the Graphical User Interface (GUI) for the Linux Command Line Interface (CLI), perhaps better known as the \"Terminal\". \n"
 "\n"
 "It's purpose is to give you a place to store the cool and/or useful command lines you find, discover, or create. Then, months later, when you need it again, it will be here, easy to find. \n"
 "\n"
@@ -592,11 +761,13 @@ msgid ""
 "\n"
 "There is one other thing to know about the absence of a \"true\" shell: you can't change directories (cd) to run a command in that directory. For instance, if you choose to add \"git\" to your Commands you need to use it with the \"-C <path>\" flag. This is true of any command like git, you will need to use pathing and appropriate flags to run it. And the last BIG difference: any command that expects input will NOT run properly because I haven't figured out how to communicate (yet) with a running process in a shell-like manner waiting for input. These have to be run in a terminal. \n"
 "\n"
-"You can choose to use text based database files or sqlite db files. You can convert from one to the other. You can merge from one to the other. You can send individual Command Lines from your open db and send it to another db.\n"
+"You can choose to use text based database files or sqlite db files. You can convert from one to the other. You can merge from one to the other. You can send individual Command Lines from your open DB and send it to another DB. You can import DB's from other commandoo users. You can compare DB's. You can mix and match all these functions to manipulate your DB's at will. \n"
+"\n"
+"You can edit a Command and a CL at the same time. \n"
 "\n"
 "This is completely \"open\" software, the source code is on GitHub, see the link in the \"About\" window. It is written in pascal (thank you FreePascal) with the Lazarus IDE (thank you Lazarus). \n"
 "\n"
-"Help is included in the program. Almost all windows have a checkbox in the upper right to \"show hints on mouseover\". Check that and then move the mouse over the control you have a question about. \n"
+"Help is included in the program. Almost all windows have a checkbox in the upper right to \"show hints on mouse-over\". Check that and then move the mouse over the control you have a question about. Uncheck it when you're done.\n"
 "\n"
 "A word of CAUTION:     Be careful out there. \n"
 "\n"
@@ -604,7 +775,7 @@ msgid ""
 "\n"
 "If you don't know whether a command is dangerous or not then you really need to educate yourself about that command. Hopefully this database will help you with that. I will try to be as thorough as possible in the database descriptions of a command's merits. And, in the original database coming with this program, if I have marked a command line as harmless then it IS harmless you can be certain. If a command line is marked careful or higher then you may want to spend some time learning about that command so you understand WHY it is not completely harmless. \n"
 "\n"
-"Another word of CAUTION:     Backup your database files regularly. File locations can be seen in the \"About\" window. And now License Information: \n"
+"Another word of CAUTION:  Backup your database files regularly. File locations can be seen in the \"About\" window. And now License Information: \n"
 "\n"
 "%s%s\n"
 msgstr ""
@@ -652,23 +823,57 @@ msgstr ""
 msgid "commandoo is already running and your OPTIONS setting disallows this."
 msgstr ""
 
-#: strconst_en.cmsgnogoodsudo
+#: strconst_en.cmsgnopathinsertionbottom
+msgid "In the case of $PATH commands, it is not allowed to add the actual path because then it will not be portable to other systems where the actual literal path might be different."
+msgstr ""
+
+#: strconst_en.cmsgnopathinsertionediting
 msgid ""
-"I`ve searched for \"kdesudo\" and \"gksudo\", the safe and secure gnu/Linux methods of launching programs with ROOT privileges but didn`t find them.\n"
+"The base command before editing has:\n"
+"Cmd: %s  has  path: %s\n"
 "\n"
-"So, if you want to run commands with ROOT privileges you will need to set it manually in \"OPTIONS\".\n"
+"The currently editing form is:\n"
+"Cmd: %s  has  path: %s\n"
+"\n"
+"Neither has a usable path. \n"
+msgstr ""
+
+#: strconst_en.cmsgnopathinsertionnotediting
+msgid "Cmd: %s  has  path: %s, this is not a useable path. "
+msgstr ""
+
+#: strconst_en.cmsgnopathinsertiontop
+msgid ""
+"Can not insert a path because it doesn't exist or the CL should NOT have literal path on it.\n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgnoteshints
+msgid ""
+"Notes, which are searchable, for this \n"
+"%s.\n"
+"\n"
+"%s\n"
+"\n"
+"To read all the notes more conviently \n"
+"double click the notes.\n"
+"\n"
+"<end>\n"
 msgstr ""
 
 #: strconst_en.cmsgnothingloaded
 msgid "There is nothing loaded, this Database is empty."
 msgstr ""
 
-#: strconst_en.cmsgnotspecified
-msgid "-???-"
-msgstr "-???-"
-
 #: strconst_en.cmsgnoversionflagspecified
 msgid "Command \"%s\" has no %s flag specified."
+msgstr ""
+
+#: strconst_en.cmsgoptsqlitesearch
+msgid ""
+"commandoo could not find the sqlite 3 library, is the sqllite 3 library package installed? If you are sure that it is, maybe it is in an unusual location and you need to find the library. Once found add it manually using the button to the left.\n"
+"\n"
+"I can run the command \"locate -i -e libsqlite3\" for you which should give the location of the \"libsqlite3.so.0\" file. Would you like me to do that for you?\n"
 msgstr ""
 
 #: strconst_en.cmsgoutputendindicator
@@ -684,11 +889,35 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"==============================================================\n"
+"< END Command run ============================================\n"
+"==============================================================\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
 
 #: strconst_en.cmsgownrisk
 msgid ""
-"The use of of this software is at YOUR OWN RISK. While I strive for complete testing it has no implicit or explicit warranty or guarantee of being bug free. I hope you find it useful, enjoy. \n"
+"The use of of this FREE as in FREEDOM software is at YOUR OWN RISK. While I strive for complete testing it has no implicit or explicit warranty or guarantee of being bug free. \n"
 "\n"
+"I hope you find it useful, enjoy. \n"
+"\n"
+msgstr ""
+
+#: strconst_en.cmsgpermissionserror
+msgid "Could not write to \"%s\", apparent system permissions problem.   Halting."
+msgstr ""
+
+#: strconst_en.cmsgpkexecnotallowed
+msgid "Either your OPTIONS settings disallow \"%s\", or it is not installed on your system's $PATH."
+msgstr ""
+
+#: strconst_en.cmsgpkexecnotinstalled
+msgid "You enabled \"allow pkexec\" but pkexec does not appear to be installed on your system."
 msgstr ""
 
 #: strconst_en.cmsgprocessplural
@@ -700,7 +929,11 @@ msgid "Proc"
 msgstr ""
 
 #: strconst_en.cmsgprofilestring
-msgid "DB Profile  =>  %s%s %s"
+msgid "%s%s %s"
+msgstr "%s%s %s"
+
+#: strconst_en.cmsgprofilestringcurrdb
+msgid "Current Database:   "
 msgstr ""
 
 #: strconst_en.cmsgrequiredreading
@@ -715,8 +948,19 @@ msgid ""
 "\n"
 msgstr ""
 
+#: strconst_en.cmsgrevert
+msgid "This will revert all changes back to orginal values. Do you still want to Revert??"
+msgstr ""
+
 #: strconst_en.cmsgrootdisallowed
-msgid "You have either specifically disallowed running as ROOT or you don't have a valid Linux ROOT GUI file. You can change / check this in OPTIONS."
+msgid ""
+"The ROOT choice for a command line is simply a helper so that when a CL is copied and then pasted  into a terminal the proper ROOT template is used (ie., \"sudo\", \"su -c\", etc.) so that the CL can be run directly in the terminal. The template can be changed in OPTIONS.\n"
+"\n"
+"It is not allowed to run ROOT CL's through commandoo, it simply isn's safe. Use a terminal to run ROOT commands, or look into the other approved methods using \"pkexec\", or the admin:// option for files.\n"
+msgstr ""
+
+#: strconst_en.cmsgrootfileinfo
+msgid "The template requires a single \"%s\" in it so that the command line can be placed properly. "
 msgstr ""
 
 #: strconst_en.cmsgrootmodeconfirmation
@@ -731,8 +975,8 @@ msgid ""
 "\n"
 msgstr ""
 
-#: strconst_en.cmsgrootnostartup
-msgid "It not allowed to run the program the FIRST TIME as <ROOT>.   Halting."
+#: strconst_en.cmsgsavefileexists
+msgid "The file \"%s\" already exists. Do you want to over-write it?"
 msgstr ""
 
 #: strconst_en.cmsgsearchdesignedindiffdatabase
@@ -741,6 +985,15 @@ msgstr ""
 
 #: strconst_en.cmsgsearchmaybeinvalid
 msgid "Changes have been made that can affect Searches. For this reason any current search results may be incorrect. You should probably re-run the search(es)."
+msgstr ""
+
+#: strconst_en.cmsgsearchtexthint
+msgid ""
+"If you focus on the Notes area and press \n"
+"Ctrl-Shift-F a text search dialog opens. \n"
+"\n"
+"And Ctrl-Shift-L will find the next \n"
+"find occurence.\n"
 msgstr ""
 
 #: strconst_en.cmsgshowunsavedmessage
@@ -754,52 +1007,15 @@ msgstr ""
 msgid "sqlite system library \"%s\" not found"
 msgstr ""
 
-#: strconst_en.cmsgsudoset
-msgid ""
-"Your ROOT mode file was not set. I`ve set your ROOT mode privileges file to \"%s\". For most users this will be correct.\n"
-"\n"
-"If you want to change it do so in \"OPTIONS\".\n"
-"\n"
-"If running ROOT mode has no effect then you will NEED to change it to the proper file depending on your Linux distribution (Debian vs. 'Buntu) and the type of administrative setup (sudo vs sudo'ers vs su) it has.\n"
-msgstr ""
-
 #: strconst_en.cmsgsudosuproblem
 msgid ""
 "\n"
 "\n"
 "______________________\n"
 "It appears you are using \"sudo\" or \"su\" in your command line. This is \n"
-"not allowed as it is not secure! Either run this command line through \n"
-"a terminal, or remove the sudo (or su) and use the \"run as SuperUser\" option \n"
-"which uses the secure system program(s) to go into ROOT mode. \n"
-msgstr ""
-
-#: strconst_en.cmsgsufileinfo
-msgid ""
-"In order to run command lines with superuser privileges you need to select a valid agent. \n"
-"\n"
-"Here select it from the list, or, if necessary, search for the file. \n"
-"\n"
-"Raw \"sudo\" and \"su\" commands are ==NOT== allowed because they are not secure to use from a GUI. \n"
-"\n"
-"What you select depends on your Linux system and the authentication scheme it uses. You need to know this to pick correctly. \n"
-"\n"
-"\"sudo\" variants (gksudo and kdesudo) differ based on your desktop scheme, whether you use gnome or KDE. This also applies to the \"su\" variants (gksu and kdesu). \n"
-"\n"
-"On Debian systems the user account is separate from the ROOT account. An \"su\" variant is required and password used will be the ROOT password. \n"
-"\n"
-"However, if, on your Debian system, your user account is added to the \"sudo-ers\" group / list then the sudo variant will also work but with your user account password. \n"
-"\n"
-"For `Buntu systems (and some other derivatives) the initial user has both user and ROOT privileges, in this case the sudo variant ONLY will work. \n"
-"\n"
-"But it is possible to set a `Buntu system to have a separate ROOT. In this case the comments for the Debian system apply. \n"
-"\n"
-"A quick summary of the most usual situations: \n"
-"\n"
-"`Buntu systems: use one of the \"sudo\" variants. \n"
-"\n"
-"Debian: use \"su\" variant unless your user account has ROOT privileges in which case \"sudo\" variant. \n"
-"\n"
+"not allowed as it is not secure! Run this command line through \n"
+"a terminal. Better is to remove the sudo (or su) and use the \"run as SuperUser\" option \n"
+"which helps you when copying and pasting using a ROOT template (look in OPTIONS). You can also try \"pkexec\", which depends on system security profiles but can give good results in some cases (test in terminal first)\n"
 msgstr ""
 
 #: strconst_en.cmsgswitchdbnotallowed
@@ -807,7 +1023,15 @@ msgid "Can not Switch or Manage Database Profiles while editing."
 msgstr ""
 
 #: strconst_en.cmsgswitchdbsave
-msgid "There is currently unsaved data. Do you want me to save it before switching the Database?"
+msgid "Do you want me to save the unsaved data for you before switching the Database?"
+msgstr ""
+
+#: strconst_en.cmsgswitchdbsave0
+msgid "There is currently unsaved data. Do you still want to switch to another Database?"
+msgstr ""
+
+#: strconst_en.cmsgswitchprofilestring
+msgid "%s : Switched to \"%s\" Database"
 msgstr ""
 
 #: strconst_en.cmsgthreatlevels
@@ -872,42 +1096,155 @@ msgid ""
 "TIPS:\n"
 "===== \n"
 "\n"
-"Commands are entries that describe the command you are using. Commands >> CAN NOT BE RUN <<. Only Command Lines can be run, but you must add the command first. Then you add command lines to it. \n"
+"Commands are entries that describe the command you are using. Commands >> CAN NOT BE RUN <<. Only Command Lines (CL's) can be run, but you must add the command first. Then you add command lines to it. \n"
 "\n"
-"Before adding Command Lines you should edit your new Command and give it a threat level and so on. This is because any command lines you add will \"inherit\" those settings (excepting the notes and KeyWords) saving you some work. \n"
+"Before adding Command Lines you should edit your new Command and give it a threat level and so on. This is because any command lines you add will \"inherit\" those settings saving you some work. \n"
 "\n"
-"Note for Debian users: If an entered command you know you should have and it comes back with \"badpath\" this is probably because the command is in /sbin/ and not in your $PATH. Edit the Command (go into edit mode and double click the command name) and simply type the /sbin/ manually. /sbin/ commands are usually reserved for ROOT users and so will not be seen by the program under your normal login. \n"
+"%s\n"
 "\n"
-"commandoo supports variables in Command Lines. Highlight the CL you want and go into edit mode. Double click the command line and you will be taken to a edit window that has buttons to allow you to enter various types of variables (strings, integer, real, and file/folder names).  \n"
+"When adding a new command simply type in the name. If it is in the $PATH it will be found automatically. If the command/file is not in the path you will need to type the path or use the browse button.\n"
+"\n"
+"If you want to change the Command's name (or path) then open the Command in edit mode and Dbl-Click the Command Name. \n"
+"\n"
+"commandoo supports variables in Command Lines. Select the CL you want and go into edit mode. Then use the CL builder/helper button and you will be taken to a edit window that has buttons to allow you to enter various types of variables (strings, integer, real, and file/folder names).  \n"
 "\n"
 "Look through the provided database, there are examples of variables, Command Line input, etc. \n"
 "\n"
 "One cool options is \"Alert\". If this is checked then the program makes you look at the notes for that Command Line. This can be really useful if you need to be aware of something, or having done something, BEFORE you run that command line. Try it. \n"
 "\n"
-"If you want commandoo to act as a \"launcher\" be sure to check the \"Child Proc\" checkbox in the Command Line. Otherwise, it will (usually) return immediately, having not done anything. Say you are running Gimp or Blender, well sending it out to be run like \"uname\" does precisely that. It runs it, and then stops and kills it. The Child Proc setting says \"hey, this is GUI program, keep it open\". \n"
+"If you want commandoo to act as a \"launcher\" be sure to check the \"Child Proc\" checkbox in the Command Line. Otherwise, it will (usually) return immediately, having not done anything. Say you are running Gimp or Blender, well sending it out to be run like \"uname\" does precisely that. It runs it, and then stops and kills it. The Child Proc setting says \"hey, this is a GUI program, keep it open\". \n"
 "\n"
-"\"Use Shell\" attempts to let the system handle it and this usually works pretty well. It is necessary for processes that use more terminal like syntax (semicolons and such). commandoo can internally handle the basic command lines, but if yours doesn't seem to work, try Use Shell and see if that does it. If not then that Command Line should only be run in a Terminal (term. only). \n"
+"\"Use Shell\" attempts to let the system handle it and this usually works pretty well. It is necessary for processes that use more terminal like syntax (semicolons and such). commandoo can internally handle the basic command lines, but if yours doesn't seem to work, try \"Use Shell\" and see if that does it. If not then that Command Line should only be run in a Terminal (term. only). \n"
 "\n"
 "If the Command Line is mission critical, complex, etc. you should probably only use it in a Terminal. commandoo is pretty good at performing most CL's but IT IS NOT A TERMINAL, be aware of that and use your best judgement on where commandoo can/should be used and where a Terminal should be used. \n"
 "\n"
 "\"Wants Input\" is pretty cool (I think). On Commands that accept input (like, for instance, grep) marking this option for a Command Line will ask you for input before running the Command Line. So for something like grep you can paste in some text you want to search. \n"
 "\n"
-"SuperUser (you can set details in OPTIONS): how this works varies on your distribution. If you are on Debian there is an admin user and then your personal login. If you are not part of \"sudo'ers\" then you can not run Commands as ROOT and you will need to know the admin password. For 'buntu distribs this is not the case unless you have set your system up specifically as such. See OPTIONS for SuperUser for more details. \n"
+"The \"SuperUser\" setting only marks the CL that it should/will be run as root in a terminal. Setting this adds a \"<root> \" at the beginning of the CL. Later if you need this command, copy it from commandoo's right click menu, then when you paste it in a terminal it will fill the CL out for you with the proper superuser command, ie., <root> alias will be pasted as sudo alias. What <root> get's replaced with is from a template you can set from OPTIONS. You can not / may not run sudo or su commands from within commandoo, they must be run in a terminal. I have had success, however, with pkexec which I use from commandoo to mount a ram drive. So try pkexec too. Success of running CL's with pkexec permissions will depend on your system's policies.\n"
 "\n"
 "Use DB profiles, why not? The provided database is of basic Linux commands. Now you can add more and more to this database as you like, fine. But you could also make specific databases for specific needs. This is another way to make commandoo useful for you. Maybe you want a GUI launcher database for all your programs. And another that just deals with hardware commands. Etc. Make commandoo yours. \n"
 "\n"
-"Almost every window in commandoo has a checkbox at upper right to show hints on mouseover. Use it!! Lot's of information there. When you are done reading, uncheck it to stop the hints. The detailed hints for the Commands and CL's are only shown in edit mode. \n"
+"Almost every window in commandoo has a checkbox at upper right to show hints on mouse-over. Use it!! Lot's of information there. When you are done reading, uncheck it to stop the hints. The detailed hints for the Commands and CL's are only shown in edit mode, so be sure to go into the 2 edit modes to see those details. \n"
 "\n"
 "Heads UP: I ran into an odd problem with a couple of the more abstruse, esoteric Commands. When you add  a new Command the HELP and VERSION fields are filled in for you with the most common variants: \"--help\" and \"--version\". Upon entering a new Command I always check that these are correct for that Command, sometimes they aren't. Well, in a couple of cases running the \"--help\" threw me out of my session!! Surprise! I don't know why, it is hard to reproduce. But, for this reason, I recommend you test the help and version commands in a TERMINAL WINDOW first. \n"
 "\n"
 msgstr ""
 
 #: strconst_en.cmsgunsaveddata
-msgid "Either Editing or Unsaved Data, Do you still want to close??"
+msgid "Editing and/or Unsaved Data. Are you sure you want to close??"
 msgstr ""
 
 #: strconst_en.cmsgupdated_dbfiles
-msgid "%s automatically updated to %s, Item %d"
+msgid "DB Profile \"%s\" automatically updated to %s, from Item %d to Item %d"
+msgstr ""
+
+#: strconst_en.coutputactionhint
+msgid ""
+"%s the Output area to %s.\n"
+"\n"
+"If nothing is selected the entire output will \n"
+"be %s, otherwise only the selected \n"
+"portion.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: strconst_en.coutputchangedbasefolder
+msgid ""
+"==> Program re-start needed\n"
+"\n"
+"You changed the base folder path, commandoo needs to be restarted before the changes can take effect. If you have other copies open best to close them all.\n"
+msgstr ""
+
+#: strconst_en.coutputcopy1
+msgctxt "strconst_en.coutputcopy1"
+msgid "Copy"
+msgstr ""
+
+#: strconst_en.coutputcopy2
+msgid "the clipboard"
+msgstr ""
+
+#: strconst_en.coutputcopy3
+msgctxt "strconst_en.coutputcopy3"
+msgid "copied"
+msgstr ""
+
+#: strconst_en.coutputsave1
+msgctxt "strconst_en.coutputsave1"
+msgid "Save"
+msgstr ""
+
+#: strconst_en.coutputsave2
+msgid "a file"
+msgstr ""
+
+#: strconst_en.coutputsave3
+msgid "saved"
+msgstr ""
+
+#: strconst_en.cpkexechint
+msgid ""
+"\"pkexec\" is linux program that lets one invoke \n"
+"a command as another user, often used as \n"
+"ROOT with elevated privileges, in a secure \n"
+"way through a GUI.\n"
+"\n"
+"This is very useful to run brief superuser \n"
+"commands like \"mount\" for instance. \n"
+"\n"
+"Whether it will actually run the program \n"
+"depends on the setup of your \"PolicyKit\". \n"
+"\n"
+"As always with ROOT privileges: be careful \n"
+"and use it sparingly and briefly. There are \n"
+"very few good reasons to run something as ROOT \n"
+"from commandoo.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: strconst_en.cpkexechintoptions
+msgid ""
+"This determines whether you will allow\n"
+"\"pkexec\" to be used in commandoo.\n"
+"\n"
+msgstr ""
+
+#: strconst_en.csavetofileabout
+msgid "about"
+msgstr ""
+
+#: strconst_en.csavetofilefreshstart
+msgid "freshstart"
+msgstr ""
+
+#: strconst_en.csavetofileibus
+msgid "ibus"
+msgstr ""
+
+#: strconst_en.csavetofileintro
+msgid "introduction"
+msgstr ""
+
+#: strconst_en.csavetofilemsg
+msgid "message"
+msgstr ""
+
+#: strconst_en.csavetofileoutput
+msgid "OutPut_%s"
+msgstr ""
+
+#: strconst_en.csavetofiletips
+msgid "tips"
+msgstr ""
+
+#: strconst_en.csavetofileupgrade
+msgid "upgrade"
+msgstr ""
+
+#: strconst_en.csavetofileusbdrive
+msgid "USB_Drive"
 msgstr ""
 
 #: strconst_en.csearchhintending
@@ -1014,21 +1351,32 @@ msgstr ""
 msgid ">>         ↑ Commands   ---   ↓ Command Lines"
 msgstr ""
 
-#: tframehint.cbhints.caption
-msgid "&H  Show hints on mouseover"
-msgstr ""
-
-#: tframehint.cbhints.hint
-msgid "Help HInts now Showing"
+#: tfrmabout.btnsavetofile.caption
+msgid "&F Save to file"
 msgstr ""
 
 #: tfrmabout.btntoggle.caption
-msgid "&A  Toggle About => Introduction => Tips"
-msgstr ""
+msgctxt "tfrmabout.btntoggle.caption"
+msgid "..."
+msgstr "..."
 
 #: tfrmabout.caption
 msgid "Commandoo About"
 msgstr ""
+
+#: tfrmabout.lbltopic.caption
+msgid "lblTopic"
+msgstr ""
+
+#: tfrmaddlanguage.btncancel.caption
+msgctxt "tfrmaddlanguage.btncancel.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmaddlanguage.btnok.caption
+msgctxt "tfrmaddlanguage.btnok.caption"
+msgid "&OK"
+msgstr "&OK"
 
 #: tfrmaddlanguage.caption
 msgid "Add Language File ( .po file)"
@@ -1183,44 +1531,50 @@ msgstr ""
 msgid " * "
 msgstr " * "
 
-#: tfrmboolexpr.mnibebar1.caption
-msgctxt "tfrmboolexpr.mnibebar1.caption"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+#: tfrmboolexpr.mnibecmdcompact.caption
+msgid "DNT compact"
+msgstr "DNT compact"
 
-#: tfrmboolexpr.mnibebar2.caption
-msgctxt "tfrmboolexpr.mnibebar2.caption"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+#: tfrmboolexpr.mnibecmdcopy.caption
+msgid "DNTCopy"
+msgstr "DNTCopy"
 
-#: tfrmboolexpr.mnibebar3.caption
-#| msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgctxt "tfrmboolexpr.mnibebar3.caption"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+#: tfrmboolexpr.mnicmdsi_l_add.caption
+msgid "Add left  ( << + )"
+msgstr ""
+
+#: tfrmboolexpr.mnicmdsi_r_add.caption
+msgid "Add right  ( + >> )"
+msgstr ""
 
 #: tfrmboolexpr.mnicmd_delete.caption
 msgctxt "TFRMBOOLEXPR.MNICMD_DELETE.CAPTION"
 msgid "Delete"
 msgstr ""
 
-#: tfrmbusy.btnbusycancel.caption
-#| msgid "&W  NT"
-msgid "&W  NT"
-msgstr "&W  NT"
+#: tfrmboolexpr.mnicmd_exchange.caption
+msgid "⇄  (exchange)"
+msgstr ""
 
-#: tfrmbusy.caption
-msgctxt "tfrmbusy.caption"
-msgid "busycapNT"
-msgstr "busycapNT"
+#: tfrmboolexpr.mnicmd_not_toggle.caption
+msgid "± NOT  (toggle)"
+msgstr ""
 
-#: tfrmbusy.lblbusyhint.caption
-msgid "busyNT"
-msgstr "busyNT"
+#: tfrmboolexpr.mnicmd_paren_add.caption
+msgid "Add Parens  ( + ( )'s )"
+msgstr ""
 
-#: tfrmbusy.lblmsg.caption
-msgid "msgNT"
-msgstr "msgNT"
+#: tfrmboolexpr.mnicmd_paren_l_move.caption
+msgid "move paren left ( ←()  )"
+msgstr ""
+
+#: tfrmboolexpr.mnicmd_paren_r_move.caption
+msgid "move paren right  ( ()→ )"
+msgstr ""
+
+#: tfrmboolexpr.mnifsecmdroot.caption
+msgid "DNT title"
+msgstr "DNT title"
 
 #: tfrmcmdlineedit.btndefaulthelp.caption
 msgid "&Y  Default Help"
@@ -1236,6 +1590,15 @@ msgid ""
 "help quickly, then use this button.\n"
 "\n"
 "<end>\n"
+msgstr ""
+
+#: tfrmcmdlineedit.btnpath.caption
+msgid "&A  Insert full path"
+msgstr ""
+
+#: tfrmcmdlineedit.btnpkexec.caption
+msgctxt "tfrmcmdlineedit.btnpkexec.caption"
+msgid "&T  Toggle pkexec"
 msgstr ""
 
 #: tfrmcmdlineedit.btnrefresh.caption
@@ -1394,17 +1757,18 @@ msgid ""
 "It is far easier to simply press <ENTER> after\n"
 "typing everything in. \n"
 "\n"
-"Once all variables have been applied a final\n"
-"<ENTER> or clicking this button will\n"
-"proceed with the running of the \n"
-"command line.\n"
+"Once all variables have been applied \n"
+"<ENTER> allows you to edit the entire line if\n"
+"needed. When happy with the final form\n"
+"use the button below to run the Command\n"
+"Line.\n"
 "\n"
 "<end>\n"
 msgstr ""
 
 #: tfrmcommandsvar.btncancel.caption
 msgctxt "TFRMCOMMANDSVAR.BTNCANCEL.CAPTION"
-msgid "Cancel"
+msgid "&C  Cancel"
 msgstr ""
 
 #: tfrmcommandsvar.btndone.caption
@@ -1413,11 +1777,11 @@ msgid "NT"
 msgstr "NT"
 
 #: tfrmcommandsvar.btnfilename.caption
-msgid "&N  Insert File Name"
+msgid "&N  File Name"
 msgstr ""
 
 #: tfrmcommandsvar.btnfoldername.caption
-msgid "&F  Insert Folder Name"
+msgid "&F  Folder Name"
 msgstr ""
 
 #: tfrmcommandsvar.caption
@@ -1427,7 +1791,8 @@ msgstr ""
 #: tfrmcommandsvar.edtcmdline.hint
 msgid ""
 "The Command Line that will be run with\n"
-"variables to be filled in.\n"
+"variables to be filled in. It will update the values \n"
+"each time you APPLY them.\n"
 "\n"
 "<end>\n"
 msgstr ""
@@ -1440,7 +1805,8 @@ msgid ""
 "You can use <ENTER> after typing to move \n"
 "to the next variable (if there is one). You can \n"
 "also use <ENTER> after the last variable\n"
-"to apply the variables and continue with\n"
+"to edit the entire filled in line if needed. When\n"
+"done use the DONE button to continue with\n"
 "the running of the command line.\n"
 "\n"
 "If the variable is for a filename two buttons\n"
@@ -1451,6 +1817,10 @@ msgid ""
 "file name in that case.\n"
 "\n"
 "<end>\n"
+msgstr ""
+
+#: tfrmcommandsvar.label1.caption
+msgid "Results show here:  ↓"
 msgstr ""
 
 #: tfrmcommandsvar.meminfo.hint
@@ -1466,6 +1836,18 @@ msgstr ""
 msgid "frmFind"
 msgstr ""
 
+#: tfrmfind.edtfind.texthint
+msgid "Sanity check..."
+msgstr ""
+
+#: tfrmfindtext.caption
+msgid "Find Text"
+msgstr ""
+
+#: tfrmfindtext.edtfindtext.texthint
+msgid "Sanity?"
+msgstr ""
+
 #: tfrmfindtext.lblfindnexttext.caption
 #| msgid "fntDNT"
 msgctxt "tfrmfindtext.lblfindnexttext.caption"
@@ -1473,101 +1855,41 @@ msgid "fntDNT"
 msgstr "fntDNT"
 
 #: tfrmlistmanager.actadd.caption
-msgid "&A  Add"
-msgstr ""
+msgid "DNT Add"
+msgstr "DNT Add"
 
 #: tfrmlistmanager.actcancel.caption
 msgctxt "tfrmlistmanager.actcancel.caption"
-msgid "Cancel"
-msgstr ""
+msgid "DNT Cancel"
+msgstr "DNT Cancel"
 
 #: tfrmlistmanager.actconsolidate.caption
-msgid "&X  Consolidate"
-msgstr ""
+msgid "DNT Consolidate"
+msgstr "DNT Consolidate"
 
 #: tfrmlistmanager.actdelete.caption
 msgctxt "tfrmlistmanager.actdelete.caption"
-msgid "&D  Delete"
-msgstr ""
+msgid "DNT Delete"
+msgstr "DNT Delete"
 
 #: tfrmlistmanager.actedit.caption
 msgctxt "tfrmlistmanager.actedit.caption"
-msgid "&B  Edit"
-msgstr ""
+msgid "DNT Edit"
+msgstr "DNT Edit"
 
 #: tfrmlistmanager.actok.caption
+#| msgid "&OK"
 msgctxt "tfrmlistmanager.actok.caption"
-msgid "&OK"
-msgstr "&OK"
+msgid "DNT OK"
+msgstr "DNT OK"
 
 #: tfrmlistmanager.actrevert.caption
-msgid "&Y  Revert List"
-msgstr ""
+msgid "DNT Revert List"
+msgstr "DNT Revert List"
 
 #: tfrmlistmanager.actshowusage.caption
-msgid "&Z  Show Usage"
-msgstr ""
-
-#: tfrmlistmanager.btnadd.caption
-msgctxt "tfrmlistmanager.btnadd.caption"
-msgid "&A  NT"
-msgstr "&A  NT"
-
-#: tfrmlistmanager.btnadd.hint
-msgid ""
-"Yes. Add a new item.\n"
-"\n"
-"<end>\n"
-msgstr ""
-
-#: tfrmlistmanager.btnconsolidate.hint
-msgid ""
-"This will consolidate, or merge, one List item\n"
-"to another. \n"
-"\n"
-"For example, you find you have keywords\n"
-"of \"Frist\" and \"First\". You can get rid of \"Frist\"\n"
-"by consolidating it to \"First\".\n"
-"\n"
-"This updates all DB items using \"Frist\" also.\n"
-"\n"
-"Choosing consolidate may diasable other\n"
-"buttons. This is necessary to prevent DB\n"
-"update complications.\n"
-"\n"
-"You may also find that consolidate is \n"
-"disabled for similar reasons as above. \n"
-"Simply save what you are doing and then\n"
-"come back in and do your consolidations.\n"
-"\n"
-"\n"
-"<end>\n"
-msgstr ""
-
-#: tfrmlistmanager.btndelete.caption
-msgctxt "tfrmlistmanager.btndelete.caption"
-msgid "&D  NT"
-msgstr "&D  NT"
-
-#: tfrmlistmanager.btndelete.hint
-msgid ""
-"Yeah. Deletes the selected Item.\n"
-"\n"
-"<end>\n"
-msgstr ""
-
-#: tfrmlistmanager.btnedit.caption
-msgctxt "tfrmlistmanager.btnedit.caption"
-msgid "&B  NT"
-msgstr "&B  NT"
-
-#: tfrmlistmanager.btnedit.hint
-msgid ""
-"Change the name of the currently selected\n"
-"Item.\n"
-"\n"
-"<end>\n"
-msgstr ""
+msgid "DNT Show Usage"
+msgstr "DNT Show Usage"
 
 #: tfrmlistmanager.btnok.hint
 msgid ""
@@ -1580,41 +1902,6 @@ msgid ""
 "If in Manage Items mode this simply closes\n"
 "the form, you use the Manage buttons to\n"
 "manipulate the list.\n"
-"\n"
-"<end>\n"
-msgstr ""
-
-#: tfrmlistmanager.btnrevert.hint
-msgid ""
-"If you realize you are making a mistakes,\n"
-"or are unsure that you like the changes\n"
-"you have make, this will cancel all changes\n"
-"and re-load the List as it exists in the \n"
-"database.\n"
-"\n"
-"This will be disabled if nothing has been\n"
-"added, edited or deleted. \n"
-"\n"
-"It will also be unavailabe if you choose to \n"
-"Consolidate any Items until the list is \n"
-"saved.\n"
-"\n"
-"<end>\n"
-msgstr ""
-
-#: tfrmlistmanager.btnshowusage.hint
-msgid ""
-"Use this to help make decisions about\n"
-"deletions, consolidations, etc.\n"
-"\n"
-"It will show a list of commands that are\n"
-"using the selected item.\n"
-"\n"
-"Be aware it only searches saved commands,\n"
-"commands that are in an edited state\n"
-"may or may not show. To be sure you are\n"
-"seeing an accurate list, be sure to save\n"
-"commands before using this.\n"
 "\n"
 "<end>\n"
 msgstr ""
@@ -1645,25 +1932,15 @@ msgid ""
 "<end>\n"
 msgstr ""
 
-#: tfrmlistmanager.menuitem1.caption
-msgctxt "TFRMLISTMANAGER.MENUITEM1.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmlistmanager.menuitem2.caption
-msgctxt "TFRMLISTMANAGER.MENUITEM2.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmlistmanager.menuitem3.caption
-msgctxt "TFRMLISTMANAGER.MENUITEM3.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+#: tfrmlistmanager.mnikeywordsroot.caption
+msgctxt "tfrmlistmanager.mnikeywordsroot.caption"
+msgid "DNT Keywords"
+msgstr "DNT Keywords"
 
 #: tfrmlistmanagerconsolidate.caption
 msgctxt "TFRMLISTMANAGERCONSOLIDATE.CAPTION"
-msgid "Consolidate %s"
-msgstr ""
+msgid "DNT"
+msgstr "DNT"
 
 #: tfrmlistmanagerconsolidate.cbchoose.hint
 msgid ""
@@ -1685,13 +1962,15 @@ msgid "with (choose below):"
 msgstr ""
 
 #: tfrmlistmanagerconsolidate.lblinfo.caption
+#| msgid "lblInfo"
 msgctxt "tfrmlistmanagerconsolidate.lblinfo.caption"
-msgid "lblInfo"
-msgstr "lblInfo"
+msgid "DNT lblInfo"
+msgstr "DNT lblInfo"
 
 #: tfrmlistmanagerconsolidate.lblitem.caption
-msgid "lblItem"
-msgstr "lblItem"
+#| msgid "lblItem"
+msgid "DNT lblItem"
+msgstr "DNT lblItem"
 
 #: tfrmlistmanagerconsolidate.lblitem.hint
 msgid ""
@@ -1776,6 +2055,69 @@ msgstr ""
 
 #: tfrmmain.actoptions.caption
 msgid "Options"
+msgstr ""
+
+#: tfrmmain.actoutputclear.caption
+msgid "Clear"
+msgstr ""
+
+#: tfrmmain.actoutputclear.hint
+msgid ""
+"Maybe you don't like clutter. Maybe you \n"
+"don't want people to see what you've \n"
+"been running.\n"
+"\n"
+"Use this button to clear the OutPut memo.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.actoutputcopy.caption
+msgctxt "tfrmmain.actoutputcopy.caption"
+msgid "Copy"
+msgstr ""
+
+#: tfrmmain.actoutputcopy.hint
+msgid ""
+"Copy the Output to the clipboard.\n"
+"\n"
+"If nothing is selected the entire output will\n"
+"be copied, otherwise only the selected \n"
+"portion.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.actoutputsave.caption
+msgctxt "tfrmmain.actoutputsave.caption"
+msgid "Save"
+msgstr ""
+
+#: tfrmmain.actoutputsave.hint
+msgid ""
+"Save the Output to a file.\n"
+"\n"
+"If nothing is selected the entire output will\n"
+"be saved, otherwise only the selected \n"
+"portion.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.actoutputwrap.caption
+msgid "Wordrap Output"
+msgstr ""
+
+#: tfrmmain.actoutputwrap.hint
+msgctxt "tfrmmain.actoutputwrap.hint"
+msgid ""
+"You can choose to wrap the line content of \n"
+"the Output window to the left.\n"
+"\n"
+"Whether the output wraps or not depends\n"
+"on this item's checked state.\n"
+"\n"
+"<end>\n"
 msgstr ""
 
 #: tfrmmain.actplus.caption
@@ -1876,7 +2218,7 @@ msgid "Search"
 msgstr ""
 
 #: tfrmmain.actswitchdb.caption
-msgid "Switch Database"
+msgid "Switch DB"
 msgstr ""
 
 #: tfrmmain.btnabout.hint
@@ -1889,26 +2231,20 @@ msgid ""
 "<end>\n"
 msgstr ""
 
+#: tfrmmain.btnbuilder.caption
+msgid "&N  Command Line Builder / Helper"
+msgstr ""
+
 #: tfrmmain.btncancelrun.caption
 msgid "&W  Stop Run"
 msgstr ""
 
-#: tfrmmain.btnclear.caption
-msgid "Clear Display History"
-msgstr ""
-
-#: tfrmmain.btnclear.hint
-msgid ""
-"Maybe you don't like clutter. Maybe you don't\n"
-"want people to see what you've been running.\n"
-"\n"
-"Use this button to clear the OutPut memo.\n"
-"\n"
-"<end>\n"
+#: tfrmmain.btncmdcancel.caption
+msgid "&K  Cancel"
 msgstr ""
 
 #: tfrmmain.btncmdedit.caption
-msgid "&A  Edit"
+msgid "&A  Edit CMD"
 msgstr ""
 
 #: tfrmmain.btncmdlinedelete.caption
@@ -1918,8 +2254,8 @@ msgstr "&T  CL-"
 
 #: tfrmmain.btncmdlinedelete.hint
 msgid ""
-"This marks the currently selected Command\n"
-"Line for deletion.\n"
+"This marks the selected Command Line \n"
+"for deletion.\n"
 "\n"
 "<end>\n"
 msgstr ""
@@ -1928,10 +2264,23 @@ msgstr ""
 msgid "↓"
 msgstr "↓"
 
+#: tfrmmain.btncmdlinerecenter.caption
+msgid "*"
+msgstr "*"
+
+#: tfrmmain.btncmdlinerecenter.hint
+msgid ""
+"If you scrolled the Command Lines too far\n"
+"up or down, use this to re-center the currently\n"
+"selected Command Line.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
 #: tfrmmain.btncmdlineundelete.caption
-#| msgid "&U Un -"
-msgid "&U Undo-"
-msgstr "&U Undo-"
+#| msgid "&U Undo-"
+msgid "&U Undo -"
+msgstr "&U Undo -"
 
 #: tfrmmain.btncmdlineundelete.hint
 msgid ""
@@ -1953,8 +2302,13 @@ msgid ""
 "<end>\n"
 msgstr ""
 
+#: tfrmmain.btncmdok.caption
+msgid "&A  OK"
+msgstr ""
+
 #: tfrmmain.btncommanddelete.caption
-msgid "&D  Del"
+msgctxt "tfrmmain.btncommanddelete.caption"
+msgid "&D  Delete"
 msgstr ""
 
 #: tfrmmain.btncommanddelete.hint
@@ -2002,7 +2356,25 @@ msgid ""
 "<end>\n"
 msgstr ""
 
+#: tfrmmain.btneditcmdname.caption
+msgid "NT Edit"
+msgstr "NT Edit"
+
+#: tfrmmain.btneditcmdname.hint
+msgid ""
+"Edit the Command Name and/or the path.\n"
+"\n"
+"You can also Dbl-Click the Command Name.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnfinalneeds.caption
+msgid "Dev: GenUpgradeFiles"
+msgstr ""
+
 #: tfrmmain.btnfindcmd.caption
+msgctxt "tfrmmain.btnfindcmd.caption"
 msgid "&F  Find"
 msgstr ""
 
@@ -2033,7 +2405,7 @@ msgid ""
 msgstr ""
 
 #: tfrmmain.btnhaltprocess.caption
-msgid "&M  Halt Process"
+msgid "&X  Halt Process"
 msgstr ""
 
 #: tfrmmain.btnhaltprocess.hint
@@ -2045,6 +2417,10 @@ msgstr ""
 
 #: tfrmmain.btnhelpcommand.caption
 msgid "&X  Help"
+msgstr ""
+
+#: tfrmmain.btninsertpath.caption
+msgid "&S  Insert Full Path"
 msgstr ""
 
 #: tfrmmain.btnkeywordadd.caption
@@ -2075,17 +2451,17 @@ msgstr ""
 
 #: tfrmmain.btnkeyworddisplay.caption
 msgctxt "tfrmmain.btnkeyworddisplay.caption"
-msgid "Display"
+msgid "&I  Display"
 msgstr ""
 
 #: tfrmmain.btnkeywordload.caption
 msgctxt "tfrmmain.btnkeywordload.caption"
-msgid "Load"
+msgid "&C  Load"
 msgstr ""
 
 #: tfrmmain.btnkeywordnewsearch.caption
 msgctxt "tfrmmain.btnkeywordnewsearch.caption"
-msgid "New"
+msgid "&B  New"
 msgstr ""
 
 #: tfrmmain.btnkeywords.caption
@@ -2101,28 +2477,49 @@ msgstr ""
 
 #: tfrmmain.btnkeywordsave.caption
 msgctxt "tfrmmain.btnkeywordsave.caption"
-msgid "Save"
+msgid "&S  Save"
+msgstr ""
+
+#: tfrmmain.btnkeywordsearch.caption
+msgctxt "tfrmmain.btnkeywordsearch.caption"
+msgid "&A  Search"
+msgstr ""
+
+#: tfrmmain.btnlinecancel.caption
+msgid "&S  Cancel"
 msgstr ""
 
 #: tfrmmain.btnlineedit.caption
 msgctxt "tfrmmain.btnlineedit.caption"
-msgid "&B  Edit"
+msgid "&B  Edit CL"
 msgstr ""
 
 #: tfrmmain.btnlineok.caption
-msgid "O&K"
-msgstr "O&K"
+#| msgid "O&K"
+msgid "&B  Ok"
+msgstr "&B  Ok"
 
 #: tfrmmain.btnlocationpath.caption
-msgid "&Z  Directory"
+msgid "&Z  Path"
 msgstr ""
 
 #: tfrmmain.btnlocationpath.hint
 msgid ""
-"This always shows the actual path to the\n"
-"folder for this command, if it has one.\n"
+"This always shows the actual file location\n"
+"path to the folder for this command, \n"
+"if it has one.\n"
 "\n"
-"Bad command names and builtins don't.\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmmain.btnmaininfo.caption
+msgctxt "tfrmmain.btnmaininfo.caption"
+msgid "?"
+msgstr "?"
+
+#: tfrmmain.btnmaininfo.hint
+msgid ""
+"Output the current state of commandoo.\n"
 "\n"
 "<end>\n"
 msgstr ""
@@ -2147,6 +2544,11 @@ msgid ""
 "checkboxes, etc.\n"
 "\n"
 "<end>\n"
+msgstr ""
+
+#: tfrmmain.btnpkexecmain.caption
+msgctxt "tfrmmain.btnpkexecmain.caption"
+msgid "&T  Toggle pkexec"
 msgstr ""
 
 #: tfrmmain.btnplus.caption
@@ -2206,6 +2608,20 @@ msgid ""
 "<end>\n"
 msgstr ""
 
+#: tfrmmain.btnrecenter.caption
+msgid "Re-center"
+msgstr ""
+
+#: tfrmmain.btnrecenter.hint
+msgid ""
+"If you scroll the Command list and lose \n"
+"track of where you are, use this to make\n"
+"the list move to and center the currently \n"
+"selected Command \n"
+"\n"
+"<end>\n"
+msgstr ""
+
 #: tfrmmain.btnrefreshfavorites.caption
 msgid "&K  Refresh Favorites"
 msgstr ""
@@ -2245,12 +2661,24 @@ msgid ""
 msgstr ""
 
 #: tfrmmain.btnsave.caption
-msgid "&O Save"
+msgid "&O  Save"
 msgstr ""
 
 #: tfrmmain.btnsearchdisplaysearch.caption
 msgctxt "TFRMMAIN.BTNSEARCHDISPLAYSEARCH.CAPTION"
-msgid "Display"
+msgid "&I  Display"
+msgstr ""
+
+#: tfrmmain.btnsearchfindcmd.caption
+msgid "&D  Find Command"
+msgstr ""
+
+#: tfrmmain.btnsearchfindcmdline.caption
+msgid "&G  Find Cmd Line"
+msgstr ""
+
+#: tfrmmain.btnsearchgotocmd.caption
+msgid "&E  Go to Command"
 msgstr ""
 
 #: tfrmmain.btnsearchgotocmd.hint
@@ -2267,19 +2695,32 @@ msgid ""
 "<end>\n"
 msgstr ""
 
+#: tfrmmain.btnsearchgotocmdline.caption
+msgid "&K  Go to Cmd Line"
+msgstr ""
+
 #: tfrmmain.btnsearchloadsearch.caption
 msgctxt "TFRMMAIN.BTNSEARCHLOADSEARCH.CAPTION"
-msgid "Load"
+msgid "&C  Load"
 msgstr ""
 
 #: tfrmmain.btnsearchnewsearch.caption
 msgctxt "TFRMMAIN.BTNSEARCHNEWSEARCH.CAPTION"
-msgid "New"
+msgid "&B  New"
+msgstr ""
+
+#: tfrmmain.btnsearchrun.caption
+msgid "&R  Run CL"
 msgstr ""
 
 #: tfrmmain.btnsearchsavesearch.caption
 msgctxt "TFRMMAIN.BTNSEARCHSAVESEARCH.CAPTION"
-msgid "Save"
+msgid "&S  Save"
+msgstr ""
+
+#: tfrmmain.btnsearchsearch.caption
+msgctxt "tfrmmain.btnsearchsearch.caption"
+msgid "&A  Search"
 msgstr ""
 
 #: tfrmmain.btnsimplesearch.caption
@@ -2335,7 +2776,7 @@ msgid ""
 msgstr ""
 
 #: tfrmmain.btnswitchdb.caption
-msgid "&P  Switch Database"
+msgid "&P  Switch DB   =>"
 msgstr ""
 
 #: tfrmmain.btnswitchdb.hint
@@ -2353,38 +2794,10 @@ msgid ""
 "<end>\n"
 msgstr ""
 
-#: tfrmmain.btnterminal.caption
-msgid "Terminal"
-msgstr ""
-
-#: tfrmmain.btnterminal.hint
-msgid ""
-"Open a terminal. This will be the terminal\n"
-"program that is assocaited with your login\n"
-"(Environment variable TERM). \n"
-"\n"
-"If you want to use another terminal program\n"
-"you can change it in options.\n"
-"\n"
-"The terminal is opened as a child of this\n"
-"program and so dies when this prgram is \n"
-"closed.\n"
-"\n"
-"Ok, not exactly true. It will depend on the\n"
-"terminal program. In testing here \"xterm\" \n"
-"remains a child of this program. But \"konsole\"\n"
-"remains persistent even when the program\n"
-"is closed.\n"
-"\n"
-"Your mileage may vary.\n"
-"\n"
-"<end>\n"
-msgstr ""
-
 #: tfrmmain.btnthreatlevelinfo.caption
 msgctxt "TFRMMAIN.BTNTHREATLEVELINFO.CAPTION"
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: tfrmmain.btnthreatlevelinfo.hint
 msgid ""
@@ -2396,7 +2809,7 @@ msgstr ""
 #: tfrmmain.btnthreatlevelinfoline.caption
 msgctxt "tfrmmain.btnthreatlevelinfoline.caption"
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: tfrmmain.btnversioncommand.caption
 msgid "&Y  Version"
@@ -2493,7 +2906,7 @@ msgstr ""
 #: tfrmmain.cbdispthreatlevel.text
 msgctxt "TFRMMAIN.CBDISPTHREATLEVEL.TEXT"
 msgid "< Not Specified >"
-msgstr ""
+msgstr "< Not Specified >"
 
 #: tfrmmain.cbisfavorite.caption
 msgctxt "TFRMMAIN.CBISFAVORITE.CAPTION"
@@ -2638,22 +3051,22 @@ msgstr ""
 #: tfrmmain.cbthreatlevel.text
 msgctxt "TFRMMAIN.CBTHREATLEVEL.TEXT"
 msgid "< Not Specified >"
-msgstr ""
+msgstr "< Not Specified >"
 
 #: tfrmmain.cbthreatleveldisp.text
 msgctxt "TFRMMAIN.CBTHREATLEVELDISP.TEXT"
 msgid "< Not Specified >"
-msgstr ""
+msgstr "< Not Specified >"
 
 #: tfrmmain.cbthreatlevelline.text
 msgctxt "TFRMMAIN.CBTHREATLEVELLINE.TEXT"
 msgid "< Not Specified >"
-msgstr ""
+msgstr "< Not Specified >"
 
 #: tfrmmain.cbthreatlevellinedisp.text
 msgctxt "tfrmmain.cbthreatlevellinedisp.text"
 msgid "< Not Specified >"
-msgstr ""
+msgstr "< Not Specified >"
 
 #: tfrmmain.cbuseshellline.caption
 msgctxt "TFRMMAIN.CBUSESHELLLINE.CAPTION"
@@ -2720,21 +3133,6 @@ msgid ""
 "Input. A good example of one that can is\n"
 "\"grep\". So you can use Input to pass text \n"
 "to grep to search. Kinda cool.\n"
-"\n"
-"<end>\n"
-msgstr ""
-
-#: tfrmmain.cbwordwrapmain.caption
-msgid "Wordwrap Output "
-msgstr ""
-
-#: tfrmmain.cbwordwrapmain.hint
-msgid ""
-"You can choose to wrap the line content of \n"
-"the Output window to the left.\n"
-"\n"
-"Whether the output wraps or not depends\n"
-"on this item's checked state.\n"
 "\n"
 "<end>\n"
 msgstr ""
@@ -2814,20 +3212,15 @@ msgid ""
 "<end>\n"
 msgstr ""
 
+#: tfrmmain.edtversion.text
+msgid "TESTY"
+msgstr "TESTY"
+
 #: tfrmmain.framehint1.cbhints.hint
 msgid ""
 "Help HInts now Showing\n"
 "\n"
 "<end>\n"
-msgstr ""
-
-#: tfrmmain.label17.caption
-msgctxt "tfrmmain.label17.caption"
-msgid "Detached Processes"
-msgstr ""
-
-#: tfrmmain.label9.caption
-msgid "Command List"
 msgstr ""
 
 #: tfrmmain.lbcmdlines.hint
@@ -2850,8 +3243,8 @@ msgid ""
 "\n"
 "ctrl-a or + adds a new Command Line.\n"
 "\n"
-"<Enter> runs the command line, while\n"
-"<Ctrl>-<Enter> edits the command line.\n"
+"<Enter> edits the command line, while\n"
+"<Ctrl>-<Enter> runs the command line\n"
 "\n"
 "Ctrl-Shift-Alt-C makes another copy of \n"
 "the object.\n"
@@ -2909,6 +3302,8 @@ msgid ""
 "on them shows information, and you can \n"
 "halt the process with the button.\n"
 "\n"
+"ctrl-f opens a search window.\n"
+"\n"
 "<end>\n"
 msgstr ""
 
@@ -2925,15 +3320,17 @@ msgctxt "tfrmmain.lblalertlinedisp.caption"
 msgid "NT AL"
 msgstr "NT AL"
 
-#: tfrmmain.lblautosave.caption
-msgid "AutoSave at ~"
-msgstr ""
-
 #: tfrmmain.lblcapentryline.caption
 msgid "NT LI"
 msgstr "NT LI"
 
+#: tfrmmain.lblcapfriendlyname.caption
+msgctxt "tfrmmain.lblcapfriendlyname.caption"
+msgid "NT FN"
+msgstr "NT FN"
+
 #: tfrmmain.lblcapfriendlynameline.caption
+msgctxt "tfrmmain.lblcapfriendlynameline.caption"
 msgid "NT FN"
 msgstr "NT FN"
 
@@ -2946,14 +3343,12 @@ msgid "Editing..."
 msgstr ""
 
 #: tfrmmain.lblcmdlinepointer.caption
-msgid ""
-"Command\n"
-"↓      Lines\n"
-msgstr ""
+msgid "Command Lines  ↓DNT"
+msgstr "Command Lines  ↓DNT"
 
 #: tfrmmain.lblcmdpointer.caption
-msgid "Command  -->"
-msgstr ""
+msgid "Command  ↓DNT"
+msgstr "Command  ↓DNT"
 
 #: tfrmmain.lblcommandname.hint
 msgid ""
@@ -2977,6 +3372,10 @@ msgstr ""
 msgctxt "TFRMMAIN.LBLCOMMANDNAMEDISP.CAPTION"
 msgid "..."
 msgstr "..."
+
+#: tfrmmain.lblcurrdb.caption
+msgid "lblCurrDB"
+msgstr "lblCurrDB"
 
 #: tfrmmain.lbldetachedprocesses.caption
 msgid "Running Procs"
@@ -3090,49 +3489,25 @@ msgstr "NT KEY"
 msgid "< no options >"
 msgstr ""
 
-#: tfrmmain.lblpathactual.caption
-msgid "lblPathActual"
-msgstr "lblPathActual"
+#: tfrmmain.lblpa.caption
+msgctxt "tfrmmain.lblpa.caption"
+msgid "Path:  "
+msgstr ""
+
+#: tfrmmain.lblpadisp.caption
+msgctxt "tfrmmain.lblpadisp.caption"
+msgid "Path:  "
+msgstr ""
 
 #: tfrmmain.lblpathalias.caption
 msgctxt "TFRMMAIN.LBLPATHALIAS.CAPTION"
-msgid "Path:  "
-msgstr ""
-
-#: tfrmmain.lblpathalias.hint
-msgid ""
-"This displays information about the path\n"
-"to the command's folder.\n"
-"\n"
-"If the command is in the path it says only\n"
-"that it is in the path. If you want to see the\n"
-"full path in this case use the \"Path\" button\n"
-"above.\n"
-"\n"
-"If the command is a builtin (i.e, has no path)\n"
-"this says so.\n"
-"\n"
-"If neither of the above is the case then\n"
-"the full path is shown. \n"
-"\n"
-"If the path is so long you can't see it all\n"
-"just DoubleClick it to see it all.\n"
-"\n"
-"<end>\n"
-msgstr ""
+msgid "..."
+msgstr "..."
 
 #: tfrmmain.lblpathaliasdisp.caption
 msgctxt "tfrmmain.lblpathaliasdisp.caption"
-msgid "Path:  "
-msgstr ""
-
-#: tfrmmain.lblpathaliasdisp.hint
-msgid ""
-"If the path is too long to see just \n"
-"DoubleClick it.\n"
-"\n"
-"<end>\n"
-msgstr ""
+msgid "..."
+msgstr "..."
 
 #: tfrmmain.lblpestr.caption
 msgid "Search for PESTER in ufrmMain"
@@ -3143,13 +3518,13 @@ msgid "Show:"
 msgstr ""
 
 #: tfrmmain.lblsrcmdlines.caption
-msgid "Command Lines"
+msgid "Command Lines  ↑"
 msgstr ""
 
 #: tfrmmain.lblsrcmds.caption
 msgctxt "TFRMMAIN.LBLSRCMDS.CAPTION"
-msgid "Commands"
-msgstr ""
+msgid "Commands  ↑"
+msgstr "Commands  ↑"
 
 #: tfrmmain.lblsuperuserdisp.caption
 msgctxt "tfrmmain.lblsuperuserdisp.caption"
@@ -3163,16 +3538,18 @@ msgstr "NT SU"
 
 #: tfrmmain.lbltabfavorites.caption
 msgctxt "TFRMMAIN.LBLTABFAVORITES.CAPTION"
-msgid "Favorites"
-msgstr ""
+msgid "..."
+msgstr "..."
 
 #: tfrmmain.lbltabkeywords.caption
-msgid "KeyWordsSearch"
-msgstr ""
+msgctxt "tfrmmain.lbltabkeywords.caption"
+msgid "..."
+msgstr "..."
 
 #: tfrmmain.lbltabsearch.caption
-msgid "Search Results"
-msgstr ""
+msgctxt "tfrmmain.lbltabsearch.caption"
+msgid "..."
+msgstr "..."
 
 #: tfrmmain.lblterminalonlydisp.caption
 msgid "DNT TO"
@@ -3240,7 +3617,7 @@ msgid ""
 "\n"
 "Ctrl-f opens the find dialog.\n"
 "\n"
-"ctrl-g goes to the Cmd\n"
+"ctrl-t goes to the Cmd\n"
 "\n"
 "These are global:\n"
 "<alt-1> Search Keywords\n"
@@ -3263,10 +3640,6 @@ msgid ""
 "Click on a Command Line to enable the\n"
 "RUN button.\n"
 "\n"
-"It will be automatically cleared in some cases\n"
-"like when you edit the Master Keywords\n"
-"or maybe in some other cases.\n"
-"\n"
 "<Enter> runs the command line.\n"
 "\n"
 "For the ClipBoard:\n"
@@ -3276,7 +3649,7 @@ msgid ""
 "\n"
 "Ctrl-f opens the find dialog.\n"
 "\n"
-"ctrl-g goes to the Command Line\n"
+"ctrl-t goes to the Command Line\n"
 "\n"
 "These are global:\n"
 "<alt-1> Search Keywords\n"
@@ -3339,22 +3712,6 @@ msgid ""
 "<end>\n"
 msgstr ""
 
-#: tfrmmain.memnotes.hint
-msgid ""
-"Notes, which are searchable, for this item.\n"
-"\n"
-"If you focus on the Notes area and press\n"
-"Ctrl-F a text search dialog opens.\n"
-"\n"
-"And Ctrl-Shift-F or Ctrl-L will find the next \n"
-"find occurence.\n"
-"\n"
-"To read all the notes more conviently\n"
-"double click the notes.\n"
-"\n"
-"<end>\n"
-msgstr ""
-
 #: tfrmmain.memnotesdisp.hint
 msgid ""
 "To read all the notes more conviently\n"
@@ -3365,259 +3722,465 @@ msgstr ""
 
 #: tfrmmain.memo1.hint
 msgid ""
-"Yes. Output results come here,\n"
+"Don't be fooled...this is not a terminal \n"
+"emulator, it is simply the output area \n"
+"for command line results.\n"
+"\n"
+"You can double click it to save to a file or \n"
+"send to clipboard.\n"
+"\n"
+"Ctrl-shift-F to find, \n"
+"ctrl-shift-L to repeat last find.\n"
 "\n"
 "<end>\n"
 msgstr ""
 
-#: tfrmmain.menuitem10.caption
-msgctxt "TFRMMAIN.MENUITEM10.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmmain.menuitem11.caption
-msgctxt "TFRMMAIN.MENUITEM11.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmmain.menuitem12.caption
-msgctxt "TFRMMAIN.MENUITEM12.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmmain.menuitem13.caption
-msgctxt "TFRMMAIN.MENUITEM13.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmmain.menuitem14.caption
-msgctxt "TFRMMAIN.MENUITEM14.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmmain.menuitem2.caption
-msgctxt "TFRMMAIN.MENUITEM2.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmmain.menuitem3.caption
-msgctxt "TFRMMAIN.MENUITEM3.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmmain.menuitem5.caption
-msgctxt "TFRMMAIN.MENUITEM5.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmmain.menuitem6.caption
-msgctxt "TFRMMAIN.MENUITEM6.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmmain.menuitem7.caption
-msgctxt "TFRMMAIN.MENUITEM7.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-
-#: tfrmmain.menuitem8.caption
-msgctxt "TFRMMAIN.MENUITEM8.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+#: tfrmmain.mnicmdadd.caption
+msgid "Add : (ctrl-a or '+')"
+msgstr ""
 
 #: tfrmmain.mnicmdcount.caption
 msgid "Command Count"
 msgstr ""
 
+#: tfrmmain.mnicmdlinesroot.caption
+msgid "DNT CL's Menu"
+msgstr "DNT CL's Menu"
+
+#: tfrmmain.mnicmdpaste.caption
+msgid "Paste Cmd : (menu only)"
+msgstr ""
+
+#: tfrmmain.mnicmdpastecmdline.caption
+msgid "Paste CmdLine : (ctrl-v)"
+msgstr ""
+
+#: tfrmmain.mnicmdrecenter.caption
+msgctxt "tfrmmain.mnicmdrecenter.caption"
+msgid "DNT ReCenter"
+msgstr "DNT ReCenter"
+
 #: tfrmmain.mnicmdsendto.caption
 msgid "Send to DB Profile..."
 msgstr ""
 
+#: tfrmmain.mnicmdsortcommands.caption
+msgid "DNT Sort"
+msgstr "DNT Sort"
+
+#: tfrmmain.mnicommanddelete.caption
+msgctxt "tfrmmain.mnicommanddelete.caption"
+msgid "Delete : (<Del> or \"-\")"
+msgstr ""
+
+#: tfrmmain.mnicommandundelete.caption
+msgid "Undo Delete : (ctrl-  <Del> or -)"
+msgstr ""
+
+#: tfrmmain.mnicommansroot.caption
+msgid "DNT Cmds Menu"
+msgstr "DNT Cmds Menu"
+
 #: tfrmmain.mnicopycllistclip.caption
 msgctxt "TFRMMAIN.MNICOPYCLLISTCLIP.CAPTION"
-msgid "Copy List to Clipboard   (ctrl-shift-c)"
+msgid "Copy List to Clipboard : (ctrl-shift-c)"
 msgstr ""
 
 #: tfrmmain.mnicopycmdlistclip.caption
 msgctxt "tfrmmain.mnicopycmdlistclip.caption"
-msgid "Copy List to Clipboard   (ctrl-shift-c)"
+msgid "Copy List to Clipboard : (ctrl-shift-c)"
+msgstr ""
+
+#: tfrmmain.mnidblccmd.caption
+msgid "DNT Commands..."
+msgstr "DNT Commands..."
+
+#: tfrmmain.mnidblccmdkey.caption
+msgctxt "tfrmmain.mnidblccmdkey.caption"
+msgid "DNT Keywords"
+msgstr "DNT Keywords"
+
+#: tfrmmain.mnidblccmdlinefriendly.caption
+msgid "DNT FrName"
+msgstr "DNT FrName"
+
+#: tfrmmain.mnidblccmdlinenotes.caption
+msgid "DNT CLNotes"
+msgstr "DNT CLNotes"
+
+#: tfrmmain.mnidblccmdlines.caption
+msgid "DNT CL's"
+msgstr "DNT CL's"
+
+#: tfrmmain.mnidblccmdname.caption
+msgid "DNT CmdName"
+msgstr "DNT CmdName"
+
+#: tfrmmain.mnidblccmdnotes.caption
+msgctxt "tfrmmain.mnidblccmdnotes.caption"
+msgid "DNT Cmd Notes"
+msgstr "DNT Cmd Notes"
+
+#: tfrmmain.mnidblccmdpath.caption
+msgid "Path/Folder"
+msgstr ""
+
+#: tfrmmain.mnidblcdetp.caption
+msgid "DNT Det. Proc"
+msgstr "DNT Det. Proc"
+
+#: tfrmmain.mnidblcdetpinfo.caption
+msgid "Info"
+msgstr ""
+
+#: tfrmmain.mnidblcdetpprocs.caption
+msgid "DNT Procs"
+msgstr "DNT Procs"
+
+#: tfrmmain.mnidblcdisplay.caption
+msgctxt "tfrmmain.mnidblcdisplay.caption"
+msgid "DNT Output display"
+msgstr "DNT Output display"
+
+#: tfrmmain.mnidblcroot.caption
+msgid "DNT DblC"
+msgstr "DNT DblC"
+
+#: tfrmmain.mnidblcsearch.caption
+msgid "DNT Searches..."
+msgstr "DNT Searches..."
+
+#: tfrmmain.mnidblcsearchcmd.caption
+msgid "DNT CmdListbox"
+msgstr "DNT CmdListbox"
+
+#: tfrmmain.mnidblcsearchcmdline.caption
+msgid "DNT CL listbox"
+msgstr "DNT CL listbox"
+
+#: tfrmmain.mnidblcsearchentry.caption
+msgid "DNT Entry"
+msgstr "DNT Entry"
+
+#: tfrmmain.mnidblcsearchfriendly.caption
+msgid "DNT Friendly Name"
+msgstr "DNT Friendly Name"
+
+#: tfrmmain.mnidblcsearchkey.caption
+msgctxt "tfrmmain.mnidblcsearchkey.caption"
+msgid "DNT KeyWords"
+msgstr "DNT KeyWords"
+
+#: tfrmmain.mnidblcsearchnotes.caption
+msgid "DNT Notes"
+msgstr "DNT Notes"
+
+#: tfrmmain.mnikeywordsadd.caption
+msgctxt "tfrmmain.mnikeywordsadd.caption"
+msgid "Add"
+msgstr ""
+
+#: tfrmmain.mnikeywordsdelete.caption
+msgctxt "tfrmmain.mnikeywordsdelete.caption"
+msgid "Delete"
+msgstr ""
+
+#: tfrmmain.mnikeywordsroot.caption
+msgctxt "tfrmmain.mnikeywordsroot.caption"
+msgid "DNT KeyWords"
+msgstr "DNT KeyWords"
+
+#: tfrmmain.mnimaincmdlineentry.caption
+msgid "DNT CmdLine Entry"
+msgstr "DNT CmdLine Entry"
+
+#: tfrmmain.mnimaincmdlinefav.caption
+msgctxt "tfrmmain.mnimaincmdlinefav.caption"
+msgid "DNT Favorites"
+msgstr "DNT Favorites"
+
+#: tfrmmain.mnimaincmdlinekey.caption
+msgctxt "tfrmmain.mnimaincmdlinekey.caption"
+msgid "DNT Keywords"
+msgstr "DNT Keywords"
+
+#: tfrmmain.mnimaincmdlinelist.caption
+msgid "DNT CL list"
+msgstr "DNT CL list"
+
+#: tfrmmain.mnimaincmdlinenotes.caption
+msgid "DNT CmdLine Notes"
+msgstr "DNT CmdLine Notes"
+
+#: tfrmmain.mnimaincmdlinesearch.caption
+msgctxt "tfrmmain.mnimaincmdlinesearch.caption"
+msgid "DNT Search"
+msgstr "DNT Search"
+
+#: tfrmmain.mnimaincmdlist.caption
+msgid "DNT Cmd list"
+msgstr "DNT Cmd list"
+
+#: tfrmmain.mnimaincmdlistfav.caption
+msgctxt "tfrmmain.mnimaincmdlistfav.caption"
+msgid "DNT Favorites"
+msgstr "DNT Favorites"
+
+#: tfrmmain.mnimaincmdlistkey.caption
+msgctxt "tfrmmain.mnimaincmdlistkey.caption"
+msgid "DNT Keywords"
+msgstr "DNT Keywords"
+
+#: tfrmmain.mnimaincmdlistsearch.caption
+msgctxt "tfrmmain.mnimaincmdlistsearch.caption"
+msgid "DNT Search"
+msgstr "DNT Search"
+
+#: tfrmmain.mnimaincmdnameedit.caption
+msgid "DNT Edit Cmd Name"
+msgstr "DNT Edit Cmd Name"
+
+#: tfrmmain.mnimaincmdnotes.caption
+msgctxt "tfrmmain.mnimaincmdnotes.caption"
+msgid "DNT Cmd Notes"
+msgstr "DNT Cmd Notes"
+
+#: tfrmmain.mnimaincommandlines.caption
+msgid "DNT Command Lines"
+msgstr "DNT Command Lines"
+
+#: tfrmmain.mnimaincommands.caption
+msgctxt "tfrmmain.mnimaincommands.caption"
+msgid "DNT Commands"
+msgstr "DNT Commands"
+
+#: tfrmmain.mnimaindisplay.caption
+msgctxt "tfrmmain.mnimaindisplay.caption"
+msgid "DNT Output display"
+msgstr "DNT Output display"
+
+#: tfrmmain.mnimainfindcmdlinenotes.caption
+msgid "DNT Find in CmdLine Notes"
+msgstr "DNT Find in CmdLine Notes"
+
+#: tfrmmain.mnimainfindcmdnotes.caption
+msgid "DNT Find in Cmd Notes"
+msgstr "DNT Find in Cmd Notes"
+
+#: tfrmmain.mnimainfindoutput.caption
+msgid "DNT Output find"
+msgstr "DNT Output find"
+
+#: tfrmmain.mnimainhint.caption
+msgid "Toggle Hints"
+msgstr ""
+
+#: tfrmmain.mnimainprocs.caption
+msgctxt "tfrmmain.mnimainprocs.caption"
+msgid "DNT Detached Processes"
+msgstr "DNT Detached Processes"
+
+#: tfrmmain.mnimainroot.caption
+msgid "DNT goto"
+msgstr "DNT goto"
+
+#: tfrmmain.mnimainrun.caption
+msgid "DNT Run / Test"
+msgstr "DNT Run / Test"
+
+#: tfrmmain.mnimaintabs.caption
+msgid "Page..."
+msgstr ""
+
+#: tfrmmain.mnimaintabscommands.caption
+msgctxt "tfrmmain.mnimaintabscommands.caption"
+msgid "DNT Commands"
+msgstr "DNT Commands"
+
+#: tfrmmain.mnimaintabsfav.caption
+msgctxt "tfrmmain.mnimaintabsfav.caption"
+msgid "DNT Favorites"
+msgstr "DNT Favorites"
+
+#: tfrmmain.mnimaintabskeywords.caption
+msgctxt "tfrmmain.mnimaintabskeywords.caption"
+msgid "DNT Keywords"
+msgstr "DNT Keywords"
+
+#: tfrmmain.mnimaintabsprocs.caption
+msgctxt "tfrmmain.mnimaintabsprocs.caption"
+msgid "DNT Detached Processes"
+msgstr "DNT Detached Processes"
+
+#: tfrmmain.mnimaintabssearch.caption
+msgctxt "tfrmmain.mnimaintabssearch.caption"
+msgid "DNT Search"
+msgstr "DNT Search"
+
+#: tfrmmain.mnioutput.caption
+msgid "Output Area"
+msgstr ""
+
+#: tfrmmain.mnioutputcommandooinfo.caption
+msgid "Commandoo Info"
 msgstr ""
 
 #: tfrmmain.mnisearchcmdlineitemclip.caption
-msgid "Copy CL Item to ClipBoard   (ctrl-c)"
+msgid "Copy CL Item to ClipBoard : (ctrl-c)"
 msgstr ""
 
 #: tfrmmain.mnisearchcmdlinelistclip.caption
-msgid "Copy List to ClipBoard   (ctrl-shift-c)"
+msgid "Copy List to ClipBoard : (ctrl-shift-c)"
 msgstr ""
+
+#: tfrmmain.mnisearchcmdlineroot.caption
+msgid "DNT searc CmdLine List"
+msgstr "DNT searc CmdLine List"
 
 #: tfrmmain.mnisearchcmdlistclip.caption
 msgctxt "TFRMMAIN.MNISEARCHCMDLISTCLIP.CAPTION"
-msgid "Copy List to Clipboard   (ctrl-shift-c)"
+msgid "Copy List to Clipboard : (ctrl-shift-c)"
 msgstr ""
 
+#: tfrmmain.mnisearchcmdroot.caption
+msgid "DNT search Command List"
+msgstr "DNT search Command List"
+
 #: tfrmmain.mnisearchfindcmd.caption
-msgid "Find Command   (ctrl-f)"
+msgid "Find Command : (ctrl-f)"
 msgstr ""
 
 #: tfrmmain.mnisearchfindcmdline.caption
-msgid "Find Cmd Line   (ctrl-f)"
+msgid "Find Cmd Line : (ctrl-f)"
 msgstr ""
 
 #: tfrmmain.mnisearchgotocmd.caption
-msgid "Go to Command   (ctrl-g)"
+msgid "Go to Command : (ctrl-t)"
 msgstr ""
 
 #: tfrmmain.mnisearchgotocmdline.caption
-msgid "Go to Cmd Line   (ctrl-g)"
+msgid "Go to Cmd Line :  (ctrl-t)"
 msgstr ""
 
 #: tfrmmain.mnisearchrun.caption
-msgid "Run Cmd Line   (Enter)"
+msgid "Run Cmd Line : (Enter)"
 msgstr ""
 
 #: tfrmmain.mnitabkeywordssearch.caption
-msgid "Search   (alt-1)"
+msgid "Search : (alt-1)"
 msgstr ""
 
 #: tfrmmain.mnitabkeywordssearchdisplay.caption
-msgid "Display Search   (alt-5)"
+msgid "Display Search : (alt-5)"
 msgstr ""
 
 #: tfrmmain.mnitabkeywordssearchload.caption
-msgid "Load Search   (alt-3)"
+msgid "Load Search : (alt-3)"
 msgstr ""
 
 #: tfrmmain.mnitabkeywordssearchnew.caption
-msgid "New Search   (alt-2)"
+msgid "New Search : (alt-2)"
 msgstr ""
 
+#: tfrmmain.mnitabkeywordssearchroot.caption
+msgid "DNT keyW Search"
+msgstr "DNT keyW Search"
+
 #: tfrmmain.mnitabkeywordssearchsave.caption
-msgid "Save Search   (alt-4)"
+msgid "Save Search : (alt-4)"
 msgstr ""
 
 #: tfrmmain.mnitabsearchsearch.caption
-msgid "Search   (ctrl-1)"
+msgid "Search : (ctrl-1)"
 msgstr ""
 
 #: tfrmmain.mnitabsearchsearchdisplay.caption
-msgid "Display Search   (ctrl-5)"
+msgid "Display Search : (ctrl-5)"
 msgstr ""
 
 #: tfrmmain.mnitabsearchsearchload.caption
-msgid "Load Search   (ctrl-3)"
+msgid "Load Search : (ctrl-3)"
 msgstr ""
 
 #: tfrmmain.mnitabsearchsearchnew.caption
-msgid "New Search   (ctrl-2)"
+msgid "New Search : (ctrl-2)"
 msgstr ""
+
+#: tfrmmain.mnitabsearchsearchroot.caption
+msgid "DNT Searches"
+msgstr "DNT Searches"
 
 #: tfrmmain.mnitabsearchsearchsave.caption
 msgid "Save Search   (ctrl-4)"
 msgstr ""
 
 #: tfrmmain.pmicopyclipcmd.caption
-msgid "Copy Cmd to Clipboard   (ctrl-c)"
+msgid "Copy Cmd to Clipboard : (ctrl-c)"
 msgstr ""
 
 #: tfrmmain.pmicopyclipcmdline.caption
-msgid "Copy to ClipBoard   (ctrl-c)"
+msgid "Copy to ClipBoard : (ctrl-c)"
 msgstr ""
 
 #: tfrmmain.pmicopycmd.caption
-msgid "Duplicate Copy   (ctrl-shift-alt-c)"
+msgctxt "tfrmmain.pmicopycmd.caption"
+msgid "Duplicate Copy : (ctrl-shift-alt-c)"
 msgstr ""
 
 #: tfrmmain.pmicopycmdline.caption
-msgid "Duplicate Copy  (ctrl-shift-alt-c)"
+msgctxt "tfrmmain.pmicopycmdline.caption"
+msgid "Duplicate Copy : (ctrl-shift-alt-c)"
 msgstr ""
 
 #: tfrmmain.pmifindcmd.caption
-msgid "&Find   (ctrl-f)"
+msgid "Find : (ctrl-f)"
 msgstr ""
 
 #: tfrmmain.pmifindcmdline.caption
-msgid "Find Line (ctrl-f)"
+msgid "Find Line : (ctrl-f)"
 msgstr ""
 
+#: tfrmmain.pmimainroot.caption
+msgid "DNT popMain"
+msgstr "DNT popMain"
+
 #: tfrmmain.pmimainsave.caption
-msgid "Save (ctrl-s)"
+msgid "Save : (ctrl-s)"
+msgstr ""
+
+#: tfrmmain.pnls.caption
+msgid "Command Line"
 msgstr ""
 
 #: tfrmmain.popcmdlinedelete.caption
-msgid "- Line  (Delete or \"-\")"
+msgctxt "tfrmmain.popcmdlinedelete.caption"
+msgid "Delete : (<Del> or \"-\")"
 msgstr ""
 
 #: tfrmmain.popcmdlinepaste.caption
-msgid "Paste  <ctrl-v)"
+msgid "Paste : <ctrl-v)"
 msgstr ""
+
+#: tfrmmain.popcmdlinerecenter.caption
+msgctxt "tfrmmain.popcmdlinerecenter.caption"
+msgid "DNT ReCenter"
+msgstr "DNT ReCenter"
 
 #: tfrmmain.popcmdlineundelete.caption
 msgctxt "TFRMMAIN.POPCMDLINEUNDELETE.CAPTION"
-msgid "Undo -   (ctrl-Delete/-)"
-msgstr ""
-
-#: tfrmmain.popcmdpaste.caption
-msgid "Paste Cmd   (menu only)"
-msgstr ""
-
-#: tfrmmain.popcmdpastecmdline.caption
-msgid "Paste CmdLine   (ctrl-v)"
-msgstr ""
-
-#: tfrmmain.popcommanddelete.caption
-msgid "- Del   (Delete or \"-\")"
-msgstr ""
-
-#: tfrmmain.popcommandundelete.caption
-msgctxt "tfrmmain.popcommandundelete.caption"
-msgid "Undo -   (ctrl-Delete/-)"
+msgid "Undo Delete:  (ctrl-  <Del> or -)"
 msgstr ""
 
 #: tfrmmain.popnewcommandline.caption
-msgid "+ Line (ctrl-a or \"+\")"
-msgstr ""
-
-#: tfrmmain.popplusbrowse.caption
-msgid "Add   (ctrl-a or '+')"
+msgid "Add : (ctrl-a or \"+\")"
 msgstr ""
 
 #: tfrmmain.poprun.caption
-msgid "Run Line   (Enter)"
-msgstr ""
-
-#: tfrmmain.sbstatuses.hint
-msgid ""
-"Shows the following information:\n"
-"\n"
-"First: \n"
-"number of currently running detached \n"
-"processes.\n"
-"\n"
-"Second: \n"
-"commandoo version\n"
-"\n"
-"Third: \n"
-"Current Database profile and type.\n"
-"\n"
-"<end>\n"
-msgstr ""
-
-#: tfrmmain.sbstatuses.panels[0].text
-msgctxt "tfrmmain.sbstatuses.panels[0].text"
-msgid " "
-msgstr " "
-
-#: tfrmmain.sbstatuses.panels[1].text
-msgctxt "TFRMMAIN.SBSTATUSES.PANELS[1].TEXT"
-msgid " "
-msgstr " "
-
-#: tfrmmain.sbstatuses.panels[2].text
-msgid " Version:   "
+msgid "Run Line : (<Enter>)"
 msgstr ""
 
 #: tfrmmain.tscommands.caption
+msgctxt "tfrmmain.tscommands.caption"
 msgid "  Commands  "
 msgstr ""
 
@@ -3630,11 +4193,22 @@ msgid " Favorites "
 msgstr ""
 
 #: tfrmmain.tskeywords.caption
+msgctxt "tfrmmain.tskeywords.caption"
 msgid "  KeyWords  "
 msgstr ""
 
 #: tfrmmain.tssearch.caption
 msgid "  Search  "
+msgstr ""
+
+#: tfrmmanageprofile.bntok.caption
+msgctxt "tfrmmanageprofile.bntok.caption"
+msgid "&OK"
+msgstr "&OK"
+
+#: tfrmmanageprofile.btncancel.caption
+msgctxt "tfrmmanageprofile.btncancel.caption"
+msgid "Cancel"
 msgstr ""
 
 #: tfrmmanageprofile.btnchangename.caption
@@ -3661,8 +4235,8 @@ msgstr ""
 
 #: tfrmmanageprofile.btndefaultpath.caption
 #| msgid "&R   = "
-msgid "&R   = "
-msgstr "&R   = "
+msgid "&R   default"
+msgstr "&R   default"
 
 #: tfrmmanageprofile.btndefaultpath.hint
 msgid ""
@@ -3711,11 +4285,20 @@ msgid ""
 msgstr ""
 
 #: tfrmmsgdlg.btnclip.caption
-msgid "&C  Copy to Clipboard"
+msgid "&K  Copy"
+msgstr ""
+
+#: tfrmmsgdlg.btnfind.caption
+msgctxt "tfrmmsgdlg.btnfind.caption"
+msgid "&F  Find"
 msgstr ""
 
 #: tfrmmsgdlg.btnno.caption
 msgid "&X  No"
+msgstr ""
+
+#: tfrmmsgdlg.btnsavetofile.caption
+msgid "&S Save"
 msgstr ""
 
 #: tfrmmsgdlg.btnyes.caption
@@ -3736,7 +4319,7 @@ msgstr ""
 
 #: tfrmnolanguage.caption
 msgid "Language / Sprache / Idioma / Langue"
-msgstr ""
+msgstr "Language / Sprache / Idioma / Langue"
 
 #: tfrmnolanguage.label2.caption
 msgid "If you like this program, and you want to contribute, and you are bi-lingual consider writing a translation for it. It's actually pretty easy-ish .. .email me (in \"about\" section) and I'll tell you how."
@@ -3753,6 +4336,50 @@ msgstr "&Q  NT"
 
 #: tfrmoptions.btnaddlangok.caption
 msgid "ok"
+msgstr "ok"
+
+#: tfrmoptions.btnbasefolder.caption
+msgid "&X  Base/DB Folder"
+msgstr ""
+
+#: tfrmoptions.btnbasefolder.hint
+msgid ""
+"The path where DB's and settings are \n"
+"located.\n"
+"\n"
+"This option is basically meant for people\n"
+"upgrading from older versions so they can\n"
+"point back to their original folder and not \n"
+"have to import all the old DB's into the \n"
+"new version.\n"
+"\n"
+"Outside of this case, in general, there is\n"
+"no need to change this from the default.\n"
+"\n"
+"If it has been changed use the button to\n"
+"the right to set it back to default if needed.\n"
+"\n"
+"If you change the path you will need to \n"
+"close commandoo and re-start it.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.btnbasefolderreset.caption
+msgctxt "tfrmoptions.btnbasefolderreset.caption"
+msgid "♻"
+msgstr "♻"
+
+#: tfrmoptions.btnbasefolderreset.hint
+msgid ""
+"Reset the program so it uses the system\n"
+"determined user config location (usually\n"
+"~/.config/...).\n"
+"\n"
+"If you change this location you will need to\n"
+"close commandoo and re-start it.\n"
+"\n"
+"<end>\n"
 msgstr ""
 
 #: tfrmoptions.btndone.caption
@@ -3765,6 +4392,7 @@ msgid "&A  Reset \"Show no more\" Dialogs"
 msgstr ""
 
 #: tfrmoptions.btnresetdlgs.hint
+msgctxt "tfrmoptions.btnresetdlgs.hint"
 msgid ""
 "Many of the messages in this program\n"
 "give the option to not show it again.\n"
@@ -3780,28 +4408,73 @@ msgid ""
 msgstr ""
 
 #: tfrmoptions.btnrootfile.caption
-msgid "&G  Change ROOT File"
+msgid "&Z  ROOT Paste Template"
 msgstr ""
 
 #: tfrmoptions.btnrootfile.hint
 msgid ""
-"You have the ability to use any ROOT \n"
-"Authentication file you want (as long as it \n"
-"is on your system, of course).\n"
+"This is the ROOT paste template that will\n"
+"be used.\n"
 "\n"
-"Use this button to change it if needed\n"
+"A ROOT indicator on a command is \n"
+"generic.\n"
+"\n"
+"When you copy a ROOT command and then\n"
+"paste it into a terminal, or wherever, this\n"
+"template is used on the pasted text so that\n"
+"it will work in the terminal.\n"
+"\n"
+"For example, given >su -c \"%s\"< as the\n"
+"template, and copying (from within\n"
+"commandoo)  the command:\n"
+"<ROOT> /sbin/blkid sda1\n"
+"\n"
+"will be pasted:\n"
+"su -c \"/sbin/blkid sda1\"\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.btnsavepath.caption
+msgid "&W  Saving Path"
+msgstr ""
+
+#: tfrmoptions.btnsavepath.hint
+msgid ""
+"You have the ability to save certain outputs\n"
+"to a file in various areas of the program.\n"
+"\n"
+"This path is the default path to where \n"
+"they will be saved.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.btnsavepathreset.caption
+msgctxt "tfrmoptions.btnsavepathreset.caption"
+msgid "♻"
+msgstr "♻"
+
+#: tfrmoptions.btnsavepathreset.hint
+msgid ""
+"Reset the Save Path to point to \n"
+"commandoo's Base/DB folder (config \n"
+"folder, usually ~/.config/...\n"
 "\n"
 "<end>\n"
 msgstr ""
 
 #: tfrmoptions.btnsqllib.caption
-msgid "&Y  Change sqlite Library"
+msgid "&Y  sqlite 3 Library"
 msgstr ""
 
 #: tfrmoptions.btnsqllib.hint
 msgid ""
-"If the program can't find your sqlite library\n"
-"location you can specify it here.\n"
+"commandoo uses sqlite 3 for its sql DB's.\n"
+"\n"
+"If the program can't find your sqlite 3 \n"
+"library location you can specify it here. \n"
+"Blank means it will use the default location.\n"
 "\n"
 "If you can't find it first make sure sqlite is\n"
 "installed on your system. Then use the \n"
@@ -3817,40 +4490,35 @@ msgid ""
 msgstr ""
 
 #: tfrmoptions.btnsqllibreset.caption
-msgid "&Z  ♻"
-msgstr "&Z  ♻"
+#| msgid "&Z  ♻"
+msgctxt "tfrmoptions.btnsqllibreset.caption"
+msgid "♻"
+msgstr "♻"
 
 #: tfrmoptions.btnsqllibreset.hint
 msgid ""
-"Reset the program so it uses the default\n"
-"location of the sqlite library file.\n"
+"Have commandoo try to find the location\n"
+"of the default sqlite 3 library file.\n"
 "\n"
 "<end>\n"
 msgstr ""
 
-#: tfrmoptions.btnterminal.caption
-msgid "&W  Change Terminal Program"
+#: tfrmoptions.btnupdate.caption
+msgid "&N  Check for Update"
 msgstr ""
 
-#: tfrmoptions.btnterminal.hint
+#: tfrmoptions.btnupdate.hint
+msgctxt "tfrmoptions.btnupdate.hint"
 msgid ""
-"You can specify your favorite terminal \n"
-"program here.\n"
+"Many of the messages in this program\n"
+"give the option to not show it again.\n"
 "\n"
-"You can either type the name if it is in the \n"
-"system path or you can browse for it.\n"
-"\n"
-"<end>\n"
-msgstr ""
-
-#: tfrmoptions.btnterminalreset.caption
-msgid "&X  ♻"
-msgstr "&X  ♻"
-
-#: tfrmoptions.btnterminalreset.hint
-msgid ""
-"Reset the terminal program you want to use\n"
-"to the system default.\n"
+"This will reset all those messages\n"
+"you've chosen not to show. This\n"
+"means, of course, that you will have\n"
+"to go through all those again and \n"
+"re-check them if you don't want to see \n"
+"them anymore.\n"
 "\n"
 "<end>\n"
 msgstr ""
@@ -3859,30 +4527,8 @@ msgstr ""
 msgid "DDNT AO"
 msgstr "DDNT AO"
 
-#: tfrmoptions.cballowescoutput.caption
-msgid "&L  Allow <esc> chars in Output"
-msgstr ""
-
-#: tfrmoptions.cballowescoutput.hint
-msgid ""
-"Checking this allows <esc> characters in\n"
-"command output.\n"
-"\n"
-"This is problematic. When escape chars \n"
-"(for example, from \"curl\" command or using\n"
-"/devNul) can cause cursor location in the\n"
-"output area to become unstable. This can be \n"
-"fixed by clearing the output area.\n"
-"\n"
-"But there is the question of whether it could\n"
-"cause other problems. So just be aware of \n"
-"this.\n"
-"\n"
-"<end>\n"
-msgstr ""
-
 #: tfrmoptions.cballowmultipleopens.caption
-msgid "&M  Allow Multiple copies of commandoo"
+msgid "&M  Allow multiple commandoo windows"
 msgstr ""
 
 #: tfrmoptions.cballowmultipleopens.hint
@@ -3905,6 +4551,18 @@ msgid ""
 "\n"
 "Checked it will allow it and give you a \n"
 "optionally disabled confirmation message.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmoptions.cballowpkexec.caption
+msgid "&L  Allow pkexec"
+msgstr ""
+
+#: tfrmoptions.cballowpkexec.hint
+msgid ""
+"This determines whether you will allow \n"
+"'pkexec' to be used in commandoo.\n"
 "\n"
 "<end>\n"
 msgstr ""
@@ -3934,8 +4592,20 @@ msgid ""
 "<end>\n"
 msgstr ""
 
+#: tfrmoptions.cblargerfont.caption
+msgid "&T  Slightly larger font"
+msgstr ""
+
+#: tfrmoptions.cblargerfont.hint
+msgid ""
+"Make the font size in all windows a bit \n"
+"larger.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
 #: tfrmoptions.cbmanrefreshfavorites.caption
-msgid "&K  Manually Refresh Favoirtes"
+msgid "&K  Manually Refresh Favorites"
 msgstr ""
 
 #: tfrmoptions.cbmanrefreshfavorites.hint
@@ -3974,6 +4644,22 @@ msgid ""
 "<end>\n"
 msgstr ""
 
+#: tfrmoptions.cbmissingsqlmsg.caption
+msgid "Warn when sql library is missing"
+msgstr ""
+
+#: tfrmoptions.cbmissingsqlmsg.hint
+msgid ""
+"The program will, at start up, warn you if it \n"
+"can not find the sqlite 3 library.\n"
+"\n"
+"But perhaps you don't want to use sql, so \n"
+"you don't need the warning. Check this to \n"
+"suppress the warning.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
 #: tfrmoptions.cbsqldb.caption
 msgid "&U  Default sql DB allowed"
 msgstr ""
@@ -3986,9 +4672,10 @@ msgstr ""
 msgid "&B  Unspecified"
 msgstr ""
 
-#: tfrmoptions.lblchangefont.caption
-msgid "&T  Adjust Font Size"
-msgstr ""
+#: tfrmoptions.lblbasefolder.caption
+msgctxt "tfrmoptions.lblbasefolder.caption"
+msgid "..."
+msgstr "..."
 
 #: tfrmoptions.lbldisplaymax.caption
 msgid "&S  Maximum Display Output"
@@ -4002,33 +4689,55 @@ msgstr ""
 msgid "&R  Maximum input/output allowed"
 msgstr ""
 
-#: tfrmoptions.lblrootfilecap.caption
-msgid "ROOT authentication file:"
+#: tfrmoptions.lblmaxoutputwait.caption
+msgid "&N  Output Timeout (sec)"
 msgstr ""
 
-#: tfrmoptions.lblsqllibcap.caption
-msgid "sqlite Library location (blank is default):"
+#: tfrmoptions.lblmaxoutputwait.hint
+msgid ""
+"This is the emergency cord for run away \n"
+"processes. This can happen for example if \n"
+"one by accident \"cat\"s a binary file. You will\n"
+"either wait forever or use the cancel process\n"
+"button.\n"
+"\n"
+"This checks the time and will cancel the \n"
+"process if there is no activity. The time is\n"
+"in seconds, but it is only approximate because\n"
+"it depends on the system load and more. \n"
+"For example, a setting of 10 seconds may\n"
+"actually take 20 seconds to finally fire.\n"
+"\n"
+"<end>\n"
 msgstr ""
 
-#: tfrmoptions.lblterminalcap.caption
-msgid "Terminal Program:"
+#: tfrmoptions.lblrootfile.caption
+msgctxt "tfrmoptions.lblrootfile.caption"
+msgid "..."
+msgstr "..."
+
+#: tfrmoptions.lblrootfile.hint
+msgid ""
+"This template is used when pasting a copied\n"
+"\"root\" command into a terminal, or wherever.\n"
+"\n"
+"Use button to the right or Dbl-click to edit.\n"
+"\n"
+"<end>\n"
 msgstr ""
+
+#: tfrmoptions.lblsavepath.caption
+msgctxt "tfrmoptions.lblsavepath.caption"
+msgid "..."
+msgstr "..."
+
+#: tfrmoptions.lblsqllib.caption
+msgctxt "tfrmoptions.lblsqllib.caption"
+msgid "..."
+msgstr "..."
 
 #: tfrmoptions.lblthreatlevel.caption
 msgid "Warn on Threat Level of:"
-msgstr ""
-
-#: tfrmoptions.spechangefont.hint
-msgid ""
-"Due to the complexity of computers using\n"
-"custom pixels per inch (ppi, dpi) the program \n"
-"uses a default setting that looks nice.\n"
-"\n"
-"You may, however, want fonts a bit bigger\n"
-"or smaller. Use this to adjust fonts up or \n"
-"down by a maximum of 2 steps.\n"
-"\n"
-"<end>\n"
 msgstr ""
 
 #: tfrmoptions.spedisplaymax.hint
@@ -4046,76 +4755,218 @@ msgid ""
 "<end>\n"
 msgstr ""
 
-#: tfrmprofiles.actadd.caption
-msgid "&A  New"
+#: tfrmoptions.spemaxoutputwait.hint
+msgid ""
+"This is another safety measure to help\n"
+"control \"run away\" processes, or processes\n"
+"that stop responding. \n"
+"\n"
+"It is set in seconds but this is not a precise\n"
+"timing because it gets influenced by the\n"
+"busy-ness of the computer and/or by \n"
+"a run away process.\n"
+"\n"
+"Just so you know: if you set it to 10 seconds\n"
+"it is quite possible that the program will take\n"
+"20 in actual time to finally actually stop the\n"
+"process. \n"
+"\n"
+"So set this low-ish for a start and see how\n"
+"things go, or devise a test to see how it \n"
+"reponds.\n"
+"\n"
+"<end>\n"
 msgstr ""
+
+#: tfrmprofiles.actadd.caption
+msgid "DNT New"
+msgstr "DNT New"
 
 #: tfrmprofiles.actcancel.caption
 msgctxt "TFRMPROFILES.ACTCANCEL.CAPTION"
-msgid "Cancel"
-msgstr ""
+msgid "DNT Cancel"
+msgstr "DNT Cancel"
 
 #: tfrmprofiles.actcompare.caption
-msgid "&Y  Compare"
-msgstr ""
+msgid "DNT Compare"
+msgstr "DNT Compare"
 
 #: tfrmprofiles.actconvert.caption
-msgid "&X  Convert"
-msgstr ""
+msgid "DNT Convert"
+msgstr "DNT Convert"
 
 #: tfrmprofiles.actcopy.caption
-msgid "&C  Copy"
-msgstr ""
+msgid "DNT Copy"
+msgstr "DNT Copy"
 
 #: tfrmprofiles.actdelete.caption
 msgctxt "tfrmprofiles.actdelete.caption"
-msgid "&D  Delete"
-msgstr ""
+msgid "DNT Delete"
+msgstr "DNT Delete"
 
 #: tfrmprofiles.actedit.caption
 msgctxt "TFRMPROFILES.ACTEDIT.CAPTION"
-msgid "&B  Edit"
-msgstr ""
+msgid "DNT Edit"
+msgstr "DNT Edit"
+
+#: tfrmprofiles.actimport.caption
+msgid "DNT Import"
+msgstr "DNT Import"
 
 #: tfrmprofiles.actmergeto.caption
-msgid "&Z  Merge To"
-msgstr ""
+msgid "DNT Merge"
+msgstr "DNT Merge"
 
 #: tfrmprofiles.actok.caption
+#| msgid "&OK"
 msgctxt "TFRMPROFILES.ACTOK.CAPTION"
-msgid "&OK"
-msgstr "&OK"
+msgid "DNT OK"
+msgstr "DNT OK"
 
 #: tfrmprofiles.actselect.caption
 msgctxt "TFRMPROFILES.ACTSELECT.CAPTION"
-msgid "&S  Select"
+msgid "DNT Select"
+msgstr "DNT Select"
+
+#: tfrmprofiles.btnadd.hint
+msgid ""
+"Make a completely new DB from scratch.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.btncompare.caption
+msgid "DNT Compare To..."
+msgstr "DNT Compare To..."
+
+#: tfrmprofiles.btncompare.hint
+msgid ""
+"This does an exhaustive compare of the \n"
+"entries of two of your DB's.\n"
+"\n"
+"Select in the list the first DB and then use \n"
+"this button.\n"
+"\n"
+"<end>\n"
 msgstr ""
 
 #: tfrmprofiles.btnconvert.hint
 msgid ""
-"Convert a text DB to a sql DB and\n"
-"vice versa.\n"
+"This will make a new DB as copy of the original\n"
+"by converting it's type. The original is not\n"
+"deleted and remains in place. If you don't\n"
+"want it anymore then you can delete it.\n"
 "\n"
-"Destination file(s) must not already exist.\n"
+"If the DB is sql it will be converted to text, \n"
+"and vice versa.\n"
+"\n"
+"If you want the new DB to be the same type\n"
+"use the COPY button.\n"
 "\n"
 "<end>\n"
 msgstr ""
 
-#: tfrmprofiles.btnmergeto.hint
+#: tfrmprofiles.btncopy.hint
 msgid ""
-"Merge the items in the selected profile\n"
-"to another profile (can be from text/sql \n"
-"to another text/sql).\n"
+"This makes a copy of the DB with a name you\n"
+"choose.\n"
 "\n"
-"In the case of duplicate commands notes,\n"
-"command lines, etc. will be merged into \n"
-"the destination.\n"
+"It will be of the same type as the original; ie.\n"
+"text goes to a text DB, sql goes to a sql DB.\n"
 "\n"
-"In this case the destination must already\n"
-"exist.\n"
+"If you want to the change the type from text \n"
+"to sql, or sql to text use the CONVERT button.\n"
 "\n"
 "<end>\n"
 msgstr ""
+
+#: tfrmprofiles.btndelete.hint
+msgid ""
+"Actually you can either delete the DB or\n"
+"de-activate it.\n"
+"\n"
+"The first \"delete\" is to remove the Profile\n"
+"Name from the list. \n"
+"\n"
+"Then you can choose to either delete, or \n"
+"keep, the actual DB file the entry pointed\n"
+"to. \n"
+"\n"
+"If you keep the actual DB file, it is effectively\n"
+"de-activated. You can re-activate it using\n"
+"the IMPORT button.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.btnedit.hint
+msgid ""
+"Edit the existing Profile entry. \n"
+"\n"
+"It does give you the option of moving the \n"
+"profile to other folders other than commandoo's\n"
+"\"config\" folder if you need to.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.btnimport.hint
+msgid ""
+"Here import commandoo databases from\n"
+"other people or archives, or re-activate \n"
+"deactivated DB's (done by deleting the \n"
+"Profile from the list, but not its DB files).\n"
+"\n"
+"Put the to be imported DB in a folder of your\n"
+"choice. On import it will be copied to the\n"
+"commandoo \"config\" location (use the \n"
+"About button to see where that will be)\n"
+"and added to the profile list with the profile\n"
+"name you choose.\n"
+"\n"
+"commandoo gives you the option of using\n"
+"SQL DB's and/or text based DB's.\n"
+"\n"
+"The DB profile name is tied to the DB files\n"
+"in the following ways:\n"
+"\n"
+"A sql DB is a single file. By default it has an\n"
+"extension of \".sqlite\". So this file will look \n"
+"like:  <profilename>.sqlite\n"
+"\n"
+"Text based DB's consist of 3 files. All by \n"
+"default have an extension of \".data\". These\n"
+"files will look like:\n"
+"<profilename>cmd.data\n"
+"<profilename>cmdline.data\n"
+"<profilename>misc.data\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.btnmergeto.caption
+msgid "DNT Merge To..."
+msgstr "DNT Merge To..."
+
+#: tfrmprofiles.btnmergeto.hint
+msgid ""
+"This will merge the entires in the selected \n"
+"DB to another DB of your choice. Nothing \n"
+"is lost, only things missing will be imported.\n"
+"\n"
+"If entries are identical nothing is done.\n"
+"\n"
+"If entries are similar it will make the best\n"
+"choice and describe the differences in the \n"
+"\"notes\" field of the affected Command and/or\n"
+"Command Line.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmprofiles.btnok.caption
+msgid "DNT Done"
+msgstr "DNT Done"
 
 #: tfrmprofiles.caption
 msgctxt "TFRMPROFILES.CAPTION"
@@ -4195,18 +5046,28 @@ msgid ""
 "<end>\n"
 msgstr ""
 
-#: tfrmprofiles.menuitem1.caption
-msgctxt "TFRMPROFILES.MENUITEM1.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+#: tfrmprofiles.mnimok.caption
+msgid "DNT Close"
+msgstr "DNT Close"
 
-#: tfrmprofiles.menuitem2.caption
-msgctxt "TFRMPROFILES.MENUITEM2.CAPTION"
-msgid "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
+#: tfrmprofiles.mnimroot.caption
+msgctxt "tfrmprofiles.mnimroot.caption"
+msgid "DNT Root"
+msgstr "DNT Root"
 
-#: tfrmprofiles.mniok.caption
-msgid "Close"
+#: tfrmprofiles.mnisroot.caption
+msgctxt "tfrmprofiles.mnisroot.caption"
+msgid "DNT Root"
+msgstr "DNT Root"
+
+#: tfrmprofilesmerge.bntok.caption
+msgctxt "tfrmprofilesmerge.bntok.caption"
+msgid "&OK"
+msgstr "&OK"
+
+#: tfrmprofilesmerge.btncancel.caption
+msgctxt "tfrmprofilesmerge.btncancel.caption"
+msgid "Cancel"
 msgstr ""
 
 #: tfrmprofilesmerge.caption
@@ -4242,8 +5103,13 @@ msgstr ""
 msgid "&X  Cancel"
 msgstr ""
 
+#: tfrmsearch.btnok.caption
+msgctxt "tfrmsearch.btnok.caption"
+msgid "DNT"
+msgstr "DNT"
+
 #: tfrmsearch.btnusesimplesearch.caption
-msgid "Use Simple Search instead"
+msgid "&S  Use Simple Search instead"
 msgstr ""
 
 #: tfrmsearch.btnusesimplesearch.hint
@@ -4317,17 +5183,19 @@ msgstr ""
 msgid "&F  Field:"
 msgstr ""
 
-#: tfrmsearch.lblprogramertip.caption
-msgid "DNT --ufrm_search_  form--"
-msgstr "DNT --ufrm_search_  form--"
-
-#: tfrmsearch.lblprogramertip1.caption
-msgid "DNT --ufrmBoolExpr--"
-msgstr "DNT --ufrmBoolExpr--"
-
 #: tfrmsearch.lblprogramertip2.caption
 msgid "DNT --LOW_BOUNDARY--"
 msgstr "DNT --LOW_BOUNDARY--"
+
+#: tfrmsearch.lblprogramertip_cmd.caption
+msgctxt "tfrmsearch.lblprogramertip_cmd.caption"
+msgid "DNT --ufrmBoolExpr--"
+msgstr "DNT --ufrmBoolExpr--"
+
+#: tfrmsearch.lblprogramertip_searchform.caption
+msgctxt "tfrmsearch.lblprogramertip_searchform.caption"
+msgid "DNT --ufrm_search_  form--"
+msgstr "DNT --ufrm_search_  form--"
 
 #: tfrmsearch.lblsearchfilename.caption
 msgid "&N  Name"
@@ -4363,22 +5231,22 @@ msgstr ""
 #: tfrmsimplesearch.btnchkallcmd.caption
 msgctxt "tfrmsimplesearch.btnchkallcmd.caption"
 msgid "☑"
-msgstr ""
+msgstr "☑"
 
 #: tfrmsimplesearch.btnchkallcmdline.caption
 msgctxt "tfrmsimplesearch.btnchkallcmdline.caption"
 msgid "☑"
-msgstr ""
+msgstr "☑"
 
 #: tfrmsimplesearch.btnchknonecmd.caption
 msgctxt "tfrmsimplesearch.btnchknonecmd.caption"
 msgid "☐"
-msgstr ""
+msgstr "☐"
 
 #: tfrmsimplesearch.btnchknonecmdline.caption
 msgctxt "tfrmsimplesearch.btnchknonecmdline.caption"
 msgid "☐"
-msgstr ""
+msgstr "☐"
 
 #: tfrmsimplesearch.btnclear.caption
 msgid "DNT C"
@@ -4391,6 +5259,16 @@ msgstr "DNT C1"
 #: tfrmsimplesearch.btnclear2.caption
 msgid "DNT C2"
 msgstr "DNT C2"
+
+#: tfrmsimplesearch.btnsscancel.caption
+msgctxt "tfrmsimplesearch.btnsscancel.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmsimplesearch.btnssok.caption
+msgctxt "tfrmsimplesearch.btnssok.caption"
+msgid "DNT"
+msgstr "DNT"
 
 #: tfrmsimplesearch.btnssreset.caption
 msgid "&W  Reset Everything"
@@ -4434,12 +5312,14 @@ msgid "DNT RegEx2"
 msgstr "DNT RegEx2"
 
 #: tfrmsimplesearch.cgcmd.caption
-msgid "cgCmd"
-msgstr "cgCmd"
+#| msgid "cgCmd"
+msgid "DNT cgCmd"
+msgstr "DNT cgCmd"
 
 #: tfrmsimplesearch.cgcmdline.caption
-msgid "cgCmdLine"
-msgstr "cgCmdLine"
+#| msgid "cgCmdLine"
+msgid "DNT cgCmdLine"
+msgstr "DNT cgCmdLine"
 
 #: tfrmsimplesearch.label1.caption
 msgid "Use Advanced Search instead:"
@@ -4470,6 +5350,16 @@ msgid ""
 "<end>\n"
 msgstr ""
 
+#: tfrmsingleinput.btncancel.caption
+msgctxt "tfrmsingleinput.btncancel.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmsingleinput.btnok.caption
+msgctxt "tfrmsingleinput.btnok.caption"
+msgid "&OK"
+msgstr "&OK"
+
 #: tfrmsingleinput.caption
 msgctxt "TFRMSINGLEINPUT.CAPTION"
 msgid "Input"
@@ -4479,80 +5369,75 @@ msgstr ""
 msgid "↑↑ Type       and / or     Browse  ↑"
 msgstr ""
 
-#: tfrmsuperuserfile.btnsufile.caption
-msgid "&Z  Other File"
+#: tfrmsuperuserfile.bntok.caption
+msgctxt "tfrmsuperuserfile.bntok.caption"
+msgid "&OK"
+msgstr "&OK"
+
+#: tfrmsuperuserfile.btncancel.caption
+msgctxt "tfrmsuperuserfile.btncancel.caption"
+msgid "Cancel"
 msgstr ""
 
-#: tfrmsuperuserfile.btnsufile.hint
+#: tfrmsuperuserfile.btncustom.caption
+msgid "&B  Use Custom Template"
+msgstr ""
+
+#: tfrmsuperuserfile.btncustom.hint
 msgid ""
-"If, in future, or for special needs, the file\n"
-"you need is not in the list use this button to \n"
-"find and use it.\n"
-"\n"
-"You will first be asked to find the file.\n"
-"\n"
-"If you choose one you will then be asked to\n"
-"type any parameter / flag it needs.\n"
+"Use the custom template you specify in\n"
+"the edit below...\n"
 "\n"
 "<end>\n"
 msgstr ""
 
-#: tfrmsuperuserfile.btnsuinfo.caption
-msgid "&A  Show Information"
+#: tfrmsuperuserfile.btntemplate.caption
+msgid "&A  Use Common Template"
 msgstr ""
 
-#: tfrmsuperuserfile.btnsuinfo.hint
+#: tfrmsuperuserfile.btntemplate.hint
 msgid ""
-"A quick introduction to the intricacieas of\n"
-"xxxsu and xxxsudo.\n"
+"Apply the template from the checked radio\n"
+"button below.\n"
 "\n"
 "<end>\n"
 msgstr ""
 
-#: tfrmsuperuserfile.btnturnoff.caption
-msgid "&X  Turn off ROOT"
+#: tfrmsuperuserfile.btntest.caption
+msgid "&T  Test"
 msgstr ""
 
-#: tfrmsuperuserfile.btnturnoff.hint
+#: tfrmsuperuserfile.btntest.hint
 msgid ""
-"If the file you need can not be found, or\n"
-"you simply don't want to run command lines\n"
-"as ROOT then you can turn off the ROOT \n"
-"ability with this button.\n"
+"Show how the template will look when \n"
+"pasted into a terminal.\n"
 "\n"
 "<end>\n"
 msgstr ""
 
 #: tfrmsuperuserfile.caption
-msgid "SuperUser Authentication"
+msgid "SuperUser Pasting Template"
 msgstr ""
 
-#: tfrmsuperuserfile.edtsufile.hint
+#: tfrmsuperuserfile.edtcustom.hint
 msgid ""
-"The proposed ROOT file to change to.\n"
+"Type the template as you need.\n"
+"\n"
+"It requires at least one, and only one, \"%s\" \n"
+"in it. \n"
+"\n"
+"Wherever the %s is is where the Command\n"
+"Line will be placed.\n"
 "\n"
 "<end>\n"
 msgstr ""
 
-#: tfrmsuperuserfile.lbfiles.hint
-msgid ""
-"This is a list of current (2017) ROOT \n"
-"authentication files available for gnu/Linux \n"
-"people.\n"
-"\n"
-"Choose the one you want. You may, or may\n"
-"not, have all of them on your system. It will\n"
-"tell you if it cannot find the file.\n"
-"\n"
-"In some cases (maybe in future) it could be\n"
-"you want to use something new, then use the\n"
-"button below and right.\n"
-"\n"
-"<end>\n"
+#: tfrmsuperuserfile.edtcustom.texthint
+msgid "Type custom template here..."
 msgstr ""
 
 #: tfrmsuperuserfile.lblcurr.caption
-msgid "Currently:  "
+msgid "Current Template:  "
 msgstr ""
 
 #: tfrmsuperuserfile.lblcurrfile.caption
@@ -4562,7 +5447,21 @@ msgstr "..."
 
 #: tfrmsuperuserfile.lblcurrfile.hint
 msgid ""
-"This is the ROOT file you are currently using.\n"
+"This is the template you want to use.\n"
+"\n"
+"Test it with the button above.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: tfrmsuperuserfile.rgtemplates.caption
+msgid " Common Templates "
+msgstr ""
+
+#: tfrmsuperuserfile.rgtemplates.hint
+msgid ""
+"List of the most common ROOT templates,\n"
+"select the one you want.\n"
 "\n"
 "<end>\n"
 msgstr ""
@@ -4691,6 +5590,7 @@ msgid "Select One:"
 msgstr ""
 
 #: tfrm_search_list.lblsetype.caption
+msgctxt "tfrm_search_list.lblsetype.caption"
 msgid "List"
 msgstr ""
 
@@ -4822,6 +5722,10 @@ msgctxt "TFRM_SEARCH_TEXT.RGSELIST.CAPTION"
 msgid "NT"
 msgstr "NT"
 
+#: ufrmabout.ccapabouttoggle
+msgid "&A  Toggle Display..."
+msgstr ""
+
 #: ufrmabout.cmsgaboutcurrentdb
 msgid "Current Database Profile: %s ( %s based ): "
 msgstr ""
@@ -4910,6 +5814,10 @@ msgid ""
 "\n"
 msgstr ""
 
+#: ufrmboolexpr.cfsemenuroot
+msgid "Boolean builder"
+msgstr ""
+
 #: ufrmboolexpr.cfsemoveparenhint
 msgid ""
 "Use these to move parentheses around. \n"
@@ -4964,20 +5872,6 @@ msgstr ""
 msgid "No Search Item to copy!"
 msgstr ""
 
-#: ufrmbusy.ccapbusycancel
-msgid "&W Cancel"
-msgstr ""
-
-#: ufrmbusy.ccapbusycaption
-msgctxt "ufrmbusy.ccapbusycaption"
-msgid "Working..."
-msgstr ""
-
-#: ufrmbusy.ccapbusyhint
-msgctxt "ufrmbusy.ccapbusyhint"
-msgid "Program will block until finished."
-msgstr ""
-
 #: ufrmcmdlineedit.cclecapdefaulthelp
 msgid "Show Help:  %s"
 msgstr ""
@@ -5000,10 +5894,6 @@ msgid ""
 "\n"
 "For safety reason only help commands (CMD --help or CMD -h ) \n"
 "can be run from here\n"
-msgstr ""
-
-#: ufrmcmdlineedit.cmsgcleonlyoneparam
-msgid "Only one param / flag is allowed from here."
 msgstr ""
 
 #: ufrmcmdlineedit.cmsgclevariable
@@ -5040,7 +5930,7 @@ msgstr ""
 
 #: ufrmfindtext.ccapfindagain
 msgctxt "ufrmfindtext.ccapfindagain"
-msgid "ctrl-shift-F or ctrl-L finds again"
+msgid ">>   ctrl-shift-L, finds again   <<"
 msgstr ""
 
 #: ufrmfindtext.ccaprgchoices
@@ -5066,10 +5956,6 @@ msgctxt "ufrmlistmanager.ccaplistmanagerconsolidateinfo"
 msgid "Consolidate %s"
 msgstr ""
 
-#: ufrmlistmanager.ccaplistmanagerdone
-msgid "&O  Done"
-msgstr ""
-
 #: ufrmlistmanager.ccaplistmanagerlistitemusage
 msgid "\"%s\" is used by:"
 msgstr ""
@@ -5080,6 +5966,18 @@ msgstr ""
 
 #: ufrmlistmanager.ccaplistmanagernothingtoconsolidate
 msgid "Nothing to Consolidate to"
+msgstr ""
+
+#: ufrmlistmanager.ccaplmconsolidate
+msgid "Consolidate"
+msgstr ""
+
+#: ufrmlistmanager.ccaplmrevert
+msgid "Revert List"
+msgstr ""
+
+#: ufrmlistmanager.ccaplmshowusage
+msgid "Show Usage"
 msgstr ""
 
 #: ufrmlistmanager.cmsglistmanagerclue
@@ -5155,6 +6053,18 @@ msgstr ""
 msgid "Add / Edit Command"
 msgstr ""
 
+#: ufrmmain.ccapcleuncertainpath
+msgid "Uncertain Path..."
+msgstr ""
+
+#: ufrmmain.ccapdblcfriendlyname
+msgid "Friendly"
+msgstr ""
+
+#: ufrmmain.ccapdblcprocessstr
+msgid "Process"
+msgstr ""
+
 #: ufrmmain.ccapdetprocactive
 msgid "active"
 msgstr ""
@@ -5187,6 +6097,54 @@ msgstr ""
 msgid "Error Occurred"
 msgstr ""
 
+#: ufrmmain.ccapgotoeditin
+msgid "Edit %s %s"
+msgstr ""
+
+#: ufrmmain.ccapgotoeditinentry
+msgid "Entry"
+msgstr ""
+
+#: ufrmmain.ccapgotoeditinname
+msgid "Name"
+msgstr ""
+
+#: ufrmmain.ccapgotoeditinnotes
+msgctxt "ufrmmain.ccapgotoeditinnotes"
+msgid "Notes"
+msgstr ""
+
+#: ufrmmain.ccapgotofindin
+msgid "Find in %s %s"
+msgstr ""
+
+#: ufrmmain.ccapgotoliststr
+msgctxt "ufrmmain.ccapgotoliststr"
+msgid "List"
+msgstr ""
+
+#: ufrmmain.ccapgotomaindisplay
+msgid "Output area"
+msgstr ""
+
+#: ufrmmain.ccapgotonotesstr
+msgctxt "ufrmmain.ccapgotonotesstr"
+msgid "Notes"
+msgstr ""
+
+#: ufrmmain.ccapgotoprocs
+msgctxt "ufrmmain.ccapgotoprocs"
+msgid "Detached Processes"
+msgstr ""
+
+#: ufrmmain.ccapmainbadpath
+msgid "Config Problem, Re-set??"
+msgstr ""
+
+#: ufrmmain.ccapmainoptionsnotavailable
+msgid "Options not currently available."
+msgstr ""
+
 #: ufrmmain.ccaprunningdetachedprocesses
 msgid "Running Processes!"
 msgstr ""
@@ -5202,6 +6160,15 @@ msgstr ""
 
 #: ufrmmain.ccapsendtoprofile
 msgid "Select Profile to SEND TO"
+msgstr ""
+
+#: ufrmmain.cmsgcleuncertainpath
+msgid ""
+"You are currently editing a Command and the path of the edited command is not \n"
+"the same as the path in the saved version. Which would you like to use:\n"
+"\n"
+"Yes = %s\n"
+"No  = %s\n"
 msgstr ""
 
 #: ufrmmain.cmsgcommandnameduplicate
@@ -5252,17 +6219,117 @@ msgstr ""
 msgid "Unexpected system problem: command \"id\" not found! Terminating."
 msgstr ""
 
+#: ufrmmain.cmsgmainbadpath
+msgid ""
+"This custom config path can not\n"
+"be written to:\n"
+"==>  %s\n"
+"\n"
+"This is due to either it being\n"
+"on an unmounted drive or media,\n"
+"or is unwritable due to\n"
+"permissions.\n"
+"\n"
+"I can re-set the config folder\n"
+"to the default user config\n"
+"folder:\n"
+"%s\n"
+"\n"
+"Or I can leave the situation as\n"
+"is, so you can fix it youself.\n"
+"\n"
+"Tell me what you want me to do:\n"
+"   Yes = reset to a usable default\n"
+"   No = You will take care of it\n"
+msgstr ""
+
+#: ufrmmain.cmsgmainbadpathdoreset
+msgid ""
+"Okay. Re-set to:\n"
+"\"%s\"\n"
+msgstr ""
+
+#: ufrmmain.cmsgmainbadpathkillit
+msgid "Okay. Fix the situation and re-start commandoo."
+msgstr ""
+
+#: ufrmmain.cmsgmainbadpathresetfail
+msgid "Was not able to delete \"%s\" custom file, you'll need to manually fix it."
+msgstr ""
+
+#: ufrmmain.cmsgmainbasepath
+msgid "Base DB/Settings path: "
+msgstr ""
+
+#: ufrmmain.cmsgmainhowtoeditcmdname
+msgid ""
+"\n"
+"\n"
+"If you want to edit the Command Name and/or path, open the command in EDIT mode and use the button or Dbl-Click the name. \n"
+"\n"
+"If the new command is (or should be) in the path simply typing the name is sufficient, otherwise type in the full path or use the folder search button.\n"
+msgstr ""
+
+#: ufrmmain.cmsgmainlanguagefilesupdated
+msgid "< Language files updated >"
+msgstr ""
+
+#: ufrmmain.cmsgmainmultiplecopiesopen
+msgid "Multiple copies of commandoo are running, changing options not allowed. Close all instances, restart, and then change options."
+msgstr ""
+
+#: ufrmmain.cmsgmainpathaliasdisphint
+msgid ""
+"If the path is too long to see just\n"
+"DoubleClick it.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmmain.cmsgmainpathaliashint
+msgid ""
+"This displays information about the path\n"
+"to the command's folder.\n"
+"\n"
+"If the command is in the path it says only\n"
+"that it is in the path. If you want to see the\n"
+"full path in this case use the \"Path\" button\n"
+"above.\n"
+"\n"
+"If the Command is not in $PATH then the full\n"
+"path is shown.\n"
+"\n"
+"If the path is so long you can't see it all\n"
+"just DblClick it display it.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmmain.cmsgmainroottemplate
+msgid "ROOT template: "
+msgstr ""
+
+#: ufrmmain.cmsgmainsavingpath
+msgid "Saving path: "
+msgstr ""
+
+#: ufrmmain.cmsgmainsavingpathsearch
+msgid "Searches %s"
+msgstr ""
+
 #: ufrmmain.cmsgprogramkeyword
 msgid "The Name \"%s\" at beginning of name is reserved for the program to use."
 msgstr ""
 
 #: ufrmmain.cmsgrootuseshell_pipe
-msgid "Not allowed to run UseShell or piped CL's as <ROOT>, this will run as normal user, run CL in Terminal if you want to use <ROOT>."
+msgid "Not allowed to run UseShell or piped CL's with elevated privileges (<ROOT> or pkexec), this will run as normal user, run CL in Terminal if you want to use <ROOT>."
 msgstr ""
 
 #: ufrmmain.cmsgrunningdetachedprocesses
 msgid ""
-"You have %d Running child processes (listed below). They will be automatically halted. Do you still want to close?\n"
+"You have %d Running child processes (listed below). They will be automatically summarily halted. If they are in an unsaved state you will lose the changes and/or the data.\n"
+"\n"
+"Do you still want to close?\n"
 "\n"
 "%s\n"
 "\n"
@@ -5277,24 +6344,36 @@ msgid " It can not be loaded."
 msgstr ""
 
 #: ufrmmain.cmsgsqllibnotfound
-msgid "===> sqlite system library not found <==="
+msgid ""
+"===> sqlite 3 system library not found <===\n"
+"\n"
+"commandoo could not find the location of this library, so only text based DB's can be used until this is fixed. \n"
+"\n"
+"You can set/search the location in OPTIONS. But, first make sure the libsqlite3 package is installed on your system. Usually it is by default but maybe it was removed, moved, or customized. If you are not sure use a package manager and look to see if a package called \"libsqlite3-0\", or something similar, is installed. \n"
+"\n"
+"If/when it is installed, then, in OPTIONS,  try re-setting to \"default\". If commandoo still can't find it then determine the library's location and point to it manually. Typing the following in a commandoo CL or a terminal window should help you find it: \n"
+"\n"
+"\"locate -i -e libsqlite3.so.0\" or \"locate -i -e libsqlite3.so\"\n"
+"\n"
+"examine the output for the proper location (usually starts with \"/usr/\" and has \"x86_64\" or \"x64\" or similar in the path name) and use that location. In most cases the library file is named \"libsqlite3.so.0\".\n"
+"\n"
 msgstr ""
 
 #: ufrmmain.cmsgsystemprocesseserror
 msgid "Problem reading system processes. Halting: "
 msgstr ""
 
-#: ufrmmain.cmsgterminalundefined
-msgid "There is no Terminal program defined, change in \"Options\"."
-msgstr ""
-
-#: ufrmmain.cnameitem_problem
-msgid "Problem"
-msgstr ""
-
 #: ufrmmain.cnameitem_search
 msgctxt "ufrmmain.cnameitem_search"
 msgid "Search"
+msgstr ""
+
+#: ufrmmain.cnameitem_searchnormal
+msgid "Normal"
+msgstr ""
+
+#: ufrmmain.cnameitem_searchsimple
+msgid "Simple"
 msgstr ""
 
 #: ufrmmain.cnameitem_threatlevel
@@ -5323,6 +6402,10 @@ msgstr ""
 msgid "<< == Attention! == >>"
 msgstr ""
 
+#: ufrmmsgdlg.cmsgdlgempty
+msgid "<< no text >>"
+msgstr ""
+
 #: ufrmmsgdlg.cmsgdlggeneralinformation
 msgid "General Information"
 msgstr ""
@@ -5342,8 +6425,9 @@ msgstr ""
 #: ufrmoptions.caddlanghint
 msgid ""
 "Add new language packs via this button. \n"
+"\n"
 "Unfortunately at this time there is only \n"
-"English and Wookie (haha) and Pyrate! \n"
+"English and...Pyrate! \n"
 "\n"
 "If you are so kind as to provide a translation \n"
 "for your native language, then that can be \n"
@@ -5356,16 +6440,24 @@ msgid ""
 "<end> \n"
 msgstr ""
 
-#: ufrmoptions.ccapoptdefterminal
-msgid "Reset to default Terminal?"
+#: ufrmoptions.ccapoptdefbasepath
+msgid "Reset base config path?"
+msgstr ""
+
+#: ufrmoptions.ccapoptdefsavepath
+msgid "Reset Path to Default?"
+msgstr ""
+
+#: ufrmoptions.ccapoptfilesavepath
+msgid "File saving path"
 msgstr ""
 
 #: ufrmoptions.ccapoptresetshownos
 msgid "Reset Show No More?"
 msgstr ""
 
-#: ufrmoptions.ccapoptterminalprogram
-msgid "Terminal Program"
+#: ufrmoptions.ccapoptsqlite_soname
+msgid "Unusual sqlite 3 library name..."
 msgstr ""
 
 #: ufrmoptions.clblthreatlevelhint
@@ -5381,8 +6473,28 @@ msgid ""
 "<end>\n"
 msgstr ""
 
-#: ufrmoptions.cmsgoptdefterminal
-msgid "Are you sure you want to reset the Terminal Program to Default \"%s\"?"
+#: ufrmoptions.cmsgoptdefbasepath
+msgid "Are you sure you want to reset the base config path to \"%s\"?"
+msgstr ""
+
+#: ufrmoptions.cmsgoptdefsavepath
+msgid "Are you sure you want to reset the %s path to Default \"%s\"?"
+msgstr ""
+
+#: ufrmoptions.cmsgoptdefsavepathisdefault
+msgid "The shown Save Path is already the default."
+msgstr ""
+
+#: ufrmoptions.cmsgoptdefsavepathstr
+msgid "Saving"
+msgstr ""
+
+#: ufrmoptions.cmsgoptdefwritepathstr
+msgid "Base"
+msgstr ""
+
+#: ufrmoptions.cmsgoptfilesavepathinvalid
+msgid "Folder \"%s\" does not exist."
 msgstr ""
 
 #: ufrmoptions.cmsgoptresetshownos
@@ -5395,6 +6507,105 @@ msgstr ""
 
 #: ufrmoptions.cmsgoptsqlitelibfile
 msgid "sqlite Library file"
+msgstr ""
+
+#: ufrmoptions.cmsgoptsqlite_soname
+msgid ""
+"The sqlite library name is usually \"%s\" with a numeric character after it, like \"%s\".\n"
+"\n"
+"You have chosen \"%s\". Choosing the wrong library could cause the program to crash when accessing sql DB's. Please, be sure you know what you are doing! Are you sure you want use this library?\n"
+msgstr ""
+
+#: ufrmoptions.coptcapcheckforupgrade
+msgid "Need to retrieve update Version"
+msgstr ""
+
+#: ufrmoptions.coptcapcheckforupgradebadfile
+msgid "The link's contents were bad."
+msgstr ""
+
+#: ufrmoptions.coptcapcheckforupgradehowto
+msgid "Check for Update Instructions"
+msgstr ""
+
+#: ufrmoptions.coptcapcheckforupgradeupgradeavailable
+msgid "Upgrade Available"
+msgstr ""
+
+#: ufrmoptions.coptcapcheckforupgradewget
+msgid "Required file \"wget\" missing"
+msgstr ""
+
+#: ufrmoptions.coptlabelhints
+msgid ""
+"If this line is too long, Dbl-click it to see the \n"
+"full text.\n"
+"\n"
+"<end>\n"
+msgstr ""
+
+#: ufrmoptions.coptmsgcheckforupgrade
+msgid ""
+"The website needs to be checked for any upgrade Version. Should commandoo check, or do you want to do it?\n"
+"\n"
+"YES = commandoo will check\n"
+"NO = you will check\n"
+msgstr ""
+
+#: ufrmoptions.coptmsgcheckforupgradebadfile
+msgid "%s  It should have been a single number, check the link you used!"
+msgstr ""
+
+#: ufrmoptions.coptmsgcheckforupgradedetails
+msgid ""
+"\n"
+"\n"
+"You can check using your browser which will either display the number or download the file which you can then open and inspect. Or, using the terminal (or an entry in commandoo), use the following Command Line:\n"
+"%s\n"
+"\n"
+"Similarly you can check what the update entails at this link:\n"
+"%s\n"
+"\n"
+"...where \"#\" is the number you find for the upgrade Version SEQUENCE number.\n"
+"\n"
+msgstr ""
+
+#: ufrmoptions.coptmsgcheckforupgradehowto
+msgid ""
+"The upgrade Version SEQUENCE number is stored in a file on the website, you need compare your current program SEQUENCE number (also found in ABOUT) to that number.\n"
+"\n"
+"Your current PROGRAM SEQUENCE number is:   %d\n"
+"\n"
+"The default location to check is (if be you have newer information use that site):\n"
+msgstr ""
+
+#: ufrmoptions.coptmsgcheckforupgradehowto2
+msgid ""
+"If the number from the website is greater than your current number then an upgrade is available. In that case...\n"
+"\n"
+msgstr ""
+
+#: ufrmoptions.coptmsgcheckforupgradehowtofinal
+msgid ""
+"Go to:\n"
+"%s\n"
+"\n"
+"The download is there (marked by the NEW sequence number) as well as instructions.\n"
+"\n"
+msgstr ""
+
+#: ufrmoptions.coptmsgcheckforupgradelatest
+msgid "You have the latest version of commandoo."
+msgstr ""
+
+#: ufrmoptions.coptmsgcheckforupgradeupgradenotes
+msgid ""
+"The upgrade notes are:\n"
+"-------------------------\n"
+msgstr ""
+
+#: ufrmoptions.coptmsgcheckforupgradewget
+msgid "To check for upgrade commandoo needs \"wget\", but it could not be found. Install it and re-try, or use answer NO answer on first option and use the instructions."
 msgstr ""
 
 #: ufrmoptions.ctextorsqldbhint
@@ -5423,6 +6634,10 @@ msgid ""
 "<end>\n"
 msgstr ""
 
+#: ufrmoptions.ctitoptdefbasepath
+msgid "Select new config path"
+msgstr ""
+
 #: ufrmprofiles.ccapcompareresults
 msgid "Compare Results"
 msgstr ""
@@ -5435,6 +6650,10 @@ msgstr ""
 msgid "Can not Copy"
 msgstr ""
 
+#: ufrmprofiles.ccapprochoose
+msgid "Choose %s %s DB %s"
+msgstr ""
+
 #: ufrmprofiles.ccapproconvertconfirm
 msgid "Convert %s To %s:"
 msgstr ""
@@ -5443,8 +6662,13 @@ msgstr ""
 msgid "DB Conversion successful. You can load it from the \"Switch Database\" button."
 msgstr ""
 
+#: ufrmprofiles.ccapprocopy
+msgctxt "ufrmprofiles.ccapprocopy"
+msgid "copied"
+msgstr ""
+
 #: ufrmprofiles.ccapprocopyconfirm
-msgid "Copy Profile"
+msgid "Name for the %s %s"
 msgstr ""
 
 #: ufrmprofiles.ccapprodbfilenotexist
@@ -5452,11 +6676,15 @@ msgid "%s does not exist"
 msgstr ""
 
 #: ufrmprofiles.ccapprodeletefinal
-msgid "Final Confirmation"
+msgid "Final Delete Confirmation..."
+msgstr ""
+
+#: ufrmprofiles.ccapprodeleteheader
+msgid "Delete DB Profile \"%s\"?"
 msgstr ""
 
 #: ufrmprofiles.ccapprodeleteok
-msgid "File Deletion?"
+msgid "Delete Profile \"%s\"'s file(s) too?"
 msgstr ""
 
 #: ufrmprofiles.ccapprodestfileexists
@@ -5465,6 +6693,30 @@ msgstr ""
 
 #: ufrmprofiles.ccapprodestfilesexist
 msgid "%s Text Files Exist!"
+msgstr ""
+
+#: ufrmprofiles.ccapprofcompare
+msgid "Compare To"
+msgstr ""
+
+#: ufrmprofiles.ccapprofconvert
+msgid "Convert"
+msgstr ""
+
+#: ufrmprofiles.ccapprofdb_mismatch
+msgid "DB Mismatch"
+msgstr ""
+
+#: ufrmprofiles.ccapprofmanage
+msgid "Manage"
+msgstr ""
+
+#: ufrmprofiles.ccapprofmerge
+msgid "Merge To"
+msgstr ""
+
+#: ufrmprofiles.ccapproimport
+msgid "imported"
 msgstr ""
 
 #: ufrmprofiles.ccapproinvalidfolder
@@ -5505,13 +6757,8 @@ msgctxt "ufrmprofiles.ccapselectprofiletype_merge"
 msgid "Merge"
 msgstr ""
 
-#: ufrmprofiles.ccapstandardselect
-msgctxt "ufrmprofiles.ccapstandardselect"
-msgid "&A  Select"
-msgstr ""
-
 #: ufrmprofiles.ccapvariselect
-msgid "&A  Select Profile:  \"%s\""
+msgid "Select Profile:  \"%s\""
 msgstr ""
 
 #: ufrmprofiles.cmsgcomparing
@@ -5526,6 +6773,10 @@ msgstr ""
 
 #: ufrmprofiles.cmsgdefaultdisplay
 msgid "( Default Path = %s )"
+msgstr ""
+
+#: ufrmprofiles.cmsgdefaultdisplayselect
+msgid "( Manage DB's with button \"%s\" )"
 msgstr ""
 
 #: ufrmprofiles.cmsgfileerrorcopy
@@ -5546,12 +6797,39 @@ msgid ""
 "\n"
 msgstr ""
 
+#: ufrmprofiles.cmsgimportsuccess
+msgid ""
+"Profile \"%s (%s)\" was created.\n"
+"\n"
+"File:\n"
+"\"%s\"\n"
+"\n"
+"was imported to:\n"
+"\"%s\"\n"
+msgstr ""
+
+#: ufrmprofiles.cmsgimportsuccessfromconfig
+msgid ""
+"File (or files):\n"
+"\"%s\"\n"
+"\n"
+"was (or were) re-activated and Profile \"%s (%s)\" was created.\n"
+msgstr ""
+
+#: ufrmprofiles.cmsginvalidtextfileformat
+msgid "File \"%s\" in folder \"%s\" is not a valid commandoo text based DB."
+msgstr ""
+
 #: ufrmprofiles.cmsgmostlikely
 msgid "Either the file(s) do not exist, there is a permissions problem, or possibly unmounted drives."
 msgstr ""
 
 #: ufrmprofiles.cmsgpathdisplay
 msgid "Path: %s"
+msgstr ""
+
+#: ufrmprofiles.cmsgprobadsqldb
+msgid "The imported database is either not a sqlite DB or is is not a commandoo DB."
 msgstr ""
 
 #: ufrmprofiles.cmsgprocantcopy
@@ -5563,7 +6841,7 @@ msgid "Command object was not assigned."
 msgstr ""
 
 #: ufrmprofiles.cmsgprodbfilenotexist
-msgid "\"%s\"  DB has not been initialized and so is empty, %s DB file must exist."
+msgid "\"%s\"  DB has not been initialized and so is empty, %s DB file must exist. If it is a newly added DB Profile then you simply need to open it once to initialize it."
 msgstr ""
 
 #: ufrmprofiles.cmsgprodbtextstr
@@ -5571,11 +6849,11 @@ msgid "text"
 msgstr ""
 
 #: ufrmprofiles.cmsgprodeletefinal
-msgid "The Profile == AND == the Database file(s) will be deleted. Continue?."
+msgid "The Profile \"%s\" == AND == the Database file(s) will be deleted. Continue?."
 msgstr ""
 
 #: ufrmprofiles.cmsgprodeletefinalnodelete
-msgid "The Profile will be deleted == BUT == the Database file(s) will remain. Continue?."
+msgid "The Profile \"%s\" will be deleted == BUT == the Database file(s) will remain, ie. de-activation. Continue?."
 msgstr ""
 
 #: ufrmprofiles.cmsgprodeleteok
@@ -5606,13 +6884,73 @@ msgstr ""
 msgid "Destination"
 msgstr ""
 
+#: ufrmprofiles.cmsgprofdb_mismatchcompare
+msgid ""
+"Can not %s \"%s\" to \"%s\" because its version is %d and the other is %d (commandoo current DB version is %d).\n"
+"\n"
+msgstr ""
+
+#: ufrmprofiles.cmsgprofdb_mismatchcomparestr
+msgid "compare"
+msgstr ""
+
+#: ufrmprofiles.cmsgprofdb_mismatchconvert
+msgid ""
+"Can not %s %s because it is DB version %d while the current commandoo version is %d.\n"
+"\n"
+msgstr ""
+
+#: ufrmprofiles.cmsgprofdb_mismatchconvertstr
+msgid "convert"
+msgstr ""
+
+#: ufrmprofiles.cmsgprofdb_mismatchmergestr
+msgid "merge"
+msgstr ""
+
+#: ufrmprofiles.cmsgprofdb_mismatchsolution
+msgid "commandoo only updates DB files when they are opened. It could be you've recently updated commandoo, or have recieved an older DB from a colleague and imported it? Simply open (ie. switch to) the DB in question first, which will automatically update it if needed. Then switch to another DB and try the \"%s\" again. "
+msgstr ""
+
+#: ufrmprofiles.cmsgprofileinstructions
+msgid ""
+"You chose to import a text based DB. commandoo text DB's consist of 3 files which by default should have an extension of \".data\". In addition they are, by default, distinguished by either \"Cmd\", \"CmdLine\", or \"Misc\" just before the extension. Normally the 3 files that look something like: \n"
+"\n"
+"NameCmd.data, NameCmdLine.data, and NameMisc.data\n"
+"\n"
+"It is possible that the person who gave them to you renamed them, so keep that in mind.\n"
+msgstr ""
+
+#: ufrmprofiles.cmsgprofileselectiondbmismatch
+msgid ""
+"while the files you chose are all valid commandoo files, they are from differing databases:\n"
+"\n"
+"Command file Guid      : %s\n"
+"Command Line file Guid : %s\n"
+"Misc file Guid : %s\n"
+"\n"
+"Perhaps you selected the wrong files?\n"
+msgstr ""
+
+#: ufrmprofiles.cmsgprofileselectionerror
+msgid "You selected %d files but you need to select %s..."
+msgstr ""
+
+#: ufrmprofiles.cmsgprofileselectionwrong
+msgid "while the files you chose are all valid commandoo files, they are not complete; ie., they should be one of each of type: Command, CommandLine, and Miscellaneous. But one of these types is duplicated!"
+msgstr ""
+
+#: ufrmprofiles.cmsgprofileselectionwrongver
+msgid "while the files you chose are all valid commandoo files, they are mismatched; ie., they have differing DB Version numbers. "
+msgstr ""
+
 #: ufrmprofiles.cmsgprofilesinformation
 msgid ""
 "Just so you know.\n"
 "\n"
 "Changes made to this list are immediate. DB files, if they exist, will be renamed, moved, or deleted immediately. \n"
 "\n"
-"Assume Profile Name of \"Bob\". \n"
+"Conventions:  Assume Profile Name of \"Bob\". \n"
 "\n"
 "For sql DB's it is a single file and the file name convention is \"Bob.sqlite\"  \n"
 "\n"
@@ -5628,6 +6966,10 @@ msgstr ""
 
 #: ufrmprofiles.cmsgprofswitchedoff
 msgid " ( Switched off in Options )"
+msgstr ""
+
+#: ufrmprofiles.cmsgproimportnotype
+msgid "You need to indicate in the radiobox above whether you are importing a text-based DB or a sql DB."
 msgstr ""
 
 #: ufrmprofiles.cmsgproinvalidfolder
@@ -5652,6 +6994,10 @@ msgstr ""
 
 #: ufrmprofiles.cmsgpronooverwrite
 msgid "\"%s\" DB already exists, will not overwrite it."
+msgstr ""
+
+#: ufrmprofiles.cmsgpronoteditable
+msgid "The \"DB\" databases are not editable."
 msgstr ""
 
 #: ufrmprofiles.cmsgproponameinvalid
@@ -5864,57 +7210,10 @@ msgstr ""
 msgid "Unchecks"
 msgstr ""
 
-#: ufrmsuperuserfile.ccapchoosesufile
-msgid "Choose ROOT authentication file"
-msgstr ""
-
-#: ufrmsuperuserfile.ccapturnoffroot
-msgid "Disallow ROOT permissions?"
-msgstr ""
-
-#: ufrmsuperuserfile.ccaptypesufileparam
-msgid "Type in flag / parameter, if any"
-msgstr ""
-
-#: ufrmsuperuserfile.ccaptypesufileparam1
-msgid "First flag / parameter, if any"
-msgstr ""
-
-#: ufrmsuperuserfile.ccaptypesufileparam2
-msgid "Second flag / parameter, if any"
-msgstr ""
-
-#: ufrmsuperuserfile.cmsgbadsufile
-msgid "File \"%s\" does not exist. Can not save it."
-msgstr ""
-
-#: ufrmsuperuserfile.cmsgrawsudo
-msgid "Not allowed! \"su\" and \"sudo\" are not secure to use through a GUI."
-msgstr ""
-
-#: ufrmsuperuserfile.cmsgsufbadpath
-msgid "//xx BAD xx/"
-msgstr "//xx BAD xx/"
-
-#: ufrmsuperuserfile.cmsgturnoffroot
-msgid "If you do this you will not be able to run command lines as ROOT. Is this what you want?"
-msgstr ""
-
-#: ufrmsuperuserfile.csufhintparams
+#: unitcommands.ccapcompareidentical
 msgid ""
-"These edits hold the param flags for the ROOT file. These \n"
-"are correct and shouldn't in general be changed. \n"
 "\n"
-"However, someday in future maybe things change, so you can \n"
-"edit them by double clicking them. You should know what \n"
-"you are doing, any changes you make are at your own risk. \n"
-"\n"
-"At the time of writing only kdesu requires params. \"-t\" forces \n"
-"it to return the called process's output, and \"-c\" tells it to \n"
-"run a command. \"-c\" MUST BE last.\n"
-"\n"
-"<end>\n"
-"\n"
+"  >> Identical\n"
 msgstr ""
 
 #: unitcommands.ccapcomparelist
@@ -5926,38 +7225,11 @@ msgid "\"%s\" %s List:"
 msgstr ""
 
 #: unitcommands.cmsgcldest
-msgid "  present in destination but not in source:"
+msgid "  present in destination but not in <source:"
 msgstr ""
 
 #: unitcommands.cmsgclebadcommand
 msgid "Bad command!"
-msgstr ""
-
-#: unitcommands.cmsgclebadpath
-msgid "$BAD_PATH"
-msgstr "$BAD_PATH"
-
-#: unitcommands.cmsgclebuiltininfo
-msgid ""
-"\n"
-"\n"
-"________NOTE_____________\n"
-"Linux builtins are special use for shells \n"
-"(terminals, scripting, etc.) and, generally, \n"
-"should not be run from this program as it \n"
-"makes no sense to do so. \n"
-"\n"
-"But use Command lines to store favorite Builtin \n"
-"commands and use the copy to clipboard feature \n"
-"and then paste into a terminal. \n"
-msgstr ""
-
-#: unitcommands.cmsgclenobuiltindetached
-msgid "Builtin commands may not be run as a detached process"
-msgstr ""
-
-#: unitcommands.cmsgclenosufile
-msgid "No superuser file (kdesudo, gksudo, etc.) has been found."
 msgstr ""
 
 #: unitcommands.cmsgclis
@@ -5973,7 +7245,11 @@ msgid "none"
 msgstr ""
 
 #: unitcommands.cmsgcomcommanddisallowed
-msgid "%s command disallowed because it could hang the program. Run in Terminal."
+msgid "\"%s\" command disallowed because it could hang the program. Run in Terminal."
+msgstr ""
+
+#: unitcommands.cmsgcomcommanddisalloweddetached
+msgid "\"%s\" command can not be run as a detached child process because it could hang the program."
 msgstr ""
 
 #: unitcommands.cmsgcomparelistcnt
@@ -5989,19 +7265,23 @@ msgid "%s has %d Commands and %d Command Lines"
 msgstr ""
 
 #: unitcommands.cmsgindest
-msgid ">> Present in Destination: "
+msgid ">> Present in Destination [%s]: "
 msgstr ""
 
 #: unitcommands.cmsgindestnot
-msgid ">> Not in Destination: "
+msgid ">> Not in Destination [%s]: "
 msgstr ""
 
 #: unitcommands.cmsgpathsdiffer
-msgid "Path is different: %s"
+msgid "Path is different: \"%s\" vs. \"%s\""
 msgstr ""
 
 #: unitcommands.cmsgucodisallowpipe_detach
 msgid "Can not run piped commands as detached processes."
+msgstr ""
+
+#: unitcommands.cmsgucodisallowpkexec_detached
+msgid "Can not run pkexec commands as detached processes."
 msgstr ""
 
 #: unitcommands.cmsgucodisallowshell_detach
@@ -6308,8 +7588,10 @@ msgid "Harmless"
 msgstr ""
 
 #: unitdbconstants.cthreatlevelnotspecified
-msgid "<Not_Set!>"
-msgstr "<Not_Set!>"
+#| msgid "<Not_Set!>"
+msgctxt "unitdbconstants.cthreatlevelnotspecified"
+msgid "..."
+msgstr "..."
 
 #: unitdbstructure.cdbsdisplay_false
 msgid "false"
@@ -6358,45 +7640,62 @@ msgid "FOLDER"
 msgstr ""
 
 #: unitfrmcommandsvar.cmsgufcvdonevariables
-msgid "Done with Variable replacement."
-msgstr ""
-
-#: unitglob.cbtn_add
-msgctxt "unitglob.cbtn_add"
-msgid "Add"
+msgid ""
+"Done with Variable replacement. Edit if needed.\n"
+"\n"
+"Invoking \"%s\" sends it to processing.\n"
 msgstr ""
 
 #: unitglob.cbtn_copy
+msgctxt "unitglob.cbtn_copy"
 msgid "Copy"
 msgstr ""
 
-#: unitglob.cbtn_delete
-msgctxt "unitglob.cbtn_delete"
-msgid "Delete"
-msgstr ""
-
 #: unitglob.cbtn_done
-msgid "&O Done"
+msgctxt "unitglob.cbtn_done"
+msgid "&O  Done"
 msgstr ""
 
-#: unitglob.cbtn_edit
-msgid "Edit"
+#: unitglob.ccapfindlbhint
+msgid "Begin typing..."
+msgstr ""
+
+#: unitglob.ccapfindtexthint
+msgid "Type, then press <enter>..."
 msgstr ""
 
 #: unitglob.ccapgenericadd
-msgid "Add %s"
+msgctxt "unitglob.ccapgenericadd"
+msgid "Add"
+msgstr ""
+
+#: unitglob.ccapgenericcancel
+msgctxt "unitglob.ccapgenericcancel"
+msgid "Cancel"
 msgstr ""
 
 #: unitglob.ccapgenericchoose
 msgid "Choose %s"
 msgstr ""
 
+#: unitglob.ccapgenericclose
+msgctxt "unitglob.ccapgenericclose"
+msgid "Close"
+msgstr ""
+
+#: unitglob.ccapgenericcopy
+msgctxt "unitglob.ccapgenericcopy"
+msgid "Copy"
+msgstr ""
+
 #: unitglob.ccapgenericdelete
-msgid "Delete %s"
+msgctxt "unitglob.ccapgenericdelete"
+msgid "Delete"
 msgstr ""
 
 #: unitglob.ccapgenericedit
-msgid "Edit %s"
+msgctxt "unitglob.ccapgenericedit"
+msgid "Edit"
 msgstr ""
 
 #: unitglob.ccapgenericfile
@@ -6409,8 +7708,21 @@ msgctxt "unitglob.ccapgenericfolder"
 msgid "Folder"
 msgstr ""
 
+#: unitglob.ccapgenericimport
+msgid "Import"
+msgstr ""
+
+#: unitglob.ccapgenericnew
+msgctxt "unitglob.ccapgenericnew"
+msgid "New"
+msgstr ""
+
 #: unitglob.ccapgenericprofile
 msgid "Profile"
+msgstr ""
+
+#: unitglob.ccapgenericselect
+msgid "Select"
 msgstr ""
 
 #: unitglob.cmsggenericdelete
@@ -6419,6 +7731,10 @@ msgstr ""
 
 #: unitglob.cmsgnocommandselected
 msgid "No item is selected."
+msgstr ""
+
+#: unitglob.cobjlblgo
+msgid "&G  Go"
 msgstr ""
 
 #: unitglob.cobjlblrun
@@ -6451,6 +7767,10 @@ msgstr ""
 
 #: unitlanguages.clangsymbol
 msgid "Language Symbol: \"%s\""
+msgstr ""
+
+#: unitlanguages.cmsglangisuninitialized
+msgid "Not available, Languages was not initialized, probable a bad config path."
 msgstr ""
 
 #: unitlanguages.cmsgover18

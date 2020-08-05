@@ -10,28 +10,27 @@
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
-      <Resources Count="21">
+      <Resources Count="20">
         <Resource_0 FileName="DB.sqlite" Type="RCDATA" ResourceName="DB"/>
         <Resource_1 FileName="DBCmd.data" Type="RCDATA" ResourceName="DBCMD"/>
         <Resource_2 FileName="DBCmdLine.data" Type="RCDATA" ResourceName="DBCMDLINE"/>
         <Resource_3 FileName="DBMisc.data" Type="RCDATA" ResourceName="DBMISC"/>
         <Resource_4 FileName="languages/commandoo.en.po" Type="RCDATA" ResourceName="PO.EN"/>
         <Resource_5 FileName="languages/commandoo.pyrxxx.po" Type="RCDATA" ResourceName="PO.PYRXXX"/>
-        <Resource_6 FileName="languages/commandoo.wookiexxx.po" Type="RCDATA" ResourceName="PO.WOOKIEXXX"/>
-        <Resource_7 FileName="searches/DB:_CmdLines_NotTerminalOnly" Type="RCDATA" ResourceName="SEARCH.1"/>
-        <Resource_8 FileName="searches/DB:_Commands_for_copy.move.rename.delete_files" Type="RCDATA" ResourceName="SEARCH.2"/>
-        <Resource_9 FileName="searches/DB:_Gimp_Example" Type="RCDATA" ResourceName="SEARCH.3"/>
-        <Resource_10 FileName="searches/DB_KEY:_Encryption" Type="RCDATA" ResourceName="SEARCH.4"/>
-        <Resource_11 FileName="searches/DB_KEY:_SysAdmin" Type="RCDATA" ResourceName="SEARCH.5"/>
-        <Resource_12 FileName="searches/DB_KEY:_System_Info" Type="RCDATA" ResourceName="SEARCH.6"/>
-        <Resource_13 FileName="searches/DB:_Require_ROOT" Type="RCDATA" ResourceName="SEARCH.7"/>
-        <Resource_14 FileName="searches/DB:_Serious_Threatlevels" Type="RCDATA" ResourceName="SEARCH.8"/>
-        <Resource_15 FileName="searches/DB:_Serious_Threatlevels_2" Type="RCDATA" ResourceName="SEARCH.9"/>
-        <Resource_16 FileName="searches/DB:_Unassigned_Threatlevels" Type="RCDATA" ResourceName="SEARCH.0"/>
-        <Resource_17 FileName="searches/.CurrKWSearch{6719E184-7C35-4D81-B5BF-16D4BF36ECC8}" Type="RCDATA" ResourceName="DOTSEARCH1"/>
-        <Resource_18 FileName="searches/.CurrKWSearch{88732DB1-398D-4281-B36F-9A17810FFC32}" Type="RCDATA" ResourceName="DOTSEARCH2"/>
-        <Resource_19 FileName="searches/.CurrSearch{6719E184-7C35-4D81-B5BF-16D4BF36ECC8}" Type="RCDATA" ResourceName="DOTSEARCH3"/>
-        <Resource_20 FileName="searches/.CurrSearch{88732DB1-398D-4281-B36F-9A17810FFC32}" Type="RCDATA" ResourceName="DOTSEARCH4"/>
+        <Resource_6 FileName="searches/DB:_CmdLines_NotTerminalOnly" Type="RCDATA" ResourceName="SEARCH.1"/>
+        <Resource_7 FileName="searches/DB:_Commands_for_copy.move.rename.delete_files" Type="RCDATA" ResourceName="SEARCH.2"/>
+        <Resource_8 FileName="searches/DB:_Gimp_Example" Type="RCDATA" ResourceName="SEARCH.3"/>
+        <Resource_9 FileName="searches/DB_KEY:_Encryption" Type="RCDATA" ResourceName="SEARCH.4"/>
+        <Resource_10 FileName="searches/DB_KEY:_SysAdmin" Type="RCDATA" ResourceName="SEARCH.5"/>
+        <Resource_11 FileName="searches/DB_KEY:_System_Info" Type="RCDATA" ResourceName="SEARCH.6"/>
+        <Resource_12 FileName="searches/DB:_Require_ROOT" Type="RCDATA" ResourceName="SEARCH.7"/>
+        <Resource_13 FileName="searches/DB:_Serious_Threatlevels" Type="RCDATA" ResourceName="SEARCH.8"/>
+        <Resource_14 FileName="searches/DB:_Serious_Threatlevels_2" Type="RCDATA" ResourceName="SEARCH.9"/>
+        <Resource_15 FileName="searches/DB:_Unassigned_Threatlevels" Type="RCDATA" ResourceName="SEARCH.0"/>
+        <Resource_16 FileName="searches/.CurrKWSearch{6719E184-7C35-4D81-B5BF-16D4BF36ECC8}" Type="RCDATA" ResourceName="DOTSEARCH1"/>
+        <Resource_17 FileName="searches/.CurrKWSearch{88732DB1-398D-4281-B36F-9A17810FFC32}" Type="RCDATA" ResourceName="DOTSEARCH2"/>
+        <Resource_18 FileName="searches/.CurrSearch{6719E184-7C35-4D81-B5BF-16D4BF36ECC8}" Type="RCDATA" ResourceName="DOTSEARCH3"/>
+        <Resource_19 FileName="searches/.CurrSearch{88732DB1-398D-4281-B36F-9A17810FFC32}" Type="RCDATA" ResourceName="DOTSEARCH4"/>
       </Resources>
     </General>
     <i18n>
