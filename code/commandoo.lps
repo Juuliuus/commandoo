@@ -20,15 +20,17 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ufrmMain"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="2136"/>
-        <CursorPos Y="2148"/>
+        <TopLine Value="1442"/>
+        <CursorPos Y="1460"/>
         <UsageCount Value="203"/>
-        <Bookmarks Count="5">
+        <Bookmarks Count="7">
           <Item0 Y="7823"/>
           <Item1 X="3" Y="2154" ID="4"/>
           <Item2 Y="5417" ID="5"/>
           <Item3 X="3" Y="2473" ID="6"/>
-          <Item4 X="15" Y="1036" ID="2"/>
+          <Item4 X="16" Y="1460" ID="2"/>
+          <Item5 Y="6276" ID="3"/>
+          <Item6 X="56" Y="6190" ID="9"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -67,8 +69,8 @@
         <Filename Value="strconst_prog.pp"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="15"/>
-        <TopLine Value="120"/>
-        <CursorPos X="22" Y="127"/>
+        <TopLine Value="106"/>
+        <CursorPos X="73" Y="118"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
       </Unit5>
@@ -79,9 +81,8 @@
         <TopLine Value="526"/>
         <CursorPos X="40" Y="535"/>
         <UsageCount Value="202"/>
-        <Bookmarks Count="2">
+        <Bookmarks Count="1">
           <Item0 Y="1168" ID="1"/>
-          <Item1 Y="232" ID="9"/>
         </Bookmarks>
         <Loaded Value="True"/>
       </Unit6>
@@ -728,125 +729,116 @@
       <Define3 Value="WidgGTK"/>
       <Define4 Value="platAppImage"/>
     </OtherDefines>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1558" TopLine="1539"/>
+        <Caret Line="2141" Column="22" TopLine="2127"/>
       </Position1>
       <Position2>
-        <Filename Value="strconst_en.pp"/>
-        <Caret Line="232" TopLine="213"/>
+        <Filename Value="unitdbutils.pp"/>
+        <Caret Line="49" Column="13" TopLine="31"/>
       </Position2>
       <Position3>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5376" TopLine="5358"/>
+        <Caret Line="2149" Column="39" TopLine="2127"/>
       </Position3>
       <Position4>
         <Filename Value="ufrmmain.pp"/>
+        <Caret Line="666" Column="15" TopLine="649"/>
       </Position4>
       <Position5>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="29" Column="35"/>
+        <Caret Line="6194" Column="5" TopLine="6186"/>
       </Position5>
       <Position6>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="797" Column="15" TopLine="767"/>
+        <Caret Line="2136" Column="34" TopLine="2124"/>
       </Position6>
       <Position7>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2437" Column="3" TopLine="2412"/>
       </Position7>
       <Position8>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1037" Column="3" TopLine="1004"/>
+        <Caret Line="1463" Column="9" TopLine="1434"/>
       </Position8>
       <Position9>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2444" Column="3" TopLine="2441"/>
+        <Caret Line="2146" Column="3" TopLine="2136"/>
       </Position9>
       <Position10>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1047" Column="102" TopLine="1035"/>
+        <Caret Line="1460" Column="16" TopLine="1443"/>
       </Position10>
       <Position11>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="520" Column="48" TopLine="517"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="2149" Column="13" TopLine="2136"/>
       </Position11>
       <Position12>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="230" TopLine="211"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="666" Column="15" TopLine="649"/>
       </Position12>
       <Position13>
-        <Filename Value="ufrmoptions.pp"/>
-        <Caret Line="216" Column="20" TopLine="209"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="6198" Column="3" TopLine="6186"/>
       </Position13>
       <Position14>
-        <Filename Value="unitlanguages.pp"/>
-        <Caret Line="262" TopLine="243"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="665" Column="15" TopLine="648"/>
       </Position14>
       <Position15>
-        <Filename Value="unitlanguages.pp"/>
-        <Caret Line="143" TopLine="124"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="6272" Column="69" TopLine="6270"/>
       </Position15>
       <Position16>
-        <Filename Value="unitlanguages.pp"/>
-        <Caret Line="122" TopLine="103"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="665" Column="95" TopLine="665"/>
       </Position16>
       <Position17>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6158" Column="40" TopLine="6139"/>
+        <Caret Line="6272" Column="23" TopLine="6269"/>
       </Position17>
       <Position18>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6132" Column="33" TopLine="6116"/>
       </Position18>
       <Position19>
         <Filename Value="ufrmmain.pp"/>
+        <Caret Line="1442" Column="9" TopLine="1411"/>
       </Position19>
       <Position20>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6166" Column="66" TopLine="6135"/>
       </Position20>
       <Position21>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6143" Column="62" TopLine="6138"/>
+        <Caret Line="665" Column="26" TopLine="636"/>
       </Position21>
       <Position22>
-        <Filename Value="strconst_en.pp"/>
-        <Caret Line="535" Column="40" TopLine="526"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="6190" Column="69" TopLine="6161"/>
       </Position22>
       <Position23>
-        <Filename Value="unitlanguages.pp"/>
-        <Caret Line="337" TopLine="320"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="2154" Column="3" TopLine="2136"/>
       </Position23>
       <Position24>
-        <Filename Value="unitlanguages.pp"/>
-        <Caret Line="258" Column="64" TopLine="247"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="6276" TopLine="6257"/>
       </Position24>
       <Position25>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6272" Column="3" TopLine="6253"/>
+        <Caret Line="1460" Column="16" TopLine="1442"/>
       </Position25>
       <Position26>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2141" Column="22" TopLine="2127"/>
+        <Caret Line="2473" Column="3" TopLine="2455"/>
       </Position26>
       <Position27>
-        <Filename Value="unitdbutils.pp"/>
-        <Caret Line="49" Column="13" TopLine="31"/>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="7823" TopLine="7804"/>
       </Position27>
       <Position28>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2149" Column="39" TopLine="2127"/>
+        <Caret Line="6190" TopLine="6169"/>
       </Position28>
-      <Position29>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="666" Column="15" TopLine="649"/>
-      </Position29>
-      <Position30>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6194" Column="5" TopLine="6186"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

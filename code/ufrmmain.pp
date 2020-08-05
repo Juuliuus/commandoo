@@ -662,7 +662,7 @@ type
 
     function GetCmdRec( const anIdx : integer = -1 ) : TCmdRec;
     function GetPathFromResName( const ResName : string ) : string;
-    procedure InstallFile( const FullPath, ResourceName : string );
+    procedure InstallFile( const FullPath, ResourceName : string; const NoOverwrite : boolean = true );
     procedure InstallSupportFiles( const OnlyLanguages : boolean = false );
     procedure JumpToCommand( anIdx : integer; CmdLineStr : string );
     function CanJumpToCommand( const CmdStr, CmdLineStr : string ) : boolean;
@@ -2128,10 +2128,7 @@ begin
   //exit;
 
   if FromVer = ToVer then
-  begin
-    updateDisplay( 'This is waiting for finish to be upgraded to ===> 5', false, false );
     exit;
-  end;
 
   for i := FromVer + 1 to ToVer do
     case i of
@@ -2142,7 +2139,6 @@ begin
 //==>> NOTE!! Do not remove settings sections anymore! To support updates, AND the ability to go back to
 //the older version, the settings file must keep the old setting just in case. INI files are good this
 //way, if you don't use it no problem. If the program starts calling it again, it simply doesn't mind.
-//TODO change your prog ver!
       5 :
         begin
           FormSettings.ClearAllFormSettings( fIFS );
@@ -6187,8 +6183,8 @@ end;
 
 procedure TfrmMain.InstallSupportFiles( const OnlyLanguages : boolean = false );
 begin
-  InstallFile( GetPathFromResName( 'PO.EN' ), 'PO.EN' );
-  InstallFile( GetPathFromResName( 'PO.PYRXXX' ), 'PO.PYRXXX' );
+  InstallFile( GetPathFromResName( 'PO.EN' ), 'PO.EN', false );
+  InstallFile( GetPathFromResName( 'PO.PYRXXX' ), 'PO.PYRXXX', false );
   if OnlyLanguages then
   begin
     //UpdateDisplay( cmsgmainLanguageFilesUpdated, false, false );
@@ -6269,12 +6265,12 @@ begin
 {$ENDIF}
 end;
 
-procedure TfrmMain.InstallFile( const FullPath, ResourceName : string );
+procedure TfrmMain.InstallFile( const FullPath, ResourceName : string; const NoOverwrite : boolean = true );
 var
   S: TResourceStream;
 begin
 //TODO next version maybe. option to re-install???
-  if fileexists( FullPath ) then
+  if NoOverWrite and fileexists( FullPath ) then
     exit;
   S := TResourceStream.Create( HInstance, ResourceName, RT_RCDATA );
   try

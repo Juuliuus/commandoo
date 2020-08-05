@@ -114,7 +114,8 @@ const
 //increment this number for any Program settings cleanup / change, ONLY needs to be done if there is a change
 //that needs to be programatically handled.
   //c_PROG_VersionUpgradeCount = 3;
-  c_PROG_VersionUpgradeCount = 4; //29.06.2020 Allow Escape chars taken out
+  //c_PROG_VersionUpgradeCount = 4; //29.06.2020 Allow Escape chars taken out
+  c_PROG_VersionUpgradeCount = 5; //05.08.2020 languages will be updated
 //=====  PROGRAM   ==============================
 
 //==> NOTE: only change MAJOR VERSION when it is INCOMPATIBLE (ie. DB schema change) with previous MAJOR VERSION
