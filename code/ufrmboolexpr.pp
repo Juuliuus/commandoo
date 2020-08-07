@@ -250,15 +250,11 @@ resourcestring
     + LineEnding
     + 'portion of the search. '
     + LineEnding + LineEnding
-    + 'Select any item to enable the appropriate '
+    + 'Select any item and use the panels to the right to'
     + LineEnding
-    + 'buttons and then perform the action you '
+    + 'edit, or use the buttons here to perform the '
     + LineEnding
-    + 'want. '
-    + LineEnding + LineEnding
-    + 'Dbl Click expressions or operators to edit '
-    + LineEnding
-    + 'them. '
+    + 'action you want. '
     + LineEnding + LineEnding
     + '<end>'
     + LineEnding + LineEnding
@@ -267,17 +263,74 @@ resourcestring
   cfseMoveParenHint =
     'Use these to move parentheses around. '
     + LineEnding + LineEnding
-    + 'When adding parentheses only the selected '
-    + LineEnding
-    + 'item gets them. You can then select either '
-    + LineEnding
-    + 'of the parentheses and use these to move and  '
-    + LineEnding
-    + 'logically group as you like. '
-    + LineEnding + LineEnding
     + 'The move is smart and will not allow logical '
     + LineEnding
     + 'grouping errors. '
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding + LineEnding
+    ;
+
+  cfseItemAddSIHint =
+    'Use this to add a new entry either to the'
+    + LineEnding
+    + 'right or left of the currently selected'
+    + LineEnding
+    + 'entry.'
+    + LineEnding + LineEnding
+    + 'If the expression is empty this will add'
+    + LineEnding
+    + 'a new entry.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding + LineEnding
+    ;
+
+  cfseItemNotToggleHint =
+    'Use this to toggle a logical NOT on or off.'
+    + LineEnding + LineEnding
+    + 'You can select either an entry or a an'
+    + LineEnding
+    + 'opening parenthesis.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding + LineEnding
+    ;
+
+  cfseItemDeleteHint =
+    'Delete the currently selected entry.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding + LineEnding
+    ;
+
+  cfseItemExchangeHint =
+    'Use this to move an entire entry to'
+    + LineEnding
+    + 'another location in the expression. Select'
+    + LineEnding
+    + 'then one to move, then click this, then select'
+    + LineEnding
+    + 'the entry to exchange with.'
+    + LineEnding + LineEnding
+    + 'While the function is running indicators are'
+    + LineEnding
+    + 'displayed.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding + LineEnding
+    ;
+
+  cfseAddParenHint =
+    'Use these to add a set of parentheses.'
+    + LineEnding + LineEnding
+    + 'When adding parentheses only the selected'
+    + LineEnding
+    + 'item gets them. You can then select either'
+    + LineEnding
+    + 'of the parentheses and use the buttons to'
+    + LineEnding
+    + 'the right to logically group as you like. '
     + LineEnding + LineEnding
     + '<end>'
     + LineEnding + LineEnding
@@ -1759,6 +1812,12 @@ begin
   scbCmd.Hint := cfseMainHint;
   btnCmd_Paren_L_Move.Hint := cfseMoveParenHint;
   btnCmd_Paren_R_Move.Hint := cfseMoveParenHint;
+  btnCmd_Paren_Add.Hint := cfseAddParenHint;
+  btnCmd_Exchange.Hint := cfseItemExchangeHint;
+  btnCmd_Delete.Hint := cfseItemDeleteHint;
+  btnCmd_NOT_Toggle.Hint := cfseItemNotToggleHint;
+  btnCmdSI_R_Add.Hint := cfseItemAddSIHint;
+  btnCmdAdd_SI_L.Hint := btnCmdSI_R_Add.Hint;
 
   btnCmdCopy.Caption := cbtn_Copy;
   btnCmd_NOT_Toggle.Caption := cbtn_SearchNOT;

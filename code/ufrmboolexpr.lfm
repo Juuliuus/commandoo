@@ -76,7 +76,7 @@ object frmBoolExpr: TfrmBoolExpr
     end
   end
   object lblExchangeNotice: TLabel
-    Left = 336
+    Left = 335
     Height = 21
     Top = 27
     Width = 17

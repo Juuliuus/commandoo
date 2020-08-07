@@ -35,7 +35,7 @@
     </General>
     <i18n>
       <EnableI18N LFM="False"/>
-      <OutDir Value="languages"/>
+      <OutDir Value="po_files"/>
     </i18n>
     <VersionInfo>
       <UseVersionInfo Value="True"/>

@@ -752,22 +752,22 @@ begin
 
   Result := '';
 
-    aProc := TProcess.Create(nil);
-    try
-      FillProcDefaults( aProc );
-      aProc.Executable := theExec;
+  aProc := TProcess.Create(nil);
+  try
+    FillProcDefaults( aProc );
+    aProc.Executable := theExec;
 
-      aProc.Parameters.Add( theParams );
+    aProc.Parameters.Add( theParams );
 
-      if ThirdParam <> '' then
-        aProc.Parameters.Add( ThirdParam );
+    if ThirdParam <> '' then
+      aProc.Parameters.Add( ThirdParam );
 
-      Result := Trim( GetProcessOutput( aProc, DummyString, true, false, false ) );
+    Result := Trim( GetProcessOutput( aProc, DummyString, true, false, false ) );
 
-    finally
-      aProc.Terminate( 0 );
-      FreeandNil( aProc );
-    end;
+  finally
+    aProc.Terminate( 0 );
+    FreeandNil( aProc );
+  end;
 
 end;
 

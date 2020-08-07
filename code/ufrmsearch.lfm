@@ -43,7 +43,7 @@ object frmSearch: TfrmSearch
     TabOrder = 4
   end
   object btnCancel: TBitBtn
-    Left = 833
+    Left = 834
     Height = 28
     Top = 29
     Width = 78
@@ -163,10 +163,7 @@ object frmSearch: TfrmSearch
     ParentColor = True
     TabOrder = 6
     inherited cbHints: TCheckBox
-      Left = 135
-      Height = 21
       Top = 0
-      Width = 173
     end
   end
   object lblWhichBoolExpr: TLabel

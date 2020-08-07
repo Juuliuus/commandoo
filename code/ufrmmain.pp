@@ -1791,6 +1791,8 @@ begin
   if fAppImagePath = '' then
     fAppImagePath := '<Development. Not running in the AppImageEnvironment>';
   fAppImageRunningPath := trim( GetEnvironmentVariable( 'APPDIR' ) );
+  if fAppImageRunningPath = '' then
+    fAppImageRunningPath := '<Development. Not mounted>';
 {$ENDIF}
 //do I want or need a HOME? Better maybe to be full paths, then beginners aren't confused.
 //fUserHome := trim( GetEnvironmentVariable( 'HOME' ) )
@@ -2470,6 +2472,7 @@ begin
   lblPathAliasDisp.Hint := lblPADisp.Hint;
   lblPA.Hint := cmsgmainPathAliasHint;
   lblPathAlias.Hint := lblPA.Hint;
+  btnBuilder.Hint := cmsgCLBuildButtonHint;
 
   ResetCommandsToTop;
 
@@ -7481,6 +7484,7 @@ begin
 
     ProgName := extractfilename(application.exename);
     Str := QuickProc( 'ps', '-A' );
+
     //Str := QuickProc( 'ps', '-aux' );
     fOpenInstances := 1;
     idx := pos(ProgName, Str);
@@ -7495,21 +7499,22 @@ begin
     end;
     if fOpenInstances > 1 then
     begin
-  {$IFDEF Release}
-      if not fAllowMultipleOpens then
+{$IFDEF Release}
+    if not fAllowMultipleOpens then
+    begin
+      MsgDlgMessage( ccapMultipleDisallowed, cmsgMultipleDisallowed );
+      MsgDlgInfo( self );
+      result := false;//true;
+      exit;
+    end;
+    if MsgDlgMessage( ccapMulipleInstances, format( cmsgMulipleInstances, [ fOpenInstances ] ) ) then
+      if MsgDlgConfirmation( self ) = mrNo then
       begin
-        MsgDlgMessage( ccapMultipleDisallowed, cmsgMultipleDisallowed );
-        MsgDlgInfo( self );
-        result := false;//true;
+        result := false;
         exit;
       end;
-  {$ENDIF}
+{$ENDIF}
       OpenInstancesCap := format( ccapMulipleInstances, [ fOpenInstances ] );
-  {$IFDEF Release}
-      if MsgDlgMessage( ccapMulipleInstances, format( cmsgMulipleInstances, [ fOpenInstances ] ) ) then
-        if MsgDlgConfirmation( self ) = mrNo then
-          result := false;
-  {$ENDIF}
       Color := $006E4BE4; //red-y
     end;
   except
@@ -7585,6 +7590,9 @@ begin
   SpecialComms := '';
 
   RefreshCap;
+{$IFnDEF Release}
+  self.caption := 'DEVELOPMENT: ' + self.caption;
+{$ENDIF}
 
   Memo1.SelStart := 1;
 

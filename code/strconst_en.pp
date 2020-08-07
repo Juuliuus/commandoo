@@ -1165,6 +1165,48 @@ resourceString
      + '     < The command "%s" does not support help or version parameters >'
      + LineEnding;
 
+   cmsgCLBuildButtonHint =
+    'This opens the same window you see when adding'
+    + LineEnding
+    + 'a new CL. It provides functions which are helpful'
+    + LineEnding
+    + 'for building CL''s with runtime variables.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding
+    ;
+
+   cmsgListsShowUsagetHint =
+    'Use this to see which DB entries are using this'
+    + LineEnding
+    + 'KeyWord.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding
+    ;
+
+   cmsgListsRevertHint =
+    'Use this to return the KeyWord list to the same'
+    + LineEnding
+    + 'state as when you opened this window. That is,'
+    + LineEnding
+    + 'undo any edits you have made.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding
+    ;
+
+   cmsgListsConsolidateHint =
+    'This allows you to combine the selected KeyWord to '
+    + LineEnding
+    + 'another KeyWord, the selected item is removed and '
+    + LineEnding
+    + 'all its references are changed in the DB.'
+    + LineEnding + LineEnding
+    + '<end>'
+    + LineEnding
+    ;
+
 
 implementation
 

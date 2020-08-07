@@ -220,7 +220,9 @@ begin
   SetCapMenuButton( mniKeywordsShowUsage, btnShowUsage, ccapLMShowUsage, '&Z' );
   mniKeywordsRoot.Caption := format( ccapPopMenuRootRoot, [ trim( ccapTabKeyWords ), ccapPopMenuRootMenuStr ] );
 
-
+  btnConsolidate.Hint := cmsgListsConsolidateHint;
+  btnRevert.Hint := cmsgListsRevertHint;
+  btnShowUsage.Hint := cmsgListsShowUsagetHint;
 
 end;
 
@@ -332,6 +334,7 @@ end;
 
 procedure TfrmListManager.cbHintsChange( Sender : TObject );
 begin
+  FrameHint1.cbHintsChange( Sender );
   TryFocus( lbList );
 end;
 

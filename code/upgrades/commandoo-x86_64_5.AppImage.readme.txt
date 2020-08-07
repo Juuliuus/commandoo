@@ -13,7 +13,7 @@ Depending on user wishes: I check, or the User, checks:
 https://timepirate.org/downloads/commandoo-x86_64.AppImage.ver.txt
 
 The number in that file serves as basis for the other support files:
-commandoo-x86_64_4.AppImage.readme.txt   (this file)
-commandoo-x86_64_4.AppImage
-commandoo-x86_64_4.AppImage.sig
-commandoo-x86_64_4.AppImage.zsync    (if applicable)
+commandoo-x86_64_5.AppImage.readme.txt   (this file)
+commandoo-x86_64_5.AppImage
+commandoo-x86_64_5.AppImage.sig
+commandoo-x86_64_5.AppImage.zsync    (if applicable)

@@ -325,10 +325,10 @@ begin
   memOutput.Lines.Add( 'Using commandoo AppImage Version (https://appimage.org/) installed in:' );
   memOutput.Lines.Add(  Frm.AppImagePath );
   memOutput.Lines.Add( '' );
-  memOutput.Lines.Add( 'Extracted to and running in:' );
-  memOutput.Lines.Add(  Frm.AppImageRunningPath );
-{$ENDIF}
+  memOutput.Lines.Add( format( cAboutInstalled, [ Frm.AppImageRunningPath ] ) );
+{$ELSE}
   memOutput.Lines.Add( format( cAboutInstalled, [ extractfilePath( Application.Exename ) ] ) );
+{$ENDIF}
 
   memOutput.Lines.Add( '' );
   memOutput.Lines.Add( format( cAboutFormSettings,

@@ -31,9 +31,7 @@ object frmListManager: TfrmListManager
     TabOrder = 4
     inherited cbHints: TCheckBox
       Left = 55
-      Height = 21
       Top = 2
-      Width = 173
       OnChange = cbHintsChange
     end
   end

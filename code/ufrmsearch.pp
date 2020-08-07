@@ -137,8 +137,9 @@ resourcestring
   cmsgseWhichBoolExprC = 'COMMAND';
   cmsgseWhichBoolExprCL = 'COMMAND LINE';
   ccapGenericSubFormHint =
-    'Select the "match" type you want for the '
-    + 'Search and select the value you want below. '
+    'Select the "match" type you want for the'
+    + LineEnding
+    + 'Search and select the value you want below.'
     + LineEnding + LineEnding
     + '<end>'
     + LineEnding;
@@ -152,18 +153,23 @@ resourcestring
 
   ccapGenericMatchCaseHint =
     'Determines whether the item must match '
+    + LineEnding
     + 'in letter case. '
     + LineEnding + LineEnding
     + 'For example, if this is checked then the '
+    + LineEnding
     + 'search item must match case exactly: '
     + LineEnding + LineEnding
     + '"abc" matches only "abc", not "AbC" or "aBC", '
+    + LineEnding
     + 'etc. '
     + LineEnding + LineEnding
     + 'Unchecked then all of the above will be '
+    + LineEnding
     + 'matches. '
     + LineEnding + LineEnding
     + 'This is ignored in LIST searches if the '
+    + LineEnding
     + 'Match Type is "match". '
     + LineEnding + LineEnding
     + '<end>'
