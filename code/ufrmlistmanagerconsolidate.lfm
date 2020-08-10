@@ -30,9 +30,7 @@ object frmListManagerConsolidate: TfrmListManagerConsolidate
     TabOrder = 3
     inherited cbHints: TCheckBox
       Left = 67
-      Height = 21
       Top = 1
-      Width = 173
     end
   end
   object bntOK: TBitBtn
@@ -52,7 +50,7 @@ object frmListManagerConsolidate: TfrmListManagerConsolidate
   object btnCancel: TBitBtn
     Left = 372
     Height = 23
-    Top = 134
+    Top = 135
     Width = 80
     Anchors = [akTop, akRight]
     Cancel = True

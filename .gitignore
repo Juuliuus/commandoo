@@ -13,5 +13,8 @@ code/searchesXXX/.*
 download/*
 code/DBBak/*
 code/*.lrj
+code/backup/
+code/commandoo.res
+
 
 

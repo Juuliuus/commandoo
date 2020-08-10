@@ -7529,6 +7529,9 @@ end;
 
 procedure TfrmMain.FormActivate(Sender: TObject);
 
+var
+  HintBugFix : TPoint;
+
   function GetSpecialMode : boolean;
   begin
     result := true;
@@ -7557,6 +7560,19 @@ begin
   FIsInitialized := True;
 
   Application.HintHidePause := 600000;
+  Application.ShowHint := true;
+  self.Showhint := true;
+  self.Hint := 'Initialized';
+  ////HintBugFix := GetPreciseControlCoords( btnFinalNeeds, 2, 2 );
+  HintBugFix := GetPreciseControlCoords( btnAbout, 3, 3 );
+  mouse.CursorPos := HintBugFix;
+  //Application.ActivateHint( HintBugFix );
+  ////Application.HideHint;
+  ////Application.ProcessMessages;
+  ////sleep( 10 );
+  self.Showhint := false;
+  self.Hint := '';
+
 
 //if commandoo is opened, form re-sized, then closed, there was bug where the
 //editing panels had not obeyed their anchor settings and everything was off.

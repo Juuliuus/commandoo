@@ -82,7 +82,7 @@ type
     btnMergeTo : TBitBtn;
     btnOK : TBitBtn;
     btnSelect : TBitBtn;
-    FrameHint1 : TFrameHint;
+    cbHintsManProfile : TCheckBox;
     gbManageList : TGroupBox;
     lblCurrentProfile : TLabel;
     lblPathDisplay : TLabel;
@@ -121,6 +121,8 @@ type
     procedure actMergeToExecute( Sender : TObject );
     procedure actOKExecute(Sender : TObject);
     procedure actSelectExecute( Sender : TObject );
+    procedure cbHintsManProfileChange( Sender : TObject) ;
+    procedure cbHintsManProfileKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState) ;
     procedure FormActivate(Sender : TObject);
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCloseQuery(Sender : TObject; var CanClose : boolean);
@@ -823,6 +825,17 @@ begin
 
   FCanClose := true;
   Modalresult := mrOK;
+end;
+
+procedure TfrmProfiles.cbHintsManProfileChange( Sender : TObject) ;
+begin
+  self.ShowHint := TCheckbox( Sender ).Checked;
+end;
+
+procedure TfrmProfiles.cbHintsManProfileKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState) ;
+begin
+  if key = VK_RETURN then
+    key := VK_UNKNOWN;
 end;
 
 procedure TfrmProfiles.actCancelExecute(Sender : TObject);
@@ -2685,7 +2698,7 @@ begin
 
     FCanClose := false;
     popMPopup( Self );
-    FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
+    cbHintsManProfile.Caption := ccbHintsEnglishOverride;
 
     if not IsSelectMode then
       if MsgDlgMessage( ccapGeneralInformation,

@@ -2080,6 +2080,19 @@ msgstr ""
 msgid ">>         ↑ Commands   ---   ↓ Command Lines"
 msgstr ">>         ↑ Kommands   ---   ↓ Commannd Lynes"
 
+#: tframehint.cbhints.caption
+msgid "&H  Show hints on mouseover"
+msgstr "&H  Show hints on mouseover"
+
+#: tframehint.cbhints.hint
+msgid "Help HInts now Showing"
+msgstr "Hellp Hints now a' showin"
+
+#: tfrmabout.btnok.caption
+msgctxt "tfrmabout.btnok.caption"
+msgid "&OK"
+msgstr "&OK"
+
 #: tfrmabout.btnsavetofile.caption
 msgid "&F Save to file"
 msgstr "&F Savie to fyle"
@@ -2743,8 +2756,8 @@ msgstr ""
 "<end>\n"
 
 #: tfrmfind.caption
-msgid "frmFind"
-msgstr "frmFind"
+msgid "Find"
+msgstr "Fynd"
 
 #: tfrmfind.edtfind.texthint
 msgid "Sanity check..."
@@ -2827,6 +2840,11 @@ msgstr ""
 #: tfrmlistmanager.caption
 msgid "Key Words"
 msgstr "Keyy Words"
+
+#: tfrmlistmanager.cbhintslistman.caption
+msgctxt "tfrmlistmanager.cbhintslistman.caption"
+msgid "DNT"
+msgstr "DNT"
 
 #: tfrmlistmanager.gbmanagelist.caption
 msgid "Manage Master List"

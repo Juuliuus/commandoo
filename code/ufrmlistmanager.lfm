@@ -20,21 +20,6 @@ object frmListManager: TfrmListManager
   PopupMenu = popKeywords
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
-  inline FrameHint1: TFrameHint
-    Left = 163
-    Height = 27
-    Top = 1
-    Width = 234
-    ClientHeight = 27
-    ClientWidth = 234
-    ParentColor = True
-    TabOrder = 4
-    inherited cbHints: TCheckBox
-      Left = 55
-      Top = 2
-      OnChange = cbHintsChange
-    end
-  end
   object btnOK: TBitBtn
     Left = 284
     Height = 39
@@ -162,6 +147,17 @@ object frmListManager: TfrmListManager
     Font.Height = -12
     ParentColor = False
     ParentFont = False
+  end
+  object cbHintsListMan: TCheckBox
+    Left = 343
+    Height = 21
+    Top = 6
+    Width = 49
+    Anchors = [akTop, akRight]
+    Caption = 'DNT'
+    OnChange = cbHintsListManChange
+    OnKeyDown = cbHintsListManKeyDown
+    TabOrder = 4
   end
   object popKeywords: TPopupMenu
     left = 288

@@ -401,13 +401,23 @@ var
 
 
 procedure GetConditionArray( const ListIdx : integer );
+
+  procedure PutArray( Source : array of TCondition );
+  var
+    i : integer;
+  begin
+    SetLength( CurrConditionsArray, Length( Source ) );
+    for i := Low( Source ) to High( Source ) do
+      CurrConditionsArray[ i ] := Source[ i ];
+  end;
+
 begin
   case ListIdx of
-    cConditionsAllowed_List : CurrConditionsArray := cConditions_List;
-    cConditionsAllowed_Number : CurrConditionsArray := cConditions_Number;
-    cConditionsAllowed_Text : CurrConditionsArray := cConditions_Text;
-    cConditionsAllowed_String : CurrConditionsArray := cConditions_String;
-    cConditionsAllowed_Boolean : CurrConditionsArray := cConditions_Boolean;
+    cConditionsAllowed_List : PutArray( cConditions_List );
+    cConditionsAllowed_Number : PutArray( cConditions_Number );
+    cConditionsAllowed_Text : PutArray( cConditions_Text );
+    cConditionsAllowed_String : PutArray( cConditions_String );
+    cConditionsAllowed_Boolean : PutArray( cConditions_Boolean );
   end;
 end;
 
@@ -860,6 +870,7 @@ end;
 destructor TBaseSearch.Destroy;
 begin
 
+  SetLength( CurrConditionsArray, 0 );
   SetLength( faryBoolEval, 0, 0 );
   faryBoolEval := nil;
 

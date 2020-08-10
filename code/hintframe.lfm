@@ -14,7 +14,7 @@ object FrameHint: TFrameHint
   DesignLeft = 225
   DesignTop = 404
   object cbHints: TCheckBox
-    Left = 135
+    Left = 136
     Height = 21
     Hint = 'Help HInts now Showing'
     Top = 3

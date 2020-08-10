@@ -53,7 +53,7 @@ object frm_Search_double: Tfrm_Search_double
   object lblFreeTextReal: TLabel
     Left = 54
     Height = 15
-    Top = 272
+    Top = 273
     Width = 9
     Caption = '...'
     Font.Height = -12

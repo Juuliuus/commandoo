@@ -335,7 +335,8 @@ begin
 
   POFileName := fLanguageFilesFolder + format( cLanguageFileNamePO, [ cReferenceProgramName, fProgramLang ] );
   if fileexists ( POFileName ) then
-    LCLTranslator.setdefaultlang( fProgramLang, fLanguageFilesFolder, true )
+//TRUNK added 3rd string param
+    LCLTranslator.setdefaultlang( fProgramLang, fLanguageFilesFolder, cReferenceProgramName, true )
   else
   begin
     if pos( '.en.po', POFileName ) > 0 then

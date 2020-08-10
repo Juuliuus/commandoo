@@ -98,7 +98,7 @@ object frmMsgDlg: TfrmMsgDlg
     TabOrder = 2
   end
   object pnlNoShow: TPanel
-    Left = 3
+    Left = 4
     Height = 43
     Top = 250
     Width = 384

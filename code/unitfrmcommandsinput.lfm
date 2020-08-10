@@ -28,15 +28,13 @@ object frmCommandsInput: TfrmCommandsInput
     TabOrder = 4
     inherited cbHints: TCheckBox
       Left = 67
-      Height = 21
       Top = 2
-      Width = 173
     end
   end
   object btnCancel: TBitBtn
     Left = 348
     Height = 45
-    Top = 116
+    Top = 115
     Width = 95
     Anchors = [akTop, akRight]
     Cancel = True

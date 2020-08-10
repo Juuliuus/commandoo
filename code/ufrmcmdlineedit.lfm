@@ -29,9 +29,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     TabOrder = 14
     inherited cbHints: TCheckBox
       Left = 80
-      Height = 21
       Top = 2
-      Width = 173
     end
   end
   object bntOK: TBitBtn
@@ -95,7 +93,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
     TextHint = 'commands with Help flags only'
   end
   object cbWrapText: TCheckBox
-    Left = 4
+    Left = 5
     Height = 21
     Hint = 'Checked and the output above uses '#10'wordwrap. Not, and not.'#10#10'<end>'
     Top = 441

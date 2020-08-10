@@ -292,7 +292,7 @@ object frmOptions: TfrmOptions
     OnDblClick = btnRootFileClick
   end
   object btnDone: TBitBtn
-    Left = 580
+    Left = 581
     Height = 59
     Top = 32
     Width = 91

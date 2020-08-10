@@ -38,9 +38,7 @@ object frmSimpleSearch: TfrmSimpleSearch
     TabOrder = 24
     inherited cbHints: TCheckBox
       Left = 90
-      Height = 21
       Top = 2
-      Width = 173
     end
   end
   object btnSSOK: TBitBtn
@@ -361,7 +359,7 @@ object frmSimpleSearch: TfrmSimpleSearch
   end
   object btnSSReset: TBitBtn
     Tag = 2
-    Left = 308
+    Left = 307
     Height = 28
     Hint = 'Reset all search items to blank'#10'text and unchecked, and all field'#10'items to checked.'#10#10'<end>'
     Top = 388

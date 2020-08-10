@@ -83,7 +83,7 @@ object frmSingleInput: TfrmSingleInput
     TabOrder = 4
   end
   object btnCancel: TBitBtn
-    Left = 457
+    Left = 456
     Height = 33
     Top = 97
     Width = 113

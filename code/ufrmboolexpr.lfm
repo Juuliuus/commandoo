@@ -92,7 +92,7 @@ object frmBoolExpr: TfrmBoolExpr
   end
   object cbCmdCompactView: TCheckBox
     Tag = 1
-    Left = 4
+    Left = 5
     Height = 21
     Hint = 'The display will use feld abbreviations and'#10'shortened versions of the search criteria'#10'if checked allowing more to fit in the window.'#10#10'Otherwise the full text is shown.'#10#10'<end>'
     Top = 144

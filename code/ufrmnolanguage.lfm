@@ -56,7 +56,7 @@ object frmNoLanguage: TfrmNoLanguage
   object btnOK: TBitBtn
     Left = 359
     Height = 55
-    Top = 77
+    Top = 76
     Width = 112
     Anchors = [akTop, akRight]
     Default = True

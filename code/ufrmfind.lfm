@@ -5,7 +5,7 @@ object frmFind: TfrmFind
   Width = 225
   ActiveControl = edtFind
   BorderStyle = bsNone
-  Caption = 'frmFind'
+  Caption = 'Find'
   ClientHeight = 188
   ClientWidth = 225
   Color = clBlack

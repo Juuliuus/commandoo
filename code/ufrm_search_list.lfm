@@ -119,7 +119,7 @@ object frm_Search_List: Tfrm_Search_List
   object lblKeywords: TLabel
     Left = 115
     Height = 15
-    Top = 333
+    Top = 332
     Width = 62
     Anchors = [akTop, akRight]
     Caption = 'Current %s'

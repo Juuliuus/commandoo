@@ -53,7 +53,7 @@ object frm_Search_Text: Tfrm_Search_Text
   object cbMatchCase: TCheckBox
     Left = 258
     Height = 21
-    Top = 317
+    Top = 318
     Width = 90
     Anchors = [akTop, akRight]
     Caption = 'Match Case'

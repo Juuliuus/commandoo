@@ -53,7 +53,7 @@ object frm_Search_Bool: Tfrm_Search_Bool
   object rgBool: TRadioGroup
     Left = 38
     Height = 85
-    Top = 164
+    Top = 163
     Width = 276
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False

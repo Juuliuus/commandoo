@@ -21,20 +21,6 @@ object frmProfiles: TfrmProfiles
   PopupMenu = popM
   Position = poOwnerFormCenter
   LCLVersion = '2.0.6.0'
-  inline FrameHint1: TFrameHint
-    Left = 197
-    Height = 26
-    Width = 244
-    ClientHeight = 26
-    ClientWidth = 244
-    ParentColor = True
-    TabOrder = 5
-    inherited cbHints: TCheckBox
-      Left = 63
-      Height = 21
-      Width = 173
-    end
-  end
   object btnOK: TBitBtn
     Left = 321
     Height = 39
@@ -51,7 +37,7 @@ object frmProfiles: TfrmProfiles
   object btnCancel: TBitBtn
     Left = 334
     Height = 30
-    Top = 145
+    Top = 146
     Width = 90
     Action = actCancel
     Anchors = [akTop, akRight]
@@ -264,6 +250,17 @@ object frmProfiles: TfrmProfiles
     ParentFont = False
     TabOrder = 2
     Visible = False
+  end
+  object cbHintsManProfile: TCheckBox
+    Left = 383
+    Height = 21
+    Top = 6
+    Width = 49
+    Anchors = [akTop, akRight]
+    Caption = 'DNT'
+    OnChange = cbHintsManProfileChange
+    OnKeyDown = cbHintsManProfileKeyDown
+    TabOrder = 5
   end
   object popM: TPopupMenu
     OnPopup = popMPopup

@@ -35,7 +35,7 @@ object frmCommandsVar: TfrmCommandsVar
   object btnCancel: TBitBtn
     Left = 377
     Height = 30
-    Top = 197
+    Top = 198
     Width = 79
     Anchors = [akTop, akRight]
     Caption = '&C  Cancel'

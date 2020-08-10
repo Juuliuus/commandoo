@@ -29,9 +29,7 @@ object frmSuperUserFile: TfrmSuperUserFile
     TabOrder = 7
     inherited cbHints: TCheckBox
       Left = 56
-      Height = 21
       Top = 2
-      Width = 173
     end
   end
   object bntOK: TBitBtn
@@ -50,7 +48,7 @@ object frmSuperUserFile: TfrmSuperUserFile
   object btnCancel: TBitBtn
     Left = 328
     Height = 35
-    Top = 139
+    Top = 140
     Width = 90
     Anchors = [akTop, akRight]
     Cancel = True

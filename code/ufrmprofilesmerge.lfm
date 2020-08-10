@@ -35,7 +35,7 @@ object frmProfilesMerge: TfrmProfilesMerge
   object btnCancel: TBitBtn
     Left = 268
     Height = 30
-    Top = 85
+    Top = 86
     Width = 66
     Anchors = [akTop, akRight]
     Cancel = True

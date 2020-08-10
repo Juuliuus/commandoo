@@ -68,7 +68,7 @@ object frm_Search_Integer: Tfrm_Search_Integer
   object lblFreeTextInt: TLabel
     Left = 150
     Height = 15
-    Top = 306
+    Top = 307
     Width = 9
     Caption = '...'
     Font.Height = -12

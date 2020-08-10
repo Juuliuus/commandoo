@@ -53,7 +53,7 @@ object frm_Search_String: Tfrm_Search_String
   object cbMatchCase: TCheckBox
     Left = 258
     Height = 21
-    Top = 330
+    Top = 331
     Width = 90
     Anchors = [akTop, akRight]
     Caption = 'Match Case'
@@ -65,7 +65,7 @@ object frm_Search_String: Tfrm_Search_String
   object lblFreeText: TLabel
     Left = 13
     Height = 15
-    Top = 315
+    Top = 316
     Width = 9
     Caption = '...'
     Font.Height = -12

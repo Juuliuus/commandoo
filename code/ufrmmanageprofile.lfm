@@ -30,9 +30,7 @@ object frmManageProfile: TfrmManageProfile
     TabOrder = 8
     inherited cbHints: TCheckBox
       Left = 54
-      Height = 21
       Top = 4
-      Width = 173
     end
   end
   object rgType: TRadioGroup
@@ -88,7 +86,7 @@ object frmManageProfile: TfrmManageProfile
   object btnCancel: TBitBtn
     Left = 225
     Height = 28
-    Top = 275
+    Top = 276
     Width = 75
     Anchors = [akTop, akRight]
     Cancel = True

@@ -30,15 +30,14 @@ object frmAbout: TfrmAbout
   end
   object btnOK: TBitBtn
     Left = 631
-    Height = 30
+    Height = 44
     Top = 40
-    Width = 75
+    Width = 81
     Anchors = [akTop, akRight]
     Cancel = True
+    Caption = '&OK'
     Default = True
-    DefaultCaption = True
     Font.Height = -12
-    Kind = bkOK
     ModalResult = 1
     OnClick = btnOKClick
     ParentFont = False

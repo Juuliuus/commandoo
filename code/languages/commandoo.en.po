@@ -3,7 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2020-08-07 12:06+0200\n"
+"PO-Revision-Date: 2020-08-07 19:20+0200\n"
 "Last-Translator: juus <juus@Dell32gig>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2081,6 +2081,19 @@ msgstr ""
 msgid ">>         ↑ Commands   ---   ↓ Command Lines"
 msgstr ">>         ↑ Commands   ---   ↓ Command Lines"
 
+#: tframehint.cbhints.caption
+msgid "&H  Show hints on mouseover"
+msgstr "&H  Show hints on mouseover"
+
+#: tframehint.cbhints.hint
+msgid "Help HInts now Showing"
+msgstr "Help HInts now Showing"
+
+#: tfrmabout.btnok.caption
+msgctxt "tfrmabout.btnok.caption"
+msgid "&OK"
+msgstr "&OK"
+
 #: tfrmabout.btnsavetofile.caption
 msgid "&F Save to file"
 msgstr "&F Save to file"
@@ -2749,8 +2762,9 @@ msgstr ""
 "<end>\n"
 
 #: tfrmfind.caption
-msgid "frmFind"
-msgstr "frmFind"
+#| msgid "frmFind"
+msgid "Find"
+msgstr "Find"
 
 #: tfrmfind.edtfind.texthint
 msgid "Sanity check..."
@@ -2833,6 +2847,11 @@ msgstr ""
 #: tfrmlistmanager.caption
 msgid "Key Words"
 msgstr "Key Words"
+
+#: tfrmlistmanager.cbhintslistman.caption
+msgctxt "tfrmlistmanager.cbhintslistman.caption"
+msgid "DNT"
+msgstr "DNT"
 
 #: tfrmlistmanager.gbmanagelist.caption
 msgid "Manage Master List"

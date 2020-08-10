@@ -53,7 +53,7 @@ object frm_Search_Enum: Tfrm_Search_Enum
   object rgEnum: TRadioGroup
     Left = 8
     Height = 149
-    Top = 226
+    Top = 225
     Width = 349
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False

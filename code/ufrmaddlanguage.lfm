@@ -31,7 +31,7 @@ object frmAddLanguage: TfrmAddLanguage
   object btnCancel: TBitBtn
     Left = 405
     Height = 28
-    Top = 152
+    Top = 151
     Width = 82
     Anchors = [akTop, akRight]
     Cancel = True
@@ -135,7 +135,6 @@ object frmAddLanguage: TfrmAddLanguage
     TabOrder = 4
     inherited cbHints: TCheckBox
       Left = 46
-      Height = 21
       Top = 1
       Width = 182
       Font.Height = -12

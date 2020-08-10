@@ -43,7 +43,7 @@ object frmSearch: TfrmSearch
     TabOrder = 4
   end
   object btnCancel: TBitBtn
-    Left = 834
+    Left = 835
     Height = 28
     Top = 29
     Width = 78

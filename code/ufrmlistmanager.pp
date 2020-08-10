@@ -56,7 +56,7 @@ type
     btnOK : TBitBtn;
     btnRevert : TBitBtn;
     btnShowUsage : TBitBtn;
-    FrameHint1 : TFrameHint;
+    cbHintsListMan : TCheckBox;
     gbManageList : TGroupBox;
     lblInstructions : TLabel;
     lbList : TListBox;
@@ -82,7 +82,9 @@ type
     procedure actOKExecute(Sender : TObject);
     procedure actRevertExecute(Sender : TObject);
     procedure actShowUsageExecute( Sender : TObject );
-    procedure cbHintsChange( Sender : TObject );
+    procedure cbHintsListManChange( Sender : TObject );
+    procedure cbHintsListManKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+    //procedure cbHintsChange( Sender : TObject );
     procedure FormActivate(Sender : TObject);
     procedure FormClose(Sender : TObject; var CloseAction : TCloseAction);
     procedure FormCloseQuery(Sender : TObject; var CanClose : boolean);
@@ -193,7 +195,7 @@ begin
   HandleFormSettings( sdLoad );
 
   UpdatelbList( -1, false );
-  FrameHint1.cbHints.Caption := ccbHintsEnglishOverride;
+  cbHintsListMan.Caption := ccbHintsEnglishOverride;
 
   if not fManagementMode then
   begin
@@ -332,11 +334,24 @@ begin
 
 end;
 
-procedure TfrmListManager.cbHintsChange( Sender : TObject );
+procedure TfrmListManager.cbHintsListManChange( Sender : TObject );
 begin
-  FrameHint1.cbHintsChange( Sender );
+  self.ShowHint := TCheckbox( Sender ).Checked;
   TryFocus( lbList );
 end;
+
+procedure TfrmListManager.cbHintsListManKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+begin
+  if key = VK_RETURN then
+    key := VK_UNKNOWN;
+end;
+
+//procedure TfrmListManager.cbHintsChange( Sender : TObject );
+//begin
+//  //FrameHint1.cbHintsChange( Sender );
+//  ShowHint := FrameHint1.cbHints.Checked;
+//  TryFocus( lbList );
+//end;
 
 procedure TfrmListManager.actCancelExecute(Sender : TObject);
 begin

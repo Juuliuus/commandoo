@@ -21,7 +21,7 @@ object frm_Search_Operator: Tfrm_Search_Operator
     Left = 78
     Height = 106
     Hint = 'Select the kind of operator you want for the'#10'currently selected item.'#10#10'<end>'
-    Top = 56
+    Top = 57
     Width = 198
     Anchors = [akTop, akLeft, akRight]
     AutoFill = False

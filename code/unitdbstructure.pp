@@ -477,8 +477,10 @@ var
   function Get_Cmd_Field_ColumnName( const ID : integer ) : string; overload;
   function Get_Cmd_Field_ColumnName( const ID : TCmdFieldID ) : string; overload;
 
-  function Get_Cmd_Field_IdxFromUniqueID( const UID : integer ) : integer; overload;
-  function Get_Cmd_Field_IdxFromUniqueID( const UID : integer ) : TCmdFieldID; overload;
+  function Get_Cmd_Field_IdxFromUniqueID( const UID : integer ) : integer;
+//moving to TRUNK can no longer overload, but 2nd was never used!
+  //function Get_Cmd_Field_IdxFromUniqueID( const UID : integer ) : integer; overload;
+  //function Get_Cmd_Field_IdxFromUniqueID( const UID : integer ) : TCmdFieldID; overload;
 
   procedure Register_Cmd_DisplayCaption( const ID : TCmdFieldID; Controls : array of TControl );
   procedure Update_Cmd_DisplayCaptions;
@@ -847,12 +849,12 @@ begin
 
 end;
 
-function Get_Cmd_Field_IdxFromUniqueID( const UID : integer ) : TCmdFieldID;
-begin
-//This is primarily designed for saved searches so that old searches that may or may not match current
-//DB struture can be found and properly indexed.
-  result := TCmdFieldID( Get_Cmd_Field_IdxFromUniqueID( UID ) );
-end;
+//function Get_Cmd_Field_IdxFromUniqueID( const UID : integer ) : TCmdFieldID;
+//begin
+////This is primarily designed for saved searches so that old searches that may or may not match current
+////DB struture can be found and properly indexed.
+//  result := TCmdFieldID( Get_Cmd_Field_IdxFromUniqueID( UID ) );
+//end;
 
 
 function TDBListKeyWordStructure.GetSectTabName : string;

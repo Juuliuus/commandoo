@@ -54,7 +54,7 @@ object frmFindText: TfrmFindText
     TopIndex = -1
   end
   object lblFindNextText: TLabel
-    Left = 4
+    Left = 5
     Height = 16
     Top = 241
     Width = 49
