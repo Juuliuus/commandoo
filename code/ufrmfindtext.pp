@@ -225,6 +225,7 @@ end;
 procedure TfrmFindText.UpdateCaptions;
 begin
   lblFindNextText.Caption := ccapFindAgain;
+  edtFindText.TextHint := ccapFindTextHint;
   rgTopCursor.ItemIndex := -1;
   rgTopCursor.Items.Text := ccaprgChoices;
   if rgTopCursor.Items.Count < 2 then
@@ -261,8 +262,8 @@ begin
   font.size := cDefaultFontSize;
   FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
-  fItemToFind := '';
   edtFindText.TextHint := ccapFindTextHint;
+  fItemToFind := '';
   fCurrPos := 0;
   fMemo := nil;
   lbOldFinds.Items.Add( '' );

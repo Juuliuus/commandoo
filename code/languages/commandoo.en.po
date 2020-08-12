@@ -2767,16 +2767,12 @@ msgid "Find"
 msgstr "Find"
 
 #: tfrmfind.edtfind.texthint
-msgid "Sanity check..."
-msgstr "Sanity check..."
+msgid "Begin typing..."
+msgstr "Begin typing..."
 
 #: tfrmfindtext.caption
 msgid "Find Text"
 msgstr "Find Text"
-
-#: tfrmfindtext.edtfindtext.texthint
-msgid "Sanity?"
-msgstr "Sanity?"
 
 #: tfrmfindtext.lblfindnexttext.caption
 msgid "fntDNT"
@@ -4977,11 +4973,8 @@ msgid "Editing..."
 msgstr "Editing..."
 
 #: tfrmmain.lblcmdlinepointer.caption
-#| msgid ""
-#| "Command\n"
-#| "↓      Lines\n"
-msgid "Command Lines  ↓DNT"
-msgstr "Command Lines  ↓DNT"
+msgid "Cmd Lines  ↓DNT"
+msgstr "Cmd Lines  ↓DNT"
 
 #: tfrmmain.lblcmdpointer.caption
 #| msgid "Command  -->"
@@ -10627,10 +10620,6 @@ msgstr "Copy"
 msgctxt "unitglob.cbtn_done"
 msgid "&O  Done"
 msgstr "&O  Done"
-
-#: unitglob.ccapfindlbhint
-msgid "Begin typing..."
-msgstr "Begin typing..."
 
 #: unitglob.ccapfindtexthint
 msgid "Type, then press <enter>..."

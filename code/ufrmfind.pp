@@ -59,9 +59,8 @@ var
 
 implementation
 
-uses unitglob
-     , unitglobform
-     ;
+uses unitglobform;
+
 {$R *.lfm}
 
 { TfrmFind }
@@ -101,7 +100,6 @@ begin
   FormAutoAdjustLayout( self );
   ApplyChangeFont( Self );
   fItemToFind := '';
-  edtFind.TextHint := ccapFindLBHint;
 end;
 
 procedure TfrmFind.FormDeactivate( Sender : TObject );

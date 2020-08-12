@@ -1509,7 +1509,7 @@ begin
     if DetachedNotAllowed( extractFileName( Params[ 0 ] ) ) then
       exit;
 
-    aProc := TAsyncProcess.Create( nil );
+    aProc := TAsyncProcess.Create(globLinuxProcessOwner);//( nil );
     result := ProcDetached( aProc, Params );
 
 end;
@@ -1845,17 +1845,19 @@ end;
 class function TCmdListObj.CreateListStructure( var CLO : TCmdListObj;
                                       const ListID : TDBListType; DBS : TInfoServer; DoReg : boolean = true ) : boolean;
 begin
-  result := true;
+  result := false;
   case ListID of
     dbltKeyWord :
-      CLO := TCmdListObj.Create( KeyWordStruct.DataLocation ,
-                                 KeyWordStruct.LinkedToDataLocation,
-                                 KeyWordStruct.LinkedToFieldID,
-                                 KeyWordStruct.GetSectTabName,
-                                 KeyWordStruct.ColumnName,
-                                 DBS
-                               );
-    else result := false;
+      begin
+        CLO := TCmdListObj.Create( KeyWordStruct.DataLocation ,
+                                   KeyWordStruct.LinkedToDataLocation,
+                                   KeyWordStruct.LinkedToFieldID,
+                                   KeyWordStruct.GetSectTabName,
+                                   KeyWordStruct.ColumnName,
+                                   DBS
+                                 );
+        result := true;
+      end;
   end;
 
   if DoReg and result then

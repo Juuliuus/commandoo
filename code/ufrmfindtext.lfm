@@ -19,7 +19,7 @@ object frmFindText: TfrmFindText
   OnDeactivate = FormDeactivate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   object edtFindText: TEdit
     Left = 1
     Height = 36
@@ -34,7 +34,6 @@ object frmFindText: TfrmFindText
     OnKeyDown = edtFindTextKeyDown
     ParentFont = False
     TabOrder = 0
-    TextHint = 'Sanity?'
   end
   object lbOldFinds: TListBox
     Left = 1
@@ -55,7 +54,7 @@ object frmFindText: TfrmFindText
   end
   object lblFindNextText: TLabel
     Left = 5
-    Height = 16
+    Height = 18
     Top = 241
     Width = 49
     Caption = 'fntDNT'

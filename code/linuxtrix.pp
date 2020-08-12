@@ -48,8 +48,8 @@ function SimpleProc( const CmdLine : string; const DoStdOut, DoStdErr, DoFormat 
 function RunThroughShell( const aString : string ) : string;
 function ProcString( Params : TStrings ) : string;
 function ProcInteger( ParamsAndResult : TStrings ) : integer;
-function ProcDetached( var aProc : TProcess; const fullCommand : string ) : string; overload;
-function ProcDetached( aProc : TAsyncProcess; Params : Tstrings ) : string; overload;
+//function ProcDetached( var aProc : TProcess; const fullCommand : string ) : string; overload;
+function ProcDetached( aProc : TAsyncProcess; Params : Tstrings ) : string; //overload;
 function GetProcessOutputToStream( aProc : TProcess; const IsOutput : boolean;
                            var MemS : TMemoryStream; DoExecute : boolean = true ) : integer;
 function GetProcessOutput( aProc : TProcess; var TheInput : string;
@@ -95,7 +95,7 @@ var
   globltDoCancelProcess : boolean;
   globltProcessMaxOutput : integer = 500000;
   globltMaxOutputWait : int64 = 20; //seconds
-
+  globLinuxProcessOwner : TComponent = nil;
   //globltOutputMemo : TMemo;
 
   globltInputForProcess : string = '';
@@ -133,7 +133,7 @@ var
 
 
 const
-  CheckAdjust = 17;
+  CheckAdjust = 32;//17;
 
 function GetLiteralPath_Generic( const CheckPath, CmdName : string ) : string;
 var
@@ -403,8 +403,6 @@ begin
 
 end;
 
-
-
 function GetProcessOutputToStream( aProc : TProcess; const IsOutput : boolean;
                            var MemS : TMemoryStream; DoExecute : boolean = true ) : integer;
 var
@@ -445,7 +443,7 @@ begin
     BytRead := 0;
     CheckCancel := 0;
 
-    while aProc.Active or ( theOutput.NumBytesAvailable > 0 ) do
+    while ( aProc.Active or aProc.Running ) or ( theOutput.NumBytesAvailable > 0 ) do
     begin
 
       inc( CheckCancel );
@@ -461,6 +459,7 @@ begin
 
       if theOutput.NumBytesAvailable = 0 then
       begin
+        Application.Handlemessage;
         sleep( cMaxOutputWaitSleepTime );//10 ===>> this turned out to be super important
  //emergency cord: just in case
         inc( EmergencyCordCnt );
@@ -497,8 +496,6 @@ begin
   end;
 
 end;
-
-
 
 function GetProcessOutput( aProc : TProcess; var TheInput : string;
                            const DoStdOut, DoStdErr : boolean; DoFormat : boolean = true ) : string;
@@ -595,35 +592,33 @@ begin
   aProc.Parameters.Assign( Params );
 end;
 
-function ProcDetached( var aProc : TProcess; const fullCommand : string ) : string;
-var
-  SL : TStringList;
-begin
-
-  result := '';
-
-  if not assigned( aProc ) then
-    raise EErrorDevelopment.create( 'ProcDetached: aProc not assigned' );
-
-  FillProcDefaults( aProc );
-
-  SL := TStringList.Create;
-  try
-    CommandToList( fullCommand,  SL );
-    HandleProcParams( aProc, TStrings( SL ) );
-  finally
-    SL.free;
-  end;
-
-  aProc.ShowWindow := swoShow;
-
-  aProc.Execute;
-
-  DoProcessInputSpecial( aProc, globltInputForProcess );
-
-end;
-
-
+//function ProcDetached( var aProc : TProcess; const fullCommand : string ) : string;
+//var
+//  SL : TStringList;
+//begin
+//
+//  result := '';
+//
+//  if not assigned( aProc ) then
+//    raise EErrorDevelopment.create( 'ProcDetached: aProc not assigned' );
+//
+//  FillProcDefaults( aProc );
+//
+//  SL := TStringList.Create;
+//  try
+//    CommandToList( fullCommand,  SL );
+//    HandleProcParams( aProc, TStrings( SL ) );
+//  finally
+//    SL.free;
+//  end;
+//
+//  aProc.ShowWindow := swoShow;
+//
+//  aProc.Execute;
+//
+//  DoProcessInputSpecial( aProc, globltInputForProcess );
+//
+//end;
 
 function ProcDetached( aProc : TAsyncProcess; Params : Tstrings ) : string;
 begin
@@ -696,7 +691,7 @@ begin
 
   Result := '';
 
-  aProc := TProcess.Create(nil);
+  aProc := TProcess.Create(globLinuxProcessOwner);
   try
 
     FillProcDefaults( aProc );
@@ -725,7 +720,7 @@ begin
 //generally do not use this! There are no checks. INTERNAL USE ONLY.
   Result := '';
 
-  aProc := TProcess.Create(nil);
+  aProc := TProcess.Create(globLinuxProcessOwner);
   try
     FillProcDefaults( aProc );
     aProc.Executable := Strings[ 0 ];
@@ -752,7 +747,7 @@ begin
 
   Result := '';
 
-  aProc := TProcess.Create(nil);
+  aProc := TProcess.Create(globLinuxProcessOwner);
   try
     FillProcDefaults( aProc );
     aProc.Executable := theExec;
@@ -871,7 +866,7 @@ begin
   if Params.Count = 0 then
     exit;
 
-  aProc := TProcess.Create(nil);
+  aProc := TProcess.Create(globLinuxProcessOwner);
   try
 
     FillProcDefaults( aProc );
@@ -899,7 +894,7 @@ begin
   if ParamsAndResult.Count = 0 then
     exit;
 
-  aProc := TProcess.Create(nil);
+  aProc := TProcess.Create(globLinuxProcessOwner);
   try
     FillProcDefaults( aProc );
 

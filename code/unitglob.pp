@@ -89,7 +89,6 @@ resourcestring
   cbtn_Done = '&O  Done';
   crg_MatchType = 'Match Type';
   crg_Value = 'Value';
-  ccapFindLBHint = 'Begin typing...';
   ccapFindTextHint = 'Type, then press <enter>...';
 
 type

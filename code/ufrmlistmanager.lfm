@@ -19,7 +19,7 @@ object frmListManager: TfrmListManager
   OnShow = FormShow
   PopupMenu = popKeywords
   Position = poOwnerFormCenter
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   object btnOK: TBitBtn
     Left = 284
     Height = 39
@@ -140,7 +140,7 @@ object frmListManager: TfrmListManager
   end
   object lblInstructions: TLabel
     Left = 16
-    Height = 15
+    Height = 17
     Top = 35
     Width = 182
     Caption = 'Add Selected items to Command'
@@ -160,8 +160,8 @@ object frmListManager: TfrmListManager
     TabOrder = 4
   end
   object popKeywords: TPopupMenu
-    left = 288
-    top = 204
+    Left = 288
+    Top = 204
     object mniKeywordsRoot: TMenuItem
       Caption = 'DNT Keywords'
       Enabled = False
@@ -205,8 +205,8 @@ object frmListManager: TfrmListManager
     end
   end
   object ActionList1: TActionList
-    left = 280
-    top = 264
+    Left = 280
+    Top = 264
     object actOK: TAction
       Caption = 'DNT OK'
       OnExecute = actOKExecute

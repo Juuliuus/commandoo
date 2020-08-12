@@ -20,7 +20,7 @@ object frmProfiles: TfrmProfiles
   OnShow = FormShow
   PopupMenu = popM
   Position = poOwnerFormCenter
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   object btnOK: TBitBtn
     Left = 321
     Height = 39
@@ -191,7 +191,7 @@ object frmProfiles: TfrmProfiles
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      Font.Height = -12
+      Font.Height = -11
       ParentFont = False
       TabOrder = 4
       TabStop = True
@@ -264,8 +264,8 @@ object frmProfiles: TfrmProfiles
   end
   object popM: TPopupMenu
     OnPopup = popMPopup
-    left = 78
-    top = 6
+    Left = 78
+    Top = 6
     object mniMRoot: TMenuItem
       Caption = 'DNT Root'
       Enabled = False
@@ -310,8 +310,8 @@ object frmProfiles: TfrmProfiles
     end
   end
   object ActionList1: TActionList
-    left = 390
-    top = 246
+    Left = 390
+    Top = 246
     object actOK: TAction
       Caption = 'DNT OK'
       OnExecute = actOKExecute
@@ -362,8 +362,8 @@ object frmProfiles: TfrmProfiles
     end
   end
   object popS: TPopupMenu
-    left = 138
-    top = 6
+    Left = 138
+    Top = 6
     object mniSRoot: TMenuItem
       Caption = 'DNT Root'
       Enabled = False
@@ -381,11 +381,11 @@ object frmProfiles: TfrmProfiles
   end
   object OpenDialog: TOpenDialog
     Options = [ofAllowMultiSelect, ofPathMustExist, ofFileMustExist, ofEnableSizing, ofForceShowHidden, ofViewDetail]
-    left = 381
-    top = 188
+    Left = 381
+    Top = 188
   end
   object PopupMenu1: TPopupMenu
-    left = 210
-    top = 10
+    Left = 210
+    Top = 10
   end
 end

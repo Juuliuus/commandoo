@@ -746,6 +746,7 @@ end;
 
 function FieldTypeToStr( const FT : TufFieldType ) : string;
 begin
+  result := 'Invalid';
   case FT of
     ftUndefined : result := 'UD';
     ftString_Key : result := 'StrKey';
@@ -756,7 +757,6 @@ begin
     ftEnum : result := 'Enum';
     ftDouble : result := 'Real';
     ftText : result := 'Text';
-    else result := 'Invalid';
   end;
 end;
 

@@ -245,7 +245,6 @@ implementation
 uses juusgen
      , unitDBUtils
      , linuxtrix
-     , stdCtrls
      , unitGlob
      , clipbrd
      ;

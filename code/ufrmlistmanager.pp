@@ -25,7 +25,7 @@ unit ufrmListManager;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, HintFrame
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs
   , lcltype {THis is needed for key up keyboard constants}
   , unitsharedobj, Buttons, StdCtrls, Menus, ActnList
   , unitcommands

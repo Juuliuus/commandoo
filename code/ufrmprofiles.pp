@@ -25,7 +25,7 @@ unit ufrmProfiles;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, HintFrame
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs
   , lcltype {THis is needed for key up keyboard constants}
   , unitsharedobj, Buttons, StdCtrls, Menus, ActnList
   , unitcommands
@@ -779,7 +779,7 @@ begin
         FormSettings.AddSetting( inttoStr( Width ) );
         FormSettings.AddSetting( fLastPath );
 
-        FormSettings.SaveFormSettings( Self.Name );
+        FormSettings.SaveFormSettings( self.Name );
       end;
     sdLoad :
       While FormSettings.ReadFormSettings( Self.Name, i, theValue ) do
@@ -891,7 +891,7 @@ begin
       if not Compare_NameAccepted( ToPo ) then
         exit;
 
-      Screen.Cursor := crHourglass;
+      self.Cursor := crHourglass;
 
       if not ServerInit( FromIS, FromPO ) then
         exit;
@@ -936,7 +936,7 @@ begin
 
     finally //inner main try
 
-      Screen.Cursor := crDefault;
+      Self.Cursor := crDefault;
 
       if assigned( DestIS ) then
         FreeAndNil( DestIS );
@@ -1004,7 +1004,7 @@ begin
   DestIS := nil;
   try
 
-    Screen.Cursor := crHourglass;
+    Self.Cursor := crHourglass;
 
     if not ServerInit( FromIS, FromPO.GetExpandedPath( ProgDefaultPath ), FromPO.fName, FromPO.fIsDB ) then
       exit;
@@ -1057,7 +1057,7 @@ begin
     ToPO := nil;
 
   finally
-    Screen.Cursor := crDefault;
+    Self.Cursor := crDefault;
 
     if assigned( DestIS ) then
       FreeAndNil( DestIS );
@@ -1132,7 +1132,7 @@ begin
 
         DestIS := nil;
         try
-          Screen.Cursor := crHourglass;
+          Self.Cursor := crHourglass;
 
           DestIS := TInfoServer.Create;
 
@@ -1152,7 +1152,7 @@ begin
 
         finally
 
-          Screen.Cursor := crDefault;
+          Self.Cursor := crDefault;
 
           if assigned( DestIS ) then
             FreeAndNil( DestIS );
@@ -1637,6 +1637,7 @@ begin
   end;
 
   isSql := rgImport.ItemIndex = 0;
+  rgImport.ItemIndex := -1;
 
   aFile := fLastPath;
   OpenDialog.InitialDir := fLastPath;
@@ -1646,6 +1647,8 @@ begin
 
   TextDBSL := TStringlist.Create;
   try
+
+    Self.Cursor := crHourglass;
 
     if isSql then
     begin
@@ -1764,8 +1767,6 @@ begin
                                  ) then
       exit;
 
-    rgImport.ItemIndex := -1;
-
     if isSql then
     begin
 
@@ -1821,7 +1822,9 @@ begin
     //MsgDlgMessage(  ); //<==== Done above
     MsgDlgInfo( self );
 
+
   finally
+    Self.Cursor := crDefault;
     if assigned( TextDBSL ) then freeandnil( TextDBSL);
     if assigned( Ini ) then freeandnil( Ini );
   end;
@@ -1908,7 +1911,7 @@ begin
     if MsgDlgConfirmation( self ) = mrNo then
       exit;
 
-    Screen.Cursor := crHourglass;
+    Self.Cursor := crHourglass;
 
     if not ServerInit( FromIS, FromPO ) then
       exit;
@@ -1956,7 +1959,7 @@ begin
     FromIS.UnInitialize( false );
 
   finally //outer main try
-    Screen.Cursor := crDefault;
+    Self.Cursor := crDefault;
 
     if assigned( DestIS ) then
       FreeAndNil( DestIS );
@@ -2020,7 +2023,7 @@ begin
   DestIS := nil;
   try
 
-    Screen.Cursor := crHourglass;
+    Self.Cursor := crHourglass;
 
     if not ServerInit( DestIS ) then
       exit;
@@ -2053,7 +2056,7 @@ begin
     DestIS.UnInitialize( false );
 
   finally
-    Screen.Cursor := crDefault;
+    Self.Cursor := crDefault;
 
     if assigned( DestIS ) then
       FreeAndNil( DestIS );

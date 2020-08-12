@@ -1264,7 +1264,6 @@ begin
             NewPosition := Idx;
             break;
           end;
-        else raise EErrorDevelopment.create( 'TBaseSearch.Evaluate: Undefined SearchOperator type' );
       end;// Case
 
     end; // is sitOperator
@@ -2064,13 +2063,13 @@ end;
 
 function SearchItemTypeToStr( const SIT : TSearchItemType ) : string;
 begin
+  result := 'Invalid';
   case SIT of
     sitOperator : result := 'Oper';
     sitString : result := 'Str';
     sitBoolean : result := 'Bool';
     sitInteger : result := 'Int';
     sitDouble : result := 'Real';
-    else result := 'Invalid';
   end;
 end;
 
@@ -2088,6 +2087,7 @@ end;
 
 function SearchOperatorTypeToStr( const SOT : TSearchOperatorType; DoFormat : shortint ) : string;
 begin
+  result := 'Invalid';
   case SOT of
     sotNone : result := 'None';
     sotNOT : result := 'Not';
@@ -2096,7 +2096,6 @@ begin
     sotXOR : result := 'XOr';
     sotOpen : result := '(';//'Open';
     sotClose : result := ')';//'Close';
-    else result := 'Invalid';
   end;
   case DoFormat of
     -1 : result := lowercase( result );
@@ -2121,6 +2120,7 @@ end;
 
 function ConditionToStr( const CO : TCondition ) : string;
 begin
+  result := 'INVALID';
 //used in saving to file, don't change
   case CO of
     coNone : result := 'NONE';
@@ -2136,7 +2136,6 @@ begin
     coGT : result := 'GT';
     coGTE : result := 'GTE';
     coIsEmpty : result := '%';
-    else result := 'INVALID';
   end;
 end;
 
@@ -2187,7 +2186,6 @@ begin
     ftBoolean : result := sitBoolean;
     ftInteger,  ftEnum : result := sitInteger;
     ftDouble : result := sitDouble;
-    else raise EErrorDevelopment.create( 'FieldType_To_SearchItemType: invalid FieldType' );
   end;
 end;
 

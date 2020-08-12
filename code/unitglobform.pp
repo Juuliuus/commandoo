@@ -25,7 +25,7 @@ unit unitGlobForm;
 interface
 
 uses
-  Classes, SysUtils, Dialogs, StdCtrls, Forms, Controls, graphics, ActnList, Menus, Buttons;
+  Classes, SysUtils, Dialogs, Forms, Controls, graphics, ActnList, Menus, Buttons;
 
 type
 

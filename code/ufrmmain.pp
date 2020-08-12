@@ -446,6 +446,16 @@ type
     shpCmdOut7 : TShape;
     shpCmdOut8 : TShape;
     shpCmdOut9 : TShape;
+    shpmemDetachedProcesses: TShape;
+    shplbKeyWords: TShape;
+    shpmemEntry: TShape;
+    shpmemNotesLine: TShape;
+    shpmemNotes: TShape;
+    shplbDetachedProcesses: TShape;
+    shpMemo1: TShape;
+    shplbCmdLines: TShape;
+    shplbSearchCmd: TShape;
+    shplbSearchCmdLine: TShape;
     shpRefreshFavorites : TShape;
     shpSave : TShape;
     shpSRL : TShape;
@@ -455,6 +465,7 @@ type
     shpCmdOut : TShape;
     shpRun_Test : TShape;
     shpSearchRun : TShape;
+    shplbCommands: TShape;
     tmrCancelRunBlink : TTimer;
     tmrCancelRun : TTimer;
     TimerBlink : TTimer;
@@ -542,15 +553,23 @@ type
     procedure FormKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure FormShow(Sender: TObject);
     procedure lbCmdLinesDblClick( Sender : TObject );
+    procedure lbCmdLinesEnter(Sender: TObject);
+    procedure lbCmdLinesExit(Sender: TObject);
     procedure lbCmdLinesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lbCmdLinesSelectionChange(Sender: TObject; User: boolean);
     procedure lbCommandsClick(Sender: TObject);
     procedure lbCmdLinesClick(Sender: TObject);
+    procedure lbCommandsEnter(Sender: TObject);
+    procedure lbCommandsExit(Sender: TObject);
     procedure lbCommandsKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lbDetachedProcessesClick( Sender : TObject );
+    procedure lbDetachedProcessesEnter(Sender: TObject);
+    procedure lbDetachedProcessesExit(Sender: TObject);
     procedure lbDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lbDispKeywordsDblClick( Sender : TObject );
     procedure lbKeywordsDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+    procedure lbKeywordsEnter(Sender: TObject);
+    procedure lbKeywordsExit(Sender: TObject);
     procedure lbKeywordsKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lblCommandNameDblClick( Sender : TObject );
     procedure lblCommandNameDispDblClick( Sender : TObject );
@@ -558,20 +577,34 @@ type
     procedure lblDispEntryDblClick( Sender : TObject );
     procedure lblPathAliasDblClick( Sender : TObject );
     procedure lbSearchCmdClick( Sender : TObject );
+    procedure lbSearchCmdEnter(Sender: TObject);
+    procedure lbSearchCmdExit(Sender: TObject);
     procedure lbSearchCmdKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure lbSearchCmdLineClick( Sender : TObject );
+    procedure lbSearchCmdLineEnter(Sender: TObject);
+    procedure lbSearchCmdLineExit(Sender: TObject);
     procedure lbSearchCmdLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+    procedure memDetachedProcessesEnter(Sender: TObject);
+    procedure memDetachedProcessesExit(Sender: TObject);
     procedure memDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memDispNotesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memEntryDblClick( Sender : TObject );
+    procedure memEntryEnter(Sender: TObject);
+    procedure memEntryExit(Sender: TObject);
     procedure memEntryKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memNotesChange( Sender : TObject );
     procedure memNotesDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+    procedure memNotesEnter(Sender: TObject);
+    procedure memNotesExit(Sender: TObject);
     procedure memNotesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure memNotesLineChange( Sender : TObject );
     procedure memNotesLineDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+    procedure memNotesLineEnter(Sender: TObject);
+    procedure memNotesLineExit(Sender: TObject);
     procedure memNotesLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure Memo1DblClick( Sender : TObject );
+    procedure Memo1Enter(Sender: TObject);
+    procedure Memo1Exit(Sender: TObject);
     procedure Memo1KeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
     procedure mniCmdCountClick( Sender : TObject );
     procedure mniCmdSendToClick( Sender : TObject );
@@ -666,6 +699,7 @@ type
     procedure InstallSupportFiles( const OnlyLanguages : boolean = false );
     procedure JumpToCommand( anIdx : integer; CmdLineStr : string );
     function CanJumpToCommand( const CmdStr, CmdLineStr : string ) : boolean;
+    procedure ShowFocused(Shape: TShape; const TurnOn: boolean );
     function TryToFindEditedCommand( const CmdSearch : string ) : integer;
     procedure MoveBetweenMajorAreas( aTag : integer; const Key : Word );
     function CheckPathOverride(var ConPath : string ) : boolean;
@@ -747,7 +781,7 @@ type
     procedure ProcessCmdDisplayObj( Sender : TListBox );
     procedure ReFocus_Edit_Memo( const IsCmd : boolean );
     procedure RegisterDisplayCaptions;
-    procedure RemoveDetachedProcess( const Idx, OldIdx : integer; aProcess : TAsyncProcess );
+    procedure RemoveDetachedProcess( const Idx : integer );
     procedure RenameCommand( const InputName : string; InputMode : TSingleInputMode );
     function NotEditing: boolean;
     procedure RefreshCmdObj( CLOIdx : integer = cUseItemIndexFlag );
@@ -939,6 +973,7 @@ var
 
 const
   cmsgMainShellPhrase = 'SHELL: ';
+  cFocusedColor = $0052DA63;//#63DA52
   cHarmlessColor = $FF5D12;//#125DFF;
   cCarefulColor = $28D5D5;//#D5D528
   cCautionColor = $218DD5;//#D58D21
@@ -971,7 +1006,7 @@ const
   cCurrSearchFileName = '.CurrSearch';
   cDisplayOutPutMax = 25000;
   clblCmdPointer = 'Command';
-  clblCmdlinePointer = 'Command Lines';
+  clblCmdlinePointer = 'Cmd Lines';
   clblPointers = '  ↓';
   ccapGotoCmdAbbrev = 'Cmd';
   ccapGotoCmdlineAbbrev = 'CmdLine';
@@ -1589,7 +1624,7 @@ begin
   Result := GetEnvironmentVariable( 'XDG_CONFIG_HOME' );
   if ( Result = '' ) then
     Result := GetTheHomeDir + '.config/' + cReferenceProgramName
-  else Result := IncludeTrailingPathDelimiter( Result );
+  else Result := IncludeTrailingPathDelimiter( Result ) + cReferenceProgramName;
 
   if fSuperUser then
   begin
@@ -1703,6 +1738,7 @@ var
 begin
 
   font.size := cDefaultFontSize;
+  globLinuxProcessOwner := self;
   NeedsWrite := false;
   fInternalComs := false;
   fIsSimpleSearch := false;
@@ -2392,6 +2428,9 @@ begin
   UpdateDetachedProcesses( '', nil );
   RefreshCap;
 
+  lblCmdPointer.caption := clblCmdPointer + clblPointers;
+  lblCmdLinePointer.caption := clblCmdlinePointer + clblPointers;
+
   mniMainCommands.Caption := clblCmdPointer + 's';
   mniDblCCmd.Caption := mniMainCommands.Caption + '...';
   mniMainDisplay.Caption := ccapGotoMainDisplay;
@@ -2656,6 +2695,16 @@ begin
   btnLineEdit.Click;
 end;
 
+procedure TfrmMain.lbCmdLinesEnter(Sender: TObject);
+begin
+  ShowFocused( shplbCmdLines, true );
+end;
+
+procedure TfrmMain.lbCmdLinesExit(Sender: TObject);
+begin
+  ShowFocused( shplbCmdLines, false );
+end;
+
 procedure TfrmMain.lbCmdLinesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   if ( Key = VK_OEM_PLUS ) or ( Key = VK_ADD ) then
@@ -2893,6 +2942,16 @@ begin
 
 end;
 
+procedure TfrmMain.lbCommandsEnter(Sender: TObject);
+begin
+  ShowFocused( shplbCommands, true );
+end;
+
+procedure TfrmMain.lbCommandsExit(Sender: TObject);
+begin
+  ShowFocused( shplbCommands, false );
+end;
+
 procedure TfrmMain.lbCommandsKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   if ( Key = vk_return ) and ( lbCommands.ItemIndex > -1 ) and ( btnCmdEdit.Enabled ) then
@@ -3014,6 +3073,16 @@ begin
 
 end;
 
+procedure TfrmMain.lbDetachedProcessesEnter(Sender: TObject);
+begin
+  ShowFocused( shplbDetachedProcesses, true );
+end;
+
+procedure TfrmMain.lbDetachedProcessesExit(Sender: TObject);
+begin
+  ShowFocused( shplbDetachedProcesses, false );
+end;
+
 procedure TfrmMain.lbDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   if ( ( shift = [ ssCtrl ] ) or ( shift = [ ssshift, ssCtrl ] ) )
@@ -3039,6 +3108,16 @@ begin
       FindItem( lbKeywordsDisp );
   end;
 
+end;
+
+procedure TfrmMain.lbKeywordsEnter(Sender: TObject);
+begin
+  ShowFocused( shplbKeyWords, true );
+end;
+
+procedure TfrmMain.lbKeywordsExit(Sender: TObject);
+begin
+  ShowFocused( shplbKeyWords, false );
 end;
 
 procedure TfrmMain.lbKeywordsKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -3092,7 +3171,7 @@ var
 
     pnlS.Caption := '';
     cbDispThreatLevel.ItemIndex := -1;
-    lblDispThreatLevel.Caption := CmdObjHelper.GetThreatLevelText( TThreatLevel( -1 ) );
+    lblDispThreatLevel.Caption := CmdObjHelper.GetThreatLevelText( TThreatLevel( 0 ) );
     ApplyThreatLevel( pnlS, cbDispThreatLevel );
 
     lbDispKeywords.Clear;
@@ -3359,6 +3438,16 @@ begin
 
 end;
 
+procedure TfrmMain.lbSearchCmdEnter(Sender: TObject);
+begin
+  ShowFocused( shplbSearchCmd, true );
+end;
+
+procedure TfrmMain.lbSearchCmdExit(Sender: TObject);
+begin
+  ShowFocused( shplbSearchCmd, false );
+end;
+
 procedure TfrmMain.lbSearchCmdKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   if ( Shift = [ ssCtrl ] ) or ( Shift = [ ssShift, ssCtrl ] ) then
@@ -3395,6 +3484,16 @@ begin
   if lbSearchCmdLine.Items.Count > 0 then
     ProcessCmdDisplayObj( lbSearchCmdLine );
   lbSearchCmdLine_ApplyActions( 1 );
+end;
+
+procedure TfrmMain.lbSearchCmdLineEnter(Sender: TObject);
+begin
+  ShowFocused( shplbSearchCmdLine, true );
+end;
+
+procedure TfrmMain.lbSearchCmdLineExit(Sender: TObject);
+begin
+  ShowFocused( shplbSearchCmdLine, false );
 end;
 
 procedure TfrmMain.lbSearchCmdLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -3440,6 +3539,16 @@ begin
     SearchVK_F_Keys( Key );
 end;
 
+procedure TfrmMain.memDetachedProcessesEnter(Sender: TObject);
+begin
+  ShowFocused( shpmemDetachedProcesses, true );
+end;
+
+procedure TfrmMain.memDetachedProcessesExit(Sender: TObject);
+begin
+  ShowFocused( shpmemDetachedProcesses, false );
+end;
+
 procedure TfrmMain.memDetachedProcessesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   UnassMemosKeyDown( memDetachedProcesses, Key, Shift );
@@ -3453,6 +3562,16 @@ end;
 procedure TfrmMain.memEntryDblClick( Sender : TObject );
 begin
   btnBuilder.Click;
+end;
+
+procedure TfrmMain.memEntryEnter(Sender: TObject);
+begin
+  ShowFocused( shpmemEntry, true );
+end;
+
+procedure TfrmMain.memEntryExit(Sender: TObject);
+begin
+  ShowFocused( shpmemEntry, false );
 end;
 
 procedure TfrmMain.EditmemEntry;
@@ -3489,6 +3608,16 @@ begin
   UnassMemosKeyDown( MemNotesDisp, Key, Shift );
 end;
 
+procedure TfrmMain.memNotesEnter(Sender: TObject);
+begin
+  ShowFocused( shpmemNotes, true );
+end;
+
+procedure TfrmMain.memNotesExit(Sender: TObject);
+begin
+  ShowFocused( shpmemNotes, false );
+end;
+
 procedure TfrmMain.memNotesKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   if ( Shift = [ ssCtrl ] ) then
@@ -3521,6 +3650,16 @@ end;
 procedure TfrmMain.memNotesLineDispKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
 begin
   UnassMemosKeyDown( memNotesLineDisp, Key, Shift );
+end;
+
+procedure TfrmMain.memNotesLineEnter(Sender: TObject);
+begin
+  ShowFocused( shpmemNotesLine, true );
+end;
+
+procedure TfrmMain.memNotesLineExit(Sender: TObject);
+begin
+  ShowFocused( shpmemNotesLine, false );
 end;
 
 procedure TfrmMain.memNotesLineKeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -3560,6 +3699,16 @@ begin
     exit;
   MsgDlgMessage( '', trim( TMemo( Sender ).Text ) );
   MsgDlgInfo( Self );
+end;
+
+procedure TfrmMain.Memo1Enter(Sender: TObject);
+begin
+  ShowFocused( shpMemo1, true );
+end;
+
+procedure TfrmMain.Memo1Exit(Sender: TObject);
+begin
+  ShowFocused( shpMemo1, false );
 end;
 
 procedure TfrmMain.Memo1KeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
@@ -3965,7 +4114,7 @@ var
   NumLines : Int64;
   GoToPos : Integer;
 begin
-  //fDisplayOutPutMax := 500; //testing
+  //fDisplayOutPutMax := 1000; //testing
 
   Memo1.SelLength := 0;
   GoToPos := Length( fDisplayOutPut.Text );
@@ -4869,7 +5018,6 @@ begin
         case TTabControlSearch( LoadedUT ) of
           tcsNormal : SO := fSearchSO;
           tcsKeyWordList : SO := fKeyWordSO;
-          else raise EErrorDevelopment.Create( 'TfrmMain.LoadSearchObject: Invalid TTabControlSearch.' );
         end
       end
       else exit;
@@ -4968,6 +5116,13 @@ begin
 
   Result := CmdObjHelper.RunCommand( SL, false );
 
+end;
+
+procedure TfrmMain.ShowFocused( Shape : TShape; const TurnOn : boolean );
+begin
+  if TurnOn then
+    Shape.Brush.Color := cFocusedColor
+  else Shape.Brush.Color := clBlack;
 end;
 
 function TfrmMain.CmdInPath : boolean;
@@ -5431,31 +5586,25 @@ begin
 {$ENDIF}
 end;
 
-procedure TfrmMain.RemoveDetachedProcess( const Idx, OldIdx : integer; aProcess : TAsyncProcess );
+procedure TfrmMain.RemoveDetachedProcess( const Idx : integer );
 begin
 
-  if assigned( aProcess ) then
+  if assigned( lbDetachedProcesses.Items.Objects[ Idx ] ) then
   begin
-    aProcess.Terminate( 0 );
-    FreeAndNil( aProcess );
-  end else raise EErrorDevelopment.Create( 'TfrmMain.RemoveDetachedProcess = list object not assigned.' );
+    TAsyncProcess( lbDetachedProcesses.Items.Objects[ Idx ] ).Terminate( 0 );
+    TAsyncProcess( lbDetachedProcesses.Items.Objects[ Idx ] ).Free;
+    lbDetachedProcesses.Items.Objects[ Idx ] := nil;
+  end;
 
   lbDetachedProcesses.Items.Delete( Idx );
-
-  if OldIdx > -1 then
-  begin
-    lbDetachedProcesses.ItemIndex := GetValidItemIndex( OldIdx, lbDetachedProcesses.Items.Count );
-    if lbDetachedProcesses.ItemIndex > -1 then
-      lbDetachedProcesses.Click;
-  end;
+  lbDetachedProcesses.ItemIndex := GetValidItemIndex( Idx, lbDetachedProcesses.Items.Count );
+  lbDetachedProcesses.Click;
 
 end;
 
 procedure TfrmMain.btnHaltProcessClick( Sender : TObject );
-var
-  aProcess : TAsyncProcess;
-  OldIndex : Integer;
 begin
+
   if ( lbDetachedProcesses.Items.Count = 0 ) or ( lbDetachedProcesses.ItemIndex = -1 ) then
   begin
     ShowMessage( cmsgNoCommandSelected );
@@ -5466,11 +5615,7 @@ begin
     if MsgDlgAttentionConfirm( self ) = mrNo then
       exit;
 
-  memDetachedProcesses.Clear;
-  OldIndex := lbDetachedProcesses.ItemIndex;
-
-  aProcess := TAsyncProcess( lbDetachedProcesses.Items.Objects[ OldIndex ] );
-  RemoveDetachedProcess( OldIndex, OldIndex, aProcess );
+  RemoveDetachedProcess( lbDetachedProcesses.ItemIndex );
 
   UpdateDetachedProcesses( '', nil );
 
@@ -5487,9 +5632,9 @@ begin
     if not assigned( aProcess ) then
       continue;
     if not aProcess.Running and not aProcess.Active then
-      RemoveDetachedProcess( i, -1, aProcess );
+      RemoveDetachedProcess( i );
   end;
-  UpdateDetachedProcesses( '', nil );
+  aProcess := nil;
 end;
 
 procedure TfrmMain.tmrCancelRunBlinkTimer( Sender : TObject );
@@ -6317,7 +6462,7 @@ begin
     exit;
 
   OldCLOIndex := lbCmdLines.ItemIndex;
-  Screen.Cursor := crHourGlass;
+  Self.Cursor := crHourGlass;
   try
 
     BlankCommand;
@@ -6385,7 +6530,7 @@ begin
     CheckSearchChange;
 
   finally
-    Screen.Cursor := crDefault;
+    Self.Cursor := crDefault;
     SetNotificationState( False, actSave, shpSave );
   end;
 
@@ -6572,7 +6717,7 @@ begin
 
     fSearchMayHaveChanged := fKeyWordList.NeedsDBUpdate;
     if fSearchMayHaveChanged then
-      Screen.Cursor := crHourglass;
+      Self.Cursor := crHourglass;
 
     fKeyWordList.ApplyUpdateList( dbltKeyWord, lbCommands.Items, lbCommands.ItemIndex );
 
@@ -6583,7 +6728,7 @@ begin
       ApplyListChangesDisplayedCmd( lbList, aListBox, DispListBox );
 
   finally
-    Screen.Cursor := crDefault;
+    Self.Cursor := crDefault;
     Free;
   end;
 
@@ -6874,7 +7019,7 @@ begin
   end;
 
   try
-    screen.Cursor := crHourglass;
+    self.Cursor := crHourglass;
 
     if CmdInPath then
       Input := trim( GetProperCmdNameCaption ) + ' '
@@ -6904,7 +7049,7 @@ begin
     btnLineEdit.Click;
 
   finally
-    screen.Cursor := crDefault;
+    self.Cursor := crDefault;
   end;
 
 end;
@@ -7051,12 +7196,21 @@ begin
 end;
 
 procedure TfrmMain.UpdateDetachedProcesses( const DisplayStr : string; aProcess : TAsyncProcess );
+var
+  Idx : integer;
 begin
 
+  Idx := lbDetachedProcesses.ItemIndex;
   if assigned( aProcess ) then
-    lbDetachedProcesses.Items.AddObject( DisplayStr, aProcess);
+    Idx := lbDetachedProcesses.Items.AddObject( DisplayStr, aProcess);
 
   TimerDetachedProcesses.Enabled := lbDetachedProcesses.Items.Count > 0;
+
+  if ( Idx < 0 ) and ( lbDetachedProcesses.Items.Count > 0 ) then
+      Idx := 0;
+
+  lbDetachedProcesses.ItemIndex := Idx;
+  lbDetachedProcesses.Click;
 
   lblDetachedProcesses.Caption := format( ccapDetachedProcesses,
                                          [ lbDetachedProcesses.Items.Count,
@@ -7229,7 +7383,7 @@ begin
     RunStr := csoNonPrintingDelimiter + RunStr;
 
   try
-    Screen.Cursor := crHourglass;
+    Self.Cursor := crHourglass;
 
     tmrCancelRun.Enabled := true;
 
@@ -7247,7 +7401,7 @@ begin
 
   finally
     tmrCancelRun.Enabled := false;
-    Screen.Cursor := crDefault;
+    Self.Cursor := crDefault;
     CloseCancelRun;
     fIsRunningProcess := false;
     globltProcessMaxOutput := LimitInfinityCnt;
@@ -7529,9 +7683,6 @@ end;
 
 procedure TfrmMain.FormActivate(Sender: TObject);
 
-var
-  HintBugFix : TPoint;
-
   function GetSpecialMode : boolean;
   begin
     result := true;
@@ -7560,19 +7711,6 @@ begin
   FIsInitialized := True;
 
   Application.HintHidePause := 600000;
-  Application.ShowHint := true;
-  self.Showhint := true;
-  self.Hint := 'Initialized';
-  ////HintBugFix := GetPreciseControlCoords( btnFinalNeeds, 2, 2 );
-  HintBugFix := GetPreciseControlCoords( btnAbout, 3, 3 );
-  mouse.CursorPos := HintBugFix;
-  //Application.ActivateHint( HintBugFix );
-  ////Application.HideHint;
-  ////Application.ProcessMessages;
-  ////sleep( 10 );
-  self.Showhint := false;
-  self.Hint := '';
-
 
 //if commandoo is opened, form re-sized, then closed, there was bug where the
 //editing panels had not obeyed their anchor settings and everything was off.

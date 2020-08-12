@@ -16,7 +16,7 @@ object frm_Search_Operator: Tfrm_Search_Operator
   KeyPreview = True
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   object rgSeOpOperator: TRadioGroup
     Left = 78
     Height = 106

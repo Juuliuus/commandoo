@@ -371,6 +371,7 @@ begin
       continue;
 
     case SFR.sfrCmdObjType of
+      cotNone : ;
       cotBase :
         begin
           Idx := cgCmd.Items.AddObject( theFields[ i ], SFR );
