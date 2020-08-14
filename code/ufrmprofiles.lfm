@@ -69,12 +69,12 @@ object frmProfiles: TfrmProfiles
   end
   object gbManageList: TGroupBox
     Left = 7
-    Height = 145
+    Height = 158
     Top = 354
     Width = 425
     Anchors = [akLeft, akBottom]
     Caption = 'Manage Profile List'
-    ClientHeight = 127
+    ClientHeight = 140
     ClientWidth = 423
     Font.Height = -12
     ParentColor = False
@@ -191,7 +191,13 @@ object frmProfiles: TfrmProfiles
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
+      ClientHeight = 46
+      ClientWidth = 109
       Font.Height = -11
+      Items.Strings = (
+        'sql'
+        'text'
+      )
       ParentFont = False
       TabOrder = 4
       TabStop = True

@@ -3,7 +3,6 @@ object frmManageProfile: TfrmManageProfile
   Height = 315
   Top = 393
   Width = 315
-  ActiveControl = edtProfileName
   Caption = 'Add Profile'
   ClientHeight = 315
   ClientWidth = 315
@@ -18,7 +17,7 @@ object frmManageProfile: TfrmManageProfile
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   inline FrameHint1: TFrameHint
     Left = 80
     Height = 29

@@ -601,7 +601,7 @@ begin
   if IsSelectMode then
   begin
     btnOK.Visible := false;
-    lblDefaultDisplay.Caption := format( cmsgDefaultDisplaySelect, [ frmMain.btnProfileManagement.Caption ] );
+    lblDefaultDisplay.Caption := format( cmsgDefaultDisplaySelect, [ TfrmMain( Owner ).btnProfileManagement.Caption ] );
     //lblDefaultDisplay.Top := gbManageList.top + gbManageList.Height + 3;
 //    lblDefaultDisplay.Visible := false;
     gbManageList.enabled := false;
@@ -647,8 +647,8 @@ begin
   SetupMode;
   actAdd.Enabled := true;
 
-  rgImport.Items.Add( '&S  ' + cmsgProDBsqlStr );
-  rgImport.Items.Add( '&T  ' + cmsgProDBTextStr );
+  rgImport.Items[ 0 ] := '&S  ' + cmsgProDBsqlStr;
+  rgImport.Items[ 1 ] := '&T  ' + cmsgProDBTextStr;
 
   rgImport.Hint := btnImport.Hint;
 
@@ -891,7 +891,7 @@ begin
       if not Compare_NameAccepted( ToPo ) then
         exit;
 
-      self.Cursor := crHourglass;
+      ScreenCursorFix( self, True );
 
       if not ServerInit( FromIS, FromPO ) then
         exit;
@@ -936,7 +936,7 @@ begin
 
     finally //inner main try
 
-      Self.Cursor := crDefault;
+      ScreenCursorFix( self, false );
 
       if assigned( DestIS ) then
         FreeAndNil( DestIS );
@@ -1004,7 +1004,7 @@ begin
   DestIS := nil;
   try
 
-    Self.Cursor := crHourglass;
+    ScreenCursorFix( self, True );
 
     if not ServerInit( FromIS, FromPO.GetExpandedPath( ProgDefaultPath ), FromPO.fName, FromPO.fIsDB ) then
       exit;
@@ -1057,7 +1057,7 @@ begin
     ToPO := nil;
 
   finally
-    Self.Cursor := crDefault;
+    ScreenCursorFix( self, false );
 
     if assigned( DestIS ) then
       FreeAndNil( DestIS );
@@ -1125,6 +1125,7 @@ begin
     if AlreadyThere then
       exit;
 
+    ScreenCursorFix( self, True );
     if PO.fIsDB then
     begin
       if CopySuccess( FromF, ToF ) then
@@ -1132,7 +1133,6 @@ begin
 
         DestIS := nil;
         try
-          Self.Cursor := crHourglass;
 
           DestIS := TInfoServer.Create;
 
@@ -1151,8 +1151,6 @@ begin
           DestIS.UnInitialize( false );
 
         finally
-
-          Self.Cursor := crDefault;
 
           if assigned( DestIS ) then
             FreeAndNil( DestIS );
@@ -1180,6 +1178,7 @@ begin
     RefreshList( AddStr );
 
   finally
+    ScreenCursorFix( self, false );
     SL.free;
   end;
 
@@ -1416,6 +1415,7 @@ begin
       Mode := mpEdit;
       SetupEditProfile( PO.fName, PathValueToPathDisplay( PO.fPath ), PO.fIsDB );
       ShowPoint := GetPreciseControlCoords( btnOk );
+      AppWritingToPath := TfrmMain( Self.Owner ).WritingToPath;
 
       ShowModal;
 
@@ -1648,7 +1648,7 @@ begin
   TextDBSL := TStringlist.Create;
   try
 
-    Self.Cursor := crHourglass;
+    ScreenCursorFix( self, True );
 
     if isSql then
     begin
@@ -1824,7 +1824,7 @@ begin
 
 
   finally
-    Self.Cursor := crDefault;
+    ScreenCursorFix( self, false );
     if assigned( TextDBSL ) then freeandnil( TextDBSL);
     if assigned( Ini ) then freeandnil( Ini );
   end;
@@ -1911,7 +1911,7 @@ begin
     if MsgDlgConfirmation( self ) = mrNo then
       exit;
 
-    Self.Cursor := crHourglass;
+    ScreenCursorFix( self, True );
 
     if not ServerInit( FromIS, FromPO ) then
       exit;
@@ -1959,7 +1959,7 @@ begin
     FromIS.UnInitialize( false );
 
   finally //outer main try
-    Self.Cursor := crDefault;
+    ScreenCursorFix( self, false );
 
     if assigned( DestIS ) then
       FreeAndNil( DestIS );
@@ -2023,8 +2023,6 @@ begin
   DestIS := nil;
   try
 
-    Self.Cursor := crHourglass;
-
     if not ServerInit( DestIS ) then
       exit;
 
@@ -2056,7 +2054,6 @@ begin
     DestIS.UnInitialize( false );
 
   finally
-    Self.Cursor := crDefault;
 
     if assigned( DestIS ) then
       FreeAndNil( DestIS );
@@ -2658,6 +2655,7 @@ begin
     SetupLabels( Str, constDefaultPathDisplay );
     ApplyTranslation;
     AdjustDBType( fIdxDB, fIdxText );
+    AppWritingToPath := TfrmMain( Self.Owner).WritingToPath;
 
     ShowModal;
     if ModalResult = mrOK then

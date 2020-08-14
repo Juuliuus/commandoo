@@ -1641,6 +1641,7 @@ end;
 procedure TfrmMain.FormCreate(Sender: TObject);
 var
   NeedsWrite : boolean;
+  ThumbDriveFixer : string;
 
   procedure GetShellName;
   begin
@@ -1865,11 +1866,13 @@ begin
   begin
     if SystemFileFound( 'xdg-user-dir' ) then
     begin
+//AppImage environment on ThumbDrive can't pick up the Downloads Folder, gets HOME instead...
+      ThumbDriveFixer := IncludeTrailingPathDelimiter( QuickProc( 'xdg-user-dir', 'HOME' ) );
       if fSuperUser then
         fSavingToPath := fWritingToPath //'/tmp/'
       else fSavingToPath := IncludeTrailingPathDelimiter( QuickProc( 'xdg-user-dir', 'DOWNLOAD' ) );
       //just in case it not dependable....
-      if not DirectoryExists( fSavingToPath ) then
+      if not DirectoryExists( fSavingToPath ) or ( ThumbDriveFixer = fSavingToPath ) then
         fSavingToPath := fWritingToPath;
     end
     else fSavingToPath := fWritingToPath;
@@ -5625,16 +5628,27 @@ procedure TfrmMain.TimerDetachedProcessesTimer( Sender : TObject );
 var
   aProcess : TAsyncProcess;
   i : Integer;
+  NeedUpdate : boolean;
 begin
+  NeedUpdate := false;
   for i := lbDetachedProcesses.Items.Count - 1 downto 0 do
   begin
     aProcess := TAsyncProcess( lbDetachedProcesses.Items.Objects[ i ] );
     if not assigned( aProcess ) then
+    begin
+      lbDetachedProcesses.Items.Delete( i );
+      NeedUpdate := true;
       continue;
+    end;
     if not aProcess.Running and not aProcess.Active then
+    begin
+      NeedUpdate := true;
       RemoveDetachedProcess( i );
+    end;
   end;
   aProcess := nil;
+  if NeedUpdate then
+    UpdateDetachedProcesses( '', nil );
 end;
 
 procedure TfrmMain.tmrCancelRunBlinkTimer( Sender : TObject );
@@ -6239,6 +6253,7 @@ begin
 
   with TfrmProfiles.Create( self ) do
     try
+      ScreenCursorFix( self, True );
       Caption := ccapSendToProfile;
 
       CurrProfileIsDB := fUseDB;
@@ -6265,6 +6280,7 @@ begin
                                  false )
                        ;
     finally
+      ScreenCursorFix( self, false );
       Free;
     end;
 
@@ -6462,8 +6478,8 @@ begin
     exit;
 
   OldCLOIndex := lbCmdLines.ItemIndex;
-  Self.Cursor := crHourGlass;
   try
+    ScreenCursorFix( self, true );
 
     BlankCommand;
     BlankCmdLine;
@@ -6530,7 +6546,7 @@ begin
     CheckSearchChange;
 
   finally
-    Self.Cursor := crDefault;
+    ScreenCursorFix( self, false );
     SetNotificationState( False, actSave, shpSave );
   end;
 
@@ -6697,11 +6713,14 @@ begin
 end;
 
 procedure TfrmMain.ShowKeyWords( const aTarget : string; aListBox : TListbox; DispListBox : TListbox );
+var
+  DoingWork : boolean;
 begin
 
   if not assigned( fKeyWordList ) then
     exit;  //switch DB failed and no new DB has been found / loaded
 
+  DoingWork := false;
   with TfrmListManager.Create(self) do
   try
 
@@ -6717,7 +6736,10 @@ begin
 
     fSearchMayHaveChanged := fKeyWordList.NeedsDBUpdate;
     if fSearchMayHaveChanged then
-      Self.Cursor := crHourglass;
+    begin
+      ScreenCursorFix( self, true );
+      DoingWork := true;
+    end;
 
     fKeyWordList.ApplyUpdateList( dbltKeyWord, lbCommands.Items, lbCommands.ItemIndex );
 
@@ -6728,7 +6750,8 @@ begin
       ApplyListChangesDisplayedCmd( lbList, aListBox, DispListBox );
 
   finally
-    Self.Cursor := crDefault;
+    if DoingWork then
+      ScreenCursorFix( self, false );
     Free;
   end;
 
@@ -7019,7 +7042,7 @@ begin
   end;
 
   try
-    self.Cursor := crHourglass;
+    ScreenCursorFix( self, true );
 
     if CmdInPath then
       Input := trim( GetProperCmdNameCaption ) + ' '
@@ -7046,11 +7069,11 @@ begin
     TCmdLineObj( CmdObj.CmdLines.Objects[ ObjLineIdx ] ).ThreatLevel := CmdObjHelper.ListIdxToThreatLevel( cbThreatLevel.ItemIndex );
 
     UpdateLbCmdLines(ObjLineIdx);
-    btnLineEdit.Click;
-
   finally
-    self.Cursor := crDefault;
+    ScreenCursorFix( self, false );
   end;
+
+  btnLineEdit.Click;
 
 end;
 
@@ -7383,7 +7406,7 @@ begin
     RunStr := csoNonPrintingDelimiter + RunStr;
 
   try
-    Self.Cursor := crHourglass;
+    ScreenCursorFix( self, True );
 
     tmrCancelRun.Enabled := true;
 
@@ -7400,8 +7423,8 @@ begin
     end;
 
   finally
+    ScreenCursorFix( self, false );
     tmrCancelRun.Enabled := false;
-    Self.Cursor := crDefault;
     CloseCancelRun;
     fIsRunningProcess := false;
     globltProcessMaxOutput := LimitInfinityCnt;
@@ -7636,10 +7659,18 @@ begin
     if not SystemFileFound( 'ps', True ) then
       exit;
 
-    ProgName := extractfilename(application.exename);
-    Str := QuickProc( 'ps', '-A' );
+{$IFnDEF Release}
+//For Dev exename is good, maybe later there will be other standalone types?
+     ProgName := extractfilename( application.exename );
+{$ELSE}
+//At this stage in appimage development -s deploy returns "ld-linux-x86-64.so.2"
+//as exename. But it is in the ps list as "ld-linux-x86-64", so it of course
+//never sees other copies. However, commandoo is also there as a child of "ld-" (?!)
+//so use the constant because I will not be changing the exe name from commandoo
+    ProgName := extractfilename( cReferenceProgramName );
+{$ENDIF}
 
-    //Str := QuickProc( 'ps', '-aux' );
+    Str := QuickProc( 'ps', '-A' );
     fOpenInstances := 1;
     idx := pos(ProgName, Str);
     Str := Copy(Str, idx + Length(ProgName), length(Str));

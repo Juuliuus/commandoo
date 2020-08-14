@@ -76,6 +76,7 @@ type
   public
     { public declarations }
     ShowPoint : TPoint;
+    AppWritingToPath : string;
     procedure AdjustDBType( const DBNameIdx, DBTextIdx : integer );
     procedure ApplyTranslation;
     procedure SetupEditProfile( const theName, thePath : string; const IsDB : boolean );
@@ -241,10 +242,21 @@ begin
 end;
 
 procedure TfrmManageProfile.btnChangePathClick( Sender : TObject );
+var
+  ThePath : string;
 begin
-  if not DoSingleInput( format( ccapGenericChoose, [ ccapGenericFolder ] ), fLastPath, simDir, self, false ) then
+  if edtProfilePath.Text = constDefaultPathDisplay then
+    ThePath := ''
+  else if fLastPath <> '' then
+    ThePath := fLastPath
+  else ThePath := edtProfilePath.Text;
+
+  if not DoSingleInput( format( ccapGenericChoose, [ ccapGenericFolder ] ), ThePath, simDir, self, false ) then
     exit;
-  edtProfilePath.Text := IncludeTrailingPathDelimiter( fLastPath );
+  ThePath := IncludeTrailingPathDelimiter( ThePath );
+  if ThePath <> AppWritingToPath then
+    fLastPath := ThePath;
+  edtProfilePath.Text := ThePath;
 end;
 
 procedure TfrmManageProfile.btnDefaultPathClick( Sender : TObject );

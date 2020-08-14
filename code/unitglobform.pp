@@ -42,6 +42,7 @@ procedure FormAutoAdjustLayout( AForm : TForm );
 procedure ApplyChangeFont( AForm : TForm; AlwaysChange : boolean = false );
 procedure SetCapMenuButton( M : TMenuItem; B : TBitBtn; const Cap, Extra : string );
 procedure TryFocus( aControl : TWinControl );
+procedure ScreenCursorFix( Frm : TForm; const TurnOn : boolean );
 
 
 resourcestring
@@ -57,6 +58,39 @@ const
 implementation
 
 uses unitGlob;
+
+procedure ScreenCursorFix( Frm : TForm; const TurnOn : boolean );
+var
+  TheCursor : TCursor;
+  i : integer;
+
+  procedure FixCursors( aControl : TControl );
+  var
+    j : integer;
+  begin
+    if not assigned( aControl ) then
+      exit;
+    AControl.Cursor := TheCursor;
+
+    if aControl is TWinControl then
+    with TWinControl( aControl ) do
+    begin
+      for j := 0 to ControlCount - 1 do
+        FixCursors( Controls[ j ] );
+    end;
+  end;
+
+begin
+//Sadly, the setting of Screen.Cursor is failing, so must fix all myself.
+//form.Cursor just sets the form, so must iterate.
+  if TurnOn then
+    TheCursor := crHourglass
+  else TheCursor := crDefault;
+
+  Frm.Cursor := TheCursor;
+  for i := 0 to Frm.ControlCount - 1 do
+    FixCursors( Frm.Controls[ i ] );
+end;
 
 procedure TryFocus( aControl : TWinControl );
 begin
@@ -91,6 +125,8 @@ var
   var
     j : integer;
   begin
+    if not assigned( aControl ) then
+      exit;
 
     aControl.Font.Size := aControl.Font.Size + NewSize;
 
