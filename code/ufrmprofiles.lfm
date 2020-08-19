@@ -1,13 +1,13 @@
 object frmProfiles: TfrmProfiles
   Left = 660
-  Height = 520
+  Height = 571
   Top = 314
   Width = 442
   ActiveControl = lbList
   Caption = 'Manage Database Profiles'
-  ClientHeight = 520
+  ClientHeight = 571
   ClientWidth = 442
-  Constraints.MinHeight = 520
+  Constraints.MinHeight = 571
   Constraints.MinWidth = 442
   Font.Height = -12
   KeyPreview = True
@@ -50,7 +50,7 @@ object frmProfiles: TfrmProfiles
   end
   object lbList: TListBox
     Left = 13
-    Height = 226
+    Height = 252
     Hint = 'List of Program managed and custom '#10'Database Profiles. '#10#10'The first two ("DB") are managed by the '#10'Program and are always displayed, you'#10'can not delete or edit them. They are'#10'Profiles for the pre-collected database in'#10'text and sql format.'#10#10'You may add custom profiles at any time'#10'and those will be listed here.'#10#10'Profiles can have the same name as long'#10'as they use a different DB type.'#10#10'<end>'
     Top = 59
     Width = 302
@@ -69,19 +69,19 @@ object frmProfiles: TfrmProfiles
   end
   object gbManageList: TGroupBox
     Left = 7
-    Height = 158
-    Top = 354
+    Height = 176
+    Top = 387
     Width = 425
     Anchors = [akLeft, akBottom]
     Caption = 'Manage Profile List'
-    ClientHeight = 140
+    ClientHeight = 158
     ClientWidth = 423
     Font.Height = -12
     ParentColor = False
     ParentFont = False
     TabOrder = 4
     object btnAdd: TBitBtn
-      Left = 7
+      Left = 47
       Height = 24
       Hint = 'Make a completely new DB from scratch.'#10#10'<end>'
       Top = 3
@@ -93,7 +93,7 @@ object frmProfiles: TfrmProfiles
       TabOrder = 0
     end
     object btnCopy: TBitBtn
-      Left = 148
+      Left = 220
       Height = 24
       Hint = 'This makes a copy of the DB with a name you'#10'choose.'#10#10'It will be of the same type as the original; ie.'#10'text goes to a text DB, sql goes to a sql DB.'#10#10'If you want to the change the type from text '#10'to sql, or sql to text use the CONVERT button.'#10#10'<end>'
       Top = 3
@@ -105,7 +105,7 @@ object frmProfiles: TfrmProfiles
       TabOrder = 1
     end
     object btnEdit: TBitBtn
-      Left = 7
+      Left = 47
       Height = 24
       Hint = 'Edit the existing Profile entry. '#10#10'It does give you the option of moving the '#10'profile to other folders other than commandoo''s'#10'"config" folder if you need to.'#10#10'<end>'
       Top = 32
@@ -117,7 +117,7 @@ object frmProfiles: TfrmProfiles
       TabOrder = 2
     end
     object btnDelete: TBitBtn
-      Left = 148
+      Left = 220
       Height = 24
       Hint = 'Actually you can either delete the DB or'#10'de-activate it.'#10#10'The first "delete" is to remove the Profile'#10'Name from the list. '#10#10'Then you can choose to either delete, or '#10'keep, the actual DB file the entry pointed'#10'to. '#10#10'If you keep the actual DB file, it is effectively'#10'de-activated. You can re-activate it using'#10'the IMPORT button.'#10#10'<end>'
       Top = 32
@@ -132,57 +132,57 @@ object frmProfiles: TfrmProfiles
       Left = 148
       Height = 24
       Hint = 'This does an exhaustive compare of the '#10'entries of two of your DB''s.'#10#10'Select in the list the first DB and then use '#10'this button.'#10#10'<end>'#10
-      Top = 97
+      Top = 65
       Width = 123
       Action = actCompare
       Caption = 'DNT Compare To...'
       Font.Height = -12
       GlyphShowMode = gsmNever
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 5
     end
     object btnConvert: TBitBtn
       Left = 7
       Height = 24
       Hint = 'This will make a new DB as copy of the original'#10'by converting it''s type. The original is not'#10'deleted and remains in place. If you don''t'#10'want it anymore then you can delete it.'#10#10'If the DB is sql it will be converted to text, '#10'and vice versa.'#10#10'If you want the new DB to be the same type'#10'use the COPY button.'#10#10'<end>'
-      Top = 97
+      Top = 65
       Width = 123
       Action = actConvert
       Font.Height = -12
       GlyphShowMode = gsmNever
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 4
     end
     object btnMergeTo: TBitBtn
       Left = 290
       Height = 24
       Hint = 'This will merge the entires in the selected '#10'DB to another DB of your choice. Nothing '#10'is lost, only things missing will be imported.'#10#10'If entries are identical nothing is done.'#10#10'If entries are similar it will make the best'#10'choice and describe the differences in the '#10'"notes" field of the affected Command and/or'#10'Command Line.'#10#10'<end>'
-      Top = 97
+      Top = 65
       Width = 123
       Action = actMergeTo
       Caption = 'DNT Merge To...'
       Font.Height = -12
       GlyphShowMode = gsmNever
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 6
     end
     object btnImport: TBitBtn
-      Left = 283
+      Left = 258
       Height = 24
       Hint = 'Here import commandoo databases from'#10'other people or archives, or re-activate '#10'deactivated DB''s (done by deleting the '#10'Profile from the list, but not its DB files).'#10#10'Put the to be imported DB in a folder of your'#10'choice. On import it will be copied to the'#10'commandoo "config" location (use the '#10'About button to see where that will be)'#10'and added to the profile list with the profile'#10'name you choose.'#10#10'commandoo gives you the option of using'#10'SQL DB''s and/or text based DB''s.'#10#10'The DB profile name is tied to the DB files'#10'in the following ways:'#10#10'A sql DB is a single file. By default it has an'#10'extension of ".sqlite". So this file will look '#10'like:  <profilename>.sqlite'#10#10'Text based DB''s consist of 3 files. All by '#10'default have an extension of ".data". These'#10'files will look like:'#10'<profilename>cmd.data'#10'<profilename>cmdline.data'#10'<profilename>misc.data'#10#10'<end>'
-      Top = 51
+      Top = 109
       Width = 136
       Action = actImport
       Font.Height = -12
       GlyphShowMode = gsmNever
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 8
     end
     object rgImport: TRadioGroup
-      Left = 296
-      Height = 48
-      Top = 3
-      Width = 111
+      Left = 7
+      Height = 42
+      Top = 101
+      Width = 244
       AutoFill = True
       ChildSizing.LeftRightSpacing = 6
       ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
@@ -190,16 +190,17 @@ object frmProfiles: TfrmProfiles
       ChildSizing.ShrinkHorizontal = crsScaleChilds
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
-      ChildSizing.ControlsPerLine = 1
-      ClientHeight = 46
-      ClientWidth = 109
+      ChildSizing.ControlsPerLine = 2
+      ClientHeight = 40
+      ClientWidth = 242
+      Columns = 2
       Font.Height = -11
       Items.Strings = (
         'sql'
         'text'
       )
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 7
       TabStop = True
     end
   end
@@ -220,7 +221,7 @@ object frmProfiles: TfrmProfiles
     Left = 15
     Height = 16
     Hint = 'Reference only. It shows the default data'#10'file Path/Folder for the program.'#10#10'<end>'
-    Top = 333
+    Top = 361
     Width = 409
     Anchors = [akLeft, akRight, akBottom]
     AutoSize = False
@@ -234,7 +235,7 @@ object frmProfiles: TfrmProfiles
     Left = 16
     Height = 16
     Hint = 'Reference only. It shows the default data'#10'file Path/Folder for the program.'#10#10'<end>'
-    Top = 295
+    Top = 323
     Width = 408
     Anchors = [akLeft, akRight, akBottom]
     AutoSize = False

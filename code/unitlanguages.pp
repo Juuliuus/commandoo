@@ -356,7 +356,7 @@ begin
 // => xxx <-- used in language PO files to denote "languages" that use adult language.
   if pos( 'xxx', LangId ) > 0 then
   begin
-    MsgDlgMessage( ccapOver18, cmsgOver18, '' );
+    MsgDlgMessage( ccapOver18, cmsgOver18 );
     if MsgDlgAttentionConfirm( nil ) = mrNo then
       result := true;
   end;

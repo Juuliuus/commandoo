@@ -48,7 +48,7 @@ object frmListManager: TfrmListManager
   end
   object lbList: TListBox
     Left = 13
-    Height = 279
+    Height = 269
     Hint = 'Contents of the List you are currently'#10'editing.'#10#10'From a Command you can choose mulitple'#10'List items to add, then use OK button.'#10#10'You can manage the Master List in either '#10'Command Edit mode or Manage List Mode.'#10#10'<end>'
     Top = 53
     Width = 265
@@ -66,12 +66,12 @@ object frmListManager: TfrmListManager
   end
   object gbManageList: TGroupBox
     Left = 16
-    Height = 152
-    Top = 342
+    Height = 162
+    Top = 326
     Width = 379
     Anchors = [akLeft, akBottom]
     Caption = 'Manage Master List'
-    ClientHeight = 134
+    ClientHeight = 144
     ClientWidth = 377
     Font.Height = -12
     ParentColor = False

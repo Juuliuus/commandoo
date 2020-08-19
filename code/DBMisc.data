@@ -10,6 +10,9 @@ README6==================================
 LastVersionUpgrade=7
 TextDataType=Misc
 
+[_DB_ProfileGUID]
+GUID={88732DB1-398D-4281-B36F-9A17810FFC32}
+
 [-LoadMe_Misc_List_Keywords-]
 0=Administration
 1=Archive
@@ -37,6 +40,3 @@ TextDataType=Misc
 23=Text
 24=Tool
 25=Utility
-
-[_DB_ProfileGUID]
-GUID={88732DB1-398D-4281-B36F-9A17810FFC32}

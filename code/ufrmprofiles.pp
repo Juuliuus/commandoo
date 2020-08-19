@@ -1471,7 +1471,7 @@ end;
 
 procedure TfrmProfiles.actImportExecute( Sender : TObject );
 var
-  AddStr, TargetFileName, TargetFolder, aFile, ProfName, tmpStr : string;
+  AddStr, TargetFileName, TargetFolder, aFile, ProfName, tmpStr, EmergencyGUID : string;
   ImportFromConfig, IsSQl, DBCopied : boolean;
   PO : TProfileObj;
   AnIS : TInfoServer;
@@ -1558,12 +1558,19 @@ var
    //Due to a mistake in prior versions using the copy DB Profile function the resulting text DB's
    //will have different GUIDS in each file. Argh. So I need to allow mismatched text GUIDS to import
    //when, and only when, the version coming in is 4 or less.
+   tmpStr := Ini.ValidateKey_Str( cSectTab_DB_VersionCount, cKey_VersionCount );
+   if tmpStr = '' then
+   begin
+     BadFile := true;
+     exit;
+   end;
+
    Ver := Ini.ReadInteger( cSectTab_DB_VersionCount, cKey_VersionCount, 4 );
-   tmpStr := Ini.ValidateKey( cSectTab_DB_VersionCount, cKey_TextDataType );
+   tmpStr := Ini.ValidateKey_Str( cSectTab_DB_VersionCount, cKey_TextDataType );
    if tmpStr <> '' then
    begin
      //easy way, modern
-     Guid := Ini.ValidateKey( cSectTab_DB_ProfileGUID, cKey_ProfileGuid );
+     Guid := Ini.ValidateKey_Str( cSectTab_DB_ProfileGUID, cKey_ProfileGuid );
      if tmpStr = cIniFileNameCommands then
      begin
        TDBidx := 1;
@@ -1589,12 +1596,9 @@ var
    else
    begin
      //hard way cause old ones have no or may not have comprehensive definite indicators of the type they are
-     Guid := Ini.ValidateKey( cSectTab_DB_ProfileGUID, cKey_ProfileGuid );
+     Guid := Ini.ValidateKey_Str( cSectTab_DB_ProfileGUID, cKey_ProfileGuid );
      if Guid = '' then
-     begin
-       BadFile := true;
-       exit;
-     end;
+       Guid := EmergencyGUID;
 
      IsCmd := Ini.SectionExists( Get_IniFile_List_Section( dlCmd ) );
      IsMisc := Ini.SectionExists( Get_IniFile_List_Section( dlKeyWord ) );
@@ -1635,6 +1639,7 @@ begin
     MsgDlgAttention( self );
     exit;
   end;
+  EmergencyGUID := GetRawGuidString;
 
   isSql := rgImport.ItemIndex = 0;
   rgImport.ItemIndex := -1;

@@ -147,6 +147,7 @@ var
 
 const
   ccapListManagerDefaultInit = '!!Dev Error: No Word%s!!';
+  cmsgListManagerUniqueStr = 'Keyword';
 
 resourcestring
   ccapLMConsolidate = 'Consolidate';
@@ -331,6 +332,7 @@ begin
                  ListObj.Get_Search_List_Text( lbList.Items[ lbList.ItemIndex ], ListType )
                 );
   MsgDlgInfo( self );
+  TryFocus( lblist );
 
 end;
 
@@ -403,6 +405,7 @@ begin
 
   finally
     free;
+    TryFocus( lbList );
   end;
 
 
@@ -418,7 +421,7 @@ begin
     exit;
 
   if MsgDlgMessage( format( cDoubleS, [ ccapGenericDelete, fDisplayWordPlural ] ), cmsgGenericDelete,
-                    fDisplayWordSingular + 'cmsgGenericDelete' ) then
+                    cmsgListManagerUniqueStr + 'cmsgGenericDelete' ) then
     if MsgDlgConfirmation( self ) = mrNo then
       exit;
 
@@ -547,7 +550,7 @@ begin
 
     if MsgDlgMessage( ccapGeneralInformation,
                       format( cmsgListManagerListWarning, [ fDisplayWordSingular, fDisplayWordSingular, fDisplayWordSingular ] ),
-                      fDisplayWordSingular + 'cmsgListManagerListWarning'
+                      cmsgListManagerUniqueStr + 'cmsgListManagerListWarning'
                       ) then
       MsgDlgInfo( self );
 

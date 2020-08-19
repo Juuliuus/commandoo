@@ -199,7 +199,7 @@ type
     procedure RenameSection (const OldSection, NewSection : String );
     procedure DeleteKey(const Section, Ident: String); override;
     //function IsValidKey( const Check: String ) : boolean;
-    function ValidateKey( const Section, Ident: String ) : string;
+    function ValidateKey_Str( const Section, Ident: String ) : string;
     function RegExpressionSectionSearch( Reg : string ) : boolean;
     procedure UpdateFile; override;
     procedure GetSectionList( Strings : TStrings );
@@ -991,7 +991,7 @@ end;
 //  result := Check <> InValidStr;
 //end;
 
-function TJiniFile.ValidateKey( const Section, Ident: String ) : string;
+function TJiniFile.ValidateKey_Str( const Section, Ident: String ) : string;
 begin
 //  result := ReadString( Section, Ident, InValidStr );
   result := ReadString( Section, Ident, '' );

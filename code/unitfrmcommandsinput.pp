@@ -165,15 +165,4 @@ begin
 end;
 
 end.
-{
-procedure TfrmCommandsInput.FormCloseQuery(Sender : TObject; var CanClose : boolean);
-begin
-  CanClose := FCanClose;
 
-  if not FCanClose then
-  begin
-    if MsgDlgMessage( 'Closing the Form', 'You need to say whether all is OK or whether to cancel.', 'uniquedelvalue1' ) then
-      MsgDlg( mdpInformation, false, self );
-  end;
-end;
- }

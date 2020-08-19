@@ -1354,9 +1354,6 @@ begin
     exit;
   if UnSaved then
   begin
-    //if MsgDlgMessage( ccapUnsavedData, cmsgUnsavedData, 'cmsgUnsavedData') then
-    //  if MsgDlgAttentionConfirm( self ) = mrNo then
-    //    exit;
     MsgDlgMessage( ccapUnsavedData, cmsgUnsavedData);
     CanClose := MsgDlgAttentionConfirm( self ) = mrYes;
   end
@@ -2005,19 +2002,19 @@ begin
           end
         else
           case Key of
-            VK_RIGHT : TryFocus( lbSearchCmd );
-            VK_LEFT :  TryFocus( lbSearchCmdLine );
+            VK_RIGHT : begin TryFocus( lbSearchCmd ); lbSearchCmd.Click; end;
+            VK_LEFT :  begin TryFocus( lbSearchCmdLine ); lbSearchCmdLine.Click; end;
           end;
       end;
     cArrowKeySearchCmd :
       case Key of
-        VK_RIGHT : TryFocus( lbSearchCmdLine );
+        VK_RIGHT : begin TryFocus( lbSearchCmdLine ); lbSearchCmdLine.Click; end;
         VK_LEFT :  TryFocus( Memo1 );
       end;
     cArrowKeySearchCmdLine :
       case Key of
         VK_RIGHT : TryFocus( Memo1 );
-        VK_LEFT : TryFocus( lbSearchCmd );
+        VK_LEFT : begin TryFocus( lbSearchCmd ); lbSearchCmd.Click; end;
       end;
     cArrowKeyDetachedProcesses :
       case Key of
@@ -2044,7 +2041,7 @@ begin
         begin
           TryFocus( lbDetachedProcesses );
         end
-        else TryFocus( lbSearchCmd );
+        else begin TryFocus( lbSearchCmd ); lbSearchCmd.Click; end;
 
       end;
   end;
@@ -3957,9 +3954,9 @@ begin
     cmniMainCmdLineEntry : TryFocus( memEntry );
     cmniMainCmdLineNotes : TryFocus( memNotesLine );
     cmniMainCmdListFav, cmniMainCmdListKey, cmniMainCmdListSearch :
-      TryFocus( lbSearchCmd );
+      begin TryFocus( lbSearchCmd ); lbSearchCmd.Click; end;
     cmniMainCmdLineFav, cmniMainCmdLineKey, cmniMainCmdLineSearch :
-      TryFocus( lbSearchCmdLine );
+      begin TryFocus( lbSearchCmdLine ); lbSearchCmdLine.Click; end;
     cmniMainProcs : TryFocus( lbDetachedProcesses );
     cmniMainRun : if actRun.Enabled then actRun.Execute;
   end;
@@ -4068,6 +4065,7 @@ procedure TfrmMain.nbCommandsChange( Sender : TObject);
         end;
     end;
     TryFocus( lbSearchCmd );
+    lbSearchCmd.Click;
   end;
 
 begin
