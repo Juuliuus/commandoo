@@ -1,338 +1,46 @@
-commandoo : GUI Linux Command Line Interface (CLI) Helper program written with 
-Lazarus / free pascal
+commandoo : GUI Linux Command Line Interface (CLI) Helper program written with Lazarus / free pascal
 
 Free-as-in-Freedom, Written under GNU GPL license.
 
 === 
-NOTE: 5 May 2020 -- After release of 20.04 versions of Linux 
-softwares the listed downloads will not work. I am preparing 
-an AppImage to fix this issue which should also allow it to be 
-used in a much wider range of Gnu-Linux versions. Check back 
-soon... 
+20 August 2020: commandoo 2.0.1
 
-NOTE: 29 May 2020 
-Dowloads for the older version are removed from this page but
-still available at:  https://www.timepirate.org/downloads.html
+This release version of commandoo supercedes an older version (1.0.1 March 2018). Numerous bug fixes, added features, "future proofing", (almost) mouseless usage, and much more. It is provided as an AppImage (see https://appimage.org) which allows it to run on a wide variety of gnu-linux distributions. This is "free" as in "freedom" software.
 
-The listed downloads will work as advertised in, for example, 
-Kubuntu 18.04. However, a bug limits its use to english language locale.
-And there are missing features and a couple other minor-ish bugs.
-These are being addressed and so I recommend waiting for the
-new version and then upgrading to a 2020 linux version. The new version
-should be ready in the next month (or two).
+This is a GUI program designed to help the newcomer (and veteran) with the Linux Command Line Interface (CLI).
 
+It is designed to be a 'helper' in the sense that one can store favorite / useful commands for quick retrieval and use later. It is designed to be a reference as well, it has a 'starter' database of 160+ Linux commands and examples. Notes and 'Threat Level' indexes are used to help the novice.
 
-Project is being re-worked. 
+It can be helpful for veterans as well: store those complex, meter long, command lines here, no need to develop it again, simply search for it and use it as is or adapt it to the current issue.
 
-Updated version 1.0.1 released March 2018
-(Original release 1.0.0, July/August 2017)
+The program is not a terminal emulator, but gives its own advantages including: run and test (most) Command Lines directly, it can serve as a launcher program, it supports pkexec, it supports variables and asks at run time for the values, complex boolean searching is implemented as well a "simple" search, it supports text based storage and sqlite databases (your choice), it supports an unlimited number of databases as you like, and help is written directly into the program through toggle-able mouse-over hints.
 
-The new updated release fixes some silly mistakes, adds 
-some quality of life improvements, and sees the addition
-of new feature "Simple Search" which will search 1-3 text
-search values through all text fields (choosable) of Commands
-and Command Lines.
+Currently the download is hosted at:
 
-===
+https://timepirate.org/downloads.html
 
+There you will find release notes, checksums, gpg sig file, and installation instructions.
 
-This is a GUI program designed to help the newcomer (and 
-veteran) with the Linux Command Line Interface (CLI). 
 
-It was developed on 64 bit Kubuntu 14.04, and later development 
-moved to Debian 8 (jessie), and even later to Debian 9 (stretch). 
+The commandoo AppImage was developed in Kubuntu 20.04 as a qt5 application and has been tested on Fedora 32, Ubuntu 20.04, Kubuntu 18.04, Manjaro 20.04, and OpenSuse Leap 15.2. I've also been told it runs in Ubuntu 16.04. So, while designed in and for the recent 20.04 distros it will run on all the LTR distros too. In those cases I recommend using text based databases rather than the older sqlite libraries used by the older distros.
 
-It has been tested on 64 bit Kubuntu 14.04, 32 bit Mint (17.2 Rafaela), 
-and on Debian 9 (stretch).
+It doesn't matter if the distro has qt5 installed or not, it will still work because the AppImage is self-contained. Basically, it should work on any major distribution using any desktop environment (note: outside of Kubuntu 20.04 it will not pay any attention to theming, sadly. I will be working on this).
 
+ 
+My "internet signing key":
 
-It is designed to be a 'helper' in the sense that one can store favorite / 
-useful commands for quick retrieval and use later. It is designed to be a 
-reference as well, it has a 'starter' database of 170+ Linux commands.
+0x74E59DD3 2013-12-09 JuliuS Inet (internet signing).
+(full key: 4B1DFF7EDA6B0E86F85E4ECD1DB577AF74E59DD3)
 
-Notes and 'Threat Level' indexes are used to help the novice.
+ 
 
-It can be helpful for veterans as well: store those complex, meter long, 
-command lines here, no need to develop it again, simply search for it and 
-use it as is or adapt it to the current issue.
+My personal gnuGPG key is:
+0xF5B71178 JuliuS <Julius@timepirate.org>
+(full key: EA2A249618EA7700AE4E07030699ABF8F5B71178)
 
 
-This program is --NOT-- designed to be a terminal substitute... 
+commandoo was built using free pascal and the Lazarus IDE. Thank you FPC and Lazarus.
 
-...However...
+Enjoy.
 
-...it made no sense to simply make a DB program that has no other functionality.
-
-
-So, you can run (most) commands from commandoo as well. And it has other 
-features:
-
-1) It can serve as a launcher program. Run gimp, geany, or whatever from the 
-program with or without parameters. These 'detached' processes are listed and 
-can be closed at will. These processes will 'live' only as long as the program 
-is running, however, since the detached processes are children of the program, 
-the processes die when the program is closed. To use this feature be sure the
-command line has the option 'child proc' checked.
-
-2) It supports ROOT su/sudo using the system's builtin kdesudo/su and gksudo/su. 
-This is handy for mount and umount, etc.
-
-3) It has partial support for linux builtin's, so far as to list their help 
-contents and very very basic use. 
-
-4) It supports input to the commands (stdin), if the command supports / uses 
-stdin. This is useful, for instance, to test a grep statement repeatedly on the 
-fly.
-
-5) It supports variables and asks at run time for the values. Useful for mount 
-commands of, for instance, tmpfs where the size of the mount varies.
-
-6) Complex boolean searching is implemented. (March 2018: New "simple search"
-is now also implemented).
-
-7) It supports text based storage and sqlite databases, your choice. It supports 
-unlimited databases as you like, simply create them at will. You can also convert 
-one type to the other, merge databases, and compare databases.
-
-8) It supports pipes natively: rsync -h | grep file. It supports (mostly) complex(er)
-Linux commands by running it through a temporary shell.
-
-9) It supports multiple languages (po files) if people are interested and 
-nice enough to provide translations. Provided at official release are "Pyrate" and
-"Wookie".
-
-10) Output aims to be as informative as possible. Exit codes and exit status 
-are given as well.
-
-11) Help is written directly into the program through toggle-able mouseover 
-hints. There are also many detailed descriptive messages displayed at mission 
-critical points, many of these can be set to "not show anymore" once the user 
-has read and understood them.
-
-Current screenshots (png's) are here to have a peek at the interface.
-
-As must be in these cases the use of this software is at your own risk. 
-
-The Program is written in Pascal with the Lazarus Rapid IDE. 
-
-If you find any bugs please let me know, I will attend to them as quickly and 
-complelely as I can. Suggestions also welcome.
-
-
-My gnuGPG key is 0x74E59DD3 2013-12-09 as JuliuS Inet (internet signing).
-
-
-Thanks, enjoy.
-
-
-
-
-Change History
---------------
-
-2018: March
-===========================
->> Official release v. 1.0.1
-
->> Simple Search feature added.
-
-2018: February
-===========================
->> silly alignment problem fixed.
-
->> fix alignment problem when editing a command line
-
->> Make it clearer what to do when changing languages
-
-
-2017: October
-===========================
->> Finally have a definitive answer for the ibus 
-doubled characters when typing problem.
-
-
-2017: <later> August
-===========================
->> No new releases are planned for foreseeable future. but I will be 
-working on some additions for when that time arrives. Add notification 
-of which widgetset (QT or GTK) is installed, ibus warning for the 
-doubled character problem (note about it is in Downloads), pasting CL 
-in terminal should replace <ROOT> with proper su or sudo, ability to 
-search all text fields with one search condition.
-
-
-2017 07 August
-===========================
->> Official release of commandoo v. 1.0.0
-
-
-2017: August
-===========================
->> Flatten the repository. The old code is unnecessary now.
-
->> Help! I can't stop!! Suddenly realized using edits for command lines is, uh,
-a bit questionable. Now use scrolling memos. Also any place where there is a 
-possibility that the entire entry can't be seen, double clicking shows the line
-in a larger window. Oh. And a bug fix: sql db goto CL from top listbox in search 
-results.
-
-
-2017: July
-===========================
->> Address issues found with qt versus gtk window systems. Tabs must be 
-top or bottom (not left), onkeyup vs. onkeydown, hint cleanup, and other
-minor issues.
-
->> discovered my custom color scheme simply incompatible with regard to 
-disabling buttons. At times disabling works and at other times disabled
-buttons still look enabled. So, color scheme now matches the users system
-color scheme.
-
->> Fix issues found when testing under Debian 9. In particular the disabled 
-buttons appearing enabled.
-
->> Translation implementation bug fixes.
-
->> Pyrate Translation and typo fixes.
-
-
-2017: 21 July
-===========================
->> Freeze (again). addressed some issues I that emerged in 32 bit versions.
-
-
-2017: July
-===========================
->> On testing in VM's I found some systems/desktops (yes, Mint Mate, I'm looking at you) do
-not allow button color changes. This makes the program unusable as the buttons can be hard
-or impossible to read. Set up so that default scheme is system default and have options for 
-partial or full design colors.
-
->> Add a compare DB button. Safe because it does nothing to data and changes nothing in 
-routines, and will be very handy.
-
->> fixed project files to handle a 32 bit compilation/build.
-
->> addressed issues re: sql db saving/converting speed and merge issue when merging TO a sql 
-DB.
-
->> Final cleanup subject to testing.
-
->> Fix wrong assumption about accelerator keys, using numbers doesn't work well. Update all
-.po files.
-
->> some cosmetics and new strings. In addition found that <ESC> chars in output cause problems, 
-this has now been disallowed and such output is not printed to memo.
-
-
-2017: 29 June
-===========================
->> Final freeze in anticipation of first official release after some testing and finishing
-up the default databases..
-
-
-2017: June
-===========================
->> Found fixed bad bug where saving changes to text files had been inadvertently 
-shut off. Ouch.
-
->> Found and fixed, through translations, several bugs including a major Load Search
-bug.
-
->> Go over translation details and test. Prepare a test "Wookie" language and use it
-for testing and, it turns out, debugging!
-
->> General Cleanup: literal strings, shortcuts, old notes, etc.
-
->> Implement system to handle DPI's other than 96 ppi, this necessarily needed
-internal (Options) font size adjuster.
-
-
-2017: 11 June
-===========================
->> freeze new features. Do all prep for official release: po files, exception 
-testing, string literals, etc.
-
-
-2017: June
-===========================
->> add ability to copy search items from cmds to cmdlines and vice versa.
-
->> Analyzing and removing memory leaks part 2. All seem to be taken care of.
-
->> Bugs from recent improvements found and fixed. 
-
->> Merge DB bug found and fixed.
-
->> Analyzing and removing memory leaks part 1.
-
->> Ability to copy/merge a single Command to another DB Profile.
-
->> Option to allow multiple running copies of commandoo.
-
->> Paste Command and Command Line objects.
-
-
-2017: May
-===========================
->> UI Improvements RUN.
-
->> Option to use System Window theme colors fully implemented.
-
->> Optionally use a Manual Refresh of Favorites results.
-
->> Search Results displaying has been refactored.
-
->> Implementation of DB conversion and DB Merge.
-
->> Info/DB Server now assignable so that text <---> sql conversions can take place.
-
-
-2017: May 03
-===========================
->> Project complete. Will continue with testing/debugging. Then some bits and bobs before 
-first official release.
-
-
-2017: April/May
-===========================
->> sql 99% debugged.
-
->> Integration complete. Text DB debugged, tested and functional. Yet to debug sql.
-
->> Text/sql DB integration Part 1 and part 2
-
->> Applying restructure to automate fields and so on. Program, at this time, is non-functioning.
-
->> Restructure DBStructure definition to auto-manage file/table names. Only tested with sql.
-
->> Cleaner cut: flesh out sql command routines and make field objects aware of 
-whether they are internal use or not.
-
->> Rough cut: sqlite implementation begun, db/table creation, basic load lists. 
-Nonfunctional right now but program can run without access violations.
-
-
-2017: 17 March v. 0.1.5 <released>
-===========================
->> Pre-Release 0.1.4 compiled and available for download. This one fixes
-the issue of Child/Detached Processes freezing after some variable time.
-
-
-2017: March
-===========================
->> Add search to List Management to show which Commands use List Item.
-
-
-2017: 2 February
-===========================
->> Flatten Checkins because code base has changed so much and the old stuff
-if completely unnecessary now. This is a better jump off point since the
-program is now (semi) "complete". 
-
-
-2017: 25 February v. 0.1.4 <released>
-===========================
->> Pre-Release 0.1.4 compiled and available for download.
-
-
+ 

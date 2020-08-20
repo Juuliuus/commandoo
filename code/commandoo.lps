@@ -19,9 +19,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ufrmMain"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="1473"/>
-        <CursorPos Y="1492"/>
+        <TopLine Value="1474"/>
+        <CursorPos X="29" Y="1484"/>
         <UsageCount Value="203"/>
         <Bookmarks Count="8">
           <Item0 Y="977" ID="1"/>
@@ -71,8 +70,8 @@
         <Filename Value="strconst_prog.pp"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="18"/>
-        <TopLine Value="11"/>
-        <CursorPos X="8" Y="32"/>
+        <TopLine Value="103"/>
+        <CursorPos X="3" Y="123"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
       </Unit5>
@@ -482,9 +481,10 @@
         <Filename Value="unitdbconstants.pp"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="unitDBConstants"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="17"/>
-        <TopLine Value="55"/>
-        <CursorPos X="2" Y="79"/>
+        <TopLine Value="30"/>
+        <CursorPos X="5" Y="50"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit41>
@@ -839,66 +839,66 @@
       <Define3 Value="WidgGTK"/>
       <Define4 Value="platAppImage"/>
     </OtherDefines>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2656" Column="19" TopLine="2623"/>
+        <Caret Line="4121" Column="36" TopLine="4088"/>
       </Position1>
       <Position2>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4118" Column="19" TopLine="4085"/>
+        <Caret Line="4124" Column="30" TopLine="4091"/>
       </Position2>
       <Position3>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4121" Column="36" TopLine="4088"/>
+        <Caret Line="4126" Column="78" TopLine="4093"/>
       </Position3>
       <Position4>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4124" Column="30" TopLine="4091"/>
+        <Caret Line="4127" Column="81" TopLine="4094"/>
       </Position4>
       <Position5>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4126" Column="78" TopLine="4093"/>
+        <Caret Line="4128" Column="38" TopLine="4095"/>
       </Position5>
       <Position6>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4127" Column="81" TopLine="4094"/>
+        <Caret Line="4133" Column="42" TopLine="4100"/>
       </Position6>
       <Position7>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4128" Column="38" TopLine="4095"/>
+        <Caret Line="4140" Column="42" TopLine="4107"/>
       </Position7>
       <Position8>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4133" Column="42" TopLine="4100"/>
+        <Caret Line="4145" Column="42" TopLine="4112"/>
       </Position8>
       <Position9>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4140" Column="42" TopLine="4107"/>
+        <Caret Line="5973" Column="44" TopLine="5940"/>
       </Position9>
       <Position10>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4145" Column="42" TopLine="4112"/>
+        <Caret Line="6043" Column="21" TopLine="6011"/>
       </Position10>
       <Position11>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5973" Column="44" TopLine="5940"/>
+        <Caret Line="6050" Column="90" TopLine="6018"/>
       </Position11>
       <Position12>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6043" Column="21" TopLine="6011"/>
+        <Caret Line="6120" Column="17" TopLine="6087"/>
       </Position12>
       <Position13>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6050" Column="90" TopLine="6018"/>
+        <Caret Line="4145" Column="14" TopLine="4127"/>
       </Position13>
       <Position14>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6120" Column="17" TopLine="6087"/>
+        <Caret Line="6159" Column="21" TopLine="6126"/>
       </Position14>
       <Position15>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4145" Column="14" TopLine="4127"/>
+        <Caret Line="4145" Column="14" TopLine="4126"/>
       </Position15>
       <Position16>
         <Filename Value="ufrmmain.pp"/>
@@ -910,55 +910,51 @@
       </Position17>
       <Position18>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="6159" Column="21" TopLine="6126"/>
       </Position18>
       <Position19>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4145" Column="14" TopLine="4126"/>
+        <Caret Line="811" Column="37" TopLine="779"/>
       </Position19>
       <Position20>
         <Filename Value="ufrmmain.pp"/>
+        <Caret Line="4104" Column="42" TopLine="4071"/>
       </Position20>
       <Position21>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="811" Column="37" TopLine="779"/>
+        <Caret Line="5116" Column="27" TopLine="5083"/>
       </Position21>
       <Position22>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="4104" Column="42" TopLine="4071"/>
+        <Caret Line="5093" Column="27" TopLine="5082"/>
       </Position22>
       <Position23>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5116" Column="27" TopLine="5083"/>
+        <Caret Line="2556" Column="13" TopLine="2536"/>
       </Position23>
       <Position24>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5093" Column="27" TopLine="5082"/>
+        <Caret Line="5093" Column="19" TopLine="5073"/>
       </Position24>
       <Position25>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2556" Column="13" TopLine="2536"/>
+        <Caret Line="5098" Column="30" TopLine="5073"/>
       </Position25>
       <Position26>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5093" Column="19" TopLine="5073"/>
+        <Caret Line="5190" Column="20" TopLine="5156"/>
       </Position26>
       <Position27>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5098" Column="30" TopLine="5073"/>
+        <Caret Line="2536" Column="29" TopLine="2535"/>
       </Position27>
       <Position28>
-        <Filename Value="ufrmmain.pp"/>
-        <Caret Line="5190" Column="20" TopLine="5156"/>
+        <Filename Value="ufrmcmdlineedit.pp"/>
+        <Caret Line="238" Column="28" TopLine="222"/>
       </Position28>
       <Position29>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="2536" Column="29" TopLine="2535"/>
+        <Caret Line="1484" Column="29" TopLine="1474"/>
       </Position29>
-      <Position30>
-        <Filename Value="ufrmcmdlineedit.pp"/>
-        <Caret Line="238" Column="28" TopLine="222"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
