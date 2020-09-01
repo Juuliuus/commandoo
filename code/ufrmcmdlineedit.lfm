@@ -17,7 +17,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   inline FrameHint1: TFrameHint
     Left = 257
     Height = 26
@@ -107,7 +107,7 @@ object frmCmdLineEdit: TfrmCmdLineEdit
   end
   object lblVarHint: TLabel
     Left = 4
-    Height = 15
+    Height = 17
     Top = 27
     Width = 218
     Caption = 'Add a variable at cursor / selection for: '

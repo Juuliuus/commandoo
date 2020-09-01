@@ -1474,10 +1474,15 @@ begin
 //PESTER PESTER PESTER PESTER PESTER PESTER
 //yes you found PESTER, list of reminders BEFORE compiling and releasing a version!!!
 //================
-//before a releasing a version
 
-//       INCREMENT c_PROG_VersionUpgradeCount = #; to the next upgrade
-//       if prog upgrades (settings-wise) were necessary
+//before releasing a new version:
+
+//       INCREMENT c_PROG_VersionUpgradeCount = #; to the next upgrade number.
+//       This variable controls PROGRAM updates (usually ini file updates) but is also
+//       the final stamp a version needs. If during development you needed to manipulate
+//       PROGRAM settings and have already incremented it, use the last number you set it to. Otherwise, if no manipulation
+//       was required be sure to increment this number before release. Then also be sure to
+//       generate the "upgrade" stub files using the button visible in the development environment.
 //
 //       cHandwrittenVersion = '#.#.#'; to match readme file
 ////       as of Juneish 2020 v. is 2.0.0 //as of March 2018 v. is 1.0.1
@@ -1489,10 +1494,9 @@ begin
 //       TfrmMain.CheckUpdates_DB   any code needed for  DB  updates
 
 {$IFDEF Release}
-Be sure to uncomment this after building release, READ THE COMMENTED LINES!
 //===>>>  Did you generate the updates files using the button visible in the dev environment?
 //===>>>  Did you read "pester" reminders?
-//===>>>  Did you, IF NECESSARY, change version number(s)?
+//===>>>  Did you change version number(s)?
 
   btnQuickRun.Visible := false;
   actQuickRun.Enabled := false;
@@ -1701,6 +1705,9 @@ var
   begin
     SqlLibRead := fSqliteLibrary;
     SqlLibChange := '';
+//juuus
+//    fSqliteLibrary := IncludeTrailingPathDelimiter( fAppImageRunningPath ) + 'lib/x86_64-linux-gnu/libsqlite3.so.0.8.6';
+//Clipboard.AsText := fSqliteLibrary;
 
     if not TInfoServer.SqliteInstalled( fSqliteLibrary, SqlLibChange ) then
     begin
@@ -2179,11 +2186,12 @@ begin
 //way, if you don't use it no problem. If the program starts calling it again, it simply doesn't mind.
       5 :
         begin
-          FormSettings.ClearAllFormSettings( fIFS );
+          FormSettings.ClearAllFormSettings( fIFS );//always do this if settings have been manipulated
           InstallSupportFiles( true );
         end;
-      //6 : When an update is done on the Program that needs attention in ini file write the needed code here
-      //and set the c_PROG_VersionUpgradeCount const by +1
+      6 : ;//do nothing, there were no PROGRAM settings manipulated, it's just a new version indicator
+      //7 : When an update is done on the Program that needs attention in ini file and/or it is a version release
+      //write the needed code here and set the c_PROG_VersionUpgradeCount const by +1
     end;
 
   UpdateUpgradeLevel( fIFS,
@@ -5581,6 +5589,9 @@ begin
     DoStubFile( 'AppImage executable', Upgrade_GetAppImageFileName( ProgVer ) );
     DoStubFile( 'generate with gpg2/gpg', Upgrade_GetGPGSignatureFileName( ProgVer ) );
     DoStubFile( 'generate zsync file if applicable', Upgrade_GetZsyncFileName( ProgVer ) );
+    MsgDlgMessage( '', format( 'Development note: "upgrade" base files have been written to %s/', [ cUpgradeDir ] ) );
+    MsgDlgInfo( self );
+
   finally
     SL.free;
   end;

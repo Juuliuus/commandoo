@@ -111,16 +111,16 @@ const
 //TfrmMain.CheckUpdates_DB
 //see also c_DB_VersionUpgradeCount
 //===================================
-//increment this number for any Program settings cleanup / change, ONLY needs to be done if there is a change
-//that needs to be programatically handled.
+//increment this number for any Program settings cleanup / change, Needs to be done if there is a change
+//that needs to be programatically handled and/or this is a new Release version.
   //c_PROG_VersionUpgradeCount = 3;
   //c_PROG_VersionUpgradeCount = 4; //29.06.2020 Allow Escape chars taken out
   c_PROG_VersionUpgradeCount = 5; //05.08.2020 languages will be updated
 //=====  PROGRAM   ==============================
 
 //==> NOTE: only change MAJOR VERSION when it is INCOMPATIBLE (ie. DB schema change) with previous MAJOR VERSION
+  cHandwrittenVersion = '2.0.1';//'1.0.1';
 
-  cHandwrittenVersion = '2.0.1';//'1.0.1';//all done. ?
   cSectTab_PROG_VersionCount = '_PROG_VersionCount';
   cStandardProgramSequence = 'PROGRAM SEQUENCE #:    %d';
   cVersionDate = ' (August 2020)';//ReleaseCandidate';
