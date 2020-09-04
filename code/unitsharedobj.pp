@@ -106,7 +106,7 @@ type
     constructor Create; override;
     destructor Destroy; override;
 
-    class function SqliteInstalled( var sqlLibFile, Msg : string ) : boolean;
+    class function SqliteInstalled( var sqlLibFile, Msg : string; const SqlFilePrefer : string = '' ) : boolean;
     class function SqliteIsActive : boolean;
     class procedure Rechecking_SqliteIsActive;
 
@@ -1150,7 +1150,7 @@ begin
 end;
 
 
-class function TInfoServer.SqliteInstalled( var sqlLibFile, Msg : string ) : boolean;
+class function TInfoServer.SqliteInstalled( var sqlLibFile, Msg : string; const SqlFilePrefer : string = ''  ) : boolean;
 var
   isOK : boolean;
 const
@@ -1188,6 +1188,16 @@ begin
     exit;
 
   try
+
+    if SqlFilePrefer <> '' then
+      if GoodTest( SqlFilePrefer ) then
+      begin
+//we want to prefer embedded libsqlite if it's there, the sqllibFile is changed, but back
+//in the calling code it is NOT written out to settings file. This should protect dev versions
+//which are run outside of an AppImage. We also don't need a Msg to be sent to the user.
+        Msg := '';
+        exit;
+      end;
 
     if ( sqlLibFile <> '' ) then
       if GoodTest( sqlLibFile, false ) then

@@ -115,7 +115,7 @@ resourceString
     ;
   cmsgFormHotKeys =
     'The UI is large with many controls. To make it as mouse-less as possible for those who like '
-    + 'to use the keyboard try: <CTRL>-<SHIFT> d / g / m / k / p, or left/right arrow keys'
+    + 'to use the keyboard try: <CTRL>-<SHIFT> d / g / m / k / p / t, or left/right arrow keys'
     + LineEnding + LineEnding
     + 'd : inserts date/time in Output or edit Notes sections, if they are focused'
     + LineEnding
@@ -132,6 +132,8 @@ resourceString
     + 'p : pops up any right-click popup menus'
     + LineEnding
     + '    (either directly or via menu)'
+    + LineEnding
+    + 't : Edit Threat Levels with the resulting popup'
     + LineEnding
     + 'Arrow Keys : Move between important areas on Commands page'
     ;
@@ -689,6 +691,8 @@ resourceString
     + 'new Command Line it will inherit that threat '
     + LineEnding
     + 'level. '
+    + LineEnding + LineEnding
+    + 'Use Ctrl-Shift T to edit these via Keyboard.'
     ;
 
   cmsgThreatLevelsCommandLine =
@@ -701,6 +705,8 @@ resourceString
     + 'be different for this command line. You '
     + LineEnding
     + 'can change it as you like. '
+    + LineEnding + LineEnding
+    + 'Use Ctrl-Shift T to edit these via Keyboard.'
     ;
 
   cmsgThreatLevels =

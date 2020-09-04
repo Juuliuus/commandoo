@@ -627,7 +627,7 @@ msgstr ""
 
 #: strconst_en.cmsgformhotkeys
 msgid ""
-"The UI is large with many controls. To make it as mouse-less as possible for those who like to use the keyboard try: <CTRL>-<SHIFT> d / g / m / k / p, or left/right arrow keys\n"
+"The UI is large with many controls. To make it as mouse-less as possible for those who like to use the keyboard try: <CTRL>-<SHIFT> d / g / m / k / p / t, or left/right arrow keys\n"
 "\n"
 "d : inserts date/time in Output or edit Notes sections, if they are focused\n"
 "g : a GoTo popup menu appears so you can easily\n"
@@ -637,6 +637,7 @@ msgid ""
 "    for the form's controls)\n"
 "p : pops up any right-click popup menus\n"
 "    (either directly or via menu)\n"
+"t : Edit Threat Levels with the resulting popup\n"
 "Arrow Keys : Move between important areas on Commands page\n"
 msgstr ""
 
@@ -1101,6 +1102,8 @@ msgid ""
 "on the Command then when you add a \n"
 "new Command Line it will inherit that threat \n"
 "level. \n"
+"\n"
+"Use Ctrl-Shift T to edit these via Keyboard.\n"
 msgstr ""
 
 #: strconst_en.cmsgthreatlevelscommandline
@@ -1110,6 +1113,8 @@ msgid ""
 "on the flags used the threat level may \n"
 "be different for this command line. You \n"
 "can change it as you like. \n"
+"\n"
+"Use Ctrl-Shift T to edit these via Keyboard.\n"
 msgstr ""
 
 #: strconst_en.cmsgthreatlevelwarning

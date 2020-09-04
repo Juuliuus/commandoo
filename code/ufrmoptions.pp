@@ -610,6 +610,9 @@ begin
   end;
   str := '';
   Msg := '';
+//This should not have to be changed for the fully self-contained AppImage
+//If the fully self contained works then SqliteIsActive will always be true.
+//if it is a dev version run in qt5 env. with libqt5pas then it will work as it always has.
   if not TInfoServer.SqliteInstalled( str, Msg ) then
   begin
     MsgDlgMessage( ccapOptSqliteSearch, cmsgOptSqliteSearch );

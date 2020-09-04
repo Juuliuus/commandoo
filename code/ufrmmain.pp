@@ -266,6 +266,10 @@ type
     MenuItem19 : TMenuItem;
     MenuItem20 : TMenuItem;
     MenuItem22 : TMenuItem;
+    mniThreatLevelCmd: TMenuItem;
+    MenuItem32: TMenuItem;
+    mniThreatLevelCmdLine: TMenuItem;
+    mniThreatLevelRoot: TMenuItem;
     MenuItem29 : TMenuItem;
     mniKeyWordsRoot : TMenuItem;
     mniKeyWordsAdd : TMenuItem;
@@ -431,6 +435,7 @@ type
     popTabKeyWords : TPopupMenu;
     popTabSearch : TPopupMenu;
     popGoto : TPopupMenu;
+    popThreatLevel: TPopupMenu;
     shpCmdLineOut1 : TShape;
     shpCmdOut1 : TShape;
     shpCmdOut10 : TShape;
@@ -606,6 +611,7 @@ type
     procedure Memo1Enter(Sender: TObject);
     procedure Memo1Exit(Sender: TObject);
     procedure Memo1KeyDown( Sender : TObject; var Key : Word; Shift : TShiftState );
+    procedure mniThreatLevelCmdClick(Sender: TObject);
     procedure mniCmdCountClick( Sender : TObject );
     procedure mniCmdSendToClick( Sender : TObject );
     procedure mniCopyCLListClipClick( Sender : TObject );
@@ -627,6 +633,7 @@ type
     procedure popDblCPopup( Sender : TObject );
     procedure popGotoPopup( Sender : TObject );
     procedure popSearchCmdLinePopup( Sender : TObject );
+    procedure popThreatLevelPopup(Sender: TObject);
     procedure TimerBlinkStartTimer( Sender : TObject );
     procedure TimerBlinkStopTimer( Sender : TObject );
     procedure TimerBlinkTimer( Sender : TObject );
@@ -1066,6 +1073,9 @@ const
   cmniDblCDetPProcs = 18;
   cmniDblCDetPInfo = 19;
   cmniDblCDisplay = 20;
+
+  cmniThreatLevelCmd = 21;
+  cmniThreatLevelCmdLine = 22;
 
 
 resourcestring
@@ -1701,15 +1711,19 @@ var
 
   procedure SetSqliteLibrary;
   var
-    SqlLibRead, SqlLibChange : string;
+    SqlLibRead, SqlLibChange, AppImageSqlPrefer : string;
   begin
     SqlLibRead := fSqliteLibrary;
     SqlLibChange := '';
-//juuus
-//    fSqliteLibrary := IncludeTrailingPathDelimiter( fAppImageRunningPath ) + 'lib/x86_64-linux-gnu/libsqlite3.so.0.8.6';
-//Clipboard.AsText := fSqliteLibrary;
 
-    if not TInfoServer.SqliteInstalled( fSqliteLibrary, SqlLibChange ) then
+    AppImageSqlPrefer := '';
+    {$IFDEF platAppImage}
+    if copy( fAppImageRunningPath, 1, 1 ) = '/' then //actually running in an appimage
+      AppImageSqlPrefer := IncludeTrailingPathDelimiter( fAppImageRunningPath ) + 'lib/x86_64-linux-gnu/libsqlite3.so.0.8.6';
+    {$ENDIF}
+
+//juuus
+    if not TInfoServer.SqliteInstalled( fSqliteLibrary, SqlLibChange, AppImageSqlPrefer ) then
     begin
       if fUseDB then
       begin
@@ -1728,7 +1742,7 @@ var
       fIFS.WriteString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, fSqliteLibrary );
       NeedsWrite := true;
     end
-    else if fSqliteLibrary <> SqlLibRead then
+    else if ( fSqliteLibrary <> SqlLibRead ) and ( fSqliteLibrary <> AppImageSqlPrefer ) then
       begin
         fIFS.WriteString( cSectTabCurrSqliteLibrary, cCurrSqliteLibraryPath, fSqliteLibrary );
         NeedsWrite := true;
@@ -2085,7 +2099,7 @@ begin
             MoveBetweenMajorAreas( self.ActiveControl.Tag, Key );
             Key := VK_UNKNOWN;
           end;
-//The use of ctrl-shift- VK_d g k m p  are global, do not use anywhere else.
+//The use of ctrl-shift- VK_d g k m p t are global, do not use anywhere else.
       VK_D :
         if assigned( self.ActiveControl ) and ( self.ActiveControl is TMemo )  then
         begin
@@ -2113,6 +2127,11 @@ begin
           PosPt := GetPreciseControlCoords( self.ActiveControl, 30, 30 );
           self.ActiveControl.PopupMenu.PopUp( PosPt.x, PosPt.y );
         end; // else ShowMainMenu;
+      VK_T :
+        begin
+          PosPt := GetPreciseControlCoords( btnPlus, 30, 60 );
+          popThreatLevel.PopUp( PosPt.x, PosPt.y );
+        end;
     end;
   end;
 
@@ -2480,6 +2499,11 @@ begin
   mniDblCSearchNotes.Caption := ccapGotoEditInNotes;
   mniDblCSearchKey.Caption := trim( ccapTabKeyWords );
   mniDblCDetPProcs.Caption := format( cDoubleS, [ ccapDblCProcessStr, ccapGotoListStr ] );
+
+  mniThreatLevelRoot.Caption := format( ccapPopMenuRootRoot, [ trim( cNameItem_ThreatLevel ), ccapPopMenuRootMenuStr ] );
+  mniThreatLevelCmd.Caption := clblCmdPointer;
+  mniThreatLevelCmdLine.Caption := ccapGotoCmdlineAbbrev;
+
   mniKeyWordsRoot.Caption := format( ccapPopMenuRootRoot, [ trim( ccapTabKeyWords ), ccapPopMenuRootMenuStr ] );
   mniKeyWordsAdd.Caption := format( cDoubleS, [ ccapGenericAdd, trim( ccapTabKeyWords ) ] );
   mniKeyWordsDelete.Caption := format( cDoubleS, [ ccapGenericDelete, trim( ccapTabKeyWords ) ] );
@@ -3724,6 +3748,26 @@ begin
   UnassMemosKeyDown( Memo1, Key, Shift );
 end;
 
+procedure TfrmMain.mniThreatLevelCmdClick(Sender: TObject);
+
+  procedure DropDownCB( CB : TCombobox );
+  begin
+    if CB.Canfocus then
+    begin
+      if CB.ItemIndex < 0 then
+        CB.ItemIndex := 0;
+      CB.SetFocus;
+      CB.DroppedDown := true;
+    end;
+  end;
+
+begin
+  case TControl(Sender).Tag of
+    cmniThreatLevelCmd : DropDownCB( cbThreatLevel );
+    cmniThreatLevelCmdLine : DropDownCB( cbThreatLevelLine );
+  end;
+end;
+
 procedure TfrmMain.UnassMemosKeyDown( Sender : TMemo; var Key : Word; const Shift : TShiftState );
 begin
   if Shift = [ ssShift, ssCtrl ] then
@@ -3837,6 +3881,9 @@ begin
   mniDblCDetPProcs.Tag := cmniDblCDetPProcs;
   mniDblCDetPInfo.Tag := cmniDblCDetPInfo;
   mniDblCDisplay.Tag := cmniDblCDisplay;
+
+  mniThreatLevelCmd.Tag := cmniThreatLevelCmd;
+  mniThreatLevelCmdLine.Tag := cmniThreatLevelCmdLine;
 
 //arrow movement tags
   lbCommands.Tag := cArrowKeyCommands;
@@ -4414,6 +4461,12 @@ procedure TfrmMain.popSearchCmdLinePopup( Sender : TObject );
 begin
   mniSearchCmdLineListClip.Enabled := mniSearchRun.Enabled;
   mniSearchCmdLineItemClip.Enabled := mniSearchCmdLineListClip.Enabled;
+end;
+
+procedure TfrmMain.popThreatLevelPopup(Sender: TObject);
+begin
+  mniThreatLevelCmd.Enabled := EditingCmd;
+  mniThreatLevelCmdLine.Enabled := EditingCL;
 end;
 
 procedure TfrmMain.TimerBlinkStartTimer( Sender : TObject );
@@ -6070,6 +6123,8 @@ begin
         begin
           fSqliteLibrary := lblSqlLib.Caption;
           TInfoServer.Rechecking_SqliteIsActive;
+//this call also need not be changed for fully self contained AppImage, same argument as
+//written in TfrmOptions.btnSqlLibResetClick
           if not TInfoServer.SqliteInstalled( fSqliteLibrary, MsgStr ) then
           begin
             UpdateDisplay( format( cmsgSQLiteLibNotFound, [ fSqliteLibrary ] )

@@ -462,9 +462,9 @@ object frmMain: TfrmMain
             end
           end
           object pnlCmdLine: TPanel
-            Left = 177
+            Left = 168
             Height = 221
-            Top = 16
+            Top = 24
             Width = 710
             Anchors = [akLeft, akRight, akBottom]
             ClientHeight = 221
@@ -3391,8 +3391,8 @@ object frmMain: TfrmMain
   end
   object popDblC: TPopupMenu
     OnPopup = popDblCPopup
-    Left = 760
-    Top = 560
+    Left = 728
+    Top = 528
     object mniDblCRoot: TMenuItem
       Caption = 'DNT DblC'
       Enabled = False
@@ -3502,6 +3502,27 @@ object frmMain: TfrmMain
     object mniKeyWordsDelete: TMenuItem
       Caption = 'Delete'
       OnClick = mniKeyWordsDeleteClick
+    end
+  end
+  object popThreatLevel: TPopupMenu
+    OnPopup = popThreatLevelPopup
+    Left = 786
+    Top = 580
+    object mniThreatLevelRoot: TMenuItem
+      Caption = 'DNT ThreatLevel Root'
+      Enabled = False
+      RightJustify = True
+    end
+    object MenuItem32: TMenuItem
+      Caption = '-'
+    end
+    object mniThreatLevelCmd: TMenuItem
+      Caption = 'mniThreatLevelCmd'
+      OnClick = mniThreatLevelCmdClick
+    end
+    object mniThreatLevelCmdLine: TMenuItem
+      Caption = 'mniThreatLevelCmdLine'
+      OnClick = mniThreatLevelCmdClick
     end
   end
 end

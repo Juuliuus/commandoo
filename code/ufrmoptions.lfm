@@ -15,7 +15,7 @@ object frmOptions: TfrmOptions
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   object Bevel1: TBevel
     Left = 315
     Height = 71
@@ -26,7 +26,7 @@ object frmOptions: TfrmOptions
   end
   object lblThreatLevel: TLabel
     Left = 13
-    Height = 15
+    Height = 17
     Top = 66
     Width = 136
     Caption = 'Warn on Threat Level of:'
@@ -248,7 +248,7 @@ object frmOptions: TfrmOptions
   end
   object lblSqlLib: TLabel
     Left = 17
-    Height = 15
+    Height = 17
     Top = 450
     Width = 9
     Caption = '...'
@@ -259,7 +259,7 @@ object frmOptions: TfrmOptions
   end
   object lblBaseFolder: TLabel
     Left = 17
-    Height = 15
+    Height = 17
     Top = 397
     Width = 9
     Caption = '...'
@@ -270,7 +270,7 @@ object frmOptions: TfrmOptions
   end
   object lblSavePath: TLabel
     Left = 17
-    Height = 15
+    Height = 17
     Top = 341
     Width = 9
     Caption = '...'
@@ -281,7 +281,7 @@ object frmOptions: TfrmOptions
   end
   object lblRootFile: TLabel
     Left = 265
-    Height = 15
+    Height = 17
     Hint = 'This template is used when pasting a copied'#10'"root" command into a terminal, or wherever.'#10#10'Use button to the right or Dbl-click to edit.'#10#10'<end>'
     Top = 507
     Width = 9
@@ -351,7 +351,7 @@ object frmOptions: TfrmOptions
   end
   object lblLanguage: TLabel
     Left = 326
-    Height = 15
+    Height = 17
     Top = 59
     Width = 68
     Caption = '&P  Language'
@@ -375,7 +375,7 @@ object frmOptions: TfrmOptions
   end
   object lblMaxOutput: TLabel
     Left = 363
-    Height = 15
+    Height = 17
     Top = 138
     Width = 186
     Anchors = [akTop, akRight]
@@ -449,7 +449,7 @@ object frmOptions: TfrmOptions
   end
   object lblDisplayMax: TLabel
     Left = 395
-    Height = 15
+    Height = 17
     Top = 200
     Width = 154
     Anchors = [akTop, akRight]
@@ -504,7 +504,7 @@ object frmOptions: TfrmOptions
   end
   object lblMaxOutputWait: TLabel
     Left = 417
-    Height = 15
+    Height = 17
     Hint = 'This is the emergency cord for run away '#10'processes. This can happen for example if '#10'one by accident "cat"s a binary file. You will'#10'either wait forever or use the cancel process'#10'button.'#10#10'This checks the time and will cancel the '#10'process if there is no activity. The time is'#10'in seconds, but it is only approximate because'#10'it depends on the system load and more. '#10'For example, a setting of 10 seconds may'#10'actually take 20 seconds to finally fire.'#10#10'<end>'
     Top = 170
     Width = 132
@@ -580,12 +580,12 @@ object frmOptions: TfrmOptions
     Enabled = False
     Interval = 750
     OnTimer = tmrLangOKTimer
-    left = 588
-    top = 396
+    Left = 588
+    Top = 396
   end
   object DirectoryDialog: TSelectDirectoryDialog
     Options = [ofPathMustExist, ofCreatePrompt, ofShareAware, ofEnableSizing, ofViewDetail]
-    left = 576
-    top = 324
+    Left = 576
+    Top = 324
   end
 end
