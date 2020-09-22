@@ -39,7 +39,7 @@ My personal gnuGPG key is:
 (full key: EA2A249618EA7700AE4E07030699ABF8F5B71178)
 
 
-The current release is an AppImage, and that AppImage includes the required libraries. If you download and use the AppImage there is no need to add extra packages.
+The current release is an AppImage, and that AppImage includes the required libraries. If you download & use the AppImage there is no need to add extra packages.
 
 However, if you plan to build commandoo yourself, be aware that the build machine should have a qt5 environment, Lazarus should be configured to be able to build qt5 apps, and that two packages (available in repos) are required, one for the development environment (libqt5pas-dev), and one for the executable run-time environment (libqt5pas). With the run-time library is installed then commandoo can be run directly on the machine after it is built.
 
