@@ -43,6 +43,8 @@ The current release is an AppImage, and that AppImage includes the required libr
 
 However, if you plan to build commandoo yourself, be aware that the build machine should have a qt5 environment, Lazarus should be configured to be able to build qt5 apps, and that two packages (available in repos) are required, one for the development environment (libqt5pas-dev), and one for the executable run-time environment (libqt5pas). With the run-time library is installed then commandoo can be run directly on the machine after it is built.
 
+Also for self builders: There was quite a nasty bug in the current lazarus release. The only fix was to use the bleeding edge lazarus trunk version which fixed the issue. That means to build this so that it works (!) you need to use a lazarus version later than from late August 2020, or any new releases later than late August.
+
 
 
 commandoo was built using free pascal and the Lazarus IDE, thank you FPC and Lazarus.
