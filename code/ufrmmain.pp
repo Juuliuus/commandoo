@@ -1079,6 +1079,20 @@ const
 
   cmniThreatLevelCmd = 21;
   cmniThreatLevelCmdLine = 22;
+  cmsg_Bad_ps_command = 'Unexpected system problem: command "ps" not found! Not able to determine if other "%s" are already running. ';
+  cmsg_Bad_Linux = 'Unexpected system problem: command "id" not found!'
+    + LineEnding + LineEnding
+    + 'Database functions will still be available, but Run/Test of CLI''s '
+    + 'will not work.'
+    + LineEnding + LineEnding
+    + 'In addition, adding commands will work but is not recommended, as '
+    + 'the system will report them as "Bad Path"s. Adding CLI''s is ok.'
+    + LineEnding + LineEnding
+    + 'You are either running on a very strange setup, are using a test '
+    + 'version of a "self contained" AppImage using AppImageCrafters method, '
+    + 'or something out of the blue. Test this program again in a known '
+    + 'working gnu-linux environment. '
+    ;
 
 
 resourcestring
@@ -1809,22 +1823,21 @@ begin
   fIsInitialized := False;
   fHasShown := False;
 
-  {$IFnDEF ProbTest}
-  if not SystemFileFound( 'id', True ) then
+  if not SystemFileFound( 'id' ) then
   begin
-    Showmessage( cmsgKill_BadLinux );
-    Killit;
-    exit;
-  end;
-
-  //fAllowPkexecInstalled := false; //testing
-  fAllowPkexecInstalled := SystemFileFound( trim( cprogPkexecStr ) );
-  fSuperUser := QuickProc( 'id', '-u' ) = '0';
-  {$ELSE}
-  SystemFileFound( 'id', false );
-  fAllowPkexecInstalled := false;
+    Showmessage( cmsg_Bad_Linux );
+    fAllowPkexecInstalled := false;
     fSuperUser := false;
-  {$ENDIF}
+//    Showmessage( cmsgKill_BadLinux );
+//    Killit;
+//    exit;
+  end
+  else
+  begin
+    //fAllowPkexecInstalled := false; //testing
+    fAllowPkexecInstalled := SystemFileFound( trim( cprogPkexecStr ) );
+    fSuperUser := QuickProc( 'id', '-u' ) = '0';
+  end;
 
 
 //==================================
@@ -7749,8 +7762,11 @@ begin
 
     result := true;
 
-    if not SystemFileFound( 'ps', True ) then
+    if not SystemFileFound( 'ps' ) then
+    begin
+      showmessage( format( cmsg_Bad_ps_command, [ fActualProgramName ] ) );
       exit;
+    end;
 
 //in the dev environment there is only 1 commandoo process entry per running program
 //in, at least currently, a running appimage there are 2 "commandoo" refs per appimage

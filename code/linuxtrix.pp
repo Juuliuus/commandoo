@@ -815,10 +815,6 @@ end;
 function SystemFileLocation( const FName : string ) : string;
 begin
   result := QuickProc( 'which', FName );//after superuser bug, trimming takes place in QuickProc
-  {$IFDEF ProbTest}
-  //primitive debuggin in appimage
-  showmessage( 'systemfilelocation result: ' + result);
-  {$ENDIF}
 //saw that zsh WILL return a string but not necessarily a path.
   if ( result <> '' ) and ( pos( '/', result ) = 1 ) then //then it is a path, we're happy
     exit;
@@ -851,9 +847,6 @@ begin
       Showmessage( format( cltmsgWhich, [ FName ] ) );
   except
     result := false;
-    {$IFDEF ProbTest}
-    Showmessage( 'coming out of exception!!!' );
-    {$ENDIF}
     if ShowError then
       Showmessage( format( cltmsgWhich, [ FName ] ) );
   end;
