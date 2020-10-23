@@ -686,6 +686,7 @@ type
     fInternalComs : boolean;
     fUpdateDisplayOffset : Int64;
     fUpdateDisplayOffsetFlag : boolean;
+    fActualProgramName : string;
 
 //Search handling
     fIsSimpleSearch : boolean;
@@ -700,10 +701,12 @@ type
     fKeyWordSR : TStringList;
     fFavoritesSR : TStringList;
 
+    procedure GetActualProgramName;
     function GetCmdRec( const anIdx : integer = -1 ) : TCmdRec;
     function GetPathFromResName( const ResName : string ) : string;
     procedure InstallFile( const FullPath, ResourceName : string; const NoOverwrite : boolean = true );
     procedure InstallSupportFiles( const OnlyLanguages : boolean = false );
+    function IsRealPath(aPath: string ): boolean;
     procedure JumpToCommand( anIdx : integer; CmdLineStr : string );
     function CanJumpToCommand( const CmdStr, CmdLineStr : string ) : boolean;
     procedure ShowFocused(Shape: TShape; const TurnOn: boolean );
@@ -1619,6 +1622,17 @@ begin
   end;
 end;
 
+procedure TfrmMain.GetActualProgramName;
+begin
+  fActualProgramName := extractfilename( Application.ExeName );
+//probably completely unneeded, but it did happen and might happen again...
+//interim version of AppImageTool invoked ld-linux... to run the appimage.
+//this causes naming problems. So, I'm gonna put a fix here, just in case that
+//method somehow creeps in again.
+  if pos( 'ld-linux', fActualProgramName ) > 0 then
+    fActualProgramName := cReferenceProgramName;
+end;
+
 function TfrmMain.GetDefaultWritingToPath : string;
 
   Function GetTheHomeDir : String;
@@ -1632,10 +1646,12 @@ begin
 {$IFNDEF Release}
   result := IncludeTrailingPathDelimiter( Extractfilepath( Application.exename ) );
 {$ELSE}
+
   Result := GetEnvironmentVariable( 'XDG_CONFIG_HOME' );
   if ( Result = '' ) then
-    Result := GetTheHomeDir + '.config/' + cReferenceProgramName
-  else Result := IncludeTrailingPathDelimiter( Result ) + cReferenceProgramName;
+    //result := GetAppConfigDir(false) //built in way, but after ld-linux issue I just do it myself
+    Result := GetTheHomeDir + '.config/' + fActualProgramName
+  else Result := IncludeTrailingPathDelimiter( Result ) + fActualProgramName;
 
   if fSuperUser then
   begin
@@ -1648,6 +1664,10 @@ begin
 {$ENDIF}
 end;
 
+function TfrmMain.IsRealPath( aPath : string ) : boolean;
+begin
+  result := copy( aPath, 1, 1 ) = '/';
+end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 var
@@ -1718,7 +1738,7 @@ var
 
     AppImageSqlPrefer := '';
     {$IFDEF platAppImage}
-    if copy( fAppImageRunningPath, 1, 1 ) = '/' then //actually running in an appimage
+    if IsRealPath( fAppImageRunningPath ) then //actually running in an appimage
       AppImageSqlPrefer := IncludeTrailingPathDelimiter( fAppImageRunningPath ) + 'lib/x86_64-linux-gnu/libsqlite3.so.0.8.6';
     {$ENDIF}
 
@@ -1769,6 +1789,7 @@ begin
   lblCmdPointer.caption := clblCmdPointer + clblPointers;
 
   Randomize;
+  GetActualProgramName;
   application.OnException := @FinalException;
 //this was autocreated, but updating the translation not possible then
   frmfindtext := Tfrmfindtext.Create( self );
@@ -1788,6 +1809,7 @@ begin
   fIsInitialized := False;
   fHasShown := False;
 
+  {$IFnDEF ProbTest}
   if not SystemFileFound( 'id', True ) then
   begin
     Showmessage( cmsgKill_BadLinux );
@@ -1798,6 +1820,12 @@ begin
   //fAllowPkexecInstalled := false; //testing
   fAllowPkexecInstalled := SystemFileFound( trim( cprogPkexecStr ) );
   fSuperUser := QuickProc( 'id', '-u' ) = '0';
+  {$ELSE}
+  SystemFileFound( 'id', false );
+  fAllowPkexecInstalled := false;
+    fSuperUser := false;
+  {$ENDIF}
+
 
 //==================================
   DevReleaseSettings;
@@ -7712,8 +7740,9 @@ end;
 function TfrmMain.GetOpenInstances : boolean;
 var
   Str: string;
-  ProgName: string;
-  idx: SizeInt;
+  AddBack : integer;
+  SL : TStringlist;
+  i : integer;
 begin
 
   try
@@ -7723,30 +7752,63 @@ begin
     if not SystemFileFound( 'ps', True ) then
       exit;
 
-{$IFnDEF Release}
-//For Dev exename is good, maybe later there will be other standalone types?
-     ProgName := extractfilename( application.exename );
-{$ELSE}
-//At this stage in appimage development -s deploy returns "ld-linux-x86-64.so.2"
-//as exename. But it is in the ps list as "ld-linux-x86-64", so it of course
-//never sees other copies. However, commandoo is also there as a child of "ld-" (?!)
-//so use the constant because I will not be changing the exe name from commandoo
-    ProgName := extractfilename( cReferenceProgramName );
-{$ENDIF}
-
-    Str := QuickProc( 'ps', '-A' );
-    fOpenInstances := 1;
-    idx := pos(ProgName, Str);
-    Str := Copy(Str, idx + Length(ProgName), length(Str));
-    while True do
+//in the dev environment there is only 1 commandoo process entry per running program
+//in, at least currently, a running appimage there are 2 "commandoo" refs per appimage
+//=IF= the appimage name has commandoo in it! What if they change it to "comm.AppImage"?
+//aye yi yi, what was simple is now really complicated.
+//best I can do, is be sure appimages count correctly, all other varieties are dev related.
+//default ps returns truncated commands and so we lose sight of something like:
+//alejfijefalijfefjjeifjaaiefjcommandoo.imageApp, so must use cmd format.
+    str := RunThroughShell_Internal( 'ps -A -o cmd | grep -i ' + fActualProgramName );
+    if trim( str ) = '' then //I'm a worry-wart, if there was problem firehose me
     begin
-      idx := pos(ProgName, Str);
-      if idx = 0 then
-        break;
-      Inc( fOpenInstances );
-      Str := Copy(Str, idx + Length(ProgName), length(Str));
+      SL := TStringlist.Create;
+      try
+        SL.Add('ps');
+        SL.Add('-A');
+        SL.Add('-o');
+        SL.Add('cmd');
+        Str := QuickProc( SL );
+      finally
+        SL.free;
+        SL := nil;
+      end;
     end;
-    if fOpenInstances > 1 then
+
+    fOpenInstances := 0;
+    SL := TStringlist.Create;
+    try
+      ReturnCommaStrAsTStrings( str, SL, LineEnding );
+      for i := 0 to SL.Count - 1 do
+      begin
+//"/bin/bash -c ... commandoo" also shows up! So must be very precise
+        if IsRealPath( SL[ i ] ) and fileexists( SL[ i ] ) then
+          if pos( fActualProgramName, extractfilename( SL[ i ] ) ) > 0 then
+            Inc( fOpenInstances );
+      end;
+    finally
+      SL.free;
+    end;
+
+    AddBack := 0;
+    {$IFDEF platAppImage}
+    //standalone's and dev copies are mostly outta luck
+    //but it should be a good-ish guess, and will result in succeeding
+    //opens seeing that there are multiple copies.
+    if IsRealPath( fAppImagePath )
+       and ( pos( fActualProgramName, fAppImagePath ) > 0 )
+       and ( fOpenInstances > 1 ) then
+    begin
+      if Odd( fOpenInstances ) then //maybe a dev or standalone is also open?
+      begin
+        dec( fOpenInstances );
+        inc( AddBack );
+      end;
+      fOpenInstances := fOpenInstances div 2;
+    end;
+    {$ENDIF}
+
+    if fOpenInstances + AddBack > 1 then
     begin
 {$IFDEF Release}
     if not fAllowMultipleOpens then
@@ -7756,7 +7818,7 @@ begin
       result := false;//true;
       exit;
     end;
-    if MsgDlgMessage( ccapMulipleInstances, format( cmsgMulipleInstances, [ fOpenInstances ] ) ) then
+    if MsgDlgMessage( format( ccapMulipleInstances, [ fOpenInstances ] ), format( cmsgMulipleInstances, [ fOpenInstances ] ) ) then
       if MsgDlgConfirmation( self ) = mrNo then
       begin
         result := false;

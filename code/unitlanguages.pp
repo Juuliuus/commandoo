@@ -329,9 +329,9 @@ begin
   fIniFile.WriteString( fSectTabFormSettings, fFormSettingsProgramLangCol, fProgramLang );
   fIniFile.UpdateFile;
 
-//CAUTION: The executable MUST be named commandoo for translations to work. Or...
-//you would need to change the "commandoo" portion of the .po file names to the
-//executable name. Just sayin'.
+//NOTE: The executable name can be changed (but is that a good idea???). But all ancillary
+//files like language files and the main settings file will remain, hard-coded, to
+//"commandoo", don't change that. Just sayin'.
 
   POFileName := fLanguageFilesFolder + format( cLanguageFileNamePO, [ cReferenceProgramName, fProgramLang ] );
   if fileexists ( POFileName ) then

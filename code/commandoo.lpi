@@ -132,12 +132,13 @@
 -dWidgQT
 -dDisableChecks
 -dplatAppImage"/>
-            <OtherDefines Count="5">
+            <OtherDefines Count="6">
               <Define0 Value="Release"/>
               <Define1 Value="WidgQT"/>
               <Define2 Value="DisableChecks"/>
               <Define3 Value="WidgGTK"/>
               <Define4 Value="platAppImage"/>
+              <Define5 Value="ProbTest"/>
             </OtherDefines>
           </Other>
         </CompilerOptions>
@@ -643,12 +644,13 @@
       <CustomOptions Value="-dWidgQT
 -dDisableChecks
 -dplatAppImage"/>
-      <OtherDefines Count="5">
+      <OtherDefines Count="6">
         <Define0 Value="Release"/>
         <Define1 Value="WidgQT"/>
         <Define2 Value="DisableChecks"/>
         <Define3 Value="WidgGTK"/>
         <Define4 Value="platAppImage"/>
+        <Define5 Value="ProbTest"/>
       </OtherDefines>
     </Other>
   </CompilerOptions>

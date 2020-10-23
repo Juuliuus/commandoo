@@ -46,6 +46,7 @@ function QuickProc( const theExec, theParams : string; ThirdParam : string = '' 
 function QuickProc( Strings : TStrings ) : string; overload;
 function SimpleProc( const CmdLine : string; const DoStdOut, DoStdErr, DoFormat : boolean ) : string;
 function RunThroughShell( const aString : string ) : string;
+function RunThroughShell_Internal( const aString : string ) : string;
 function ProcString( Params : TStrings ) : string;
 function ProcInteger( ParamsAndResult : TStrings ) : integer;
 //function ProcDetached( var aProc : TProcess; const fullCommand : string ) : string; overload;
@@ -649,14 +650,14 @@ begin
 
   result := '';
 
+  if globltShellName = '' then
+  begin
+    result := cltmsgShellNotFound;
+    exit;
+  end;
+
   SL := TStringList.Create;
   try
-
-    if globltShellName = '' then
-    begin
-      result := cltmsgShellNotFound;
-      exit;
-    end;
 
     SL.Add( globltShellName );
     SL.Add( '-c' );
@@ -673,6 +674,32 @@ begin
       tmpResult := cltNoOutput;
 
     result := result + tmpResult + LineEnding;
+
+  finally
+    if assigned( SL ) then
+      freeandnil( SL );
+  end;
+
+end;
+
+function RunThroughShell_Internal( const aString : string ) : string;
+var
+  SL : TStringList;
+begin
+
+  result := '';
+
+  if globltShellName = '' then
+    exit;
+
+  SL := TStringList.Create;
+  try
+
+    SL.Add( globltShellName );
+    SL.Add( '-c' );
+    SL.add( aString );
+
+    result := QuickProc( SL );
 
   finally
     if assigned( SL ) then
@@ -788,7 +815,10 @@ end;
 function SystemFileLocation( const FName : string ) : string;
 begin
   result := QuickProc( 'which', FName );//after superuser bug, trimming takes place in QuickProc
-
+  {$IFDEF ProbTest}
+  //primitive debuggin in appimage
+  showmessage( 'systemfilelocation result: ' + result);
+  {$ENDIF}
 //saw that zsh WILL return a string but not necessarily a path.
   if ( result <> '' ) and ( pos( '/', result ) = 1 ) then //then it is a path, we're happy
     exit;
@@ -821,6 +851,9 @@ begin
       Showmessage( format( cltmsgWhich, [ FName ] ) );
   except
     result := false;
+    {$IFDEF ProbTest}
+    Showmessage( 'coming out of exception!!!' );
+    {$ENDIF}
     if ShowError then
       Showmessage( format( cltmsgWhich, [ FName ] ) );
   end;

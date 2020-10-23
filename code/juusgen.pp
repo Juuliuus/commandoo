@@ -56,6 +56,7 @@ function ConvertSizeStrToInt( const SizeStr : string ) : integer;
 function StringVersionToInteger( StrVer : string; const NumSections : integer ) : integer;
 function CheckFileNotFound( const FName : string ) : boolean;
 procedure NilObjects( Strings : TStrings; DoClear : boolean = true );
+function CountStringOcurrencesInString( const Check, aStr : string ) : integer;
 
 const
   megaStr = ' MB';
@@ -70,6 +71,26 @@ var
   ShowMessagePtY : integer = -1;
 
 implementation
+
+function CountStringOcurrencesInString( const Check, aStr : string ) : integer;
+var
+  idx : SizeInt;
+  str : string;
+begin
+  result := 0;
+  idx := pos( Check, aStr );
+  if idx = 0 then
+    exit;
+  Str := Copy(aStr, idx + Length(Check), length(aStr));
+  while True do
+  begin
+    idx := pos( Check, Str );
+    if idx = 0 then
+      break;
+    Inc( result );
+    Str := Copy(Str, idx + Length(Check), length(Str));
+  end;
+end;
 
 function IntIf( const Cond: boolean; const TrueInt, FalseInt : integer ): integer;
 begin
