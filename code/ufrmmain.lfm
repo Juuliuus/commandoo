@@ -322,19 +322,6 @@ object frmMain: TfrmMain
               ParentFont = False
               TabOrder = 2
             end
-            object lblFriendlyNameLineDisp: TLabel
-              Left = 687
-              Height = 17
-              Top = 20
-              Width = 9
-              Alignment = taRightJustify
-              Anchors = [akTop, akRight]
-              Caption = '...'
-              Font.Height = -12
-              ParentColor = False
-              ParentFont = False
-              OnDblClick = lblDispEntryDblClick
-            end
             object lblSuperUserLineDisp: TLabel
               Left = 8
               Height = 14
@@ -416,7 +403,7 @@ object frmMain: TfrmMain
               Tag = 123321
               Left = 510
               Height = 28
-              Top = 30
+              Top = 37
               Width = 47
               AutoSelect = False
               Font.Color = clBlack
@@ -450,21 +437,43 @@ object frmMain: TfrmMain
               ParentFont = False
             end
             object lblcapFriendlyName: TLabel
-              Left = 658
+              Left = 541
               Height = 18
               Top = -1
-              Width = 37
+              Width = 154
               Anchors = [akTop, akRight]
+              AutoSize = False
               Caption = 'NT FN'
               Font.Height = -13
               ParentColor = False
               ParentFont = False
             end
+            object edtFriendlyNameLineDisp: TEdit
+              Left = 536
+              Height = 27
+              Hint = 'A "friendly name" is a simple name you'#10'specify that is easy to remember and/or'#10'find.'#10#10'Command Lines can get quite long, and'#10'complicated. Many look similiar to each'#10'other. Others have long paths in front of'#10'the command name.'#10#10'This makes it extremely hard to find in the'#10'favorites list or in search results.'#10#10'But...if you take that monstrous Command'#10'Line and give it a friendly name of '#10'"fuzzy bunny" then it is easy to find!'#10#10'You''re welcome.'#10#10'<end> '
+              Top = 24
+              Width = 167
+              Anchors = [akTop, akRight]
+              AutoSize = False
+              AutoSelect = False
+              BorderStyle = bsNone
+              Font.Height = -12
+              MaxLength = 20
+              OnChange = edtFriendlyNameLineChange
+              OnDblClick = edtFriendlyNameLineDispDblClick
+              OnKeyDown = memNotesLineKeyDown
+              ParentFont = False
+              ReadOnly = True
+              TabStop = False
+              TabOrder = 3
+              TextHint = 'Alias for Favorites List'
+            end
           end
           object pnlCmdLine: TPanel
-            Left = 168
+            Left = 152
             Height = 221
-            Top = 24
+            Top = 40
             Width = 710
             Anchors = [akLeft, akRight, akBottom]
             ClientHeight = 221
@@ -590,6 +599,7 @@ object frmMain: TfrmMain
               AutoSelect = False
               Font.Height = -12
               OnChange = edtFriendlyNameLineChange
+              OnExit = edtFriendlyNameLineExit
               OnKeyDown = memNotesLineKeyDown
               ParentFont = False
               TabOrder = 12
@@ -606,11 +616,12 @@ object frmMain: TfrmMain
               ParentFont = False
             end
             object lblcapFriendlyNameLine: TLabel
-              Left = 666
+              Left = 536
               Height = 17
               Top = 78
-              Width = 34
+              Width = 167
               Anchors = [akTop, akRight]
+              AutoSize = False
               Caption = 'NT FN'
               Font.Height = -12
               ParentColor = False

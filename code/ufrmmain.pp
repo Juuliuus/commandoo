@@ -183,6 +183,7 @@ type
     cbSuperUserLine: TCheckBox;
     cbUseShellLine : TCheckBox;
     edtFriendlyNameLine : TEdit;
+    edtFriendlyNameLineDisp: TEdit;
     edtHelp: TEdit;
     edtVersion: TEdit;
     lblcapFriendlyName : TLabel;
@@ -230,7 +231,6 @@ type
     lblCapNotesLine : TLabel;
     lblcapFriendlyNameLine : TLabel;
     lblCEditing : TLabel;
-    lblFriendlyNameLineDisp : TLabel;
     lblVersionDisp : TLabel;
     lbKeywordsDisp : TListBox;
     lblDispFriendlyName : TLabel;
@@ -549,6 +549,8 @@ type
     procedure cbThreatLevelChange(Sender: TObject);
     procedure cbThreatLevelLineChange( Sender : TObject );
     procedure edtFriendlyNameLineChange( Sender : TObject );
+    procedure edtFriendlyNameLineDispDblClick(Sender: TObject);
+    procedure edtFriendlyNameLineExit(Sender: TObject);
     procedure edtHelpChange( Sender : TObject );
     procedure edtVersionChange( Sender : TObject );
     procedure FormActivate(Sender: TObject);
@@ -3968,7 +3970,7 @@ begin
     cmniDblCCmdLineFriendly :
       if EditingCL then
         TryFocus( edtFriendlyNameLine )
-      else lblDispEntryDblClick( lblFriendlyNameLineDisp );
+      else edtFriendlyNameLineDispDblClick( edtFriendlyNameLineDisp );
     cmniDblCCmdLineNotes :
       if EditingCL then
         Memo1DblClick( memNotesLine )
@@ -7116,8 +7118,33 @@ begin
 end;
 
 procedure TfrmMain.edtFriendlyNameLineChange( Sender : TObject );
+var
+  str : string;
 begin
-  lblFriendlyNameLineDisp.Caption := StrIf( edtFriendlyNameLine.Text <> '', DoubleQuotedString( edtFriendlyNameLine.Text ), dots );
+  //poor mans ellsipses control
+  if edtFriendlyNameLine.Text = '' then
+    str := dots
+  else
+  begin
+    if length( edtFriendlyNameLine.Text ) > 20 then
+      str := copy( edtFriendlyNameLine.Text, 1, 20 ) + dots
+    else str := edtFriendlyNameLine.Text;
+  end;
+  edtFriendlyNameLineDisp.Texthint := Str;
+end;
+
+procedure TfrmMain.edtFriendlyNameLineDispDblClick(Sender: TObject);
+begin
+  if not ( Sender is TEdit ) then
+    exit;
+  MsgDlgMessage( ccapOverflow, trim( edtFriendlyNameLine.Text ) );
+  MsgDlgInfo( self );
+end;
+
+procedure TfrmMain.edtFriendlyNameLineExit(Sender: TObject);
+begin
+  edtFriendlyNameLine.SelStart := 0;
+  edtFriendlyNameLine.SelLength := 0;
 end;
 
 procedure TfrmMain.edtHelpChange( Sender : TObject );
