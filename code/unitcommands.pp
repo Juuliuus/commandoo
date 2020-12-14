@@ -959,13 +959,13 @@ begin
   globltInputForProcess := '';
   result := '';
 
+  aString := CleanCommandsEntry( aString );
+
   if not GetVariableReplacements( aString ) then
     exit;
 
   if WantsInput and not GetProcessInput then
     exit;
-
-  aString := CleanCommandsEntry( aString );
 
   ExpandHomeSymbol;
 

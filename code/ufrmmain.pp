@@ -645,8 +645,8 @@ type
     { private declarations }
   private
 {$IFDEF platAppImage}
-    fAppImagePath : string;
-    fAppImageRunningPath : string;
+    fAppImagePath : string; //APPIMAGE
+    fAppImageRunningPath : string; //APPDIR
 {$ENDIF}
     fDisplayOutPut : TStringList;
     fDisplayOutPutMax : integer;
@@ -1694,6 +1694,14 @@ var
   begin
 //since I'm confused as to why there is a /bin/bash and a /usr/bin/bash
 //I try to be complete here but prefer /bin/ variants.
+
+////juuus testing bash inclusion for AIC appimage...fails the same with core dumps in Piped CLI's
+//    if IsRealPath( fAppImageRunningPath ) then //actually running in an appimage
+//      globltShellName := IncludeTrailingPathDelimiter( fAppImageRunningPath ) + 'lib/x86_64-linux-gnu/bash'
+//    else globltShellName := '/bin/bash';
+//    showmessage( globltShellName );
+//    exit;
+
     globltShellName := trim( GetEnvironmentVariable( 'SHELL' ) );
     if globltShellName = '' then
     begin
