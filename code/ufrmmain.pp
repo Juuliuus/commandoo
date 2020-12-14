@@ -45,6 +45,7 @@ const
   cUseItemIndexFlag = -2;
 //CLIndex_Display
   cUseCmdObjIndexFlag = 1000;
+  cAppImageSqlitePath = 'lib/x86_64-linux-gnu/libsqlite3.so.0.8.6';
 
 type
 
@@ -1762,8 +1763,12 @@ var
 
     AppImageSqlPrefer := '';
     {$IFDEF platAppImage}
-    if IsRealPath( fAppImageRunningPath ) then //actually running in an appimage
-      AppImageSqlPrefer := IncludeTrailingPathDelimiter( fAppImageRunningPath ) + 'lib/x86_64-linux-gnu/libsqlite3.so.0.8.6';
+    //this takes care of the issue of an extracted appimage not knowing it is
+    //still, in essence, an appimage and all required files are relative.
+    if fileexists( '../../' + cAppImageSqlitePath ) then
+      AppImageSqlPrefer := '../../' + cAppImageSqlitePath
+    else if IsRealPath( fAppImageRunningPath ) then //actually running in an appimage
+      AppImageSqlPrefer := IncludeTrailingPathDelimiter( fAppImageRunningPath ) + cAppImageSqlitePath;
     {$ENDIF}
 
 //juuus
