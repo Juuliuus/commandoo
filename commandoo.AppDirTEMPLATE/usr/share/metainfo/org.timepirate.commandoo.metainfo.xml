@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2020 Julius Schoen/R. Spicer <commandoo@timepirate.org> -->
+<component type="desktop-application">
+  <id>org.timepirate.commandoo</id>
+  <name>commandoo</name>
+  <summary>GUI and DB for gnu/linux command lines (CLI)</summary>
+  
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>LGPL-2.0-or-later</project_license>
+  
+  <description>
+    <p>
+      commandoo is a Graphical User Interface (GUI) for the Linux
+    Command Line Interface (CLI), perhaps better known as the
+    &quot;Terminal&quot;. 
+    </p>
+    <p>
+      It&apos;s purpose is to give you a place to store the cool
+    and/or useful command lines you find, discover, or create. Then,
+    months later, when you need it again, it will be there, easy to
+    find. 
+    </p>
+    <p>
+      It creates, and supports, text based and sqlite databases,
+    and comes with a basic database of over 160 linux commands. And
+    many of the CL&apos;s can be run directly from the GUI. It also
+    serves as a GUI app launcher.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">org.timepirate.commandoo.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main View</caption>
+      <image>https://timepirate.org/images/commandoo_2_0_1.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>As a GUI app launcher</caption>
+      <image>https://timepirate.org/images/commandooChildProc.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Edit Mode</caption>
+      <image>https://timepirate.org/images/commandooEditMode.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Favorite Commands/Command Lines</caption>
+      <image>https://timepirate.org/images/commandooFavorites.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>In Prog and Options</caption>
+      <image>https://timepirate.org/images/commandooInProgHelp.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Simple Search</caption>
+      <image>https://timepirate.org/images/commandooSearchSimple.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Advanced Search</caption>
+      <image>https://timepirate.org/images/commandooSearchAdvanced.png</image>
+    </screenshot>
+  </screenshots>
+</component>
+

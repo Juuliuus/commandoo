@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=commandoo
+Comment=GUI and DB for GNU-linux command lines (CLI)
+Categories=Utility;Application;
+Icon=commandoo
+Exec=commandoo
+Terminal=false
+StartupNotify=true
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+
