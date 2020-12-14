@@ -45,6 +45,11 @@ However, if you plan to build commandoo yourself, be aware that the build machin
 
 Also for self builders: There was quite a nasty bug in the current lazarus release. The only fix was to use the bleeding edge lazarus trunk version which fixed the issue. That means to build this so that it works (!) you need to use a lazarus version later than from late August 2020, or any new releases later than late August.
 
+As regards build of AppImage: An AppDir template is provided. Place the commandoo executable in its appdir/usr/bin folder. Copy the template folder to commandoo.Appdir folder to protect the template. 
+
+The appimage build I used/use is appimagetool from the go-appimage site (https://github.com/probonopd/go-appimage/releases)
+
+Use the appimagetool program with the "deploy -r" flags to deploy all files into the commandoo.AppDir folder. Then use the appimagetool in create appimage mode. And the result will be a fully self contained commandoo AppImage.
 
 
 commandoo was built using free pascal and the Lazarus IDE, thank you FPC and Lazarus.
