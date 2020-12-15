@@ -1758,7 +1758,7 @@ var
   var
     SqlLibRead, SqlLibChange, AppImageSqlPrefer : string;
     {$IFDEF platAppImage}
-    checkRelPath : string;
+    checkRelPath, chk : string;
     {$ENDIF}
   begin
     SqlLibRead := fSqliteLibrary;
@@ -1777,9 +1777,17 @@ var
     else
     begin //check possible relative paths for the case of a simple extracted appimage
       checkRelPath := ExtractFileDir( application.ExeName );  //two ExtractFiledir = ../
-      checkRelPath := IncludeTrailingPathDelimiter( ExtractFileDir( checkRelPath ) ) + cAppImageSqlitePath;
-      if fileexists( checkRelPath ) then
-        AppImageSqlPrefer := checkRelPath;
+      chk := IncludeTrailingPathDelimiter( ExtractFileDir( checkRelPath ) ) + cAppImageSqlitePath;
+      if fileexists( chk ) then
+        AppImageSqlPrefer := chk
+      else
+      begin // third extraction is ../../
+        chk := IncludeTrailingPathDelimiter( ExtractFileDir( checkRelPath ) ) + cAppImageSqlitePath;
+        if fileexists( chk ) then
+          AppImageSqlPrefer := chk
+        else if fileexists( './' + cAppImageSqlitePath ) then
+               AppImageSqlPrefer := './' + cAppImageSqlitePath;
+      end;
     end;
     {$ENDIF}
 
