@@ -14,7 +14,7 @@ object frmAbout: TfrmAbout
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poMainFormCenter
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   object memOutput: TMemo
     Left = 32
     Height = 273
@@ -2029,7 +2029,7 @@ object frmAbout: TfrmAbout
   end
   object lblTopic: TLabel
     Left = 32
-    Height = 16
+    Height = 18
     Top = 4
     Width = 45
     Caption = 'lblTopic'

@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="12"/>
     <BuildModes Active="Comm64qt"/>
-    <Units Count="86">
+    <Units Count="87">
       <Unit0>
         <Filename Value="commandoo.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -20,14 +20,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ufrmMain"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="1742"/>
-        <CursorPos X="26" Y="1765"/>
+        <TopLine Value="1749"/>
+        <CursorPos Y="1781"/>
         <UsageCount Value="203"/>
         <Bookmarks Count="4">
-          <Item0 X="12" Y="1773" ID="3"/>
-          <Item1 Y="1904" ID="4"/>
-          <Item2 X="8" Y="7519"/>
-          <Item3 Y="1762" ID="1"/>
+          <Item0 X="8" Y="1790" ID="3"/>
+          <Item1 Y="1920" ID="4"/>
+          <Item2 X="8" Y="7535"/>
+          <Item3 Y="1763" ID="1"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -49,7 +49,7 @@
         <Filename Value="unitsharedobj.pp"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="16"/>
-        <TopLine Value="91"/>
+        <TopLine Value="89"/>
         <CursorPos X="20" Y="109"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -99,7 +99,7 @@
         <UnitName Value="ufrmAbout"/>
         <EditorIndex Value="1"/>
         <TopLine Value="295"/>
-        <CursorPos X="54" Y="335"/>
+        <CursorPos X="70" Y="321"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -784,7 +784,7 @@
         <EditorIndex Value="9"/>
         <TopLine Value="142"/>
         <CursorPos X="35" Y="150"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="61"/>
         <Loaded Value="True"/>
       </Unit77>
       <Unit78>
@@ -846,6 +846,13 @@
         <CursorPos X="5" Y="1568"/>
         <UsageCount Value="8"/>
       </Unit85>
+      <Unit86>
+        <Filename Value="../../../fpcup/trunk/fpcsrc/rtl/objpas/sysutils/finah.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5"/>
+        <CursorPos X="60" Y="27"/>
+        <UsageCount Value="11"/>
+      </Unit86>
     </Units>
     <OtherDefines Count="6">
       <Define0 Value="Release"/>
@@ -855,7 +862,7 @@
       <Define4 Value="platAppImage"/>
       <Define5 Value="ProbTest"/>
     </OtherDefines>
-    <JumpHistory Count="23" HistoryIndex="20">
+    <JumpHistory Count="26" HistoryIndex="25">
       <Position1>
         <Filename Value="unitcommands.pp"/>
         <Caret Line="912" Column="8" TopLine="892"/>
@@ -941,12 +948,24 @@
       </Position21>
       <Position22>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="711" Column="14" TopLine="692"/>
+        <Caret Line="1774" Column="124" TopLine="1756"/>
       </Position22>
       <Position23>
         <Filename Value="ufrmmain.pp"/>
-        <Caret Line="1685" Column="3" TopLine="1681"/>
+        <Caret Line="1770" Column="65" TopLine="1756"/>
       </Position23>
+      <Position24>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="1765" Column="97" TopLine="1756"/>
+      </Position24>
+      <Position25>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="48" Column="26" TopLine="27"/>
+      </Position25>
+      <Position26>
+        <Filename Value="ufrmmain.pp"/>
+        <Caret Line="1765" Column="69" TopLine="1743"/>
+      </Position26>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

@@ -1757,6 +1757,9 @@ var
   procedure SetSqliteLibrary;
   var
     SqlLibRead, SqlLibChange, AppImageSqlPrefer : string;
+    {$IFDEF platAppImage}
+    checkRelPath : string;
+    {$ENDIF}
   begin
     SqlLibRead := fSqliteLibrary;
     SqlLibChange := '';
@@ -1765,10 +1768,19 @@ var
     {$IFDEF platAppImage}
     //this takes care of the issue of an extracted appimage not knowing it is
     //still, in essence, an appimage and all required files are relative.
-    if fileexists( '../../' + cAppImageSqlitePath ) then
-      AppImageSqlPrefer := '../../' + cAppImageSqlitePath
-    else if IsRealPath( fAppImageRunningPath ) then //actually running in an appimage
-      AppImageSqlPrefer := IncludeTrailingPathDelimiter( fAppImageRunningPath ) + cAppImageSqlitePath;
+    //It also covers the case of an AppRun called from an appimage --appimage-extract
+    //I could check more possibilities but currently the "running" path should is
+    //appdir/lib64/<ld-linux-filename>
+
+    if IsRealPath( fAppImageRunningPath ) then //actually running in an appimage or as extracted-and-run
+      AppImageSqlPrefer := IncludeTrailingPathDelimiter( fAppImageRunningPath ) + cAppImageSqlitePath
+    else
+    begin //check possible relative paths for the case of a simple extracted appimage
+      checkRelPath := ExtractFileDir( application.ExeName );  //two ExtractFiledir = ../
+      checkRelPath := IncludeTrailingPathDelimiter( ExtractFileDir( checkRelPath ) ) + cAppImageSqlitePath;
+      if fileexists( checkRelPath ) then
+        AppImageSqlPrefer := checkRelPath;
+    end;
     {$ENDIF}
 
 //juuus

@@ -318,6 +318,8 @@ begin
   memOutput.Lines.Add( format( cAboutBDLine, [ c_DB_HandwrittenVersion + '.' + inttostr( c_DB_VersionUpgradeCount ) + c_DB_VersionDate ] ) );
   memOutput.Lines.Add( format( cStandardDBSequence, [ c_DB_VersionUpgradeCount ] ) );
   memOutput.Lines.Add( '' );
+  memOutput.Lines.Add( 'System reported path: ' + Application.ExeName );
+  memOutput.Lines.Add( '' );
   GetCurrentDBInfo;
   memOutput.Lines.Add( 'commandoo WebSite:     ' + cWebSiteBase + cWebSiteCommando );
   memOutput.Lines.Add( '' );
