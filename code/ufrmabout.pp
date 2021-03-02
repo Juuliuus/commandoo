@@ -102,9 +102,9 @@ resourcestring
 const
   constSeparator = '-----------------------------------';
 {$IFDEF platAppImage}
-  cDokumentCount = 7;
+  cDokumentCount = 8;//7;
 {$ELSE}
-  cDokumentCount = 6;
+  cDokumentCount = 7;//6;
 {$ENDIF}
 
 var
@@ -160,13 +160,14 @@ begin
   result := 'info';
   case Idx of
     0 : result := cSaveToFileAbout;
-    1 : result := cSaveToFileIntro;
-    2 : result := cSaveToFileTips;
-    3 : result := cSaveToFileFreshStart;
-    4 : result := cSaveToFileUpgrade;
-    5 : result := cSaveToFileIbus;
+    1 : result := cSaveToFileWhatsNew;
+    2 : result := cSaveToFileIntro;
+    3 : result := cSaveToFileTips;
+    4 : result := cSaveToFileFreshStart;
+    5 : result := cSaveToFileUpgrade;
+    6 : result := cSaveToFileIbus;
 {$IFDEF platAppImage}
-    6 : result := cSaveToFileUSBDrive;
+    7 : result := cSaveToFileUSBDrive;
 {$ENDIF}
   end;
 end;
@@ -179,13 +180,14 @@ begin
   Idx := btnToggle.Tag mod cDokumentCount;
   case Idx of
     0 : ShowAbout;
-    1 : ShowIntro;
-    2 : memOutput.Text := format( cmsgTips, [ cmsgFormHotKeys ] );
-    3 : memOutput.Text := cmsgFirstLocalRunAbout + format( cmsgFirstLocalRun, [ cmsgFormHotKeys ] );
-    4 : memOutput.Text := cmsgCommandooUpgrade;
-    5 : memOutput.Text := cmsgIbus;
+    1 : memOutput.Text := cmsgWhatsNew;
+    2 : ShowIntro;
+    3 : memOutput.Text := format( cmsgTips, [ cmsgFormHotKeys ] );
+    4 : memOutput.Text := cmsgFirstLocalRunAbout + format( cmsgFirstLocalRun, [ cmsgFormHotKeys ] );
+    5 : memOutput.Text := cmsgCommandooUpgrade;
+    6 : memOutput.Text := cmsgIbus;
 {$IFDEF platAppImage}
-    6 : memOutput.Text := format( cmsgCommandooThumbDrives, [ Frm.AppImagePath ] );
+    7 : memOutput.Text := format( cmsgCommandooThumbDrives, [ Frm.AppImagePath ] );
 {$ENDIF}
   end;
   lblTopic.Caption := GetNamebtnToggle( Idx );

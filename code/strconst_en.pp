@@ -113,6 +113,29 @@ resourceString
   cmsgFirstLocalRunAbout = '<this is the message one sees from a First run of the program>'
     + LineEnding + LineEnding
     ;
+
+  cmsgWhatsNew =
+    'Whats New:'
+    + LineEnding + LineEnding
+    + 'March 2021:'
+    + LineEnding + LineEnding
+{$IFDEF platAppImage}
+    + 'The AppImage is now completely self-contained in all aspects, allowing '
+    + 'it to run on even more, and older, versions of linux distros.'
+    + LineEnding + LineEnding
+{$ENDIF}
+    + 'Added ctrl-shift T in edit mode to change threatlevels.'
+    + LineEnding + LineEnding
+    + 'Make Friendly Name easier to work with and more informative.'
+    + LineEnding + LineEnding
+    + 'Fix a bug where, when using Run/Test on an edited CmdLine with input '
+    + 'variables, the word <UPDATE> would appear in the CmdLine string.'
+    + LineEnding + LineEnding
+    + 'I have still not been able to support themes for kde/qt5, sorry. Hopefully '
+    + 'next time.'
+    + LineEnding
+    ;
+
   cmsgFormHotKeys =
     'The UI is large with many controls. To make it as mouse-less as possible for those who like '
     + 'to use the keyboard try: <CTRL>-<SHIFT> d / g / m / k / p / t, or left/right arrow keys'
@@ -1039,6 +1062,7 @@ resourceString
    cSaveToFileMsg = 'message';
    cSaveToFileAbout = 'about';
    cSaveToFileIntro = 'introduction';
+   cSaveToFileWhatsNew = 'whatsnew';
    cSaveToFileTips = 'tips';
    cSaveToFileFreshStart = 'freshstart';
    cSaveToFileUpgrade = 'upgrade';
