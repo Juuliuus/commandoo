@@ -1,0 +1,19 @@
+This file generated from button on main form in DEV mode.
+
+Fill in this file with fixes/features.
+The .ver.txt file is ready, the other files have stubs for the naming convention.
+Replace stubs and deploy the files to website.
+
+If the update is a NEW VERSION (ie. changes DB Schema) PUT A WARNING!!!...
+...that the update is NOT compatible with what they have and if they want to go 
+back to the old version they MUST have a backup of their config folder and 
+that must be put back in place!!!
+
+Depending on user wishes: I check, or the User, checks:
+https://timepirate.org/downloads/commandoo-x86_64.AppImage.ver.txt
+
+The number in that file serves as basis for the other support files:
+commandoo-x86_64_6.AppImage.readme.txt   (this file)
+commandoo-x86_64_6.AppImage
+commandoo-x86_64_6.AppImage.sig
+commandoo-x86_64_6.AppImage.zsync    (if applicable)
