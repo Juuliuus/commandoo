@@ -858,9 +858,9 @@ object frmMain: TfrmMain
         end
         object lblCmdPointer: TLabel
           Left = 0
-          Height = 22
+          Height = 14
           Top = 4
-          Width = 92
+          Width = 83
           Caption = 'Command  ↓DNT'
           Font.Height = -10
           Font.Style = [fsBold]
@@ -869,9 +869,9 @@ object frmMain: TfrmMain
         end
         object lblCmdLinePointer: TLabel
           Left = 0
-          Height = 22
+          Height = 14
           Top = 140
-          Width = 122
+          Width = 113
           Caption = 'Command Lines  ↓DNT'
           Font.Height = -10
           Font.Style = [fsBold]

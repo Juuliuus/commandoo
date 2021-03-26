@@ -1178,6 +1178,23 @@ msgstr ""
 msgid "DB Profile \"%s\" automatically updated to %s, from Item %d to Item %d"
 msgstr ""
 
+#: strconst_en.cmsgwhatsnew
+msgid ""
+"Whats New:\n"
+"\n"
+"March 2021:\n"
+"\n"
+"The AppImage is now completely self-contained in all aspects, allowing it to run on even more, and older, versions of linux distros.\n"
+"\n"
+"Added ctrl-shift T in edit mode to change threatlevels.\n"
+"\n"
+"Make Friendly Name easier to work with and more informative.\n"
+"\n"
+"Fix a bug where, when using Run/Test on an edited CmdLine with input variables, the word <UPDATE> would appear in the CmdLine string.\n"
+"\n"
+"I have still not been able to support themes for kde/qt5, sorry. Hopefully next time.\n"
+msgstr ""
+
 #: strconst_en.coutputactionhint
 msgid ""
 "%s the Output area to %s.\n"
@@ -1285,6 +1302,10 @@ msgstr ""
 
 #: strconst_en.csavetofileusbdrive
 msgid "USB_Drive"
+msgstr ""
+
+#: strconst_en.csavetofilewhatsnew
+msgid "whatsnew"
 msgstr ""
 
 #: strconst_en.csearchhintending
@@ -2427,6 +2448,10 @@ msgstr ""
 msgid "Dev: GenUpgradeFiles"
 msgstr ""
 
+#: tfrmmain.btnfinalneeds.hint
+msgid "Initialized"
+msgstr ""
+
 #: tfrmmain.btnfindcmd.caption
 msgctxt "tfrmmain.btnfindcmd.caption"
 msgid "&F  Find"
@@ -3397,7 +3422,9 @@ msgid "Editing..."
 msgstr ""
 
 #: tfrmmain.lblcmdlinepointer.caption
-msgid "Cmd Lines  ↓DNT"
+#, fuzzy
+#| msgid "Cmd Lines  ↓DNT"
+msgid "Command Lines  ↓DNT"
 msgstr "Cmd Lines  ↓DNT"
 
 #: tfrmmain.lblcmdpointer.caption

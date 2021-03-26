@@ -1771,6 +1771,36 @@ msgstr "Editin and/or Unsavied Data. Is yu sure yu wants to klose??"
 msgid "DB Profile \"%s\" automatically updated to %s, from Item %d to Item %d"
 msgstr "DB Profyle \"%s\" automiatically uppdated too %s, frum Itemm %d to Ittem %d"
 
+#: strconst_en.cmsgwhatsnew
+msgid ""
+"Whats New:\n"
+"\n"
+"March 2021:\n"
+"\n"
+"The AppImage is now completely self-contained in all aspects, allowing it to run on even more, and older, versions of linux distros.\n"
+"\n"
+"Added ctrl-shift T in edit mode to change threatlevels.\n"
+"\n"
+"Make Friendly Name easier to work with and more informative.\n"
+"\n"
+"Fix a bug where, when using Run/Test on an edited CmdLine with input variables, the word <UPDATE> would appear in the CmdLine string.\n"
+"\n"
+"I have still not been able to support themes for kde/qt5, sorry. Hopefully next time.\n"
+msgstr ""
+"Wats Neww:\n"
+"\n"
+"March 2021:\n"
+"\n"
+"Th' AppImage iz now competely selff-kontained in all asspects, 'lowing it two run on evenn moore, 'nd older, verzions of linux distros.\n"
+"\n"
+"Addedd ctrl-shift T in editt mode too change threatlevels.\n"
+"\n"
+"Make Friendly Nayme eazier too work with 'nd moore informiative.\n"
+"\n"
+"Fixx a bug wheres, whens usin Runn/Tesst on an editied CmdLine with inputt variaibles, the word <UPDATE> wood appear in th' CmdLine string.\n"
+"\n"
+"I has still nots been able to supporrt themes for kde/qt5, sory. Hopefuly nexxt tyme.\n"
+
 #: strconst_en.coutputactionhint
 msgid ""
 "%s the Output area to %s.\n"
@@ -1909,6 +1939,10 @@ msgstr "uppgrade"
 #: strconst_en.csavetofileusbdrive
 msgid "USB_Drive"
 msgstr "USB_Dryve"
+
+#: strconst_en.csavetofilewhatsnew
+msgid "whatsnew"
+msgstr "whatsnew"
 
 #: strconst_en.csearchhintending
 msgid "<end>"
@@ -3441,6 +3475,10 @@ msgstr ""
 msgid "Dev: GenUpgradeFiles"
 msgstr "Dev: GenUpgradeFiles"
 
+#: tfrmmain.btnfinalneeds.hint
+msgid "Initialized"
+msgstr "Initialiizied"
+
 #: tfrmmain.btnfindcmd.caption
 msgctxt "tfrmmain.btnfindcmd.caption"
 msgid "&F  Find"
@@ -4966,8 +5004,9 @@ msgid "Editing..."
 msgstr "Edittin'..."
 
 #: tfrmmain.lblcmdlinepointer.caption
-msgid "Cmd Lines  ↓DNT"
-msgstr "Cmd Lines  ↓DNT"
+#| msgid "Cmd Lines  ↓DNT"
+msgid "Command Lines  ↓DNT"
+msgstr "Command Lines  ↓DNT"
 
 #: tfrmmain.lblcmdpointer.caption
 #| msgid "Command  -->"

@@ -1516,6 +1516,7 @@ begin
 //
 //       cHandwrittenVersion = '#.#.#'; to match readme file
 ////       as of Juneish 2020 v. is 2.0.0 //as of March 2018 v. is 1.0.1
+////       as of March 2021 v. is 2.1.0 //as of March 2018 v. is 1.0.1
 
 //       INCREMENT c_DB_VersionUpgradeCount = #;to the next upgrade if DB upgrades were necessary
 //       c_DB_HandwrittenVersion = upgrade if DB structure has changed
@@ -2279,13 +2280,13 @@ begin
 //==>> NOTE!! Do not remove settings sections anymore! To support updates, AND the ability to go back to
 //the older version, the settings file must keep the old setting just in case. INI files are good this
 //way, if you don't use it no problem. If the program starts calling it again, it simply doesn't mind.
-      5 :
+      5, 6 :
         begin
-          FormSettings.ClearAllFormSettings( fIFS );//always do this if settings have been manipulated
+          FormSettings.ClearAllFormSettings( fIFS );//ALWAYS do this if settings have been manipulated
           InstallSupportFiles( true );
         end;
-      6 : ;//do nothing, there were no PROGRAM settings manipulated, it's just a new version indicator
       //7 : When an update is done on the Program that needs attention in ini file and/or it is a version release
+          //and keep in mind, until the update process is re-written, this is the update indicator!!!
       //write the needed code here and set the c_PROG_VersionUpgradeCount const by +1
     end;
 

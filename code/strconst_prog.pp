@@ -115,15 +115,16 @@ const
 //that needs to be programatically handled and/or this is a new Release version.
   //c_PROG_VersionUpgradeCount = 3;
   //c_PROG_VersionUpgradeCount = 4; //29.06.2020 Allow Escape chars taken out
-  c_PROG_VersionUpgradeCount = 5; //05.08.2020 languages will be updated
+  //c_PROG_VersionUpgradeCount = 5; //05.08.2020 languages will be updated
+  c_PROG_VersionUpgradeCount = 6; //02.03.2021 languages will be updated
 //=====  PROGRAM   ==============================
 
 //==> NOTE: only change MAJOR VERSION when it is INCOMPATIBLE (ie. DB schema change) with previous MAJOR VERSION
-  cHandwrittenVersion = '2.0.1';//'1.0.1';
+  cHandwrittenVersion = '2.1.0';//'1.0.1';
 
   cSectTab_PROG_VersionCount = '_PROG_VersionCount';
   cStandardProgramSequence = 'PROGRAM SEQUENCE #:    %d';
-  cVersionDate = ' (August 2020)';//ReleaseCandidate';
+  cVersionDate = ' (March 2021)';//ReleaseCandidate';
   cUpgradeDir = 'upgrades';
 {$IFDEF platAppImage}
   cUpgradeFileName = 'commandoo-x86_64';

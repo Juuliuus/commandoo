@@ -3,7 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2020-08-07 19:20+0200\n"
+"PO-Revision-Date: 2021-03-02 10:51+0100\n"
 "Last-Translator: juus <juus@Dell32gig>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1263,6 +1263,7 @@ msgstr ""
 "Do you STILL want two (or more?!) commandoo windows open?????\n"
 
 #: strconst_en.cmsgmultipledisallowed
+#| msgid "commandoo is already running and your OPTIONS setting disallows this."
 msgid "commandoo is already running and your OPTIONS setting disallows this."
 msgstr "commandoo is already running and your OPTIONS setting disallows this."
 
@@ -1772,6 +1773,36 @@ msgstr "Editing and/or Unsaved Data. Are you sure you want to close??"
 msgid "DB Profile \"%s\" automatically updated to %s, from Item %d to Item %d"
 msgstr "DB Profile \"%s\" automatically updated to %s, from Item %d to Item %d"
 
+#: strconst_en.cmsgwhatsnew
+msgid ""
+"Whats New:\n"
+"\n"
+"March 2021:\n"
+"\n"
+"The AppImage is now completely self-contained in all aspects, allowing it to run on even more, and older, versions of linux distros.\n"
+"\n"
+"Added ctrl-shift T in edit mode to change threatlevels.\n"
+"\n"
+"Make Friendly Name easier to work with and more informative.\n"
+"\n"
+"Fix a bug where, when using Run/Test on an edited CmdLine with input variables, the word <UPDATE> would appear in the CmdLine string.\n"
+"\n"
+"I have still not been able to support themes for kde/qt5, sorry. Hopefully next time.\n"
+msgstr ""
+"Whats New:\n"
+"\n"
+"March 2021:\n"
+"\n"
+"The AppImage is now completely self-contained in all aspects, allowing it to run on even more, and older, versions of linux distros.\n"
+"\n"
+"Added ctrl-shift T in edit mode to change threatlevels.\n"
+"\n"
+"Make Friendly Name easier to work with and more informative.\n"
+"\n"
+"Fix a bug where, when using Run/Test on an edited CmdLine with input variables, the word <UPDATE> would appear in the CmdLine string.\n"
+"\n"
+"I have still not been able to support themes for kde/qt5, sorry. Hopefully next time.\n"
+
 #: strconst_en.coutputactionhint
 msgid ""
 "%s the Output area to %s.\n"
@@ -1910,6 +1941,10 @@ msgstr "upgrade"
 #: strconst_en.csavetofileusbdrive
 msgid "USB_Drive"
 msgstr "USB_Drive"
+
+#: strconst_en.csavetofilewhatsnew
+msgid "whatsnew"
+msgstr "whatsnew"
 
 #: strconst_en.csearchhintending
 msgid "<end>"
@@ -3449,6 +3484,10 @@ msgstr ""
 msgid "Dev: GenUpgradeFiles"
 msgstr "Dev: GenUpgradeFiles"
 
+#: tfrmmain.btnfinalneeds.hint
+msgid "Initialized"
+msgstr "Initialized"
+
 #: tfrmmain.btnfindcmd.caption
 msgctxt "tfrmmain.btnfindcmd.caption"
 msgid "&F  Find"
@@ -4983,8 +5022,8 @@ msgid "Editing..."
 msgstr "Editing..."
 
 #: tfrmmain.lblcmdlinepointer.caption
-msgid "Cmd Lines  ↓DNT"
-msgstr "Cmd Lines  ↓DNT"
+msgid "Command Lines  ↓DNT"
+msgstr "Command Lines  ↓DNT"
 
 #: tfrmmain.lblcmdpointer.caption
 #| msgid "Command  -->"
@@ -9604,6 +9643,7 @@ msgid "File \"%s\" in folder \"%s\" is not a valid commandoo text based DB."
 msgstr "File \"%s\" in folder \"%s\" is not a valid commandoo text based DB."
 
 #: ufrmprofiles.cmsgmostlikely
+#| msgid "Either the file(s) do not exist, there is a permissions problem, or possibly unmounted drives."
 msgid "Either the file(s) do not exist, there is a permissions problem, or possibly unmounted drives."
 msgstr "Either the file(s) do not exist, there is a permissions problem, or possibly unmounted drives."
 
@@ -9707,6 +9747,7 @@ msgid "merge"
 msgstr "merge"
 
 #: ufrmprofiles.cmsgprofdb_mismatchsolution
+#| msgid "commandoo only updates DB files when they are opened. It could be you've recently updated commandoo, or have recieved an older DB from a colleague and imported it? Simply open (ie. switch to) the DB in question first, which will automatically update it if needed. Then switch to another DB and try the \"%s\" again. "
 msgid "commandoo only updates DB files when they are opened. It could be you've recently updated commandoo, or have recieved an older DB from a colleague and imported it? Simply open (ie. switch to) the DB in question first, which will automatically update it if needed. Then switch to another DB and try the \"%s\" again. "
 msgstr "commandoo only updates DB files when they are opened. It could be you've recently updated commandoo, or have recieved an older DB from a colleague and imported it? Simply open (ie. switch to) the DB in question first, which will automatically update it if needed. Then switch to another DB and try the \"%s\" again. "
 
@@ -10180,10 +10221,12 @@ msgid "%s has %d Commands and %d Command Lines"
 msgstr "%s has %d Commands and %d Command Lines"
 
 #: unitcommands.cmsgindest
+#| msgid ">> Present in Destination [%s]: "
 msgid ">> Present in Destination [%s]: "
 msgstr ">> Present in Destination [%s]: "
 
 #: unitcommands.cmsgindestnot
+#| msgid ">> Not in Destination [%s]: "
 msgid ">> Not in Destination [%s]: "
 msgstr ">> Not in Destination [%s]: "
 
@@ -10327,6 +10370,7 @@ msgstr ""
 "result you are looking for. \n"
 
 #: unitcommands.cucomerge_boolean
+#| msgid "FROM boolean %s was different"
 msgid "FROM boolean %s was different"
 msgstr "FROM boolean %s was different"
 
@@ -10347,6 +10391,7 @@ msgstr ""
 "\n"
 
 #: unitcommands.cucomerge_string
+#| msgid "FROM String %s was \"%s\""
 msgid "FROM String %s was \"%s\""
 msgstr "FROM String %s was \"%s\""
 
